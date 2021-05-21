@@ -11,7 +11,7 @@ namespace Shopping
 {
     public class Global : HttpApplication
     {
-        //123
+        //123456
         void Application_Start(object sender, EventArgs e)
         {
             // 應用程式啟動時執行的程式碼
