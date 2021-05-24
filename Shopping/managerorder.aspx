@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="manageproduct.aspx.cs" Inherits="Shopping.manageproduct" %>
+﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="managerorder.aspx.cs" Inherits="Shopping.managerorder" %>
 <!--A Design by W3layouts 
 Author: W3layout
 Author URL: http://w3layouts.com
@@ -71,12 +71,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li class=" grid"><a  href="index.html">Home</a></li>	
-				      <li><a  href="manageaccount">Account</a>
+					  <li><a  href="index.html">Home</a></li>	
+				      <li><a  href="manageraccount">Account&nbsp;</a>
 				      	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
-								<div class="h_nav"> 
+								<div class="h_nav">
 									<h4>All Clothing</h4>
 									<ul>
 										<li><a href="products.html">Shirts</a></li>
@@ -130,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a  href="manageproduct">	Product</a>
+				    <li class="grid"><a  href="managerproduct">Product&nbsp;</a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -188,7 +188,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 			    </li>
-				<li><a  href="manageorder">Order</a></li>				
+				<li><a  href="managerorder">Order</a></li>				
 				<li><a class="color6" href="contact.html">Conact</a></li>
 			  </ul> 
 			</div>
@@ -196,7 +196,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a>
 		</div>
 		<div class="clearfix"> 
-            <asp:GridView ID="product" runat="server">
+            <asp:GridView ID="userorder" runat="server">
             </asp:GridView>
                 </div>
 				<div id="small-dialog" class="mfp-hide">

@@ -45,6 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -119,9 +120,9 @@
     <Content Include="css\popuo-box.css" />
     <Content Include="css\style.css" />
     <Content Include="index.html" />
-    <Content Include="manageorder.aspx" />
-    <Content Include="manageproduct.aspx" />
-    <Content Include="manageaccount.aspx" />
+    <Content Include="managerorder.aspx" />
+    <Content Include="managerproduct.aspx" />
+    <Content Include="manageraccount.aspx" />
     <Content Include="managerhome.aspx" />
     <Content Include="manager.aspx" />
     <Content Include="index.aspx" />
@@ -225,26 +226,26 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="manageorder.aspx.cs">
-      <DependentUpon>manageorder.aspx</DependentUpon>
+    <Compile Include="managerorder.aspx.cs">
+      <DependentUpon>managerorder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="manageorder.aspx.designer.cs">
-      <DependentUpon>manageorder.aspx</DependentUpon>
+    <Compile Include="managerorder.aspx.designer.cs">
+      <DependentUpon>managerorder.aspx</DependentUpon>
     </Compile>
-    <Compile Include="manageproduct.aspx.cs">
-      <DependentUpon>manageproduct.aspx</DependentUpon>
+    <Compile Include="managerproduct.aspx.cs">
+      <DependentUpon>managerproduct.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="manageproduct.aspx.designer.cs">
-      <DependentUpon>manageproduct.aspx</DependentUpon>
+    <Compile Include="managerproduct.aspx.designer.cs">
+      <DependentUpon>managerproduct.aspx</DependentUpon>
     </Compile>
-    <Compile Include="manageaccount.aspx.cs">
-      <DependentUpon>manageaccount.aspx</DependentUpon>
+    <Compile Include="manageraccount.aspx.cs">
+      <DependentUpon>manageraccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="manageaccount.aspx.designer.cs">
-      <DependentUpon>manageaccount.aspx</DependentUpon>
+    <Compile Include="manageraccount.aspx.designer.cs">
+      <DependentUpon>manageraccount.aspx</DependentUpon>
     </Compile>
     <Compile Include="managerhome.aspx.cs">
       <DependentUpon>managerhome.aspx</DependentUpon>

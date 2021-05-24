@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="manageaccount.aspx.cs" Inherits="Shopping.manageaccount" %>
+﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="managerproduct.aspx.cs" Inherits="Shopping.managerproduct" %>
 <!--A Design by W3layouts 
 Author: W3layout
 Author URL: http://w3layouts.com
@@ -72,11 +72,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
 					  <li class=" grid"><a  href="index.html">Home</a></li>	
-				      <li><a  href="manageaccount">Account</a>
+				      <li><a  href="manageraccount"> Account </a>
 				      	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
-								<div class="h_nav">
+								<div class="h_nav"> 
 									<h4>All Clothing</h4>
 									<ul>
 										<li><a href="products.html">Shirts</a></li>
@@ -107,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><a href="products.html">Slippers</a></li>
 										<li><a href="products.html">Sandals</a></li>
 										<li><a href="products.html">Flip-flops</a></li>
-									
+                   
 									</ul>	
 								</div>							
 							</div>
@@ -130,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a  href="manageproduct">	Product</a>
+				    <li class="grid"><a  href="managerproduct">	Product </a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -188,7 +188,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 			    </li>
-				<li><a  href="manageorder">Order</a></li>				
+				<li><a  href="managerorder"> Order </a></li>				
 				<li><a class="color6" href="contact.html">Conact</a></li>
 			  </ul> 
 			</div>
@@ -196,7 +196,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a>
 		</div>
 		<div class="clearfix"> 
-            <asp:GridView ID="useraccount" runat="server">
+            <asp:GridView ID="product" runat="server">
             </asp:GridView>
                 </div>
 				<div id="small-dialog" class="mfp-hide">
@@ -209,6 +209,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>				
 				</div>		
 	<!---->		
+				<h3><li>Add Product</li></h3>
+                <asp:Label ID="productName" runat="server" Text="productName"></asp:Label>
+				</br><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                </br><asp:Label ID="picture" runat="server" Text="picture"></asp:Label>
+				</br><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+		        </br><asp:Label ID="category" runat="server" Text="category"></asp:Label>
+				</br><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+				</br><asp:Label ID="inventory" runat="server" Text="inventory"></asp:Label>
+				</br><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+				</br><asp:Label ID="price" runat="server" Text="price"></asp:Label>
+				</br><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+				</br><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" />
+
 		</div>
 	</div>
 </div>
