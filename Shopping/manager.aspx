@@ -245,11 +245,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			   <div class="col-md-6 login-right">
 				<form>
 
-					<span>Email Address</span>
-
-				    <asp:TextBox ID="email" runat="server"></asp:TextBox>
+					<span>Account</span>
+				    <asp:TextBox ID="email" runat="server"></asp:TextBox><asp:Label ID="elabel" runat="server" Text=""></asp:Label>
 					<span>Password</span>
-					<asp:TextBox ID="password" runat="server"></asp:TextBox>
+					<asp:TextBox ID="password" runat="server"></asp:TextBox><asp:Label ID="plabel" runat="server" Text=""></asp:Label>
 					<div class="word-in">
 				  		<a class="forgot" href="#">Forgot Your Password?</a>
 						<asp:Button ID="submit" runat="server" Text="Login" OnClick="submit_Click" />
