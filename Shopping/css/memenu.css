@@ -1,7 +1,10 @@
 .memenu
 {margin:0;padding:0;width:100%;list-style:none;display:inline-block;position:relative;font-family:Calibri,Arial;font-size:15px}
 .memenu li{display:inline-block;}
-ul.memenu.skyblue {text-align: center;}
+ul.memenu.skyblue {text-align: center;
+    top: -10px;
+    left: 0px;
+}
 .memenu>li>a{font-family: 'Roboto-Regular';float:left;padding: 5px 30px 5px 30px;  font-size: 1.1em;text-decoration:none;transition:color .4s ease-in-out;-moz-transition:color .4s ease-in-out;-webkit-transition:color .4s ease-in-out;-o-transition:color .4s ease-in-out}
 .memenu>li>.mepanel {
 	position: absolute;

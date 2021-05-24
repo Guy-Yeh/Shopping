@@ -119,6 +119,9 @@
     <Content Include="css\popuo-box.css" />
     <Content Include="css\style.css" />
     <Content Include="index.html" />
+    <Content Include="manageorder.aspx" />
+    <Content Include="manageproduct.aspx" />
+    <Content Include="manageaccount.aspx" />
     <Content Include="managerhome.aspx" />
     <Content Include="manager.aspx" />
     <Content Include="index.aspx" />
@@ -220,6 +223,27 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="manageorder.aspx.cs">
+      <DependentUpon>manageorder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manageorder.aspx.designer.cs">
+      <DependentUpon>manageorder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="manageproduct.aspx.cs">
+      <DependentUpon>manageproduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manageproduct.aspx.designer.cs">
+      <DependentUpon>manageproduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="manageaccount.aspx.cs">
+      <DependentUpon>manageaccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manageaccount.aspx.designer.cs">
+      <DependentUpon>manageaccount.aspx</DependentUpon>
     </Compile>
     <Compile Include="managerhome.aspx.cs">
       <DependentUpon>managerhome.aspx</DependentUpon>

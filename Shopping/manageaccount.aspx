@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="managerhome.aspx.cs" Inherits="Shopping.managerhome" %>
+﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="manageaccount.aspx.cs" Inherits="Shopping.manageaccount" %>
 <!--A Design by W3layouts 
 Author: W3layout
 Author URL: http://w3layouts.com
@@ -130,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a  href="manageproduct">	Products</a>
+				    <li class="grid"><a  href="manageproduct">	Product</a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -195,7 +195,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-2 search">		
 			<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a>
 		</div>
-		<div class="clearfix"> </div>
+		<div class="clearfix"> 
+            <asp:GridView ID="useraccount" runat="server">
+            </asp:GridView>
+                </div>
 				<div id="small-dialog" class="mfp-hide">
 				<div class="search-top">
 						<div class="login">

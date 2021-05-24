@@ -30,6 +30,7 @@ namespace Shopping
                 {
                     if (password.Text == Reader["password"].ToString())
                     {
+                        Session["access"]="ok";
                         Response.Redirect("managerhome");
                     }
                     else
