@@ -118,9 +118,10 @@
     <Content Include="css\memenu.css" />
     <Content Include="css\popuo-box.css" />
     <Content Include="css\style.css" />
+    <Content Include="index.html" />
     <Content Include="managerhome.aspx" />
     <Content Include="manager.aspx" />
-    <Content Include="Default.aspx" />
+    <Content Include="index.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -234,12 +235,12 @@
     <Compile Include="manager.aspx.designer.cs">
       <DependentUpon>manager.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
