@@ -118,6 +118,7 @@
     <Content Include="css\memenu.css" />
     <Content Include="css\popuo-box.css" />
     <Content Include="css\style.css" />
+    <Content Include="managerhome.aspx" />
     <Content Include="manager.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -195,6 +196,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="single.html" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -217,6 +219,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="managerhome.aspx.cs">
+      <DependentUpon>managerhome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="managerhome.aspx.designer.cs">
+      <DependentUpon>managerhome.aspx</DependentUpon>
     </Compile>
     <Compile Include="manager.aspx.cs">
       <DependentUpon>manager.aspx</DependentUpon>

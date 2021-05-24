@@ -7,16 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Shopping
 {
-    public partial class manager : Page
+    public partial class managerhome : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void submit_Click(object sender, EventArgs e)
-        {
-             
         }
     }
 }

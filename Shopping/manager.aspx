@@ -252,7 +252,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<asp:TextBox ID="password" runat="server"></asp:TextBox>
 					<div class="word-in">
 				  		<a class="forgot" href="#">Forgot Your Password?</a>
-						<asp:Button ID="submit" runat="server" Text="Login" />
+						<asp:Button ID="submit" runat="server" Text="Login" OnClick="submit_Click" />
 				  	</div>
 			    </form>
 			   </div>	
