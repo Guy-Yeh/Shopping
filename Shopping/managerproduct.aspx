@@ -209,19 +209,44 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>				
 				</div>		
 	<!---->		
-				<h3><li>Add Product</li></h3>
+				<h3>Add Product&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Delete Product&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Update Product</h3><hr>
                 <asp:Label ID="productName" runat="server" Text="productName"></asp:Label>
-				</br><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                </br><asp:Label ID="picture" runat="server" Text="picture"></asp:Label>
-				</br><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-		        </br><asp:Label ID="category" runat="server" Text="category"></asp:Label>
-				</br><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-				</br><asp:Label ID="inventory" runat="server" Text="inventory"></asp:Label>
-				</br><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-				</br><asp:Label ID="price" runat="server" Text="price"></asp:Label>
-				</br><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
-				</br><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" />
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;<asp:Label ID="productID" runat="server" Text="productID"></asp:Label>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;<asp:Label ID="productID2" runat="server" Text="productID"></asp:Label>
+				
+				<br><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox> 
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+				<asp:Label ID="hint4" runat="server" Text="Please enter table ID"></asp:Label>
 
+				<br><asp:Label ID="picture" runat="server" Text="picture"></asp:Label>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;<asp:Label ID="hint3" runat="server" Text="Pls enter productID you want to delete"></asp:Label>
+				&emsp;&emsp;&emsp;<asp:Label ID="column" runat="server" Text="column"></asp:Label>
+				
+				<br><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" />
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;<asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+		        <asp:Label ID="hint5" runat="server" Text="Please enter table column"></asp:Label>
+		       
+				<br><asp:Label ID="category" runat="server" Text="category"></asp:Label>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				&emsp;
+				<asp:Label ID="value" runat="server" Text="update value"></asp:Label>
+				
+				<br><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
+				<asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
+				<asp:Label ID="hint6" runat="server" Text="Please enter update value"></asp:Label>
+				
+				<br><asp:Label ID="inventory" runat="server" Text="inventory"></asp:Label>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				&emsp;&emsp;&emsp;&emsp;
+				<asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" />
+				<br><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox><asp:Label ID="hint1" runat="server" Text=""></asp:Label>
+				<br><asp:Label ID="price" runat="server" Text="price"></asp:Label>
+				<br><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox><asp:Label ID="hint2" runat="server" Text=""></asp:Label>
+				<br><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" />
+				
 		</div>
 	</div>
 </div>
