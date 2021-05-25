@@ -45,6 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -105,10 +106,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="product.aspx" />
     <Content Include="About.aspx" />
     <Content Include="images\img_153839.png" />
     <Content Include="loging.aspx" />
     <Content Include="register.aspx" />
+    <Content Include="account.html" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -120,7 +123,15 @@
     <Content Include="css\memenu.css" />
     <Content Include="css\popuo-box.css" />
     <Content Include="css\style.css" />
-    <Content Include="Default.aspx" />
+    <Content Include="Customer\CustomerDetail.aspx" />
+    <Content Include="Customer\ShoppingList.aspx" />
+    <Content Include="index.html" />
+    <Content Include="managerorder.aspx" />
+    <Content Include="managerproduct.aspx" />
+    <Content Include="manageraccount.aspx" />
+    <Content Include="managerhome.aspx" />
+    <Content Include="manager.aspx" />
+    <Content Include="index.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -134,6 +145,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="fonts\OleoScript-Regular.ttf" />
     <Content Include="fonts\Roboto-Regular.ttf" />
+    <Content Include="Customer\Customer.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="images\1.jpg" />
     <Content Include="images\2.jpg" />
@@ -196,13 +208,22 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="single.html" />
     <Content Include="Site.Master" />
+    <Content Include="typo.html" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="product.aspx.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="product.aspx.designer.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -235,10 +256,68 @@
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="managerorder.aspx.cs">
+      <DependentUpon>managerorder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Customer\Customer.Master.cs">
+      <DependentUpon>Customer.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="managerorder.aspx.designer.cs">
+      <DependentUpon>managerorder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="managerproduct.aspx.cs">
+      <DependentUpon>managerproduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="managerproduct.aspx.designer.cs">
+      <DependentUpon>managerproduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="manageraccount.aspx.cs">
+      <DependentUpon>manageraccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manageraccount.aspx.designer.cs">
+      <DependentUpon>manageraccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\Customer.Master.designer.cs">
+      <DependentUpon>Customer.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerDetail.aspx.cs">
+      <DependentUpon>CustomerDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerDetail.aspx.designer.cs">
+      <DependentUpon>CustomerDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\ShoppingList.aspx.cs">
+      <DependentUpon>ShoppingList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\ShoppingList.aspx.designer.cs">
+      <DependentUpon>ShoppingList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="managerhome.aspx.cs">
+      <DependentUpon>managerhome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="managerhome.aspx.designer.cs">
+      <DependentUpon>managerhome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="manager.aspx.cs">
+      <DependentUpon>manager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manager.aspx.designer.cs">
+      <DependentUpon>manager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

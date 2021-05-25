@@ -7,11 +7,20 @@ using System.Web.UI.WebControls;
 
 namespace Shopping
 {
-    public partial class _Default : Page
+    public partial class managerhome : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["access"] != null && Session["access"] == "ok")
+            {
 
+            }
+            else
+            {
+                Response.Redirect("manager");
+            }
         }
+
+        
     }
 }
