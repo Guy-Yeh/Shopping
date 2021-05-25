@@ -254,9 +254,6 @@
     <Compile Include="register.aspx.designer.cs">
       <DependentUpon>register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="managerorder.aspx.cs">
       <DependentUpon>managerorder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
