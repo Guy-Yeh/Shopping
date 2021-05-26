@@ -130,7 +130,7 @@ namespace Shopping
             connection5.Open();
             SqlDataReader Reader = command5.ExecuteReader();
             bool IDCheck = Regex.IsMatch(TextBox7.Text, @"\d");
-            string[] productCols = { "productName", "picture", "category", "inventory", "price" };
+            var productCols = new List<string> { "productName", "picture", "category", "inventory", "price" };
             bool checkcol = false;
             foreach (string productCol in productCols)
             {
