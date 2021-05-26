@@ -96,16 +96,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="h_nav">
                                             <h4>All Clothing</h4>
                                             <ul>
-                                                <li><a href="products.html">Shirts</a></li>
-                                                <li><a href="products.html">Sports Wear</a></li>
-                                                <li><a href="products.html">Shorts</a></li>
-                                                <li><a href="products.html">Suits & Blazers</a></li>
-                                                <li><a href="products.html">Formal Shirts</a></li>
-                                                <li><a href="products.html">Sweatpants</a></li>
-                                                <li><a href="products.html">Swimwear</a></li>
-                                                <li><a href="products.html">Trousers & Chinos</a></li>
-                                                <li><a href="products.html">T-Shirts</a></li>
-                                                <li><a href="products.html">Underwear & Socks</a></li>
+                                                <li><a href="product">Shirts</a></li>
+                                                <li><a href="product">Sports Wear</a></li>
+                                                <li><a href="product">Shorts</a></li>
+                                                <li><a href="product">Suits & Blazers</a></li>
+                                                <li><a href="product">Formal Shirts</a></li>
+                                                <li><a href="product">Sweatpants</a></li>
+                                                <li><a href="product">Swimwear</a></li>
+                                                <li><a href="product">Trousers & Chinos</a></li>
+                                                <li><a href="product">T-Shirts</a></li>
+                                                <li><a href="product">Underwear & Socks</a></li>
 
                                             </ul>
                                         </div>
@@ -114,16 +114,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="h_nav">
                                             <h4>Footwear</h4>
                                             <ul>
-                                                <li><a href="products.html">Formal Shoes</a></li>
-                                                <li><a href="products.html">Boots</a></li>
-                                                <li><a href="products.html">Sports Shoes</a></li>
-                                                <li><a href="products.html">Casual Shoes</a></li>
-                                                <li><a href="products.html">Running Shoes</a></li>
-                                                <li><a href="products.html">Sneakers</a></li>
-                                                <li><a href="products.html">Loafers</a></li>
-                                                <li><a href="products.html">Slippers</a></li>
-                                                <li><a href="products.html">Sandals</a></li>
-                                                <li><a href="products.html">Flip-flops</a></li>
+                                                <li><a href="product">Formal Shoes</a></li>
+                                                <li><a href="product">Boots</a></li>
+                                                <li><a href="product">Sports Shoes</a></li>
+                                                <li><a href="product">Casual Shoes</a></li>
+                                                <li><a href="product">Running Shoes</a></li>
+                                                <li><a href="product">Sneakers</a></li>
+                                                <li><a href="product">Loafers</a></li>
+                                                <li><a href="product">Slippers</a></li>
+                                                <li><a href="product">Sandals</a></li>
+                                                <li><a href="product">Flip-flops</a></li>
 
                                             </ul>
                                         </div>
@@ -132,15 +132,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="h_nav">
                                             <h4>Popular Brands</h4>
                                             <ul>
-                                                <li><a href="products.html">Levis</a></li>
-                                                <li><a href="products.html">Persol</a></li>
-                                                <li><a href="products.html">Nike</a></li>
-                                                <li><a href="products.html">Edwin</a></li>
-                                                <li><a href="products.html">New Balance</a></li>
-                                                <li><a href="products.html">Jack & Jones</a></li>
-                                                <li><a href="products.html">Paul Smith</a></li>
-                                                <li><a href="products.html">Ray-Ban</a></li>
-                                                <li><a href="products.html">Wood Wood</a></li>
+                                                <li><a href="product">Levis</a></li>
+                                                <li><a href="product">Persol</a></li>
+                                                <li><a href="product">Nike</a></li>
+                                                <li><a href="product">Edwin</a></li>
+                                                <li><a href="product">New Balance</a></li>
+                                                <li><a href="product">Jack & Jones</a></li>
+                                                <li><a href="product">Paul Smith</a></li>
+                                                <li><a href="product">Ray-Ban</a></li>
+                                                <li><a href="product">Wood Wood</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -154,16 +154,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="h_nav">
                                             <h4>All Clothing</h4>
                                             <ul>
-                                                <li><a href="products.html">Shirts & Tops</a></li>
-                                                <li><a href="products.html">Sports Wear</a></li>
-                                                <li><a href="products.html">Kurtas & Kurties</a></li>
-                                                <li><a href="products.html">Suits & Blazers</a></li>
-                                                <li><a href="products.html">Sarees</a></li>
-                                                <li><a href="products.html">Sweatpants</a></li>
-                                                <li><a href="products.html">Swimwear</a></li>
-                                                <li><a href="products.html">Night-Suits</a></li>
-                                                <li><a href="products.html">T-Shirts</a></li>
-                                                <li><a href="products.html">Jeans</a></li>
+                                                <li><a href="product">Shirts & Tops</a></li>
+                                                <li><a href="product">Sports Wear</a></li>
+                                                <li><a href="product">Kurtas & Kurties</a></li>
+                                                <li><a href="product">Suits & Blazers</a></li>
+                                                <li><a href="product">Sarees</a></li>
+                                                <li><a href="product">Sweatpants</a></li>
+                                                <li><a href="product">Swimwear</a></li>
+                                                <li><a href="product">Night-Suits</a></li>
+                                                <li><a href="product">T-Shirts</a></li>
+                                                <li><a href="product">Jeans</a></li>
 
                                             </ul>
                                         </div>
@@ -172,16 +172,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="h_nav">
                                             <h4>Footwear</h4>
                                             <ul>
-                                                <li><a href="products.html">Heels</a></li>
-                                                <li><a href="products.html">Flats</a></li>
-                                                <li><a href="products.html">Sports Shoes</a></li>
-                                                <li><a href="products.html">Casual Shoes</a></li>
-                                                <li><a href="products.html">Running Shoes</a></li>
-                                                <li><a href="products.html">Wedges</a></li>
-                                                <li><a href="products.html">Boots</a></li>
-                                                <li><a href="products.html">Pumps</a></li>
-                                                <li><a href="products.html">Slippers</a></li>
-                                                <li><a href="products.html">Flip-flops</a></li>
+                                                <li><a href="product">Heels</a></li>
+                                                <li><a href="product">Flats</a></li>
+                                                <li><a href="product">Sports Shoes</a></li>
+                                                <li><a href="product">Casual Shoes</a></li>
+                                                <li><a href="product">Running Shoes</a></li>
+                                                <li><a href="product">Wedges</a></li>
+                                                <li><a href="product">Boots</a></li>
+                                                <li><a href="product">Pumps</a></li>
+                                                <li><a href="product">Slippers</a></li>
+                                                <li><a href="product">Flip-flops</a></li>
 
                                             </ul>
                                         </div>
@@ -190,15 +190,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="h_nav">
                                             <h4>Popular Brands</h4>
                                             <ul>
-                                                <li><a href="products.html">Levis</a></li>
-                                                <li><a href="products.html">Persol</a></li>
-                                                <li><a href="products.html">Nike</a></li>
-                                                <li><a href="products.html">Edwin</a></li>
-                                                <li><a href="products.html">New Balance</a></li>
-                                                <li><a href="products.html">Jack & Jones</a></li>
-                                                <li><a href="products.html">Paul Smith</a></li>
-                                                <li><a href="products.html">Ray-Ban</a></li>
-                                                <li><a href="products.html">Wood Wood</a></li>
+                                                <li><a href="product">Levis</a></li>
+                                                <li><a href="product">Persol</a></li>
+                                                <li><a href="product">Nike</a></li>
+                                                <li><a href="product">Edwin</a></li>
+                                                <li><a href="product">New Balance</a></li>
+                                                <li><a href="product">Jack & Jones</a></li>
+                                                <li><a href="product">Paul Smith</a></li>
+                                                <li><a href="product">Ray-Ban</a></li>
+                                                <li><a href="product">Wood Wood</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -212,16 +212,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="h_nav">
                                             <h4>All Clothing</h4>
                                             <ul>
-                                                <li><a href="products.html">Shirts & Tops</a></li>
-                                                <li><a href="products.html">Sports Wear</a></li>
-                                                <li><a href="products.html">Kurtas & Kurties</a></li>
-                                                <li><a href="products.html">Suits & Blazers</a></li>
-                                                <li><a href="products.html">Sarees</a></li>
-                                                <li><a href="products.html">Sweatpants</a></li>
-                                                <li><a href="products.html">Swimwear</a></li>
-                                                <li><a href="products.html">Night-Suits</a></li>
-                                                <li><a href="products.html">T-Shirts</a></li>
-                                                <li><a href="products.html">Jeans</a></li>
+                                                <li><a href="product">Shirts & Tops</a></li>
+                                                <li><a href="product">Sports Wear</a></li>
+                                                <li><a href="product">Kurtas & Kurties</a></li>
+                                                <li><a href="product">Suits & Blazers</a></li>
+                                                <li><a href="product">Sarees</a></li>
+                                                <li><a href="product">Sweatpants</a></li>
+                                                <li><a href="product">Swimwear</a></li>
+                                                <li><a href="product">Night-Suits</a></li>
+                                                <li><a href="product">T-Shirts</a></li>
+                                                <li><a href="product">Jeans</a></li>
 
                                             </ul>
                                         </div>
@@ -230,16 +230,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="h_nav">
                                             <h4>Footwear</h4>
                                             <ul>
-                                                <li><a href="products.html">Heels</a></li>
-                                                <li><a href="products.html">Flats</a></li>
-                                                <li><a href="products.html">Sports Shoes</a></li>
-                                                <li><a href="products.html">Casual Shoes</a></li>
-                                                <li><a href="products.html">Running Shoes</a></li>
-                                                <li><a href="products.html">Wedges</a></li>
-                                                <li><a href="products.html">Boots</a></li>
-                                                <li><a href="products.html">Pumps</a></li>
-                                                <li><a href="products.html">Slippers</a></li>
-                                                <li><a href="products.html">Flip-flops</a></li>
+                                                <li><a href="product">Heels</a></li>
+                                                <li><a href="product">Flats</a></li>
+                                                <li><a href="product">Sports Shoes</a></li>
+                                                <li><a href="product">Casual Shoes</a></li>
+                                                <li><a href="product">Running Shoes</a></li>
+                                                <li><a href="product">Wedges</a></li>
+                                                <li><a href="product">Boots</a></li>
+                                                <li><a href="product">Pumps</a></li>
+                                                <li><a href="product">Slippers</a></li>
+                                                <li><a href="product">Flip-flops</a></li>
 
                                             </ul>
                                         </div>
@@ -248,15 +248,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="h_nav">
                                             <h4>Popular Brands</h4>
                                             <ul>
-                                                <li><a href="products.html">Levis</a></li>
-                                                <li><a href="products.html">Persol</a></li>
-                                                <li><a href="products.html">Nike</a></li>
-                                                <li><a href="products.html">Edwin</a></li>
-                                                <li><a href="products.html">New Balance</a></li>
-                                                <li><a href="products.html">Jack & Jones</a></li>
-                                                <li><a href="products.html">Paul Smith</a></li>
-                                                <li><a href="products.html">Ray-Ban</a></li>
-                                                <li><a href="products.html">Wood Wood</a></li>
+                                                <li><a href="product">Levis</a></li>
+                                                <li><a href="product">Persol</a></li>
+                                                <li><a href="product">Nike</a></li>
+                                                <li><a href="product">Edwin</a></li>
+                                                <li><a href="product">New Balance</a></li>
+                                                <li><a href="product">Jack & Jones</a></li>
+                                                <li><a href="product">Paul Smith</a></li>
+                                                <li><a href="product">Ray-Ban</a></li>
+                                                <li><a href="product">Wood Wood</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -341,10 +341,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="content-top1">
 				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
+						<a href="product">
 							<img class="img-responsive" src="images/pi.png" alt="" />
 						</a>
-						<h3><a href="single.html">Tops</a></h3>
+						<h3><a href="product">Tops</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
 								<a href="#" class="item_add">Add To Cart</a>
@@ -354,10 +354,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>	
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
+						<a href="product">
 							<img class="img-responsive" src="images/pi2.png" alt="" />
 						</a>
-						<h3><a href="single.html">T-Shirt</a></h3>
+						<h3><a href="product">T-Shirt</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
 								<a href="#" class="item_add">Add To Cart</a>
@@ -368,10 +368,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>	
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
+						<a href="product">
 							<img class="img-responsive" src="images/pi4.png" alt="" />
 						</a>
-						<h3><a href="single.html">Shirt</a></h3>
+						<h3><a href="product">Shirt</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
 								<a href="#" class="item_add">Add To Cart</a>
@@ -382,10 +382,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>	
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
+						<a href="product">
 							<img class="img-responsive" src="images/pi1.png" alt="" />
 						</a>
-						<h3><a href="single.html">Tops</a></h3>
+						<h3><a href="product">Tops</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
 								<a href="#" class="item_add">Add To Cart</a>
@@ -399,10 +399,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="content-top1">
 				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
+						<a href="product">
 							<img class="img-responsive" src="images/pi3.png" alt="" />
 						</a>
-						<h3><a href="single.html">Shirt</a></h3>
+						<h3><a href="product">Shirt</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
 								<a href="#" class="item_add">Add To Cart</a>
@@ -413,10 +413,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>	
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
+						<a href="product">
 							<img class="img-responsive" src="images/pi5.png" alt="" />
 						</a>
-						<h3><a href="single.html">T-Shirt</a></h3>
+						<h3><a href="product">T-Shirt</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
 								<a href="#" class="item_add">Add To Cart</a>
@@ -427,10 +427,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>	
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
+						<a href="product">
 							<img class="img-responsive" src="images/pi6.png" alt="" />
 						</a>
-						<h3><a href="single.html">Jeans</a></h3>
+						<h3><a href="product">Jeans</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
 								<a href="#" class="item_add">Add To Cart</a>
@@ -441,10 +441,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>	
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
+						<a href="product">
 							<img class="img-responsive" src="images/pi7.png" alt="" />
 						</a>
-						<h3><a href="single.html">Tops</a></h3>
+						<h3><a href="product">Tops</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
 								<a href="#" class="item_add">Add To Cart</a>
