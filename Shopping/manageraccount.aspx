@@ -195,7 +195,72 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-2 search">		
 			<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a>
 		</div>
+
+				<br>
+			<br>
+			<br>
+			<h3><li>Revise Account Table</li></h3>
+					  	<div class="mepanel">
+						<div class="row">
+							<div class="col1">
+								<div class="h_nav">	
+									<h4>Add User Account</h4>
+									<ul>
+										<li><asp:Label ID="account" runat="server" Text="account"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
+										<li><asp:Label ID="password" runat="server" Text="password"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="name" runat="server" Text="name"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="phone" runat="server" Text="phone"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox><asp:Label ID="hint1" runat="server" Text=""></asp:Label></li>
+										<li><asp:Label ID="email" runat="server" Text="email"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox><asp:Label ID="hint2" runat="server" Text=""></asp:Label></li>
+										<li><asp:Label ID="discount" runat="server" Text="discount"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox><asp:Label ID="Label2" runat="server" Text=""></asp:Label></li>
+										<br>
+										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" /></li>
+									</ul>	
+								</div>							
+							</div>
+							<div class="col1">
+								<div class="h_nav">
+									<h4>Delete User Account</h4>
+									<ul>
+										<li><asp:Label ID="accountID" runat="server" Text="accountID"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox6" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hint3" runat="server" Text="Enter productID you want to delete"></asp:Label></li>
+										<br>
+										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" /></li>
+									</ul>
+								</div>							
+							</div>
+							<div class="col1">
+								<div class="h_nav">
+									<h4>Update User Account</h4>
+									<ul>
+										<li><asp:Label ID="accountID2" runat="server" Text="accountID"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox7" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hint4" runat="server" Text="Enter table ID number"></asp:Label><li>
+										<br>
+										<li></li>
+										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox8" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hint5" runat="server" Text="Enter table column item"></asp:Label></li>
+										<br>
+										<li></li>
+										<li><asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hint6" runat="server" Text="Enter update value"></asp:Label></li>
+										<br>
+										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" /></li>
+									</ul>	
+								</div>												
+							</div>
+						  </div>
+						</div>
 		<div class="clearfix"> 
+			<br>
             <asp:GridView ID="useraccount" runat="server">
             </asp:GridView>
                 </div>
