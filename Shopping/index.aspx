@@ -62,13 +62,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="col-sm-4 logo">
-					<a href="index.html"><img src="images/logo.png" alt=""></a>	
+					<a href="index"><img src="images/logo.png" alt=""></a>	
 				</div>
 		
 			<div class="col-sm-4 header-left">		
 					<p class="log"><a href="account.html">登錄</a> <a href="account.html">註冊</a></p>
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="shoppingcar">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span></div>
 							<img src="images/cart.png" alt=""/></h3>
@@ -88,7 +88,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		<div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-                        <li class=" grid"><a href="index.html">首頁</a></li>
+                        <li class=" grid"><a href="index">首頁</a></li>
                         <li><a href="#">男裝</a>
                             <div class="mepanel">
                                 <div class="row">

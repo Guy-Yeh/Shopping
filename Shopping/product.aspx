@@ -44,14 +44,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="col-md-4 logo">
-					<a href="index.html"><img src="images/logo.png" alt=""></a>	
+					<a href="index"><img src="images/logo.png" alt=""></a>	
 				</div>
 		
 			<div class="col-md-4 header-left">		
 					<p class="log"><a href="account.html"  >Login</a>
 						<span>or</span><a  href="account.html"  >Signup</a></p>
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="shoppingcar">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span></div>
 							<img src="images/cart.png" alt=""/></h3>
@@ -231,45 +231,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>	
 <div class="col-md-7 single-top-in">
 						<div class="single-para simpleCart_shelfItem">
-							<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>
-							<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-							<div class="star-on">
-								<ul>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-								</ul>
-								<div class="review">
-									<a href="#"> 3 reviews </a>/
-									<a href="#">  Write a review</a>
-								</div>
+							<h1>產品名稱</h1>
+							<p>產品註解</p>
+
 							<div class="clearfix"> </div>
 							</div>
 							
-								<label  class="add-to item_price">$32.8</label>
+								<label  class="add-to item_price">產品金額</label>
 							
 							<div class="available">
-								<h6>Available Options :</h6>
 								<ul>
 									
-								<li>Size:<select>
+								<li>尺寸:<select>
 									<option>Large</option>
 									<option>Medium</option>
 									<option>small</option>
 									<option>Large</option>
 									<option>small</option>
 								</select></li>
-								<li>Cost:
-										<select>
-										<option>U.S.Dollar</option>
-										<option>Euro</option>
-									</select></li>
+								<li>顏色:
 							</ul>
-						</div>
-								<a href="#" class="cart item_add">More details</a>
-						</div>
+
 					</div>
 			<div class="clearfix"> </div>
 			<div class="content-top1">
