@@ -212,9 +212,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:Label ID="category" runat="server" Text="category"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="inventory" runat="server" Text="inventory"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox><asp:Label ID="hint1" runat="server" Text=""></asp:Label></li>
+										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hint1" runat="server" Text=""></asp:Label></li>
 										<li><asp:Label ID="price" runat="server" Text="price"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox><asp:Label ID="hint2" runat="server" Text=""></asp:Label></li>
+										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hint2" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" /></li>
 									</ul>	

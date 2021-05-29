@@ -33,6 +33,15 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
+        /// hintAccount 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hintAccount;
+
+        /// <summary>
         /// password 控制項。
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace Shopping
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox2;
+
+        /// <summary>
+        /// hintPassword 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hintPassword;
 
         /// <summary>
         /// name 控制項。
@@ -87,13 +105,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox4;
 
         /// <summary>
-        /// hint1 控制項。
+        /// hintPhone 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hint1;
+        protected global::System.Web.UI.WebControls.Label hintPhone;
 
         /// <summary>
         /// email 控制項。
@@ -114,13 +132,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox5;
 
         /// <summary>
-        /// hint2 控制項。
+        /// hintEmail 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hint2;
+        protected global::System.Web.UI.WebControls.Label hintEmail;
 
         /// <summary>
         /// discount 控制項。
@@ -141,13 +159,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox10;
 
         /// <summary>
-        /// Label2 控制項。
+        /// hintDiscount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label hintDiscount;
 
         /// <summary>
         /// Add 控制項。
@@ -177,13 +195,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox6;
 
         /// <summary>
-        /// hint3 控制項。
+        /// hintID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hint3;
+        protected global::System.Web.UI.WebControls.Label hintID;
 
         /// <summary>
         /// Delete 控制項。

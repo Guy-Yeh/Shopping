@@ -208,16 +208,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<ul>
 										<li><asp:Label ID="account" runat="server" Text="account"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
+									    <li><asp:Label ID="hintAccount" runat="server" Text=""></asp:Label></li> 
 										<li><asp:Label ID="password" runat="server" Text="password"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintPassword" runat="server" Text=""></asp:Label></li>
 										<li><asp:Label ID="name" runat="server" Text="name"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="phone" runat="server" Text="phone"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox><asp:Label ID="hint1" runat="server" Text=""></asp:Label></li>
+										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintPhone" runat="server" Text=""></asp:Label></li>
 										<li><asp:Label ID="email" runat="server" Text="email"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox><asp:Label ID="hint2" runat="server" Text=""></asp:Label></li>
+										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintEmail" runat="server" Text=""></asp:Label></li>
 										<li><asp:Label ID="discount" runat="server" Text="discount"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox><asp:Label ID="Label2" runat="server" Text=""></asp:Label></li>
+										<li><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintDiscount" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" /></li>
 									</ul>	
@@ -229,7 +234,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<ul>
 										<li><asp:Label ID="accountID" runat="server" Text="accountID"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox6" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hint3" runat="server" Text="Enter productID you want to delete"></asp:Label></li>
+										<li><asp:Label ID="hintID" runat="server" Text="Enter productID you want to delete"></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" /></li>
 									</ul>
