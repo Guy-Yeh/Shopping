@@ -45,21 +45,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="header">
 	<div class="header-top">
 		<div class="container">
-		<div class="col-sm-4 world">
-					<ul >
-						<li>
-						<select class="in-drop">
-							  <option>English</option>
-							  <option>Japanese</option>
-							  <option>French</option>
-							</select></li>
-						<li><select class="in-drop1">
-							  <option>Dollar</option>
-							  <option>Euro</option>
-							  <option>Yen</option>
-							</select>
-						</li>
-					</ul>
+		<div class="col-sm-4 number">
+					<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
 				</div>
 				<div class="col-sm-4 logo">
 					<a href="index"><img src="images/logo.png" alt=""></a>	
@@ -84,7 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="col-sm-2 number">
-					<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
+
 				</div>
 		<div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
@@ -263,8 +250,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </div>
                         </li>
-                        <li><a href="typo.html">Blog</a></li>
-                        <li><a class="color6" href="contact.html">Conact</a></li>
+                        <li><a class="color6" href="contact.html">聯絡我們</a></li>
                     </ul> 
 			</div>
 				<div class="col-sm-2 search">		
