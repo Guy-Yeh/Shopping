@@ -231,13 +231,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox7;
 
         /// <summary>
-        /// hint4 控制項。
+        /// hintID2 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hint4;
+        protected global::System.Web.UI.WebControls.Label hintID2;
 
         /// <summary>
         /// column 控制項。
@@ -258,13 +258,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox8;
 
         /// <summary>
-        /// hint5 控制項。
+        /// hintColumn 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hint5;
+        protected global::System.Web.UI.WebControls.Label hintColumn;
 
         /// <summary>
         /// value 控制項。
@@ -285,13 +285,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox9;
 
         /// <summary>
-        /// hint6 控制項。
+        /// hintAll 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hint6;
+        protected global::System.Web.UI.WebControls.Label hintAll;
 
         /// <summary>
         /// Update 控制項。

@@ -246,17 +246,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<ul>
 										<li><asp:Label ID="accountID2" runat="server" Text="accountID"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox7" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hint4" runat="server" Text="Enter table ID number"></asp:Label><li>
+										<li><asp:Label ID="hintID2" runat="server" Text="Enter table ID number"></asp:Label><li>
 										<br>
 										<li></li>
 										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox8" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hint5" runat="server" Text="Enter table column item"></asp:Label></li>
+										<li><asp:Label ID="hintColumn" runat="server" Text="Enter table column item"></asp:Label></li>
 										<br>
 										<li></li>
 										<li><asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hint6" runat="server" Text="Enter update value"></asp:Label></li>
+										<li><asp:Label ID="hintAll" runat="server" Text="Enter update value"></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" /></li>
 									</ul>	
