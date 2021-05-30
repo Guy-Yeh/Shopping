@@ -7,6 +7,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
+
 <html>
 <head>
 <title>Fashion Mania A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
@@ -41,6 +42,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   </script>
 </head>
 <body>
+<form runat="server" method="post">
 <!--header-->
 <div class="header">
 	<div class="header-top">
@@ -294,27 +296,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--banner-->
 <div class="banner">
 	<div class="col-sm-3 banner-mat">
-		<img class="img-responsive"	src="images/ba1.jpg" alt="">
+		<img class="img-responsive"	src="images\衣服\281901701-領造型線T\S__77931623.jpg" alt="">
 	</div>
 	<div class="col-sm-6 matter-banner">
 	 	<div class="slider">
 	    	<div class="callbacks_container">
 	      		<ul class="rslides" id="slider">
 	        		<li>
-	          			<img src="images/1.jpg" alt="">
+	          			<img src="images\衣服\281901715-剪裁T\S__49840159.jpg" alt="">
 	       			 </li>
 			 		 <li>
-	          			<img src="images/2.jpg" alt="">   
+	          			<img src="images\衣服\281901801-細肩露肩t\S__49840130.jpg" alt="">   
 	       			 </li>
 					 <li>
-	          			<img src="images/1.jpg" alt="">
+	          			<img src="images\衣服\281902805-胸抓摺衫\S__49954893.jpg" alt="">
 	        		</li>	
 	      		</ul>
 	 	 	</div>
 		</div>
 	</div>
 	<div class="col-sm-3 banner-mat">
-		<img class="img-responsive" src="images/ba.jpg" alt="">
+		<img class="img-responsive" src="images\衣服\281901708-袖滾配色t\S__77931217.jpg" alt="">
 	</div>
 	<div class="clearfix"> </div>
 </div>
@@ -328,12 +330,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="product">
-							<img class="img-responsive" src="images/pi.png" alt="" />
+							<img class="img-responsive" src="images\衣服\281901701-領造型線T\S__49610819.jpg" alt="" />
 						</a>
 						<h3><a href="product">Tops</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
+								<asp:Button ID="Button1" runat="server" Text="放入購物車" OnClick="Button1_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right"/>
 								<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -341,12 +343,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="product">
-							<img class="img-responsive" src="images/pi2.png" alt="" />
+							<img class="img-responsive" src="images\衣服\281901708-袖滾配色t\S__49840211.jpg" alt="" />
 						</a>
 						<h3><a href="product">T-Shirt</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
+								<asp:Button ID="Button2" runat="server" Text="放入購物車" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" />
 								<div class="clearfix"> </div>
 						</div>
 						
@@ -355,12 +357,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="product">
-							<img class="img-responsive" src="images/pi4.png" alt="" />
+							<img class="img-responsive" src="images\衣服\281901715-剪裁T\S__49840159.jpg" alt="" />
 						</a>
 						<h3><a href="product">Shirt</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
+								<asp:Button ID="Button3" runat="server" Text="放入購物車" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" />
 								<div class="clearfix"> </div>
 						</div>
 						
@@ -369,12 +371,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="product">
-							<img class="img-responsive" src="images/pi1.png" alt="" />
+							<img class="img-responsive" src="images\衣服\281901801-細肩露肩t\S__49840130.jpg" alt="" />
 						</a>
 						<h3><a href="product">Tops</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
+								<asp:Button ID="Button4" runat="server" Text="放入購物車" OnClick="Button4_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" />
 								<div class="clearfix"> </div>
 						</div>
 						
@@ -386,12 +388,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="product">
-							<img class="img-responsive" src="images/pi3.png" alt="" />
+							<img class="img-responsive" src="images\衣服\281902805-胸抓摺衫\S__49954893.jpg" alt="" />
 						</a>
 						<h3><a href="product">Shirt</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
+								<asp:Button ID="Button5" runat="server" Text="放入購物車" OnClick="Button5_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right"/>
 								<div class="clearfix"> </div>
 						</div>
 						
@@ -400,12 +402,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="product">
-							<img class="img-responsive" src="images/pi5.png" alt="" />
+							<img class="img-responsive" src="images\衣服\281904506-格紋澎袖衫\S__49954861.jpg" alt="" />
 						</a>
 						<h3><a href="product">T-Shirt</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
+								<asp:Button ID="Button6" runat="server" Text="放入購物車" OnClick="Button6_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" />
 								<div class="clearfix"> </div>
 						</div>
 						
@@ -414,12 +416,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="product">
-							<img class="img-responsive" src="images/pi6.png" alt="" />
+							<img class="img-responsive" src="images\衣服\281906305-中抓摺雪紡衫\S__50069542.jpg" alt="" />
 						</a>
 						<h3><a href="product">Jeans</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
+								<asp:Button ID="Button7" runat="server" Text="放入購物車" OnClick="Button7_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" />
 								<div class="clearfix"> </div>
 						</div>
 						
@@ -428,12 +430,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="product">
-							<img class="img-responsive" src="images/pi7.png" alt="" />
+							<img class="img-responsive" src="images\衣服\281905801-滾邊寬袖衫\S__50200586.jpg" alt="" />
 						</a>
 						<h3><a href="product">Tops</a></h3>
 						<div class="price">
 								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
+								<asp:Button ID="Button8" runat="server" Text="放入購物車" OnClick="Button8_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" />
 								<div class="clearfix"> </div>
 						</div>
 						
@@ -444,6 +446,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 </div>
+</form>
 <!--//content-->
 <!--footer-->
 <div class="footer">
