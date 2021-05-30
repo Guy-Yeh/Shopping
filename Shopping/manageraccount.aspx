@@ -208,23 +208,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<ul>
 										<li><asp:Label ID="account" runat="server" Text="account"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
-									    <li><asp:Label ID="hintAccount" runat="server" Text=""></asp:Label></li> 
+									    <li><asp:Label ID="hintAccount" runat="server" ForeColor="Black"></asp:Label></li> 
 										<li><asp:Label ID="password" runat="server" Text="password"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintPassword" runat="server" Text=""></asp:Label></li>
+										<li><asp:Label ID="hintPassword" runat="server" ForeColor="Black"></asp:Label></li>
 										<li><asp:Label ID="name" runat="server" Text="name"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="phone" runat="server" Text="phone"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintPhone" runat="server" Text=""></asp:Label></li>
+										<li><asp:Label ID="hintPhone" runat="server" ForeColor="Black"></asp:Label></li>
 										<li><asp:Label ID="email" runat="server" Text="email"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintEmail" runat="server" Text=""></asp:Label></li>
+										<li><asp:Label ID="hintEmail" runat="server" ForeColor="Black"></asp:Label></li>
 										<li><asp:Label ID="discount" runat="server" Text="discount"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintDiscount" runat="server" Text=""></asp:Label></li>
+										<li><asp:Label ID="hintDiscount" runat="server" ForeColor="Black"></asp:Label></li>
 										<br>
-										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" /></li>
+										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
 									</ul>	
 								</div>							
 							</div>
@@ -236,7 +236,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:TextBox ID="TextBox6" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintID" runat="server" Text="Enter productID you want to delete"></asp:Label></li>
 										<br>
-										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" /></li>
+										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
 									</ul>
 								</div>							
 							</div>
@@ -258,7 +258,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintAll" runat="server" Text="Enter update value"></asp:Label></li>
 										<br>
-										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" /></li>
+										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
 									</ul>	
 								</div>												
 							</div>
