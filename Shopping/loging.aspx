@@ -43,8 +43,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		
 			<div class="col-md-4 header-left">		
-					<p class="log"><a href="account.html"  >Login</a>
-						<span>or</span><a  href="account.html"  >Signup</a></p>
+					<p class="log">
+						<asp:LinkButton ID="loginLinkButton" runat="server" >登入</asp:LinkButton>或
+						<asp:LinkButton ID="registerLinkButton" runat="server" >註冊</asp:LinkButton>
+					</p>
 					<div class="cart box_1">
 						<a href="checkout.html">
 						<h3> <div class="total">
@@ -66,8 +68,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li class=" grid"><a  href="index.html">Home</a></li>	
-				      <li><a  href="#">Men</a>
+					  <li class=" grid"><a  href="index.html">首頁</a></li>	
+				      <li><a  href="#">男裝
+				          </a>
 				      	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -125,7 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a  href="#">	Women</a>
+				    <li class="grid"><a  href="#">	女裝</a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -182,9 +185,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						  </div>
 						</div>
-			    </li>
-				<li><a  href="typo.html">Blog</a></li>				
-				<li><a class="color6" href="contact.html">Conact</a></li>
+			    </li>		
+				<li><a class="color6" href="contact.html">連結</a></li>
 			  </ul> 
 			</div>
 		<div class="col-md-2 search">		
@@ -245,8 +247,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			    
 			   </div>	
 			    <div class="col-md-6 login-left">
-			  	 <h4>NEW CUSTOMERS</h4>
-				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+			  	 <h4>新客戶你好</h4>
+				 <p>通過在我們的商店創建新帳戶，您將能夠更快地完成結帳流程、存儲多個送貨地址、查看和跟踪您帳戶中的訂單等。</p>
 				 <asp:Button ID="registerButton1" runat="server" Text="註冊新帳號" Style="font: 12pt Verdana;font-weight:700;color:white;" BorderStyle="None" BackColor="#52D0C4" Height="37px" Width="130px"/>
 			   </div>
 			   <div class="clearfix"> </div>

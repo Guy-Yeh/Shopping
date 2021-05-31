@@ -6,7 +6,8 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-<!DOCTYPE html>
+
+<!DOCTYPE html >
 <html>
 <head>
 <title>Fashion Mania A Ecommerce Category Flat Bootstarp Resposive Website Template | Register :: w3layouts</title>
@@ -275,8 +276,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				
 				
 				<div class="register-but">
-				   
-                       <asp:Button ID="registerButton" runat="server" Text="確認" OnClick="registerButton_Click" Style="font: 12pt Verdana;font-weight:700;color:white;" BorderStyle="None" BackColor="#52D0C4" Height="35px" Width="59px"  />					   
+					
+					<asp:TextBox ID="verificationText" runat="server" ></asp:TextBox>
+					<asp:Image ID="verificationImage" imageUrl=~\verification.aspx runat="server"  />
+					<asp:LinkButton ID="verificationLinkButton1" runat="server" style="font-size: small; ">看不清楚，換一張</asp:LinkButton>
+					<br>
+					<br>
+                    <asp:Button ID="registerButton" runat="server" Text="確認" OnClick="registerButton_Click" Style="font: 12pt Verdana;font-weight:700;color:white;" BorderStyle="None" BackColor="#52D0C4" Height="35px" Width="59px"  />					   
 				   
 				</div>
 		   </div>

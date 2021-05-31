@@ -195,6 +195,33 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox emailText;
 
         /// <summary>
+        /// verificationText 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox verificationText;
+
+        /// <summary>
+        /// verificationImage 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image verificationImage;
+
+        /// <summary>
+        /// verificationLinkButton1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton verificationLinkButton1;
+
+        /// <summary>
         /// registerButton 控制項。
         /// </summary>
         /// <remarks>
