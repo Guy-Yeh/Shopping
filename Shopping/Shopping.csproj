@@ -107,12 +107,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="product.aspx" />
-    <Content Include="About.aspx" />
+    <Content Include="shoppingcar.aspx" />
     <Content Include="images\img_153839.png" />
     <Content Include="loging.aspx" />
     <Content Include="register.aspx" />
     <Content Include="account.html" />
-    <Content Include="Contact.aspx" />
+    <Content Include="payment.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -125,7 +125,6 @@
     <Content Include="css\style.css" />
     <Content Include="Customer\CustomerDetail.aspx" />
     <Content Include="Customer\ShoppingList.aspx" />
-    <Content Include="index.html" />
     <Content Include="managerorder.aspx" />
     <Content Include="managerproduct.aspx" />
     <Content Include="manageraccount.aspx" />
@@ -226,20 +225,20 @@
       <DependentUpon>product.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="shoppingcar.aspx.cs">
+      <DependentUpon>shoppingcar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="shoppingcar.aspx.designer.cs">
+      <DependentUpon>shoppingcar.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="payment.aspx.cs">
+      <DependentUpon>payment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="payment.aspx.designer.cs">
+      <DependentUpon>payment.aspx</DependentUpon>
     </Compile>
     <Compile Include="loging.aspx.cs">
       <DependentUpon>loging.aspx</DependentUpon>

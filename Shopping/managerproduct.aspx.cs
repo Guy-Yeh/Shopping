@@ -14,12 +14,17 @@ namespace Shopping
 {
     public partial class managerproduct : Page
     {
+        string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
+        public SqlConnection Connect(string x)
+        {
+            SqlConnection connect = new SqlConnection(x);
+            return connect;
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             hint1.Text = "";
             hint2.Text = "";
-            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
-            SqlConnection connection = new SqlConnection(s_data);
+            SqlConnection connection = Connect(s_data);
             string sql = $"select * from Products";
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
@@ -31,9 +36,8 @@ namespace Shopping
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
-            string s_data2 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
-            SqlConnection connection2 = new SqlConnection(s_data2);
+
+            SqlConnection connection2 = Connect(s_data);
             string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values('{TextBox1.Text}','{TextBox2.Text}','{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}')";
             //string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(@pn,@pc,@c,@i,@pr)";
             bool inventoryCheck = Regex.IsMatch(TextBox4.Text, @"\d");
@@ -87,13 +91,11 @@ namespace Shopping
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            string s_data3 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
-            SqlConnection connection3 = new SqlConnection(s_data3);
+            SqlConnection connection3 = Connect(s_data);
             string sql3 = $"delete from Products where ID='{TextBox6.Text}'";
 
             bool IDCheck = Regex.IsMatch(TextBox6.Text, @"\d");
-            string s_data4 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
-            SqlConnection connection4 = new SqlConnection(s_data4);
+            SqlConnection connection4 = Connect(s_data);
             string sql4 = $"select * from Products where ID='{TextBox6.Text}'";
             SqlCommand command4 = new SqlCommand(sql4, connection4);
             connection4.Open();
@@ -122,15 +124,14 @@ namespace Shopping
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            
-            string s_data5 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
-            SqlConnection connection5 = new SqlConnection(s_data5);
+
+            SqlConnection connection5 = Connect(s_data);
             string sql5 = $"select * from Products where ID='{TextBox7.Text}'";
             SqlCommand command5 = new SqlCommand(sql5, connection5);
             connection5.Open();
             SqlDataReader Reader = command5.ExecuteReader();
             bool IDCheck = Regex.IsMatch(TextBox7.Text, @"\d");
-            string[] productCols = { "productName", "picture", "category", "inventory", "price" };
+            var productCols = new List<string> { "productName", "picture", "category", "inventory", "price" };
             bool checkcol = false;
             foreach (string productCol in productCols)
             {
@@ -141,18 +142,21 @@ namespace Shopping
                 }
             }
             bool text9Check = Regex.IsMatch(TextBox9.Text, @"\d");
-            string s_data6 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
-            SqlConnection connection6 = new SqlConnection(s_data6);
-            string sql6 = $"update Products SET {TextBox8.Text}={TextBox9.Text} where ID='{TextBox7.Text}'";
+            SqlConnection connection6 = Connect(s_data);
+            string sql6 = $"update Products SET {TextBox8.Text}='{TextBox9.Text}' where ID='{TextBox7.Text}'";
+
+            string s_data7 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
+            SqlConnection connection7 = Connect(s_data);
+            string sql7 = $"select * from Products where productName='{TextBox9.Text}'";
             
 
-            if (Reader.HasRows)
+            if (Reader.HasRows) //確認有找到該ID
             {
                 if (checkcol == true)
                 {
                     if (TextBox8.Text == "inventory" || TextBox8.Text == "price")
                     {
-                        if (text9Check==true)
+                        if (text9Check == true)
                         {
                             SqlCommand command6 = new SqlCommand(sql6, connection6);
                             connection6.Open();
@@ -160,10 +164,29 @@ namespace Shopping
                             MessageBox.Show("Update Successfully");
                             connection6.Close();
                         }
-                        else 
+                        else
                         {
                             hint6.Text = "Pls enter number";
                         }
+                    }
+                    else if (TextBox8.Text == "productName") //輸入過程確保productName不重複 
+                    {
+                        SqlCommand command7 = new SqlCommand(sql7, connection7);
+                        connection7.Open();
+                        SqlDataReader Reader2 = command7.ExecuteReader();
+                        if (Reader2.HasRows)
+                        {
+                            hint6.Text = "ProductName repeat, please change productname";
+                        }
+                        else
+                        {
+                            SqlCommand command6 = new SqlCommand(sql6, connection6);
+                            connection6.Open();
+                            command6.ExecuteNonQuery();
+                            MessageBox.Show("Update Successfully");
+                            connection6.Close();
+                        }
+                        connection7.Close();
                     }
                     else
                     {

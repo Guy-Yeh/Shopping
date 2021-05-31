@@ -195,7 +195,77 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-2 search">		
 			<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a>
 		</div>
+
+				<br>
+			<br>
+			<br>
+			<h3><li>Revise Account Table</li></h3>
+					  	<div class="mepanel">
+						<div class="row">
+							<div class="col1">
+								<div class="h_nav">	
+									<h4>Add User Account</h4>
+									<ul>
+										<li><asp:Label ID="account" runat="server" Text="account"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
+									    <li><asp:Label ID="hintAccount" runat="server" ForeColor="Black"></asp:Label></li> 
+										<li><asp:Label ID="password" runat="server" Text="password"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintPassword" runat="server" ForeColor="Black"></asp:Label></li>
+										<li><asp:Label ID="name" runat="server" Text="name"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="phone" runat="server" Text="phone"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintPhone" runat="server" ForeColor="Black"></asp:Label></li>
+										<li><asp:Label ID="email" runat="server" Text="email"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintEmail" runat="server" ForeColor="Black"></asp:Label></li>
+										<li><asp:Label ID="discount" runat="server" Text="discount"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintDiscount" runat="server" ForeColor="Black"></asp:Label></li>
+										<br>
+										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
+									</ul>	
+								</div>							
+							</div>
+							<div class="col1">
+								<div class="h_nav">
+									<h4>Delete User Account</h4>
+									<ul>
+										<li><asp:Label ID="accountID" runat="server" Text="accountID"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox6" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintID" runat="server" Text="Enter productID you want to delete"></asp:Label></li>
+										<br>
+										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
+									</ul>
+								</div>							
+							</div>
+							<div class="col1">
+								<div class="h_nav">
+									<h4>Update User Account</h4>
+									<ul>
+										<li><asp:Label ID="accountID2" runat="server" Text="accountID"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox7" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintID2" runat="server" Text="Enter table ID number"></asp:Label><li>
+										<br>
+										<li></li>
+										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox8" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintColumn" runat="server" Text="Enter table column item"></asp:Label></li>
+										<br>
+										<li></li>
+										<li><asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintAll" runat="server" Text="Enter update value"></asp:Label></li>
+										<br>
+										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
+									</ul>	
+								</div>												
+							</div>
+						  </div>
+						</div>
 		<div class="clearfix"> 
+			<br>
             <asp:GridView ID="useraccount" runat="server">
             </asp:GridView>
                 </div>
@@ -209,6 +279,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>				
 				</div>		
 	<!---->		
+				<li class="grid"><a  href="managerproduct">	Product</a>
+					  	<div class="mepanel">
+						<div class="row">
+							<div class="col1">
+								<div class="h_nav">
+									<h4>All Clothing</h4>
+									<ul>
+										<li><a href="products.html">Shirts & Tops</a></li>
+										<li><a href="products.html">Sports Wear</a></li>
+										<li><a href="products.html">Kurtas & Kurties</a></li>
+										<li><a href="products.html">Suits & Blazers</a></li>
+										<li><a href="products.html">Sarees</a></li>
+										<li><a href="products.html">Sweatpants</a></li>
+										<li><a href="products.html">Swimwear</a></li>
+										<li><a href="products.html">Night-Suits</a></li>
+										<li><a href="products.html">T-Shirts</a></li>
+										<li><a href="products.html">Jeans</a></li>
+										
+									</ul>	
+								</div>							
+							</div>
+							<div class="col1">
+								<div class="h_nav">
+									<h4>Footwear</h4>
+									<ul>
+										<li><a href="products.html">Heels</a></li>
+										<li><a href="products.html">Flats</a></li>
+										<li><a href="products.html">Sports Shoes</a></li>
+										<li><a href="products.html">Casual Shoes</a></li>
+										<li><a href="products.html">Running Shoes</a></li>
+										<li><a href="products.html">Wedges</a></li>
+										<li><a href="products.html">Boots</a></li>
+										<li><a href="products.html">Pumps</a></li>
+										<li><a href="products.html">Slippers</a></li>
+										<li><a href="products.html">Flip-flops</a></li>
+									
+									</ul>
+								</div>							
+							</div>
+							<div class="col1">
+								<div class="h_nav">
+									<h4>Popular Brands</h4>
+									<ul>
+										<li><a href="products.html">Levis</a></li>
+										<li><a href="products.html">Persol</a></li>
+										<li><a href="products.html">Nike</a></li>
+										<li><a href="products.html">Edwin</a></li>
+										<li><a href="products.html">New Balance</a></li>
+										<li><a href="products.html">Jack & Jones</a></li>
+										<li><a href="products.html">Paul Smith</a></li>
+										<li><a href="products.html">Ray-Ban</a></li>
+										<li><a href="products.html">Wood Wood</a></li>
+									</ul>	
+								</div>												
+							</div>
+						  </div>
+						</div>
+<!>
 		</div>
 	</div>
 </div>

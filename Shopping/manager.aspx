@@ -251,7 +251,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<asp:TextBox ID="password" runat="server" required="required" aria-required="true" oninvalid="setCustomValidity('這是必填項目，請輸入')" oninput="this.setCustomValidity('')"></asp:TextBox><asp:Label ID="plabel" runat="server" Text=""></asp:Label>
 					<div class="word-in">
 				  		<a class="forgot" href="#">Forgot Your Password?</a>
-						<asp:Button ID="submit" runat="server" Text="Login" OnClick="submit_Click" />
+						<asp:Button ID="submit" runat="server" Text="Login" OnClick="submit_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
 				  	</div>
 			    </form>
 			   </div>	
