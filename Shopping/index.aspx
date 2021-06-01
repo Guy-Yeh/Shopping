@@ -55,17 +55,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		
 			<div class="col-sm-4 header-left">		
-					<p class="log"><a href="account.html">登錄</a> <a href="account.html">註冊</a></p>
-					<div class="cart box_1">
-						<a href="shoppingcar">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-
-					</div>
-					<div class="clearfix"> </div>
+				<p class="log"><a href="account.html">登錄</a> <a href="account.html">註冊</a></p>
+				<asp:Label ID="Label2" runat="server" Text="消費金額：" ></asp:Label>
+				<asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/cart.png" style="float:right" /><br>
+                <asp:Button ID="Button9" runat="server" Text="清空購物車" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="87px" style="float:right" OnClick="Button9_Click"/>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
@@ -334,7 +327,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</a>
 						<h3><a href="product">Tops</a></h3>
 						<div class="price">
-								<h5 class="item_price">$300</h5>
+								<asp:Label ID="Label3" runat="server" Text="售價："></asp:Label>
+								<asp:Label ID="Label4" runat="server" Text="899"></asp:Label>
 								<asp:Button ID="Button1" runat="server" Text="放入購物車" OnClick="Button1_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right"/>
 								<div class="clearfix"> </div>
 						</div>
