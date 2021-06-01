@@ -246,7 +246,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form>
 
 					<span>Account</span>
-				    <asp:TextBox ID="email" runat="server"></asp:TextBox><asp:Label ID="elabel" runat="server" Text=""></asp:Label>
+				    <asp:TextBox ID="account" runat="server"></asp:TextBox><asp:Label ID="elabel" runat="server" Text=""></asp:Label>
 					<span>Password</span>
 					<asp:TextBox ID="password" runat="server" required="required" aria-required="true" oninvalid="setCustomValidity('這是必填項目，請輸入')" oninput="this.setCustomValidity('')"></asp:TextBox><asp:Label ID="plabel" runat="server" Text=""></asp:Label>
 					<div class="word-in">

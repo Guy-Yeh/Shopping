@@ -51,9 +51,12 @@ namespace Shopping
             connection2a.Open();
             SqlDataReader Reader2a = command2a.ExecuteReader();
            
-
+            bool accountCheck1 = Regex.IsMatch(TextBox1.Text, @"\d+");
+            bool accountCheck2 = Regex.IsMatch(TextBox1.Text, @"[a-zA-Z]+");
+            bool passwordCheck1 = Regex.IsMatch(TextBox2.Text, @"\d+");
+            bool passwordCheck2 = Regex.IsMatch(TextBox2.Text, @"[a-zA-Z]+");
             bool phoneCheck = Regex.IsMatch(TextBox4.Text, @"^09[\d]{8}");
-            bool emailCheck = Regex.IsMatch(TextBox5.Text, @"@gmail.com");
+            bool emailCheck = Regex.IsMatch(TextBox5.Text, @"^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$");
             bool discountCheck = Regex.IsMatch(TextBox10.Text, @"\d");
 
             if (Reader2a.HasRows == false && TextBox1.Text!="")
@@ -76,49 +79,64 @@ namespace Shopping
                     if (Reader2e.HasRows == false && TextBox5.Text != "")
                     {
                         connection2e.Close();
-                        if (phoneCheck == true)
+                        if (accountCheck1 == true && accountCheck2 == true)
                         {
-                            if (emailCheck == true)
+                            if (passwordCheck1 == true && passwordCheck2 == true)
                             {
-                                if (discountCheck == true || TextBox10.Text == "")
+                                if (phoneCheck == true)
                                 {
-                                    if (TextBox10.Text == "")
+                                    if (emailCheck == true)
                                     {
-                                        string sql2 = $"insert into [Customers](account,password,name,phone,email,discount) values('{TextBox1.Text}','{TextBox2.Text}','{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}','')";
-                                        SqlConnection connection2 = Connect(s_data);
-                                        SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                        connection2.Open();
-                                        command2.ExecuteNonQuery();
-                                        MessageBox.Show("Input Successfully");
-                                        connection2.Close();
+                                        if (discountCheck == true || TextBox10.Text == "")
+                                        {
+                                            if (TextBox10.Text == "")
+                                            {
+                                                string sql2 = $"insert into [Customers](account,password,name,phone,email,address,discount) values('{TextBox1.Text}','{TextBox2.Text}','{TextBox3.Text}','{TextBox4.Text}','{TextBox11.Text}','{TextBox5.Text}','')";
+                                                SqlConnection connection2 = Connect(s_data);
+                                                SqlCommand command2 = new SqlCommand(sql2, connection2);
+                                                connection2.Open();
+                                                command2.ExecuteNonQuery();
+                                                MessageBox.Show("Input Successfully");
+                                                connection2.Close();
+                                            }
+                                            else
+                                            {
+                                                string sql2 = $"insert into [Customers](account,password,name,phone,email,address,discount) values('{TextBox1.Text}','{TextBox2.Text}','{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox11.Text}','{TextBox10.Text}')";
+                                                SqlConnection connection2 = Connect(s_data);
+                                                SqlCommand command2 = new SqlCommand(sql2, connection2);
+                                                connection2.Open();
+                                                command2.ExecuteNonQuery();
+                                                MessageBox.Show("Input Successfully");
+                                                connection2.Close();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            hintDiscount.Text = "Discount should be blank or number, please check";
+                                        }
                                     }
                                     else
                                     {
-                                        string sql2 = $"insert into [Customers](account,password,name,phone,email,discount) values('{TextBox1.Text}','{TextBox2.Text}','{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox10.Text}')";
-                                        SqlConnection connection2 = Connect(s_data);
-                                        SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                        connection2.Open();
-                                        command2.ExecuteNonQuery();
-                                        MessageBox.Show("Input Successfully");
-                                        connection2.Close();
+                                        hintEmail.Text = "Email rule is worng, please check";
                                     }
+
                                 }
                                 else
                                 {
-                                    hintDiscount.Text = "Discount should be blank or number, please check";
+                                    hintPhone.Text = "Phone rule is worng, please check";
                                 }
+
                             }
                             else
                             {
-                                hintEmail.Text = "Phone rule is worng, please check";
+                                hintPassword.Text = "Need to include English alphabet and number";
                             }
-
                         }
                         else
                         {
-                            hintPhone.Text = "Phone rule is worng, please check";
+                            hintAccount.Text = "Need to include English alphabet and number";
                         }
-                        
+
                     }
                     else
                     {
@@ -183,7 +201,7 @@ namespace Shopping
             connection5.Open();
             SqlDataReader Reader = command5.ExecuteReader();
 
-            var customerCols = new List<string> { "account", "password", "name", "phone", "email","discount" };
+            var customerCols = new List<string> { "account", "password", "name", "phone", "email","address","discount" };
             bool checkcol = false;
             foreach (string customerCol in customerCols)
             {

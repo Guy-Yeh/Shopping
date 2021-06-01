@@ -220,6 +220,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:Label ID="email" runat="server" Text="email"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintEmail" runat="server" ForeColor="Black"></asp:Label></li>
+										<li><asp:Label ID="address" runat="server" Text="address"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox11" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="discount" runat="server" Text="discount"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintDiscount" runat="server" ForeColor="Black"></asp:Label></li>

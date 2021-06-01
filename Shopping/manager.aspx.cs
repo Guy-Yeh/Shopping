@@ -20,7 +20,7 @@ namespace Shopping
         {
             string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ManagersConnectionString"].ConnectionString;
             SqlConnection connection = new SqlConnection(s_data);
-            string sql = $"select * from Managers where account='{email.Text}'";
+            string sql = $"select * from Managers where account='{account.Text}'";
             SqlCommand Command = new SqlCommand(sql, connection);
             connection.Open();
             SqlDataReader Reader = Command.ExecuteReader();

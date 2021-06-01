@@ -13,6 +13,7 @@ namespace Shopping
     public partial class managerorder : Page
     {
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrdersConnectionString"].ConnectionString;
+        string s_data2 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
         public SqlConnection Connect(string x)
         {
             SqlConnection connect = new SqlConnection(x);
@@ -22,6 +23,7 @@ namespace Shopping
         {
             hintPrice.Text = "";
             hintQty.Text = "";
+            hintCustomerID.Text= "";
             SqlConnection connection = Connect(s_data);
             string sql = $"select * from Orders";
             SqlCommand command = new SqlCommand(sql, connection);
@@ -34,26 +36,44 @@ namespace Shopping
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+
+           
+
             SqlConnection connection2s = Connect(s_data);
             string sql2s = $"select * from Orders where serial='{TextBox1.Text}'";  //為了找尋serial是否重複
             SqlCommand command2s = new SqlCommand(sql2s, connection2s);
             connection2s.Open();
             SqlDataReader Reader2s = command2s.ExecuteReader();
 
+            Random rnd = new Random();
+            while (Reader2s.HasRows == true || TextBox1.Text == "")
+            {
+                TextBox1.Text = "";
+                for (int i = 0; i < 10; i++)    //編成serial number
+                {
+                    int serialrnd = rnd.Next(0, 10);
+                    TextBox1.Text += serialrnd;
+                }
+            }
+            connection2s.Close();
+
+            SqlConnection connection2c = Connect(s_data2);
+            string sql2c = $"select * from Customers where ID='{TextBox2.Text}'";  //為了找尋customerID是否存在
+            SqlCommand command2c = new SqlCommand(sql2c, connection2c);
+            connection2c.Open();
+            SqlDataReader Reader2c = command2c.ExecuteReader();
 
             bool qtyCheck = Regex.IsMatch(TextBox4.Text, @"\d");
             bool priceCheck = Regex.IsMatch(TextBox5.Text, @"\d");
 
-            TextBox11.Text = (int.Parse(TextBox4.Text) * int.Parse(TextBox5.Text)).ToString();
 
-            if (Reader2s.HasRows == false && TextBox1.Text != "")
+            if (Reader2c.HasRows == true)
             {
-                connection2s.Close();
-
                 if (qtyCheck == true)
                 {
                     if (priceCheck == true)
                     {
+                        TextBox11.Text = (int.Parse(TextBox4.Text) * int.Parse(TextBox5.Text)).ToString();
                         string sql2 = $"insert into [Orders](serial,customerID,productName,qty,price,totalprice,status) values('{TextBox1.Text}','{TextBox2.Text}','{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox11.Text}','{TextBox10.Text}')";
                         SqlConnection connection2 = Connect(s_data);
                         SqlCommand command2 = new SqlCommand(sql2, connection2);
@@ -75,9 +95,9 @@ namespace Shopping
             }
             else
             {
-                hintSerial.Text = "Serial repeat or is blank, please change serial";
-                connection2s.Close();
+                hintCustomerID.Text = "CustomerID doesn't exist, please check";
             }
+            connection2c.Close();
         }
 
         protected void Button2_Click(object sender, EventArgs e)

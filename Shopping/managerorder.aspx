@@ -207,10 +207,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Add Order Information</h4>
 									<ul>
 										<li><asp:Label ID="serial" runat="server" Text="serial"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
-									    <li><asp:Label ID="hintSerial" runat="server" Text=""></asp:Label></li> 
+										<li><asp:TextBox ID="TextBox1" runat="server" Enabled="False"></asp:TextBox></li> 
+									    <li><asp:Label ID="hintSerial" runat="server" Text="Don't need to fill." ForeColor="Blue"></asp:Label></li> 
 										<li><asp:Label ID="customerID" runat="server" Text="customerID"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintCustomerID" runat="server" Text=""></asp:Label></li>
 										<li><asp:Label ID="productName" runat="server" Text="productName"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="qty" runat="server" Text="qty"></asp:Label></li>
@@ -221,6 +222,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:Label ID="hintPrice" runat="server" Text=""></asp:Label></li>
 										<li><asp:Label ID="totalprice" runat="server" Text="totalprice"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox11" runat="server" Enabled="False"></asp:TextBox></li>
+										 <li><asp:Label ID="hintTotalprice" runat="server" Text="Don't need to fill." ForeColor="Blue"></asp:Label></li> 
 										<li><asp:Label ID="status" runat="server" Text="status"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintStatus" runat="server" Text=""></asp:Label></li>
@@ -240,7 +242,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
 									</ul>
 								</div>							
-							</div>
+							</div
 							<div class="col1">
 								<div class="h_nav">
 									<h4>Update Order Information</h4>
