@@ -240,13 +240,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Button Delete;
 
         /// <summary>
-        /// orderID2 控制項。
+        /// accountID2 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label orderID2;
+        protected global::System.Web.UI.WebControls.Label accountID2;
 
         /// <summary>
         /// TextBox7 控制項。
