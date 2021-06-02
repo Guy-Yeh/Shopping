@@ -23,7 +23,6 @@ namespace Shopping
         {
             hintPrice.Text = "";
             hintQty.Text = "";
-            hintCustomerID.Text= "";
             SqlConnection connection = Connect(s_data);
             string sql = $"select * from Orders";
             SqlCommand command = new SqlCommand(sql, connection);
@@ -36,8 +35,6 @@ namespace Shopping
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
-           
 
             SqlConnection connection2s = Connect(s_data);
             string sql2s = $"select * from Orders where serial='{TextBox1.Text}'";  //為了找尋serial是否重複
@@ -57,112 +54,63 @@ namespace Shopping
             }
             connection2s.Close();
 
-            SqlConnection connection2c = Connect(s_data2);
-            string sql2c = $"select * from Customers where ID='{TextBox2.Text}'";  //為了找尋customerID是否存在
-            SqlCommand command2c = new SqlCommand(sql2c, connection2c);
-            connection2c.Open();
-            SqlDataReader Reader2c = command2c.ExecuteReader();
-
             bool qtyCheck = Regex.IsMatch(TextBox4.Text, @"\d");
             bool priceCheck = Regex.IsMatch(TextBox5.Text, @"\d");
 
 
-            if (Reader2c.HasRows == true)
-            {
-                if (qtyCheck == true)
-                {
-                    if (priceCheck == true)
-                    {
-                        TextBox11.Text = (int.Parse(TextBox4.Text) * int.Parse(TextBox5.Text)).ToString();
-                        string sql2 = $"insert into [Orders](serial,customerID,productName,qty,price,totalprice,status) values('{TextBox1.Text}','{TextBox2.Text}','{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox11.Text}','{TextBox10.Text}')";
-                        SqlConnection connection2 = Connect(s_data);
-                        SqlCommand command2 = new SqlCommand(sql2, connection2);
-                        connection2.Open();
-                        command2.ExecuteNonQuery();
-                        MessageBox.Show("Input Successfully");
-                        connection2.Close();
-                    }
-                    else
-                    {
-                        hintPrice.Text = "Qty should be number, please check";
-                    }
 
+            if (qtyCheck == true)
+            {
+                if (priceCheck == true)
+                {
+                    TextBox11.Text = (int.Parse(TextBox4.Text) * int.Parse(TextBox5.Text)).ToString();
+                    string sql2 = $"insert into [Orders](serial,customerID,productName,qty,price,totalprice,status) values('{TextBox1.Text}','{DDLAddCustomerID.Text}','{DDLAddProductName.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox11.Text}','{TextBox10.Text}')";
+                    SqlConnection connection2 = Connect(s_data);
+                    SqlCommand command2 = new SqlCommand(sql2, connection2);
+                    connection2.Open();
+                    command2.ExecuteNonQuery();
+                    MessageBox.Show("Input Successfully");
+                    connection2.Close();
                 }
                 else
                 {
-                    hintQty.Text = "Qty should be number, please check";
+                    hintPrice.Text = "Qty should be number, please check";
                 }
             }
+
             else
             {
-                hintCustomerID.Text = "CustomerID doesn't exist, please check";
+                hintQty.Text = "Qty should be number, please check";
             }
-            connection2c.Close();
+            
+           
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            string sql3 = $"delete from Orders where ID='{TextBox6.Text}'";
-            SqlConnection connection4 = Connect(s_data);
-            bool IDCheck = Regex.IsMatch(TextBox6.Text, @"\d");
-            string sql4 = $"select * from Orders where ID='{TextBox6.Text}'";
-            SqlCommand command4 = new SqlCommand(sql4, connection4);
-            connection4.Open();
-            SqlDataReader Reader = command4.ExecuteReader();
-
-            if (Reader.HasRows)
-            {
-                SqlConnection connection3 = Connect(s_data);
-                SqlCommand command3 = new SqlCommand(sql3, connection3);
-                connection3.Open();
-                command3.ExecuteNonQuery();
-                MessageBox.Show("Delete Successfully");
-                connection3.Close();
-            }
-            else if (IDCheck == true)
-            {
-                hintID.Text = "There is no OrderID number in database";
-            }
-            else
-            {
-                hintID.Text = "Please enter number";
-            }
-            connection4.Close();
-
+            string sql3 = $"delete from Orders where ID='{DDLDeleteOrderID.Text}'";
+            SqlConnection connection3 = Connect(s_data);
+            SqlCommand command3 = new SqlCommand(sql3, connection3);
+            connection3.Open();
+            command3.ExecuteNonQuery();
+            MessageBox.Show("Delete Successfully");
+            connection3.Close();
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            SqlConnection connection5 = Connect(s_data);
-            string sql5 = $"select * from Orders where ID='{TextBox7.Text}'";
-            SqlCommand command5 = new SqlCommand(sql5, connection5);
-            connection5.Open();
-            SqlDataReader Reader = command5.ExecuteReader();
-
-            var orderCols = new List<string> { "serial", "customerID", "productName", "qty", "price", "totalprice", "status" };
-            bool IDCheck = Regex.IsMatch(TextBox7.Text, @"\d");
-            bool checkcol = false;
-            foreach (string orderCol in orderCols)
-            {
-                if (TextBox8.Text == orderCol)
-                {
-                    checkcol = true;
-                    break;
-                }
-            }
+ 
             bool numberCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             bool priceCheck = Regex.IsMatch(TextBox9.Text, @"\d");
-            string sql6 = $"update Orders SET {TextBox8.Text}='{TextBox9.Text}' where ID='{TextBox7.Text}'";
+            string sql6 = $"update Orders SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}' where ID='{DDLUpdateOrderID.Text}'";
             SqlConnection connection6 = Connect(s_data);
-            string sql7 = $"select * from Orders where {TextBox8.Text}='{TextBox9.Text}'";
+            string sql7 = $"select * from Orders where {DDLUpdateOrderCols.Text}='{TextBox9.Text}'";
             string number;
             string number2;
-            if (Reader.HasRows)
+            
+            
+            if (DDLUpdateOrderCols.Text == "serial")
             {
-                if (checkcol == true)
-                {
-                    if (TextBox8.Text == "serial")
-                    {
                         SqlConnection connection7 = Connect(s_data);
                         SqlCommand command7 = new SqlCommand(sql7, connection7);
                         connection7.Open();
@@ -180,15 +128,15 @@ namespace Shopping
                             connection6.Close();
                         }
                         connection7.Open();
-                    }
-                    else if (TextBox8.Text == "qty" || TextBox8.Text == "price")
-                    {
+            }
+            else if (DDLUpdateOrderCols.Text == "qty" || DDLUpdateOrderCols.Text == "price")
+            {
                         if (numberCheck == true)
                         {
-                            if (TextBox8.Text == "qty")
+                            if (DDLUpdateOrderCols.Text == "qty")
                             {
                                 
-                                string sql8 = $"select price from Orders where ID='{TextBox7.Text}'";
+                                string sql8 = $"select price from Orders where ID='{DDLUpdateOrderID.Text}'";
                                 SqlConnection connection8 = new SqlConnection(s_data);
                                 SqlCommand command8 = new SqlCommand(sql8, connection8);
                                 connection8.Open();
@@ -199,7 +147,7 @@ namespace Shopping
                                 {
                                     number = Reader3[0].ToString();
                                     number2 = Convert.ToString(int.Parse(number) * int.Parse(TextBox9.Text));
-                                    string sql9 = $"update Orders SET {TextBox8.Text}='{TextBox9.Text}',totalprice='{number2}' where ID='{TextBox7.Text}'";
+                                    string sql9 = $"update Orders SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}',totalprice='{number2}' where ID='{DDLUpdateOrderID.Text}'";
                                     SqlConnection connection9 = new SqlConnection(s_data);
                                     SqlCommand command9 = new SqlCommand(sql9, connection9);
                                     connection9.Open();
@@ -213,7 +161,7 @@ namespace Shopping
                             else
                             {
                                 
-                                string sql8 = $"select qty from Orders where ID='{TextBox7.Text}'";
+                                string sql8 = $"select qty from Orders where ID='{DDLUpdateOrderID.Text}'";
                                 SqlConnection connection8 = new SqlConnection(s_data);
                                 SqlCommand command8 = new SqlCommand(sql8, connection8);
                                 connection8.Open();
@@ -222,7 +170,7 @@ namespace Shopping
                                 {
                                     number = Reader3[0].ToString();
                                     number2 = Convert.ToString(int.Parse(number) * int.Parse(TextBox9.Text));
-                                    string sql9 = $"update Orders SET {TextBox8.Text}='{TextBox9.Text}',totalprice='{number2}' where ID='{TextBox7.Text}'";
+                                    string sql9 = $"update Orders SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}',totalprice='{number2}' where ID='{DDLUpdateOrderID.Text}'";
                                     SqlConnection connection9 = new SqlConnection(s_data);
                                     SqlCommand command9 = new SqlCommand(sql9, connection9);
                                     connection9.Open();
@@ -239,27 +187,18 @@ namespace Shopping
                         {
                             hintAll.Text = "Format of qty/price is worng, please enter number";
                         }
-                    }
-                    else
-                    {
+            }
+            else
+            {
                         SqlCommand command6 = new SqlCommand(sql6, connection6);
                         connection6.Open();
                         command6.ExecuteNonQuery();
                         MessageBox.Show("Update Successfully");
                         connection6.Close();
-                    }
+            }
 
-                }
-            }
-            else if (IDCheck == true)
-            {
-                hintID2.Text = "There is no productID number in database";
-            }
-            else
-            {
-                hintID2.Text = "Please enter number";
-            }
-            connection5.Close();
+            
+            
         }
     }
 }

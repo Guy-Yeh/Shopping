@@ -210,10 +210,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:TextBox ID="TextBox1" runat="server" Enabled="False"></asp:TextBox></li> 
 									    <li><asp:Label ID="hintSerial" runat="server" Text="Don't need to fill." ForeColor="Blue"></asp:Label></li> 
 										<li><asp:Label ID="customerID" runat="server" Text="customerID"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintCustomerID" runat="server" Text=""></asp:Label></li>
+										<li>
+                                            <asp:DropDownList ID="DDLAddCustomerID" runat="server" DataSourceID="SqlDataSourceAddCustomerID" DataTextField="ID" DataValueField="ID" Width="190px" Height="30px"></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceAddCustomerID" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT [ID] FROM [Customers]"></asp:SqlDataSource>
+                                        </li>
 										<li><asp:Label ID="productName" runat="server" Text="productName"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
+										<li><asp:DropDownList ID="DDLAddProductName" runat="server" DataSourceID="SqlDataSourceAddProductName" DataTextField="productName" DataValueField="productName" Height="30px" Width="190px"></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceAddProductName" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT [productName] FROM [Products]"></asp:SqlDataSource>
+                                        </li>
 										<li><asp:Label ID="qty" runat="server" Text="qty"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintQty" runat="server" Text=""></asp:Label></li>
@@ -236,8 +240,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Delete Order Information</h4>
 									<ul>
 										<li><asp:Label ID="orderID" runat="server" Text="orderID"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox6" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintID" runat="server" Text="Enter orderID you want to delete"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLDeleteOrderID" runat="server" DataSourceID="SqlDataSourceOrderID" DataTextField="ID" DataValueField="ID" Width="190px" Height="30px">
+                                            <asp:ListItem>orderID </asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceOrderID" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersConnectionString %>" SelectCommand="SELECT [ID] FROM [Orders]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintID" runat="server" Text="Choose orderID you want to delete"></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
 									</ul>
@@ -247,16 +255,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="h_nav">
 									<h4>Update Order Information</h4>
 									<ul>
-										<li><asp:Label ID="accountID2" runat="server" Text="accountID"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox7" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintID2" runat="server" Text="Enter table ID number"></asp:Label><li>
+										<li><asp:Label ID="orderID2" runat="server" Text="orderID"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLUpdateOrderID" runat="server" Height="30px" Width="190px" DataSourceID="SqlDataSourceOrderID" DataTextField="ID" DataValueField="ID"></asp:DropDownList></li>
+										<li><asp:Label ID="hintID2" runat="server" Text="Choose orderID you want to update"></asp:Label><li>
 										<br>
 										<li></li>
 										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox8" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintColumn" runat="server" Text="Enter table column item"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLUpdateOrderCols" runat="server" DataSourceID="SqlDataSourceOrdersCols" DataTextField="Cols" DataValueField="Cols" Height="30px" Width="190px"></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceOrdersCols" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersColsConnectionString %>" SelectCommand="SELECT [Cols] FROM [OrdersCols]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintColumn" runat="server" Text="Choose ordercolumn you want to update"></asp:Label></li>
 										<br>
-										<li></li>
 										<li><asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintAll" runat="server" Text="Enter update value"></asp:Label></li>
