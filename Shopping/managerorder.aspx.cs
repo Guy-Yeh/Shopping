@@ -14,6 +14,7 @@ namespace Shopping
     {
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrdersConnectionString"].ConnectionString;
         string s_data2 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
+        string s_data3 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
         public SqlConnection Connect(string x)
         {
             SqlConnection connect = new SqlConnection(x);
@@ -26,7 +27,7 @@ namespace Shopping
             hintStatus.Text = "";
             hintPrice.Text = "";
             hintQty.Text = "";
-            hintID.Text = "選擇即將更新的orderID";
+            hintID.Text = "選擇即將刪除的orderID";
             hintID2.Text = "選擇即將更新的orderID";
             hintColumn.Text = "選擇即將更新的欄位";
             hintAll.Text = "輸入更新的值";
@@ -80,7 +81,7 @@ namespace Shopping
                                 SqlCommand command2 = new SqlCommand(sql2, connection2);
                                 connection2.Open();
                                 command2.ExecuteNonQuery();
-                                MessageBox.Show("Input Successfully");
+                                MessageBox.Show("輸入成功");
                                 connection2.Close();
                             }
                             else
@@ -90,13 +91,13 @@ namespace Shopping
                         }
                         else
                         {
-                            hintPrice.Text = "Qty should be number, please check";
+                            hintPrice.Text = "price需為數字 請重新輸入";
                         }
                     }
 
                     else
                     {
-                        hintQty.Text = "Qty should be number, please check";
+                        hintQty.Text = "qty需為數字 請重新輸入";
                     }
                 }
                 else
@@ -120,7 +121,7 @@ namespace Shopping
                 SqlCommand command3 = new SqlCommand(sql3, connection3);
                 connection3.Open();
                 command3.ExecuteNonQuery();
-                MessageBox.Show("Delete Successfully");
+                MessageBox.Show("刪除成功");
                 connection3.Close();
             }
             else
@@ -153,14 +154,14 @@ namespace Shopping
                         SqlDataReader Reader2 = command7.ExecuteReader();
                         if (Reader2.HasRows)
                         {
-                            hintAll.Text = "Serial repeat, please change";
+                            hintAll.Text = "Serial重複 請重新輸入";
                         }
                         else
                         {
                             SqlCommand command6 = new SqlCommand(sql6, connection6);
                             connection6.Open();
                             command6.ExecuteNonQuery();
-                            MessageBox.Show("Update Successfully");
+                            MessageBox.Show("更新成功");
                             connection6.Close();
                         }
                         connection7.Open();
@@ -188,7 +189,7 @@ namespace Shopping
                                     SqlCommand command9 = new SqlCommand(sql9, connection9);
                                     connection9.Open();
                                     command9.ExecuteNonQuery();
-                                    MessageBox.Show("Update Successfully");
+                                    MessageBox.Show("更新成功");
                                     connection8.Close();
                                     connection9.Close();
                                 }
@@ -211,7 +212,7 @@ namespace Shopping
                                     SqlCommand command9 = new SqlCommand(sql9, connection9);
                                     connection9.Open();
                                     command9.ExecuteNonQuery();
-                                    MessageBox.Show("Update Successfully");
+                                    MessageBox.Show("更新成功");
                                     connection8.Close();
                                     connection9.Close();
                                 }
@@ -221,15 +222,58 @@ namespace Shopping
                         }
                         else
                         {
-                            hintAll.Text = "Format of qty/price is worng, please enter number";
+                            hintAll.Text = "qty/price需為數字 請重新輸入";
                         }
+                    }
+                    else if (DDLUpdateOrderCols.Text == "customerID")
+                    {
+                        SqlConnection connection10 = new SqlConnection(s_data2);
+                        string sql10 = $"select * from Customers where ID ='{TextBox9.Text}'";
+                        SqlCommand command10 = new SqlCommand(sql10, connection10);
+                        connection10.Open();
+                        SqlDataReader Reader4 = command10.ExecuteReader();
+                        if (Reader4.HasRows)
+                        {
+                            SqlCommand command6 = new SqlCommand(sql6, connection6);
+                            connection6.Open();
+                            command6.ExecuteNonQuery();
+                            MessageBox.Show("更新成功");
+                            connection6.Close();
+                        }
+                        else
+                        {
+                            hintAll.Text = "customerID不存在 請重新輸入";
+                        }
+                        connection10.Close();
+
+                    }
+                    else if (DDLUpdateOrderCols.Text == "productName")
+                    {
+                        SqlConnection connection11 = new SqlConnection(s_data3);
+                        string sql11 = $"select * from Products where productName ='{TextBox9.Text}'";
+                        SqlCommand command11 = new SqlCommand(sql11, connection11);
+                        connection11.Open();
+                        SqlDataReader Reader5 = command11.ExecuteReader();
+                        if (Reader5.HasRows)
+                        {
+                            SqlCommand command6 = new SqlCommand(sql6, connection6);
+                            connection6.Open();
+                            command6.ExecuteNonQuery();
+                            MessageBox.Show("更新成功");
+                            connection6.Close();
+                        }
+                        else
+                        {
+                            hintAll.Text = "productName不存在 請重新輸入";
+                        }
+                        connection11.Close();
                     }
                     else
                     {
                         SqlCommand command6 = new SqlCommand(sql6, connection6);
                         connection6.Open();
                         command6.ExecuteNonQuery();
-                        MessageBox.Show("Update Successfully");
+                        MessageBox.Show("更新成功");
                         connection6.Close();
                     }
                 }

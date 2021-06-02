@@ -209,19 +209,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:Label ID="account" runat="server" Text="account"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
 									    <li><asp:Label ID="hintAccount" runat="server" ForeColor="Black"></asp:Label></li> 
+										<br>
 										<li><asp:Label ID="password" runat="server" Text="password"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintPassword" runat="server" ForeColor="Black"></asp:Label></li>
+										<br>
 										<li><asp:Label ID="name" runat="server" Text="name"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
+										<br>
 										<li><asp:Label ID="phone" runat="server" Text="phone"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintPhone" runat="server" ForeColor="Black"></asp:Label></li>
+										<br>
 										<li><asp:Label ID="email" runat="server" Text="email"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintEmail" runat="server" ForeColor="Black"></asp:Label></li>
+										<br>
 										<li><asp:Label ID="address" runat="server" Text="address"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox11" runat="server"></asp:TextBox></li>
+										<br>
 										<li><asp:Label ID="discount" runat="server" Text="discount"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintDiscount" runat="server" ForeColor="Black"></asp:Label></li>
@@ -235,8 +241,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Delete User Account</h4>
 									<ul>
 										<li><asp:Label ID="accountID" runat="server" Text="accountID"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox6" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintID" runat="server" Text="Enter productID you want to delete"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLDeleteAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="190px" DataSourceID="SqlDataSourceAccountID" DataTextField="ID" DataValueField="ID"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceAccountID" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT [ID] FROM [Customers]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintID" runat="server" Text="選擇即將刪除的accountID"></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
 									</ul>
@@ -247,18 +255,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Update User Account</h4>
 									<ul>
 										<li><asp:Label ID="accountID2" runat="server" Text="accountID"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox7" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintID2" runat="server" Text="Enter table ID number"></asp:Label><li>
+										<li><asp:DropDownList ID="DDLUpdateAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="190px" DataSourceID="SqlDataSourceAccountID" DataTextField="ID" DataValueField="ID"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList></asp:DropDownList></li>
+										<li><asp:Label ID="hintID2" runat="server" Text="選擇即將更新的accountID"></asp:Label><li>
 										<br>
 										<li></li>
 										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox8" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintColumn" runat="server" Text="Enter table column item"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLUpdateCol" runat="server" AppendDataBoundItems="True" Width="190px" Height="30px" DataSourceID="SqlDataSourceUpdateCol" DataTextField="Cols" DataValueField="Cols"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceUpdateCol" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT [Cols] FROM [CustomersCols]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintColumn" runat="server" Text="選擇即將更新的欄位"></asp:Label></li>
 										<br>
 										<li></li>
 										<li><asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintAll" runat="server" Text="Enter update value"></asp:Label></li>
+										<li><asp:Label ID="hintAll" runat="server" Text="輸入更新的值"></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
 									</ul>	

@@ -204,13 +204,22 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label accountID;
 
         /// <summary>
-        /// TextBox6 控制項。
+        /// DDLDeleteAccount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.DropDownList DDLDeleteAccount;
+
+        /// <summary>
+        /// SqlDataSourceAccountID 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAccountID;
 
         /// <summary>
         /// hintID 控制項。
@@ -240,13 +249,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label accountID2;
 
         /// <summary>
-        /// TextBox7 控制項。
+        /// DDLUpdateAccount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.DropDownList DDLUpdateAccount;
 
         /// <summary>
         /// hintID2 控制項。
@@ -267,13 +276,22 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label column;
 
         /// <summary>
-        /// TextBox8 控制項。
+        /// DDLUpdateCol 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.DropDownList DDLUpdateCol;
+
+        /// <summary>
+        /// SqlDataSourceUpdateCol 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUpdateCol;
 
         /// <summary>
         /// hintColumn 控制項。

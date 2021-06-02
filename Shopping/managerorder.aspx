@@ -253,7 +253,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:DropDownList ID="DDLDeleteOrderID" runat="server"  AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrderID" DataTextField="ID" DataValueField="ID" Width="190px" Height="30px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceOrderID" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersConnectionString %>" SelectCommand="SELECT [ID] FROM [Orders]"></asp:SqlDataSource>
                                         </li>
-										<li><asp:Label ID="hintID" runat="server" Text="選擇即將更新的orderID"></asp:Label></li>
+										<li><asp:Label ID="hintID" runat="server" Text="選擇即將刪除的orderID"></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
 									</ul>
@@ -268,8 +268,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:Label ID="hintID2" runat="server" Text="選擇即將更新的orderID"></asp:Label><li>
 										<br>
 										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateOrderCols" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrdersCols" DataTextField="Cols" DataValueField="Cols" Height="30px" Width="190px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceOrdersCols" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersColsConnectionString %>" SelectCommand="SELECT [Cols] FROM [OrdersCols]"></asp:SqlDataSource>
+										<li><asp:DropDownList ID="DDLUpdateOrderCols" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrderCols" DataTextField="Cols" DataValueField="Cols" Height="30px" Width="190px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceOrderCols" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersColsConnectionString %>" SelectCommand="SELECT [Cols] FROM [OrdersCols]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintColumn" runat="server" Text="選擇即將更新的欄位"></asp:Label></li>
 										<br>
