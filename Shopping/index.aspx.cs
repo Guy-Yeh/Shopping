@@ -9,10 +9,9 @@ namespace Shopping
 {
     public partial class index : Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie cookie = new HttpCookie("cart");
-
             if (Request.Cookies["cart"]!=null)
                 Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;
             else
@@ -74,6 +73,54 @@ namespace Shopping
         {
             Response.Cookies["cart"].Value = "0";
             Response.Redirect("index");
+        }
+
+        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+        {
+            Session["product"] = "領造型線T";
+            Response.Redirect("product");
+        }
+
+        protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
+        {
+            Session["product"] = "袖滾配色t";
+            Response.Redirect("product");
+        }
+
+        protected void ImageButton4_Click(object sender, ImageClickEventArgs e)
+        {
+            Session["product"] = "剪裁T";
+            Response.Redirect("product");
+        }
+
+        protected void ImageButton5_Click(object sender, ImageClickEventArgs e)
+        {
+            Session["product"] = "細肩露肩t";
+            Response.Redirect("product");
+        }
+
+        protected void ImageButton6_Click(object sender, ImageClickEventArgs e)
+        {
+            Session["product"] = "胸抓摺衫";
+            Response.Redirect("product");
+        }
+
+        protected void ImageButton7_Click(object sender, ImageClickEventArgs e)
+        {
+            Session["product"] = "格紋澎袖衫";
+            Response.Redirect("product");
+        }
+
+        protected void ImageButton8_Click(object sender, ImageClickEventArgs e)
+        {
+            Session["product"] = "中抓摺雪紡衫";
+            Response.Redirect("product");
+        }
+
+        protected void ImageButton9_Click(object sender, ImageClickEventArgs e)
+        {
+            Session["product"] = "滾邊寬袖衫";
+            Response.Redirect("product");
         }
     }
 }
