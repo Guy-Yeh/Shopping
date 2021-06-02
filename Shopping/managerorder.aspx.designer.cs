@@ -69,6 +69,15 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAddCustomerID;
 
         /// <summary>
+        /// hintCustomerID 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hintCustomerID;
+
+        /// <summary>
         /// productName 控制項。
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace Shopping
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAddProductName;
+
+        /// <summary>
+        /// hintProductName 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hintProductName;
 
         /// <summary>
         /// qty 控制項。
@@ -186,13 +204,22 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label status;
 
         /// <summary>
-        /// TextBox10 控制項。
+        /// DDLAddstatus 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+        protected global::System.Web.UI.WebControls.DropDownList DDLAddstatus;
+
+        /// <summary>
+        /// SqlDataSourceOrdersStatus 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceOrdersStatus;
 
         /// <summary>
         /// hintStatus 控制項。

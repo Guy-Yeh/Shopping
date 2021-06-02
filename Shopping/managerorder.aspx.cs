@@ -21,8 +21,15 @@ namespace Shopping
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            hintCustomerID.Text = "";
+            hintProductName.Text = "";
+            hintStatus.Text = "";
             hintPrice.Text = "";
             hintQty.Text = "";
+            hintID.Text = "選擇即將更新的orderID";
+            hintID2.Text = "選擇即將更新的orderID";
+            hintColumn.Text = "選擇即將更新的欄位";
+            hintAll.Text = "輸入更新的值";
             SqlConnection connection = Connect(s_data);
             string sql = $"select * from Orders";
             SqlCommand command = new SqlCommand(sql, connection);
@@ -35,7 +42,6 @@ namespace Shopping
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
             SqlConnection connection2s = Connect(s_data);
             string sql2s = $"select * from Orders where serial='{TextBox1.Text}'";  //為了找尋serial是否重複
             SqlCommand command2s = new SqlCommand(sql2s, connection2s);
@@ -57,44 +63,70 @@ namespace Shopping
             bool qtyCheck = Regex.IsMatch(TextBox4.Text, @"\d");
             bool priceCheck = Regex.IsMatch(TextBox5.Text, @"\d");
 
-
-
-            if (qtyCheck == true)
+            
+            if (DDLAddCustomerID.SelectedItem.Text != "請選擇")
             {
-                if (priceCheck == true)
+                if (DDLAddProductName.SelectedItem.Text != "請選擇")
                 {
-                    TextBox11.Text = (int.Parse(TextBox4.Text) * int.Parse(TextBox5.Text)).ToString();
-                    string sql2 = $"insert into [Orders](serial,customerID,productName,qty,price,totalprice,status) values('{TextBox1.Text}','{DDLAddCustomerID.Text}','{DDLAddProductName.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox11.Text}','{TextBox10.Text}')";
-                    SqlConnection connection2 = Connect(s_data);
-                    SqlCommand command2 = new SqlCommand(sql2, connection2);
-                    connection2.Open();
-                    command2.ExecuteNonQuery();
-                    MessageBox.Show("Input Successfully");
-                    connection2.Close();
+                    if (qtyCheck == true)
+                    {
+                        if (priceCheck == true)
+                        {
+                            if (DDLAddstatus.SelectedItem.Text != "請選擇")
+                            {
+                                TextBox11.Text = (int.Parse(TextBox4.Text) * int.Parse(TextBox5.Text)).ToString();
+                                string sql2 = $"insert into [Orders](serial,customerID,productName,qty,price,totalprice,status) values('{TextBox1.Text}','{DDLAddCustomerID.Text}','{DDLAddProductName.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox11.Text}','{DDLAddstatus.Text}')";
+                                SqlConnection connection2 = Connect(s_data);
+                                SqlCommand command2 = new SqlCommand(sql2, connection2);
+                                connection2.Open();
+                                command2.ExecuteNonQuery();
+                                MessageBox.Show("Input Successfully");
+                                connection2.Close();
+                            }
+                            else
+                            {
+                                hintStatus.Text = "請選擇項目";
+                            }
+                        }
+                        else
+                        {
+                            hintPrice.Text = "Qty should be number, please check";
+                        }
+                    }
+
+                    else
+                    {
+                        hintQty.Text = "Qty should be number, please check";
+                    }
                 }
                 else
                 {
-                    hintPrice.Text = "Qty should be number, please check";
+                    hintProductName.Text = "請選擇項目";
                 }
             }
-
             else
             {
-                hintQty.Text = "Qty should be number, please check";
+                hintCustomerID.Text="請選擇項目";
             }
-            
            
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            string sql3 = $"delete from Orders where ID='{DDLDeleteOrderID.Text}'";
-            SqlConnection connection3 = Connect(s_data);
-            SqlCommand command3 = new SqlCommand(sql3, connection3);
-            connection3.Open();
-            command3.ExecuteNonQuery();
-            MessageBox.Show("Delete Successfully");
-            connection3.Close();
+            if (DDLDeleteOrderID.SelectedItem.Text != "請選擇")
+            {
+                string sql3 = $"delete from Orders where ID='{DDLDeleteOrderID.Text}'";
+                SqlConnection connection3 = Connect(s_data);
+                SqlCommand command3 = new SqlCommand(sql3, connection3);
+                connection3.Open();
+                command3.ExecuteNonQuery();
+                MessageBox.Show("Delete Successfully");
+                connection3.Close();
+            }
+            else
+            {
+                hintID.Text = "請選擇項目";
+            }
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -107,10 +139,14 @@ namespace Shopping
             string sql7 = $"select * from Orders where {DDLUpdateOrderCols.Text}='{TextBox9.Text}'";
             string number;
             string number2;
-            
-            
-            if (DDLUpdateOrderCols.Text == "serial")
+
+            if (DDLUpdateOrderID.SelectedItem.Text != "請選擇")
             {
+                if (DDLUpdateOrderCols.SelectedItem.Text != "請選擇")
+                {
+
+                    if (DDLUpdateOrderCols.Text == "serial")
+                    {
                         SqlConnection connection7 = Connect(s_data);
                         SqlCommand command7 = new SqlCommand(sql7, connection7);
                         connection7.Open();
@@ -128,14 +164,14 @@ namespace Shopping
                             connection6.Close();
                         }
                         connection7.Open();
-            }
-            else if (DDLUpdateOrderCols.Text == "qty" || DDLUpdateOrderCols.Text == "price")
-            {
+                    }
+                    else if (DDLUpdateOrderCols.Text == "qty" || DDLUpdateOrderCols.Text == "price")
+                    {
                         if (numberCheck == true)
                         {
                             if (DDLUpdateOrderCols.Text == "qty")
                             {
-                                
+
                                 string sql8 = $"select price from Orders where ID='{DDLUpdateOrderID.Text}'";
                                 SqlConnection connection8 = new SqlConnection(s_data);
                                 SqlCommand command8 = new SqlCommand(sql8, connection8);
@@ -156,11 +192,11 @@ namespace Shopping
                                     connection8.Close();
                                     connection9.Close();
                                 }
-                                
+
                             }
                             else
                             {
-                                
+
                                 string sql8 = $"select qty from Orders where ID='{DDLUpdateOrderID.Text}'";
                                 SqlConnection connection8 = new SqlConnection(s_data);
                                 SqlCommand command8 = new SqlCommand(sql8, connection8);
@@ -187,17 +223,25 @@ namespace Shopping
                         {
                             hintAll.Text = "Format of qty/price is worng, please enter number";
                         }
-            }
-            else
-            {
+                    }
+                    else
+                    {
                         SqlCommand command6 = new SqlCommand(sql6, connection6);
                         connection6.Open();
                         command6.ExecuteNonQuery();
                         MessageBox.Show("Update Successfully");
                         connection6.Close();
+                    }
+                }
+                else
+                {
+                    hintColumn.Text = "請選擇項目";
+                }
             }
-
-            
+            else
+            {
+                hintID2.Text = "請選擇項目";
+            }
             
         }
     }
