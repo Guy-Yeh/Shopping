@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Shopping.index" %>
-
 <!--A Design by W3layouts 
 Author: W3layout
 Author URL: http://w3layouts.com
@@ -322,13 +321,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="content-top1">
 				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="product">
-							<img class="img-responsive" src="images\衣服\281901701-領造型線T\S__49610819.jpg" alt="" />
-						</a>
+                            <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/images\衣服\281901701-領造型線T\S__49610819.jpg" Height="100%" Width="100%" OnClick="ImageButton2_Click" />						
 						<h3><a href="product">Tops</a></h3>
 						<div class="price">
 								<asp:Label ID="Label2" runat="server" Text="售價："></asp:Label>
-								<asp:Label ID="Label3" runat="server" Text="899"></asp:Label>
+								<asp:Label ID="Label3" runat="server" Text="900"></asp:Label>
 								<asp:Button ID="Button1" runat="server" Text="放入購物車" OnClick="Button1_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right"/>
 								<div class="clearfix"> </div>
 						</div>
@@ -336,13 +333,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>	
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="product">
-							<img class="img-responsive" src="images\衣服\281901708-袖滾配色t\S__49840211.jpg" alt="" />
-						</a>
+							<asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/images\衣服\281901708-袖滾配色t\S__49840211.jpg" Height="100%" Width="100%" OnClick="ImageButton3_Click" />
 						<h3><a href="product">T-Shirt</a></h3>
 						<div class="price">
 								<asp:Label ID="Label4" runat="server" Text="售價："></asp:Label>
-								<asp:Label ID="Label5" runat="server" Text="899"></asp:Label>
+								<asp:Label ID="Label5" runat="server" Text="950"></asp:Label>
 								<asp:Button ID="Button2" runat="server" Text="放入購物車" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" />
 								<div class="clearfix"> </div>
 						</div>
@@ -351,13 +346,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>	
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="product">
-							<img class="img-responsive" src="images\衣服\281901715-剪裁T\S__49840159.jpg" alt="" />
-						</a>
+							<asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="~/images\衣服\281901715-剪裁T\S__49840159.jpg" Height="100%" Width="100%" OnClick="ImageButton4_Click" />
 						<h3><a href="product">Shirt</a></h3>
 						<div class="price">
 								<asp:Label ID="Label6" runat="server" Text="售價："></asp:Label>
-								<asp:Label ID="Label7" runat="server" Text="899"></asp:Label>
+								<asp:Label ID="Label7" runat="server" Text="850"></asp:Label>
 								<asp:Button ID="Button3" runat="server" Text="放入購物車" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" />
 								<div class="clearfix"> </div>
 						</div>
@@ -366,13 +359,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>	
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="product">
-							<img class="img-responsive" src="images\衣服\281901801-細肩露肩t\S__49840130.jpg" alt="" />
-						</a>
+							<asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="~/images\衣服\281901801-細肩露肩t\S__49840130.jpg" Height="100%" Width="100%" OnClick="ImageButton5_Click" />
 						<h3><a href="product">Tops</a></h3>
 						<div class="price">
 								<asp:Label ID="Label8" runat="server" Text="售價："></asp:Label>
-								<asp:Label ID="Label9" runat="server" Text="899"></asp:Label>
+								<asp:Label ID="Label9" runat="server" Text="1000"></asp:Label>
 								<asp:Button ID="Button4" runat="server" Text="放入購物車" OnClick="Button4_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" />
 								<div class="clearfix"> </div>
 						</div>
@@ -384,13 +375,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="content-top1">
 				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="product">
-							<img class="img-responsive" src="images\衣服\281902805-胸抓摺衫\S__49954893.jpg" alt="" />
-						</a>
+							<asp:ImageButton ID="ImageButton6" runat="server" ImageUrl="~/images\衣服\281902805-胸抓摺衫\S__49954893.jpg" CssClass="img-responsive" Enabled="False" Height="100%" Width="100%" OnClick="ImageButton6_Click" />
 						<h3><a href="product">Shirt</a></h3>
 						<div class="price">
 								<asp:Label ID="Label10" runat="server" Text="售價："></asp:Label>
-								<asp:Label ID="Label11" runat="server" Text="899"></asp:Label>
+								<asp:Label ID="Label11" runat="server" Text="980"></asp:Label>
 								<asp:Button ID="Button5" runat="server" Text="放入購物車" OnClick="Button5_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right"/>
 								<div class="clearfix"> </div>
 						</div>
@@ -399,13 +388,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>	
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="product">
-							<img class="img-responsive" src="images\衣服\281904506-格紋澎袖衫\S__49954861.jpg" alt="" />
-						</a>
+							<asp:ImageButton ID="ImageButton7" runat="server" ImageUrl="~/images\衣服\281904506-格紋澎袖衫\S__49954861.jpg" Height="100%" Width="100%" OnClick="ImageButton7_Click" />
 						<h3><a href="product">T-Shirt</a></h3>
 						<div class="price">
 								<asp:Label ID="Label12" runat="server" Text="售價："></asp:Label>
-								<asp:Label ID="Label13" runat="server" Text="899"></asp:Label>
+								<asp:Label ID="Label13" runat="server" Text="790"></asp:Label>
 								<asp:Button ID="Button6" runat="server" Text="放入購物車" OnClick="Button6_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" />
 								<div class="clearfix"> </div>
 						</div>
@@ -414,13 +401,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>	
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="product">
-							<img class="img-responsive" src="images\衣服\281906305-中抓摺雪紡衫\S__50069542.jpg" alt="" />
-						</a>
+							<asp:ImageButton ID="ImageButton8" runat="server" ImageUrl="~/images\衣服\281906305-中抓摺雪紡衫\S__50069542.jpg" Height="100%" Width="100%" OnClick="ImageButton8_Click" />
 						<h3><a href="product">Jeans</a></h3>
 						<div class="price">
 								<asp:Label ID="Label14" runat="server" Text="售價："></asp:Label>
-								<asp:Label ID="Label15" runat="server" Text="899"></asp:Label>
+								<asp:Label ID="Label15" runat="server" Text="980"></asp:Label>
 								<asp:Button ID="Button7" runat="server" Text="放入購物車" OnClick="Button7_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" />
 								<div class="clearfix"> </div>
 						</div>
@@ -429,13 +414,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>	
 			<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="product">
-							<img class="img-responsive" src="images\衣服\281905801-滾邊寬袖衫\S__50200586.jpg" alt="" />
-						</a>
+							<asp:ImageButton ID="ImageButton9" runat="server" ImageUrl="~/images\衣服\281905801-滾邊寬袖衫\S__50200586.jpg" Height="100%" Width="100%" OnClick="ImageButton9_Click" />
 						<h3><a href="product">Tops</a></h3>
 						<div class="price">
 								<asp:Label ID="Label16" runat="server" Text="售價："></asp:Label>
-								<asp:Label ID="Label17" runat="server" Text="899"></asp:Label>
+								<asp:Label ID="Label17" runat="server" Text="990"></asp:Label>
 								<asp:Button ID="Button8" runat="server" Text="放入購物車" OnClick="Button8_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" />
 								<div class="clearfix"> </div>
 						</div>
