@@ -210,16 +210,31 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+      
+
             $("#btnClick").click(function () {
                 $.ajax({
                     type: "post",
-                    url: '<%= ResolveUrl("CustomerDetail.aspx/ajaxTest0") %>',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: console.log("OK"),
-                    error: console.log("NF"),
+                    url: '<%= ResolveUrl("CustomerDetail.aspx/GetCustomers") %>',
+                       data: JSON.stringify({ str: "123456" }),
+                       contentType: "application/json; charset=utf-8",
+                       dataType: "json",
+                       success: (e) => {
+                           if (e.d.Status == 0) {
+                               let data = e.d.Data[0];
+                               $('#nameText').text(data.name);
+                               $('#accountText').text(data.account);
+                           } else {
+                               alert(e.d.Message);
+                           }
+                       },
+                       error: (e) => {
+                           console.log("ERROR");
 
-                });
+                           alert(e.d.Message);
+                       }
+
+                   });
                 return false;
 
             });

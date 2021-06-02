@@ -219,8 +219,14 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\DataTableExtensions.cs" />
     <Compile Include="Dao\BaseDao.cs" />
     <Compile Include="Dao\CustomerDetailDao.cs" />
+    <Compile Include="Enum.cs" />
+    <Compile Include="Filter\ExceptionAttribute.cs" />
+    <Compile Include="Models\ApiResultModel.cs" />
+    <Compile Include="Models\CustomersModel.cs" />
     <Compile Include="product.aspx.cs">
       <DependentUpon>product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -23,6 +23,7 @@
         $('#accountDelet').attr('disabled', true);
     });
 
+
     //name註冊取消事件
     $('#nameClose').click(function () {
         $('#nameClose').css('display', 'none');
@@ -194,6 +195,8 @@
         initnewMailBut();
 
 
+
+
         //姓名確定紐
 
         $('#nameEntrt').click(function () {
@@ -202,7 +205,8 @@
                 console.log("OK");
             } else {
                 //NOT OK
-                console.log("NOT OK");
+                //console.log("NOT OK");
+                var nameDel = alert('您的名字格式有誤，\n請輸入中文或英文');
             }
         });
         //密碼確定紐-等等再做
@@ -212,7 +216,7 @@
                 console.log("OK");
             } else {
                 //NOT OK
-                console.log("NOT OK");
+                var passwordDel = alert('您的舊密碼輸入錯誤');
             }
 
             if (IsPassword($('#newPasswordInput').val())) {
@@ -221,11 +225,11 @@
                     console.log("OK");
                 } else {
                     //NOT OK
-                    console.log("新密碼不同");
+                    var newpasswordDel2 = alert('您的新密碼輸入不同，\n請再輸入一次');
                 }
             } else {
                 //NOT OK
-                console.log("新密碼格式錯誤");
+                var newpasswordDel1 = alert('您的新密碼格式錯誤，\n請輸入英文+數字的組合');
             }
 
 
@@ -238,7 +242,7 @@
                 console.log("OK");
             } else {
                 //NOT OK
-                console.log("NOT OK");
+                var phoneNumberDel = alert('您的手機格式錯誤，\n請輸正確的手機號碼');
             }
         });
 
@@ -246,10 +250,10 @@
         $('#passTestNumberEntrt').click(function () {
             if (IsTestNumbermail($('#newMailInput').val())) {
                 //OK
-                console.log("OK");
+                var passTestNumber1 = alert('已發驗證信至您的E-mail');
             } else {
                 //NOT OK
-                console.log("NOT OK");
+                var passTestNumber2 = alert('您E-mail格式錯誤，\n請輸入正確的E-mail');
             }
         });
         $('#mailEntrt').click(function () {
@@ -258,7 +262,7 @@
                 console.log("OK");
             } else {
                 //NOT OK
-                console.log("NOT OK");
+                var mail = alert('驗證碼輸入錯誤');
             }
         });
 

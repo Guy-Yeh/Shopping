@@ -1,4 +1,5 @@
-﻿using Shopping.Service;
+﻿using Shopping.Models;
+using Shopping.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +27,44 @@ namespace Shopping.Customer
         }
 
         [WebMethod]
-        public static string ajaxTest0()
+        public static Models.ApiResultModel<List<CustomersModel>> GetCustomers()
         {
-            CustomerDetailService customerDetailService = new CustomerDetailService();
-            customerDetailService.ajaxTest0();
+            Common.Common common = new Common.Common();
+            try
+            {
+                CustomerDetailService customerDetailService = new CustomerDetailService();
+                List<CustomersModel> customers = customerDetailService.GetCustomers();
 
-            return "Hi,Welcome to China!";
+                return common.ThrowResult<List<CustomersModel>>(Enum.ApiStatusEnum.OK, string.Empty, customers);
+            }
+            catch (Exception ex)
+            {
+                return common.ThrowResult<List<CustomersModel>>(Enum.ApiStatusEnum.InternalServerError, ex.Message, null);
+            }
         }
+
+        [WebMethod]
+        public static Models.ApiResultModel<string> EditAccount(string str)
+        {
+            Common.Common common = new Common.Common();
+            try
+            {
+                CustomerDetailService customerDetailService = new CustomerDetailService();
+                customerDetailService.EditAccount();
+
+                return common.ThrowResult<string>(Enum.ApiStatusEnum.OK, string.Empty, string.Empty);
+            }
+            catch (Exception ex)
+            {
+                return common.ThrowResult<string>(Enum.ApiStatusEnum.InternalServerError, ex.Message, null);
+            }
+        }
+
+        [WebMethod]
+        public static bool EditPassword()
+        {
+            return true;
+        }
+
     }
 }
