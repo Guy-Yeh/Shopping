@@ -17,12 +17,12 @@ namespace Shopping
                 for (int i = 0; i < Convert.ToInt32(Request.Cookies["quantity"].Value); i++)
                 {
                     TableRow r = new TableRow();
-
                     SqlConnection connection = new SqlConnection(picture_data);
-                    connection.Open();
-                    string sq1 = $"select * from Products where ID ='{ Request.Cookies["buy"][$"{i}"]}' ";
+                    string sq1 = $"select * from Products where ID ='{Request.Cookies["buy"][$"{i}"]}' ";
                     System.Data.SqlClient.SqlCommand command1 = new SqlCommand(sq1, connection);
+                    connection.Open();
                     SqlDataReader read1 = command1.ExecuteReader();
+
                     if (read1.HasRows)
                     {
                         if (read1.Read())
@@ -43,8 +43,7 @@ namespace Shopping
                             c5.Controls.Add(new LiteralControl($"{read1[5].ToString()}"));
                             r.Cells.Add(c5);
                         }
-                    }
-                    
+                    }                   
                     Table1.Rows.Add(r);
                     connection.Close();
                 }
