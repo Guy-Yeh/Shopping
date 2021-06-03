@@ -18,7 +18,7 @@ function IsPhone(phone) {
     if (phone == '' || phone == undefined) {
         return false;
     }
-    var regex = /(^09\d{2}\-?\d{3}\-?\d{3})/;
+    var regex = /^09[0-9]{8}$/;
     return regex.test(phone);
 }
 

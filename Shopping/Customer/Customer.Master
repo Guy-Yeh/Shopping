@@ -7,6 +7,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Shopping</title>
+    <meta http-equiv="pragma" content="no-cache">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />

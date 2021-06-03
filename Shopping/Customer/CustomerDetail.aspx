@@ -143,8 +143,8 @@
                             <div class="col-md-3 login-left">
                                 <div class="forgot" style="font-size: 18px;">E-mail</div>
                             </div>
-                            <div class="col-md-6 login-left">
-                                <span style="font-size: 18px;">aassdd@gmail.com</span>
+                            <div class="col-md-6 login-left ">
+                                <span id="mailText" style="font-size: 18px;">aassdd@gmail.com</span>
                             </div>
                             <div class="col-md-3 login-left" style="padding: 0px;">
                                 <button id="mailEdit" type="button" class="btn btn-lg btn-info"
@@ -206,28 +206,44 @@
       
     </div>
 
-
-    <script type="text/javascript">
+        <script src="../js/customer/customerDetailEditEnter.js"> </script>
+   <%-- <script type="text/javascript">
         $(document).ready(function () {
+
+      
 
             $("#btnClick").click(function () {
                 $.ajax({
                     type: "post",
-                    url: '<%= ResolveUrl("CustomerDetail.aspx/ajaxTest0") %>',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: console.log("OK"),
-                    error: console.log("NF"),
+                    url: '<%= ResolveUrl("CustomerDetail.aspx/GetCustomers") %>',
+                       data: JSON.stringify({ str: "123456" }),
+                       contentType: "application/json; charset=utf-8",
+                       dataType: "json",
+                       success: (e) => {
+                           if (e.d.Status == 0) {
+                               let data = e.d.Data[0];
+                               $('#nameText').text(data.name);
+                               $('#accountText').text(data.account);
+                               $('#phoneNumberText').text(data.phone);
+                           } else {
+                               alert(e.d.Message);
+                           }
+                       },
+                       error: (e) => {
+                           console.log("ERROR");
 
-                });
+                           alert(e.d.Message);
+                       }
+
+                   });
                 return false;
 
             });
 
-            //
+
         });
 
-    </script>
+    </script>--%>
 
 
 </asp:Content>

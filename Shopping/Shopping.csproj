@@ -108,6 +108,7 @@
   <ItemGroup>
     <Content Include="js\common\common.js" />
     <Content Include="js\customer\customerDetail.js" />
+    <Content Include="js\customer\customerDetailEditEnter.js" />
     <Content Include="product.aspx" />
     <Content Include="shoppingcar.aspx" />
     <Content Include="images\img_153839.png" />
@@ -219,8 +220,14 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\DataTableExtensions.cs" />
     <Compile Include="Dao\BaseDao.cs" />
     <Compile Include="Dao\CustomerDetailDao.cs" />
+    <Compile Include="Enum.cs" />
+    <Compile Include="Filter\ExceptionAttribute.cs" />
+    <Compile Include="Models\ApiResultModel.cs" />
+    <Compile Include="Models\CustomersModel.cs" />
     <Compile Include="product.aspx.cs">
       <DependentUpon>product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
