@@ -41,6 +41,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    </script>
 </head>
 <body>
+    <form id="form1" runat="server">
 <!--header-->
 <div class="header">
 	<div class="header-top">
@@ -297,7 +298,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
 	<div class="check-out">
 		<h1>Checkout</h1>
-    	    <table >
+    	    
+    <asp:Table id="Table1" runat="server"
+        CellPadding="10" 
+        GridLines="Both"
+        HorizontalAlign="Center">
+        <asp:TableRow>
+            <asp:TableCell>
+            </asp:TableCell>
+            <asp:TableCell>
+                產品名稱
+            </asp:TableCell>
+            <asp:TableCell>
+                顏色
+            </asp:TableCell>
+            <asp:TableCell>
+                數量
+            </asp:TableCell>
+            <asp:TableCell>
+                金額
+            </asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
+
+        <table >
 		  <tr>
 			<th>Item</th>
 			<th>Qty</th>		
@@ -356,11 +380,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>
-					<form>
 						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
 						<input type="submit" value="SUBSCRIBE">
-					</form>
-			</div>
+					</div>
 			<div class="clearfix"> </div>	
 		</div>	
 	</div>
@@ -419,5 +441,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 
 <!--//footer-->
+    </form>
 </body>
 </html>

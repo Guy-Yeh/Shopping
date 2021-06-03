@@ -9,17 +9,35 @@ namespace Shopping
 {
     public partial class index : Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.Cookies["quantity"]== null)
+                Response.Cookies["quantity"].Value = "0";
+
             if (Request.Cookies["cart"]!=null)
                 Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;
             else
                 Label1.Text = " 總金額：" + "0";
+            Label18.Text = Request.Cookies["quantity"].Value;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            if (DropDownList1.SelectedValue == "白") 
+            {
+                Response.Cookies["buy"][$"{Request.Cookies["quantity"].Value}"] = "1";
+                Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
+            }
+            else if(DropDownList1.SelectedValue== "紅")
+            {
+                Response.Cookies["buy"][$"{Request.Cookies["quantity"].Value}"] = "2";
+                Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
+            }
+            else if (DropDownList1.SelectedValue == "綠")
+            {
+                Response.Cookies["buy"][$"{Request.Cookies["quantity"].Value}"] = "3";
+                Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
+            }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label3.Text)).ToString();
             Label1.Text =" 總金額：" + Request.Cookies["cart"].Value;
             Response.Redirect("index");
