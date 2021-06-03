@@ -143,8 +143,8 @@
                             <div class="col-md-3 login-left">
                                 <div class="forgot" style="font-size: 18px;">E-mail</div>
                             </div>
-                            <div class="col-md-6 login-left">
-                                <span style="font-size: 18px;">aassdd@gmail.com</span>
+                            <div class="col-md-6 login-left ">
+                                <span id="mailText" style="font-size: 18px;">aassdd@gmail.com</span>
                             </div>
                             <div class="col-md-3 login-left" style="padding: 0px;">
                                 <button id="mailEdit" type="button" class="btn btn-lg btn-info"
@@ -206,8 +206,8 @@
       
     </div>
 
-
-    <script type="text/javascript">
+        <script src="../js/customer/customerDetailEditEnter.js"> </script>
+   <%-- <script type="text/javascript">
         $(document).ready(function () {
 
       
@@ -224,6 +224,7 @@
                                let data = e.d.Data[0];
                                $('#nameText').text(data.name);
                                $('#accountText').text(data.account);
+                               $('#phoneNumberText').text(data.phone);
                            } else {
                                alert(e.d.Message);
                            }
@@ -239,10 +240,10 @@
 
             });
 
-            //
+
         });
 
-    </script>
+    </script>--%>
 
 
 </asp:Content>

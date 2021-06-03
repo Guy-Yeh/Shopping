@@ -131,7 +131,9 @@
             var accountDel = confirm('你確定要刪除帳號嗎？');
 
             if (accountDel) {
-                alert('你按了確定按鈕');
+                alert('你已成功刪除此帳號');
+                // 直接跳轉
+                window.location.href = '../index.aspx';
             } 
     });
 
@@ -151,7 +153,6 @@
     var initnewMailBut = () => {
         $('#mailClose').css('display', 'none');
         $('#mailEntrt').css('display', 'none');
-
         $('.ma-box').css('display', 'none');
         $('#mailEdit').css('display', '');
         $('#mailText').css('display', '');
@@ -163,7 +164,7 @@
         $('#mailClose').css('display', '');
         $('#mailEntrt').css('display', '');
         $('#mailEdit').css('display', 'none');
-        $('#mailText').css('display', 'none');
+        $('#mailText').css('display', '');
         $('#newMailInput').val($('#newMailText').text())
         $('.ma-box').css('display', '');
         $('#nameEdit').attr('disabled', true);
@@ -199,16 +200,24 @@
 
         //姓名確定紐
 
-        $('#nameEntrt').click(function () {
-            if (IsName($('#nameInput').val())) {
-                //OK
-                console.log("OK");
-            } else {
-                //NOT OK
-                //console.log("NOT OK");
-                var nameDel = alert('您的名字格式有誤，\n請輸入中文或英文');
-            }
-        });
+        //$('#nameEntrt').click(function () {
+
+        //    if (IsName($('#nameInput').val())) {
+        //        //OK
+        //        console.log("OK");
+        //        $('#nameClose').css('display', 'none');
+        //        $('#nameEntrt').css('display', 'none');
+        //        $('#nameInput').css('display', 'none');
+        //        $('#nameEdit').css('display', '');
+        //        $('#nameText').css('display', '');
+
+        //    } else {
+        //        //NOT OK
+        //        //console.log("NOT OK");
+        //        var nameDel = alert('您的名字格式有誤，\n請輸入中文或英文');
+        //    }
+        //});
+
         //密碼確定紐-等等再做
         $('#passwordEntrt').click(function () {
             if (IsPassword($('#oldPasswordInput').val())) {
@@ -235,18 +244,18 @@
 
         });
 
-        //手機確定紐
-        $('#phoneNumberEntrt').click(function () {
-            if (IsPhone($('#phoneNumberInput').val())) {
-                //OK
-                console.log("OK");
-            } else {
-                //NOT OK
-                var phoneNumberDel = alert('您的手機格式錯誤，\n請輸正確的手機號碼');
-            }
-        });
+        ////手機確定紐
+        //$('#phoneNumberEntrt').click(function () {
+        //    if (IsPhone($('#phoneNumberInput').val())) {
+        //        //OK
+        //        console.log("OK");
+        //    } else {
+        //        //NOT OK
+        //        var phoneNumberDel = alert('您的手機格式錯誤，\n請輸正確的手機號碼');
+        //    }
+        //});
 
-        //mail驗證碼 +確定紐
+        //mail驗證碼 
         $('#passTestNumberEntrt').click(function () {
             if (IsTestNumbermail($('#newMailInput').val())) {
                 //OK
@@ -256,15 +265,16 @@
                 var passTestNumber2 = alert('您E-mail格式錯誤，\n請輸入正確的E-mail');
             }
         });
-        $('#mailEntrt').click(function () {
-            if (IsEmail($('#testNumberMailInput').val())) {
-                //OK
-                console.log("OK");
-            } else {
-                //NOT OK
-                var mail = alert('驗證碼輸入錯誤');
-            }
-        });
+        ////mail確定紐
+        //$('#mailEntrt').click(function () {
+        //    if (IsEmail($('#testNumberMailInput').val())) {
+        //        //OK
+        //        console.log("OK");
+        //    } else {
+        //        //NOT OK
+        //        var mail = alert('驗證碼輸入錯誤');
+        //    }
+        //});
 
 
 

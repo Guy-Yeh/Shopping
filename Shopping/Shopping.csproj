@@ -108,6 +108,7 @@
   <ItemGroup>
     <Content Include="js\common\common.js" />
     <Content Include="js\customer\customerDetail.js" />
+    <Content Include="js\customer\customerDetailEditEnter.js" />
     <Content Include="product.aspx" />
     <Content Include="shoppingcar.aspx" />
     <Content Include="images\img_153839.png" />
