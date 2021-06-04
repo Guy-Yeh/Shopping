@@ -47,7 +47,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 		<div class="col-sm-4 number">
-					<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
+					<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000<br>
+                    <br>
+				    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><br>
+                    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
 				</div>
 				<div class="col-sm-4 logo">
 					<a href="index"><img src="images/logo.png" alt=""></a>	

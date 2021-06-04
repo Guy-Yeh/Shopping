@@ -8,11 +8,21 @@ using System.Web.UI.WebControls;
 
 namespace Shopping
 {
+
     public partial class shoppingcar : Page
     {
         string picture_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            HttpCookie usecookie =new HttpCookie("buy");
+            if (Request.Cookies["buy"] != null)
+            {
+                Label1.Text = Server.HtmlEncode(Request.Cookies["buy"]["ID1"]);
+                Label2.Text = Server.HtmlEncode(Request.Cookies["buy"]["ID2"]);
+            }
+
             if (Request.Cookies["buy"] != null) {
                 for (int i = 0; i < Convert.ToInt32(Request.Cookies["quantity"].Value); i++)
                 {
@@ -48,20 +58,6 @@ namespace Shopping
                     connection.Close();
                 }
             }
-            int numrows = 2;
-            int numcells = 5;
-            for (int j = 0; j < numrows; j++)
-            {
-                TableRow r = new TableRow();
-                for (int i = 0; i < numcells; i++)
-                {
-                    TableCell c = new TableCell();
-                    c.Controls.Add(new LiteralControl("呈現的內容"));
-                    r.Cells.Add(c);
-                }
-                Table1.Rows.Add(r);
-            }
-
         }
     }
 }
