@@ -99,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <a runat="server" href="~/Customer/ShoppingList">交易紀錄</a>
                             </li>
                             <li class="grid">
-                                <a runat="server" href="#">空白1</a>
+                                <a runat="server" href="~/Customer/Chat">與我聊聊</a>
                             </li>
                             <li>
                                 <a runat="server" href="#">空白2</a>

@@ -65,6 +65,19 @@
         $('#phoneNumberEdit').attr('disabled', true);
         $('#mailEdit').attr('disabled', true);
         $('#accountDelet').attr('disabled', true);
+        $('#newPasswordInput').attr('disabled', true);
+        $('#newDoublePasswordInput').attr('disabled', true);
+    });
+
+
+    $("#oldPasswordInput").keyup(function () {
+        if ($("#oldPasswordInput").val() == undefined || $("#oldPasswordInput").val() == '') {
+            $('#newPasswordInput').attr('disabled', true);
+            $('#newDoublePasswordInput').attr('disabled', true);
+        } else {
+            $('#newPasswordInput').attr('disabled', false);
+            $('#newDoublePasswordInput').attr('disabled', false);
+        }
 
     });
 

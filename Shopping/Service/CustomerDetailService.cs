@@ -17,11 +17,26 @@ namespace Shopping.Service
             return customers;
         }
 
-        public string EditAccount()
+        public bool EditName(int id, string name)
         {
             try
             {
-                throw new ArgumentException("驗證錯誤");
+                //throw new ArgumentException("驗證錯誤");
+                CustomerDetailDao customerDetailDao = new CustomerDetailDao();
+                return customerDetailDao.EditName(id, name);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        public bool EditPhoneNumber(int id, string phone)
+        {
+            try
+            {
+                //throw new ArgumentException("驗證錯誤");
+                CustomerDetailDao customerDetailDao = new CustomerDetailDao();
+                return customerDetailDao.EditPhoneNumber(id, phone);
             }
             catch (Exception ex)
             {

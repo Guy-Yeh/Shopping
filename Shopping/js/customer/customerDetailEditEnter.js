@@ -1,35 +1,38 @@
-﻿$(document).ready(function () {
+﻿var customer = {};
 
-/*
+$(document).ready(function () {
 
-    $("#btnClick").click(function () {
-        $.ajax({
-            type: "post",
-            url: "CustomerDetail.aspx/GetCustomers",
-            data: JSON.stringify({ str: "123456" }),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: (e) => {
-                if (e.d.Status == 0) {
-                    let data = e.d.Data[0];
-                    $('#nameText').text(data.name);
-                    $('#accountText').text(data.account);
-                    $('#phoneNumberText').text(data.phone);
-                } else {
+    /*
+    
+        $("#btnClick").click(function () {
+            $.ajax({
+                type: "post",
+                url: "CustomerDetail.aspx/GetCustomers",
+                data: JSON.stringify({ str: "123456" }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: (e) => {
+                    if (e.d.Status == 0) {
+                        let data = e.d.Data[0];
+                        $('#nameText').text(data.name);
+                        $('#accountText').text(data.account);
+                        $('#phoneNumberText').text(data.phone);
+                    } else {
+                        alert(e.d.Message);
+                    }
+                },
+                error: (e) => {
+                    console.log("ERROR");
+    
                     alert(e.d.Message);
                 }
-            },
-            error: (e) => {
-                console.log("ERROR");
-
-                alert(e.d.Message);
-            }
-
+    
+            });
+            return false;
+    
         });
-        return false;
+        */
 
-    });
-    */
 
     //修改姓名
     $("#nameEntrt").click(function () {
@@ -38,13 +41,18 @@
             console.log("OK");
             $.ajax({
                 type: "post",
-                url: "CustomerDetail.aspx/GetCustomers",
+                url: "CustomerDetail.aspx/EditName",
+                data: JSON.stringify({ id: customer.ID, name: $('#nameInput').val() }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: (e) => {
                     if (e.d.Status == 0) {
                         let data = e.d.Data[0];
-                        $('#nameText').text(data.name);
+                        getCustomers(true);
+                    /*    alert("OK");*/
+
+                        $('#nameInput').css('display', 'none');
+                        $('#nameText').css('display', '');
                     } else {
                         alert(e.d.Message);
                     }
@@ -58,9 +66,9 @@
             });
             $('#nameClose').css('display', 'none');
             $('#nameEntrt').css('display', 'none');
-            $('#nameInput').css('display', 'none');
+            /*$('#nameInput').css('display', 'none');*/
             $('#nameEdit').css('display', '');
-            $('#nameText').css('display', '');
+            /*$('#nameText').css('display', '');*/
             $('#phoneNumberEdit').removeAttr('disabled');
             $('#passwordEdit').removeAttr('disabled');
             $('#mailEdit').removeAttr('disabled');
@@ -84,12 +92,15 @@
             console.log("OK");
             $.ajax({
                 type: "post",
-                url: "CustomerDetail.aspx/GetCustomers",
+                url: "CustomerDetail.aspx/EditPhoneNumber",
+                data: JSON.stringify({ id: customer.ID, phone: $('#phoneNumberInput').val() }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: (e) => {
                     if (e.d.Status == 0) {
                         let data = e.d.Data[0];
+                        getCustomers(true);
+                        
                         $('#phoneNumberText').text(data.phone);
                     } else {
                         alert(e.d.Message);
@@ -116,9 +127,45 @@
             var phoneNumberDel = alert('您的手機格式錯誤，\n請輸正確的手機號碼');
         }
 
-        return false ;
+        return false;
 
     });
+
+    var getCustomers = (isOk) => {
+        $.ajax({
+            type: "post",
+            url: "CustomerDetail.aspx/GetCustomers",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: (e) => {
+                if (e.d.Status == 0) {
+                    let data = e.d.Data[0];
+                    $('#nameText').text(data.name);
+                    $('#accountText').text(data.account);
+                    $('#phoneNumberText').text(data.phone);
+                    $('#mailText').text(data.email);
+
+                    //to do
+                    customer = data;
+                    if (isOk == true) {
+                        setTimeout(() => {
+                            alert("OK")
+                        }, 200)
+                    
+                    }
+
+                } else {
+                    alert(e.d.Message);
+                }
+            },
+            error: (e) => {
+                console.log("ERROR");
+
+                alert(e.d.Message);
+            }
+
+        });
+    };
 
 
     //修改mail
@@ -169,5 +216,8 @@
 
     });
 
+
+    // inti
+    getCustomers();//讀取
 
 });

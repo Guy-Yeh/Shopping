@@ -106,6 +106,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Customer\Chat.aspx" />
     <Content Include="js\common\common.js" />
     <Content Include="js\customer\customerDetail.js" />
     <Content Include="js\customer\customerDetailEditEnter.js" />
@@ -222,6 +223,13 @@
   <ItemGroup>
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\DataTableExtensions.cs" />
+    <Compile Include="Customer\Chat.aspx.cs">
+      <DependentUpon>Chat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\Chat.aspx.designer.cs">
+      <DependentUpon>Chat.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Dao\BaseDao.cs" />
     <Compile Include="Dao\CustomerDetailDao.cs" />
     <Compile Include="Enum.cs" />

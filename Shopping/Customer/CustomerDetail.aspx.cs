@@ -44,21 +44,39 @@ namespace Shopping.Customer
         }
 
         [WebMethod]
-        public static Models.ApiResultModel<string> EditAccount(string str)
+        public static Models.ApiResultModel<bool> EditName(int id, string name)
         {
             Common.Common common = new Common.Common();
             try
             {
                 CustomerDetailService customerDetailService = new CustomerDetailService();
-                customerDetailService.EditAccount();
+                bool r =customerDetailService.EditName(id, name);
 
-                return common.ThrowResult<string>(Enum.ApiStatusEnum.OK, string.Empty, string.Empty);
+                return common.ThrowResult<bool>(Enum.ApiStatusEnum.OK, string.Empty, r);
             }
             catch (Exception ex)
             {
-                return common.ThrowResult<string>(Enum.ApiStatusEnum.InternalServerError, ex.Message, null);
+                return common.ThrowResult<bool>(Enum.ApiStatusEnum.InternalServerError, ex.Message, false);
             }
         }
+
+        [WebMethod]
+        public static Models.ApiResultModel<bool> EditPhoneNumber(int id, string phone)
+        {
+            Common.Common common = new Common.Common();
+            try
+            {
+                CustomerDetailService customerDetailService = new CustomerDetailService();
+                bool r = customerDetailService.EditPhoneNumber(id, phone);
+
+                return common.ThrowResult<bool>(Enum.ApiStatusEnum.OK, string.Empty, r);
+            }
+            catch (Exception ex)
+            {
+                return common.ThrowResult<bool>(Enum.ApiStatusEnum.InternalServerError, ex.Message, false);
+            }
+        }
+
 
         [WebMethod]
         public static bool EditPassword()
