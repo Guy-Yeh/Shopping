@@ -32,25 +32,46 @@ namespace Shopping
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            SqlConnection connection2 = Connect(s_data);
-            string sql2 = $"update Chat SET response='{Request.Form["contactresponse"].ToString()}' where ID='{int.Parse(Request.Form["contactID"])}'";
-            SqlCommand command2 = new SqlCommand(sql2, connection2);
-            connection2.Open();
-            command2.ExecuteNonQuery();
-            MessageBox.Show("回覆成功");
+            if (DDLContactID.SelectedItem.Text != "ID")
+            {
+                if (Request.Form["contactresponse"] != "")
+                {
+                    SqlConnection connection2 = Connect(s_data);
+                    string sql2 = $"update Chat SET response='{Request.Form["contactresponse"].ToString()}' where ID='{int.Parse(DDLContactID.Text)}'";
+                    SqlCommand command2 = new SqlCommand(sql2, connection2);
+                    connection2.Open();
+                    command2.ExecuteNonQuery();
+                    MessageBox.Show("回覆成功");
+                }
+                else
+                {
+                    hintResponse.Text = "response不得為空";
+                }
+            }
+            else
+            {
+                hintID.Text = "請選擇項目";
+            }
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            SqlConnection connection3 = Connect(s_data);
-            string sql3 = $"select * from Chat where account = '{Request.Form["searchaccount"].ToString()}'";
-            SqlCommand command3 = new SqlCommand(sql3, connection3);
-            connection3.Open();
-            SqlDataReader read = command3.ExecuteReader();
-            usercontact.DataSource = read;
-            usercontact.DataBind();
-            connection3.Close();
-            MessageBox.Show("搜尋成功");
+            if (Request.Form["searchaccount"] != "")
+            {
+                SqlConnection connection3 = Connect(s_data);
+                string sql3 = $"select * from Chat where account = '{Request.Form["searchaccount"].ToString()}'";
+                SqlCommand command3 = new SqlCommand(sql3, connection3);
+                connection3.Open();
+                SqlDataReader read = command3.ExecuteReader();
+                usercontact.DataSource = read;
+                usercontact.DataBind();
+                connection3.Close();
+                MessageBox.Show("搜尋成功");
+            }
+            else
+            {
+                hintSearch.Text = "account不得為空";
+            }
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -63,7 +84,7 @@ namespace Shopping
             usercontact.DataSource = read;
             usercontact.DataBind();
             connection4.Close();
-            MessageBox.Show("顯示全部成功");
+            MessageBox.Show("顯示所有成功");
         }
     }
 }

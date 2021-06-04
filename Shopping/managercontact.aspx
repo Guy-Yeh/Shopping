@@ -228,9 +228,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="h_nav">	
 									<h4>Reply Message</h4>
 									<ul>
-										<li><input type="text" id="contactID" name="contactID" class="form-control" placeholder="ID" ></li>
+										<li>
+                                            <asp:DropDownList ID="DDLContactID" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceChat" DataTextField="ID" DataValueField="ID"><asp:ListItem Value="0">ID</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceChat" runat="server" ConnectionString="<%$ ConnectionStrings:ChatConnectionString %>" SelectCommand="SELECT [ID] FROM [Chat]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintID" runat="server" Text=""></asp:Label></li>
 										<br>
-										<li> <textarea rows="5" id="contactresponse" name="contactresponse" class="form-control" placeholder="Response" ></textarea></li>
+										<li> <textarea rows="5" id="contactresponse" name="contactresponse" class="form-control" placeholder="response" ></textarea></li>
+										<li><asp:Label ID="hintResponse" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li>
                                             <asp:Button ID="response" runat="server" Text="submit" OnClick="Button1_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
@@ -245,6 +250,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Search by Account</h4>
 									<ul>
 										<li><input type="text" id="searchaccount" name="searchaccount" class="form-control" placeholder="account" ></li>
+										<li><asp:Label ID="hintSearch" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li>
                                             <asp:Button ID="search" runat="server" Text="submit" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
