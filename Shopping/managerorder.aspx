@@ -71,8 +71,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li><a  href="index.html">Home</a></li>	
-				      <li><a  href="manageraccount">Account&nbsp;</a>
+					  <li><a  href="managerhome">首頁</a></li>	
+				      <li><a  href="manageraccount">帳戶</a>
 				      	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -130,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a  href="managerproduct">Product&nbsp;</a>
+				    <li class="grid"><a  href="managerproduct">產品</a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -188,8 +188,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 			    </li>
-				<li><a  href="managerorder">Order</a></li>				
-				<li><a class="color6" href="contact.html">Conact</a></li>
+				<li><a  href="managerorder">訂單</a></li>				
+				<li><a class="color6" href="managercontact">回覆訊息</a></li>
 			  </ul> 
 			</div>
 				<div class="col-md-2 search">		
