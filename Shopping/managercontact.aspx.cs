@@ -17,10 +17,33 @@ namespace Shopping
             SqlConnection connect = new SqlConnection(x);
             return connect;
         }
+
+        public static bool ValidateDateTime(string datetime, string format)
+        {
+            if (datetime == null || datetime.Length == 0)
+            {
+                return false;
+            }
+            try
+            {
+                System.Globalization.DateTimeFormatInfo dtfi = new System.Globalization.DateTimeFormatInfo();
+                dtfi.FullDateTimePattern = format;
+                DateTime dt = DateTime.ParseExact(datetime, "F", dtfi);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
+            hintResponse.Text = "";
+            hintID.Text = "";
+            hintSearch.Text = "";
+            hintDate.Text = "";
             SqlConnection connection = Connect(s_data);
-            string sql = $"select * from Chat where response IS NULL";
+            string sql = $"select * from Chat where response IS NULL OR response = ''";
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
@@ -76,15 +99,99 @@ namespace Shopping
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            SqlConnection connection4 = Connect(s_data);
-            string sql4 = $"select * from Chat";
-            SqlCommand command = new SqlCommand(sql4, connection4);
-            connection4.Open();
-            SqlDataReader read = command.ExecuteReader();
-            usercontact.DataSource = read;
-            usercontact.DataBind();
-            connection4.Close();
-            MessageBox.Show("顯示所有成功");
+            if (DDLYearS.SelectedItem.Text != "StartYear" && DDLMonthS.SelectedItem.Text != "StartMonth" && DDLDayS.SelectedItem.Text != "StartDay" && DDLYearE.SelectedItem.Text != "EndYear" && DDLMonthE.SelectedItem.Text != "EndMonth" && DDLDayE.SelectedItem.Text != "EndDay")
+            {
+                if (ValidateDateTime((DDLYearS.Text + DDLMonthS.Text + DDLDayS.Text), "yyyyMMdd") == true && ValidateDateTime((DDLYearE.Text + DDLMonthE.Text + DDLDayE.Text), "yyyyMMdd") == true)
+                {
+                    if (int.Parse(DDLYearS.Text) < int.Parse(DDLYearE.Text))
+                    {
+                        SqlConnection connection4 = Connect(s_data);
+                        string sql4 = $"select * from Chat where initdate between '{DDLYearS.Text}-{DDLMonthS.Text}-{DDLDayS.Text}' and '{DDLYearE.Text}-{DDLMonthE.Text}-{int.Parse(DDLDayE.Text) + 1}'";
+                        SqlCommand command = new SqlCommand(sql4, connection4);
+                        connection4.Open();
+                        SqlDataReader read = command.ExecuteReader();
+                        usercontact.DataSource = read;
+                        usercontact.DataBind();
+                        connection4.Close();
+                        MessageBox.Show("篩選成功");
+                    }
+                    else if (int.Parse(DDLYearS.Text) == int.Parse(DDLYearE.Text))
+                    {
+                        if (int.Parse(DDLMonthS.Text) < int.Parse(DDLMonthE.Text))
+                        {
+                            SqlConnection connection4 = Connect(s_data);
+                            string sql4 = $"select * from Chat where initdate between '{DDLYearS.Text}-{DDLMonthS.Text}-{DDLDayS.Text}' and '{DDLYearE.Text}-{DDLMonthE.Text}-{int.Parse(DDLDayE.Text) + 1}'";
+                            SqlCommand command = new SqlCommand(sql4, connection4);
+                            connection4.Open();
+                            SqlDataReader read = command.ExecuteReader();
+                            usercontact.DataSource = read;
+                            usercontact.DataBind();
+                            connection4.Close();
+                            MessageBox.Show("篩選成功");
+                        }
+                        else if ((int.Parse(DDLMonthS.Text) == int.Parse(DDLMonthE.Text)))
+                        {
+                            if (int.Parse(DDLDayS.Text) <= int.Parse(DDLDayE.Text))
+                            {
+                                SqlConnection connection4 = Connect(s_data);
+                                string sql4 = $"select * from Chat where initdate between '{DDLYearS.Text}-{DDLMonthS.Text}-{DDLDayS.Text}' and '{DDLYearE.Text}-{DDLMonthE.Text}-{int.Parse(DDLDayE.Text) + 1}'";
+                                SqlCommand command = new SqlCommand(sql4, connection4);
+                                connection4.Open();
+                                SqlDataReader read = command.ExecuteReader();
+                                usercontact.DataSource = read;
+                                usercontact.DataBind();
+                                connection4.Close();
+                                MessageBox.Show("篩選成功");
+                            }
+                            else
+                            {
+                                hintDate.Text = "起始日不得超過終止日";
+                                SqlConnection connection4 = Connect(s_data);
+                                string sql4 = $"select * from Chat where initdate between '{DDLYearS.Text}-{DDLMonthS.Text}-{DDLDayS.Text}' and '{DDLYearE.Text}-{DDLMonthE.Text}-{int.Parse(DDLDayE.Text) + 1}'";
+                                SqlCommand command = new SqlCommand(sql4, connection4);
+                                connection4.Open();
+                                SqlDataReader read = command.ExecuteReader();
+                                usercontact.DataSource = read;
+                                usercontact.DataBind();
+                                connection4.Close();
+                            }
+
+                        }
+                        else
+                        {
+                            hintDate.Text = "起始日不得超過終止日";
+                            SqlConnection connection4 = Connect(s_data);
+                            string sql4 = $"select * from Chat where initdate between '{DDLYearS.Text}-{DDLMonthS.Text}-{DDLDayS.Text}' and '{DDLYearE.Text}-{DDLMonthE.Text}-{int.Parse(DDLDayE.Text) + 1}'";
+                            SqlCommand command = new SqlCommand(sql4, connection4);
+                            connection4.Open();
+                            SqlDataReader read = command.ExecuteReader();
+                            usercontact.DataSource = read;
+                            usercontact.DataBind();
+                            connection4.Close();
+                        }
+                    }
+                    else
+                    {
+                        hintDate.Text = "起始日不得超過終止日";
+                        SqlConnection connection4 = Connect(s_data);
+                        string sql4 = $"select * from Chat where initdate between '{DDLYearS.Text}-{DDLMonthS.Text}-{DDLDayS.Text}' and '{DDLYearE.Text}-{DDLMonthE.Text}-{int.Parse(DDLDayE.Text) + 1}'";
+                        SqlCommand command = new SqlCommand(sql4, connection4);
+                        connection4.Open();
+                        SqlDataReader read = command.ExecuteReader();
+                        usercontact.DataSource = read;
+                        usercontact.DataBind();
+                        connection4.Close();
+                    }
+                }
+                else
+                {
+                    hintDate.Text = "選擇日期不存在";
+                }
+            }
+            else
+            {
+                hintDate.Text = "所有項目皆須選擇";
+            }
         }
     }
 }
