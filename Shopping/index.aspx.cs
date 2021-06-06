@@ -58,7 +58,7 @@ namespace Shopping
         protected void Button2_Click(object sender, EventArgs e)
         {
             HttpCookie usecookie = new HttpCookie("buy");
-            if (DropDownList1.SelectedValue == "黑")
+            if (DropDownList2.SelectedValue == "黑")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -66,7 +66,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "白")
+            else if (DropDownList2.SelectedValue == "白")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -74,7 +74,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "綠")
+            else if (DropDownList2.SelectedValue == "綠")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -82,7 +82,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "橘")
+            else if (DropDownList2.SelectedValue == "橘")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -98,7 +98,7 @@ namespace Shopping
         protected void Button3_Click(object sender, EventArgs e)
         {
             HttpCookie usecookie = new HttpCookie("buy");
-            if (DropDownList1.SelectedValue == "白")
+            if (DropDownList3.SelectedValue == "白")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -106,7 +106,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "灰")
+            else if (DropDownList3.SelectedValue == "灰")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -114,7 +114,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "杏")
+            else if (DropDownList3.SelectedValue == "杏")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -122,7 +122,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "咖啡")
+            else if (DropDownList3.SelectedValue == "咖啡")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -130,7 +130,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "黑")
+            else if (DropDownList3.SelectedValue == "黑")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -145,7 +145,7 @@ namespace Shopping
         protected void Button4_Click(object sender, EventArgs e)
         {
             HttpCookie usecookie = new HttpCookie("buy");
-            if (DropDownList1.SelectedValue == "紅")
+            if (DropDownList4.SelectedValue == "紅")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -153,7 +153,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "綠")
+            else if (DropDownList4.SelectedValue == "綠")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -161,7 +161,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "黑")
+            else if (DropDownList4.SelectedValue == "黑")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -169,7 +169,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "白")
+            else if (DropDownList4.SelectedValue == "白")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -184,7 +184,7 @@ namespace Shopping
         protected void Button5_Click(object sender, EventArgs e)
         {
             HttpCookie usecookie = new HttpCookie("buy");
-            if (DropDownList1.SelectedValue == "粉")
+            if (DropDownList5.SelectedValue == "粉")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -192,7 +192,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "灰")
+            else if (DropDownList5.SelectedValue == "灰")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -200,7 +200,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "黑")
+            else if (DropDownList5.SelectedValue == "黑")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -215,7 +215,7 @@ namespace Shopping
         protected void Button6_Click(object sender, EventArgs e)
         {
             HttpCookie usecookie = new HttpCookie("buy");
-            if (DropDownList1.SelectedValue == "黑")
+            if (DropDownList6.SelectedValue == "黑")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -223,7 +223,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "紅")
+            else if (DropDownList6.SelectedValue == "紅")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -238,7 +238,7 @@ namespace Shopping
         protected void Button7_Click(object sender, EventArgs e)
         {
             HttpCookie usecookie = new HttpCookie("buy");
-            if (DropDownList1.SelectedValue == "杏")
+            if (DropDownList7.SelectedValue == "杏")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -246,7 +246,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "白")
+            else if (DropDownList7.SelectedValue == "白")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -254,7 +254,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "紅")
+            else if (DropDownList7.SelectedValue == "紅")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -270,7 +270,7 @@ namespace Shopping
         protected void Button8_Click(object sender, EventArgs e)
         {
             HttpCookie usecookie = new HttpCookie("buy");
-            if (DropDownList1.SelectedValue == "白")
+            if (DropDownList8.SelectedValue == "白")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -278,7 +278,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "黑")
+            else if (DropDownList8.SelectedValue == "黑")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
@@ -286,7 +286,7 @@ namespace Shopping
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
-            else if (DropDownList1.SelectedValue == "粉")
+            else if (DropDownList8.SelectedValue == "粉")
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);

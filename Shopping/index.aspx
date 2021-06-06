@@ -434,7 +434,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<asp:Label ID="Label14" runat="server" Text="售價："></asp:Label>
 								<asp:Label ID="Label15" runat="server" Text="980"></asp:Label><br>
 								<asp:DropDownList ID="DropDownList7" runat="server">
-									<asp:ListItem>灰</asp:ListItem>
+									<asp:ListItem>杏</asp:ListItem>
 									<asp:ListItem>白</asp:ListItem>
                                     <asp:ListItem>紅</asp:ListItem>
                                 </asp:DropDownList>

@@ -48,9 +48,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="col-sm-4 number">
 					<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000<br>
-                    <br>
-				    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><br>
-                    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
 				</div>
 				<div class="col-sm-4 logo">
 					<a href="index"><img src="images/logo.png" alt=""></a>	
@@ -303,73 +300,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<h1>Checkout</h1>
     	    
     <asp:Table id="Table1" runat="server"
-        CellPadding="10" 
         GridLines="Both"
-        HorizontalAlign="Center">
-        <asp:TableRow>
-            <asp:TableCell>
+        HorizontalAlign="Center" Font-Size="X-Large">
+        <asp:TableRow HorizontalAlign="Center">
+            <asp:TableCell ForeColor="#52D0C4">
             </asp:TableCell>
-            <asp:TableCell>
+            <asp:TableCell ForeColor="#52D0C4">
                 產品名稱
-            </asp:TableCell>
-            <asp:TableCell>
+            </asp:TableCell >
+            <asp:TableCell ForeColor="#52D0C4">
                 顏色
             </asp:TableCell>
-            <asp:TableCell>
+            <asp:TableCell ForeColor="#52D0C4">
                 數量
             </asp:TableCell>
-            <asp:TableCell>
+            <asp:TableCell ForeColor="#52D0C4">
                 金額
             </asp:TableCell>
+            <asp:TableCell ForeColor="#52D0C4">
+            </asp:TableCell>
         </asp:TableRow>
-    </asp:Table>
-
-        <table >
-		  <tr>
-			<th>Item</th>
-			<th>Qty</th>		
-			<th>Prices</th>
-			<th>Delery Detials</th>
-			<th>Subtotal</th>
-		  </tr>
-		  <tr>
-			<td class="ring-in"><a href="single.html" class="at-in"><img src="images/ce.jpg" class="img-responsive" alt=""></a>
-			<div class="sed">
-				<h5>Sed ut perspiciatis unde</h5>
-				<p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium) </p>
-			
-			</div>
-			<div class="clearfix"> </div></td>
-			<td class="check"><input type="text" value="1" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}"></td>		
-			<td>$100.00</td>
-			<td>FREE SHIPPING</td>
-			<td>$100.00</td>
-		  </tr>
-		  <tr>
-		  <td class="ring-in"><a href="single.html" class="at-in"><img src="images/ce1.jpg" class="img-responsive" alt=""></a>
-			<div class="sed">
-				<h5>Sed ut perspiciatis unde</h5>
-				<p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium ) </p>
-			</div>
-			<div class="clearfix"> </div></td>
-			<td class="check"><input type="text" value="1" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}"></td>		
-			<td>$200.00</td>
-			<td>FREE SHIPPING</td>
-			<td>$200.00</td>
-		  </tr>
-		  <tr>
-		  <td class="ring-in"><a href="single.html" class="at-in"><img src="images/ce2.jpg" class="img-responsive" alt=""></a>
-			<div class="sed">
-				<h5>Sed ut perspiciatis unde</h5>
-				<p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium) </p>
-			</div>
-			<div class="clearfix"> </div></td>
-			<td class="check"><input type="text" value="1" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}"></td>		
-			<td>$150.00</td>
-			<td>FREE SHIPPING</td>
-			<td>$150.00</td>
-		  </tr>
-	</table>
+    </asp:Table>  
 	<a href="#" class=" to-buy">PROCEED TO BUY</a>
 	<div class="clearfix"> </div>
     </div>
