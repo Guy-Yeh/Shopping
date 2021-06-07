@@ -57,8 +57,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-sm-4 header-left">		
 				<p class="log"><a href="account.html">登錄</a> <a href="account.html">註冊</a></p>
 				<asp:Label ID="Label1" runat="server" Text="消費金額：" ></asp:Label>
-				<asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/cart.png" style="float:right" /><br>
-                <asp:Button ID="Button9" runat="server" Text="清空購物車" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="87px" style="float:right" OnClick="Button9_Click"/>
+				<asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/cart.png" style="float:right" OnClick="ImageButton1_Click" /><br>
+                <asp:Button ID="Button1" runat="server" Text="清空購物車" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="87px" style="float:right" OnClick="Button1_Click"/>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
@@ -293,15 +293,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container">
         <div class="col-md-9">
             <div class="col-md-5 grid">
-				<asp:Image ID="Image1" runat="server" ImageUrl="images\衣服\281901701-領造型線T\S__77931623.jpg" data-imagezoom="true" Height="100%" Width="100%" />                        
+				<asp:Image ID="Image1" runat="server" data-imagezoom="true" Height="100%" Width="100%" />                        
 			</div>
             <div class="col-md-7 single-top-in">
                     <div class="single-para simpleCart_shelfItem">
-                        <h1>產品名稱</h1>
+                        <h1>
+                            <asp:Label ID="Label4" runat="server" Text=""></asp:Label></h1>
                         <p>產品註解</p>
                         <div class="clearfix"></div>
                     </div>
-                    <label class="add-to item_price">產品金額</label>
+					<asp:Label ID="Label3" runat="server" Text="產品金額：" Font-Size="X-Large"></asp:Label>
+					<asp:Label ID="Label2" runat="server" Text="" Font-Size="X-Large"></asp:Label>
                     <div class="available">
                         <ul>
 
@@ -315,7 +317,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </asp:SqlDataSource></li>
                         </ul>
 					</div>
-				<a href="#" class="cart item_add">加入購物車</a>
+					<asp:Button ID="Button2" runat="server" Text="放入購物車" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right"/>
 				</div>
 			</div>
                     <div class="clearfix"></div>

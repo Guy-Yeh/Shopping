@@ -46,23 +46,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="header">
 	<div class="header-top">
 		<div class="container">
-		<div class="col-sm-4 number">
-					<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
-				    <asp:Label ID="Label18" runat="server" Text="Label"></asp:Label>
-				</div>
-				<div class="col-sm-4 logo">
-					<a href="index"><img src="images/logo.png" alt=""></a>	
-				</div>
+			<div class="col-sm-4 number">
+				<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
+				   <asp:Label ID="Label18" runat="server" Text="Label"></asp:Label>
+			</div>
+			<div class="col-sm-4 logo">
+				<a href="index"><img src="images/logo.png" alt=""></a>	
+			</div>
 		
 			<div class="col-sm-4 header-left">		
-				<p class="log"><a href="account.html">登錄</a> <a href="account.html">註冊</a></p>
+				<p class="log">
+					<a href="account.html">登錄</a><br>
+					<a href="account.html">註冊</a>
+
+				</p>
 				<asp:Label ID="Label1" runat="server" Text="消費金額：" ></asp:Label>
-				<asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/cart.png" style="float:right" /><br>
+				<asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/cart.png" style="float:right" OnClick="ImageButton1_Click" /><br>
                 <asp:Button ID="Button9" runat="server" Text="清空購物車" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="87px" style="float:right" OnClick="Button9_Click"/>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
-		</div>
+	</div>
 		<div class="container">
 			<div class="head-top">
 				<div class="col-sm-2 number">
@@ -336,7 +340,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					</div>
 				</div>	
-			<div class="col-md-3 col-md2">
+				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 							<asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/images\衣服\281901708-袖滾配色t\S__49840211.jpg" Height="100%" Width="100%" OnClick="ImageButton3_Click" />
 						<div class="price">
@@ -354,7 +358,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 					</div>
 				</div>	
-			<div class="col-md-3 col-md2">
+				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 							<asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="~/images\衣服\281901715-剪裁T\S__49840159.jpg" Height="100%" Width="100%" OnClick="ImageButton4_Click" />
 						<div class="price">
@@ -373,7 +377,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 					</div>
 				</div>	
-			<div class="col-md-3 col-md2">
+				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 							<asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="~/images\衣服\281901801-細肩露肩t\S__49840130.jpg" Height="100%" Width="100%" OnClick="ImageButton5_Click" />
 						<div class="price">
@@ -381,22 +385,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<asp:Label ID="Label9" runat="server" Text="1000"></asp:Label><br>
 								<asp:DropDownList ID="DropDownList4" runat="server">
 									<asp:ListItem>白</asp:ListItem>
-									<asp:ListItem>灰</asp:ListItem>
+									<asp:ListItem>綠</asp:ListItem>
                                     <asp:ListItem>紅</asp:ListItem>
                                     <asp:ListItem>黑</asp:ListItem>
                                 </asp:DropDownList>
 								<asp:Button ID="Button4" runat="server" Text="放入購物車" OnClick="Button4_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" />
 								<div class="clearfix"> </div>
-						</div>
-						
+						</div>						
 					</div>
 				</div>	
-			<div class="clearfix"> </div>
-			</div>	
+				<div class="clearfix"> </div>
+			</div>
 			<div class="content-top1">
 				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-							<asp:ImageButton ID="ImageButton6" runat="server" ImageUrl="~/images\衣服\281902805-胸抓摺衫\S__49954893.jpg" CssClass="img-responsive" Enabled="False" Height="100%" Width="100%" OnClick="ImageButton6_Click" />
+							<asp:ImageButton ID="ImageButton6" runat="server" ImageUrl="~/images\衣服\281902805-胸抓摺衫\S__49954893.jpg" Height="100%" Width="100%" OnClick="ImageButton6_Click" />
 						<div class="price">
 								<asp:Label ID="Label10" runat="server" Text="售價："></asp:Label>
 								<asp:Label ID="Label11" runat="server" Text="980"></asp:Label><br>
@@ -411,7 +414,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 					</div>
 				</div>	
-			<div class="col-md-3 col-md2">
+				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 							<asp:ImageButton ID="ImageButton7" runat="server" ImageUrl="~/images\衣服\281904506-格紋澎袖衫\S__49954861.jpg" Height="100%" Width="100%" OnClick="ImageButton7_Click" />
 						<div class="price">
@@ -427,14 +430,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 					</div>
 				</div>	
-			<div class="col-md-3 col-md2">
+				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 							<asp:ImageButton ID="ImageButton8" runat="server" ImageUrl="~/images\衣服\281906305-中抓摺雪紡衫\S__50069542.jpg" Height="100%" Width="100%" OnClick="ImageButton8_Click" />
 						<div class="price">
 								<asp:Label ID="Label14" runat="server" Text="售價："></asp:Label>
 								<asp:Label ID="Label15" runat="server" Text="980"></asp:Label><br>
 								<asp:DropDownList ID="DropDownList7" runat="server">
-									<asp:ListItem>灰</asp:ListItem>
+									<asp:ListItem>杏</asp:ListItem>
 									<asp:ListItem>白</asp:ListItem>
                                     <asp:ListItem>紅</asp:ListItem>
                                 </asp:DropDownList>
@@ -445,7 +448,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 					</div>
 				</div>	
-			<div class="col-md-3 col-md2">
+				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 							<asp:ImageButton ID="ImageButton9" runat="server" ImageUrl="~/images\衣服\281905801-滾邊寬袖衫\S__50200586.jpg" Height="100%" Width="100%" OnClick="ImageButton9_Click" />
 						<div class="price">
@@ -462,7 +465,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 					</div>
 				</div>	
-			<div class="clearfix"> </div>
+				<div class="clearfix"> </div>
 			</div>	
 		</div>
 	</div>

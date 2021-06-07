@@ -71,8 +71,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li class=" grid"><a  href="managerhome">首頁</a></li>	
-				      <li><a  href="manageraccount">帳戶</a><div class="mepanel">
+					  <li><a  href="managerhome">首頁</a></li>	
+				      <li><a  href="manageraccount">帳戶</a>
+				      	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
 								<div class="h_nav">
@@ -129,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a  href="managerproduct">	產品</a>
+				    <li class="grid"><a  href="managerproduct">產品</a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -191,7 +192,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a class="color6" href="managercontact">回覆訊息</a></li>
 			  </ul> 
 			</div>
-				<div class="col-md-2 search">		
+				<div class="col-md-2 search"><a class="play-icon popup-with-zoom-anim" href="#small-dialog">
+					<i class="glyphicon glyphicon-search"> </i> </a>
+		</div>	
 			<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a>
 		</div>
 		<div class="clearfix"> </div>
@@ -205,8 +208,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>				
 				</div>		
 	<!---->		
-		</div>
-	</div>
+		
+	
 </div>
 <!---->
 <div class="single">
@@ -228,9 +231,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="h_nav">	
 									<h4>Reply Message</h4>
 									<ul>
-										<li><input type="text" id="contactID" name="contactID" class="form-control" placeholder="ID" ></li>
+										<li>
+                                            <asp:DropDownList ID="DDLContactID" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceChat" DataTextField="ID" DataValueField="ID"><asp:ListItem Value="0">ID</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceChat" runat="server" ConnectionString="<%$ ConnectionStrings:ChatConnectionString %>" SelectCommand="SELECT [ID] FROM [Chat]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintID" runat="server" Text=""></asp:Label></li>
 										<br>
-										<li> <textarea rows="5" id="contactresponse" name="contactresponse" class="form-control" placeholder="Response" ></textarea></li>
+										<li> <textarea rows="5" id="contactresponse" name="contactresponse" class="form-control" placeholder="response" ></textarea></li>
+										<li><asp:Label ID="hintResponse" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li>
                                             <asp:Button ID="response" runat="server" Text="submit" OnClick="Button1_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
@@ -245,6 +253,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Search by Account</h4>
 									<ul>
 										<li><input type="text" id="searchaccount" name="searchaccount" class="form-control" placeholder="account" ></li>
+										<li><asp:Label ID="hintSearch" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li>
                                             <asp:Button ID="search" runat="server" Text="submit" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
@@ -254,13 +263,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="col1">
 								<div class="h_nav">
-									<h4>Show All Message</h4>
+									<h4>Show Message by Date Range </h4>
 									<ul>
+										<li><asp:DropDownList ID="DDLYearS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceYears" DataTextField="years" DataValueField="years"><asp:ListItem Value="0">StartYear</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceYears" runat="server" ConnectionString="<%$ ConnectionStrings:YearsConnectionString %>" SelectCommand="SELECT [years] FROM [Years]"></asp:SqlDataSource>
+                                        </li>
+										<br>
+										<li><asp:DropDownList ID="DDLMonthS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceMonth" DataTextField="months" DataValueField="months"><asp:ListItem Value="0">StartMonth</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceMonth" runat="server" ConnectionString="<%$ ConnectionStrings:MonthsConnectionString %>" SelectCommand="SELECT [months] FROM [Months]"></asp:SqlDataSource>
+                                        </li>
+										<br>
+										<li><asp:DropDownList ID="DDLDayS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceDay" DataTextField="days" DataValueField="days"><asp:ListItem Value="0">StartDay</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceDay" runat="server" ConnectionString="<%$ ConnectionStrings:DaysConnectionString %>" SelectCommand="SELECT [days] FROM [Days]"></asp:SqlDataSource>
+                                        </li>
+										<br>
+										<br>
+										<li><asp:DropDownList ID="DDLYearE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceYears" DataTextField="years" DataValueField="years"><asp:ListItem Value="0">EndYear</asp:ListItem></asp:DropDownList></li>
+										<br>
+										<li><asp:DropDownList ID="DDLMonthE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceMonth" DataTextField="months" DataValueField="months"><asp:ListItem Value="0">EndMonth</asp:ListItem></asp:DropDownList></li>
+										<br>
+										<li><asp:DropDownList ID="DDLDayE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceDay" DataTextField="days" DataValueField="days"><asp:ListItem Value="0">EndDay</asp:ListItem></asp:DropDownList></li>
+										<li><asp:Label ID="hintDate" runat="server" Text=""></asp:Label></li>
+										<br>
 										<li>
-                                            <asp:Button ID="showall" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
+                                            <asp:Button ID="show" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
                                         </li>
 									</ul>	
-								</div>												
+								</div>	
+								<br>
+								<br>
 							</div>
 						  </div>
 						</div>
@@ -270,6 +301,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!----->
 
 		<div class="clearfix"> </div>
+	
 	</div>
 	</div>
 <!--footer-->
@@ -277,13 +309,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="footer-top">
 			<div class="col-md-8 top-footer">
-				
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.91163207516!2d2.3470599!3d48.85885894999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C+France!5e0!3m2!1sen!2sin!4v1436340519910" allowfullscreen=""></iframe>
 			</div>
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>
+					<form>
 						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
 						<input type="submit" value="SUBSCRIBE">
-					</div>
+					</form>
+			</div>
 			<div class="clearfix"> </div>	
 		</div>	
 	</div>
@@ -340,68 +374,67 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 	</div>
 </div>
-    </form>
 <!-- slide -->
 <script src="js/jquery.min.js"></script>
 <script src="js/imagezoom.js"></script>
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script>$(document).ready(function () { $(".memenu").memenu(); });</script>
 <script src="js/simpleCart.min.js"> </script>
 <!--initiate accordion-->
 						<script type="text/javascript">
-							$(function() {
-							    var menu_ul = $('.menu-drop > li > ul'),
-							           menu_a  = $('.menu-drop > li > a');
-							    menu_ul.hide();
-							    menu_a.click(function(e) {
-							        e.preventDefault();
-							        if(!$(this).hasClass('active')) {
-							            menu_a.removeClass('active');
-							            menu_ul.filter(':visible').slideUp('normal');
-							            $(this).addClass('active').next().stop(true,true).slideDown('normal');
-							        } else {
-							            $(this).removeClass('active');
-							            $(this).next().stop(true,true).slideUp('normal');
-							        }
-							    });
-							
-							});
-						</script>
+                            $(function () {
+                                var menu_ul = $('.menu-drop > li > ul'),
+                                    menu_a = $('.menu-drop > li > a');
+                                menu_ul.hide();
+                                menu_a.click(function (e) {
+                                    e.preventDefault();
+                                    if (!$(this).hasClass('active')) {
+                                        menu_a.removeClass('active');
+                                        menu_ul.filter(':visible').slideUp('normal');
+                                        $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                                    } else {
+                                        $(this).removeClass('active');
+                                        $(this).next().stop(true, true).slideUp('normal');
+                                    }
+                                });
+
+                            });
+                        </script>
 						<!-- FlexSlider -->
   <script defer src="js/jquery.flexslider.js"></script>
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 
 <script>
-// Can also be used with $(document).ready()
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide",
-    controlNav: "thumbnails"
-  });
-});
+    // Can also be used with $(document).ready()
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: "thumbnails"
+        });
+    });
 </script>
 <!---pop-up-box---->
 					<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
 					<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
 					<!---//pop-up-box---->
 					 <script>
-						$(document).ready(function() {
-						$('.popup-with-zoom-anim').magnificPopup({
-							type: 'inline',
-							fixedContentPos: false,
-							fixedBgPos: true,
-							overflowY: 'auto',
-							closeBtnInside: true,
-							preloader: false,
-							midClick: true,
-							removalDelay: 300,
-							mainClass: 'my-mfp-zoom-in'
-						});
-																						
-						});
-				</script>	
+                         $(document).ready(function () {
+                             $('.popup-with-zoom-anim').magnificPopup({
+                                 type: 'inline',
+                                 fixedContentPos: false,
+                                 fixedBgPos: true,
+                                 overflowY: 'auto',
+                                 closeBtnInside: true,
+                                 preloader: false,
+                                 midClick: true,
+                                 removalDelay: 300,
+                                 mainClass: 'my-mfp-zoom-in'
+                             });
+
+                         });
+                     </script>	
 </form>
 </body>
 </html>

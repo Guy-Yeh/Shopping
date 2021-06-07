@@ -151,6 +151,7 @@
     <Content Include="fonts\Roboto-Regular.ttf" />
     <Content Include="Customer\Customer.Master" />
     <Content Include="verification.aspx" />
+    <Content Include="WebUserControl1.ascx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="images\1.jpg" />
     <Content Include="images\2.jpg" />
@@ -377,6 +378,13 @@
     </Compile>
     <Compile Include="verification.aspx.designer.cs">
       <DependentUpon>verification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebUserControl1.ascx.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebUserControl1.ascx.designer.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
