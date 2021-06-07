@@ -16,6 +16,14 @@ namespace Shopping
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.Cookies["quantity"] == null)
+                Response.Cookies["quantity"].Value = "0";
+
+            if (Request.Cookies["cart"] != null)
+                Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;
+            else
+                Label1.Text = " 總金額：" + "0";
+
             if (Request.Cookies["buy"] != null) {
                 for (int i = 0; i < Convert.ToInt32(Request.Cookies["quantity"].Value); i++)
                 {
@@ -50,7 +58,9 @@ namespace Shopping
                             c5.Controls.Add(new LiteralControl($"{read1[5].ToString()}"));
                             r1.Cells.Add(c5);
                             TableCell c6 = new TableCell();
-                            c5.Controls.Add(new LiteralControl());
+                            Button button = new Button();
+                            button.Text = "刪除";
+                            c6.Controls.Add(button);
                             r1.Cells.Add(c6);
                         }
                     }                   
@@ -62,10 +72,45 @@ namespace Shopping
                 c7.Controls.Add(new LiteralControl("總金額："));
                 r2.Cells.Add(c7);
                 TableCell c8 = new TableCell();
-                c8.Controls.Add(new LiteralControl(Request.Cookies["cart"].Value));
+                c8.Controls.Add(new LiteralControl());
                 r2.Cells.Add(c8);
+                TableCell c9 = new TableCell();
+                c9.Controls.Add(new LiteralControl());
+                r2.Cells.Add(c9);
+                TableCell c10 = new TableCell();
+                c10.Controls.Add(new LiteralControl());
+                r2.Cells.Add(c10);
+                TableCell c11 = new TableCell();
+                c11.Controls.Add(new LiteralControl(Request.Cookies["cart"].Value));
+                r2.Cells.Add(c11);
+                TableCell c12 =new TableCell();
+                c12.Controls.Add(new LiteralControl());
+                r2.Cells.Add(c12);
                 Table1.Rows.Add(r2);
+
             }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            HttpCookie cookie = Request.Cookies["buy"];
+            if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now.AddDays(-2);
+                Response.Cookies.Set(cookie);
+            }
+            Response.Cookies["cart"].Value = "0";
+            Response.Redirect("shoppingcar");
+        }
+
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("shoppingcar");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("payment");
         }
     }
 }
