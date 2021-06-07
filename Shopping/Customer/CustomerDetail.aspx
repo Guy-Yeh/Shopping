@@ -15,10 +15,45 @@
 
                 <div class="col-md-4 login-left">
                     <div style="display: flex; justify-content: flex-end;">
-                        <img style="width: 200px; height: 200px;">
+                        <%--<img style="width: 200px; height: 200px;">--%>
+                        <label class="upload_cover">
+<input id="upload_input" type="file">
+<span class="upload_icon">➕</span>
+<i class="delAvatar fa fa-times-circle-o" title="刪除"></i>
+</label>
+<style>
+.upload_cover {
+position: relative;
+width: 200px;
+height: 200px;
+text-align: center;
+cursor: pointer;
+background: #efefef;
+border: 1px solid #595656;
+}
+#upload_input {
+display: none;
+}
+.upload_icon {
+font-weight: bold;
+font-size: 180%;
+position: absolute;
+left: 0;
+width: 100%;
+top: 20%;
+}
+.delAvatar {
+position: absolute;
+right: 2px;
+top: 2px;
+}
+</style>
                     </div>
                     <div style="display: flex; justify-content: flex-end; padding-top: 5px;">
-                        <a class="acount-btn" href="#">上傳檔案</a>
+                        <%--<a class="acount-btn" href="#">上傳檔案</a>--%>
+                        <label class="btn btn-info" style="background-color: #52d0c4">
+                            <input id="upload_img" style="display:none;" type="file">
+                            <i class="fa fa-photo"></i> 上傳圖片</label>
                     </div>
                 </div>
 
