@@ -28,6 +28,10 @@ namespace Shopping
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
+            //DataTable dt = new DataTable();
+            //dt.Load(read);
+            //product.DataSource = dt.AsDataView();
+            //product.DataBind();
             product.DataSource = read;
             product.DataBind();
             connection.Close();

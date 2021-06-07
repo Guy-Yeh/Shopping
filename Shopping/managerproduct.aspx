@@ -271,8 +271,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 		<div class="clearfix"> 
 			<br>
-            <asp:GridView ID="product" runat="server">
+            <asp:GridView ID="product" runat="server" >
+				
             </asp:GridView>
+			
                 </div>
 				<div id="small-dialog" class="mfp-hide">
 				<div class="search-top">
