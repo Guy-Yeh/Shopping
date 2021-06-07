@@ -20,7 +20,6 @@ namespace Shopping
                 Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;
             else
                 Label1.Text = " 總金額：" + "0";
-            Label18.Text = Request.Cookies["quantity"].Value;
             
         }
 
@@ -301,6 +300,12 @@ namespace Shopping
 
         protected void Button9_Click(object sender, EventArgs e)
         {
+            HttpCookie cookie = Request.Cookies["buy"];
+            if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now.AddDays(-2);
+                Response.Cookies.Set(cookie);
+            }
             Response.Cookies["cart"].Value = "0";
             Response.Redirect("index");
         }
@@ -351,6 +356,11 @@ namespace Shopping
         {
             Session["product"] = "滾邊寬袖衫";
             Response.Redirect("product");
+        }
+
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("shoppingcar");
         }
     }
 }

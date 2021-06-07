@@ -55,13 +55,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		
 			<div class="col-sm-4 header-left">		
 					<p class="log"><a href="account.html">登錄</a> <a href="account.html">註冊</a></p>
-					<div class="cart box_1">
-						<a href="shoppingcar">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+					<asp:Label ID="Label1" runat="server" Text="消費金額：" ></asp:Label>
+				    <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/cart.png" style="float:right" OnClick="ImageButton1_Click" /><br>
+                    <asp:Button ID="Button1" runat="server" Text="清空購物車" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="87px" style="float:right" OnClick="Button1_Click" />
 
 					</div>
 					<div class="clearfix"> </div>
@@ -296,9 +292,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--//header-->
 <!---->
 <div class="container">
-	<div class="check-out">
-		<h1>Checkout</h1>
-    	    
+	<div class="check-out">   	    
     <asp:Table id="Table1" runat="server"
         GridLines="Both"
         HorizontalAlign="Center" Font-Size="X-Large">
@@ -318,10 +312,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 金額
             </asp:TableCell>
             <asp:TableCell ForeColor="#52D0C4">
+                刪除
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>  
-	<a href="#" class=" to-buy">PROCEED TO BUY</a>
+    <asp:Button ID="Button2" runat="server" Text="確認購買" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" Font-Size="X-Large"/>
 	<div class="clearfix"> </div>
     </div>
 </div>
@@ -330,7 +325,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="footer-top">
 			<div class="col-md-8 top-footer">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.91163207516!2d2.3470599!3d48.85885894999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C+France!5e0!3m2!1sen!2sin!4v1436340519910" allowfullscreen=""></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.91163207516!2d2.3470599!3d48.85885894999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C+France!5e0!3m2!1sen!2sin!4v1436340519910" ></iframe>
 			</div>
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>
