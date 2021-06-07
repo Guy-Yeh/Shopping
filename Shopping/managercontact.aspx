@@ -71,8 +71,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li class=" grid"><a  href="managerhome">首頁</a></li>	
-				      <li><a  href="manageraccount">帳戶</a><div class="mepanel">
+					  <li><a  href="managerhome">首頁</a></li>	
+				      <li><a  href="manageraccount">帳戶</a>
+				      	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
 								<div class="h_nav">
@@ -129,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a  href="managerproduct">	產品</a>
+				    <li class="grid"><a  href="managerproduct">產品</a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -191,7 +192,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a class="color6" href="managercontact">回覆訊息</a></li>
 			  </ul> 
 			</div>
-				<div class="col-md-2 search">		
+				<div class="col-md-2 search"><a class="play-icon popup-with-zoom-anim" href="#small-dialog">
+					<i class="glyphicon glyphicon-search"> </i> </a>
+		</div>	
 			<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a>
 		</div>
 		<div class="clearfix"> </div>
@@ -205,8 +208,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>				
 				</div>		
 	<!---->		
-		</div>
-	</div>
+		
+	
 </div>
 <!---->
 <div class="single">
@@ -298,6 +301,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!----->
 
 		<div class="clearfix"> </div>
+	
 	</div>
 	</div>
 <!--footer-->
@@ -305,13 +309,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="footer-top">
 			<div class="col-md-8 top-footer">
-				
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.91163207516!2d2.3470599!3d48.85885894999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C+France!5e0!3m2!1sen!2sin!4v1436340519910" allowfullscreen=""></iframe>
 			</div>
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>
+					<form>
 						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
 						<input type="submit" value="SUBSCRIBE">
-					</div>
+					</form>
+			</div>
 			<div class="clearfix"> </div>	
 		</div>	
 	</div>
@@ -368,68 +374,67 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 	</div>
 </div>
-    </form>
 <!-- slide -->
 <script src="js/jquery.min.js"></script>
 <script src="js/imagezoom.js"></script>
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script>$(document).ready(function () { $(".memenu").memenu(); });</script>
 <script src="js/simpleCart.min.js"> </script>
 <!--initiate accordion-->
 						<script type="text/javascript">
-							$(function() {
-							    var menu_ul = $('.menu-drop > li > ul'),
-							           menu_a  = $('.menu-drop > li > a');
-							    menu_ul.hide();
-							    menu_a.click(function(e) {
-							        e.preventDefault();
-							        if(!$(this).hasClass('active')) {
-							            menu_a.removeClass('active');
-							            menu_ul.filter(':visible').slideUp('normal');
-							            $(this).addClass('active').next().stop(true,true).slideDown('normal');
-							        } else {
-							            $(this).removeClass('active');
-							            $(this).next().stop(true,true).slideUp('normal');
-							        }
-							    });
-							
-							});
-						</script>
+                            $(function () {
+                                var menu_ul = $('.menu-drop > li > ul'),
+                                    menu_a = $('.menu-drop > li > a');
+                                menu_ul.hide();
+                                menu_a.click(function (e) {
+                                    e.preventDefault();
+                                    if (!$(this).hasClass('active')) {
+                                        menu_a.removeClass('active');
+                                        menu_ul.filter(':visible').slideUp('normal');
+                                        $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                                    } else {
+                                        $(this).removeClass('active');
+                                        $(this).next().stop(true, true).slideUp('normal');
+                                    }
+                                });
+
+                            });
+                        </script>
 						<!-- FlexSlider -->
   <script defer src="js/jquery.flexslider.js"></script>
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 
 <script>
-// Can also be used with $(document).ready()
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide",
-    controlNav: "thumbnails"
-  });
-});
+    // Can also be used with $(document).ready()
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: "thumbnails"
+        });
+    });
 </script>
 <!---pop-up-box---->
 					<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
 					<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
 					<!---//pop-up-box---->
 					 <script>
-						$(document).ready(function() {
-						$('.popup-with-zoom-anim').magnificPopup({
-							type: 'inline',
-							fixedContentPos: false,
-							fixedBgPos: true,
-							overflowY: 'auto',
-							closeBtnInside: true,
-							preloader: false,
-							midClick: true,
-							removalDelay: 300,
-							mainClass: 'my-mfp-zoom-in'
-						});
-																						
-						});
-				</script>	
+                         $(document).ready(function () {
+                             $('.popup-with-zoom-anim').magnificPopup({
+                                 type: 'inline',
+                                 fixedContentPos: false,
+                                 fixedBgPos: true,
+                                 overflowY: 'auto',
+                                 closeBtnInside: true,
+                                 preloader: false,
+                                 midClick: true,
+                                 removalDelay: 300,
+                                 mainClass: 'my-mfp-zoom-in'
+                             });
+
+                         });
+                     </script>	
 </form>
 </body>
 </html>

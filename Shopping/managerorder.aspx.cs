@@ -20,6 +20,19 @@ namespace Shopping
             SqlConnection connect = new SqlConnection(x);
             return connect;
         }
+
+        public void reviewOrder()
+        {
+            SqlConnection connection = Connect(s_data);
+            string sql = $"select * from Orders";
+            SqlCommand command = new SqlCommand(sql, connection);
+            connection.Open();
+            SqlDataReader read = command.ExecuteReader();
+            userorder.DataSource = read;
+            userorder.DataBind();
+            connection.Close();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             hintCustomerID.Text = "";
@@ -31,14 +44,7 @@ namespace Shopping
             hintID2.Text = "選擇即將更新的orderID";
             hintColumn.Text = "選擇即將更新的欄位";
             hintAll.Text = "輸入更新的值";
-            SqlConnection connection = Connect(s_data);
-            string sql = $"select * from Orders";
-            SqlCommand command = new SqlCommand(sql, connection);
-            connection.Open();
-            SqlDataReader read = command.ExecuteReader();
-            userorder.DataSource = read;
-            userorder.DataBind();
-            connection.Close();
+            reviewOrder();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -83,6 +89,7 @@ namespace Shopping
                                 command2.ExecuteNonQuery();
                                 MessageBox.Show("輸入成功");
                                 connection2.Close();
+                                reviewOrder();
                             }
                             else
                             {
@@ -123,6 +130,7 @@ namespace Shopping
                 command3.ExecuteNonQuery();
                 MessageBox.Show("刪除成功");
                 connection3.Close();
+                reviewOrder();
             }
             else
             {
@@ -163,6 +171,7 @@ namespace Shopping
                             command6.ExecuteNonQuery();
                             MessageBox.Show("更新成功");
                             connection6.Close();
+                            reviewOrder();
                         }
                         connection7.Open();
                     }
@@ -192,6 +201,7 @@ namespace Shopping
                                     MessageBox.Show("更新成功");
                                     connection8.Close();
                                     connection9.Close();
+                                    reviewOrder();
                                 }
 
                             }
@@ -215,6 +225,7 @@ namespace Shopping
                                     MessageBox.Show("更新成功");
                                     connection8.Close();
                                     connection9.Close();
+                                    reviewOrder();
                                 }
                             }
 
@@ -239,6 +250,7 @@ namespace Shopping
                             command6.ExecuteNonQuery();
                             MessageBox.Show("更新成功");
                             connection6.Close();
+                            reviewOrder();
                         }
                         else
                         {
@@ -261,6 +273,7 @@ namespace Shopping
                             command6.ExecuteNonQuery();
                             MessageBox.Show("更新成功");
                             connection6.Close();
+                            reviewOrder();
                         }
                         else
                         {
@@ -275,6 +288,7 @@ namespace Shopping
                         command6.ExecuteNonQuery();
                         MessageBox.Show("更新成功");
                         connection6.Close();
+                        reviewOrder();
                     }
                 }
                 else

@@ -19,7 +19,21 @@ namespace Shopping
             SqlConnection connect= new SqlConnection(x);
             return connect;
         }
-        
+        public void reviewAccount()
+        {
+            SqlConnection connection = Connect(s_data);
+            string sql = $"select * from Customers";
+            SqlCommand command = new SqlCommand(sql, connection);
+            connection.Open();
+            SqlDataReader read = command.ExecuteReader();
+            useraccount.DataSource = read;
+            useraccount.DataBind();
+            connection.Close();
+
+        }
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             hintAccount.Text = "";
@@ -31,14 +45,7 @@ namespace Shopping
             hintID2.Text = "選擇即將更新的accountID";
             hintColumn.Text = "選擇即將更新的欄位";
             hintAll.Text = "輸入更新的值";
-            SqlConnection connection = Connect(s_data);
-            string sql = $"select * from Customers";
-            SqlCommand command = new SqlCommand(sql, connection);
-            connection.Open();
-            SqlDataReader read = command.ExecuteReader();
-            useraccount.DataSource = read;
-            useraccount.DataBind();
-            connection.Close();
+            reviewAccount();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -98,6 +105,7 @@ namespace Shopping
                                                 command2.ExecuteNonQuery();
                                                 MessageBox.Show("輸入成功");
                                                 connection2.Close();
+                                                reviewAccount();
                                             }
                                             else
                                             {
@@ -108,6 +116,7 @@ namespace Shopping
                                                 command2.ExecuteNonQuery();
                                                 MessageBox.Show("輸入成功");
                                                 connection2.Close();
+                                                reviewAccount();
                                             }
                                         }
                                         else
@@ -173,6 +182,7 @@ namespace Shopping
                 command3.ExecuteNonQuery();
                 MessageBox.Show("刪除成功");
                 connection3.Close();
+                reviewAccount();
             }
             else
             {
@@ -212,11 +222,8 @@ namespace Shopping
                                 if (phoneCheck == true)
                                 {
                                     
-                                    SqlCommand command6 = new SqlCommand(sql6, connection6);
-                                    connection6.Open();
-                                    command6.ExecuteNonQuery();
-                                    MessageBox.Show("更新成功");
-                                    connection6.Close();
+                                    
+                                    reviewAccount();
                                 }
                                 else
                                 {
@@ -232,6 +239,7 @@ namespace Shopping
                                     command6.ExecuteNonQuery();
                                     MessageBox.Show("更新成功");
                                     connection6.Close();
+                                    reviewAccount();
                                 }
                                 else
                                 {
@@ -245,6 +253,7 @@ namespace Shopping
                                 command6.ExecuteNonQuery();
                                 MessageBox.Show("更新成功");
                                 connection6.Close();
+                                reviewAccount();
                             }
                         }
                         connection7.Close();
@@ -258,6 +267,7 @@ namespace Shopping
                             command6.ExecuteNonQuery();
                             MessageBox.Show("更新成功");
                             connection6.Close();
+                            reviewAccount();
                         }
                         else
                         {
@@ -271,6 +281,7 @@ namespace Shopping
                         command6.ExecuteNonQuery();
                         MessageBox.Show("更新成功");
                         connection6.Close();
+                        reviewAccount();
                     }
                 }
                 else

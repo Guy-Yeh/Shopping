@@ -149,6 +149,7 @@
     <Content Include="fonts\OleoScript-Regular.ttf" />
     <Content Include="fonts\Roboto-Regular.ttf" />
     <Content Include="Customer\Customer.Master" />
+    <Content Include="userproduct.ascx" />
     <Content Include="verification.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="images\1.jpg" />
@@ -355,6 +356,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="userproduct.ascx.cs">
+      <DependentUpon>userproduct.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userproduct.ascx.designer.cs">
+      <DependentUpon>userproduct.ascx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
