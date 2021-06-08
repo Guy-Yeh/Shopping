@@ -41,6 +41,8 @@ namespace Shopping
             hintPhone.Text = "";
             hintEmail.Text = "";
             hintDiscount.Text = "";
+            hintCity.Text = "";
+            hintRegion.Text = "";
             hintID.Text = "選擇即將刪除的accountID";
             hintID2.Text = "選擇即將更新的accountID";
             hintColumn.Text = "選擇即將更新的欄位";
@@ -94,34 +96,34 @@ namespace Shopping
                                 {
                                     if (emailCheck == true)
                                     {
-                                        if (discountCheck == true || TextBox10.Text == "")
+                                        if (DDLCity.SelectedItem.Text != "請選擇縣市")
                                         {
-                                            if (TextBox10.Text == "")
+                                            if(DDLRegion.SelectedItem.Text != "請選擇區域")
                                             {
-                                                string sql2 = $"insert into [Customers](account,password,name,phone,email,address,discount) values('{TextBox1.Text}','{TextBox2.Text}','{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox11.Text}','')";
-                                                SqlConnection connection2 = Connect(s_data);
-                                                SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                                connection2.Open();
-                                                command2.ExecuteNonQuery();
-                                                MessageBox.Show("輸入成功");
-                                                connection2.Close();
-                                                reviewAccount();
+                                                if (discountCheck == true || TextBox10.Text == "")
+                                                {
+                                                    string sql2 = $"insert into [Customers](account,password,name,phone,email,address,discount) values('{TextBox1.Text}','{TextBox2.Text}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}',N'{DDLCity.Text + DDLRegion.Text + TextBox11.Text}','{TextBox10.Text}')";
+                                                    SqlConnection connection2 = Connect(s_data);
+                                                    SqlCommand command2 = new SqlCommand(sql2, connection2);
+                                                    connection2.Open();
+                                                    command2.ExecuteNonQuery();
+                                                    MessageBox.Show("輸入成功");
+                                                    connection2.Close();
+                                                    reviewAccount();
+                                                }
+                                                else
+                                                {
+                                                    hintDiscount.Text = "discount需為數字或空白 請確認";
+                                                }
                                             }
                                             else
                                             {
-                                                string sql2 = $"insert into [Customers](account,password,name,phone,email,address,discount) values('{TextBox1.Text}','{TextBox2.Text}','{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox11.Text}','{TextBox10.Text}')";
-                                                SqlConnection connection2 = Connect(s_data);
-                                                SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                                connection2.Open();
-                                                command2.ExecuteNonQuery();
-                                                MessageBox.Show("輸入成功");
-                                                connection2.Close();
-                                                reviewAccount();
+                                                hintRegion.Text = "請選擇項目";
                                             }
                                         }
                                         else
                                         {
-                                            hintDiscount.Text = "discount需為數字或空白 請確認";
+                                            hintCity.Text = "請選擇項目";
                                         }
                                     }
                                     else
@@ -196,7 +198,7 @@ namespace Shopping
             bool discountCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             bool phoneCheck = Regex.IsMatch(TextBox9.Text, @"^09[\d]{8}");
             bool emailCheck = Regex.IsMatch(TextBox9.Text, @"^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$");
-            string sql6 = $"update Customers SET {DDLUpdateCol.Text}='{TextBox9.Text}' where ID='{DDLUpdateAccount.Text}'";
+            string sql6 = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text}' where ID='{DDLUpdateAccount.Text}'";
             SqlConnection connection6 = Connect(s_data);
             string sql7 = $"select * from Customers where {DDLUpdateCol.Text}='{TextBox9.Text}'";
 
@@ -204,7 +206,7 @@ namespace Shopping
             {
                 if (DDLUpdateCol.SelectedItem.Text != "請選擇") 
                 {
-                    if(DDLUpdateCol.Text== "account" || DDLUpdateCol.Text == "phone" || DDLUpdateCol.Text== "email")
+                    if (DDLUpdateCol.Text == "account" || DDLUpdateCol.Text == "phone" || DDLUpdateCol.Text == "email")
                     {
                         SqlConnection connection7 = Connect(s_data);
                         SqlCommand command7 = new SqlCommand(sql7, connection7);
@@ -216,13 +218,13 @@ namespace Shopping
                         }
                         else
                         {
-                            
+
                             if (DDLUpdateCol.Text == "phone")
                             {
                                 if (phoneCheck == true)
                                 {
-                                    
-                                    
+
+
                                     reviewAccount();
                                 }
                                 else
@@ -274,6 +276,7 @@ namespace Shopping
                             hintAll.Text = "請輸入數字";
                         }
                     }
+
                     else
                     {
                         SqlCommand command6 = new SqlCommand(sql6, connection6);
@@ -294,6 +297,14 @@ namespace Shopping
             {
                 hintID2.Text = "請選擇項目";
             }
+   
+        }
+
+        protected void DDLCity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+            DDLRegion.Items.Clear(); 
+            DDLRegion.Items.Add("請選擇區域");
    
         }
     }

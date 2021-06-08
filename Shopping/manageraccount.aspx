@@ -226,7 +226,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:Label ID="hintEmail" runat="server" ForeColor="Black"></asp:Label></li>
 										<br>
 										<li><asp:Label ID="address" runat="server" Text="address"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox11" runat="server"></asp:TextBox></li>
+										<li><asp:DropDownList ID="DDLCity" runat="server" AutoPostBack="True"  AppendDataBoundItems="True" Width="190px" Height="30px" DataSourceID="SqlDataSourceCity" DataTextField="city" DataValueField="city" OnSelectedIndexChanged="DDLCity_SelectedIndexChanged"><asp:ListItem Value="0">請選擇縣市</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceCity" runat="server" ConnectionString="<%$ ConnectionStrings:CityConnectionString %>" SelectCommand="SELECT [city] FROM [City]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintCity" runat="server" ForeColor="Black"></asp:Label></li>
+										<br>
+										<li><asp:DropDownList ID="DDLRegion" runat="server" AppendDataBoundItems="True" Width="190px" Height="30px" DataSourceID="SqlDataSourceRegion" DataTextField="region" DataValueField="region"><asp:ListItem Value="0" Selected="True">請選擇區域</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceRegion" runat="server" ConnectionString="<%$ ConnectionStrings:RegionConnectionString %>" SelectCommand="SELECT [region] FROM [Region] WHERE ([city] = @city)">
+                                                <SelectParameters>
+                                                    <asp:ControlParameter ControlID="DDLCity" DefaultValue="DDLCity.Selected.Item" Name="city" PropertyName="SelectedValue" Type="String" />
+                                                </SelectParameters>
+                                            </asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintRegion" runat="server" ForeColor="Black"></asp:Label></li>
+										<br>
+										<li><asp:TextBox ID="TextBox11" runat="server" placeholder="請輸入縣市區域外的地址"></asp:TextBox></li>
 										<br>
 										<li><asp:Label ID="discount" runat="server" Text="discount"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox></li>
@@ -270,7 +284,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintAll" runat="server" Text="輸入更新的值"></asp:Label></li>
 										<br>
-										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
+										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
+                                            <asp:DropDownList ID="DropDownList1" runat="server">
+                                            </asp:DropDownList>
+                                        </li>
 									</ul>	
 								</div>												
 							</div>
