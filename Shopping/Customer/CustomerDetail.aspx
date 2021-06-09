@@ -3,45 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <script>
-        $(document).ready(function () {
-
-            //進頁面預設事件
-            var initBut = () => {
-                $('#accountClose').css('display', 'none');
-                $('#accountEntrt').css('display', 'none');
-                $('#accountInput').css('display', 'none');
-                $('#accountEdit').css('display', '');
-                $('#accountText').css('display', '');
-            }
-
-            //註冊編輯事件
-            $('#accountEdit').click(function () {
-                $('#accountClose').css('display', '');
-                $('#accountEntrt').css('display', '');
-                $('#accountEdit').css('display', 'none');
-                $('#accountText').css('display', 'none');
-                $('#accountInput').val($('#accountText').text())
-                $('#accountInput').css('display', '');
-            });
-
-            //註冊取消事件
-            $('#accountClose').click(function () {
-                $('#accountClose').css('display', 'none');
-                $('#accountEntrt').css('display', 'none');
-                $('#accountEdit').css('display', '');
-                $('#accountText').css('display', '');
-                $('#accountInput').css('display', 'none');
-            });
-
-
-            //執行預設事件
-            initBut();
-
-        });
-
-    </script>
+    <!-- customerDetail拉回 -->
+    <script src="../js/customer/customerDetail.js"> </script>
 
 
     <!-- 內容 -->
@@ -60,18 +23,25 @@
                 </div>
 
                 <div class="col-md-8 login-left">
-                    <form>
-                           <div class="col-md-12" style="padding: 5px;">
+                    <%--<form id="form111" runat="server">--%>
+                        <div class="col-md-12" style="padding: 5px;">
                             <div class="col-md-3 login-left">
                                 <div class="forgot" style="font-size: 18px;">姓名</div>
                             </div>
                             <div class="col-md-6 login-left">
-                                <span style="font-size: 18px;">車銀優</span>
+                                <span id="nameText" style="font-size: 18px;">車銀優</span>
+                                <input id="nameInput" />
                             </div>
                             <div class="col-md-3 login-left" style="padding: 0px;">
-                                <button type="button" class="btn btn-lg btn-info"
+                                <button id="nameEdit" type="button" class="btn btn-lg btn-info"
                                     style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
                                     修改</button>
+                                <button id="nameEntrt" type="button" class="btn btn-lg btn-info"
+                                    style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
+                                    確認</button>
+                                <button id="nameClose" type="button" class="btn btn-lg btn-info"
+                                    style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
+                                    取消</button>
                             </div>
                         </div>
 
@@ -81,90 +51,199 @@
                             </div>
                             <div class="col-md-6 login-left">
                                 <span id="accountText" style="font-size: 18px;">aaa123456789</span>
-                                <input id="accountInput"/>
+
                             </div>
                             <div class="col-md-3 login-left" style="padding: 0px;">
-                                <button id="accountEdit" type="button" class="btn btn-lg btn-info"
+                                <button id="accountDelet" type="button" class="btn btn-lg btn-info"
                                     style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
-                                    修改</button>
-                                 <button id="accountClose" type="button" class="btn btn-lg btn-info"
-                                    style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
-                                    取消</button>
-                                <button  id="accountEntrt" type="button" class="btn btn-lg btn-info"
-                                    style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
-                                    確認</button>
+                                    刪除</button>
+
                             </div>
                         </div>
 
-                        <div class="col-md-12" style="padding: 5px;">
+                        <!-- 密碼 -->
+                        <div id="passwordAll" class="col-md-12" style="border-width: 3px; border-style: solid; border-color: #52d0c4; border-radius: 10px; padding: 5px;">
                             <div class="col-md-3 login-left">
                                 <div class="forgot" style="font-size: 18px;">密碼</div>
                             </div>
+
                             <div class="col-md-6 login-left">
                                 <span style="font-size: 18px;">************</span>
                             </div>
                             <div class="col-md-3 login-left" style="padding: 0px;">
-                                <button type="button" class="btn btn-lg btn-info"
+                                <button id="passwordEdit" type="button" class="btn btn-lg btn-info"
+                                    style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
+                                    修改</button>
+                                <button id="passwordClose" type="button" class="btn btn-lg btn-info"
                                     style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
                                     取消</button>
-                                <button type="button" class="btn btn-lg btn-info"
+                            </div>
+
+                            <div class="col-md-3 login-left pwd-box">
+                                <div id="oldPassword" class="forgot" style="font-size: 18px; padding: 5px 0px;">舊密碼</div>
+                            </div>
+                            <div class="col-md-9 login-left pwd-box">
+                                <div style="padding: 5px 0px;">
+                                    <input id="oldPasswordInput" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 login-left pwd-box">
+                                <div id="newPassword" class="forgot" style="font-size: 18px; padding: 5px 0px;">新密碼</div>
+                            </div>
+                            <div class="col-md-9 login-left pwd-box">
+                                <div style="padding: 5px 0px;">
+                                    <input id="newPasswordInput" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 login-left pwd-box">
+                                <div id="newDoublePassword" class="forgot" style="font-size: 18px; padding: 5px 0px;">再輸入一次新密碼</div>
+                            </div>
+                            <div class="col-md-6 login-left pwd-box">
+                                <div style="padding: 5px 0px;">
+                                    <input id="newDoublePasswordInput" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 login-left">
+                                <button id="passwordEntrt" type="button" class="btn btn-lg btn-info"
                                     style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
                                     確認</button>
                             </div>
+
                         </div>
 
-                         <div class="col-md-12" style="padding: 5px;">
-                            <div class="col-md-3 login-left">
-                                <div class="forgot" style="font-size: 18px;">身分證字號</div>
-                            </div>
-                            <div class="col-md-6 login-left">
-                                <span style="font-size: 18px;">A123456789</span>
-                            </div>
-                            <div class="col-md-3 login-left" style="padding: 0px;">
-                                <button type="button" class="btn btn-lg btn-info"
-                                    style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
-                                    修改</button>
-                            </div>
-                        </div>
+
 
                         <div class="col-md-12" style="padding: 5px;">
                             <div class="col-md-3 login-left">
                                 <div class="forgot" style="font-size: 18px;">手機</div>
                             </div>
                             <div class="col-md-6 login-left">
-                                <span style="font-size: 18px;">0988777666</span>
+                                <span id="phoneNumberText" style="font-size: 18px;">0988777666</span>
+                                <input id="phoneNumberInput" />
                             </div>
                             <div class="col-md-3 login-left" style="padding: 0px;">
-                                <button type="button" class="btn btn-lg btn-info"
+                                <button id="phoneNumberEdit" type="button" class="btn btn-lg btn-info"
                                     style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
                                     修改</button>
+                                <button id="phoneNumberEntrt" type="button" class="btn btn-lg btn-info"
+                                    style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
+                                    確認</button>
+                                <button id="phoneNumberClose" type="button" class="btn btn-lg btn-info"
+                                    style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
+                                    取消</button>
+
+
                             </div>
                         </div>
 
-                        <div class="col-md-12" style="padding: 5px;">
+                        <div id="mailAll" class="col-md-12" style="border-width: 0px; border-style: solid; border-color: #52d0c4; border-radius: 10px; padding: 5px;">
                             <div class="col-md-3 login-left">
                                 <div class="forgot" style="font-size: 18px;">E-mail</div>
                             </div>
-                            <div class="col-md-6 login-left">
-                                <span style="font-size: 18px;">aassdd@gmail.com</span>
+                            <div class="col-md-6 login-left ">
+                                <span id="mailText" style="font-size: 18px;">aassdd@gmail.com</span>
                             </div>
                             <div class="col-md-3 login-left" style="padding: 0px;">
-                                <button type="button" class="btn btn-lg btn-info"
-                                    style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;" disabled>
+                                <button id="mailEdit" type="button" class="btn btn-lg btn-info"
+                                    style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
                                     修改</button>
+                                <button id="mailClose" type="button" class="btn btn-lg btn-info"
+                                    style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
+                                    取消</button>
+
+                            </div>
+                            <div class="col-md-3 login-left ma-box">
+                                <div id="newMail" class="forgot" style="font-size: 18px; padding: 5px 0px;">新信箱</div>
+                            </div>
+                            <div class="col-md-4 login-left ma-box">
+                                <div style="padding: 3px 0px;">
+                                    <input id="newMailInput" />
+                                </div>
+                            </div>
+                            <div class="col-md-5 login-left ma-box">
+                                <div style="height: 38px; display: flex; align-items: flex-end">
+                                    <button id="passTestNumberEntrt" type="button" class="btn btn-lg btn-info"
+                                        style="border-radius: 0px; background: #52d0c4; padding: 0px 0px; font-size: 15px;">
+                                        寄驗證碼</button>
+                                </div>
+
+                            </div>
+                            <div class="col-md-3 login-left ma-box">
+                                <div id="testNumberMail" class="forgot" style="font-size: 18px; padding: 5px 0px;">驗證碼</div>
+                            </div>
+                            <div class="col-md-6 login-left ma-box">
+                                <div style="padding: 5px 0px;">
+                                    <input id="testNumberMailInput" />
+                                </div>
+                            </div>
+                            <div class="col-md-3 login-left">
+                                <button id="mailEntrt" type="button" class="btn btn-lg btn-info"
+                                    style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
+                                    確認</button>
                             </div>
                         </div>
 
-
-                    </form>
+                      <button id="btnClick" type="button" class="btn btn-lg btn-info"
+                                    style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
+                                    驗證使用者</button>
+                 
+                    <%--</form>--%>
                 </div>
 
 
+
             </div>
+
+
         </div>
+
+
+
+
+      
     </div>
 
+        <script src="../js/customer/customerDetailEditEnter.js"> </script>
+   <%-- <script type="text/javascript">
+        $(document).ready(function () {
 
+      
+
+            $("#btnClick").click(function () {
+                $.ajax({
+                    type: "post",
+                    url: '<%= ResolveUrl("CustomerDetail.aspx/GetCustomers") %>',
+                       data: JSON.stringify({ str: "123456" }),
+                       contentType: "application/json; charset=utf-8",
+                       dataType: "json",
+                       success: (e) => {
+                           if (e.d.Status == 0) {
+                               let data = e.d.Data[0];
+                               $('#nameText').text(data.name);
+                               $('#accountText').text(data.account);
+                               $('#phoneNumberText').text(data.phone);
+                           } else {
+                               alert(e.d.Message);
+                           }
+                       },
+                       error: (e) => {
+                           console.log("ERROR");
+
+                           alert(e.d.Message);
+                       }
+
+                   });
+                return false;
+
+            });
+
+
+        });
+
+    </script>--%>
 
 
 </asp:Content>

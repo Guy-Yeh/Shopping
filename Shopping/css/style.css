@@ -132,6 +132,8 @@ p.log a:hover{
 .search {
   text-align: right;
     margin-top: 1%;
+    top: -3859px;
+    left: -15px;
 }
 i.glyphicon.glyphicon-search {
   color: #000;

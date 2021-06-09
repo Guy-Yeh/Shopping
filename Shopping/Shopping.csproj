@@ -106,6 +106,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="js\common\common.js" />
+    <Content Include="js\customer\customerDetail.js" />
+    <Content Include="js\customer\customerDetailEditEnter.js" />
+    <Content Include="managercontact.aspx" />
     <Content Include="forget.aspx" />
     <Content Include="product.aspx" />
     <Content Include="shoppingcar.aspx" />
@@ -147,6 +151,7 @@
     <Content Include="fonts\Roboto-Regular.ttf" />
     <Content Include="Customer\Customer.Master" />
     <Content Include="verification.aspx" />
+    <Content Include="WebUserControl1.ascx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="images\1.jpg" />
     <Content Include="images\2.jpg" />
@@ -225,6 +230,21 @@
     <Compile Include="forget.aspx.designer.cs">
       <DependentUpon>forget.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\DataTableExtensions.cs" />
+    <Compile Include="Dao\BaseDao.cs" />
+    <Compile Include="Dao\CustomerDetailDao.cs" />
+    <Compile Include="Enum.cs" />
+    <Compile Include="Filter\ExceptionAttribute.cs" />
+    <Compile Include="managercontact.aspx.cs">
+      <DependentUpon>managercontact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="managercontact.aspx.designer.cs">
+      <DependentUpon>managercontact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApiResultModel.cs" />
+    <Compile Include="Models\CustomersModel.cs" />
     <Compile Include="product.aspx.cs">
       <DependentUpon>product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -233,6 +253,8 @@
       <DependentUpon>product.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Service\BaseService.cs" />
+    <Compile Include="Service\CustomerDetailService.cs" />
     <Compile Include="shoppingcar.aspx.cs">
       <DependentUpon>shoppingcar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -356,6 +378,13 @@
     </Compile>
     <Compile Include="verification.aspx.designer.cs">
       <DependentUpon>verification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebUserControl1.ascx.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebUserControl1.ascx.designer.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

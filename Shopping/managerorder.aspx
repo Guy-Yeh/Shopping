@@ -71,8 +71,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li><a  href="index.html">Home</a></li>	
-				      <li><a  href="manageraccount">Account&nbsp;</a>
+					  <li><a  href="managerhome">首頁</a></li>	
+				      <li><a  href="manageraccount">帳戶</a>
 				      	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -130,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a  href="managerproduct">Product&nbsp;</a>
+				    <li class="grid"><a  href="managerproduct">產品</a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -188,8 +188,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 			    </li>
-				<li><a  href="managerorder">Order</a></li>				
-				<li><a class="color6" href="contact.html">Conact</a></li>
+				<li><a  href="managerorder">訂單</a></li>				
+				<li><a class="color6" href="managercontact">回覆訊息</a></li>
 			  </ul> 
 			</div>
 				<div class="col-md-2 search">		
@@ -207,23 +207,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Add Order Information</h4>
 									<ul>
 										<li><asp:Label ID="serial" runat="server" Text="serial"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
-									    <li><asp:Label ID="hintSerial" runat="server" Text=""></asp:Label></li> 
+										<li><asp:TextBox ID="TextBox1" runat="server" Enabled="False"></asp:TextBox></li> 
+									    <li><asp:Label ID="hintSerial" runat="server" Text="不用輸入" ForeColor="Blue"></asp:Label></li> 
+										<br>
 										<li><asp:Label ID="customerID" runat="server" Text="customerID"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></li>
+										<li>
+                                            <asp:DropDownList ID="DDLAddCustomerID" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceAddCustomerID" DataTextField="ID" DataValueField="ID" Width="190px" Height="30px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+											<asp:SqlDataSource ID="SqlDataSourceAddCustomerID" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT [ID] FROM [Customers]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintCustomerID" runat="server" Text=""></asp:Label></li>
+										<br>
 										<li><asp:Label ID="productName" runat="server" Text="productName"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
+										<li><asp:DropDownList ID="DDLAddProductName" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceAddProductName" DataTextField="productName" DataValueField="productName" Height="30px" Width="190px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceAddProductName" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT [productName] FROM [Products]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintProductName" runat="server" Text=""></asp:Label></li>
+										<br>
 										<li><asp:Label ID="qty" runat="server" Text="qty"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintQty" runat="server" Text=""></asp:Label></li>
+										<br>
 										<li><asp:Label ID="price" runat="server" Text="price"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintPrice" runat="server" Text=""></asp:Label></li>
+										<br>
 										<li><asp:Label ID="totalprice" runat="server" Text="totalprice"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox11" runat="server" Enabled="False"></asp:TextBox></li>
+										<li><asp:Label ID="hintTotalprice" runat="server" Text="不用輸入" ForeColor="Blue"></asp:Label></li> 
+										<br>
 										<li><asp:Label ID="status" runat="server" Text="status"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintStatus" runat="server" Text=""></asp:Label></li>
+										<li><asp:DropDownList ID="DDLAddstatus" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrdersStatus" DataTextField="Cols" DataValueField="Cols" Height="30px" Width="190px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceOrdersStatus" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersStatusConnectionString %>" SelectCommand="SELECT [Cols] FROM [OrdersStatus]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintStatus" runat="server" Text="" ></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
 									</ul>	
@@ -234,8 +250,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Delete Order Information</h4>
 									<ul>
 										<li><asp:Label ID="orderID" runat="server" Text="orderID"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox6" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintID" runat="server" Text="Enter orderID you want to delete"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLDeleteOrderID" runat="server"  AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrderID" DataTextField="ID" DataValueField="ID" Width="190px" Height="30px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceOrderID" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersConnectionString %>" SelectCommand="SELECT [ID] FROM [Orders]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintID" runat="server" Text="選擇即將刪除的orderID"></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
 									</ul>
@@ -246,18 +264,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Update Order Information</h4>
 									<ul>
 										<li><asp:Label ID="orderID2" runat="server" Text="orderID"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox7" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintID2" runat="server" Text="Enter table ID number"></asp:Label><li>
+										<li><asp:DropDownList ID="DDLUpdateOrderID" runat="server" AppendDataBoundItems="True" Height="30px" Width="190px" DataSourceID="SqlDataSourceOrderID" DataTextField="ID" DataValueField="ID"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList></li>
+										<li><asp:Label ID="hintID2" runat="server" Text="選擇即將更新的orderID"></asp:Label><li>
 										<br>
-										<li></li>
 										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox8" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintColumn" runat="server" Text="Enter table column item"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLUpdateOrderCols" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrderCols" DataTextField="Cols" DataValueField="Cols" Height="30px" Width="190px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceOrderCols" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersColsConnectionString %>" SelectCommand="SELECT [Cols] FROM [OrdersCols]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintColumn" runat="server" Text="選擇即將更新的欄位"></asp:Label></li>
 										<br>
-										<li></li>
 										<li><asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintAll" runat="server" Text="Enter update value"></asp:Label></li>
+										<li><asp:Label ID="hintAll" runat="server" Text="輸入更新的值"></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
 									</ul>	
@@ -287,245 +305,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="single">
 
 <div class="container">
-<div class="col-md-9">
-	<div class="col-md-5 grid">		
-		<div class="flexslider">
-			  <ul class="slides">
-			    <li data-thumb="images/si.jpg">
-			        <div class="thumb-image"> <img src="images/si.jpg" data-imagezoom="true" class="img-responsive"> </div>
-			    </li>
-			    <li data-thumb="images/si1.jpg">
-			         <div class="thumb-image"> <img src="images/si1.jpg" data-imagezoom="true" class="img-responsive"> </div>
-			    </li>
-			    <li data-thumb="images/si2.jpg">
-			       <div class="thumb-image"> <img src="images/si2.jpg" data-imagezoom="true" class="img-responsive"> </div>
-			    </li> 
-			  </ul>
-		</div>
-	</div>	
-<div class="col-md-7 single-top-in">
-						<div class="single-para simpleCart_shelfItem">
-							<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>
-							<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-							<div class="star-on">
-								<ul>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-								</ul>
-								<div class="review">
-									<a href="#"> 3 reviews </a>/
-									<a href="#">  Write a review</a>
-								</div>
-							<div class="clearfix"> </div>
-							</div>
-							
-								<label  class="add-to item_price">$32.8</label>
-							
-							<div class="available">
-								<h6>Available Options :</h6>
-								<ul>
-									
-								<li>Size:<select>
-									<option>Large</option>
-									<option>Medium</option>
-									<option>small</option>
-									<option>Large</option>
-									<option>small</option>
-								</select></li>
-								<li>Cost:
-										<select>
-										<option>U.S.Dollar</option>
-										<option>Euro</option>
-									</select></li>
-							</ul>
-						</div>
-								<a href="#" class="cart item_add">More details</a>
-						</div>
-					</div>
-			<div class="clearfix"> </div>
-			<div class="content-top1">
-				<div class="col-md-4 col-md3">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi6.png" alt="" />
-						</a>
-						<h3><a href="single.html">Jeans</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-					</div>
-				</div>	
-			<div class="col-md-4 col-md3">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi7.png" alt="" />
-						</a>
-						<h3><a href="single.html">Tops</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="col-md-4 col-md3">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi.png" alt="" />
-						</a>
-						<h3><a href="single.html">Tops</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			
-			<div class="clearfix"> </div>
-			</div>		
-</div>
-<!----->
-<div class="col-md-3 product-bottom">
-			<!--categories-->
-				<div class=" rsidebar span_1_of_left">
-						<h3 class="cate">Categories</h3>
-							 <ul class="menu-drop">
-							<li class="item1"><a href="#">Men </a>
-								<ul class="cute">
-									<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.html">Automatic Fails </a></li>
-								</ul>
-							</li>
-							<li class="item2"><a href="#">Women </a>
-								<ul class="cute">
-									<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.html">Automatic Fails </a></li>
-								</ul>
-							</li>
-							<li class="item3"><a href="#">Kids</a>
-								<ul class="cute">
-									<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.html">Automatic Fails</a></li>
-								</ul>
-							</li>
-							<li class="item4"><a href="#">Accesories</a>
-								<ul class="cute">
-									<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.html">Automatic Fails</a></li>
-								</ul>
-							</li>
-									
-							<li class="item4"><a href="#">Shoes</a>
-								<ul class="cute">
-									<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.html">Automatic Fails </a></li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				<!--initiate accordion-->
-						<script type="text/javascript">
-							$(function() {
-							    var menu_ul = $('.menu-drop > li > ul'),
-							           menu_a  = $('.menu-drop > li > a');
-							    menu_ul.hide();
-							    menu_a.click(function(e) {
-							        e.preventDefault();
-							        if(!$(this).hasClass('active')) {
-							            menu_a.removeClass('active');
-							            menu_ul.filter(':visible').slideUp('normal');
-							            $(this).addClass('active').next().stop(true,true).slideDown('normal');
-							        } else {
-							            $(this).removeClass('active');
-							            $(this).next().stop(true,true).slideUp('normal');
-							        }
-							    });
-							
-							});
-						</script>
-<!--//menu-->
-<!--seller-->
-				<div class="product-bottom">
-						<h3 class="cate">Best Sellers</h3>
-					<div class="product-go">
-						<div class=" fashion-grid">
-							<a href="single.html"><img class="img-responsive " src="images/pr.jpg" alt=""></a>	
-						</div>
-						<div class=" fashion-grid1">
-							<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
-							<span class=" price-in1"> $40.00</span>
-						</div>	
-						<div class="clearfix"> </div>
-					</div>
-					<div class="product-go">
-						<div class=" fashion-grid">
-							<a href="single.html"><img class="img-responsive " src="images/pr1.jpg" alt=""></a>	
-						</div>
-						<div class=" fashion-grid1">
-							<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
-							<span class=" price-in1"> $40.00</span>
-						</div>	
-						<div class="clearfix"> </div>
-					</div>
-					<div class="product-go">
-						<div class=" fashion-grid">
-							<a href="single.html"><img class="img-responsive " src="images/pr2.jpg" alt=""></a>	
-						</div>
-						<div class=" fashion-grid1">
-							<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
-							<span class=" price-in1"> $40.00</span>
-						</div>	
-						<div class="clearfix"> </div>
-					</div>	
-					<div class="product-go">
-						<div class=" fashion-grid">
-							<a href="single.html"><img class="img-responsive " src="images/pr3.jpg" alt=""></a>	
-						</div>
-						<div class=" fashion-grid1">
-							<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
-							<span class=" price-in1"> $40.00</span>
-						</div>	
-						<div class="clearfix"> </div>
-					</div>		
-				</div>
 
-<!--//seller-->
-<!--tag-->
-				<div class="tag">	
-						<h3 class="cate">Tags</h3>
-					<div class="tags">
-						<ul>
-							<li><a href="#">design</a></li>
-							<li><a href="#">fashion</a></li>
-							<li><a href="#">lorem</a></li>
-							<li><a href="#">dress</a></li>
-							<li><a href="#">fashion</a></li>
-							<li><a href="#">dress</a></li>
-							<li><a href="#">design</a></li>
-							<li><a href="#">dress</a></li>
-							<li><a href="#">design</a></li>
-							<li><a href="#">fashion</a></li>
-							<li><a href="#">lorem</a></li>
-							<li><a href="#">dress</a></li>
-						<div class="clearfix"> </div>
-						</ul>
-				</div>					
-			</div>
-		</div>
-		<div class="clearfix"> </div>
+<!----->
+
+		
 	</div>
 	</div>
 <!--footer-->

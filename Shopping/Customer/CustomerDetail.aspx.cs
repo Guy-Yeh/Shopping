@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Shopping.Models;
+using Shopping.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -18,5 +21,50 @@ namespace Shopping.Customer
         {
 
         }
+        protected void btnClick_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        [WebMethod]
+        public static Models.ApiResultModel<List<CustomersModel>> GetCustomers()
+        {
+            Common.Common common = new Common.Common();
+            try
+            {
+                CustomerDetailService customerDetailService = new CustomerDetailService();
+                List<CustomersModel> customers = customerDetailService.GetCustomers();
+
+                return common.ThrowResult<List<CustomersModel>>(Enum.ApiStatusEnum.OK, string.Empty, customers);
+            }
+            catch (Exception ex)
+            {
+                return common.ThrowResult<List<CustomersModel>>(Enum.ApiStatusEnum.InternalServerError, ex.Message, null);
+            }
+        }
+
+        [WebMethod]
+        public static Models.ApiResultModel<string> EditAccount(string str)
+        {
+            Common.Common common = new Common.Common();
+            try
+            {
+                CustomerDetailService customerDetailService = new CustomerDetailService();
+                customerDetailService.EditAccount();
+
+                return common.ThrowResult<string>(Enum.ApiStatusEnum.OK, string.Empty, string.Empty);
+            }
+            catch (Exception ex)
+            {
+                return common.ThrowResult<string>(Enum.ApiStatusEnum.InternalServerError, ex.Message, null);
+            }
+        }
+
+        [WebMethod]
+        public static bool EditPassword()
+        {
+            return true;
+        }
+
     }
 }

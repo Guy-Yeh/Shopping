@@ -7,6 +7,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
+
 <html>
 <head>
 <title>Fashion Mania A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
@@ -41,6 +42,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    </script>
 </head>
 <body>
+<form runat="server" method="post">
 <!--header-->
 <div class="header">
 	<div class="header-top">
@@ -53,17 +55,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		
 			<div class="col-sm-4 header-left">		
-					<p class="log"><a href="account.html">登錄</a> <a href="account.html">註冊</a></p>
-					<div class="cart box_1">
-						<a href="shoppingcar">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-
-					</div>
-					<div class="clearfix"> </div>
+				<p class="log"><a href="account.html">登錄</a> <a href="account.html">註冊</a></p>
+				<asp:Label ID="Label1" runat="server" Text="消費金額：" ></asp:Label>
+				<asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/cart.png" style="float:right" OnClick="ImageButton1_Click" /><br>
+                <asp:Button ID="Button1" runat="server" Text="清空購物車" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="87px" style="float:right" OnClick="Button1_Click"/>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
@@ -295,94 +290,84 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---->
 <div class="single">
 
-<div class="container">
-<div class="col-md-9">
-	<div class="col-md-5 grid">		
-		<div class="flexslider">
-			  <ul class="slides">
-			    <li data-thumb="images/si.jpg">
-			        <div class="thumb-image"> <img src="images/si.jpg" data-imagezoom="true" class="img-responsive"> </div>
-			    </li>
-			    <li data-thumb="images/si1.jpg">
-			         <div class="thumb-image"> <img src="images/si1.jpg" data-imagezoom="true" class="img-responsive"> </div>
-			    </li>
-			    <li data-thumb="images/si2.jpg">
-			       <div class="thumb-image"> <img src="images/si2.jpg" data-imagezoom="true" class="img-responsive"> </div>
-			    </li> 
-			  </ul>
-		</div>
-	</div>	
-<div class="col-md-7 single-top-in">
-						<div class="single-para simpleCart_shelfItem">
-							<h1>產品名稱</h1>
-							<p>產品註解</p>
+    <div class="container">
+        <div class="col-md-9">
+            <div class="col-md-5 grid">
+				<asp:Image ID="Image1" runat="server" data-imagezoom="true" Height="100%" Width="100%" />                        
+			</div>
+            <div class="col-md-7 single-top-in">
+                    <div class="single-para simpleCart_shelfItem">
+                        <h1>
+                            <asp:Label ID="Label4" runat="server" Text=""></asp:Label></h1>
+                        <p>產品註解</p>
+                        <div class="clearfix"></div>
+                    </div>
+					<asp:Label ID="Label3" runat="server" Text="產品金額：" Font-Size="X-Large"></asp:Label>
+					<asp:Label ID="Label2" runat="server" Text="" Font-Size="X-Large"></asp:Label>
+                    <div class="available">
+                        <ul>
 
-							<div class="clearfix"> </div>
-							</div>
-							
-								<label  class="add-to item_price">產品金額</label>
-							
-							<div class="available">
-								<ul>
-									
-								<li>尺寸:<select>
-									<option>Large</option>
-									<option>Medium</option>
-									<option>small</option>
-									<option>Large</option>
-									<option>small</option>
-								</select></li>
-								<li>顏色:
-							</ul>
+                            <li>尺寸：Free Size</li>
+                            <li>
+                            顏色：<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="category" DataValueField="category"></asp:DropDownList>
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT [category] FROM [Products] WHERE ([productName] = @productName)">
+                                    <SelectParameters>
+                                        <asp:SessionParameter Name="productName" SessionField="product" Type="String" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource></li>
+                        </ul>
+					</div>
+					<asp:Button ID="Button2" runat="server" Text="放入購物車" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right"/>
+				</div>
+			</div>
+                    <div class="clearfix"></div>
+                    <div class="content-top1">
+                        <div class="col-md-4 col-md3">
+                            <div class="col-md1 simpleCart_shelfItem">
+                                <a href="single.html">
+                                    <img class="img-responsive" src="images/pi6.png" alt="" />
+                                </a>
+                                <h3><a href="single.html">Jeans</a></h3>
+                                <div class="price">
+                                    <h5 class="item_price">$300</h5>
+                                    <a href="#" class="item_add">Add To Cart</a>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-md3">
+                            <div class="col-md1 simpleCart_shelfItem">
+                                <a href="single.html">
+                                    <img class="img-responsive" src="images/pi7.png" alt="" />
+                                </a>
+                                <h3><a href="single.html">Tops</a></h3>
+                                <div class="price">
+                                    <h5 class="item_price">$300</h5>
+                                    <a href="#" class="item_add">Add To Cart</a>
+                                    <div class="clearfix"></div>
+                                </div>
 
-					</div>
-			<div class="clearfix"> </div>
-			<div class="content-top1">
-				<div class="col-md-4 col-md3">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi6.png" alt="" />
-						</a>
-						<h3><a href="single.html">Jeans</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-					</div>
-				</div>	
-			<div class="col-md-4 col-md3">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi7.png" alt="" />
-						</a>
-						<h3><a href="single.html">Tops</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="col-md-4 col-md3">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi.png" alt="" />
-						</a>
-						<h3><a href="single.html">Tops</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			
-			<div class="clearfix"> </div>
-			</div>		
-</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-md3">
+                            <div class="col-md1 simpleCart_shelfItem">
+                                <a href="single.html">
+                                    <img class="img-responsive" src="images/pi.png" alt="" />
+                                </a>
+                                <h3><a href="single.html">Tops</a></h3>
+                                <div class="price">
+                                    <h5 class="item_price">$300</h5>
+                                    <a href="#" class="item_add">Add To Cart</a>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
 <!----->
 <div class="col-md-3 product-bottom">
 			<!--categories-->
@@ -518,7 +503,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="clearfix"> </div>
 	</div>
-	</div>
+</div>
 <!--footer-->
 <div class="footer">
 	<div class="container">
@@ -528,11 +513,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>
-					<form>
 						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
 						<input type="submit" value="SUBSCRIBE">
-					</form>
-			</div>
+					</div>
 			<div class="clearfix"> </div>	
 		</div>	
 	</div>
@@ -650,5 +633,6 @@ $(window).load(function() {
 																						
 						});
                      </script>	
+    </form>
 </body>
 </html>

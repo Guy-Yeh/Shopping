@@ -20,18 +20,35 @@ namespace Shopping
             SqlConnection connect = new SqlConnection(x);
             return connect;
         }
-        protected void Page_Load(object sender, EventArgs e)
+
+        public void reviewProduct()
         {
-            hint1.Text = "";
-            hint2.Text = "";
             SqlConnection connection = Connect(s_data);
             string sql = $"select * from Products";
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
+            //DataTable dt = new DataTable();
+            //dt.Load(read);
+            //product.DataSource = dt.AsDataView();
+            //product.DataBind();
             product.DataSource = read;
             product.DataBind();
             connection.Close();
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+            hintPN.Text = "";
+            hintPicture.Text = "";
+            hintCategory.Text = "";
+            hintInventory.Text = "";
+            hintPrice.Text = "";
+            hintID2.Text = "選擇即將更新的productID";
+            hintColumn.Text = "選擇即將更新的欄位";
+            hintValue.Text = "輸入更新的值";
+            reviewProduct();
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -43,28 +60,46 @@ namespace Shopping
             bool inventoryCheck = Regex.IsMatch(TextBox4.Text, @"\d");
             bool priceCheck = Regex.IsMatch(TextBox5.Text, @"\d");
 
-            if (inventoryCheck == true)
+            if (TextBox1.Text != "")
             {
-                if (priceCheck == true)
+                if (TextBox2.Text != "")
                 {
-                    SqlCommand command2 = new SqlCommand(sql2, connection2);
-                    connection2.Open();
-                    command2.ExecuteNonQuery();
-                    MessageBox.Show("Input Successfully");
-                    connection2.Close();
+                    if (TextBox3.Text != "")
+                    {
+                        if (inventoryCheck == true)
+                        {
+                            if (priceCheck == true)
+                            {
+                                SqlCommand command2 = new SqlCommand(sql2, connection2);
+                                connection2.Open();
+                                command2.ExecuteNonQuery();
+                                MessageBox.Show("輸入成功");
+                                connection2.Close();
+                                reviewProduct();
+                            }
+                            else
+                            {
+                                hintPrice.Text = "price需為數字 請重新輸入";
+                            }
+                        }
+                        else
+                        {
+                            hintInventory.Text = "inventory需為數字 請重新輸入";
+                        }
+                    }
+                    else
+                    {
+                        hintCategory.Text = "category不得為空";
+                    }
                 }
                 else
                 {
-                    hint2.Text = "Please enter number";
+                    hintPicture.Text = "picture不得為空";
                 }
             }
             else
             {
-                if (priceCheck == false)
-                {
-                    hint2.Text = "Please enter number";
-                }
-                hint1.Text = "Please enter number";
+                hintPN.Text = "productName不得為空";
             }
             /*try
             {
@@ -91,100 +126,75 @@ namespace Shopping
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            SqlConnection connection3 = Connect(s_data);
-            string sql3 = $"delete from Products where ID='{TextBox6.Text}'";
-
-            bool IDCheck = Regex.IsMatch(TextBox6.Text, @"\d");
-            SqlConnection connection4 = Connect(s_data);
-            string sql4 = $"select * from Products where ID='{TextBox6.Text}'";
-            SqlCommand command4 = new SqlCommand(sql4, connection4);
-            connection4.Open();
-            SqlDataReader Reader = command4.ExecuteReader();
-
-            if (Reader.HasRows)
+           
+            if (DDLDeleterProductID.SelectedItem.Text=="請選擇")
             {
-                
+                SqlConnection connection3 = Connect(s_data);
+                string sql3 = $"delete from Products where ID='{DDLDeleterProductID.Text}'";
                 SqlCommand command3 = new SqlCommand(sql3, connection3);
                 connection3.Open();
                 command3.ExecuteNonQuery();
-                MessageBox.Show("Delete Successfully");
+                MessageBox.Show("刪除成功");
                 connection3.Close();
-            }
-            else if (IDCheck == true)
-            {
-                hint3.Text = "There is no productID number in database";
+                reviewProduct();
             }
             else
             {
-                hint3.Text = "Please enter number";
+                hintID.Text = "請選擇項目";
             }
-            connection4.Close();
-
+            
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-
-            SqlConnection connection5 = Connect(s_data);
-            string sql5 = $"select * from Products where ID='{TextBox7.Text}'";
-            SqlCommand command5 = new SqlCommand(sql5, connection5);
-            connection5.Open();
-            SqlDataReader Reader = command5.ExecuteReader();
-            bool IDCheck = Regex.IsMatch(TextBox7.Text, @"\d");
-            var productCols = new List<string> { "productName", "picture", "category", "inventory", "price" };
-            bool checkcol = false;
-            foreach (string productCol in productCols)
-            {
-                if (TextBox8.Text == productCol)
-                {
-                    checkcol = true;
-                    break;
-                }
-            }
-            bool text9Check = Regex.IsMatch(TextBox9.Text, @"\d");
+            
+            bool numberCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             SqlConnection connection6 = Connect(s_data);
-            string sql6 = $"update Products SET {TextBox8.Text}='{TextBox9.Text}' where ID='{TextBox7.Text}'";
+            string sql6 = $"update Products SET {DDLUpdateCols.Text}='{TextBox9.Text}' where ID='{DDLUpdateProductID.Text}'";
 
             string s_data7 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
             SqlConnection connection7 = Connect(s_data);
             string sql7 = $"select * from Products where productName='{TextBox9.Text}'";
             
 
-            if (Reader.HasRows) //確認有找到該ID
+            if (DDLUpdateProductID.SelectedItem.Text != "請選擇") 
             {
-                if (checkcol == true)
+                if (DDLUpdateCols.SelectedItem.Text != "請選擇")
                 {
-                    if (TextBox8.Text == "inventory" || TextBox8.Text == "price")
+                    if (DDLUpdateCols.Text == "inventory" || DDLUpdateCols.Text == "price")
                     {
-                        if (text9Check == true)
+                        if (numberCheck == true)
                         {
                             SqlCommand command6 = new SqlCommand(sql6, connection6);
                             connection6.Open();
                             command6.ExecuteNonQuery();
-                            MessageBox.Show("Update Successfully");
+                            MessageBox.Show("更新成功");
                             connection6.Close();
+                            reviewProduct();
                         }
                         else
                         {
-                            hint6.Text = "Pls enter number";
+                            hintValue.Text = "inventory/price需為數字 請重新輸入";
                         }
                     }
-                    else if (TextBox8.Text == "productName") //輸入過程確保productName不重複 
+                    else if (DDLUpdateCols.Text == "productName") //輸入過程確保productName不重複 
                     {
                         SqlCommand command7 = new SqlCommand(sql7, connection7);
                         connection7.Open();
                         SqlDataReader Reader2 = command7.ExecuteReader();
                         if (Reader2.HasRows)
                         {
-                            hint6.Text = "ProductName repeat, please change productname";
-                        }
-                        else
-                        {
                             SqlCommand command6 = new SqlCommand(sql6, connection6);
                             connection6.Open();
                             command6.ExecuteNonQuery();
-                            MessageBox.Show("Update Successfully");
+                            MessageBox.Show("更新成功");
                             connection6.Close();
+                            reviewProduct();
+
+                        }
+                        else
+                        {
+                            hintValue.Text = "productName不存在 請重新輸入";
                         }
                         connection7.Close();
                     }
@@ -193,24 +203,20 @@ namespace Shopping
                         SqlCommand command6 = new SqlCommand(sql6, connection6);
                         connection6.Open();
                         command6.ExecuteNonQuery();
-                        MessageBox.Show("Update Successfully");
+                        MessageBox.Show("更新成功");
                         connection6.Close();
+                        reviewProduct();
                     }
                 }
                 else
                 {
-                    hint5.Text = "There is no your col in database";
+                    hintColumn.Text = "請選擇項目";
                 }
-            }
-            else if (IDCheck == true)
-            {
-                hint4.Text = "There is no productID number in database";
             }
             else
             {
-                hint4.Text = "Please enter number";
+                hintID2.Text = "請選擇項目";
             }
-            connection5.Close();
 
         }
     

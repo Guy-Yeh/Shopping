@@ -78,8 +78,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li class=" grid"><a  href="index.html">Home</a></li>	
-				      <li><a  href="#">Men</a>
+					  <li class=" grid"><a  href="managerhome">首頁</a></li>	
+				      <li><a  href="#">帳戶</a>
 				      	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -137,7 +137,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a  href="#">	Women</a>
+				    <li class="grid"><a  href="#">產品</a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -195,8 +195,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 			    </li>
-				<li><a  href="typo.html">Blog</a></li>				
-				<li><a class="color6" href="contact.html">Conact</a></li>
+				<li><a  href="">訂單</a></li>				
+				<li><a class="color6" href="">回覆訊息</a></li>
 			  </ul> 
 			</div>
 		<div class="col-md-2 search">		
@@ -246,9 +246,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form>
 
 					<span>Account</span>
-				    <asp:TextBox ID="email" runat="server"></asp:TextBox><asp:Label ID="elabel" runat="server" Text=""></asp:Label>
+				    <asp:TextBox ID="account" runat="server" Height="30px" Width="220px"></asp:TextBox><asp:Label ID="elabel" runat="server" Text=""></asp:Label>
 					<span>Password</span>
-					<asp:TextBox ID="password" runat="server" required="required" aria-required="true" oninvalid="setCustomValidity('這是必填項目，請輸入')" oninput="this.setCustomValidity('')"></asp:TextBox><asp:Label ID="plabel" runat="server" Text=""></asp:Label>
+					<asp:TextBox ID="password" runat="server" required="required" aria-required="true" oninvalid="setCustomValidity('這是必填項目，請輸入')" TextMode="Password" oninput="this.setCustomValidity('')" Width="220" Height="30px"></asp:TextBox><asp:Label ID="plabel" runat="server" Text=""></asp:Label>
 					<div class="word-in">
 				  		<a class="forgot" href="#">Forgot Your Password?</a>
 						<asp:Button ID="submit" runat="server" Text="Login" OnClick="submit_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>

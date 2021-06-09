@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="manageraccount.aspx.cs" Inherits="Shopping.manageraccount" %>
+﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="managercontact.aspx.cs" Inherits="Shopping.managercontact" %>
 <!--A Design by W3layouts 
 Author: W3layout
 Author URL: http://w3layouts.com
@@ -71,7 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li class=" grid"><a  href="managerhome">首頁</a></li>	
+					  <li><a  href="managerhome">首頁</a></li>	
 				      <li><a  href="manageraccount">帳戶</a>
 				      	<div class="mepanel">
 						<div class="row">
@@ -192,113 +192,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a class="color6" href="managercontact">回覆訊息</a></li>
 			  </ul> 
 			</div>
-				<div class="col-md-2 search">		
+				<div class="col-md-2 search"><a class="play-icon popup-with-zoom-anim" href="#small-dialog">
+					<i class="glyphicon glyphicon-search"> </i> </a>
+		</div>	
 			<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a>
 		</div>
-
-				<br>
-			<br>
-			<br>
-			<h3><li>Revise Account Table</li></h3>
-					  	<div class="mepanel">
-						<div class="row">
-							<div class="col1">
-								<div class="h_nav">	
-									<h4>Add User Account</h4>
-									<ul>
-										<li><asp:Label ID="account" runat="server" Text="account"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
-									    <li><asp:Label ID="hintAccount" runat="server" ForeColor="Black"></asp:Label></li> 
-										<br>
-										<li><asp:Label ID="password" runat="server" Text="password"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintPassword" runat="server" ForeColor="Black"></asp:Label></li>
-										<br>
-										<li><asp:Label ID="name" runat="server" Text="name"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
-										<br>
-										<li><asp:Label ID="phone" runat="server" Text="phone"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintPhone" runat="server" ForeColor="Black"></asp:Label></li>
-										<br>
-										<li><asp:Label ID="email" runat="server" Text="email"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintEmail" runat="server" ForeColor="Black"></asp:Label></li>
-										<br>
-										<li><asp:Label ID="address" runat="server" Text="address"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLCity" runat="server" AutoPostBack="True"  AppendDataBoundItems="True" Width="190px" Height="30px" DataSourceID="SqlDataSourceCity" DataTextField="city" DataValueField="city" OnSelectedIndexChanged="DDLCity_SelectedIndexChanged"><asp:ListItem Value="0">請選擇縣市</asp:ListItem></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceCity" runat="server" ConnectionString="<%$ ConnectionStrings:CityConnectionString %>" SelectCommand="SELECT [city] FROM [City]"></asp:SqlDataSource>
-                                        </li>
-										<li><asp:Label ID="hintCity" runat="server" ForeColor="Black"></asp:Label></li>
-										<br>
-										<li><asp:DropDownList ID="DDLRegion" runat="server" AppendDataBoundItems="True" Width="190px" Height="30px" DataSourceID="SqlDataSourceRegion" DataTextField="region" DataValueField="region"><asp:ListItem Value="0" Selected="True">請選擇區域</asp:ListItem></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceRegion" runat="server" ConnectionString="<%$ ConnectionStrings:RegionConnectionString %>" SelectCommand="SELECT [region] FROM [Region] WHERE ([city] = @city)">
-                                                <SelectParameters>
-                                                    <asp:ControlParameter ControlID="DDLCity" DefaultValue="DDLCity.Selected.Item" Name="city" PropertyName="SelectedValue" Type="String" />
-                                                </SelectParameters>
-                                            </asp:SqlDataSource>
-                                        </li>
-										<li><asp:Label ID="hintRegion" runat="server" ForeColor="Black"></asp:Label></li>
-										<br>
-										<li><asp:TextBox ID="TextBox11" runat="server" placeholder="請輸入縣市區域外的地址"></asp:TextBox></li>
-										<br>
-										<li><asp:Label ID="discount" runat="server" Text="discount"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintDiscount" runat="server" ForeColor="Black"></asp:Label></li>
-										<br>
-										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
-									</ul>	
-								</div>							
-							</div>
-							<div class="col1">
-								<div class="h_nav">
-									<h4>Delete User Account</h4>
-									<ul>
-										<li><asp:Label ID="accountID" runat="server" Text="accountID"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLDeleteAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="190px" DataSourceID="SqlDataSourceAccountID" DataTextField="ID" DataValueField="ID"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceAccountID" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT [ID] FROM [Customers]"></asp:SqlDataSource>
-                                        </li>
-										<li><asp:Label ID="hintID" runat="server" Text="選擇即將刪除的accountID"></asp:Label></li>
-										<br>
-										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
-									</ul>
-								</div>							
-							</div>
-							<div class="col1">
-								<div class="h_nav">
-									<h4>Update User Account</h4>
-									<ul>
-										<li><asp:Label ID="accountID2" runat="server" Text="accountID"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="190px" DataSourceID="SqlDataSourceAccountID" DataTextField="ID" DataValueField="ID"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList></asp:DropDownList></li>
-										<li><asp:Label ID="hintID2" runat="server" Text="選擇即將更新的accountID"></asp:Label><li>
-										<br>
-										<li></li>
-										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateCol" runat="server" AppendDataBoundItems="True" Width="190px" Height="30px" DataSourceID="SqlDataSourceUpdateCol" DataTextField="Cols" DataValueField="Cols"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceUpdateCol" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT [Cols] FROM [CustomersCols]"></asp:SqlDataSource>
-                                        </li>
-										<li><asp:Label ID="hintColumn" runat="server" Text="選擇即將更新的欄位"></asp:Label></li>
-										<br>
-										<li></li>
-										<li><asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintAll" runat="server" Text="輸入更新的值"></asp:Label></li>
-										<br>
-										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
-                                            <asp:DropDownList ID="DropDownList1" runat="server">
-                                            </asp:DropDownList>
-                                        </li>
-									</ul>	
-								</div>												
-							</div>
-						  </div>
-						</div>
-		<div class="clearfix"> 
-			<br>
-            <asp:GridView ID="useraccount" runat="server">
-            </asp:GridView>
-			
-                </div>
+		<div class="clearfix"> </div>
 				<div id="small-dialog" class="mfp-hide">
 				<div class="search-top">
 						<div class="login">
@@ -309,13 +208,101 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>				
 				</div>		
 	<!---->		
-				</div>
-	</div>
+		
+	
 </div>
 <!---->
 <div class="single">
 
+<div class="container">
+<div class="col-md-9">
+		
+<div class="col-md-7 single-top-in">
+						
+					
+	<div class="clearfix"> </div>
+	
+	
+</div>
+</div>
+	<div class="mepanel">
+						<div class="row">
+							<div class="col1">
+								<div class="h_nav">	
+									<h4>Reply Message</h4>
+									<ul>
+										<li>
+                                            <asp:DropDownList ID="DDLContactID" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceChat" DataTextField="ID" DataValueField="ID"><asp:ListItem Value="0">ID</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceChat" runat="server" ConnectionString="<%$ ConnectionStrings:ChatConnectionString %>" SelectCommand="SELECT [ID] FROM [Chat]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintID" runat="server" Text=""></asp:Label></li>
+										<br>
+										<li> <textarea rows="5" id="contactresponse" name="contactresponse" class="form-control" placeholder="response" ></textarea></li>
+										<li><asp:Label ID="hintResponse" runat="server" Text=""></asp:Label></li>
+										<br>
+										<li>
+                                            <asp:Button ID="response" runat="server" Text="submit" OnClick="Button1_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
+                                        </li>
+									</ul>	
+								</div>
+								<br>
+								<br>
+							</div>
+							<div class="col1">
+								<div class="h_nav">
+									<h4>Search by Account</h4>
+									<ul>
+										<li><input type="text" id="searchaccount" name="searchaccount" class="form-control" placeholder="account" ></li>
+										<li><asp:Label ID="hintSearch" runat="server" Text=""></asp:Label></li>
+										<br>
+										<li>
+                                            <asp:Button ID="search" runat="server" Text="submit" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
+                                        </li>
+									</ul>
+								</div>							
+							</div>
+							<div class="col1">
+								<div class="h_nav">
+									<h4>Show Message by Date Range </h4>
+									<ul>
+										<li><asp:DropDownList ID="DDLYearS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceYears" DataTextField="years" DataValueField="years"><asp:ListItem Value="0">StartYear</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceYears" runat="server" ConnectionString="<%$ ConnectionStrings:YearsConnectionString %>" SelectCommand="SELECT [years] FROM [Years]"></asp:SqlDataSource>
+                                        </li>
+										<br>
+										<li><asp:DropDownList ID="DDLMonthS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceMonth" DataTextField="months" DataValueField="months"><asp:ListItem Value="0">StartMonth</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceMonth" runat="server" ConnectionString="<%$ ConnectionStrings:MonthsConnectionString %>" SelectCommand="SELECT [months] FROM [Months]"></asp:SqlDataSource>
+                                        </li>
+										<br>
+										<li><asp:DropDownList ID="DDLDayS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceDay" DataTextField="days" DataValueField="days"><asp:ListItem Value="0">StartDay</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceDay" runat="server" ConnectionString="<%$ ConnectionStrings:DaysConnectionString %>" SelectCommand="SELECT [days] FROM [Days]"></asp:SqlDataSource>
+                                        </li>
+										<br>
+										<br>
+										<li><asp:DropDownList ID="DDLYearE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceYears" DataTextField="years" DataValueField="years"><asp:ListItem Value="0">EndYear</asp:ListItem></asp:DropDownList></li>
+										<br>
+										<li><asp:DropDownList ID="DDLMonthE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceMonth" DataTextField="months" DataValueField="months"><asp:ListItem Value="0">EndMonth</asp:ListItem></asp:DropDownList></li>
+										<br>
+										<li><asp:DropDownList ID="DDLDayE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceDay" DataTextField="days" DataValueField="days"><asp:ListItem Value="0">EndDay</asp:ListItem></asp:DropDownList></li>
+										<li><asp:Label ID="hintDate" runat="server" Text=""></asp:Label></li>
+										<br>
+										<li>
+                                            <asp:Button ID="show" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
+                                        </li>
+									</ul>	
+								</div>	
+								<br>
+								<br>
+							</div>
+						  </div>
+						</div>
 
+    <asp:GridView ID="usercontact" runat="server" >
+    </asp:GridView>
+<!----->
+
+		<div class="clearfix"> </div>
+	
+	</div>
 	</div>
 <!--footer-->
 <div class="footer">
@@ -393,61 +380,61 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script>$(document).ready(function () { $(".memenu").memenu(); });</script>
 <script src="js/simpleCart.min.js"> </script>
 <!--initiate accordion-->
 						<script type="text/javascript">
-							$(function() {
-							    var menu_ul = $('.menu-drop > li > ul'),
-							           menu_a  = $('.menu-drop > li > a');
-							    menu_ul.hide();
-							    menu_a.click(function(e) {
-							        e.preventDefault();
-							        if(!$(this).hasClass('active')) {
-							            menu_a.removeClass('active');
-							            menu_ul.filter(':visible').slideUp('normal');
-							            $(this).addClass('active').next().stop(true,true).slideDown('normal');
-							        } else {
-							            $(this).removeClass('active');
-							            $(this).next().stop(true,true).slideUp('normal');
-							        }
-							    });
-							
-							});
-						</script>
+                            $(function () {
+                                var menu_ul = $('.menu-drop > li > ul'),
+                                    menu_a = $('.menu-drop > li > a');
+                                menu_ul.hide();
+                                menu_a.click(function (e) {
+                                    e.preventDefault();
+                                    if (!$(this).hasClass('active')) {
+                                        menu_a.removeClass('active');
+                                        menu_ul.filter(':visible').slideUp('normal');
+                                        $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                                    } else {
+                                        $(this).removeClass('active');
+                                        $(this).next().stop(true, true).slideUp('normal');
+                                    }
+                                });
+
+                            });
+                        </script>
 						<!-- FlexSlider -->
   <script defer src="js/jquery.flexslider.js"></script>
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 
 <script>
-// Can also be used with $(document).ready()
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide",
-    controlNav: "thumbnails"
-  });
-});
+    // Can also be used with $(document).ready()
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: "thumbnails"
+        });
+    });
 </script>
 <!---pop-up-box---->
 					<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
 					<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
 					<!---//pop-up-box---->
 					 <script>
-						$(document).ready(function() {
-						$('.popup-with-zoom-anim').magnificPopup({
-							type: 'inline',
-							fixedContentPos: false,
-							fixedBgPos: true,
-							overflowY: 'auto',
-							closeBtnInside: true,
-							preloader: false,
-							midClick: true,
-							removalDelay: 300,
-							mainClass: 'my-mfp-zoom-in'
-						});
-																						
-						});
-				</script>	
+                         $(document).ready(function () {
+                             $('.popup-with-zoom-anim').magnificPopup({
+                                 type: 'inline',
+                                 fixedContentPos: false,
+                                 fixedBgPos: true,
+                                 overflowY: 'auto',
+                                 closeBtnInside: true,
+                                 preloader: false,
+                                 midClick: true,
+                                 removalDelay: 300,
+                                 mainClass: 'my-mfp-zoom-in'
+                             });
+
+                         });
+                     </script>	
 </form>
 </body>
 </html>

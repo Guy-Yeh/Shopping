@@ -7,6 +7,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Shopping</title>
+    <meta http-equiv="pragma" content="no-cache">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -26,6 +27,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="text/javascript" src="../js/memenu.js"></script>
     <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
     <script src="../js/simpleCart.min.js"> </script>
+
+    <!-- common -->
+    <script src="../js/common/common.js"> </script>
+
     <!-- slide -->
     <script src="../js/responsiveslides.min.js"></script>
     <script>

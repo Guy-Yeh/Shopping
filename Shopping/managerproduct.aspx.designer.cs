@@ -33,6 +33,15 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
+        /// hintPN 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hintPN;
+
+        /// <summary>
         /// picture 控制項。
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace Shopping
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox2;
+
+        /// <summary>
+        /// hintPicture 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hintPicture;
 
         /// <summary>
         /// category 控制項。
@@ -69,6 +87,15 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
 
         /// <summary>
+        /// hintCategory 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hintCategory;
+
+        /// <summary>
         /// inventory 控制項。
         /// </summary>
         /// <remarks>
@@ -87,13 +114,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox4;
 
         /// <summary>
-        /// hint1 控制項。
+        /// hintInventory 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hint1;
+        protected global::System.Web.UI.WebControls.Label hintInventory;
 
         /// <summary>
         /// price 控制項。
@@ -114,13 +141,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox5;
 
         /// <summary>
-        /// hint2 控制項。
+        /// hintPrice 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hint2;
+        protected global::System.Web.UI.WebControls.Label hintPrice;
 
         /// <summary>
         /// Add 控制項。
@@ -141,22 +168,31 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label productID;
 
         /// <summary>
-        /// TextBox6 控制項。
+        /// DDLDeleterProductID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.DropDownList DDLDeleterProductID;
 
         /// <summary>
-        /// hint3 控制項。
+        /// SqlDataSourceProductsID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hint3;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceProductsID;
+
+        /// <summary>
+        /// hintID 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hintID;
 
         /// <summary>
         /// Delete 控制項。
@@ -177,22 +213,22 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label productID2;
 
         /// <summary>
-        /// TextBox7 控制項。
+        /// DDLUpdateProductID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.DropDownList DDLUpdateProductID;
 
         /// <summary>
-        /// hint4 控制項。
+        /// hintID2 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hint4;
+        protected global::System.Web.UI.WebControls.Label hintID2;
 
         /// <summary>
         /// column 控制項。
@@ -204,22 +240,31 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label column;
 
         /// <summary>
-        /// TextBox8 控制項。
+        /// DDLUpdateCols 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.DropDownList DDLUpdateCols;
 
         /// <summary>
-        /// hint5 控制項。
+        /// SqlDataSourceProductsCols 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hint5;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceProductsCols;
+
+        /// <summary>
+        /// hintColumn 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hintColumn;
 
         /// <summary>
         /// value 控制項。
@@ -240,13 +285,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox9;
 
         /// <summary>
-        /// hint6 控制項。
+        /// hintValue 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hint6;
+        protected global::System.Web.UI.WebControls.Label hintValue;
 
         /// <summary>
         /// Update 控制項。
