@@ -234,15 +234,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="account_grid">
 			   <div class="col-md-6 login-right">
 				
-
-					<span>Email Address</span>
-					<input type="text"> 
-				
-					<span>Password</span>
-					<input type="text"> 
+					<asp:Label ID="Label1" runat="server" Text="帳號/信箱"></asp:Label>
+					<asp:TextBox ID="logingaccTextBox" runat="server"></asp:TextBox>
+					<asp:Label ID="Label2" runat="server" Text="密碼"></asp:Label>
+				    <asp:TextBox ID="logingpasswdTextBox" runat="server" BorderColor="Silver" BorderStyle="Solid" BorderWidth="1px" Height="39px" TextMode="Password" Width="96%"></asp:TextBox>
+					
 					<div class="word-in">
-				  		<asp:LinkButton ID="forgetLinkButton1" runat="server">忘記你的密碼嗎?</asp:LinkButton>
-				 		 <asp:Button ID="logingButton1" runat="server" Text="登入" OnClick="logingButton1_Click" />
+				  		<asp:LinkButton ID="forgetLinkButton1" runat="server" OnClick="forgetLinkButton1_Click">忘記你的密碼嗎?</asp:LinkButton>
+				 		<asp:Button ID="logingButton1" runat="server" Text="登入" OnClick="logingButton1_Click" />
+						<asp:Label ID="errorText" runat="server" Font-Size="Small" ForeColor="Red"></asp:Label>
 				  	</div>
 			    
 			   </div>	

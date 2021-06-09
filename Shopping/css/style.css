@@ -1857,4 +1857,8 @@ h1.typo1 {
   font-size: 1.7em;
   margin: 0 0 0.5em;
 }
+.TextboxWatermark {
+	font-style: italic;
+	color: #ACA899;
+}
 }

@@ -306,25 +306,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-sm-2 number">
 
 				</div>
-        <table class="auto-style3">
-                <tr>
-                    <td>&nbsp;</td>
-                    <td class="auto-style2">商品名稱</td>
-                    <td>數量</td>
-                    <td>金額</td>
-
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td class="auto-style2">&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td class="auto-style2">&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-            </table>
+        <asp:Table id="Table1" runat="server"
+            GridLines="Both"
+            HorizontalAlign="Center" Font-Size="X-Large">
+            <asp:TableRow HorizontalAlign="Center">
+                <asp:TableCell ForeColor="#52D0C4">
+                </asp:TableCell>
+                <asp:TableCell ForeColor="#52D0C4">
+                    產品名稱
+                </asp:TableCell >
+                <asp:TableCell ForeColor="#52D0C4">
+                    顏色
+                </asp:TableCell>
+                <asp:TableCell ForeColor="#52D0C4">
+                    數量
+                </asp:TableCell>
+                <asp:TableCell ForeColor="#52D0C4">
+                    金額
+                </asp:TableCell>
+                <asp:TableCell ForeColor="#52D0C4">
+                    刪除
+                </asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
 
                 <div class="col-sm-2 number">
 

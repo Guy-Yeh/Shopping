@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="Shopping.register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="forget.aspx.cs" Inherits="Shopping.forget" %>
 
 <!--A Design by W3layouts 
 Author: W3layout
@@ -6,8 +6,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html>
 <head>
 <title>Fashion Mania A Ecommerce Category Flat Bootstarp Resposive Website Template | Register :: w3layouts</title>
@@ -26,7 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script>$(document).ready(function () { $(".memenu").memenu(); });</script>
 <script src="js/simpleCart.min.js"> </script>
 <!-- slide -->
 </head>
@@ -37,17 +36,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 		<div class="col-md-4 world">
-					
+					<ul >
+						<li>
+						<select class="in-drop">
+							  <option>English</option>
+							  <option>Japanese</option>
+							  <option>French</option>
+							</select></li>
+						<li><select class="in-drop1">
+							  <option>Dollar</option>
+							  <option>Euro</option>
+							  <option>Yen</option>
+							</select>
+						</li>
+					</ul>
 				</div>
 				<div class="col-md-4 logo">
 					<a href="index.html"><img src="images/logo.png" alt=""></a>	
 				</div>
 		
 			<div class="col-md-4 header-left">		
-					<p class="log">
-						<asp:LinkButton ID="loginLinkButton" runat="server" OnClick="loginLinkButton_Click">登入</asp:LinkButton>或
-						<asp:LinkButton ID="registerLinkButton" runat="server" OnClick="registerLinkButton_Click">註冊</asp:LinkButton>
-					</p>
+					<p class="log"><a href="account.html"  >Login</a>
+						<span>or</span><a  href="account.html"  >Signup</a></p>
 					<div class="cart box_1">
 						<a href="checkout.html">
 						<h3> <div class="total">
@@ -65,13 +75,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="col-md-2 number">
-                    <asp:Image ID="Image1" runat="server" Height="20px" ImageUrl="~/images/img_153839.png" Width="20px" /><asp:Label ID="Label1" runat="server" Text=" (02)8888 8888"></asp:Label>
-					
+					<span><i class="glyphicon glyphicon-phone"></i>085 596 234</span>
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li class=" grid"><a  href="index.html">首頁</a></li>	
-				      <li><a  href="#">男裝</a>
+					  <li class=" grid"><a  href="index.html">Home</a></li>	
+				      <li><a  href="#">Men</a>
 				      	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -129,7 +138,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a  href="#">	女裝</a>
+				    <li class="grid"><a  href="#">	Women</a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -187,8 +196,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 			    </li>
-						
-				<li><a class="color6" href="contact.html">連結</a></li>
+				<li><a  href="typo.html">Blog</a></li>				
+				<li><a class="color6" href="contact.html">Conact</a></li>
 			  </ul> 
 			</div>
 				<div class="col-md-2 search">		
@@ -210,20 +219,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>				
 				</div>
 				 <script>
-						$(document).ready(function() {
-						$('.popup-with-zoom-anim').magnificPopup({
-							type: 'inline',
-							fixedContentPos: false,
-							fixedBgPos: true,
-							overflowY: 'auto',
-							closeBtnInside: true,
-							preloader: false,
-							midClick: true,
-							removalDelay: 300,
-							mainClass: 'my-mfp-zoom-in'
-						});
-																						
-						});
+                     $(document).ready(function () {
+                         $('.popup-with-zoom-anim').magnificPopup({
+                             type: 'inline',
+                             fixedContentPos: false,
+                             fixedBgPos: true,
+                             overflowY: 'auto',
+                             closeBtnInside: true,
+                             preloader: false,
+                             midClick: true,
+                             removalDelay: 300,
+                             mainClass: 'my-mfp-zoom-in'
+                         });
+
+                     });
 				</script>			
 	<!---->		
 		</div>
@@ -232,37 +241,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--//header-->
 <div class="container">
 	<div class="register">
-		<h1><span style="font-family:Microsoft JhengHei;">註冊</span></h1>
+		<h1>忘記帳號或密碼</h1>
 		  	  
-				 <div class="col-md-6  register-top-grid">
-					
-					<div class="mation">
-						<asp:Label ID="account" runat="server" Text="帳號"></asp:Label>
-						<asp:TextBox ID="accountText" runat="server" placeholder="請輸入6-15字元英文數字"></asp:TextBox>
-						<asp:Label ID="password" runat="server" Text="密碼"></asp:Label>
-						<asp:TextBox ID="passwordText" runat="server" placeholder="請輸入7-20字元英文數字" BorderColor="#E7E7E7" BorderStyle="Solid" BorderWidth="1px" Height="36px" TextMode="Password" Width="100%"></asp:TextBox>
-						<asp:Label ID="passwordCheck" runat="server" Text="確認密碼" ></asp:Label>
-						<asp:TextBox ID="passwordCheckText" runat="server" placeholder="請重複輸入您的密碼" BorderColor="#E7E7E7" BorderStyle="Solid" BorderWidth="1px" Height="36px" TextMode="Password" Width="100%"></asp:TextBox>
-&nbsp;</div>
-					 <div class="clearfix"> </div>
-					 
-					   <a class="news-letter" href="#">
-                         <asp:CheckBox ID="logingcheck" runat="server" Text="註冊後登入"  />
-						 
-					   </a>
-					 </div>
+				 
 				     <div class=" col-md-6 register-bottom-grid">
 						   
 							<div class="mation">
+								<asp:Label ID="Label1" runat="server" Text="忘記帳號?"></asp:Label>
+								<asp:TextBox ID="forgetA_TextBox" runat="server" placeholder="請輸入電子信箱" AutoPostBack="True" OnTextChanged="forgetA_TextBox_TextChanged"></asp:TextBox>
+								<asp:Label ID="Label2" runat="server" Text="忘記密碼?"></asp:Label>
+								<asp:TextBox ID="forgetP_TextBox" runat="server" placeholder="請輸入帳號" AutoPostBack="True" OnTextChanged="forgetP_TextBox_TextChanged"></asp:TextBox>
 								
-								<asp:Label ID="name" runat="server" Text="姓名"></asp:Label>
-								<asp:TextBox ID="nameText" runat="server" placeholder="請輸入您的名字"></asp:TextBox>
-																				
-								<asp:Label ID="phone" runat="server" Text="手機"></asp:Label>
-								<asp:TextBox ID="phoneText" runat="server" placeholder="請輸入含09開頭十位數字號碼"></asp:TextBox>
-					 
-								<asp:Label ID="email" runat="server" Text="信箱"></asp:Label>
-								<asp:TextBox ID="emailText" runat="server" placeholder="請輸入有效電子信箱"></asp:TextBox>
 
 							</div>
 					 </div>
@@ -270,25 +259,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				
 				
 				<div class="register-but">
-					
-					<asp:TextBox ID="verificationText" runat="server" ></asp:TextBox>
-					<asp:Image ID="verificationImage" imageUrl=~\verification.aspx runat="server"  />
-					<asp:LinkButton ID="verificationLinkButton1" runat="server" style="font-size: small; ">看不清楚，換一張</asp:LinkButton>
-					<br>
-					<br>
-                    <asp:Button ID="registerButton" runat="server" Text="確認" OnClick="registerButton_Click" Style="font: 12pt Verdana;font-weight:700;color:white;" BorderStyle="None" BackColor="#52D0C4" Height="35px" Width="59px"  />					   
-				   
-				    <asp:Label ID="errorText" runat="server" Font-Size="Small" ForeColor="Red"></asp:Label>
+				       <br>
+					   <asp:Button ID="registerButton" runat="server" Text="確認"  Style="font: 12pt Verdana;font-weight:700;color:white;" BorderStyle="None" BackColor="#52D0C4" Height="35px" Width="59px" OnClick="registerButton_Click"  />
+				       &emsp;<asp:Label ID="errorText" runat="server" Font-Size="Small" ForeColor="Red"></asp:Label>
 				   
 				</div>
-		   </div>
+		</div>   
 </div>
 
 <!--footer-->
 <div class="footer">
-	<div class="container">
-		
-	</div>
+	
 	<div class="footer-bottom">
 		<div class="container">
 				<div class="col-md-3 footer-bottom-cate">

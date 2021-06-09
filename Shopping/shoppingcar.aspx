@@ -48,6 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="col-sm-4 number">
 					<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000<br>
+                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
 				</div>
 				<div class="col-sm-4 logo">
 					<a href="index"><img src="images/logo.png" alt=""></a>	
@@ -287,7 +288,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!---->		
 		</div>
 	</div>
-</div>
+
 
 <!--//header-->
 <!---->
@@ -316,7 +317,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>  
-    <asp:Button ID="Button2" runat="server" Text="確認購買" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" Font-Size="X-Large"/>
+    <asp:Button ID="Button2" runat="server" Text="確認購買" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" Font-Size="X-Large" BorderStyle="None"/>
 	<div class="clearfix"> </div>
     </div>
 </div>

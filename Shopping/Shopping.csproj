@@ -110,6 +110,7 @@
     <Content Include="js\customer\customerDetail.js" />
     <Content Include="js\customer\customerDetailEditEnter.js" />
     <Content Include="managercontact.aspx" />
+    <Content Include="forget.aspx" />
     <Content Include="product.aspx" />
     <Content Include="shoppingcar.aspx" />
     <Content Include="images\img_153839.png" />
@@ -223,6 +224,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="forget.aspx.cs">
+      <DependentUpon>forget.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forget.aspx.designer.cs">
+      <DependentUpon>forget.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\DataTableExtensions.cs" />
     <Compile Include="Dao\BaseDao.cs" />
