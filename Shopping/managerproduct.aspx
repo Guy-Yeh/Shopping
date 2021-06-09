@@ -271,8 +271,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 		<div class="clearfix"> 
 			<br>
-            <asp:GridView ID="product" runat="server" >
-				
+			<asp:GridView ID="product" runat="server" >
+                   <Columns>
+                <asp:TemplateField headertext="image">
+                    <ItemTemplate >
+                       <asp:Image ID="img1" ImageUrl='<%#Eval("picture") %>' 
+                                  runat="server"  Width="200" Height="200"/>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
             </asp:GridView>
 			
                 </div>

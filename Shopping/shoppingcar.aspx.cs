@@ -14,6 +14,7 @@ namespace Shopping
         string picture_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
 
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.Cookies["quantity"] == null)

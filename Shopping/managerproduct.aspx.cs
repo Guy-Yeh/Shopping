@@ -24,15 +24,35 @@ namespace Shopping
         public void reviewProduct()
         {
             SqlConnection connection = Connect(s_data);
-            string sql = $"select * from Products";
+            string sql = $"select * from Products" ;
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
-            //DataTable dt = new DataTable();
-            //dt.Load(read);
-            //product.DataSource = dt.AsDataView();
-            //product.DataBind();
-            product.DataSource = read;
+             DataTable dt = new DataTable();
+             dt.Columns.Add("ID");
+             dt.Columns.Add("productName");
+             DataColumn picture = new DataColumn();
+             picture = new DataColumn("picture");
+             dt.Columns.Add(picture);
+             dt.Columns.Add("category");
+             dt.Columns.Add("inventory");
+             dt.Columns.Add("price");
+             dt.Columns.Add("initdate");
+
+             while (read.Read())
+             {
+                 DataRow row = dt.NewRow();
+                 row["ID"] = read[0];
+                 row["productName"] = read[1];
+                 row[picture] = ResolveUrl($"{read[2]}");
+                 row["category"] = read[3];
+                 row["inventory"] = read[4];
+                 row["price"] = read[5];
+                 row["initdate"] = read[6];
+                 dt.Rows.Add(row);
+             }
+            product.DataSource = dt;
+            
             product.DataBind();
             connection.Close();
         }
@@ -47,15 +67,17 @@ namespace Shopping
             hintID2.Text = "選擇即將更新的productID";
             hintColumn.Text = "選擇即將更新的欄位";
             hintValue.Text = "輸入更新的值";
-            reviewProduct();
-
+            if (!IsPostBack)
+            {
+                reviewProduct();
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
 
             SqlConnection connection2 = Connect(s_data);
-            string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values('{TextBox1.Text}','{TextBox2.Text}','{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}')";
+            string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(N'{TextBox1.Text}',N'{TextBox2.Text}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}')";
             //string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(@pn,@pc,@c,@i,@pr)";
             bool inventoryCheck = Regex.IsMatch(TextBox4.Text, @"\d");
             bool priceCheck = Regex.IsMatch(TextBox5.Text, @"\d");
@@ -127,7 +149,7 @@ namespace Shopping
         protected void Button2_Click(object sender, EventArgs e)
         {
            
-            if (DDLDeleterProductID.SelectedItem.Text=="請選擇")
+            if (DDLDeleterProductID.SelectedItem.Text!="請選擇")
             {
                 SqlConnection connection3 = Connect(s_data);
                 string sql3 = $"delete from Products where ID='{DDLDeleterProductID.Text}'";
@@ -150,11 +172,7 @@ namespace Shopping
             
             bool numberCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             SqlConnection connection6 = Connect(s_data);
-            string sql6 = $"update Products SET {DDLUpdateCols.Text}='{TextBox9.Text}' where ID='{DDLUpdateProductID.Text}'";
-
-            string s_data7 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
-            SqlConnection connection7 = Connect(s_data);
-            string sql7 = $"select * from Products where productName='{TextBox9.Text}'";
+            string sql6 = $"update Products SET {DDLUpdateCols.Text} = N'{TextBox9.Text}' where ID='{DDLUpdateProductID.Text}'";
             
 
             if (DDLUpdateProductID.SelectedItem.Text != "請選擇") 
@@ -177,27 +195,7 @@ namespace Shopping
                             hintValue.Text = "inventory/price需為數字 請重新輸入";
                         }
                     }
-                    else if (DDLUpdateCols.Text == "productName") //輸入過程確保productName不重複 
-                    {
-                        SqlCommand command7 = new SqlCommand(sql7, connection7);
-                        connection7.Open();
-                        SqlDataReader Reader2 = command7.ExecuteReader();
-                        if (Reader2.HasRows)
-                        {
-                            SqlCommand command6 = new SqlCommand(sql6, connection6);
-                            connection6.Open();
-                            command6.ExecuteNonQuery();
-                            MessageBox.Show("更新成功");
-                            connection6.Close();
-                            reviewProduct();
-
-                        }
-                        else
-                        {
-                            hintValue.Text = "productName不存在 請重新輸入";
-                        }
-                        connection7.Close();
-                    }
+                    
                     else
                     {
                         SqlCommand command6 = new SqlCommand(sql6, connection6);
