@@ -218,7 +218,7 @@ namespace Shopping
             {
                 if (Request.Cookies["buy"] != null)
                     usecookie.Values.Add(Request.Cookies["buy"].Values);
-                usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "120");
+                usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "20");
                 Response.AppendCookie(usecookie);
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
