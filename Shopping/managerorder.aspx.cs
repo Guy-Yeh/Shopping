@@ -59,10 +59,12 @@ namespace Shopping
             hintProductID.Text = "";
             hintStatus.Text = "";
             hintQty.Text = "";
+            TextBox1.Text = "";
             hintID.Text = "選擇即將刪除的orderID";
             hintID2.Text = "選擇即將更新的orderID";
             hintColumn.Text = "選擇即將更新的欄位";
             hintAll.Text = "輸入更新的值";
+            
             if (!IsPostBack)
             {
                 reviewOrder();
