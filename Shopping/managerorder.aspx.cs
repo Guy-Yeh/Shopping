@@ -36,6 +36,24 @@ namespace Shopping
             connection.Close();
         }
 
+        public bool reviewSerial()
+        {
+            Random rnd = new Random();
+            TextBox1.Text = "";
+            for (int i = 0; i < 10; i++)    //編成serial number
+            {
+                int serialrnd = rnd.Next(0, 10);
+                TextBox1.Text += serialrnd;
+            }
+            SqlConnection connection2s = Connect(s_data);
+            string sql2s = $"select * from Orders where serial='{TextBox1.Text}'";  //為了找尋serial是否重複
+            SqlCommand command2s = new SqlCommand(sql2s, connection2s);
+            connection2s.Open();
+            SqlDataReader Reader2s = command2s.ExecuteReader();
+            bool f = Reader2s.HasRows;
+            connection2s.Close();
+            return f;
+        }
 
 
         public void DDLreconnect()
@@ -59,7 +77,6 @@ namespace Shopping
             hintProductID.Text = "";
             hintStatus.Text = "";
             hintQty.Text = "";
-            TextBox1.Text = "";
             hintID.Text = "選擇即將刪除的orderID";
             hintID2.Text = "選擇即將更新的orderID";
             hintColumn.Text = "選擇即將更新的欄位";
@@ -74,11 +91,11 @@ namespace Shopping
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            SqlConnection connection2s = Connect(s_data);
-            string sql2s = $"select * from Orders where serial='{TextBox1.Text}'";  //為了找尋serial是否重複
-            SqlCommand command2s = new SqlCommand(sql2s, connection2s);
-            connection2s.Open();
-            SqlDataReader Reader2s = command2s.ExecuteReader();
+           
+            while (reviewSerial())
+            {
+                reviewSerial();
+            }
 
             SqlConnection connectionp = Connect(s_data3);
             string sqlp = $"select price from Products where ID='{DDLAddProductID.Text}'";  //為了找尋serial是否重複
@@ -86,17 +103,9 @@ namespace Shopping
             connectionp.Open();
             SqlDataReader Readerp = commandp.ExecuteReader();
 
-            Random rnd = new Random();
-            while (Reader2s.HasRows == true || TextBox1.Text == "")
-            {
-                TextBox1.Text = "";
-                for (int i = 0; i < 10; i++)    //編成serial number
-                {
-                    int serialrnd = rnd.Next(0, 10);
-                    TextBox1.Text += serialrnd;
-                }
-            }
-            connection2s.Close();
+            
+
+            
 
             bool qtyCheck = Regex.IsMatch(TextBox4.Text, @"\d");
             
