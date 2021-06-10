@@ -313,7 +313,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <asp:SessionParameter DefaultValue="" Name="customerAccount" SessionField="loginstatus" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
-    <asp:Button ID="Button2" runat="server" Text="確認購買" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" Font-Size="X-Large" BorderStyle="None"/>
+        <asp:Label ID="Label4" runat="server" Text="Label" style="float:right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label>
+        <asp:Label ID="Label3" runat="server" Text="總金額：" style="float:right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label><br><br>
+        <asp:Button ID="Button2" runat="server" Text="確認購買" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" Font-Size="X-Large" BorderStyle="None"/>
 	<div class="clearfix"> </div>
     </div>
 </div>

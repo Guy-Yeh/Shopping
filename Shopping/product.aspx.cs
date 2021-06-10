@@ -11,39 +11,35 @@ namespace Shopping
 {
     public partial class product: Page
     {
-        
+        string customers_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
         string product_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
         string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["quantity"] == null)
-                Response.Cookies["quantity"].Value = "0";
-
-            if (Request.Cookies["cart"] != null)
-                Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            else
-                Label1.Text = " 總金額：" + "0";
-            SqlConnection connection = new SqlConnection(product_data);
-            string sql = $"select * from Products where productName =N'{Session["product"]}' ";
-            SqlCommand command1 = new SqlCommand(sql, connection);
-            connection.Open();
-            SqlDataReader read1 = command1.ExecuteReader();
-            if (read1.HasRows)
+            if (!IsPostBack)
             {
-                if (read1.Read())
+                SqlConnection connection1 = new SqlConnection(product_data);
+                string sql = $"select * from Products where productName =N'{Session["product"]}' ";
+                SqlCommand command1 = new SqlCommand(sql, connection1);
+                connection1.Open();
+                SqlDataReader read1 = command1.ExecuteReader();
+                if (read1.HasRows)
                 {
-                    Label4.Text = read1[1].ToString();
-                    Image1.ImageUrl = read1[2].ToString();
-                    Label2.Text = read1[5].ToString();
+                    if (read1.Read())
+                    {
+                        Label4.Text = read1[1].ToString();
+                        Image1.ImageUrl = read1[2].ToString();
+                        Label2.Text = read1[5].ToString();
+                    }
                 }
+                connection1.Close();
             }
-            connection.Close();
-
-            if (IsPostBack)
+            else
             {
+                SqlConnection connection2 = new SqlConnection(product_data);
                 string sq2 = $"select * from Products where productName =N'{Session["product"]}' and category=N'{DropDownList1.SelectedItem.Text}'";
-                SqlCommand command2 = new SqlCommand(sq2, connection);
-                connection.Open();
+                SqlCommand command2 = new SqlCommand(sq2, connection2);
+                connection2.Open();
                 SqlDataReader read2 = command2.ExecuteReader();
                 if (read2.HasRows)
                 {
@@ -54,21 +50,59 @@ namespace Shopping
                         Label2.Text = read2[5].ToString();
                     }
                 }
-                connection.Close();
+                connection2.Close();
+            }
+            if (Session["loginstatus"] != null)
+            {
+                SqlConnection connection1 = new SqlConnection(customers_data);
+                string sq11 = $"select account from Customers";
+                SqlCommand command1 = new SqlCommand(sq11, connection1);
+                connection1.Open();
+                SqlDataReader read1 = command1.ExecuteReader();
+                if (read1.HasRows)
+                {
+                    if (read1.Read())
+                    {
+
+                    }
+                }
+                connection1.Close();
+                SqlConnection connection2 = new SqlConnection(orderdetail_data);
+                string sq12 = $"select sum(productPrice) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                SqlCommand command2 = new SqlCommand(sq12, connection2);
+                connection2.Open();
+                SqlDataReader read2 = command2.ExecuteReader();
+                if (read2.HasRows)
+                {
+                    if (read2.Read())
+                    {
+                        Label1.Text = "消費金額：" + read2[0].ToString();
+                    }
+                }
+                connection2.Close();
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            HttpCookie cookie = Request.Cookies["buy"];
-            if (cookie != null)
+            if (Session["loginstatus"] != null)
             {
-                cookie.Expires = DateTime.Now.AddDays(-2);
-                Response.Cookies.Set(cookie);
+                SqlConnection connection = new SqlConnection(orderdetail_data);
+                string sql = $"delete from OrderDetail where customerAccount=N'{Session["loginstatus"]}'";
+                SqlCommand command = new SqlCommand(sql, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+                Response.Redirect("product");
+                /*HttpCookie cookie = Request.Cookies["buy"];
+                if (cookie != null)
+                {
+                    cookie.Expires = DateTime.Now.AddDays(-2);
+                    Response.Cookies.Set(cookie);
+                }
+                Response.Cookies["cart"].Value = "0";
+                Response.Redirect("product");*/
             }
-            Response.Cookies["cart"].Value = "0";
-            Response.Redirect("product");
-
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -137,8 +171,8 @@ namespace Shopping
             }
             connection.Close();
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label2.Text)).ToString();
-            Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("product");*/
+            Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;*/
+            Response.Redirect("product");
         }
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)

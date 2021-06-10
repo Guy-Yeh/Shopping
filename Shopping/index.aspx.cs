@@ -26,14 +26,14 @@ namespace Shopping
         }*/
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["loginstatus"] = 1;
+            Session["loginstatus"] = "1";
             //驗證是否登錄
             if (Session["loginstatus"] != null)
             {
-                SqlConnection connection = new SqlConnection(customers_data);
-                string sq1 = $"select account from Customers";
-                SqlCommand command1 = new SqlCommand(sq1, connection);
-                connection.Open();
+                SqlConnection connection1 = new SqlConnection(customers_data);
+                string sq11 = $"select account from Customers";
+                SqlCommand command1 = new SqlCommand(sq11, connection1);
+                connection1.Open();
                 SqlDataReader read1 = command1.ExecuteReader();
                 if (read1.HasRows)
                 {
@@ -42,7 +42,20 @@ namespace Shopping
 
                     }
                 }
-                connection.Close();
+                connection1.Close();
+                SqlConnection connection2 = new SqlConnection(orderdetail_data);
+                string sq12 = $"select sum(productPrice) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                SqlCommand command2 = new SqlCommand(sq12, connection2);
+                connection2.Open();
+                SqlDataReader read2 = command2.ExecuteReader();
+                if (read2.HasRows)
+                {
+                    if (read2.Read())
+                    {
+                        Label1.Text ="消費金額：" + read2[0].ToString();
+                    }
+                }
+                connection2.Close();
             }
         }
 
@@ -122,8 +135,8 @@ namespace Shopping
                     Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
                 }
                 Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label3.Text)).ToString();
-                Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;
-                Response.Redirect("index");*/
+                Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;*/
+                Response.Redirect("index");
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
@@ -206,8 +219,8 @@ namespace Shopping
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label5.Text)).ToString();
-            Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");*/
+            Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;*/
+            Response.Redirect("index");
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -299,8 +312,8 @@ namespace Shopping
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label7.Text)).ToString();
-            Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");*/
+            Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;*/
+            Response.Redirect("index");
         }
         protected void Button4_Click(object sender, EventArgs e)
         {//產生一個字串的陣列承接商品資料
@@ -382,8 +395,8 @@ namespace Shopping
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label9.Text)).ToString();
-            Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");*/
+            Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;*/
+            Response.Redirect("index");
         }
         protected void Button5_Click(object sender, EventArgs e)
         {
@@ -458,8 +471,8 @@ namespace Shopping
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label11.Text)).ToString();
-            Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");*/
+            Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;*/
+            Response.Redirect("index");
         }
         protected void Button6_Click(object sender, EventArgs e)
         {
@@ -526,8 +539,8 @@ namespace Shopping
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label13.Text)).ToString();
-            Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");*/
+            Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;*/
+            Response.Redirect("index");
         }
         protected void Button7_Click(object sender, EventArgs e)
         {
@@ -602,8 +615,8 @@ namespace Shopping
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label15.Text)).ToString();
-            Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");*/
+            Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;*/
+            Response.Redirect("index");
         }
 
         protected void Button8_Click(object sender, EventArgs e)
@@ -679,20 +692,30 @@ namespace Shopping
                 Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label17.Text)).ToString();
-            Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");*/
+            Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;*/
+            Response.Redirect("index");
         }
 
         protected void Button9_Click(object sender, EventArgs e)
         {
-            HttpCookie cookie = Request.Cookies["buy"];
-            if (cookie != null)
+            if (Session["loginstatus"] != null)
             {
-                cookie.Expires = DateTime.Now.AddDays(-2);
-                Response.Cookies.Set(cookie);
+                SqlConnection connection = new SqlConnection(orderdetail_data);
+                string sql = $"delete from OrderDetail where customerAccount=N'{Session["loginstatus"]}'";
+                SqlCommand command = new SqlCommand(sql, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+                Response.Redirect("index");
+                /*HttpCookie cookie = Request.Cookies["buy"];
+                if (cookie != null)
+                {
+                    cookie.Expires = DateTime.Now.AddDays(-2);
+                    Response.Cookies.Set(cookie);
+                }
+                Response.Cookies["cart"].Value = "0";
+                Response.Redirect("index");*/
             }
-            Response.Cookies["cart"].Value = "0";
-            Response.Redirect("index");
         }
 
         protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
