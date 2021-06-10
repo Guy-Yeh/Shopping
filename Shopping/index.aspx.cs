@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,54 +11,168 @@ namespace Shopping
 {
     public partial class index : Page
     {
-        
-        protected void Page_Load(object sender, EventArgs e)
+        string customers_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
+        string product_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
+        string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
+        /*protected void Page_Load(object sender, EventArgs e)
         {
-
             if (Request.Cookies["quantity"]== null)
                 Response.Cookies["quantity"].Value = "0";
 
             if (Request.Cookies["cart"]!=null)
                 Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;
             else
-                Label1.Text = " 總金額：" + "0";
-            
+                Label1.Text = " 總金額：" + "0";         
+        }*/
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Session["loginstatus"] = 1;
+            //驗證是否登錄
+            if (Session["loginstatus"] != null)
+            {
+                SqlConnection connection = new SqlConnection(customers_data);
+                string sq1 = $"select account from Customers";
+                SqlCommand command1 = new SqlCommand(sq1, connection);
+                connection.Open();
+                SqlDataReader read1 = command1.ExecuteReader();
+                if (read1.HasRows)
+                {
+                    if (read1.Read())
+                    {
+
+                    }
+                }
+                connection.Close();
+            }
         }
+
+
+
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            HttpCookie usecookie = new HttpCookie("buy");
-            if (DropDownList1.SelectedValue == "白") 
+            //產生一個字串的陣列承接商品資料
+            string[] array = new string[3];
+            //驗證是否登錄
+            if (Session["loginstatus"] == null)
             {
-                if (Request.Cookies["buy"] != null)
-                    usecookie.Values.Add(Request.Cookies["buy"].Values);
-                usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "1");
-                Response.AppendCookie(usecookie);
-                Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
+                Response.Redirect("loging");
             }
-            else if(DropDownList1.SelectedValue== "紅")
+            else
             {
-                if (Request.Cookies["buy"] != null)
-                    usecookie.Values.Add(Request.Cookies["buy"].Values);
-                usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "2");
-                Response.AppendCookie(usecookie);
-                Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
+                //從資料庫Products中取出商品資料並寫入字串
+                SqlConnection connection1 = new SqlConnection(product_data);
+                string sql = $"select * from Products where productName =N'領造型線T' and category=N'{DropDownList1.SelectedValue}'";
+                SqlCommand command1 = new SqlCommand(sql, connection1);
+                connection1.Open();
+                SqlDataReader read1 = command1.ExecuteReader();
+                if (read1.HasRows)
+                {
+                    if (read1.Read())
+                    {
+                        //陣列分別存入商品資料的 1.商品名稱 3.商品顏色 5.商品價格
+                        array[0] = read1[1].ToString();
+                        array[1] = read1[3].ToString();
+                        array[2] = read1[5].ToString();
+                    }
+                }
+                connection1.Close();
+                SqlConnection connection2 = new SqlConnection(orderdetail_data);
+                string sq2 = $"insert into [OrderDetail](customerAccount,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productName,@productColor,@productPrice,@qty,@cart)";
+                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                connection2.Open();
+                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
+                Command2.Parameters["@productName"].Value = array[0];
+                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                Command2.Parameters["@productColor"].Value = array[1];
+                Command2.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                Command2.Parameters["@productPrice"].Value = array[2];
+                Command2.Parameters.Add("@qty", SqlDbType.Int);
+                Command2.Parameters["@qty"].Value = 1;
+                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
+                Command2.Parameters["@cart"].Value = "是";
+                Command2.ExecuteNonQuery();
+                connection2.Close();
             }
-            else if (DropDownList1.SelectedValue == "綠")
-            {
-                if (Request.Cookies["buy"] != null)
-                    usecookie.Values.Add(Request.Cookies["buy"].Values);
-                usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "3");
-                Response.AppendCookie(usecookie);
-                Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
-            }
-            Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label3.Text)).ToString();
-            Label1.Text =" 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");
+                /*HttpCookie usecookie = new HttpCookie("buy");
+                if (DropDownList1.SelectedValue == "白")
+                {
+                    if (Request.Cookies["buy"] != null)
+                        usecookie.Values.Add(Request.Cookies["buy"].Values);
+                    usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "1");
+                    Response.AppendCookie(usecookie);
+                    Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
+                }
+                else if (DropDownList1.SelectedValue == "紅")
+                {
+                    if (Request.Cookies["buy"] != null)
+                        usecookie.Values.Add(Request.Cookies["buy"].Values);
+                    usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "2");
+                    Response.AppendCookie(usecookie);
+                    Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
+                }
+                else if (DropDownList1.SelectedValue == "綠")
+                {
+                    if (Request.Cookies["buy"] != null)
+                        usecookie.Values.Add(Request.Cookies["buy"].Values);
+                    usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "3");
+                    Response.AppendCookie(usecookie);
+                    Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
+                }
+                Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label3.Text)).ToString();
+                Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;
+                Response.Redirect("index");*/
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
-            HttpCookie usecookie = new HttpCookie("buy");
+            //產生一個字串的陣列承接商品資料
+            string[] array = new string[3];
+            //驗證是否登錄
+            if (Session["loginstatus"] == null)
+            {
+                Response.Redirect("loging");
+            }
+            else
+            {
+                //從資料庫Products中取出商品資料並寫入字串
+                SqlConnection connection1 = new SqlConnection(product_data);
+                string sql = $"select * from Products where productName =N'袖滾配色t' and category=N'{DropDownList2.SelectedValue}'";
+                SqlCommand command1 = new SqlCommand(sql, connection1);
+                connection1.Open();
+                SqlDataReader read1 = command1.ExecuteReader();
+                if (read1.HasRows)
+                {
+                    if (read1.Read())
+                    {
+                        //陣列分別存入商品資料的 1.商品名稱 3.商品顏色 5.商品價格
+                        array[0] = read1[1].ToString();
+                        array[1] = read1[3].ToString();
+                        array[2] = read1[5].ToString();
+                    }
+                }
+                connection1.Close();
+                SqlConnection connection2 = new SqlConnection(orderdetail_data);
+                string sq2 = $"insert into [OrderDetail](customerAccount,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productName,@productColor,@productPrice,@qty,@cart)";
+                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                connection2.Open();
+                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
+                Command2.Parameters["@productName"].Value = array[0];
+                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                Command2.Parameters["@productColor"].Value = array[1];
+                Command2.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                Command2.Parameters["@productPrice"].Value = array[2];
+                Command2.Parameters.Add("@qty", SqlDbType.Int);
+                Command2.Parameters["@qty"].Value = 1;
+                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
+                Command2.Parameters["@cart"].Value = "是";
+                Command2.ExecuteNonQuery();
+                connection2.Close();
+            }
+            /*HttpCookie usecookie = new HttpCookie("buy");
             if (DropDownList2.SelectedValue == "黑")
             {
                 if (Request.Cookies["buy"] != null)
@@ -91,12 +207,57 @@ namespace Shopping
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label5.Text)).ToString();
             Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");
+            Response.Redirect("index");*/
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            HttpCookie usecookie = new HttpCookie("buy");
+            //產生一個字串的陣列承接商品資料
+            string[] array = new string[3];
+            //驗證是否登錄
+            if (Session["loginstatus"] == null)
+            {
+                Response.Redirect("loging");
+            }
+            else
+            {
+                //從資料庫Products中取出商品資料並寫入字串
+                SqlConnection connection1 = new SqlConnection(product_data);
+                string sql = $"select * from Products where productName =N'剪裁T' and category=N'{DropDownList3.SelectedValue}'";
+                SqlCommand command1 = new SqlCommand(sql, connection1);
+                connection1.Open();
+                SqlDataReader read1 = command1.ExecuteReader();
+                if (read1.HasRows)
+                {
+                    if (read1.Read())
+                    {
+                        //陣列分別存入商品資料的 1.商品名稱 3.商品顏色 5.商品價格
+                        array[0] = read1[1].ToString();
+                        array[1] = read1[3].ToString();
+                        array[2] = read1[5].ToString();
+                    }
+                }
+                connection1.Close();
+                SqlConnection connection2 = new SqlConnection(orderdetail_data);
+                string sq2 = $"insert into [OrderDetail](customerAccount,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productName,@productColor,@productPrice,@qty,@cart)";
+                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                connection2.Open();
+                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
+                Command2.Parameters["@productName"].Value = array[0];
+                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                Command2.Parameters["@productColor"].Value = array[1];
+                Command2.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                Command2.Parameters["@productPrice"].Value = array[2];
+                Command2.Parameters.Add("@qty", SqlDbType.Int);
+                Command2.Parameters["@qty"].Value = 1;
+                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
+                Command2.Parameters["@cart"].Value = "是";
+                Command2.ExecuteNonQuery();
+                connection2.Close();
+            }
+            /*HttpCookie usecookie = new HttpCookie("buy");
             if (DropDownList3.SelectedValue == "白")
             {
                 if (Request.Cookies["buy"] != null)
@@ -139,11 +300,55 @@ namespace Shopping
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label7.Text)).ToString();
             Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");
+            Response.Redirect("index");*/
         }
         protected void Button4_Click(object sender, EventArgs e)
-        {
-            HttpCookie usecookie = new HttpCookie("buy");
+        {//產生一個字串的陣列承接商品資料
+            string[] array = new string[3];
+            //驗證是否登錄
+            if (Session["loginstatus"] == null)
+            {
+                Response.Redirect("loging");
+            }
+            else
+            {
+                //從資料庫Products中取出商品資料並寫入字串
+                SqlConnection connection1 = new SqlConnection(product_data);
+                string sql = $"select * from Products where productName =N'細肩露肩t' and category=N'{DropDownList4.SelectedValue}'";
+                SqlCommand command1 = new SqlCommand(sql, connection1);
+                connection1.Open();
+                SqlDataReader read1 = command1.ExecuteReader();
+                if (read1.HasRows)
+                {
+                    if (read1.Read())
+                    {
+                        //陣列分別存入商品資料的 1.商品名稱 3.商品顏色 5.商品價格
+                        array[0] = read1[1].ToString();
+                        array[1] = read1[3].ToString();
+                        array[2] = read1[5].ToString();
+                    }
+                }
+                connection1.Close();
+                SqlConnection connection2 = new SqlConnection(orderdetail_data);
+                string sq2 = $"insert into [OrderDetail](customerAccount,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productName,@productColor,@productPrice,@qty,@cart)";
+                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                connection2.Open();
+                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
+                Command2.Parameters["@productName"].Value = array[0];
+                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                Command2.Parameters["@productColor"].Value = array[1];
+                Command2.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                Command2.Parameters["@productPrice"].Value = array[2];
+                Command2.Parameters.Add("@qty", SqlDbType.Int);
+                Command2.Parameters["@qty"].Value = 1;
+                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
+                Command2.Parameters["@cart"].Value = "是";
+                Command2.ExecuteNonQuery();
+                connection2.Close();
+            }
+            /*HttpCookie usecookie = new HttpCookie("buy");
             if (DropDownList4.SelectedValue == "紅")
             {
                 if (Request.Cookies["buy"] != null)
@@ -178,11 +383,56 @@ namespace Shopping
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label9.Text)).ToString();
             Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");
+            Response.Redirect("index");*/
         }
         protected void Button5_Click(object sender, EventArgs e)
         {
-            HttpCookie usecookie = new HttpCookie("buy");
+            //產生一個字串的陣列承接商品資料
+            string[] array = new string[3];
+            //驗證是否登錄
+            if (Session["loginstatus"] == null)
+            {
+                Response.Redirect("loging");
+            }
+            else
+            {
+                //從資料庫Products中取出商品資料並寫入字串
+                SqlConnection connection1 = new SqlConnection(product_data);
+                string sql = $"select * from Products where productName =N'胸抓摺衫' and category=N'{DropDownList5.SelectedValue}'";
+                SqlCommand command1 = new SqlCommand(sql, connection1);
+                connection1.Open();
+                SqlDataReader read1 = command1.ExecuteReader();
+                if (read1.HasRows)
+                {
+                    if (read1.Read())
+                    {
+                        //陣列分別存入商品資料的 1.商品名稱 3.商品顏色 5.商品價格
+                        array[0] = read1[1].ToString();
+                        array[1] = read1[3].ToString();
+                        array[2] = read1[5].ToString();
+                    }
+                }
+                connection1.Close();
+                SqlConnection connection2 = new SqlConnection(orderdetail_data);
+                string sq2 = $"insert into [OrderDetail](customerAccount,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productName,@productColor,@productPrice,@qty,@cart)";
+                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                connection2.Open();
+                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
+                Command2.Parameters["@productName"].Value = array[0];
+                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                Command2.Parameters["@productColor"].Value = array[1];
+                Command2.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                Command2.Parameters["@productPrice"].Value = array[2];
+                Command2.Parameters.Add("@qty", SqlDbType.Int);
+                Command2.Parameters["@qty"].Value = 1;
+                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
+                Command2.Parameters["@cart"].Value = "是";
+                Command2.ExecuteNonQuery();
+                connection2.Close();
+            }
+            /*HttpCookie usecookie = new HttpCookie("buy");
             if (DropDownList5.SelectedValue == "粉")
             {
                 if (Request.Cookies["buy"] != null)
@@ -209,11 +459,56 @@ namespace Shopping
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label11.Text)).ToString();
             Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");
+            Response.Redirect("index");*/
         }
         protected void Button6_Click(object sender, EventArgs e)
         {
-            HttpCookie usecookie = new HttpCookie("buy");
+            //產生一個字串的陣列承接商品資料
+            string[] array = new string[3];
+            //驗證是否登錄
+            if (Session["loginstatus"] == null)
+            {
+                Response.Redirect("loging");
+            }
+            else
+            {
+                //從資料庫Products中取出商品資料並寫入字串
+                SqlConnection connection1 = new SqlConnection(product_data);
+                string sql = $"select * from Products where productName =N'格紋澎袖衫' and category=N'{DropDownList6.SelectedValue}'";
+                SqlCommand command1 = new SqlCommand(sql, connection1);
+                connection1.Open();
+                SqlDataReader read1 = command1.ExecuteReader();
+                if (read1.HasRows)
+                {
+                    if (read1.Read())
+                    {
+                        //陣列分別存入商品資料的 1.商品名稱 3.商品顏色 5.商品價格
+                        array[0] = read1[1].ToString();
+                        array[1] = read1[3].ToString();
+                        array[2] = read1[5].ToString();
+                    }
+                }
+                connection1.Close();
+                SqlConnection connection2 = new SqlConnection(orderdetail_data);
+                string sq2 = $"insert into [OrderDetail](customerAccount,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productName,@productColor,@productPrice,@qty,@cart)";
+                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                connection2.Open();
+                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
+                Command2.Parameters["@productName"].Value = array[0];
+                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                Command2.Parameters["@productColor"].Value = array[1];
+                Command2.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                Command2.Parameters["@productPrice"].Value = array[2];
+                Command2.Parameters.Add("@qty", SqlDbType.Int);
+                Command2.Parameters["@qty"].Value = 1;
+                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
+                Command2.Parameters["@cart"].Value = "是";
+                Command2.ExecuteNonQuery();
+                connection2.Close();
+            }
+            /*HttpCookie usecookie = new HttpCookie("buy");
             if (DropDownList6.SelectedValue == "黑")
             {
                 if (Request.Cookies["buy"] != null)
@@ -232,11 +527,56 @@ namespace Shopping
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label13.Text)).ToString();
             Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");
+            Response.Redirect("index");*/
         }
         protected void Button7_Click(object sender, EventArgs e)
         {
-            HttpCookie usecookie = new HttpCookie("buy");
+            //產生一個字串的陣列承接商品資料
+            string[] array = new string[3];
+            //驗證是否登錄
+            if (Session["loginstatus"] == null)
+            {
+                Response.Redirect("loging");
+            }
+            else
+            {
+                //從資料庫Products中取出商品資料並寫入字串
+                SqlConnection connection1 = new SqlConnection(product_data);
+                string sql = $"select * from Products where productName =N'中抓摺雪紡衫' and category=N'{DropDownList7.SelectedValue}'";
+                SqlCommand command1 = new SqlCommand(sql, connection1);
+                connection1.Open();
+                SqlDataReader read1 = command1.ExecuteReader();
+                if (read1.HasRows)
+                {
+                    if (read1.Read())
+                    {
+                        //陣列分別存入商品資料的 1.商品名稱 3.商品顏色 5.商品價格
+                        array[0] = read1[1].ToString();
+                        array[1] = read1[3].ToString();
+                        array[2] = read1[5].ToString();
+                    }
+                }
+                connection1.Close();
+                SqlConnection connection2 = new SqlConnection(orderdetail_data);
+                string sq2 = $"insert into [OrderDetail](customerAccount,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productName,@productColor,@productPrice,@qty,@cart)";
+                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                connection2.Open();
+                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
+                Command2.Parameters["@productName"].Value = array[0];
+                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                Command2.Parameters["@productColor"].Value = array[1];
+                Command2.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                Command2.Parameters["@productPrice"].Value = array[2];
+                Command2.Parameters.Add("@qty", SqlDbType.Int);
+                Command2.Parameters["@qty"].Value = 1;
+                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
+                Command2.Parameters["@cart"].Value = "是";
+                Command2.ExecuteNonQuery();
+                connection2.Close();
+            }
+            /*HttpCookie usecookie = new HttpCookie("buy");
             if (DropDownList7.SelectedValue == "杏")
             {
                 if (Request.Cookies["buy"] != null)
@@ -263,12 +603,57 @@ namespace Shopping
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label15.Text)).ToString();
             Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");
+            Response.Redirect("index");*/
         }
 
         protected void Button8_Click(object sender, EventArgs e)
         {
-            HttpCookie usecookie = new HttpCookie("buy");
+            //產生一個字串的陣列承接商品資料
+            string[] array = new string[3];
+            //驗證是否登錄
+            if (Session["loginstatus"] == null)
+            {
+                Response.Redirect("loging");
+            }
+            else
+            {
+                //從資料庫Products中取出商品資料並寫入字串
+                SqlConnection connection1 = new SqlConnection(product_data);
+                string sql = $"select * from Products where productName =N'滾邊寬袖衫' and category=N'{DropDownList8.SelectedValue}'";
+                SqlCommand command1 = new SqlCommand(sql, connection1);
+                connection1.Open();
+                SqlDataReader read1 = command1.ExecuteReader();
+                if (read1.HasRows)
+                {
+                    if (read1.Read())
+                    {
+                        //陣列分別存入商品資料的 1.商品名稱 3.商品顏色 5.商品價格
+                        array[0] = read1[1].ToString();
+                        array[1] = read1[3].ToString();
+                        array[2] = read1[5].ToString();
+                    }
+                }
+                connection1.Close();
+                SqlConnection connection2 = new SqlConnection(orderdetail_data);
+                string sq2 = $"insert into [OrderDetail](customerAccount,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productName,@productColor,@productPrice,@qty,@cart)";
+                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                connection2.Open();
+                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
+                Command2.Parameters["@productName"].Value = array[0];
+                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                Command2.Parameters["@productColor"].Value = array[1];
+                Command2.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                Command2.Parameters["@productPrice"].Value = array[2];
+                Command2.Parameters.Add("@qty", SqlDbType.Int);
+                Command2.Parameters["@qty"].Value = 1;
+                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
+                Command2.Parameters["@cart"].Value = "是";
+                Command2.ExecuteNonQuery();
+                connection2.Close();
+            }
+            /*HttpCookie usecookie = new HttpCookie("buy");
             if (DropDownList8.SelectedValue == "白")
             {
                 if (Request.Cookies["buy"] != null)
@@ -295,7 +680,7 @@ namespace Shopping
             }
             Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label17.Text)).ToString();
             Label2.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            Response.Redirect("index");
+            Response.Redirect("index");*/
         }
 
         protected void Button9_Click(object sender, EventArgs e)

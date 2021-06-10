@@ -11,13 +11,16 @@ namespace Shopping
 
     public partial class shoppingcar : Page
     {
-        string picture_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
-
-
+        string product_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
+        string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["quantity"] == null)
+            if (Session["loginstatus"] == null)
+            {
+                Response.Redirect("loging");
+            }
+            /*if (Request.Cookies["quantity"] == null)
                 Response.Cookies["quantity"].Value = "0";
 
             if (Request.Cookies["cart"] != null)
@@ -30,7 +33,7 @@ namespace Shopping
                 for (int i = 0; i < Convert.ToInt32(Request.Cookies["quantity"].Value); i++)
                 {                   
                     TableRow r1 = new TableRow();
-                    SqlConnection connection = new SqlConnection(picture_data);
+                    SqlConnection connection = new SqlConnection(product_data);
                     string sq1 = $"select * from Products where ID ='{Request.Cookies["buy"][$"{i}"]}' ";
                     System.Data.SqlClient.SqlCommand command1 = new SqlCommand(sq1, connection);
                     connection.Open();
@@ -103,9 +106,9 @@ namespace Shopping
                 c12.Controls.Add(new LiteralControl());
                 r2.Cells.Add(c12);
                 Table1.Rows.Add(r2);
-            }
+            }*/
         }
-        protected void On_Button(Object sender, CommandEventArgs e)
+        /*protected void On_Button(Object sender, CommandEventArgs e)
         {
             
             if (Request.Cookies["buy"] != null)
@@ -126,7 +129,7 @@ namespace Shopping
                 }
             }
 
-        }
+        }*/
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -148,6 +151,19 @@ namespace Shopping
         protected void Button2_Click(object sender, EventArgs e)
         {
             Response.Redirect("payment");
+        }
+
+        protected void userorder_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            Label2.Text = (userorder.Rows[e.RowIndex].Cells[1].Text.Trim()).ToString();
+            string id = (userorder.Rows[e.RowIndex].Cells[1].Text.Trim()).ToString();
+            SqlConnection connection = new SqlConnection(orderdetail_data);
+            string sql = $"delete from OrderDetail where ID=N'{id}'";
+            SqlCommand command = new SqlCommand(sql, connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+            Response.Redirect("shoppingcar");
         }
 
     }
