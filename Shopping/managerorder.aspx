@@ -212,31 +212,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<br>
 										<li><asp:Label ID="customerID" runat="server" Text="customerID"></asp:Label></li>
 										<li>
-                                            <asp:DropDownList ID="DDLAddCustomerID" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceAddCustomerID" DataTextField="ID" DataValueField="ID" Width="190px" Height="30px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:DropDownList ID="DDLAddCustomerID" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceAddCustomerID" DataTextField="ID" DataValueField="ID" Width="195px" Height="30px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
 											<asp:SqlDataSource ID="SqlDataSourceAddCustomerID" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT [ID] FROM [Customers]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintCustomerID" runat="server" Text=""></asp:Label></li>
 										<br>
-										<li><asp:Label ID="productName" runat="server" Text="productName"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLAddProductName" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceAddProductName" DataTextField="productName" DataValueField="productName" Height="30px" Width="190px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceAddProductName" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT [productName] FROM [Products]"></asp:SqlDataSource>
+										<li><asp:Label ID="productID" runat="server" Text="productID"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLAddProductID" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceProductID" DataTextField="ID" DataValueField="ID" Height="30px" Width="195px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceProductID" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT [ID] FROM [Products]"></asp:SqlDataSource>
                                         </li>
-										<li><asp:Label ID="hintProductName" runat="server" Text=""></asp:Label></li>
+										<li><asp:Label ID="hintProductID" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li><asp:Label ID="qty" runat="server" Text="qty"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintQty" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li><asp:Label ID="price" runat="server" Text="price"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintPrice" runat="server" Text=""></asp:Label></li>
+										<li><asp:TextBox ID="TextBox5" runat="server" Enabled="False"></asp:TextBox></li>
+										<li><asp:Label ID="hintPrice" runat="server" Text="不用輸入" ForeColor="Blue"></asp:Label></li>
 										<br>
 										<li><asp:Label ID="totalprice" runat="server" Text="totalprice"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox11" runat="server" Enabled="False"></asp:TextBox></li>
 										<li><asp:Label ID="hintTotalprice" runat="server" Text="不用輸入" ForeColor="Blue"></asp:Label></li> 
 										<br>
 										<li><asp:Label ID="status" runat="server" Text="status"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLAddstatus" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrdersStatus" DataTextField="Cols" DataValueField="Cols" Height="30px" Width="190px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLAddstatus" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrdersStatus" DataTextField="Cols" DataValueField="Cols" Height="30px" Width="195px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceOrdersStatus" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersStatusConnectionString %>" SelectCommand="SELECT [Cols] FROM [OrdersStatus]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintStatus" runat="server" Text="" ></asp:Label></li>
@@ -250,7 +250,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Delete Order Information</h4>
 									<ul>
 										<li><asp:Label ID="orderID" runat="server" Text="orderID"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLDeleteOrderID" runat="server"  AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrderID" DataTextField="ID" DataValueField="ID" Width="190px" Height="30px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLDeleteOrderID" runat="server"  AppendDataBoundItems="True"  Width="195px" Height="30px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceOrderID" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersConnectionString %>" SelectCommand="SELECT [ID] FROM [Orders]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintID" runat="server" Text="選擇即將刪除的orderID"></asp:Label></li>
@@ -264,11 +264,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Update Order Information</h4>
 									<ul>
 										<li><asp:Label ID="orderID2" runat="server" Text="orderID"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateOrderID" runat="server" AppendDataBoundItems="True" Height="30px" Width="190px" DataSourceID="SqlDataSourceOrderID" DataTextField="ID" DataValueField="ID"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList></li>
+										<li><asp:DropDownList ID="DDLUpdateOrderID" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px" ><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList></li>
 										<li><asp:Label ID="hintID2" runat="server" Text="選擇即將更新的orderID"></asp:Label><li>
 										<br>
 										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateOrderCols" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrderCols" DataTextField="Cols" DataValueField="Cols" Height="30px" Width="190px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLUpdateOrderCols" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrderCols" DataTextField="Cols" DataValueField="Cols" Height="30px" Width="195px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceOrderCols" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersColsConnectionString %>" SelectCommand="SELECT [Cols] FROM [OrdersCols]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintColumn" runat="server" Text="選擇即將更新的欄位"></asp:Label></li>

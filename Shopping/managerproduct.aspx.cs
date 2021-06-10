@@ -31,9 +31,7 @@ namespace Shopping
              DataTable dt = new DataTable();
              dt.Columns.Add("ID");
              dt.Columns.Add("productName");
-             DataColumn picture = new DataColumn();
-             picture = new DataColumn("picture");
-             dt.Columns.Add(picture);
+             dt.Columns.Add("picture");
              dt.Columns.Add("category");
              dt.Columns.Add("inventory");
              dt.Columns.Add("price");
@@ -44,7 +42,7 @@ namespace Shopping
                  DataRow row = dt.NewRow();
                  row["ID"] = read[0];
                  row["productName"] = read[1];
-                 row[picture] = ResolveUrl($"{read[2]}");
+                 row["picture"] = ResolveUrl($"{read[2]}");
                  row["category"] = read[3];
                  row["inventory"] = read[4];
                  row["price"] = read[5];
@@ -55,6 +53,20 @@ namespace Shopping
             
             product.DataBind();
             connection.Close();
+        }
+        public void DDLreconnect()
+        {
+            DDLDeleterProductID.Items.Clear();
+            DDLDeleterProductID.Items.Add("請選擇");
+            DDLUpdateProductID.Items.Clear();
+            DDLUpdateProductID.Items.Add("請選擇");
+            DataView dv = (DataView)this.SqlDataSourceProductsID.Select(new DataSourceSelectArguments());
+            DDLDeleterProductID.DataSource = dv;
+            DDLDeleterProductID.DataTextField = "ID";
+            DDLDeleterProductID.DataBind();
+            DDLUpdateProductID.DataSource = dv;
+            DDLUpdateProductID.DataTextField = "ID";
+            DDLUpdateProductID.DataBind();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -70,6 +82,7 @@ namespace Shopping
             if (!IsPostBack)
             {
                 reviewProduct();
+                DDLreconnect();
             }
         }
 
@@ -98,6 +111,7 @@ namespace Shopping
                                 MessageBox.Show("輸入成功");
                                 connection2.Close();
                                 reviewProduct();
+                                DDLreconnect();
                             }
                             else
                             {
@@ -159,6 +173,8 @@ namespace Shopping
                 MessageBox.Show("刪除成功");
                 connection3.Close();
                 reviewProduct();
+                DDLreconnect();
+
             }
             else
             {
