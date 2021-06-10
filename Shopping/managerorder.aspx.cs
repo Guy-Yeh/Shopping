@@ -16,6 +16,8 @@ namespace Shopping
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrdersConnectionString"].ConnectionString;
         string s_data2 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
         string s_data3 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
+        
+
         public SqlConnection Connect(string x)
         {
             SqlConnection connect = new SqlConnection(x);
@@ -33,6 +35,9 @@ namespace Shopping
             userorder.DataBind();
             connection.Close();
         }
+
+
+
         public void DDLreconnect()
         {
             DDLDeleteOrderID.Items.Clear();

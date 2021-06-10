@@ -270,7 +270,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </li>
 										<li><asp:Label ID="hintID" runat="server" Text="選擇即將刪除的accountID"></asp:Label></li>
 										<br>
-										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
+										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要刪除嗎?')) window.event.returnValue=false;"/></li>
 									</ul>
 								</div>							
 							</div>
@@ -294,9 +294,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintAll" runat="server" Text="輸入更新的值"></asp:Label></li>
 										<br>
-										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
-                                            <asp:DropDownList ID="DropDownList1" runat="server">
-                                            </asp:DropDownList>
+										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要修改嗎?')) window.event.returnValue=false;"/>
                                         </li>
 									</ul>	
 								</div>												

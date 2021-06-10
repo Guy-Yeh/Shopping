@@ -241,7 +241,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:Label ID="hintResponse" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li>
-                                            <asp:Button ID="response" runat="server" Text="submit" OnClick="Button1_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
+                                            <asp:Button ID="response" runat="server" Text="submit" OnClick="Button1_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要送出嗎?')) window.event.returnValue=false;"/>
                                         </li>
 									</ul>	
 								</div>
