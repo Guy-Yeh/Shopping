@@ -16,7 +16,8 @@ namespace Shopping
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrdersConnectionString"].ConnectionString;
         string s_data2 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
         string s_data3 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
-        
+        string s_data4 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ShoppingConnectionString"].ConnectionString;
+
 
         public SqlConnection Connect(string x)
         {
@@ -218,6 +219,8 @@ namespace Shopping
                         }
                         connection7.Open();
                     }
+        
+
                     else if (DDLUpdateOrderCols.Text == "qty" || DDLUpdateOrderCols.Text == "price")
                     {
                         if (numberCheck == true)

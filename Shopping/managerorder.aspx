@@ -302,6 +302,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<br>
             <asp:GridView ID="userorder" runat="server">
             </asp:GridView>
+            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
                 </div>
 				<div id="small-dialog" class="mfp-hide">
 				<div class="search-top">
