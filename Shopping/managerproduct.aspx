@@ -276,7 +276,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <asp:TemplateField headertext="image">
                     <ItemTemplate >
                        <asp:Image ID="img1" ImageUrl='<%#Eval("picture") %>' 
-                                  runat="server"  Width="200" Height="200"/>
+                                  runat="server"  Width="100" Height="120"/>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
