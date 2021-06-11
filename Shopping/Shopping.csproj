@@ -114,7 +114,7 @@
     <Content Include="product.aspx" />
     <Content Include="shoppingcar.aspx" />
     <Content Include="images\img_153839.png" />
-    <Content Include="loging.aspx" />
+    <Content Include="login.aspx" />
     <Content Include="register.aspx" />
     <Content Include="account.html" />
     <Content Include="payment.aspx" />
@@ -271,12 +271,12 @@
     <Compile Include="payment.aspx.designer.cs">
       <DependentUpon>payment.aspx</DependentUpon>
     </Compile>
-    <Compile Include="loging.aspx.cs">
-      <DependentUpon>loging.aspx</DependentUpon>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="loging.aspx.designer.cs">
-      <DependentUpon>loging.aspx</DependentUpon>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>

@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Shopping
 {
-    public partial class loging : Page
+    public partial class login : Page
     {
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
         public SqlConnection Connect(string x)
@@ -69,6 +69,11 @@ namespace Shopping
         protected void forgetLinkButton1_Click(object sender, EventArgs e)
         {
             Response.Redirect("forget");
+        }
+
+        protected void registerButton1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("register");
         }
     }
 }
