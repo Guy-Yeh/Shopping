@@ -43,18 +43,27 @@ namespace Shopping
             GridView1.DataSource = read1;
             GridView1.DataBind();
             connection1.Close();
-            SqlConnection connection2 = new SqlConnection(customers_data);
-            string sql2 = $"select * from Customers where account=N'{Session["loginstatus"]}'";
-            SqlCommand command2 = new SqlCommand(sql2, connection2);
-            connection2.Open();
+            string sql2 = $"select sum(productPrice*qty) from OrderDetail where customerAccount=N'{Session["loginstatus"]}' and cart=N'是'";
+            SqlCommand command2 = new SqlCommand(sql2, connection1);
+            connection1.Open();
             SqlDataReader read2 = command2.ExecuteReader();
-            if (read2.HasRows)
+            if (read2.Read())
             {
-                if (read2.Read())
+                Label4.Text = read2[0].ToString();
+            }
+            connection1.Close();
+            SqlConnection connection2 = new SqlConnection(customers_data);
+            string sql3 = $"select * from Customers where account=N'{Session["loginstatus"]}'";
+            SqlCommand command3 = new SqlCommand(sql3, connection2);
+            connection2.Open();
+            SqlDataReader read3 = command3.ExecuteReader();
+            if (read3.HasRows)
+            {
+                if (read3.Read())
                 {
-                    TextBox1.Text = read2[4].ToString();
-                    TextBox2.Text = read2["address"].ToString();
-                    TextBox3.Text = read2[5].ToString();
+                    TextBox1.Text = read3[4].ToString();
+                    TextBox2.Text = read3["address"].ToString();
+                    TextBox3.Text = read3[5].ToString();
                 }
             }
             connection2.Close();
@@ -67,7 +76,7 @@ namespace Shopping
                 reviewSerial();
             }
             SqlConnection connection1 = new SqlConnection(orders_data);
-            string sql1 = $"insert into [Orders](serial,customerAccount,name,phone,address,status) values(@serial,@customerAccount,@name,@phone,@address,@status)";
+            string sql1 = $"insert into [Orders](serial,customerAccount,name,phone,address,totalPrice,status) values(@serial,@customerAccount,@name,@phone,@address,@totalPrice,@status)";
             SqlCommand Command1 = new SqlCommand(sql1, connection1);
             connection1.Open();
             Command1.Parameters.Add("@serial", SqlDbType.NVarChar);
@@ -80,6 +89,8 @@ namespace Shopping
             Command1.Parameters["@phone"].Value = TextBox3.Text;
             Command1.Parameters.Add("@address", SqlDbType.NVarChar);
             Command1.Parameters["@address"].Value = TextBox2.Text;
+            Command1.Parameters.Add("@totalPrice", SqlDbType.NVarChar);
+            Command1.Parameters["@totalPrice"].Value = Label4.Text;
             Command1.Parameters.Add("@status", SqlDbType.NVarChar);
             Command1.Parameters["@status"].Value = "賣家處理中";
             Command1.ExecuteNonQuery();
