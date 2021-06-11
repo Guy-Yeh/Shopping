@@ -263,11 +263,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="h_nav">
 									<h4>Delete Order Information</h4>
 									<ul>
-										<li><asp:Label ID="orderID" runat="server" Text="orderID"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLDeleteOrderID" runat="server"  AppendDataBoundItems="True"  Width="195px" Height="30px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceOrderID" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersConnectionString %>" SelectCommand="SELECT [ID] FROM [Orders]"></asp:SqlDataSource>
+										<li><asp:Label ID="orderID" runat="server" Text="orderSerial"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLDeleteOrderID" runat="server"  AppendDataBoundItems="True"  Width="195px" Height="30px" DataSourceID="SqlDataSourceOrderSerial" DataTextField="serial" DataValueField="serial"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceOrderSerial" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersConnectionString %>" SelectCommand="SELECT [serial] FROM [Orders]"></asp:SqlDataSource>
                                         </li>
-										<li><asp:Label ID="hintID" runat="server" Text="選擇即將刪除的orderID"></asp:Label></li>
+										<li><asp:Label ID="hintID" runat="server" Text="選擇即將刪除的orderSerial"></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要刪除嗎?')) window.event.returnValue=false;"/></li>
 										
@@ -278,9 +278,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="h_nav">
 									<h4>Update Order Information</h4>
 									<ul>
-										<li><asp:Label ID="orderID2" runat="server" Text="orderID"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateOrderID" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px" ><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList></li>
-										<li><asp:Label ID="hintID2" runat="server" Text="選擇即將更新的orderID"></asp:Label><li>
+										<li><asp:Label ID="orderID2" runat="server" Text="orderDetailID"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLUpdateOrderID" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px" DataSourceID="SqlDataSourceOrderDetailID" DataTextField="ID" DataValueField="ID" ><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceOrderDetailID" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT [ID] FROM [OrderDetail]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintID2" runat="server" Text="選擇即將更新的orderDetailID"></asp:Label><li>
 										<br>
 										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
 										<li><asp:DropDownList ID="DDLUpdateOrderCols" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrderCols" DataTextField="Cols" DataValueField="Cols" Height="30px" Width="195px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
@@ -302,7 +304,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<br>
             <asp:GridView ID="userorder" runat="server">
             </asp:GridView>
-            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSourceAllOrders2">
+                <Columns>
+                    <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                    <asp:BoundField DataField="serial" HeaderText="serial" SortExpression="serial" />
+                    <asp:BoundField DataField="productName" HeaderText="productName" SortExpression="productName" />
+                    <asp:BoundField DataField="productColor" HeaderText="productColor" SortExpression="productColor" />
+                    <asp:BoundField DataField="productPicture" HeaderText="productPicture" SortExpression="productPicture" Visible="False" />
+                    <asp:TemplateField HeaderText="image">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("productPicture") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("productPicture") %>' Width="100px" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="productPrice" HeaderText="productPrice" SortExpression="productPrice" />
+                    <asp:BoundField DataField="qty" HeaderText="qty" SortExpression="qty" />
+                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
+                    <asp:BoundField DataField="phone" HeaderText="phone" SortExpression="phone" />
+                    <asp:BoundField DataField="address" HeaderText="address" SortExpression="address" />
+                    <asp:BoundField DataField="status" HeaderText="status" SortExpression="status" />
+                    <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" />
+                </Columns>
+            </asp:GridView>
+            
+                <asp:SqlDataSource ID="SqlDataSourceAllOrders2" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="SELECT a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice, a.qty, b.name, b.phone, b.address, b.status, b.initdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial"></asp:SqlDataSource>
+            
+                <asp:SqlDataSource ID="SqlDataSourceAllOrders" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="SELECT a.ID, a.serial, a.productName, a.productColor, a.productPicture, b.name, b.phone, b.address, b.status, b.initdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial"></asp:SqlDataSource>
                 </div>
 				<div id="small-dialog" class="mfp-hide">
 				<div class="search-top">

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -16,8 +17,9 @@ namespace Shopping
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrdersConnectionString"].ConnectionString;
         string s_data2 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
         string s_data3 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
-        string s_data4 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ShoppingConnectionString"].ConnectionString;
-
+        string s_data4 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
+        string s_data5 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ShoppingConnectionString"].ConnectionString;
+        
 
         public SqlConnection Connect(string x)
         {
@@ -56,21 +58,43 @@ namespace Shopping
             return f;
         }
 
-
-        public void DDLreconnect()
+        public string sourcefind(string x)
         {
-            DDLDeleteOrderID.Items.Clear();
-            DDLDeleteOrderID.Items.Add("請選擇");
-            DDLUpdateOrderID.Items.Clear();
-            DDLUpdateOrderID.Items.Add("請選擇");
-            DataView dv = (DataView)this.SqlDataSourceOrderID.Select(new DataSourceSelectArguments());
-            DDLDeleteOrderID.DataSource = dv;
-            DDLDeleteOrderID.DataTextField = "ID";
-            DDLDeleteOrderID.DataBind();
-            DDLUpdateOrderID.DataSource = dv;
-            DDLUpdateOrderID.DataTextField = "ID";
-            DDLUpdateOrderID.DataBind();
+            string source = $"select {x} from OrderDetail where ID ='{DDLUpdateOrderID.Text}'";
+            SqlConnection consource = new SqlConnection(s_data4);
+            SqlCommand concommand = new SqlCommand(source, consource);
+            consource.Open();
+            SqlDataReader dataReader = concommand.ExecuteReader();
+            
+            if (dataReader.Read())
+            {
+                string y = dataReader[0].ToString();
+                return y;
+            }
+            else
+            {
+                string z = "";
+                return z;
+            }
+
         }
+
+        //public void DDLreconnect()
+        //{
+        //    DDLDeleteOrderID.Items.Clear();
+        //    DDLDeleteOrderID.Items.Add("請選擇");
+        //    DDLUpdateOrderID.Items.Clear();
+        //    DDLUpdateOrderID.Items.Add("請選擇");
+        //    DataView dv = (DataView)this.SqlDataSourceOrderID.Select(new DataSourceSelectArguments());
+        //    DDLDeleteOrderID.DataSource = dv;
+        //    DDLDeleteOrderID.DataTextField = "ID";
+        //    DDLDeleteOrderID.DataBind();
+        //    DDLUpdateOrderID.DataSource = dv;
+        //    DDLUpdateOrderID.DataTextField = "ID";
+        //    DDLUpdateOrderID.DataBind();
+        //}
+
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -86,7 +110,7 @@ namespace Shopping
             if (!IsPostBack)
             {
                 reviewOrder();
-                DDLreconnect();
+               
             }
         }
 
@@ -134,7 +158,7 @@ namespace Shopping
                                 connection2.Close();
                                 connectionp.Close();
                                 reviewOrder();
-                                DDLreconnect();
+                               
                             }
                         }
                         else
@@ -165,18 +189,27 @@ namespace Shopping
         {
             if (DDLDeleteOrderID.SelectedItem.Text != "請選擇")
             {
-                string sql3 = $"delete from Orders where ID='{DDLDeleteOrderID.Text}'";
+                string sql3D = $"delete from OrderDetail where serial='{DDLDeleteOrderID.Text}'";
+                SqlConnection connection3D = Connect(s_data4);
+                SqlCommand command3D = new SqlCommand(sql3D, connection3D);
+                connection3D.Open();
+                command3D.ExecuteNonQuery();
+                connection3D.Close();
+
+                string sql3 = $"delete from Orders where serial='{DDLDeleteOrderID.Text}'";
                 SqlConnection connection3 = Connect(s_data);
                 SqlCommand command3 = new SqlCommand(sql3, connection3);
                 connection3.Open();
                 command3.ExecuteNonQuery();
-                MessageBox.Show("刪除成功");
                 connection3.Close();
-                reviewOrder();
-                DDLreconnect();
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt2", "setTimeout( function(){alert('刪除成功');},0);", true);
+                
+                Response.Redirect(Request.Url.ToString());
+                
             }
             else
             {
+                hintID.ForeColor = Color.Red;
                 hintID.Text = "請選擇項目";
             }
 
@@ -184,10 +217,12 @@ namespace Shopping
 
         protected void Button3_Click(object sender, EventArgs e)
         {
- 
+            
             bool numberCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             bool priceCheck = Regex.IsMatch(TextBox9.Text, @"\d");
-            string sql6 = $"update Orders SET {DDLUpdateOrderCols.Text}=N'{TextBox9.Text}' where ID='{DDLUpdateOrderID.Text}'";
+            bool serialCheck = Regex.IsMatch(TextBox9.Text, @"\d{10}");
+            string sql6 = $"update Orders SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}' where ID='{DDLUpdateOrderID.Text}'";
+            string sql6c = $"update Orders SET {DDLUpdateOrderCols.Text}=N'{TextBox9.Text}' where ID='{DDLUpdateOrderID.Text}'";
             SqlConnection connection6 = Connect(s_data);
             string sql7 = $"select * from Orders where {DDLUpdateOrderCols.Text}='{TextBox9.Text}'";
             string number;
@@ -206,20 +241,43 @@ namespace Shopping
                         SqlDataReader Reader2 = command7.ExecuteReader();
                         if (Reader2.HasRows)
                         {
+                            hintAll.ForeColor = Color.Red;
                             hintAll.Text = "Serial重複 請重新輸入";
                         }
                         else
                         {
-                            SqlCommand command6 = new SqlCommand(sql6, connection6);
-                            connection6.Open();
-                            command6.ExecuteNonQuery();
-                            MessageBox.Show("更新成功");
-                            connection6.Close();
-                            reviewOrder();
+                            if (serialCheck == true)
+                            {
+                                string serial = sourcefind(DDLUpdateOrderCols.Text);
+                                SqlConnection connection6s = new SqlConnection(s_data4);
+                                string sql6s = $"update OrderDetail SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}' where serial='{serial}'";
+                                SqlCommand command6s = new SqlCommand(sql6s, connection6s);
+                                connection6s.Open();
+                                command6s.ExecuteNonQuery();
+                                connection6s.Close();
+
+                                string sql6s2 = $"update Orders SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}' where serial='{serial}'";
+                                SqlCommand command6s2 = new SqlCommand(sql6s2, connection6);
+                                connection6.Open();
+                                command6s2.ExecuteNonQuery();
+                                MessageBox.Show("更新成功");
+                                connection6.Close();
+                                Response.Redirect(Request.Url.ToString());
+                            }
+                            else
+                            {
+                                hintAll.ForeColor = Color.Red;
+                                hintAll.Text = "Serial為10碼數字 請重新輸入";
+                            }
                         }
-                        connection7.Open();
+                        connection7.Close();
                     }
-        
+
+                    else if (DDLUpdateOrderCols.Text == "productName" || DDLUpdateOrderCols.Text == "productColor")
+                    {
+
+
+                    }
 
                     else if (DDLUpdateOrderCols.Text == "qty" || DDLUpdateOrderCols.Text == "price")
                     {
