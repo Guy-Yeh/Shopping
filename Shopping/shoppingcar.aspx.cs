@@ -13,13 +13,57 @@ namespace Shopping
     {
         string product_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
         string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
-
+        string orders_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrdersConnectionString"].ConnectionString;
+        public bool reviewSerial()
+        {
+            Random rnd = new Random();
+            string ser = "";
+            for (int i = 0; i < 10; i++)    //編成serial number
+            {
+                int serialrnd = rnd.Next(0, 10);
+                ser += serialrnd.ToString();
+            }
+            SqlConnection connection1 =new SqlConnection(orders_data);
+            string sql1 = $"select * from Orders where serial='{ser}'";  //為了找尋serial是否重複
+            SqlCommand command1 = new SqlCommand(sql1, connection1);
+            connection1.Open();
+            SqlDataReader Read1 = command1.ExecuteReader();
+            bool f = Read1.HasRows;
+            connection1.Close();
+            return f;
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["loginstatus"] == null)
             {
                 Response.Redirect("loging");
             }
+            SqlConnection connection = new SqlConnection(orderdetail_data);
+            string sq1 = $"select sum(productPrice) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+            SqlCommand command1 = new SqlCommand(sq1, connection);
+            connection.Open();
+            SqlDataReader read1 = command1.ExecuteReader();
+            if (read1.HasRows)
+            {
+                if (read1.Read())
+                {
+                    Label4.Text = read1[0].ToString();
+                }
+            }
+            connection.Close();
+            SqlConnection connection2 = new SqlConnection(orderdetail_data);
+            string sq12 = $"select sum(productPrice) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+            SqlCommand command2 = new SqlCommand(sq12, connection2);
+            connection2.Open();
+            SqlDataReader read2 = command2.ExecuteReader();
+            if (read2.HasRows)
+            {
+                if (read2.Read())
+                {
+                    Label1.Text = "消費金額：" + read2[0].ToString();
+                }
+            }
+            connection2.Close();
             /*if (Request.Cookies["quantity"] == null)
                 Response.Cookies["quantity"].Value = "0";
 
@@ -133,14 +177,24 @@ namespace Shopping
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            HttpCookie cookie = Request.Cookies["buy"];
-            if (cookie != null)
+            if (Session["loginstatus"] != null)
             {
-                cookie.Expires = DateTime.Now.AddDays(-2);
-                Response.Cookies.Set(cookie);
+                SqlConnection connection = new SqlConnection(orderdetail_data);
+                string sql = $"delete from OrderDetail where customerAccount=N'{Session["loginstatus"]}'";
+                SqlCommand command = new SqlCommand(sql, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+                Response.Redirect("shoppingcar");
+                /*HttpCookie cookie = Request.Cookies["buy"];
+                if (cookie != null)
+                {
+                    cookie.Expires = DateTime.Now.AddDays(-2);
+                    Response.Cookies.Set(cookie);
+                }
+                Response.Cookies["cart"].Value = "0";
+                Response.Redirect("shoppingcar");*/
             }
-            Response.Cookies["cart"].Value = "0";
-            Response.Redirect("shoppingcar");
         }
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)

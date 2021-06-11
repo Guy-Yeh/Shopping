@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="loging.aspx.cs" Inherits="Shopping.loging" %>
+﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Shopping.login" %>
 
 <!--A Design by W3layouts 
 Author: W3layout
@@ -68,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li class=" grid"><a  href="index.html">首頁</a></li>	
+					  <li class=" grid"><a  href="index">首頁</a></li>	
 				      <li><a  href="#">男裝
 				          </a>
 				      	<div class="mepanel">
@@ -234,7 +234,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="account_grid">
 			   <div class="col-md-6 login-right">
 				
-					<asp:Label ID="Label1" runat="server" Text="帳號/信箱"></asp:Label>
+					<asp:Label ID="Label1" runat="server" Text="帳號"></asp:Label>
 					<asp:TextBox ID="logingaccTextBox" runat="server"></asp:TextBox>
 					<asp:Label ID="Label2" runat="server" Text="密碼"></asp:Label>
 				    <asp:TextBox ID="logingpasswdTextBox" runat="server" BorderColor="Silver" BorderStyle="Solid" BorderWidth="1px" Height="39px" TextMode="Password" Width="96%"></asp:TextBox>
@@ -249,7 +249,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			    <div class="col-md-6 login-left">
 			  	 <h4>新客戶你好</h4>
 				 <p>通過在我們的商店創建新帳戶，您將能夠更快地完成結帳流程、存儲多個送貨地址、查看和跟踪您帳戶中的訂單等。</p>
-				 <asp:Button ID="registerButton1" runat="server" Text="註冊新帳號" Style="font: 12pt Verdana;font-weight:700;color:white;" BorderStyle="None" BackColor="#52D0C4" Height="37px" Width="130px"/>
+				 <asp:Button ID="registerButton1" runat="server" Text="註冊新帳號" Style="font: 12pt Verdana;font-weight:700;color:white;" BorderStyle="None" BackColor="#52D0C4" Height="37px" Width="130px" OnClick="registerButton1_Click"/>
 			   </div>
 			   <div class="clearfix"> </div>
 			 </div>
