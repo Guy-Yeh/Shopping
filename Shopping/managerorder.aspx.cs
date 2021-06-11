@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -15,6 +16,8 @@ namespace Shopping
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrdersConnectionString"].ConnectionString;
         string s_data2 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
         string s_data3 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
+        
+
         public SqlConnection Connect(string x)
         {
             SqlConnection connect = new SqlConnection(x);
@@ -33,73 +36,111 @@ namespace Shopping
             connection.Close();
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        public bool reviewSerial()
         {
-            hintCustomerID.Text = "";
-            hintProductName.Text = "";
-            hintStatus.Text = "";
-            hintPrice.Text = "";
-            hintQty.Text = "";
-            hintID.Text = "選擇即將刪除的orderID";
-            hintID2.Text = "選擇即將更新的orderID";
-            hintColumn.Text = "選擇即將更新的欄位";
-            hintAll.Text = "輸入更新的值";
-            reviewOrder();
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
+            Random rnd = new Random();
+            TextBox1.Text = "";
+            for (int i = 0; i < 10; i++)    //編成serial number
+            {
+                int serialrnd = rnd.Next(0, 10);
+                TextBox1.Text += serialrnd;
+            }
             SqlConnection connection2s = Connect(s_data);
             string sql2s = $"select * from Orders where serial='{TextBox1.Text}'";  //為了找尋serial是否重複
             SqlCommand command2s = new SqlCommand(sql2s, connection2s);
             connection2s.Open();
             SqlDataReader Reader2s = command2s.ExecuteReader();
-
-            Random rnd = new Random();
-            while (Reader2s.HasRows == true || TextBox1.Text == "")
-            {
-                TextBox1.Text = "";
-                for (int i = 0; i < 10; i++)    //編成serial number
-                {
-                    int serialrnd = rnd.Next(0, 10);
-                    TextBox1.Text += serialrnd;
-                }
-            }
+            bool f = Reader2s.HasRows;
             connection2s.Close();
+            return f;
+        }
+
+
+        public void DDLreconnect()
+        {
+            DDLDeleteOrderID.Items.Clear();
+            DDLDeleteOrderID.Items.Add("請選擇");
+            DDLUpdateOrderID.Items.Clear();
+            DDLUpdateOrderID.Items.Add("請選擇");
+            DataView dv = (DataView)this.SqlDataSourceOrderID.Select(new DataSourceSelectArguments());
+            DDLDeleteOrderID.DataSource = dv;
+            DDLDeleteOrderID.DataTextField = "ID";
+            DDLDeleteOrderID.DataBind();
+            DDLUpdateOrderID.DataSource = dv;
+            DDLUpdateOrderID.DataTextField = "ID";
+            DDLUpdateOrderID.DataBind();
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            hintCustomerID.Text = "";
+            hintProductID.Text = "";
+            hintStatus.Text = "";
+            hintQty.Text = "";
+            hintID.Text = "選擇即將刪除的orderID";
+            hintID2.Text = "選擇即將更新的orderID";
+            hintColumn.Text = "選擇即將更新的欄位";
+            hintAll.Text = "輸入更新的值";
+            
+            if (!IsPostBack)
+            {
+                reviewOrder();
+                DDLreconnect();
+            }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+           
+            while (reviewSerial())
+            {
+                reviewSerial();
+            }
+
+            SqlConnection connectionp = Connect(s_data3);
+            string sqlp = $"select price from Products where ID='{DDLAddProductID.Text}'";  //為了找尋serial是否重複
+            SqlCommand commandp = new SqlCommand(sqlp, connectionp);
+            connectionp.Open();
+            SqlDataReader Readerp = commandp.ExecuteReader();
+
+            
+
+            
 
             bool qtyCheck = Regex.IsMatch(TextBox4.Text, @"\d");
-            bool priceCheck = Regex.IsMatch(TextBox5.Text, @"\d");
+            
 
             
             if (DDLAddCustomerID.SelectedItem.Text != "請選擇")
             {
-                if (DDLAddProductName.SelectedItem.Text != "請選擇")
+                if (DDLAddProductID.SelectedItem.Text != "請選擇")
                 {
                     if (qtyCheck == true)
                     {
-                        if (priceCheck == true)
+
+                        if (DDLAddstatus.SelectedItem.Text != "請選擇")
                         {
-                            if (DDLAddstatus.SelectedItem.Text != "請選擇")
+                            if (Readerp.Read())
                             {
+                                TextBox5.Text = Readerp[0].ToString();
                                 TextBox11.Text = (int.Parse(TextBox4.Text) * int.Parse(TextBox5.Text)).ToString();
-                                string sql2 = $"insert into [Orders](serial,customerID,productName,qty,price,totalprice,status) values('{TextBox1.Text}','{DDLAddCustomerID.Text}','{DDLAddProductName.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox11.Text}','{DDLAddstatus.Text}')";
+                                string sql2 = $"insert into [Orders](serial,customerID,productID,qty,price,totalprice,status) values('{TextBox1.Text}','{DDLAddCustomerID.Text}','{DDLAddProductID.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox11.Text}',N'{DDLAddstatus.Text}')";
                                 SqlConnection connection2 = Connect(s_data);
                                 SqlCommand command2 = new SqlCommand(sql2, connection2);
                                 connection2.Open();
                                 command2.ExecuteNonQuery();
                                 MessageBox.Show("輸入成功");
                                 connection2.Close();
+                                connectionp.Close();
                                 reviewOrder();
-                            }
-                            else
-                            {
-                                hintStatus.Text = "請選擇項目";
+                                DDLreconnect();
                             }
                         }
                         else
                         {
-                            hintPrice.Text = "price需為數字 請重新輸入";
+                            hintStatus.Text = "請選擇項目";
                         }
+
                     }
 
                     else
@@ -109,7 +150,7 @@ namespace Shopping
                 }
                 else
                 {
-                    hintProductName.Text = "請選擇項目";
+                    hintProductID.Text = "請選擇項目";
                 }
             }
             else
@@ -131,11 +172,13 @@ namespace Shopping
                 MessageBox.Show("刪除成功");
                 connection3.Close();
                 reviewOrder();
+                DDLreconnect();
             }
             else
             {
                 hintID.Text = "請選擇項目";
             }
+
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -143,7 +186,7 @@ namespace Shopping
  
             bool numberCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             bool priceCheck = Regex.IsMatch(TextBox9.Text, @"\d");
-            string sql6 = $"update Orders SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}' where ID='{DDLUpdateOrderID.Text}'";
+            string sql6 = $"update Orders SET {DDLUpdateOrderCols.Text}=N'{TextBox9.Text}' where ID='{DDLUpdateOrderID.Text}'";
             SqlConnection connection6 = Connect(s_data);
             string sql7 = $"select * from Orders where {DDLUpdateOrderCols.Text}='{TextBox9.Text}'";
             string number;

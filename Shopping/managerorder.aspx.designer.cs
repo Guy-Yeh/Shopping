@@ -78,40 +78,40 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label hintCustomerID;
 
         /// <summary>
-        /// productName 控制項。
+        /// productID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label productName;
+        protected global::System.Web.UI.WebControls.Label productID;
 
         /// <summary>
-        /// DDLAddProductName 控制項。
+        /// DDLAddProductID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLAddProductName;
+        protected global::System.Web.UI.WebControls.DropDownList DDLAddProductID;
 
         /// <summary>
-        /// SqlDataSourceAddProductName 控制項。
+        /// SqlDataSourceProductID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAddProductName;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceProductID;
 
         /// <summary>
-        /// hintProductName 控制項。
+        /// hintProductID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hintProductName;
+        protected global::System.Web.UI.WebControls.Label hintProductID;
 
         /// <summary>
         /// qty 控制項。

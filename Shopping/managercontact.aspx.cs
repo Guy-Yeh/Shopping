@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -32,9 +33,70 @@ namespace Shopping
 
         public void reviewChatDate()
         {
-            reviewChat();
+            SqlConnection connection4 = Connect(s_data);
+            if (Convert.ToInt32(DDLDayE.Text) < 9)
+            {
+                string sql4 = $"select * from Chat where initdate between '{DDLYearS.Text + DDLMonthS.Text + DDLDayS.Text}' and '{DDLYearE.Text + DDLMonthE.Text +"0"+(Convert.ToInt32(DDLDayE.Text) + 1)}'";
+                SqlCommand command4 = new SqlCommand(sql4, connection4);
+                connection4.Open();
+                SqlDataReader read = command4.ExecuteReader();
+                usercontact.DataSource = read;
+                usercontact.DataBind();
+                connection4.Close();
+            }
+            else
+            {
+                if (ValidateDateTime((DDLYearS.Text + DDLMonthS.Text + (Convert.ToInt32(DDLDayE.Text) + 1)), "yyyyMMdd") == true)
+                {
+                    string sql4 = $"select * from Chat where initdate between '{DDLYearS.Text + DDLMonthS.Text + DDLDayS.Text}' and '{DDLYearE.Text + DDLMonthE.Text + (Convert.ToInt32(DDLDayE.Text) + 1)}'";
+                    SqlCommand command4 = new SqlCommand(sql4, connection4);
+                    connection4.Open();
+                    SqlDataReader read = command4.ExecuteReader();
+                    usercontact.DataSource = read;
+                    usercontact.DataBind();
+                    connection4.Close();
+                }
+                else
+                {
+                    if(ValidateDateTime(DDLYearE.Text + (Convert.ToInt32(DDLMonthE.Text) + 1) + "01","yyyyMMdd") == true)
+                    {
+                        string sql4 = $"select * from Chat where initdate between '{DDLYearS.Text + DDLMonthS.Text + DDLDayS.Text}' and '{DDLYearE.Text + (Convert.ToInt32(DDLMonthE.Text) + 1) + "01"}'";
+                        SqlCommand command4 = new SqlCommand(sql4, connection4);
+                        connection4.Open();
+                        SqlDataReader read = command4.ExecuteReader();
+                        usercontact.DataSource = read;
+                        usercontact.DataBind();
+                        connection4.Close();
+                    }
+                    else
+                    {
+                        string sql4 = $"select * from Chat where initdate between '{DDLYearS.Text + DDLMonthS.Text + DDLDayS.Text}' and '{(Convert.ToInt32(DDLYearE.Text)+1) + "01" + "01"}'";
+                        SqlCommand command4 = new SqlCommand(sql4, connection4);
+                        connection4.Open();
+                        SqlDataReader read = command4.ExecuteReader();
+                        usercontact.DataSource = read;
+                        usercontact.DataBind();
+                        connection4.Close();
+                    }
+                }
+            } 
         }
 
+        protected void empty()
+
+        {
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("temple_id");
+            dt.Columns.Add("temple_name");
+            dt.Columns.Add("location");
+            dt.Columns.Add("build_date");
+
+
+            this.usercontact.DataSource = dt;
+            this.usercontact.DataBind();
+
+        }
 
         public static bool ValidateDateTime(string datetime, string format)
         {
@@ -78,7 +140,7 @@ namespace Shopping
                 if (Request.Form["contactresponse"] != "")
                 {
                     SqlConnection connection2 = Connect(s_data);
-                    string sql2 = $"update Chat SET response='{Request.Form["contactresponse"].ToString()}' where ID='{int.Parse(DDLContactID.Text)}'";
+                    string sql2 = $"update Chat SET response= N'{Request.Form["contactresponse"].ToString()}' where ID='{int.Parse(DDLContactID.Text)}'";
                     SqlCommand command2 = new SqlCommand(sql2, connection2);
                     connection2.Open();
                     command2.ExecuteNonQuery();
@@ -144,25 +206,26 @@ namespace Shopping
                             else
                             {
                                 hintDate.Text = "起始日不得超過終止日";
-                                reviewChatDate();
+                                empty();
                             }
 
                         }
                         else
                         {
                             hintDate.Text = "起始日不得超過終止日";
-                            reviewChatDate();
+                            empty();
                         }
                     }
                     else
                     {
                         hintDate.Text = "起始日不得超過終止日";
-                        reviewChatDate();
+                        empty();
                     }
                 }
                 else
                 {
                     hintDate.Text = "選擇日期不存在";
+                    empty();
                 }
             }
             else

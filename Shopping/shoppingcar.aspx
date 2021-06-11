@@ -48,6 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="col-sm-4 number">
 					<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000<br>
+                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
 				</div>
 				<div class="col-sm-4 logo">
 					<a href="index"><img src="images/logo.png" alt=""></a>	
@@ -287,36 +288,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!---->		
 		</div>
 	</div>
-</div>
+
 
 <!--//header-->
 <!---->
 <div class="container">
-	<div class="check-out">   	    
-    <asp:Table id="Table1" runat="server"
-        GridLines="Both"
-        HorizontalAlign="Center" Font-Size="X-Large">
-        <asp:TableRow HorizontalAlign="Center">
-            <asp:TableCell ForeColor="#52D0C4">
-            </asp:TableCell>
-            <asp:TableCell ForeColor="#52D0C4">
-                產品名稱
-            </asp:TableCell >
-            <asp:TableCell ForeColor="#52D0C4">
-                顏色
-            </asp:TableCell>
-            <asp:TableCell ForeColor="#52D0C4">
-                數量
-            </asp:TableCell>
-            <asp:TableCell ForeColor="#52D0C4">
-                金額
-            </asp:TableCell>
-            <asp:TableCell ForeColor="#52D0C4">
-                刪除
-            </asp:TableCell>
-        </asp:TableRow>
-    </asp:Table>  
-    <asp:Button ID="Button2" runat="server" Text="確認購買" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" Font-Size="X-Large"/>
+	<div class="check-out">   	
+        <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" OnRowDeleting="userorder_RowDeleting">
+            <Columns>
+                <asp:BoundField DataField="productName" HeaderText="productName" SortExpression="productName" />
+                <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                <asp:BoundField DataField="productColor" HeaderText="productColor" SortExpression="productColor" />
+                <asp:BoundField DataField="productPrice" HeaderText="productPrice" SortExpression="productPrice" />
+                <asp:BoundField DataField="qty" HeaderText="qty" SortExpression="qty" />
+                <asp:TemplateField HeaderText="刪除" ShowHeader="False">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除"></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT [productName], [ID], [productColor], [productPrice], [qty] FROM [OrderDetail] WHERE ([customerAccount] = @customerAccount)">
+            <SelectParameters>
+                <asp:SessionParameter DefaultValue="" Name="customerAccount" SessionField="loginstatus" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:Label ID="Label4" runat="server" Text="Label" style="float:right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label>
+        <asp:Label ID="Label3" runat="server" Text="總金額：" style="float:right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label><br><br>
+        <asp:Button ID="Button2" runat="server" Text="確認購買" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" style="float:right" Font-Size="X-Large" BorderStyle="None"/>
 	<div class="clearfix"> </div>
     </div>
 </div>

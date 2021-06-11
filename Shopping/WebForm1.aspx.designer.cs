@@ -11,61 +11,43 @@ namespace Shopping
 {
 
 
-    public partial class loging
+    public partial class WebForm1
     {
 
         /// <summary>
-        /// Form1 控制項。
+        /// form1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// loginLinkButton 控制項。
+        /// GridView1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton loginLinkButton;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// registerLinkButton 控制項。
+        /// GridView2 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton registerLinkButton;
+        protected global::System.Web.UI.WebControls.GridView GridView2;
 
         /// <summary>
-        /// forgetLinkButton1 控制項。
+        /// GridView3 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton forgetLinkButton1;
-
-        /// <summary>
-        /// logingButton1 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button logingButton1;
-
-        /// <summary>
-        /// registerButton1 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button registerButton1;
+        protected global::System.Web.UI.WebControls.GridView GridView3;
     }
 }

@@ -26,13 +26,54 @@ namespace Shopping
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
-            useraccount.DataSource = read;
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("picture");
+            dt.Columns.Add("account");
+            dt.Columns.Add("password");
+            dt.Columns.Add("name");
+            dt.Columns.Add("phone");
+            dt.Columns.Add("email");
+            dt.Columns.Add("address");
+            dt.Columns.Add("discount");
+            dt.Columns.Add("access");
+            dt.Columns.Add("initdate");
+            while (read.Read())
+            {
+                DataRow row = dt.NewRow();
+                row["ID"] = read[0];
+                row["picture"] = ResolveUrl($"{read[1]}");
+                row["account"] = read[2];
+                row["password"] = read[3];
+                row["name"] = read[4];
+                row["phone"] = read[5];
+                row["email"] = read[6];
+                row["address"] = read[7];
+                row["discount"] = read[8];
+                row["access"] = read[9];
+                row["initdate"] = read[10];
+                dt.Rows.Add(row);
+            }
+            useraccount.DataSource = dt;
             useraccount.DataBind();
             connection.Close();
 
         }
 
-
+        public void DDLreconnect()
+        {
+            DDLDeleteAccount.Items.Clear();
+            DDLDeleteAccount.Items.Add("請選擇");
+            DDLUpdateAccount.Items.Clear();
+            DDLUpdateAccount.Items.Add("請選擇");
+            DataView dv = (DataView)this.SqlDataSourceAccountID.Select(new DataSourceSelectArguments());
+            DDLDeleteAccount.DataSource = dv;
+            DDLDeleteAccount.DataTextField = "ID";
+            DDLDeleteAccount.DataBind();
+            DDLUpdateAccount.DataSource = dv;
+            DDLUpdateAccount.DataTextField = "ID";
+            DDLUpdateAccount.DataBind();
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,19 +82,27 @@ namespace Shopping
             hintPhone.Text = "";
             hintEmail.Text = "";
             hintDiscount.Text = "";
+            hintCity.Text = "";
+            hintRegion.Text = "";
+            hintPicture.Text = "";
+            hintAccess.Text = "";
             hintID.Text = "選擇即將刪除的accountID";
             hintID2.Text = "選擇即將更新的accountID";
             hintColumn.Text = "選擇即將更新的欄位";
             hintAll.Text = "輸入更新的值";
-            reviewAccount();
+            if (!IsPostBack)
+            {
+                reviewAccount();
+                DDLreconnect();
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             SqlConnection connection2a = Connect(s_data);
             string sql2a = $"select * from Customers where account='{TextBox1.Text}'";  //為了找尋account是否重複
-            string sql2p = $"select * from Customers where phone='{TextBox4.Text}'";   //為了找尋phone是否重複
-            string sql2e = $"select * from Customers where email='{TextBox5.Text}'";   //為了找尋email是否重複
+            string sql2p = $"select * from Customers where phone='{TextBox4.Text}' And Access='Yes' ";   //為了找尋phone是否重複
+            string sql2e = $"select * from Customers where email='{TextBox5.Text}'And Access='Yes'";   //為了找尋email是否重複
             SqlCommand command2a = new SqlCommand(sql2a, connection2a);
             connection2a.Open();
             SqlDataReader Reader2a = command2a.ExecuteReader();
@@ -94,34 +143,42 @@ namespace Shopping
                                 {
                                     if (emailCheck == true)
                                     {
-                                        if (discountCheck == true || TextBox10.Text == "")
+                                        if (DDLCity.SelectedItem.Text != "請選擇縣市")
                                         {
-                                            if (TextBox10.Text == "")
+                                            if(DDLRegion.SelectedItem.Text != "請選擇區域")
                                             {
-                                                string sql2 = $"insert into [Customers](account,password,name,phone,email,address,discount) values('{TextBox1.Text}','{TextBox2.Text}','{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox11.Text}','')";
-                                                SqlConnection connection2 = Connect(s_data);
-                                                SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                                connection2.Open();
-                                                command2.ExecuteNonQuery();
-                                                MessageBox.Show("輸入成功");
-                                                connection2.Close();
-                                                reviewAccount();
+                                                if (discountCheck == true || TextBox10.Text == "")
+                                                {
+                                                    if (DDLAccess.SelectedItem.Text != "請選擇權限")
+                                                    {
+                                                        string sql2 = $"insert into [Customers](picture,account,password,name,phone,email,address,discount,access) values('{TextBox6.Text}','{TextBox1.Text}','{TextBox2.Text}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}',N'{DDLCity.Text + DDLRegion.Text + TextBox11.Text}','{TextBox10.Text}','{DDLAccess.Text}')";
+                                                        SqlConnection connection2 = Connect(s_data);
+                                                        SqlCommand command2 = new SqlCommand(sql2, connection2);
+                                                        connection2.Open();
+                                                        command2.ExecuteNonQuery();
+                                                        MessageBox.Show("輸入成功");
+                                                        connection2.Close();
+                                                        reviewAccount();
+                                                        DDLreconnect();
+                                                    }
+                                                    else
+                                                    {
+                                                        hintAccess.Text = "請選擇項目";
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    hintDiscount.Text = "discount需為數字或空白 請確認";
+                                                }
                                             }
                                             else
                                             {
-                                                string sql2 = $"insert into [Customers](account,password,name,phone,email,address,discount) values('{TextBox1.Text}','{TextBox2.Text}','{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox11.Text}','{TextBox10.Text}')";
-                                                SqlConnection connection2 = Connect(s_data);
-                                                SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                                connection2.Open();
-                                                command2.ExecuteNonQuery();
-                                                MessageBox.Show("輸入成功");
-                                                connection2.Close();
-                                                reviewAccount();
+                                                hintRegion.Text = "請選擇項目";
                                             }
                                         }
                                         else
                                         {
-                                            hintDiscount.Text = "discount需為數字或空白 請確認";
+                                            hintCity.Text = "請選擇項目";
                                         }
                                     }
                                     else
@@ -183,6 +240,7 @@ namespace Shopping
                 MessageBox.Show("刪除成功");
                 connection3.Close();
                 reviewAccount();
+                DDLreconnect();
             }
             else
             {
@@ -196,7 +254,7 @@ namespace Shopping
             bool discountCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             bool phoneCheck = Regex.IsMatch(TextBox9.Text, @"^09[\d]{8}");
             bool emailCheck = Regex.IsMatch(TextBox9.Text, @"^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$");
-            string sql6 = $"update Customers SET {DDLUpdateCol.Text}='{TextBox9.Text}' where ID='{DDLUpdateAccount.Text}'";
+            string sql6 = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text}' where ID='{DDLUpdateAccount.Text}'";
             SqlConnection connection6 = Connect(s_data);
             string sql7 = $"select * from Customers where {DDLUpdateCol.Text}='{TextBox9.Text}'";
 
@@ -204,7 +262,7 @@ namespace Shopping
             {
                 if (DDLUpdateCol.SelectedItem.Text != "請選擇") 
                 {
-                    if(DDLUpdateCol.Text== "account" || DDLUpdateCol.Text == "phone" || DDLUpdateCol.Text== "email")
+                    if (DDLUpdateCol.Text == "account" || DDLUpdateCol.Text == "phone" || DDLUpdateCol.Text == "email")
                     {
                         SqlConnection connection7 = Connect(s_data);
                         SqlCommand command7 = new SqlCommand(sql7, connection7);
@@ -216,13 +274,13 @@ namespace Shopping
                         }
                         else
                         {
-                            
+
                             if (DDLUpdateCol.Text == "phone")
                             {
                                 if (phoneCheck == true)
                                 {
-                                    
-                                    
+
+
                                     reviewAccount();
                                 }
                                 else
@@ -274,6 +332,7 @@ namespace Shopping
                             hintAll.Text = "請輸入數字";
                         }
                     }
+
                     else
                     {
                         SqlCommand command6 = new SqlCommand(sql6, connection6);
@@ -294,6 +353,14 @@ namespace Shopping
             {
                 hintID2.Text = "請選擇項目";
             }
+   
+        }
+
+        protected void DDLCity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+            DDLRegion.Items.Clear(); 
+            DDLRegion.Items.Add("請選擇區域");
    
         }
     }

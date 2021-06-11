@@ -69,13 +69,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label account;
 
         /// <summary>
-        /// accountTex 控制項。
+        /// accountText 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox accountTex;
+        protected global::System.Web.UI.WebControls.TextBox accountText;
 
         /// <summary>
         /// password 控制項。
@@ -114,13 +114,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox passwordCheckText;
 
         /// <summary>
-        /// checkbox 控制項。
+        /// logingcheck 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checkbox;
+        protected global::System.Web.UI.WebControls.CheckBox logingcheck;
 
         /// <summary>
         /// name 控制項。
@@ -139,24 +139,6 @@ namespace Shopping
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox nameText;
-
-        /// <summary>
-        /// identity 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label identity;
-
-        /// <summary>
-        /// identityText 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox identityText;
 
         /// <summary>
         /// phone 控制項。
@@ -229,5 +211,14 @@ namespace Shopping
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button registerButton;
+
+        /// <summary>
+        /// errorText 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorText;
     }
 }
