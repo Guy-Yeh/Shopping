@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -82,20 +83,19 @@ namespace Shopping
             } 
         }
 
-        protected void empty()
-
+        public void changecocolor()
         {
+            hintResponse.ForeColor = Color.Black;
+            hintID.ForeColor = Color.Black;
+            hintSearch.ForeColor = Color.Black;
+            hintDate.ForeColor = Color.Black;
+        }
 
+        protected void empty()
+        {
             DataTable dt = new DataTable();
-            dt.Columns.Add("temple_id");
-            dt.Columns.Add("temple_name");
-            dt.Columns.Add("location");
-            dt.Columns.Add("build_date");
-
-
             this.usercontact.DataSource = dt;
             this.usercontact.DataBind();
-
         }
 
         public static bool ValidateDateTime(string datetime, string format)
@@ -116,20 +116,81 @@ namespace Shopping
                 return false;
             }
         }
+
+        public void cleanbt1()
+        {
+            DDLContactID.Items.Clear();
+            DDLContactID.Items.Add("ID");
+            DataView dv = (DataView)this.SqlDataSourceChat.Select(new DataSourceSelectArguments());
+            DDLContactID.DataSource = dv;
+            DDLContactID.DataTextField = "ID";
+            DDLContactID.DataBind();
+        }
+
+        public void cleanbt3()
+        {
+            DataView dvy = (DataView)this.SqlDataSourceYears.Select(new DataSourceSelectArguments());
+            DataView dvm = (DataView)this.SqlDataSourceMonth.Select(new DataSourceSelectArguments());
+            DataView dvd = (DataView)this.SqlDataSourceDay.Select(new DataSourceSelectArguments());
+
+            DDLYearS.Items.Clear();
+            DDLYearS.Items.Add("StartYear");
+            DDLYearS.DataSource = dvy;
+            DDLYearS.DataTextField = "years";
+            DDLYearS.DataBind();
+
+            DDLMonthS.Items.Clear();
+            DDLMonthS.Items.Add("StartMonth");
+            DDLMonthS.DataSource = dvm;
+            DDLMonthS.DataTextField = "months";
+            DDLMonthS.DataBind();
+
+            DDLDayS.Items.Clear();
+            DDLDayS.Items.Add("StartDay");
+            DDLDayS.DataSource = dvd;
+            DDLDayS.DataTextField = "days";
+            DDLDayS.DataBind();
+
+            DDLYearE.Items.Clear();
+            DDLYearE.Items.Add("EndYear");
+            DDLYearE.DataSource = dvy;
+            DDLYearE.DataTextField = "years";
+            DDLYearE.DataBind();
+
+            DDLMonthE.Items.Clear();
+            DDLMonthE.Items.Add("EndMonth");
+            DDLMonthE.DataSource = dvm;
+            DDLMonthE.DataTextField = "months";
+            DDLMonthE.DataBind();
+
+            DDLDayE.Items.Clear();
+            DDLDayE.Items.Add("EndDay");
+            DDLDayE.DataSource = dvd;
+            DDLDayE.DataTextField = "days";
+            DDLDayE.DataBind();
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             hintResponse.Text = "";
             hintID.Text = "";
             hintSearch.Text = "";
             hintDate.Text = "";
-            SqlConnection connection = Connect(s_data);
-            string sql = $"select * from Chat where response IS NULL OR response = ''";
-            SqlCommand command = new SqlCommand(sql, connection);
-            connection.Open();
-            SqlDataReader read = command.ExecuteReader();
-            usercontact.DataSource = read;
-            usercontact.DataBind();
-            connection.Close();
+            changecocolor();
+            if (!IsPostBack)
+            {
+                SqlConnection connection = Connect(s_data);
+                string sql = $"select * from Chat where response IS NULL OR response = ''";
+                SqlCommand command = new SqlCommand(sql, connection);
+                connection.Open();
+                SqlDataReader read = command.ExecuteReader();
+                usercontact.DataSource = read;
+                usercontact.DataBind();
+                connection.Close();
+                cleanbt1();
+                cleanbt3();
+            }
         }
 
 
@@ -144,16 +205,19 @@ namespace Shopping
                     SqlCommand command2 = new SqlCommand(sql2, connection2);
                     connection2.Open();
                     command2.ExecuteNonQuery();
-                    MessageBox.Show("回覆成功");
+                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt1", "setTimeout( function(){alert('回覆成功');},0);", true);
+                    cleanbt1();
                     reviewChat();
                 }
                 else
                 {
+                    hintResponse.ForeColor = Color.Red;
                     hintResponse.Text = "response不得為空";
                 }
             }
             else
             {
+                hintID.ForeColor = Color.Red;
                 hintID.Text = "請選擇項目";
             }
         }
@@ -170,10 +234,12 @@ namespace Shopping
                 usercontact.DataSource = read;
                 usercontact.DataBind();
                 connection3.Close();
-                MessageBox.Show("搜尋成功");
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt2", "setTimeout( function(){alert('搜尋成功');},0);", true);
+                
             }
             else
             {
+                hintSearch.ForeColor = Color.Red;
                 hintSearch.Text = "account不得為空";
             }
         }
@@ -187,24 +253,28 @@ namespace Shopping
                     if (int.Parse(DDLYearS.Text) < int.Parse(DDLYearE.Text))
                     {
                         reviewChatDate();
-                        MessageBox.Show("篩選成功");
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('篩選成功');},0);", true);
+                        cleanbt3();
                     }
                     else if (int.Parse(DDLYearS.Text) == int.Parse(DDLYearE.Text))
                     {
                         if (int.Parse(DDLMonthS.Text) < int.Parse(DDLMonthE.Text))
                         {
                             reviewChatDate();
-                            MessageBox.Show("篩選成功");
+                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('篩選成功');},0);", true);
+                            cleanbt3();
                         }
                         else if ((int.Parse(DDLMonthS.Text) == int.Parse(DDLMonthE.Text)))
                         {
                             if (int.Parse(DDLDayS.Text) <= int.Parse(DDLDayE.Text))
                             {
                                 reviewChatDate();
-                                MessageBox.Show("篩選成功");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('篩選成功');},0);", true);
+                                cleanbt3();
                             }
                             else
                             {
+                                hintDate.ForeColor = Color.Red;
                                 hintDate.Text = "起始日不得超過終止日";
                                 empty();
                             }
@@ -212,24 +282,28 @@ namespace Shopping
                         }
                         else
                         {
+                            hintDate.ForeColor = Color.Red;
                             hintDate.Text = "起始日不得超過終止日";
                             empty();
                         }
                     }
                     else
                     {
+                        hintDate.ForeColor = Color.Red;
                         hintDate.Text = "起始日不得超過終止日";
                         empty();
                     }
                 }
                 else
                 {
+                    hintDate.ForeColor = Color.Red;
                     hintDate.Text = "選擇日期不存在";
                     empty();
                 }
             }
             else
             {
+                hintDate.ForeColor = Color.Red;
                 hintDate.Text = "所有項目皆須選擇";
             }
         }

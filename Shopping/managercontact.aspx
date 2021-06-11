@@ -232,7 +232,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Reply Message</h4>
 									<ul>
 										<li>
-                                            <asp:DropDownList ID="DDLContactID" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceChat" DataTextField="ID" DataValueField="ID"><asp:ListItem Value="0">ID</asp:ListItem></asp:DropDownList>
+                                            <asp:DropDownList ID="DDLContactID" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" ><asp:ListItem Value="0">ID</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceChat" runat="server" ConnectionString="<%$ ConnectionStrings:ChatConnectionString %>" SelectCommand="SELECT [ID] FROM [Chat]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintID" runat="server" Text=""></asp:Label></li>
@@ -265,24 +265,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="h_nav">
 									<h4>Show Message by Date Range </h4>
 									<ul>
-										<li><asp:DropDownList ID="DDLYearS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceYears" DataTextField="years" DataValueField="years"><asp:ListItem Value="0">StartYear</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLYearS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" ><asp:ListItem Value="0">StartYear</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceYears" runat="server" ConnectionString="<%$ ConnectionStrings:YearsConnectionString %>" SelectCommand="SELECT [years] FROM [Years]"></asp:SqlDataSource>
                                         </li>
 										<br>
-										<li><asp:DropDownList ID="DDLMonthS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceMonth" DataTextField="months" DataValueField="months"><asp:ListItem Value="0">StartMonth</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLMonthS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" ><asp:ListItem Value="0">StartMonth</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceMonth" runat="server" ConnectionString="<%$ ConnectionStrings:MonthsConnectionString %>" SelectCommand="SELECT [months] FROM [Months]"></asp:SqlDataSource>
                                         </li>
 										<br>
-										<li><asp:DropDownList ID="DDLDayS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceDay" DataTextField="days" DataValueField="days"><asp:ListItem Value="0">StartDay</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLDayS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" ><asp:ListItem Value="0">StartDay</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceDay" runat="server" ConnectionString="<%$ ConnectionStrings:DaysConnectionString %>" SelectCommand="SELECT [days] FROM [Days]"></asp:SqlDataSource>
                                         </li>
 										<br>
 										<br>
-										<li><asp:DropDownList ID="DDLYearE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceYears" DataTextField="years" DataValueField="years"><asp:ListItem Value="0">EndYear</asp:ListItem></asp:DropDownList></li>
+										<li><asp:DropDownList ID="DDLYearE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px"><asp:ListItem Value="0">EndYear</asp:ListItem></asp:DropDownList></li>
 										<br>
-										<li><asp:DropDownList ID="DDLMonthE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceMonth" DataTextField="months" DataValueField="months"><asp:ListItem Value="0">EndMonth</asp:ListItem></asp:DropDownList></li>
+										<li><asp:DropDownList ID="DDLMonthE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" ><asp:ListItem Value="0">EndMonth</asp:ListItem></asp:DropDownList></li>
 										<br>
-										<li><asp:DropDownList ID="DDLDayE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceDay" DataTextField="days" DataValueField="days"><asp:ListItem Value="0">EndDay</asp:ListItem></asp:DropDownList></li>
+										<li><asp:DropDownList ID="DDLDayE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" ><asp:ListItem Value="0">EndDay</asp:ListItem></asp:DropDownList></li>
 										<li><asp:Label ID="hintDate" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li>

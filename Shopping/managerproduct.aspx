@@ -253,7 +253,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<br>
 										<li></li>
 										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateCols" AppendDataBoundItems="True" runat="server" DataSourceID="SqlDataSourceProductsCols" DataTextField="Cols" DataValueField="Cols" Height="30px" Width="195px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLUpdateCols" AppendDataBoundItems="True" runat="server"  Height="30px" Width="195px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceProductsCols" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsColsConnectionString %>" SelectCommand="SELECT [Cols] FROM [ProductsCols]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintColumn" runat="server" Text="選擇即將更新的欄位"></asp:Label></li>
