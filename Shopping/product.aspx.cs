@@ -16,6 +16,7 @@ namespace Shopping
         string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             if (!IsPostBack)
             {
                 SqlConnection connection1 = new SqlConnection(product_data);
@@ -34,7 +35,9 @@ namespace Shopping
                 }
                 connection1.Close();
             }
-            else
+            else*/
+            //如果Session["product"]有值頁面帶入Session["product"]內容的商品資料
+            if (Session["product"]!=null)
             {
                 SqlConnection connection2 = new SqlConnection(product_data);
                 string sq2 = $"select * from Products where productName =N'{Session["product"]}' and category=N'{DropDownList1.SelectedItem.Text}'";
@@ -52,6 +55,7 @@ namespace Shopping
                 }
                 connection2.Close();
             }
+            //登錄判定
             if (Session["loginstatus"] != null)
             {
                 SqlConnection connection1 = new SqlConnection(customers_data);
@@ -67,8 +71,10 @@ namespace Shopping
                     }
                 }
                 connection1.Close();
+                //連線至orderdetail
                 SqlConnection connection2 = new SqlConnection(orderdetail_data);
                 string sq12 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                //如果購物車內有商品將商品總金額顯示於Label1
                 SqlCommand command2 = new SqlCommand(sq12, connection2);
                 connection2.Open();
                 SqlDataReader read2 = command2.ExecuteReader();
@@ -85,23 +91,18 @@ namespace Shopping
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            //判定登錄
             if (Session["loginstatus"] != null)
             {
+                //連線至orderdetail
                 SqlConnection connection = new SqlConnection(orderdetail_data);
-                string sql = $"delete from OrderDetail where customerAccount=N'{Session["loginstatus"]}'";
+                //如果購物車內有商品則刪除該帳號的購物車商品
+                string sql = $"delete from OrderDetail where customerAccount=N'{Session["loginstatus"]}' and cart=N'是'";
                 SqlCommand command = new SqlCommand(sql, connection);
                 connection.Open();
                 command.ExecuteNonQuery();
                 connection.Close();
                 Response.Redirect("product");
-                /*HttpCookie cookie = Request.Cookies["buy"];
-                if (cookie != null)
-                {
-                    cookie.Expires = DateTime.Now.AddDays(-2);
-                    Response.Cookies.Set(cookie);
-                }
-                Response.Cookies["cart"].Value = "0";
-                Response.Redirect("product");*/
             }
         }
 
@@ -112,7 +113,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("loging");
+                Response.Redirect("login");
             }
             else
             {
@@ -172,26 +173,6 @@ namespace Shopping
                 }
                 connection2.Close();
             }
-            /*HttpCookie usecookie = new HttpCookie("buy");
-            SqlConnection connection = new SqlConnection(picture_data);
-            string sq1 = $"select ID from Products where productName =N'{Session["product"]}' and category=N'{DropDownList1.SelectedItem.Text}'";
-            SqlCommand command1 = new SqlCommand(sq1, connection);
-            connection.Open();
-            SqlDataReader read1 = command1.ExecuteReader();
-            if (read1.HasRows)
-            {
-                if (read1.Read())
-                {
-                    if (Request.Cookies["buy"] != null)
-                        usecookie.Values.Add(Request.Cookies["buy"].Values);
-                    usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", $"{read1[0].ToString()}");
-                    Response.AppendCookie(usecookie);
-                    Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
-                }
-            }
-            connection.Close();
-            Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label2.Text)).ToString();
-            Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;*/
             Response.Redirect("product");
         }
 
