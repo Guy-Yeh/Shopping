@@ -6,7 +6,7 @@
         $('#nameInput').css('display', 'none');
         $('#nameEdit').css('display', '');
         $('#nameText').css('display', '');
-
+     
     }
 
     //name註冊編輯事件

@@ -43,6 +43,19 @@ namespace Shopping.Service
                 throw;
             }
         }
+        //public bool EditPicture(int id, string picture)
+        //{
+        //    try
+        //    {
+
+        //        CustomerDetailDao customerDetailDao = new CustomerDetailDao();
+        //        return customerDetailDao.EditPicture(id, picture);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw;
+        //    }
+        //}
 
     }
 }

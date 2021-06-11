@@ -144,7 +144,7 @@ $(document).ready(function () {
                     $('#accountText').text(data.account);
                     $('#phoneNumberText').text(data.phone);
                     $('#mailText').text(data.email);
-
+                    $('#accountImg').attr('src', data.picture);
                     //to do
                     customer = data;
                     if (isOk == true) {
