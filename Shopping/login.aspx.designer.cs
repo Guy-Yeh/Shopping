@@ -11,7 +11,7 @@ namespace Shopping
 {
 
 
-    public partial class loging
+    public partial class login
     {
 
         /// <summary>
