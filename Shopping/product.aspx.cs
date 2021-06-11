@@ -68,7 +68,7 @@ namespace Shopping
                 }
                 connection1.Close();
                 SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                string sq12 = $"select sum(productPrice) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                string sq12 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
                 SqlCommand command2 = new SqlCommand(sq12, connection2);
                 connection2.Open();
                 SqlDataReader read2 = command2.ExecuteReader();

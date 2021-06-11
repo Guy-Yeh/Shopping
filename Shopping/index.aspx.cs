@@ -44,7 +44,7 @@ namespace Shopping
                 }
                 connection1.Close();
                 SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                string sq12 = $"select sum(productPrice) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                string sq12 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
                 SqlCommand command2 = new SqlCommand(sq12, connection2);
                 connection2.Open();
                 SqlDataReader read2 = command2.ExecuteReader();
@@ -69,7 +69,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("login");
+                Response.Redirect("loging");
             }
             else
             {
@@ -92,24 +92,41 @@ namespace Shopping
                 }
                 connection1.Close();
                 SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                string sq2 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
-                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                SqlCommand command2 = new SqlCommand(sql2, connection2);
                 connection2.Open();
-                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
-                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
-                Command2.Parameters.Add("@productPicture", SqlDbType.NVarChar);
-                Command2.Parameters["@productPicture"].Value = array[1];
-                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
-                Command2.Parameters["@productName"].Value = array[0];
-                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
-                Command2.Parameters["@productColor"].Value = array[2];
-                Command2.Parameters.Add("@productPrice", SqlDbType.Int);
-                Command2.Parameters["@productPrice"].Value =array[3];
-                Command2.Parameters.Add("@qty", SqlDbType.Int);
-                Command2.Parameters["@qty"].Value = 1;
-                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
-                Command2.Parameters["@cart"].Value = "是";
-                Command2.ExecuteNonQuery();
+                SqlDataReader read2 = command2.ExecuteReader();
+                if (read2.Read())
+                {
+                    string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                    connection2.Close();
+                    connection2.Open();
+                    SqlCommand command3 = new SqlCommand(sql3, connection2);
+                    command3.ExecuteNonQuery();
+                    connection2.Close();
+                }
+                else
+                {
+                    connection2.Close();
+                    connection2.Open();
+                    string sql4 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
+                    SqlCommand Command4 = new SqlCommand(sql4, connection2);
+                    Command4.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                    Command4.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                    Command4.Parameters.Add("@productPicture", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPicture"].Value = array[1];
+                    Command4.Parameters.Add("@productName", SqlDbType.NVarChar);
+                    Command4.Parameters["@productName"].Value = array[0];
+                    Command4.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                    Command4.Parameters["@productColor"].Value = array[2];
+                    Command4.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPrice"].Value = array[3];
+                    Command4.Parameters.Add("@qty", SqlDbType.Int);
+                    Command4.Parameters["@qty"].Value = 1;
+                    Command4.Parameters.Add("@cart", SqlDbType.NVarChar);
+                    Command4.Parameters["@cart"].Value = "是";
+                    Command4.ExecuteNonQuery();
+                }
                 connection2.Close();
             }
                 /*HttpCookie usecookie = new HttpCookie("buy");
@@ -148,7 +165,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("login");
+                Response.Redirect("loging");
             }
             else
             {
@@ -171,24 +188,41 @@ namespace Shopping
                 }
                 connection1.Close();
                 SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                string sq2 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
-                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                SqlCommand command2 = new SqlCommand(sql2, connection2);
                 connection2.Open();
-                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
-                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
-                Command2.Parameters.Add("@productPicture", SqlDbType.NVarChar);
-                Command2.Parameters["@productPicture"].Value = array[1];
-                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
-                Command2.Parameters["@productName"].Value = array[0];
-                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
-                Command2.Parameters["@productColor"].Value = array[2];
-                Command2.Parameters.Add("@productPrice", SqlDbType.Int);
-                Command2.Parameters["@productPrice"].Value = array[3];
-                Command2.Parameters.Add("@qty", SqlDbType.Int);
-                Command2.Parameters["@qty"].Value = 1;
-                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
-                Command2.Parameters["@cart"].Value = "是";
-                Command2.ExecuteNonQuery();
+                SqlDataReader read2 = command2.ExecuteReader();
+                if (read2.Read())
+                {
+                    string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                    connection2.Close();
+                    connection2.Open();
+                    SqlCommand command3 = new SqlCommand(sql3, connection2);
+                    command3.ExecuteNonQuery();
+                    connection2.Close();
+                }
+                else
+                {
+                    connection2.Close();
+                    connection2.Open();
+                    string sql4 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
+                    SqlCommand Command4 = new SqlCommand(sql4, connection2);
+                    Command4.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                    Command4.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                    Command4.Parameters.Add("@productPicture", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPicture"].Value = array[1];
+                    Command4.Parameters.Add("@productName", SqlDbType.NVarChar);
+                    Command4.Parameters["@productName"].Value = array[0];
+                    Command4.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                    Command4.Parameters["@productColor"].Value = array[2];
+                    Command4.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPrice"].Value = array[3];
+                    Command4.Parameters.Add("@qty", SqlDbType.Int);
+                    Command4.Parameters["@qty"].Value = 1;
+                    Command4.Parameters.Add("@cart", SqlDbType.NVarChar);
+                    Command4.Parameters["@cart"].Value = "是";
+                    Command4.ExecuteNonQuery();
+                }
                 connection2.Close();
             }
             /*HttpCookie usecookie = new HttpCookie("buy");
@@ -235,7 +269,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("login");
+                Response.Redirect("loging");
             }
             else
             {
@@ -258,26 +292,42 @@ namespace Shopping
                 }
                 connection1.Close();
                 SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                string sq2 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
-                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                SqlCommand command2 = new SqlCommand(sql2, connection2);
                 connection2.Open();
-                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
-                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
-                Command2.Parameters.Add("@productPicture", SqlDbType.NVarChar);
-                Command2.Parameters["@productPicture"].Value = array[1];
-                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
-                Command2.Parameters["@productName"].Value = array[0];
-                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
-                Command2.Parameters["@productColor"].Value = array[2];
-                Command2.Parameters.Add("@productPrice", SqlDbType.Int);
-                Command2.Parameters["@productPrice"].Value = array[3];
-                Command2.Parameters.Add("@qty", SqlDbType.Int);
-                Command2.Parameters["@qty"].Value = 1;
-                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
-                Command2.Parameters["@cart"].Value = "是";
-                Command2.ExecuteNonQuery();
+                SqlDataReader read2 = command2.ExecuteReader();
+                if (read2.Read())
+                {
+                    string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                    connection2.Close();
+                    connection2.Open();
+                    SqlCommand command3 = new SqlCommand(sql3, connection2);
+                    command3.ExecuteNonQuery();
+                    connection2.Close();
+                }
+                else
+                {
+                    connection2.Close();
+                    connection2.Open();
+                    string sql4 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
+                    SqlCommand Command4 = new SqlCommand(sql4, connection2);
+                    Command4.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                    Command4.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                    Command4.Parameters.Add("@productPicture", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPicture"].Value = array[1];
+                    Command4.Parameters.Add("@productName", SqlDbType.NVarChar);
+                    Command4.Parameters["@productName"].Value = array[0];
+                    Command4.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                    Command4.Parameters["@productColor"].Value = array[2];
+                    Command4.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPrice"].Value = array[3];
+                    Command4.Parameters.Add("@qty", SqlDbType.Int);
+                    Command4.Parameters["@qty"].Value = 1;
+                    Command4.Parameters.Add("@cart", SqlDbType.NVarChar);
+                    Command4.Parameters["@cart"].Value = "是";
+                    Command4.ExecuteNonQuery();
+                }
                 connection2.Close();
-                Response.Redirect("index");
             }
         }      
         protected void Button4_Click(object sender, EventArgs e)
@@ -287,7 +337,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("login");
+                Response.Redirect("loging");
             }
             else
             {
@@ -310,24 +360,41 @@ namespace Shopping
                 }
                 connection1.Close();
                 SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                string sq2 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
-                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                SqlCommand command2 = new SqlCommand(sql2, connection2);
                 connection2.Open();
-                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
-                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
-                Command2.Parameters.Add("@productPicture", SqlDbType.NVarChar);
-                Command2.Parameters["@productPicture"].Value = array[1];
-                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
-                Command2.Parameters["@productName"].Value = array[0];
-                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
-                Command2.Parameters["@productColor"].Value = array[2];
-                Command2.Parameters.Add("@productPrice", SqlDbType.Int);
-                Command2.Parameters["@productPrice"].Value = array[3];
-                Command2.Parameters.Add("@qty", SqlDbType.Int);
-                Command2.Parameters["@qty"].Value = 1;
-                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
-                Command2.Parameters["@cart"].Value = "是";
-                Command2.ExecuteNonQuery();
+                SqlDataReader read2 = command2.ExecuteReader();
+                if (read2.Read())
+                {
+                    string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                    connection2.Close();
+                    connection2.Open();
+                    SqlCommand command3 = new SqlCommand(sql3, connection2);
+                    command3.ExecuteNonQuery();
+                    connection2.Close();
+                }
+                else
+                {
+                    connection2.Close();
+                    connection2.Open();
+                    string sql4 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
+                    SqlCommand Command4 = new SqlCommand(sql4, connection2);
+                    Command4.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                    Command4.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                    Command4.Parameters.Add("@productPicture", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPicture"].Value = array[1];
+                    Command4.Parameters.Add("@productName", SqlDbType.NVarChar);
+                    Command4.Parameters["@productName"].Value = array[0];
+                    Command4.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                    Command4.Parameters["@productColor"].Value = array[2];
+                    Command4.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPrice"].Value = array[3];
+                    Command4.Parameters.Add("@qty", SqlDbType.Int);
+                    Command4.Parameters["@qty"].Value = 1;
+                    Command4.Parameters.Add("@cart", SqlDbType.NVarChar);
+                    Command4.Parameters["@cart"].Value = "是";
+                    Command4.ExecuteNonQuery();
+                }
                 connection2.Close();
                 Response.Redirect("index");
             }
@@ -339,7 +406,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("login");
+                Response.Redirect("loging");
             }
             else
             {
@@ -362,24 +429,41 @@ namespace Shopping
                 }
                 connection1.Close();
                 SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                string sq2 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
-                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                SqlCommand command2 = new SqlCommand(sql2, connection2);
                 connection2.Open();
-                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
-                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
-                Command2.Parameters.Add("@productPicture", SqlDbType.NVarChar);
-                Command2.Parameters["@productPicture"].Value = array[1];
-                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
-                Command2.Parameters["@productName"].Value = array[0];
-                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
-                Command2.Parameters["@productColor"].Value = array[2];
-                Command2.Parameters.Add("@productPrice", SqlDbType.Int);
-                Command2.Parameters["@productPrice"].Value = array[3];
-                Command2.Parameters.Add("@qty", SqlDbType.Int);
-                Command2.Parameters["@qty"].Value = 1;
-                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
-                Command2.Parameters["@cart"].Value = "是";
-                Command2.ExecuteNonQuery();
+                SqlDataReader read2 = command2.ExecuteReader();
+                if (read2.Read())
+                {
+                    string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                    connection2.Close();
+                    connection2.Open();
+                    SqlCommand command3 = new SqlCommand(sql3, connection2);
+                    command3.ExecuteNonQuery();
+                    connection2.Close();
+                }
+                else
+                {
+                    connection2.Close();
+                    connection2.Open();
+                    string sql4 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
+                    SqlCommand Command4 = new SqlCommand(sql4, connection2);
+                    Command4.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                    Command4.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                    Command4.Parameters.Add("@productPicture", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPicture"].Value = array[1];
+                    Command4.Parameters.Add("@productName", SqlDbType.NVarChar);
+                    Command4.Parameters["@productName"].Value = array[0];
+                    Command4.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                    Command4.Parameters["@productColor"].Value = array[2];
+                    Command4.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPrice"].Value = array[3];
+                    Command4.Parameters.Add("@qty", SqlDbType.Int);
+                    Command4.Parameters["@qty"].Value = 1;
+                    Command4.Parameters.Add("@cart", SqlDbType.NVarChar);
+                    Command4.Parameters["@cart"].Value = "是";
+                    Command4.ExecuteNonQuery();
+                }
                 connection2.Close();
                 Response.Redirect("index");
             }
@@ -391,7 +475,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("login");
+                Response.Redirect("loging");
             }
             else
             {
@@ -414,24 +498,41 @@ namespace Shopping
                 }
                 connection1.Close();
                 SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                string sq2 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
-                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                SqlCommand command2 = new SqlCommand(sql2, connection2);
                 connection2.Open();
-                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
-                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
-                Command2.Parameters.Add("@productPicture", SqlDbType.NVarChar);
-                Command2.Parameters["@productPicture"].Value = array[1];
-                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
-                Command2.Parameters["@productName"].Value = array[0];
-                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
-                Command2.Parameters["@productColor"].Value = array[2];
-                Command2.Parameters.Add("@productPrice", SqlDbType.Int);
-                Command2.Parameters["@productPrice"].Value = array[3];
-                Command2.Parameters.Add("@qty", SqlDbType.Int);
-                Command2.Parameters["@qty"].Value = 1;
-                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
-                Command2.Parameters["@cart"].Value = "是";
-                Command2.ExecuteNonQuery();
+                SqlDataReader read2 = command2.ExecuteReader();
+                if (read2.Read())
+                {
+                    string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                    connection2.Close();
+                    connection2.Open();
+                    SqlCommand command3 = new SqlCommand(sql3, connection2);
+                    command3.ExecuteNonQuery();
+                    connection2.Close();
+                }
+                else
+                {
+                    connection2.Close();
+                    connection2.Open();
+                    string sql4 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
+                    SqlCommand Command4 = new SqlCommand(sql4, connection2);
+                    Command4.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                    Command4.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                    Command4.Parameters.Add("@productPicture", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPicture"].Value = array[1];
+                    Command4.Parameters.Add("@productName", SqlDbType.NVarChar);
+                    Command4.Parameters["@productName"].Value = array[0];
+                    Command4.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                    Command4.Parameters["@productColor"].Value = array[2];
+                    Command4.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPrice"].Value = array[3];
+                    Command4.Parameters.Add("@qty", SqlDbType.Int);
+                    Command4.Parameters["@qty"].Value = 1;
+                    Command4.Parameters.Add("@cart", SqlDbType.NVarChar);
+                    Command4.Parameters["@cart"].Value = "是";
+                    Command4.ExecuteNonQuery();
+                }
                 connection2.Close();
                 Response.Redirect("index");
             }
@@ -443,7 +544,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("login");
+                Response.Redirect("loging");
             }
             else
             {
@@ -466,24 +567,41 @@ namespace Shopping
                 }
                 connection1.Close();
                 SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                string sq2 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
-                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                SqlCommand command2 = new SqlCommand(sql2, connection2);
                 connection2.Open();
-                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
-                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
-                Command2.Parameters.Add("@productPicture", SqlDbType.NVarChar);
-                Command2.Parameters["@productPicture"].Value = array[1];
-                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
-                Command2.Parameters["@productName"].Value = array[0];
-                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
-                Command2.Parameters["@productColor"].Value = array[2];
-                Command2.Parameters.Add("@productPrice", SqlDbType.Int);
-                Command2.Parameters["@productPrice"].Value = array[3];
-                Command2.Parameters.Add("@qty", SqlDbType.Int);
-                Command2.Parameters["@qty"].Value = 1;
-                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
-                Command2.Parameters["@cart"].Value = "是";
-                Command2.ExecuteNonQuery();
+                SqlDataReader read2 = command2.ExecuteReader();
+                if (read2.Read())
+                {
+                    string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                    connection2.Close();
+                    connection2.Open();
+                    SqlCommand command3 = new SqlCommand(sql3, connection2);
+                    command3.ExecuteNonQuery();
+                    connection2.Close();
+                }
+                else
+                {
+                    connection2.Close();
+                    connection2.Open();
+                    string sql4 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
+                    SqlCommand Command4 = new SqlCommand(sql4, connection2);
+                    Command4.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                    Command4.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                    Command4.Parameters.Add("@productPicture", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPicture"].Value = array[1];
+                    Command4.Parameters.Add("@productName", SqlDbType.NVarChar);
+                    Command4.Parameters["@productName"].Value = array[0];
+                    Command4.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                    Command4.Parameters["@productColor"].Value = array[2];
+                    Command4.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPrice"].Value = array[3];
+                    Command4.Parameters.Add("@qty", SqlDbType.Int);
+                    Command4.Parameters["@qty"].Value = 1;
+                    Command4.Parameters.Add("@cart", SqlDbType.NVarChar);
+                    Command4.Parameters["@cart"].Value = "是";
+                    Command4.ExecuteNonQuery();
+                }
                 connection2.Close();
                 Response.Redirect("index");
             }
@@ -495,7 +613,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("login");
+                Response.Redirect("loging");
             }
             else
             {
@@ -518,24 +636,41 @@ namespace Shopping
                 }
                 connection1.Close();
                 SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                string sq2 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
-                SqlCommand Command2 = new SqlCommand(sq2, connection2);
+                string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                SqlCommand command2 = new SqlCommand(sql2, connection2);
                 connection2.Open();
-                Command2.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
-                Command2.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
-                Command2.Parameters.Add("@productPicture", SqlDbType.NVarChar);
-                Command2.Parameters["@productPicture"].Value = array[1];
-                Command2.Parameters.Add("@productName", SqlDbType.NVarChar);
-                Command2.Parameters["@productName"].Value = array[0];
-                Command2.Parameters.Add("@productColor", SqlDbType.NVarChar);
-                Command2.Parameters["@productColor"].Value = array[2];
-                Command2.Parameters.Add("@productPrice", SqlDbType.Int);
-                Command2.Parameters["@productPrice"].Value = array[3];
-                Command2.Parameters.Add("@qty", SqlDbType.Int);
-                Command2.Parameters["@qty"].Value = 1;
-                Command2.Parameters.Add("@cart", SqlDbType.NVarChar);
-                Command2.Parameters["@cart"].Value = "是";
-                Command2.ExecuteNonQuery();
+                SqlDataReader read2 = command2.ExecuteReader();
+                if (read2.Read())
+                {
+                    string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                    connection2.Close();
+                    connection2.Open();
+                    SqlCommand command3 = new SqlCommand(sql3, connection2);
+                    command3.ExecuteNonQuery();
+                    connection2.Close();
+                }
+                else
+                {
+                    connection2.Close();
+                    connection2.Open();
+                    string sql4 = $"insert into [OrderDetail](customerAccount,productPicture,productName,productColor,productPrice,qty,cart) values(@customerAccount,@productPicture,@productName,@productColor,@productPrice,@qty,@cart)";
+                    SqlCommand Command4 = new SqlCommand(sql4, connection2);
+                    Command4.Parameters.Add("@customerAccount", SqlDbType.NVarChar);
+                    Command4.Parameters["@customerAccount"].Value = Session["loginstatus"].ToString();
+                    Command4.Parameters.Add("@productPicture", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPicture"].Value = array[1];
+                    Command4.Parameters.Add("@productName", SqlDbType.NVarChar);
+                    Command4.Parameters["@productName"].Value = array[0];
+                    Command4.Parameters.Add("@productColor", SqlDbType.NVarChar);
+                    Command4.Parameters["@productColor"].Value = array[2];
+                    Command4.Parameters.Add("@productPrice", SqlDbType.NVarChar);
+                    Command4.Parameters["@productPrice"].Value = array[3];
+                    Command4.Parameters.Add("@qty", SqlDbType.Int);
+                    Command4.Parameters["@qty"].Value = 1;
+                    Command4.Parameters.Add("@cart", SqlDbType.NVarChar);
+                    Command4.Parameters["@cart"].Value = "是";
+                    Command4.ExecuteNonQuery();
+                }
                 connection2.Close();
                 Response.Redirect("index");
             }
