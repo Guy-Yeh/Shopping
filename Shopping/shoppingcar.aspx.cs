@@ -36,7 +36,7 @@ namespace Shopping
         {
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("loging");
+                Response.Redirect("login");
             }
             SqlConnection connection = new SqlConnection(orderdetail_data);
             string sq1 = $"select sum(productPrice) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
