@@ -294,23 +294,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---->
 <div class="container">
 	<div class="check-out">   	
-        <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" OnRowDeleting="userorder_RowDeleting">
+        <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" OnRowDeleting="userorder_RowDeleting">
             <Columns>
+                <asp:TemplateField>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("productPicture") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("productPicture") %>' Width="100px" />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="productName" HeaderText="productName" SortExpression="productName" />
-                <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
                 <asp:BoundField DataField="productColor" HeaderText="productColor" SortExpression="productColor" />
                 <asp:BoundField DataField="productPrice" HeaderText="productPrice" SortExpression="productPrice" />
                 <asp:BoundField DataField="qty" HeaderText="qty" SortExpression="qty" />
-                <asp:TemplateField HeaderText="刪除" ShowHeader="False">
-                    <ItemTemplate>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除"></asp:LinkButton>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <asp:BoundField DataField="productPicture" HeaderText="productPicture" SortExpression="productPicture" Visible="False" />
+                <asp:CommandField HeaderText="刪除" ShowDeleteButton="True" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT [productName], [ID], [productColor], [productPrice], [qty] FROM [OrderDetail] WHERE ([customerAccount] = @customerAccount)">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT [productName], [productColor], [productPrice], [qty], [productPicture] FROM [OrderDetail] WHERE (([customerAccount] = @customerAccount) AND ([cart] = @cart))">
             <SelectParameters>
-                <asp:SessionParameter DefaultValue="" Name="customerAccount" SessionField="loginstatus" Type="String" />
+                <asp:SessionParameter Name="customerAccount" SessionField="loginstatus" Type="String" />
+                <asp:Parameter DefaultValue="是" Name="cart" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
         <asp:Label ID="Label4" runat="server" Text="Label" style="float:right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label>

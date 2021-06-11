@@ -204,10 +204,6 @@ namespace Shopping
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            while (reviewSerial())
-            {
-                reviewSerial();
-            }
             Response.Redirect("payment");
         }
 
