@@ -36,10 +36,10 @@ namespace Shopping
         {
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("loging");
+                Response.Redirect("login");
             }
             SqlConnection connection = new SqlConnection(orderdetail_data);
-            string sq1 = $"select sum(productPrice) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+            string sq1 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
             SqlCommand command1 = new SqlCommand(sq1, connection);
             connection.Open();
             SqlDataReader read1 = command1.ExecuteReader();
@@ -52,7 +52,7 @@ namespace Shopping
             }
             connection.Close();
             SqlConnection connection2 = new SqlConnection(orderdetail_data);
-            string sq12 = $"select sum(productPrice) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+            string sq12 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
             SqlCommand command2 = new SqlCommand(sq12, connection2);
             connection2.Open();
             SqlDataReader read2 = command2.ExecuteReader();
@@ -204,17 +204,12 @@ namespace Shopping
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            while (reviewSerial())
-            {
-                reviewSerial();
-            }
             Response.Redirect("payment");
         }
 
         protected void userorder_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            Label2.Text = (userorder.Rows[e.RowIndex].Cells[1].Text.Trim()).ToString();
-            string id = (userorder.Rows[e.RowIndex].Cells[1].Text.Trim()).ToString();
+            string id = (userorder.Rows[e.RowIndex].Cells[2].Text.Trim()).ToString();
             SqlConnection connection = new SqlConnection(orderdetail_data);
             string sql = $"delete from OrderDetail where ID=N'{id}'";
             SqlCommand command = new SqlCommand(sql, connection);

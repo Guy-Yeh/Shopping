@@ -52,6 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </style>
 </head>
 <body>
+    <form id="form1" runat="server">
 <!--header-->
 <div class="header">
 	<div class="header-top">
@@ -302,68 +303,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 </div>
-	<div id="cart-totals-detail" class="cart-totals">
-				<div class="col-sm-2 number">
+        <div class="container">
+	        <asp:GridView ID="GridView1" runat="server">
+            </asp:GridView> 
+            <asp:Label ID="Label5" runat="server" Text="總金額：" style="float:right"></asp:Label>
+            <asp:Label ID="Label4" runat="server" Text="" style="float:right"></asp:Label><br><br>
+            <asp:TextBox ID="TextBox1" runat="server" style="float:right"></asp:TextBox>
+            <asp:Label ID="Label1" runat="server" Text="收件人姓名" ForeColor="#52D0C4" style="float:right"></asp:Label><br><br>
 
-				</div>
-        <asp:Table id="Table1" runat="server"
-            GridLines="Both"
-            HorizontalAlign="Center" Font-Size="X-Large">
-            <asp:TableRow HorizontalAlign="Center">
-                <asp:TableCell ForeColor="#52D0C4">
-                </asp:TableCell>
-                <asp:TableCell ForeColor="#52D0C4">
-                    產品名稱
-                </asp:TableCell >
-                <asp:TableCell ForeColor="#52D0C4">
-                    顏色
-                </asp:TableCell>
-                <asp:TableCell ForeColor="#52D0C4">
-                    數量
-                </asp:TableCell>
-                <asp:TableCell ForeColor="#52D0C4">
-                    金額
-                </asp:TableCell>
-                <asp:TableCell ForeColor="#52D0C4">
-                    刪除
-                </asp:TableCell>
-            </asp:TableRow>
-        </asp:Table>
-
+            <asp:TextBox ID="TextBox2" runat="server" style="float:right"></asp:TextBox>
+            <asp:Label ID="Label2" runat="server" Text="收件人地址" ForeColor="#52D0C4" style="float:right"></asp:Label><br><br>
+            
+            <asp:TextBox ID="TextBox3" runat="server" style="float:right"></asp:TextBox>
+            <asp:Label ID="Label3" runat="server" Text="收件人電話" ForeColor="#52D0C4" style="float:right"></asp:Label><br><br>
+            <asp:Button ID="Button1" runat="server" Text="確認" BackColor="#52D0C4" BorderStyle="None" ForeColor="White" style="float:right" OnClick="Button1_Click"/>
+        </div>
                 <div class="col-sm-2 number">
 
 				</div>
-            <table id="shopping-cart-totals-table" class="auto-style3">
-						<tr>
-							<td style="" class="a-right">
-							共 <span>1</span> 件商品小計							</td>
-							<td style="">
-								<span class="price">NT$99</span>
-							</td>
-						</tr>
-						<tr>
-							<td style="" class="a-right">
-								折扣							</td>
-							<td style="">
-								<span class="price">NT$0</span>
-							</td>
-						</tr>
-						<tr id="shipping-amount-tr" style="display:none">
-							<td class="auto-style1">
-								運費							</td>
-							<td class="auto-style1">
-								<span class="price" id="shipping-amount-price">NT$0</span>
-							</td>
-						</tr>
+           
 
-						<tr>
-							<td style="" class="totals-cell">
-								總計：
-							</td>
-							<td style="">
-								<span class="price" id="total-price" data-price="99">NT$99</span>
-							</td>
-						</tr>
-                </table>
 
-	</div>
+    </form>

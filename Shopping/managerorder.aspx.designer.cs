@@ -24,13 +24,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label serial;
 
         /// <summary>
-        /// TextBox1 控制項。
+        /// DDLSS 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.DropDownList DDLSS;
 
         /// <summary>
         /// hintSerial 控制項。
@@ -42,157 +42,148 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label hintSerial;
 
         /// <summary>
-        /// customerID 控制項。
+        /// serialSearch 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label customerID;
+        protected global::System.Web.UI.WebControls.Button serialSearch;
 
         /// <summary>
-        /// DDLAddCustomerID 控制項。
+        /// customerAccount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLAddCustomerID;
+        protected global::System.Web.UI.WebControls.Label customerAccount;
 
         /// <summary>
-        /// SqlDataSourceAddCustomerID 控制項。
+        /// DDLSearchCustomerAccount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAddCustomerID;
+        protected global::System.Web.UI.WebControls.DropDownList DDLSearchCustomerAccount;
 
         /// <summary>
-        /// hintCustomerID 控制項。
+        /// SqlDataSourceCustomerAccount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hintCustomerID;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCustomerAccount;
 
         /// <summary>
-        /// productID 控制項。
+        /// hintCustomerAccount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label productID;
+        protected global::System.Web.UI.WebControls.Label hintCustomerAccount;
 
         /// <summary>
-        /// DDLAddProductID 控制項。
+        /// customerAccountsearch 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLAddProductID;
+        protected global::System.Web.UI.WebControls.Button customerAccountsearch;
 
         /// <summary>
-        /// SqlDataSourceProductID 控制項。
+        /// productName 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceProductID;
+        protected global::System.Web.UI.WebControls.Label productName;
 
         /// <summary>
-        /// hintProductID 控制項。
+        /// DDLSearchProductName 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hintProductID;
+        protected global::System.Web.UI.WebControls.DropDownList DDLSearchProductName;
 
         /// <summary>
-        /// qty 控制項。
+        /// SqlDataSourceProductName 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label qty;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceProductName;
 
         /// <summary>
-        /// TextBox4 控制項。
+        /// hintProductName 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.Label hintProductName;
 
         /// <summary>
-        /// hintQty 控制項。
+        /// productNamesearch 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hintQty;
+        protected global::System.Web.UI.WebControls.Button productNamesearch;
 
         /// <summary>
-        /// price 控制項。
+        /// name 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label price;
+        protected global::System.Web.UI.WebControls.Label name;
 
         /// <summary>
-        /// TextBox5 控制項。
+        /// DDLSearchName 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.DropDownList DDLSearchName;
 
         /// <summary>
-        /// hintPrice 控制項。
+        /// SqlDataSourceSearchName 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hintPrice;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSearchName;
 
         /// <summary>
-        /// totalprice 控制項。
+        /// hintName 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label totalprice;
+        protected global::System.Web.UI.WebControls.Label hintName;
 
         /// <summary>
-        /// TextBox11 控制項。
+        /// namesearch 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox11;
-
-        /// <summary>
-        /// hintTotalprice 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label hintTotalprice;
+        protected global::System.Web.UI.WebControls.Button namesearch;
 
         /// <summary>
         /// status 控制項。
@@ -204,13 +195,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label status;
 
         /// <summary>
-        /// DDLAddstatus 控制項。
+        /// DDLSearchStatus 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLAddstatus;
+        protected global::System.Web.UI.WebControls.DropDownList DDLSearchStatus;
 
         /// <summary>
         /// SqlDataSourceOrdersStatus 控制項。
@@ -231,13 +222,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label hintStatus;
 
         /// <summary>
-        /// Add 控制項。
+        /// statussearch 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Add;
+        protected global::System.Web.UI.WebControls.Button statussearch;
 
         /// <summary>
         /// orderID 控制項。
@@ -258,13 +249,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.DropDownList DDLDeleteOrderID;
 
         /// <summary>
-        /// SqlDataSourceOrderID 控制項。
+        /// SqlDataSourceOrderSerial 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceOrderID;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceOrderSerial;
 
         /// <summary>
         /// hintID 控制項。
@@ -294,13 +285,22 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label orderID2;
 
         /// <summary>
-        /// DDLUpdateOrderID 控制項。
+        /// DDLUpdateOrderDetailID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLUpdateOrderID;
+        protected global::System.Web.UI.WebControls.DropDownList DDLUpdateOrderDetailID;
+
+        /// <summary>
+        /// SqlDataSourceOrderDetailSearch 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceOrderDetailSearch;
 
         /// <summary>
         /// hintID2 控制項。
@@ -391,5 +391,23 @@ namespace Shopping
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView userorder;
+
+        /// <summary>
+        /// SqlDataSourceAllorders 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAllorders;
+
+        /// <summary>
+        /// SqlDataSourceAllOrders2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAllOrders2;
     }
 }
