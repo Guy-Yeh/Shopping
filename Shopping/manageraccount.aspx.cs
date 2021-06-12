@@ -43,7 +43,7 @@ namespace Shopping
             {
                 DataRow row = dt.NewRow();
                 row["ID"] = read[0];
-                row["picture"] = ResolveUrl($"{read[1]}");
+                row["picture"] = read[1];
                 row["account"] = read[2];
                 row["password"] = read[3];
                 row["name"] = read[4];
@@ -61,7 +61,7 @@ namespace Shopping
 
         }
 
-        public void changecocolor()
+        public void changecolor()
         {
             hintColumn.ForeColor = Color.Black;
             hintID2.ForeColor = Color.Black;
@@ -153,7 +153,7 @@ namespace Shopping
             hintID2.Text = "選擇即將更新的accountID";
             hintColumn.Text = "選擇即將更新的欄位";
             hintAll.Text = "輸入更新的值";
-            changecocolor();
+            changecolor();
             
             if (!IsPostBack)
             {

@@ -29,34 +29,159 @@ namespace Shopping
 
         public void reviewOrder()
         {
-            SqlConnection connection = Connect(s_data);
-            string sql = $"select * from Orders";
-            SqlCommand command = new SqlCommand(sql, connection);
-            connection.Open();
-            SqlDataReader read = command.ExecuteReader();
-            userorder.DataSource = read;
+            SqlConnection connectionorigin = Connect(s_data5);
+            string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice, a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial";
+            SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
+            connectionorigin.Open();
+            SqlDataReader readorigin = command.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("serial");
+            dt.Columns.Add("productName");
+            dt.Columns.Add("productColor");
+            dt.Columns.Add("productPicture");
+            dt.Columns.Add("productPrice");
+            dt.Columns.Add("qty");
+            dt.Columns.Add("customerAccount");
+            dt.Columns.Add("name");
+            dt.Columns.Add("phone");
+            dt.Columns.Add("address");
+            dt.Columns.Add("status");
+            dt.Columns.Add("initdate");
+            while (readorigin.Read())
+            {
+                DataRow row = dt.NewRow();
+                row["ID"] = readorigin[0];
+                row["serial"] = readorigin[1];
+                row["productName"] = readorigin[2];
+                row["productColor"] = readorigin[3];
+                row["productPicture"] = readorigin[4];
+                row["productPrice"] = readorigin[5];
+                row["qty"] = readorigin[6];
+                row["customerAccount"] = readorigin[7];
+                row["name"] = readorigin[8];
+                row["phone"] = readorigin[9];
+                row["address"] = readorigin[10];
+                row["status"] = readorigin[11];
+                row["initdate"] = readorigin[12];
+                dt.Rows.Add(row);
+            }
+            userorder.DataSource = dt;
             userorder.DataBind();
-            connection.Close();
+            connectionorigin.Close();
         }
 
-        public bool reviewSerial()
+        
+        public void searchOrder(string name, string check)
         {
-            Random rnd = new Random();
-            TextBox1.Text = "";
-            for (int i = 0; i < 10; i++)    //編成serial number
+            SqlConnection connectionorigin = Connect(s_data5);
+            string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice," +
+                $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate " +
+                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where a.{name}=N'{check}'";
+            SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
+            connectionorigin.Open();
+            SqlDataReader readorigin = command.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("serial");
+            dt.Columns.Add("productName");
+            dt.Columns.Add("productColor");
+            dt.Columns.Add("productPicture");
+            dt.Columns.Add("productPrice");
+            dt.Columns.Add("qty");
+            dt.Columns.Add("customerAccount");
+            dt.Columns.Add("name");
+            dt.Columns.Add("phone");
+            dt.Columns.Add("address");
+            dt.Columns.Add("status");
+            dt.Columns.Add("initdate");
+            while (readorigin.Read())
             {
-                int serialrnd = rnd.Next(0, 10);
-                TextBox1.Text += serialrnd;
+                DataRow row = dt.NewRow();
+                row["ID"] = readorigin[0];
+                row["serial"] = readorigin[1];
+                row["productName"] = readorigin[2];
+                row["productColor"] = readorigin[3];
+                row["productPicture"] = readorigin[4];
+                row["productPrice"] = readorigin[5];
+                row["qty"] = readorigin[6];
+                row["customerAccount"] = readorigin[7];
+                row["name"] = readorigin[8];
+                row["phone"] = readorigin[9];
+                row["address"] = readorigin[10];
+                row["status"] = readorigin[11];
+                row["initdate"] = readorigin[12];
+                dt.Rows.Add(row);
             }
-            SqlConnection connection2s = Connect(s_data);
-            string sql2s = $"select * from Orders where serial='{TextBox1.Text}'";  //為了找尋serial是否重複
-            SqlCommand command2s = new SqlCommand(sql2s, connection2s);
-            connection2s.Open();
-            SqlDataReader Reader2s = command2s.ExecuteReader();
-            bool f = Reader2s.HasRows;
-            connection2s.Close();
-            return f;
+            userorder.DataSource = dt;
+            userorder.DataBind();
+            connectionorigin.Close();
         }
+
+        public void searchOrder2(string name, string check)
+        {
+            SqlConnection connectionorigin = Connect(s_data5);
+            string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice," +
+                $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate " +
+                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where b.{name}=N'{check}'";
+            SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
+            connectionorigin.Open();
+            SqlDataReader readorigin = command.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("serial");
+            dt.Columns.Add("productName");
+            dt.Columns.Add("productColor");
+            dt.Columns.Add("productPicture");
+            dt.Columns.Add("productPrice");
+            dt.Columns.Add("qty");
+            dt.Columns.Add("customerAccount");
+            dt.Columns.Add("name");
+            dt.Columns.Add("phone");
+            dt.Columns.Add("address");
+            dt.Columns.Add("status");
+            dt.Columns.Add("initdate");
+            while (readorigin.Read())
+            {
+                DataRow row = dt.NewRow();
+                row["ID"] = readorigin[0];
+                row["serial"] = readorigin[1];
+                row["productName"] = readorigin[2];
+                row["productColor"] = readorigin[3];
+                row["productPicture"] = readorigin[4];
+                row["productPrice"] = readorigin[5];
+                row["qty"] = readorigin[6];
+                row["customerAccount"] = readorigin[7];
+                row["name"] = readorigin[8];
+                row["phone"] = readorigin[9];
+                row["address"] = readorigin[10];
+                row["status"] = readorigin[11];
+                row["initdate"] = readorigin[12];
+                dt.Rows.Add(row);
+            }
+            userorder.DataSource = dt;
+            userorder.DataBind();
+            connectionorigin.Close();
+        }
+
+        //public bool reviewSerial()
+        //{
+        //    Random rnd = new Random();
+        //    TextBox1.Text = "";
+        //    for (int i = 0; i < 10; i++)    //編成serial number
+        //    {
+        //        int serialrnd = rnd.Next(0, 10);
+        //        TextBox1.Text += serialrnd;
+        //    }
+        //    SqlConnection connection2s = Connect(s_data);
+        //    string sql2s = $"select * from Orders where serial='{TextBox1.Text}'";  //為了找尋serial是否重複
+        //    SqlCommand command2s = new SqlCommand(sql2s, connection2s);
+        //    connection2s.Open();
+        //    SqlDataReader Reader2s = command2s.ExecuteReader();
+        //    bool f = Reader2s.HasRows;
+        //    connection2s.Close();
+        //    return f;
+        //}
 
         public string sourcefind(string x)
         {
@@ -65,7 +190,7 @@ namespace Shopping
             SqlCommand concommand = new SqlCommand(source, consource);
             consource.Open();
             SqlDataReader dataReader = concommand.ExecuteReader();
-            
+
             if (dataReader.Read())
             {
                 string y = dataReader[0].ToString();
@@ -78,7 +203,7 @@ namespace Shopping
                 string z = "";
                 return z;
             }
-
+            
         }
 
         public string ordersfind(string a , string b)
@@ -128,96 +253,124 @@ namespace Shopping
         //    DDLUpdateOrderID.DataBind();
         //}
 
+        public void cleanbtss()
+        {
+            DataView dv = (DataView)this.SqlDataSourceOrderSerial.Select(new DataSourceSelectArguments());
+            DDLSS.Items.Clear();
+            DDLSS.Items.Add("請選擇");
+            DDLSS.DataSource = dv;
+            DDLSS.DataTextField = "serial";
+            DDLSS.DataBind();
+        }
+
+        public void cleanbtsca()
+        {
+            DataView dv = (DataView)this.SqlDataSourceCustomerAccount.Select(new DataSourceSelectArguments());
+            DDLSearchCustomerAccount.Items.Clear();
+            DDLSearchCustomerAccount.Items.Add("請選擇");
+            DDLSearchCustomerAccount.DataSource = dv;
+            DDLSearchCustomerAccount.DataTextField = "account";
+            DDLSearchCustomerAccount.DataBind();
+        }
+
+        public void cleanbtspn()
+        {
+            DataView dv = (DataView)this.SqlDataSourceProductName.Select(new DataSourceSelectArguments());
+            DDLSearchProductName.Items.Clear();
+            DDLSearchProductName.Items.Add("請選擇");
+            DDLSearchProductName.DataSource = dv;
+            DDLSearchProductName.DataTextField = "productName";
+            DDLSearchProductName.DataBind();
+        }
+
+        public void cleanbtsn()
+        {
+            DataView dv = (DataView)this.SqlDataSourceSearchName.Select(new DataSourceSelectArguments());
+            DDLSearchName.Items.Clear();
+            DDLSearchName.Items.Add("請選擇");
+            DDLSearchName.DataSource = dv;
+            DDLSearchName.DataTextField = "name";
+            DDLSearchName.DataBind();
+        }
+
+        public void cleanbts()
+        {
+            DataView dv = (DataView)this.SqlDataSourceOrdersStatus.Select(new DataSourceSelectArguments());
+            DDLSearchStatus.Items.Clear();
+            DDLSearchStatus.Items.Add("請選擇");
+            DDLSearchStatus.DataSource = dv;
+            DDLSearchStatus.DataTextField = "Cols";
+            DDLSearchStatus.DataBind();
+        }
+
+        public void cleanbt2()
+        {
+            DataView dv = (DataView)this.SqlDataSourceOrderSerial.Select(new DataSourceSelectArguments());
+            DDLDeleteOrderID.Items.Clear();
+            DDLDeleteOrderID.Items.Add("請選擇");
+            DDLDeleteOrderID.DataSource = dv;
+            DDLDeleteOrderID.DataTextField = "serial";
+            DDLDeleteOrderID.DataBind();
+            
+        }
+
+        public void cleanbt3()
+        {
+            DataView dv = (DataView)this.SqlDataSourceOrderDetailSearch.Select(new DataSourceSelectArguments());
+            DDLUpdateOrderDetailID.Items.Clear();
+            DDLUpdateOrderDetailID.Items.Add("請選擇");
+            DDLUpdateOrderDetailID.DataSource = dv;
+            DDLUpdateOrderDetailID.DataTextField = "ID";
+            DDLUpdateOrderDetailID.DataBind();
+            DataView dv2 = (DataView)this.SqlDataSourceOrderCols.Select(new DataSourceSelectArguments());
+            DDLUpdateOrderCols.Items.Clear();
+            DDLUpdateOrderCols.Items.Add("請選擇");
+            DDLUpdateOrderCols.DataSource = dv2;
+            DDLUpdateOrderCols.DataTextField = "Cols";
+            DDLUpdateOrderCols.DataBind();
+            TextBox9.Text = "";
+        }
+
+        public void changecolor()
+        {
+            hintSerial.ForeColor = Color.Black;
+            hintCustomerAccount.ForeColor = Color.Black;
+            hintProductName.ForeColor = Color.Black;
+            hintName.ForeColor = Color.Black;
+            hintStatus.ForeColor = Color.Black;
+            hintID.ForeColor = Color.Black;
+            hintID2.ForeColor = Color.Black;
+            hintColumn.ForeColor = Color.Black;
+            hintAll.ForeColor = Color.Black;
+        }
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            hintCustomerID.Text = "";
-            hintProductID.Text = "";
-            hintStatus.Text = "";
-            hintQty.Text = "";
-            hintID.Text = "選擇即將刪除的orderID";
-            hintID2.Text = "選擇即將更新的orderID";
+            hintID.Text = "選擇即將刪除的orderSerial";
+            hintID2.Text = "選擇即將更新的orderDetailID";
             hintColumn.Text = "選擇即將更新的欄位";
             hintAll.Text = "輸入更新的值";
-            
+            hintSerial.Text = "";
+            hintCustomerAccount.Text = "";
+            hintProductName.Text = "";
+            hintName.Text = "";
+            hintStatus.Text = "";
+            changecolor();
             if (!IsPostBack)
             {
                 reviewOrder();
-               
+                cleanbtss();
+                cleanbtsca();
+                cleanbtspn();
+                cleanbtsn();
+                cleanbts();
+                cleanbt2();
+                cleanbt3();
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-           
-            while (reviewSerial())
-            {
-                reviewSerial();
-            }
-
-            SqlConnection connectionp = Connect(s_data3);
-            string sqlp = $"select price from Products where ID='{DDLAddProductID.Text}'";  //為了找尋serial是否重複
-            SqlCommand commandp = new SqlCommand(sqlp, connectionp);
-            connectionp.Open();
-            SqlDataReader Readerp = commandp.ExecuteReader();
-
-            
-
-            
-
-            bool qtyCheck = Regex.IsMatch(TextBox4.Text, @"\d");
-            
-
-            
-            if (DDLAddCustomerID.SelectedItem.Text != "請選擇")
-            {
-                if (DDLAddProductID.SelectedItem.Text != "請選擇")
-                {
-                    if (qtyCheck == true)
-                    {
-
-                        if (DDLAddstatus.SelectedItem.Text != "請選擇")
-                        {
-                            if (Readerp.Read())
-                            {
-                                TextBox5.Text = Readerp[0].ToString();
-                                TextBox11.Text = (int.Parse(TextBox4.Text) * int.Parse(TextBox5.Text)).ToString();
-                                string sql2 = $"insert into [Orders](serial,customerID,productID,qty,price,totalprice,status) values('{TextBox1.Text}','{DDLAddCustomerID.Text}','{DDLAddProductID.Text}','{TextBox4.Text}','{TextBox5.Text}','{TextBox11.Text}',N'{DDLAddstatus.Text}')";
-                                SqlConnection connection2 = Connect(s_data);
-                                SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                connection2.Open();
-                                command2.ExecuteNonQuery();
-                                MessageBox.Show("輸入成功");
-                                connection2.Close();
-                                connectionp.Close();
-                                reviewOrder();
-                               
-                            }
-                        }
-                        else
-                        {
-                            hintStatus.Text = "請選擇項目";
-                        }
-
-                    }
-
-                    else
-                    {
-                        hintQty.Text = "qty需為數字 請重新輸入";
-                    }
-                }
-                else
-                {
-                    hintProductID.Text = "請選擇項目";
-                }
-            }
-            else
-            {
-                hintCustomerID.Text="請選擇項目";
-            }
-           
-        }
+        
 
         protected void Button2_Click(object sender, EventArgs e)
         {
@@ -236,10 +389,9 @@ namespace Shopping
                 connection3.Open();
                 command3.ExecuteNonQuery();
                 connection3.Close();
+                reviewOrder();
+                cleanbt2();
                 this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt2", "setTimeout( function(){alert('刪除成功');},0);", true);
-                
-                Response.Redirect(Request.Url.ToString());
-                
             }
             else
             {
@@ -251,20 +403,16 @@ namespace Shopping
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            string serialStatus = ordersfind("status","serial");
+            
             bool numberCheck = Regex.IsMatch(TextBox9.Text, @"\d");
-            bool priceCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             bool serialCheck = Regex.IsMatch(TextBox9.Text, @"\d{10}");
             bool phoneCheck = Regex.IsMatch(TextBox9.Text, @"^09[\d]{8}");
-            string sql20 = $"update Orders SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}' where ID='{DDLUpdateOrderDetailID.Text}'";
-            string sql6c = $"update Orders SET {DDLUpdateOrderCols.Text}=N'{TextBox9.Text}' where ID='{DDLUpdateOrderDetailID.Text}'";
-
-            SqlConnection connection20 = new SqlConnection(s_data);
-            string number;
-            string number2;
+            
+           
 
             if (DDLUpdateOrderDetailID.SelectedItem.Text != "請選擇")
             {
+                string serialStatus = ordersfind("status", "serial");
                 if (serialStatus == "賣家處理中")
                 {
                     if (DDLUpdateOrderCols.SelectedItem.Text != "請選擇")
@@ -299,9 +447,10 @@ namespace Shopping
                                     SqlCommand command2 = new SqlCommand(sql2, connection2);
                                     connection2.Open();
                                     command2.ExecuteNonQuery();
-                                    MessageBox.Show("更新成功");
                                     connection2.Close();
-                                    Response.Redirect(Request.Url.ToString());
+                                    reviewOrder();
+                                    cleanbt3();
+                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
                                 }
                                 else
                                 {
@@ -335,8 +484,10 @@ namespace Shopping
                                     connection4.Open();
                                     command4.ExecuteNonQuery();
                                     connection4.Close();
-                                    MessageBox.Show("更新成功");
-                                   
+                                    reviewOrder();
+                                    cleanbt3();
+                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+
                                 }
                                 else
                                 {
@@ -373,7 +524,9 @@ namespace Shopping
                                     connection4.Open();
                                     command4.ExecuteNonQuery();
                                     connection4.Close();
-                                    MessageBox.Show("更新成功");
+                                    reviewOrder();
+                                    cleanbt3();
+                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
                                 }
                                 else
                                 {
@@ -394,7 +547,9 @@ namespace Shopping
                             if (phoneCheck)
                             {
                                 updateorders();
-                                MessageBox.Show("更新成功");
+                                reviewOrder();
+                                cleanbt3();
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
                             }
 
                             else
@@ -410,7 +565,9 @@ namespace Shopping
                             if (TextBox9.Text == "賣方處理中" || TextBox9.Text == "配送中" || TextBox9.Text == "已完成")
                             {
                                 updateorders();
-                                MessageBox.Show("更新成功");
+                                reviewOrder();
+                                cleanbt3();
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
                             }
                             else
                             {
@@ -447,8 +604,10 @@ namespace Shopping
                                     connection7.Close();
                                 }
                                 connection6.Close();
-                                
-                                MessageBox.Show("更新成功");
+
+                                reviewOrder();
+                                cleanbt3();
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
 
                             }
                             else
@@ -463,7 +622,9 @@ namespace Shopping
                             if (TextBox9.Text != "")
                             {
                                 updateorders();
-                                MessageBox.Show("更新成功");
+                                reviewOrder();
+                                cleanbt3();
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
                             }
                             else
                             {
@@ -490,6 +651,82 @@ namespace Shopping
                 hintID2.Text = "請選擇項目";
             }
             
+        }
+
+        protected void serialSearch_Click(object sender, EventArgs e)
+        {
+            if(DDLSS.SelectedItem.Text!="請選擇")
+            {
+                searchOrder("serial", DDLSS.Text);
+                cleanbtss();
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btss", "setTimeout( function(){alert('篩選成功');},0);", true);
+            }
+            else
+            {
+                hintSerial.ForeColor = Color.Red;
+                hintSerial.Text = "請選擇項目";
+            }
+        }
+
+        protected void customerAccountsearch_Click(object sender, EventArgs e)
+        {
+            if (DDLSearchCustomerAccount.SelectedItem.Text != "請選擇")
+            {
+                searchOrder("customerAccount", DDLSearchCustomerAccount.Text);
+                cleanbtsca();
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btca", "setTimeout( function(){alert('篩選成功');},0);", true);
+            }
+            else
+            {
+                hintCustomerAccount.ForeColor = Color.Red;
+                hintCustomerAccount.Text = "請選擇項目";
+            }
+
+        }
+
+        protected void productNamesearch_Click(object sender, EventArgs e)
+        {
+            if (DDLSearchProductName.SelectedItem.Text != "請選擇")
+            {
+                searchOrder("productName", DDLSearchProductName.Text);
+                cleanbtspn();
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btpn", "setTimeout( function(){alert('篩選成功');},0);", true);
+            }
+            else
+            {
+                hintProductName.ForeColor = Color.Red;
+                hintProductName.Text = "請選擇項目";
+            }
+        }
+
+        protected void namesearch_Click(object sender, EventArgs e)
+        {
+            if (DDLSearchName.SelectedItem.Text != "請選擇")
+            {
+                searchOrder2("name", DDLSearchName.Text);
+                cleanbtsn();
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('篩選成功');},0);", true);
+            }
+            else
+            {
+                hintName.ForeColor = Color.Red;
+                hintName.Text = "請選擇項目";
+            }
+        }
+
+        protected void statussearch_Click(object sender, EventArgs e)
+        {
+            if (DDLSearchStatus.SelectedItem.Text != "請選擇")
+            {
+                searchOrder2("status", DDLSearchStatus.Text);
+                cleanbts();
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bts", "setTimeout( function(){alert('篩選成功');},0);", true);
+            }
+            else
+            {
+                hintStatus.ForeColor = Color.Red;
+                hintStatus.Text = "請選擇項目";
+            }
         }
     }
 }

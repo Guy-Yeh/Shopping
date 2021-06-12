@@ -40,7 +40,7 @@ namespace Shopping
         {
             
             SqlConnection connection = new SqlConnection(s_data);
-            string sql = $"select * from Products";
+            string sql = $"select * from Products where category= N'白'";
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
@@ -48,9 +48,9 @@ namespace Shopping
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
             dt.Columns.Add("productName");
-            DataColumn picture = new DataColumn();
-            picture = new DataColumn("picture");
-            dt.Columns.Add(picture); 
+            //DataColumn picture = new DataColumn();
+            //picture = new DataColumn("picture");
+            dt.Columns.Add("picture");
             dt.Columns.Add("category");
             dt.Columns.Add("inventory");
             dt.Columns.Add("price");
@@ -61,15 +61,16 @@ namespace Shopping
                 DataRow row = dt.NewRow();
                 row["ID"] = read[0];
                 row["productName"] = read[1];
-                row[picture] = ResolveUrl($"{read[2]}");
+                //row["picture"] = ResolveUrl($"{read[2]}");
+                row["picture"] = read[2];
                 row["category"] = read[3];
                 row["inventory"] = read[4];
                 row["price"] = read[5];
                 row["initdate"] = read[6];
                 dt.Rows.Add(row); 
             }
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+            GridView2.DataSource = dt;
+            GridView2.DataBind();
             connection.Close();
 
 

@@ -218,44 +218,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="row">
 							<div class="col1">
 								<div class="h_nav">	
-									<h4>Add Order Information</h4>
+									<h4>Search Order Information</h4>
 									<ul>
 										<li><asp:Label ID="serial" runat="server" Text="serial"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox1" runat="server" Enabled="False"></asp:TextBox></li> 
-									    <li><asp:Label ID="hintSerial" runat="server" Text="不用輸入" ForeColor="Blue"></asp:Label></li> 
+                                        <li><asp:DropDownList ID="DDLSS" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList></asp:DropDownList><li>
+										<li><asp:Label ID="hintSerial" runat="server" Text="" ></asp:Label></li> 
+										<li><asp:Button ID="serialSearch" runat="server" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="serialSearch_Click"/></li>
 										<br>
-										<li><asp:Label ID="customerID" runat="server" Text="customerID"></asp:Label></li>
+										<li><asp:Label ID="customerAccount" runat="server" Text="customerAccount"></asp:Label></li>
 										<li>
-                                            <asp:DropDownList ID="DDLAddCustomerID" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceAddCustomerID" DataTextField="ID" DataValueField="ID" Width="195px" Height="30px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
-											<asp:SqlDataSource ID="SqlDataSourceAddCustomerID" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT [ID] FROM [Customers]"></asp:SqlDataSource>
+                                            <asp:DropDownList ID="DDLSearchCustomerAccount" runat="server" AppendDataBoundItems="True" Width="195px" Height="30px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceCustomerAccount" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT [account] FROM [Customers]"></asp:SqlDataSource>
                                         </li>
-										<li><asp:Label ID="hintCustomerID" runat="server" Text=""></asp:Label></li>
+										<li><asp:Label ID="hintCustomerAccount" runat="server" Text=""></asp:Label></li>
+										<li><asp:Button ID="customerAccountsearch" runat="server" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="customerAccountsearch_Click"/></li>
 										<br>
-										<li><asp:Label ID="productID" runat="server" Text="productID"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLAddProductID" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceProductID" DataTextField="ID" DataValueField="ID" Height="30px" Width="195px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceProductID" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT [ID] FROM [Products]"></asp:SqlDataSource>
+										<li><asp:Label ID="productName" runat="server" Text="productName"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLSearchProductName" runat="server" AppendDataBoundItems="True"  Height="30px" Width="195px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceProductName" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT DISTINCT productName FROM Products"></asp:SqlDataSource>
                                         </li>
-										<li><asp:Label ID="hintProductID" runat="server" Text=""></asp:Label></li>
+										<li><asp:Label ID="hintProductName" runat="server" Text=""></asp:Label></li>
+										<li><asp:Button ID="productNamesearch" runat="server" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="productNamesearch_Click"/></li>
 										<br>
-										<li><asp:Label ID="qty" runat="server" Text="qty"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintQty" runat="server" Text=""></asp:Label></li>
-										<br>
-										<li><asp:Label ID="price" runat="server" Text="price"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox5" runat="server" Enabled="False"></asp:TextBox></li>
-										<li><asp:Label ID="hintPrice" runat="server" Text="不用輸入" ForeColor="Blue"></asp:Label></li>
-										<br>
-										<li><asp:Label ID="totalprice" runat="server" Text="totalprice"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox11" runat="server" Enabled="False"></asp:TextBox></li>
-										<li><asp:Label ID="hintTotalprice" runat="server" Text="不用輸入" ForeColor="Blue"></asp:Label></li> 
+										<li><asp:Label ID="name" runat="server" Text="name"></asp:Label></li>
+										<li>
+                                            <asp:DropDownList ID="DDLSearchName" runat="server" AppendDataBoundItems="True"  Height="30px" Width="195px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceSearchName" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersConnectionString %>" SelectCommand="SELECT DISTINCT name FROM Orders"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintName" runat="server" Text=""></asp:Label></li>
+										<li><asp:Button ID="namesearch" runat="server" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="namesearch_Click"/></li>
 										<br>
 										<li><asp:Label ID="status" runat="server" Text="status"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLAddstatus" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrdersStatus" DataTextField="Cols" DataValueField="Cols" Height="30px" Width="195px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLSearchStatus" runat="server" AppendDataBoundItems="True"  Height="30px" Width="195px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceOrdersStatus" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersStatusConnectionString %>" SelectCommand="SELECT [Cols] FROM [OrdersStatus]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintStatus" runat="server" Text="" ></asp:Label></li>
-										<br>
-										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
+										<li><asp:Button ID="statussearch" runat="server" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="statussearch_Click"/></li>
 									</ul>	
 								</div>							
 							</div>
@@ -264,7 +262,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Delete Order Information</h4>
 									<ul>
 										<li><asp:Label ID="orderID" runat="server" Text="orderSerial"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLDeleteOrderID" runat="server"  AppendDataBoundItems="True"  Width="195px" Height="30px" DataSourceID="SqlDataSourceOrderSerial" DataTextField="serial" DataValueField="serial"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLDeleteOrderID" runat="server"  AppendDataBoundItems="True"  Width="195px" Height="30px" ><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceOrderSerial" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersConnectionString %>" SelectCommand="SELECT [serial] FROM [Orders]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintID" runat="server" Text="選擇即將刪除的orderSerial"></asp:Label></li>
@@ -279,13 +277,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Update Order Information</h4>
 									<ul>
 										<li><asp:Label ID="orderID2" runat="server" Text="orderDetailID"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateOrderDetailID" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px" DataSourceID="SqlDataSourceOrderDetailID" DataTextField="ID" DataValueField="ID" ><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceOrderDetailID" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT [ID] FROM [OrderDetail]"></asp:SqlDataSource>
+										<li><asp:DropDownList ID="DDLUpdateOrderDetailID" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px" ><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceOrderDetailSearch" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT ID FROM Orderdetail WHERE (cart = N'否')"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintID2" runat="server" Text="選擇即將更新的orderDetailID"></asp:Label><li>
 										<br>
 										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateOrderCols" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceOrderCols" DataTextField="Cols" DataValueField="Cols" Height="30px" Width="195px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLUpdateOrderCols" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceOrderCols" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersColsConnectionString %>" SelectCommand="SELECT [Cols] FROM [OrdersCols]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintColumn" runat="server" Text="選擇即將更新的欄位"></asp:Label></li>
@@ -304,15 +302,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 		<div class="clearfix"> 
 			<br>
-            <asp:GridView ID="userorder" runat="server">
-            </asp:GridView>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSourceAllorders">
+           
+            <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" >
                 <Columns>
-                    <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                    <asp:BoundField DataField="serial" HeaderText="serial" SortExpression="serial" />
-                    <asp:BoundField DataField="productName" HeaderText="productName" SortExpression="productName" />
-                    <asp:BoundField DataField="productColor" HeaderText="productColor" SortExpression="productColor" />
-                    <asp:BoundField DataField="productPicture" HeaderText="productPicture" SortExpression="productPicture" Visible="False" />
+                    <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="ID">
+                        <EditItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="serial" SortExpression="serial">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("serial") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("serial") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="productName" SortExpression="productName">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("productName") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("productName") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="productColor" SortExpression="productColor">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("productColor") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("productColor") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="productPicture" SortExpression="productPicture" Visible="False">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("productPicture") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("productPicture") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="image" SortExpression="productPicture">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
@@ -321,13 +353,62 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <asp:Image ID="Image1" runat="server" Height="120px" Width="100px" ImageUrl='<%#Eval("productPicture") %>' />
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="productPrice" HeaderText="productPrice" SortExpression="productPrice" />
-                    <asp:BoundField DataField="qty" HeaderText="qty" SortExpression="qty" />
-                    <asp:BoundField DataField="customerAccount" HeaderText="customerAccount" SortExpression="customerAccount" />
-                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
-                    <asp:BoundField DataField="phone" HeaderText="phone" SortExpression="phone" />
-                    <asp:BoundField DataField="address" HeaderText="address" SortExpression="address" />
-                    <asp:BoundField DataField="status" HeaderText="status" SortExpression="status" />
+                    <asp:TemplateField HeaderText="productPrice" SortExpression="productPrice">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("productPrice") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("productPrice") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="qty" SortExpression="qty">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("qty") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("qty") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="customerAccount" SortExpression="customerAccount">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("customerAccount") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("customerAccount") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="name" SortExpression="name">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("name") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label9" runat="server" Text='<%# Bind("name") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="phone" SortExpression="phone">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("phone") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label10" runat="server" Text='<%# Bind("phone") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="address" SortExpression="address">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("address") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label11" runat="server" Text='<%# Bind("address") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="status" SortExpression="status">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("status") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label12" runat="server" Text='<%# Bind("status") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" />
                 </Columns>
             </asp:GridView>

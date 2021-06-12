@@ -44,7 +44,7 @@ namespace Shopping
                  DataRow row = dt.NewRow();
                  row["ID"] = read[0];
                  row["productName"] = read[1];
-                 row["picture"] = ResolveUrl($"{read[2]}");
+                 row["picture"] = read[2];
                  row["category"] = read[3];
                  row["inventory"] = read[4];
                  row["price"] = read[5];
