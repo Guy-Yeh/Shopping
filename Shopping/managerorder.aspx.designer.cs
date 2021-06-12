@@ -294,13 +294,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label orderID2;
 
         /// <summary>
-        /// DDLUpdateOrderID 控制項。
+        /// DDLUpdateOrderDetailID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLUpdateOrderID;
+        protected global::System.Web.UI.WebControls.DropDownList DDLUpdateOrderDetailID;
 
         /// <summary>
         /// SqlDataSourceOrderDetailID 控制項。
@@ -411,6 +411,15 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
+        /// SqlDataSourceAllorders 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAllorders;
+
+        /// <summary>
         /// SqlDataSourceAllOrders2 控制項。
         /// </summary>
         /// <remarks>
@@ -418,14 +427,5 @@ namespace Shopping
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAllOrders2;
-
-        /// <summary>
-        /// SqlDataSourceAllOrders 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAllOrders;
     }
 }

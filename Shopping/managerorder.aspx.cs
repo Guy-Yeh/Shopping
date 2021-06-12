@@ -60,7 +60,7 @@ namespace Shopping
 
         public string sourcefind(string x)
         {
-            string source = $"select {x} from OrderDetail where ID ='{DDLUpdateOrderID.Text}'";
+            string source = $"select {x} from OrderDetail where ID ='{DDLUpdateOrderDetailID.Text}'";
             SqlConnection consource = new SqlConnection(s_data4);
             SqlCommand concommand = new SqlCommand(source, consource);
             consource.Open();
@@ -69,14 +69,48 @@ namespace Shopping
             if (dataReader.Read())
             {
                 string y = dataReader[0].ToString();
+                consource.Close();
                 return y;
             }
             else
             {
+                consource.Close();
                 string z = "";
                 return z;
             }
 
+        }
+
+        public string ordersfind(string a , string b)
+        {
+            string orders = $"select {a} from Orders where {b} = N'{sourcefind(b)}'";
+            SqlConnection conorders = new SqlConnection(s_data);
+            SqlCommand comorders = new SqlCommand(orders, conorders);
+            conorders.Open();
+            SqlDataReader dataReader = comorders.ExecuteReader();
+
+            if (dataReader.Read())
+            {
+                string y = dataReader[0].ToString();
+                conorders.Close();
+                return y;
+            }
+            else
+            {
+                conorders.Close();
+                string z = "";
+                return z;
+            }
+
+        }
+
+        public void updateorders()
+        {
+            SqlConnection connection5 = new SqlConnection(s_data);
+            string sql5 = $"update Orders SET {DDLUpdateOrderCols.Text}= N'{TextBox9.Text}' where serial='{sourcefind("serial")}'";
+            SqlCommand command5 = new SqlCommand(sql5, connection5);
+            connection5.Open();
+            command5.ExecuteNonQuery();
         }
 
         //public void DDLreconnect()
@@ -217,191 +251,242 @@ namespace Shopping
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            
+            string serialStatus = ordersfind("status","serial");
             bool numberCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             bool priceCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             bool serialCheck = Regex.IsMatch(TextBox9.Text, @"\d{10}");
-            string sql6 = $"update Orders SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}' where ID='{DDLUpdateOrderID.Text}'";
-            string sql6c = $"update Orders SET {DDLUpdateOrderCols.Text}=N'{TextBox9.Text}' where ID='{DDLUpdateOrderID.Text}'";
-            SqlConnection connection6 = Connect(s_data);
-            string sql7 = $"select * from Orders where {DDLUpdateOrderCols.Text}='{TextBox9.Text}'";
+            bool phoneCheck = Regex.IsMatch(TextBox9.Text, @"^09[\d]{8}");
+            string sql20 = $"update Orders SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}' where ID='{DDLUpdateOrderDetailID.Text}'";
+            string sql6c = $"update Orders SET {DDLUpdateOrderCols.Text}=N'{TextBox9.Text}' where ID='{DDLUpdateOrderDetailID.Text}'";
+
+            SqlConnection connection20 = new SqlConnection(s_data);
             string number;
             string number2;
 
-            if (DDLUpdateOrderID.SelectedItem.Text != "請選擇")
+            if (DDLUpdateOrderDetailID.SelectedItem.Text != "請選擇")
             {
-                if (DDLUpdateOrderCols.SelectedItem.Text != "請選擇")
+                if (serialStatus == "賣家處理中")
                 {
-
-                    if (DDLUpdateOrderCols.Text == "serial")
+                    if (DDLUpdateOrderCols.SelectedItem.Text != "請選擇")
                     {
-                        SqlConnection connection7 = Connect(s_data);
-                        SqlCommand command7 = new SqlCommand(sql7, connection7);
-                        connection7.Open();
-                        SqlDataReader Reader2 = command7.ExecuteReader();
-                        if (Reader2.HasRows)
-                        {
-                            hintAll.ForeColor = Color.Red;
-                            hintAll.Text = "Serial重複 請重新輸入";
-                        }
-                        else
-                        {
-                            if (serialCheck == true)
-                            {
-                                string serial = sourcefind(DDLUpdateOrderCols.Text);
-                                SqlConnection connection6s = new SqlConnection(s_data4);
-                                string sql6s = $"update OrderDetail SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}' where serial='{serial}'";
-                                SqlCommand command6s = new SqlCommand(sql6s, connection6s);
-                                connection6s.Open();
-                                command6s.ExecuteNonQuery();
-                                connection6s.Close();
 
-                                string sql6s2 = $"update Orders SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}' where serial='{serial}'";
-                                SqlCommand command6s2 = new SqlCommand(sql6s2, connection6);
-                                connection6.Open();
-                                command6s2.ExecuteNonQuery();
-                                MessageBox.Show("更新成功");
-                                connection6.Close();
-                                Response.Redirect(Request.Url.ToString());
+                        if (DDLUpdateOrderCols.Text == "serial")
+                        {
+                            string sql0 = $"select * from Orders where {DDLUpdateOrderCols.Text}='{TextBox9.Text}'";
+                            SqlConnection connection0 = Connect(s_data);
+                            SqlCommand command0 = new SqlCommand(sql0, connection0);
+                            connection0.Open();
+                            SqlDataReader Reader0 = command0.ExecuteReader();
+                            if (Reader0.HasRows)
+                            {
+                                hintAll.ForeColor = Color.Red;
+                                hintAll.Text = "Serial重複 請重新輸入";
+                            }
+                            else
+                            {
+                                if (serialCheck == true)
+                                {
+                                    string serial = sourcefind(DDLUpdateOrderCols.Text);
+                                    SqlConnection connection1 = new SqlConnection(s_data4);
+                                    string sql1 = $"update OrderDetail SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}' where serial='{serial}'";
+                                    SqlCommand command1 = new SqlCommand(sql1, connection1);
+                                    connection1.Open();
+                                    command1.ExecuteNonQuery();
+                                    connection1.Close();
+
+                                    string sql2 = $"update Orders SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}' where serial='{serial}'";
+                                    SqlConnection connection2 = new SqlConnection(s_data);
+                                    SqlCommand command2 = new SqlCommand(sql2, connection2);
+                                    connection2.Open();
+                                    command2.ExecuteNonQuery();
+                                    MessageBox.Show("更新成功");
+                                    connection2.Close();
+                                    Response.Redirect(Request.Url.ToString());
+                                }
+                                else
+                                {
+                                    hintAll.ForeColor = Color.Red;
+                                    hintAll.Text = "Serial為10碼數字 請重新輸入";
+                                }
+                            }
+                            connection0.Close();
+                        }
+
+                        else if (DDLUpdateOrderCols.Text == "productName")
+                        {
+                            string serialColor = sourcefind("productColor");
+                            string serialPrice = sourcefind("productPrice");
+
+
+                            SqlConnection connection3 = new SqlConnection(s_data3);
+                            string sql3 = $"select * from Products where {DDLUpdateOrderCols.Text}= N'{TextBox9.Text}' And category = N'{serialColor}' ";
+                            SqlCommand command3 = new SqlCommand(sql3, connection3);
+                            connection3.Open();
+                            SqlDataReader Reader3 = command3.ExecuteReader();
+
+                            if (Reader3.Read())
+                            {
+
+                                if (Convert.ToInt32(Reader3[5]) <= Convert.ToInt32(serialPrice))
+                                {
+                                    SqlConnection connection4 = new SqlConnection(s_data4);
+                                    string sql4 = $"update OrderDetail SET {DDLUpdateOrderCols.Text}= N'{TextBox9.Text}', productPicture = N'{Reader3[2].ToString()}' where ID='{DDLUpdateOrderDetailID.Text}'";
+                                    SqlCommand command4 = new SqlCommand(sql4, connection4);
+                                    connection4.Open();
+                                    command4.ExecuteNonQuery();
+                                    connection4.Close();
+                                    MessageBox.Show("更新成功");
+                                   
+                                }
+                                else
+                                {
+                                    hintAll.ForeColor = Color.Red;
+                                    hintAll.Text = "商品價格需小於原本商品 請重新輸入";
+                                }
                             }
                             else
                             {
                                 hintAll.ForeColor = Color.Red;
-                                hintAll.Text = "Serial為10碼數字 請重新輸入";
+                                hintAll.Text = "商品不存在 請重新輸入";
                             }
+
                         }
-                        connection7.Close();
-                    }
-
-                    else if (DDLUpdateOrderCols.Text == "productName" || DDLUpdateOrderCols.Text == "productColor")
-                    {
-
-
-                    }
-
-                    else if (DDLUpdateOrderCols.Text == "qty" || DDLUpdateOrderCols.Text == "price")
-                    {
-                        if (numberCheck == true)
+                        else if (DDLUpdateOrderCols.Text == "productColor")
                         {
-                            if (DDLUpdateOrderCols.Text == "qty")
+                            string serialName = sourcefind("productName");
+                            string serialPrice2 = sourcefind("productPrice");
+
+                            SqlConnection connection3 = new SqlConnection(s_data3);
+                            string sql3 = $"select * from Products where category= N'{TextBox9.Text}' And productName = N'{serialName}' ";
+                            SqlCommand command3 = new SqlCommand(sql3, connection3);
+                            connection3.Open();
+                            SqlDataReader Reader3 = command3.ExecuteReader();
+
+                            if (Reader3.Read())
                             {
 
-                                string sql8 = $"select price from Orders where ID='{DDLUpdateOrderID.Text}'";
-                                SqlConnection connection8 = new SqlConnection(s_data);
-                                SqlCommand command8 = new SqlCommand(sql8, connection8);
-                                connection8.Open();
-                                SqlDataReader Reader3 = command8.ExecuteReader();
-                                //string number = Reader3[0].ToString();
-                                //string number2 = Convert.ToString(int.Parse(number) * int.Parse(TextBox9.Text));
-                                if (Reader3.Read())
+                                if (Convert.ToInt32(Reader3[5]) <= Convert.ToInt32(serialPrice2))
                                 {
-                                    number = Reader3[0].ToString();
-                                    number2 = Convert.ToString(int.Parse(number) * int.Parse(TextBox9.Text));
-                                    string sql9 = $"update Orders SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}',totalprice='{number2}' where ID='{DDLUpdateOrderID.Text}'";
-                                    SqlConnection connection9 = new SqlConnection(s_data);
-                                    SqlCommand command9 = new SqlCommand(sql9, connection9);
-                                    connection9.Open();
-                                    command9.ExecuteNonQuery();
+                                    SqlConnection connection4 = new SqlConnection(s_data4);
+                                    string sql4 = $"update OrderDetail SET {DDLUpdateOrderCols.Text}= N'{TextBox9.Text}', productPicture = N'{Reader3[2].ToString()}' where ID='{DDLUpdateOrderDetailID.Text}'";
+                                    SqlCommand command4 = new SqlCommand(sql4, connection4);
+                                    connection4.Open();
+                                    command4.ExecuteNonQuery();
+                                    connection4.Close();
                                     MessageBox.Show("更新成功");
-                                    connection8.Close();
-                                    connection9.Close();
-                                    reviewOrder();
                                 }
+                                else
+                                {
+                                    hintAll.ForeColor = Color.Red;
+                                    hintAll.Text = "商品價格需小於原本商品 請重新輸入";
+                                }
+                            }
+                            else
+                            {
+                                hintAll.ForeColor = Color.Red;
+                                hintAll.Text = "商品不存在 請重新輸入";
+                            }
+
+                        }
+
+                        else if (DDLUpdateOrderCols.Text == "phone")
+                        {
+                            if (phoneCheck)
+                            {
+                                updateorders();
+                                MessageBox.Show("更新成功");
+                            }
+
+                            else
+                            {
+                                hintAll.ForeColor = Color.Red;
+                                hintAll.Text = "phone格式錯誤 請重新輸入";
+                            }
+                        }
+
+                        
+                        else if (DDLUpdateOrderCols.Text == "status")
+                        {
+                            if (TextBox9.Text == "賣方處理中" || TextBox9.Text == "配送中" || TextBox9.Text == "已完成")
+                            {
+                                updateorders();
+                                MessageBox.Show("更新成功");
+                            }
+                            else
+                            {
+                                hintAll.ForeColor = Color.Red;
+                                hintAll.Text = "status僅有賣方處理中 配送中 已完成 請擇一填入";
+                            }
+
+                        }
+
+                        else if (DDLUpdateOrderCols.Text == "qty")
+                        {
+                            if (numberCheck && int.Parse(TextBox9.Text)>=0)
+                            {
+                                SqlConnection connection5 = new SqlConnection(s_data4);
+                                string sql5 = $"update OrderDetail SET {DDLUpdateOrderCols.Text}= '{TextBox9.Text}' where ID='{DDLUpdateOrderDetailID.Text}'";
+                                SqlCommand command5 = new SqlCommand(sql5, connection5);
+                                connection5.Open();
+                                command5.ExecuteNonQuery();
+                               
+
+                                int totalprice = int.Parse(sourcefind("productprice")) * int.Parse((TextBox9.Text));
+                                string sql6 = $"select sum(productPrice*qty) from OrderDetail where serial='{sourcefind("serial")}'";
+                                SqlConnection connection6 = new SqlConnection(s_data4);
+                                SqlCommand command6 = new SqlCommand(sql6, connection6);
+                                connection6.Open();
+                                SqlDataReader Reader4 = command6.ExecuteReader();
+                                if (Reader4.Read())
+                                {
+                                    SqlConnection connection7 = new SqlConnection(s_data);
+                                    string sql7 = $"update Orders SET totalprice= '{Reader4[0]}' where serial='{sourcefind("serial")}'";
+                                    SqlCommand command7 = new SqlCommand(sql7, connection7);
+                                    connection7.Open();
+                                    command7.ExecuteNonQuery();
+                                    connection7.Close();
+                                }
+                                connection6.Close();
+                                
+                                MessageBox.Show("更新成功");
 
                             }
                             else
                             {
-
-                                string sql8 = $"select qty from Orders where ID='{DDLUpdateOrderID.Text}'";
-                                SqlConnection connection8 = new SqlConnection(s_data);
-                                SqlCommand command8 = new SqlCommand(sql8, connection8);
-                                connection8.Open();
-                                SqlDataReader Reader3 = command8.ExecuteReader();
-                                if (Reader3.Read())
-                                {
-                                    number = Reader3[0].ToString();
-                                    number2 = Convert.ToString(int.Parse(number) * int.Parse(TextBox9.Text));
-                                    string sql9 = $"update Orders SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}',totalprice='{number2}' where ID='{DDLUpdateOrderID.Text}'";
-                                    SqlConnection connection9 = new SqlConnection(s_data);
-                                    SqlCommand command9 = new SqlCommand(sql9, connection9);
-                                    connection9.Open();
-                                    command9.ExecuteNonQuery();
-                                    MessageBox.Show("更新成功");
-                                    connection8.Close();
-                                    connection9.Close();
-                                    reviewOrder();
-                                }
+                                hintAll.ForeColor = Color.Red;
+                                hintAll.Text = "qty需為數字且須大於0 請重新輸入";
                             }
+                        }
 
-
-                        }
-                        else
+                        else 
                         {
-                            hintAll.Text = "qty/price需為數字 請重新輸入";
+                            if (TextBox9.Text != "")
+                            {
+                                updateorders();
+                                MessageBox.Show("更新成功");
+                            }
+                            else
+                            {
+                                hintAll.ForeColor = Color.Red;
+                                hintAll.Text = "name/address不得為空 請重新輸入";
+                            }
                         }
-                    }
-                    else if (DDLUpdateOrderCols.Text == "customerID")
-                    {
-                        SqlConnection connection10 = new SqlConnection(s_data2);
-                        string sql10 = $"select * from Customers where ID ='{TextBox9.Text}'";
-                        SqlCommand command10 = new SqlCommand(sql10, connection10);
-                        connection10.Open();
-                        SqlDataReader Reader4 = command10.ExecuteReader();
-                        if (Reader4.HasRows)
-                        {
-                            SqlCommand command6 = new SqlCommand(sql6, connection6);
-                            connection6.Open();
-                            command6.ExecuteNonQuery();
-                            MessageBox.Show("更新成功");
-                            connection6.Close();
-                            reviewOrder();
-                        }
-                        else
-                        {
-                            hintAll.Text = "customerID不存在 請重新輸入";
-                        }
-                        connection10.Close();
-
-                    }
-                    else if (DDLUpdateOrderCols.Text == "productName")
-                    {
-                        SqlConnection connection11 = new SqlConnection(s_data3);
-                        string sql11 = $"select * from Products where productName ='{TextBox9.Text}'";
-                        SqlCommand command11 = new SqlCommand(sql11, connection11);
-                        connection11.Open();
-                        SqlDataReader Reader5 = command11.ExecuteReader();
-                        if (Reader5.HasRows)
-                        {
-                            SqlCommand command6 = new SqlCommand(sql6, connection6);
-                            connection6.Open();
-                            command6.ExecuteNonQuery();
-                            MessageBox.Show("更新成功");
-                            connection6.Close();
-                            reviewOrder();
-                        }
-                        else
-                        {
-                            hintAll.Text = "productName不存在 請重新輸入";
-                        }
-                        connection11.Close();
                     }
                     else
                     {
-                        SqlCommand command6 = new SqlCommand(sql6, connection6);
-                        connection6.Open();
-                        command6.ExecuteNonQuery();
-                        MessageBox.Show("更新成功");
-                        connection6.Close();
-                        reviewOrder();
+                        hintColumn.ForeColor = Color.Red;
+                        hintColumn.Text = "請選擇項目";
                     }
                 }
                 else
                 {
-                    hintColumn.Text = "請選擇項目";
+                    hintAll.ForeColor = Color.Red;
+                    hintAll.Text = "訂單已出貨無法修改 請重新輸入";
                 }
             }
             else
             {
+                hintID2.ForeColor = Color.Red;
                 hintID2.Text = "請選擇項目";
             }
             

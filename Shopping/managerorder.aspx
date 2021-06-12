@@ -279,7 +279,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Update Order Information</h4>
 									<ul>
 										<li><asp:Label ID="orderID2" runat="server" Text="orderDetailID"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateOrderID" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px" DataSourceID="SqlDataSourceOrderDetailID" DataTextField="ID" DataValueField="ID" ><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLUpdateOrderDetailID" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px" DataSourceID="SqlDataSourceOrderDetailID" DataTextField="ID" DataValueField="ID" ><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceOrderDetailID" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT [ID] FROM [OrderDetail]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintID2" runat="server" Text="選擇即將更新的orderDetailID"></asp:Label><li>
@@ -294,7 +294,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintAll" runat="server" Text="輸入更新的值"></asp:Label></li>
 										<br>
-										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick= "javascript:if(!window.confirm('確定要修改嗎?')) window.event.returnValue=false"/></li>
+										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick= "javascript:if(!window.confirm('確定要修改嗎?')) window.event.returnValue=false"/>
+                                            
+                                        </li>
 									</ul>	
 								</div>												
 							</div>
@@ -304,23 +306,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<br>
             <asp:GridView ID="userorder" runat="server">
             </asp:GridView>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSourceAllOrders2">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSourceAllorders">
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
                     <asp:BoundField DataField="serial" HeaderText="serial" SortExpression="serial" />
                     <asp:BoundField DataField="productName" HeaderText="productName" SortExpression="productName" />
                     <asp:BoundField DataField="productColor" HeaderText="productColor" SortExpression="productColor" />
                     <asp:BoundField DataField="productPicture" HeaderText="productPicture" SortExpression="productPicture" Visible="False" />
-                    <asp:TemplateField HeaderText="image">
+                    <asp:TemplateField HeaderText="image" SortExpression="productPicture">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("productPicture") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("productPicture") %>' Width="100px" />
+                            <asp:Image ID="Image1" runat="server" Height="120px" Width="100px" ImageUrl='<%#Eval("productPicture") %>' />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="productPrice" HeaderText="productPrice" SortExpression="productPrice" />
                     <asp:BoundField DataField="qty" HeaderText="qty" SortExpression="qty" />
+                    <asp:BoundField DataField="customerAccount" HeaderText="customerAccount" SortExpression="customerAccount" />
                     <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
                     <asp:BoundField DataField="phone" HeaderText="phone" SortExpression="phone" />
                     <asp:BoundField DataField="address" HeaderText="address" SortExpression="address" />
@@ -329,9 +332,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </Columns>
             </asp:GridView>
             
+                <asp:SqlDataSource ID="SqlDataSourceAllorders" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="SELECT a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice, a.qty, a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial"></asp:SqlDataSource>
+            
                 <asp:SqlDataSource ID="SqlDataSourceAllOrders2" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="SELECT a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice, a.qty, b.name, b.phone, b.address, b.status, b.initdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial"></asp:SqlDataSource>
             
-                <asp:SqlDataSource ID="SqlDataSourceAllOrders" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="SELECT a.ID, a.serial, a.productName, a.productColor, a.productPicture, b.name, b.phone, b.address, b.status, b.initdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial"></asp:SqlDataSource>
                 </div>
 				<div id="small-dialog" class="mfp-hide">
 				<div class="search-top">

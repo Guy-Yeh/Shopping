@@ -19,7 +19,7 @@ namespace Shopping
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             string id = GridView1.DataKeys[e.RowIndex].Value.ToString();
-            Label1.Text = e.RowIndex.ToString();
+            
             SqlConnection connection = new SqlConnection(s_data);
             SqlCommand command = new SqlCommand($"delete from Orders where (ID = {id})", connection);
             connection.Open();
@@ -27,5 +27,7 @@ namespace Shopping
             connection.Close();
             Response.Redirect(Request.Url.ToString());
         }
+
+        
     }
 }
