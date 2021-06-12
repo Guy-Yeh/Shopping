@@ -18,4 +18,6 @@ namespace Shopping.Models
         public DateTime initdate { get; set; }
 
     }
+
+
 }
