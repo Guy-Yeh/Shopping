@@ -115,11 +115,11 @@ namespace Shopping
             hintCategory.Text = "";
             hintInventory.Text = "";
             hintPrice.Text = "";
+            hintValue.Text = "";
             hintID.Text = "選擇即將刪除的productID";
             hintID2.Text = "選擇即將更新的productID";
             hintColumn.Text = "選擇即將更新的欄位";
 
-            hintValue.Text = "輸入更新的值";
             changecocolor();
             if (!IsPostBack)
             {
@@ -145,9 +145,9 @@ namespace Shopping
                 {
                     if (TextBox3.Text != "")
                     {
-                        if (inventoryCheck == true)
+                        if (inventoryCheck)
                         {
-                            if (priceCheck == true)
+                            if (priceCheck)
                             {
                                 SqlCommand command2 = new SqlCommand(sql2, connection2);
                                 connection2.Open();
@@ -251,7 +251,7 @@ namespace Shopping
                 {
                     if (DDLUpdateCols.Text == "inventory" || DDLUpdateCols.Text == "price")
                     {
-                        if (numberCheck == true)
+                        if (numberCheck)
                         {
                             SqlCommand command6 = new SqlCommand(sql6, connection6);
                             connection6.Open();

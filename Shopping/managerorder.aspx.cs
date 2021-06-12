@@ -432,7 +432,7 @@ namespace Shopping
                             }
                             else
                             {
-                                if (serialCheck == true)
+                                if (serialCheck)
                                 {
                                     string serial = sourcefind(DDLUpdateOrderCols.Text);
                                     SqlConnection connection1 = new SqlConnection(s_data4);

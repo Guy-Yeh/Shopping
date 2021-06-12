@@ -38,7 +38,9 @@ namespace Shopping
         }*/
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
+
+
             SqlConnection connection = new SqlConnection(s_data);
             string sql = $"select * from Products where category= N'白'";
             SqlCommand command = new SqlCommand(sql, connection);
@@ -67,7 +69,7 @@ namespace Shopping
                 row["inventory"] = read[4];
                 row["price"] = read[5];
                 row["initdate"] = read[6];
-                dt.Rows.Add(row); 
+                dt.Rows.Add(row);
             }
             GridView2.DataSource = dt;
             GridView2.DataBind();
