@@ -41,6 +41,15 @@ function IsEmail(testNumbe) {
     return regex.test(testNumbe);
 }
 
+//確認地址的正規表達式
+
+function IsAddress(address) {
+    if (address == '' || address == undefined) {
+        return false;
+    }
+    var regex = /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/;
+    return regex.test(address);
+}
 
 
 
@@ -52,4 +61,3 @@ function IsEmail(testNumbe) {
             (?=.*[A-Z]])：至少要有一個大寫的英文字母(A-Z)
             (?=.*[@#$%^&+=])：至少要有清單中的一個特殊符號(@#$%^&+=)
         */
-

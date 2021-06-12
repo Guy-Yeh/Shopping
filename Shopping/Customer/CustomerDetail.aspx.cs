@@ -80,6 +80,24 @@ namespace Shopping.Customer
 
 
         [WebMethod]
+        public static Models.ApiResultModel<bool> EditAddress(int id, string address)
+        {
+            Common.Common common = new Common.Common();
+            try
+            {
+                CustomerDetailService customerDetailService = new CustomerDetailService();
+                bool r = customerDetailService.EditAddress(id, address);
+
+                return common.ThrowResult<bool>(Enum.ApiStatusEnum.OK, string.Empty, r);
+            }
+            catch (Exception ex)
+            {
+                return common.ThrowResult<bool>(Enum.ApiStatusEnum.InternalServerError, ex.Message, false);
+            }
+        }
+
+
+        [WebMethod]
         public static bool EditPassword()
         {
             return true;

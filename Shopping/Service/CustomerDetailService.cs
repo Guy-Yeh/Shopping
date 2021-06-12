@@ -43,6 +43,19 @@ namespace Shopping.Service
                 throw;
             }
         }
+        public bool EditAddress(int id, string address)
+        {
+            try
+            {
+                //throw new ArgumentException("驗證錯誤");
+                CustomerDetailDao customerDetailDao = new CustomerDetailDao();
+                return customerDetailDao.EditAddress(id, address);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         //public bool EditPicture(int id, string picture)
         //{
         //    try

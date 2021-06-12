@@ -44,14 +44,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+   
     <Reference Include="Microsoft.CSharp" />
+   
     <Reference Include="PresentationFramework" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+
     <Reference Include="System.Web.Extensions" />
+
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -110,6 +114,8 @@
     <Content Include="js\common\common.js" />
     <Content Include="js\customer\customerDetail.js" />
     <Content Include="js\customer\customerDetailEditEnter.js" />
+    <Content Include="js\customer\orderEdit.js" />
+    <Content Include="js\customer\orders.js" />
     <Content Include="managercontact.aspx" />
     <Content Include="forget.aspx" />
     <Content Include="product.aspx" />
@@ -226,6 +232,7 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\OrdersDao.cs" />
     <Compile Include="forget.aspx.cs">
       <DependentUpon>forget.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -255,6 +262,7 @@
     </Compile>
     <Compile Include="Models\ApiResultModel.cs" />
     <Compile Include="Models\CustomersModel.cs" />
+    <Compile Include="Models\OrdersModel.cs" />
     <Compile Include="product.aspx.cs">
       <DependentUpon>product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -265,6 +273,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Service\BaseService.cs" />
     <Compile Include="Service\CustomerDetailService.cs" />
+    <Compile Include="Service\OrdersService.cs" />
     <Compile Include="shoppingcar.aspx.cs">
       <DependentUpon>shoppingcar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

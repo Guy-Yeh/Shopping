@@ -19,7 +19,10 @@ namespace Shopping.Customer
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            reviewChat();
+            if (!IsPostBack) {
+                reviewChat();
+            }
+
 
         }
 
@@ -43,8 +46,9 @@ namespace Shopping.Customer
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
-            reviewChat();
+            
             MessageBox.Show("回覆成功");
+            reviewChat();
         }
     }
 }

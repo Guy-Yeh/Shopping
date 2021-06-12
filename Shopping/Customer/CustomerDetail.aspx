@@ -208,14 +208,14 @@
 
                         </div>
                         <div class="col-md-3 login-left ma-box">
-                            <div id="newMail" class="forgot" style="font-size: 18px; padding: 5px 0px;">新信箱</div>
+                            <div id="newMail" class="forgot" style="font-size: 18px; padding: 5px 0px;height: 47px;">新信箱</div>
                         </div>
-                        <div class="col-md-4 login-left ma-box">
+                        <div class="col-md-4 login-left ma-box"style="height: 47px;">
                             <div style="padding: 3px 0px;">
                                 <input id="newMailInput" />
                             </div>
                         </div>
-                        <div class="col-md-5 login-left ma-box">
+                        <div class="col-md-5 login-left ma-box" style="height: 47px;">
                             <div style="height: 38px; display: flex; align-items: flex-end">
                                 <button id="passTestNumberEntrt" type="button" class="btn btn-lg btn-info"
                                     style="border-radius: 0px; background: #52d0c4; padding: 0px 0px; font-size: 15px;">
@@ -223,24 +223,47 @@
                             </div>
 
                         </div>
-                        <div class="col-md-3 login-left ma-box">
+                        <div class="col-md-3 login-left ma-box" style="height: 47px;">
                             <div id="testNumberMail" class="forgot" style="font-size: 18px; padding: 5px 0px;">驗證碼</div>
                         </div>
-                        <div class="col-md-6 login-left ma-box">
+                        <div class="col-md-6 login-left ma-box" style="height: 47px;">
                             <div style="padding: 5px 0px;">
                                 <input id="testNumberMailInput" />
                             </div>
                         </div>
-                        <div class="col-md-3 login-left">
+                        <div class="col-md-3 login-left ">
                             <button id="mailEntrt" type="button" class="btn btn-lg btn-info"
                                 style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
                                 確認</button>
                         </div>
                     </div>
 
-                    <button id="btnClick" type="button" class="btn btn-lg btn-info"
+                     <div class="col-md-12" style="padding: 5px;">
+                        <div class="col-md-3 login-left">
+                            <div class="forgot" style="font-size: 18px;">地址</div>
+                        </div>
+                        <div class="col-md-6 login-left">
+                            <span id="addressText" style="font-size: 18px;">Taiwan</span>
+                            <input id="addressInput" />
+                        </div>
+                        <div class="col-md-3 login-left" style="padding: 0px;">
+                            <button id="addressEdit" type="button" class="btn btn-lg btn-info"
+                                style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
+                                修改</button>
+                            <button id="addressEntrt" type="button" class="btn btn-lg btn-info"
+                                style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
+                                確認</button>
+                            <button id="addressClose" type="button" class="btn btn-lg btn-info"
+                                style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
+                                取消</button>
+                        </div>
+                    </div>
+
+
+
+<%--                    <button id="btnClick" type="button" class="btn btn-lg btn-info"
                         style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
-                        驗證使用者</button>
+                        驗證使用者</button>--%>
 
                     <%--</form>--%>
                 </div>

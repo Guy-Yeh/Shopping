@@ -144,7 +144,9 @@ $(document).ready(function () {
                     $('#accountText').text(data.account);
                     $('#phoneNumberText').text(data.phone);
                     $('#mailText').text(data.email);
+                    $('#addressText').text(data.address);
                     $('#accountImg').attr('src', data.picture);
+
                     //to do
                     customer = data;
                     if (isOk == true) {
@@ -210,6 +212,56 @@ $(document).ready(function () {
         } else {
             //NOT OK
             var mail = alert('驗證碼輸入錯誤');
+        }
+
+        return false;
+
+    });
+    //修改address
+    $("#addressEntrt").click(function () {
+        if (IsAddress($('#addressInput').val())) {
+            //OK
+            console.log("OK");
+            $.ajax({
+                type: "post",
+                url: "CustomerDetail.aspx/EditAddress",
+                data: JSON.stringify({ id: customer.ID, address: $('#addressInput').val() }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: (e) => {
+                    if (e.d.Status == 0) {
+                        let data = e.d.Data[0];
+                        getCustomers(true);
+                        /*    alert("OK");*/
+
+                        $('#addressInput').css('display', 'none');
+                        $('#addressText').css('display', '');
+                    } else {
+                        alert(e.d.Message);
+                    }
+                },
+                error: (e) => {
+                    console.log("ERROR");
+
+                    alert(e.d.Message);
+                }
+
+            });
+            $('#addressClose').css('display', 'none');
+            $('#addressEntrt').css('display', 'none');
+            /*$('#nameInput').css('display', 'none');*/
+            $('#addressEdit').css('display', '');
+        /*$('#nameText').css('display', '');*/
+            $('#nameEdit').removeAttr('disabled');
+            $('#phoneNumberEdit').removeAttr('disabled');
+            $('#passwordEdit').removeAttr('disabled');
+            $('#mailEdit').removeAttr('disabled');
+            $('#accountDelet').removeAttr('disabled');
+
+        } else {
+            //NOT OK
+            //console.log("NOT OK");
+            var addressDel = alert('您的地址格式有誤，\n請輸入正確地址');
         }
 
         return false;

@@ -93,6 +93,32 @@ namespace Shopping.Dao
             }
         }
 
+
+        public bool EditAddress(int id, string address)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(s_data);
+                SqlCommand command = new SqlCommand(@"UPDATE Customers
+                       SET
+                          address = @address
+                        WHERE ID = @id ", connection);
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.Parameters.Add("@address", SqlDbType.NVarChar).Value = address;
+
+                connection.Open();
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         //public bool EditPicture(int id, string picture)
         //{
         //    try
