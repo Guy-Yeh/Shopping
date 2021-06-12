@@ -129,33 +129,6 @@ namespace Shopping
                 }
                 connection2.Close();
             }
-                /*HttpCookie usecookie = new HttpCookie("buy");
-                if (DropDownList1.SelectedValue == "白")
-                {
-                    if (Request.Cookies["buy"] != null)
-                        usecookie.Values.Add(Request.Cookies["buy"].Values);
-                    usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "1");
-                    Response.AppendCookie(usecookie);
-                    Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
-                }
-                else if (DropDownList1.SelectedValue == "紅")
-                {
-                    if (Request.Cookies["buy"] != null)
-                        usecookie.Values.Add(Request.Cookies["buy"].Values);
-                    usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "2");
-                    Response.AppendCookie(usecookie);
-                    Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
-                }
-                else if (DropDownList1.SelectedValue == "綠")
-                {
-                    if (Request.Cookies["buy"] != null)
-                        usecookie.Values.Add(Request.Cookies["buy"].Values);
-                    usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "3");
-                    Response.AppendCookie(usecookie);
-                    Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
-                }
-                Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label3.Text)).ToString();
-                Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;*/
                 Response.Redirect("index");
         }
         protected void Button2_Click(object sender, EventArgs e)
@@ -224,42 +197,7 @@ namespace Shopping
                     Command4.ExecuteNonQuery();
                 }
                 connection2.Close();
-            }
-            /*HttpCookie usecookie = new HttpCookie("buy");
-            if (DropDownList2.SelectedValue == "黑")
-            {
-                if (Request.Cookies["buy"] != null)
-                    usecookie.Values.Add(Request.Cookies["buy"].Values);
-                usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "4");
-                Response.AppendCookie(usecookie);
-                Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
-            }
-            else if (DropDownList2.SelectedValue == "白")
-            {
-                if (Request.Cookies["buy"] != null)
-                    usecookie.Values.Add(Request.Cookies["buy"].Values);
-                usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "5");
-                Response.AppendCookie(usecookie);
-                Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
-            }
-            else if (DropDownList2.SelectedValue == "綠")
-            {
-                if (Request.Cookies["buy"] != null)
-                    usecookie.Values.Add(Request.Cookies["buy"].Values);
-                usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "6");
-                Response.AppendCookie(usecookie);
-                Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
-            }
-            else if (DropDownList2.SelectedValue == "橘")
-            {
-                if (Request.Cookies["buy"] != null)
-                    usecookie.Values.Add(Request.Cookies["buy"].Values);
-                usecookie.Values.Add($"{Request.Cookies["quantity"].Value}", "7");
-                Response.AppendCookie(usecookie);
-                Response.Cookies["quantity"].Value = $"{Convert.ToInt32(Request.Cookies["quantity"].Value) + 1}";
-            }
-            Response.Cookies["cart"].Value = (Convert.ToInt32(Request.Cookies["cart"].Value) + Convert.ToInt32(Label5.Text)).ToString();
-            Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;*/
+            }            
             Response.Redirect("index");
         }
         protected void Button3_Click(object sender, EventArgs e)
@@ -328,6 +266,7 @@ namespace Shopping
                     Command4.ExecuteNonQuery();
                 }
                 connection2.Close();
+                Response.Redirect("index");
             }
         }      
         protected void Button4_Click(object sender, EventArgs e)
