@@ -296,8 +296,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 
-    <asp:GridView ID="usercontact" runat="server" >
+    <asp:GridView ID="usercontact" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" >
+        <Columns>
+            <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+            <asp:BoundField DataField="account" HeaderText="account" SortExpression="account" />
+            <asp:BoundField DataField="message" HeaderText="message" SortExpression="message" />
+            <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" />
+			<asp:BoundField DataField="response" HeaderText="response" SortExpression="response" />
+            <asp:BoundField DataField="updateInitdate" HeaderText="updateInitdate" SortExpression="updateInitdate" />
+        </Columns>
     </asp:GridView>
+    <asp:SqlDataSource ID="SqlDataSourceChatting" runat="server" ConnectionString="<%$ ConnectionStrings:ChatConnectionString %>" SelectCommand="SELECT * FROM [Chat]"></asp:SqlDataSource>
 <!----->
 
 		<div class="clearfix"> </div>
