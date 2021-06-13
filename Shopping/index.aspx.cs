@@ -69,7 +69,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("loging");
+                Response.Redirect("login");
             }
             else
             {
@@ -138,7 +138,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("loging");
+                Response.Redirect("login");
             }
             else
             {
@@ -207,7 +207,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("loging");
+                Response.Redirect("login");
             }
             else
             {
@@ -276,7 +276,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("loging");
+                Response.Redirect("login");
             }
             else
             {
@@ -345,7 +345,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("loging");
+                Response.Redirect("login");
             }
             else
             {
@@ -414,7 +414,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("loging");
+                Response.Redirect("login");
             }
             else
             {
@@ -483,7 +483,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("loging");
+                Response.Redirect("login");
             }
             else
             {
@@ -552,7 +552,7 @@ namespace Shopping
             //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
-                Response.Redirect("loging");
+                Response.Redirect("login");
             }
             else
             {
