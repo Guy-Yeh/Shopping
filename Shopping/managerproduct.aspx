@@ -209,10 +209,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
 										<li><asp:Label ID="hintPN" runat="server" Text=""></asp:Label></li>
 										<br>
-										<li><asp:Label ID="picture" runat="server" Text="picture"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintPicture" runat="server" Text=""></asp:Label></li>
-										<br>
 										<li><asp:Label ID="category" runat="server" Text="category"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintCategory" runat="server" Text=""></asp:Label></li>
@@ -225,7 +221,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintPrice" runat="server" Text=""></asp:Label></li>
 										<br>
-										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
+										<li><asp:Label ID="picture" runat="server" Text="picture"></asp:Label></li>
+										<li><asp:FileUpload ID="FileUpload1" runat="server" /></li>
+										<li><asp:Label ID="hintPicture" runat="server" Text=""></asp:Label></li>
+										<br>
+										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;"/></li>
+										<br>
+										<br>
+										
 									</ul>	
 								</div>							
 							</div>
@@ -271,16 +274,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 		<div class="clearfix"> 
 			<br>
-			<asp:GridView ID="product" runat="server" >
-                   <Columns>
-                <asp:TemplateField headertext="image">
-                    <ItemTemplate >
-                       <asp:Image ID="img1" ImageUrl='<%#Eval("picture") %>' 
-                                  runat="server"  Width="100" Height="120"/>
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-            </asp:GridView>
+				<asp:GridView ID="product" runat="server" >
+					<Columns>
+						<asp:TemplateField headertext="image">
+							<ItemTemplate >
+							 <asp:Image ID="img1" ImageUrl='<%#Eval("picture") %>' 
+									runat="server"  Width="100" Height="120"/>
+							</ItemTemplate>
+						</asp:TemplateField>
+					</Columns>
+				</asp:GridView>
 			
                 </div>
 				<div id="small-dialog" class="mfp-hide">

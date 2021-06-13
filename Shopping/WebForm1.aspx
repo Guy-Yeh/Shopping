@@ -11,7 +11,7 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:FileUpload ID="FileUpload1" runat="server" />
+        <asp:FileUpload ID="FileUpload1" runat="server" /><asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
         <asp:Label ID="Label8" runat="server" Text="Label"></asp:Label>
         <asp:GridView ID="GridView1" runat="server">
             <Columns>
