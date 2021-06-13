@@ -86,6 +86,10 @@ namespace Shopping
                 }
                 connection2.Close();
             }
+            else
+            {
+                Response.Redirect("index");
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -111,7 +115,7 @@ namespace Shopping
             Command1.Parameters.Add("@totalPrice", SqlDbType.NVarChar);
             Command1.Parameters["@totalPrice"].Value = Label4.Text;
             Command1.Parameters.Add("@status", SqlDbType.NVarChar);
-            Command1.Parameters["@status"].Value = "賣家處理中";
+            Command1.Parameters["@status"].Value = "賣方處理中";
             Command1.ExecuteNonQuery();
             connection1.Close();
            

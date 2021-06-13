@@ -306,8 +306,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
 	        <asp:GridView ID="GridView1" runat="server">
             </asp:GridView> 
-            <asp:Label ID="Label5" runat="server" Text="總金額：" style="float:right"></asp:Label>
-            <asp:Label ID="Label4" runat="server" Text="" style="float:right"></asp:Label><br><br>
+            <asp:Label ID="Label4" runat="server" Text="" style="float:right"></asp:Label>
+            <asp:Label ID="Label5" runat="server" Text="總金額：" style="float:right"></asp:Label><br><br>
             <asp:TextBox ID="TextBox1" runat="server" style="float:right"></asp:TextBox>
             <asp:Label ID="Label1" runat="server" Text="收件人姓名" ForeColor="#52D0C4" style="float:right"></asp:Label><br><br>
 

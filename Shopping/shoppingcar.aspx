@@ -294,7 +294,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---->
 <div class="container">
 	<div class="check-out">   	
-        <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" OnRowDeleting="userorder_RowDeleting" DataKeyNames="ID">
+        <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" OnRowDeleting="userorder_RowDeleting" DataKeyNames="ID" OnRowCommand="userorder_RowCommand" >
             <Columns>
                 <asp:TemplateField>
                     <EditItemTemplate>
@@ -309,7 +309,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <asp:BoundField DataField="productName" HeaderText="productName" SortExpression="productName" />
                 <asp:BoundField DataField="productColor" HeaderText="productColor" SortExpression="productColor" />
                 <asp:BoundField DataField="productPrice" HeaderText="productPrice" SortExpression="productPrice" />
+                <asp:TemplateField ShowHeader="False">
+                    <ItemTemplate>
+                        <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" CommandName="Subtract" Height="20px" ImageAlign="AbsMiddle" ImageUrl="~/images/dowm.png" Text="" Width="30px" CommandArgument='<%# Container.DataItemIndex%>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="qty" HeaderText="qty" SortExpression="qty" />
+                <asp:TemplateField ShowHeader="False">
+                    <ItemTemplate>
+                        <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="false" CommandName="Add" Height="20px" CommandArgument='<%# Container.DataItemIndex%>' ImageAlign="AbsMiddle" ImageUrl="~/images/up.png" Text="" Width="30px" />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="刪除" ShowHeader="False">
                     <ItemTemplate>
                         <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除"></asp:LinkButton>
