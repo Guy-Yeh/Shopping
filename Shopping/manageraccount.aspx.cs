@@ -91,7 +91,6 @@ namespace Shopping
             TextBox3.Text = "";
             TextBox4.Text = "";
             TextBox5.Text = "";
-            TextBox6.Text = "";
             TextBox10.Text = "";
             TextBox11.Text = "";
             DataView dvc = (DataView)this.SqlDataSourceCity.Select(new DataSourceSelectArguments());
@@ -176,11 +175,11 @@ namespace Shopping
             }
         }
 
-        
+
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
+
             string sql2p = $"select * from Customers where phone='{TextBox4.Text}' And Access='Yes' ";   //為了找尋phone是否重複
             string sql2e = $"select * from Customers where email='{TextBox5.Text}'And Access='Yes'";   //為了找尋email是否重複
             bool accountCheck1 = Regex.IsMatch(TextBox1.Text, @"\d+");
@@ -190,156 +189,175 @@ namespace Shopping
             bool phoneCheck = Regex.IsMatch(TextBox4.Text, @"^09[\d]{8}");
             bool emailCheck = Regex.IsMatch(TextBox5.Text, @"^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$");
             bool discountCheck = Regex.IsMatch(TextBox10.Text, @"\d");
-            if (TextBox6.Text=="")
+
+
+            SqlConnection connection2a = Connect(s_data);
+            string sql2a = $"select * from Customers where account='{TextBox1.Text}'";  //為了找尋account是否重複
+            SqlCommand command2a = new SqlCommand(sql2a, connection2a);
+            connection2a.Open();
+            SqlDataReader Reader2a = command2a.ExecuteReader();
+
+            if (Reader2a.HasRows == false && TextBox1.Text != "")
             {
-                SqlConnection connection2a = Connect(s_data);
-                string sql2a = $"select * from Customers where account='{TextBox1.Text}'";  //為了找尋account是否重複
-                SqlCommand command2a = new SqlCommand(sql2a, connection2a);
-                connection2a.Open();
-                SqlDataReader Reader2a = command2a.ExecuteReader();
-
-                if (Reader2a.HasRows == false && TextBox1.Text != "")
+                connection2a.Close();
+                if (accountCheck1 && accountCheck2)
                 {
-                    connection2a.Close();
-                    if (accountCheck1 && accountCheck2)
+                    if (passwordCheck1 && passwordCheck2)
                     {
-                        if (passwordCheck1 && passwordCheck2)
+                        if (TextBox3.Text != "")
                         {
-                            if (TextBox3.Text != "")
+                            SqlConnection connection2p = Connect(s_data);
+                            SqlCommand command2p = new SqlCommand(sql2p, connection2p);
+                            connection2p.Open();
+                            SqlDataReader Reader2p = command2p.ExecuteReader();
+
+                            if (Reader2p.HasRows == false && TextBox4.Text != "")
                             {
-                                SqlConnection connection2p = Connect(s_data);
-                                SqlCommand command2p = new SqlCommand(sql2p, connection2p);
-                                connection2p.Open();
-                                SqlDataReader Reader2p = command2p.ExecuteReader();
-
-                                if (Reader2p.HasRows == false && TextBox4.Text != "")
+                                connection2p.Close();
+                                if (phoneCheck)
                                 {
-                                    connection2p.Close();
-                                    if (phoneCheck)
+                                    SqlConnection connection2e = Connect(s_data);
+                                    SqlCommand command2e = new SqlCommand(sql2e, connection2e);
+                                    connection2e.Open();
+                                    SqlDataReader Reader2e = command2e.ExecuteReader();
+
+                                    if (Reader2e.HasRows == false && TextBox5.Text != "")
                                     {
-                                        SqlConnection connection2e = Connect(s_data);
-                                        SqlCommand command2e = new SqlCommand(sql2e, connection2e);
-                                        connection2e.Open();
-                                        SqlDataReader Reader2e = command2e.ExecuteReader();
+                                        connection2e.Close();
 
-                                        if (Reader2e.HasRows == false && TextBox5.Text != "")
+                                        if (emailCheck)
                                         {
-                                            connection2e.Close();
-
-                                            if (emailCheck)
+                                            if (DDLCity.SelectedItem.Text != "請選擇縣市")
                                             {
-                                                if (DDLCity.SelectedItem.Text != "請選擇縣市")
+                                                if (DDLRegion.SelectedItem.Text != "請選擇區域")
                                                 {
-                                                    if (DDLRegion.SelectedItem.Text != "請選擇區域")
+                                                    if (TextBox11.Text != "")
                                                     {
-                                                        if (TextBox11.Text != "")
+                                                        if (discountCheck || TextBox10.Text == "")
                                                         {
-                                                            if (discountCheck || TextBox10.Text == "")
+                                                            if (DDLAccess.SelectedItem.Text != "請選擇")
                                                             {
-                                                                if (DDLAccess.SelectedItem.Text != "請選擇")
+                                                                if (FileUpload1.PostedFile != null)
                                                                 {
-                                                                    string sql2 = $"insert into [Customers](picture,account,password,name,phone,email,address,discount,access) values('{TextBox6.Text}','{TextBox1.Text}','{TextBox2.Text}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}',N'{DDLCity.Text + DDLRegion.Text + TextBox11.Text}','{TextBox10.Text}','{DDLAccess.Text}')";
-                                                                    SqlConnection connection2 = Connect(s_data);
-                                                                    SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                                                    connection2.Open();
-                                                                    command2.ExecuteNonQuery();
-                                                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt1", "setTimeout( function(){alert('輸入成功');},0);", true);
-                                                                    connection2.Close();
-                                                                    reviewAccount();
-                                                                    cleanbt1();
-                                                                    cleanbt2();
-                                                                    cleanbt3();
-                                                                    cleanbt1r();
-                                                                    
+                                                                    HttpPostedFile myFile = FileUpload1.PostedFile;
+                                                                    int nFileLen = myFile.ContentLength;
+                                                                    if (FileUpload1.HasFile && nFileLen > 0)
+                                                                    {
+                                                                        string picturePath0 = $"/images/使用者照片/{TextBox1.Text}.jpg";
+                                                                        string picturePath1 = $"~/images/使用者照片/{TextBox1.Text}.jpg";
+                                                                        string imgPath = Server.MapPath(picturePath1);
+                                                                        FileUpload1.SaveAs(imgPath);
+      
+                                                                        string sql2 = $"insert into [Customers](picture,account,password,name,phone,email,address,discount,access) values( N'{picturePath0}','{TextBox1.Text}','{TextBox2.Text}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}',N'{DDLCity.Text + DDLRegion.Text + TextBox11.Text}','{TextBox10.Text}','{DDLAccess.Text}')";
+                                                                        SqlConnection connection2 = Connect(s_data);
+                                                                        SqlCommand command2 = new SqlCommand(sql2, connection2);
+                                                                        connection2.Open();
+                                                                        command2.ExecuteNonQuery();
+                                                                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt1", "setTimeout( function(){alert('輸入成功');},0);", true);
+                                                                        connection2.Close();
+                                                                        reviewAccount();
+                                                                        cleanbt1();
+                                                                        cleanbt2();
+                                                                        cleanbt3();
+                                                                        cleanbt1r();
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        hintPicture.ForeColor = Color.Red;
+                                                                        hintPicture.Text = "picture尚未選擇 請選擇上傳圖片";
+                                                                    }
                                                                 }
                                                                 else
                                                                 {
-                                                                    hintAccess.ForeColor = Color.Red;
-                                                                    hintAccess.Text = "請選擇項目";
+                                                                    hintPicture.ForeColor = Color.Red;
+                                                                    hintPicture.Text = "picture尚未選擇 請選擇上傳圖片";
                                                                 }
+
                                                             }
                                                             else
                                                             {
-                                                                hintDiscount.ForeColor = Color.Red;
-                                                                hintDiscount.Text = "discount需為數字或空白 請確認";
+                                                                hintAccess.ForeColor = Color.Red;
+                                                                hintAccess.Text = "請選擇項目";
                                                             }
                                                         }
                                                         else
                                                         {
-                                                            hintRoad.ForeColor = Color.Red;
-                                                            hintRoad.Text = "address不得為空 請重新輸入";
+                                                            hintDiscount.ForeColor = Color.Red;
+                                                            hintDiscount.Text = "discount需為數字或空白 請確認";
                                                         }
                                                     }
                                                     else
                                                     {
-                                                        hintRegion.ForeColor = Color.Red;
-                                                        hintRegion.Text = "請選擇項目";
+                                                        hintRoad.ForeColor = Color.Red;
+                                                        hintRoad.Text = "address不得為空 請重新輸入";
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    hintCity.ForeColor = Color.Red;
-                                                    hintCity.Text = "請選擇項目";
+                                                    hintRegion.ForeColor = Color.Red;
+                                                    hintRegion.Text = "請選擇項目";
                                                 }
                                             }
                                             else
                                             {
-                                                hintEmail.ForeColor = Color.Red;
-                                                hintEmail.Text = "email輸入規則錯誤 請重新輸入";
+                                                hintCity.ForeColor = Color.Red;
+                                                hintCity.Text = "請選擇項目";
                                             }
-
                                         }
                                         else
                                         {
                                             hintEmail.ForeColor = Color.Red;
-                                            hintEmail.Text = "email重複或未填 請重新輸入";
-                                            connection2e.Close();
+                                            hintEmail.Text = "email輸入規則錯誤 請重新輸入";
                                         }
+
                                     }
                                     else
                                     {
-                                        hintPhone.ForeColor = Color.Red;
-                                        hintPhone.Text = "phone輸入規則錯誤 請重新輸入";
+                                        hintEmail.ForeColor = Color.Red;
+                                        hintEmail.Text = "email重複或未填 請重新輸入";
+                                        connection2e.Close();
                                     }
                                 }
                                 else
                                 {
                                     hintPhone.ForeColor = Color.Red;
-                                    hintPhone.Text = "phone重複或未填 請重新輸入";
-                                    connection2p.Close();
+                                    hintPhone.Text = "phone輸入規則錯誤 請重新輸入";
                                 }
                             }
                             else
                             {
-                                hintName.ForeColor = Color.Red;
-                                hintName.Text = "name不得為空 請重新輸入";
+                                hintPhone.ForeColor = Color.Red;
+                                hintPhone.Text = "phone重複或未填 請重新輸入";
+                                connection2p.Close();
                             }
                         }
                         else
                         {
-                            hintPassword.ForeColor = Color.Red;
-                            hintPassword.Text = "password需包含英文字母和數字 請重新輸入";
+                            hintName.ForeColor = Color.Red;
+                            hintName.Text = "name不得為空 請重新輸入";
                         }
                     }
                     else
                     {
-                        hintAccount.ForeColor = Color.Red;
-                        hintAccount.Text = "account需包含英文字母和數字 請重新輸入";
+                        hintPassword.ForeColor = Color.Red;
+                        hintPassword.Text = "password需包含英文字母和數字 請重新輸入";
                     }
                 }
                 else
                 {
                     hintAccount.ForeColor = Color.Red;
-                    hintAccount.Text = "account重複或未填 請重新輸入";
-                    connection2a.Close();
+                    hintAccount.Text = "account需包含英文字母和數字 請重新輸入";
                 }
             }
             else
             {
-                hintPicture.ForeColor = Color.Red;
-                hintPicture.Text = "picture路徑不存在 請重新輸入";
-            }   
+                hintAccount.ForeColor = Color.Red;
+                hintAccount.Text = "account重複或未填 請重新輸入";
+                connection2a.Close();
+            }
         }
+               
+        
 
         protected void Button2_Click(object sender, EventArgs e)
         {

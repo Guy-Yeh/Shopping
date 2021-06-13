@@ -206,10 +206,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="h_nav">	
 									<h4>Add User Account</h4>
 									<ul>
-										<li><asp:Label ID="picture" runat="server" Text="picture"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox6" runat="server"></asp:TextBox></li> 
-									    <li><asp:Label ID="hintPicture" runat="server" ForeColor="Black"></asp:Label></li>
-										<br>
 										<li><asp:Label ID="account" runat="server" Text="account"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
 									    <li><asp:Label ID="hintAccount" runat="server" ForeColor="Black"></asp:Label></li> 
@@ -257,6 +253,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <asp:SqlDataSource ID="SqlDataSourceAccess" runat="server" ConnectionString="<%$ ConnectionStrings:AccessConnectionString %>" SelectCommand="SELECT [Cols] FROM [AccessCols]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintAccess" runat="server" ForeColor="Black" Text="請選擇權限"></asp:Label></li>
+										<br>
+										<li><asp:Label ID="picture" runat="server" Text="picture"></asp:Label></li>
+										<li><asp:FileUpload ID="FileUpload1" runat="server" /></li>
+									    <li><asp:Label ID="hintPicture" runat="server" ForeColor="Black"></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;"/></li>
 									</ul>	
