@@ -38,6 +38,7 @@ namespace Shopping
             {
                 Response.Redirect("login");
             }
+            Button4.Text = "會員資料";
             SqlConnection connection = new SqlConnection(orderdetail_data);
             string sq1 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
             SqlCommand command1 = new SqlCommand(sq1, connection);
@@ -71,7 +72,7 @@ namespace Shopping
             if (Session["loginstatus"] != null)
             {
                 SqlConnection connection = new SqlConnection(orderdetail_data);
-                string sql = $"delete from OrderDetail where customerAccount=N'{Session["loginstatus"]}'";
+                string sql = $"delete from OrderDetail where customerAccount=N'{Session["loginstatus"]}' and cart=N'是'";
                 SqlCommand command = new SqlCommand(sql, connection);
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -90,8 +91,8 @@ namespace Shopping
             Response.Redirect("payment");
         }
 
-        protected void userorder_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
+        /*protected void userorder_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {           
             string id = (userorder.Rows[e.RowIndex].Cells[2].Text.Trim()).ToString();
             SqlConnection connection = new SqlConnection(orderdetail_data);
             string sql = $"delete from OrderDetail where ID=N'{id}'";
@@ -100,10 +101,22 @@ namespace Shopping
             command.ExecuteNonQuery();
             connection.Close();
             Response.Redirect("shoppingcar");
-        }
+        }*/
         protected void userorder_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Add")
+            if (e.CommandName=="Delete") 
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                string id = userorder.Rows[index].Cells[2].Text;
+                SqlConnection connection = new SqlConnection(orderdetail_data);
+                string sql = $"delete from OrderDetail where ID=N'{id}'";
+                SqlCommand command = new SqlCommand(sql, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+                Response.Redirect("shoppingcar");
+            }
+            else if (e.CommandName == "Add")
             {
                 int qty = 0;
                 int index = Convert.ToInt32(e.CommandArgument);
@@ -164,6 +177,18 @@ namespace Shopping
                 }
             }
             Response.Redirect("shoppingcar");
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            if (Session["loginstatus"] == null)
+            {
+                Response.Redirect("login");
+            }
+            else
+            {
+                Response.Redirect(@"Customer/CustomerDetail");
+            }
         }
     }
 }

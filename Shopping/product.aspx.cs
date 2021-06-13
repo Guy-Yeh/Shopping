@@ -55,6 +55,7 @@ namespace Shopping
             //登錄判定
             if (Session["loginstatus"] != null)
             {
+                Button4.Text = "會員資料";
                 SqlConnection connection1 = new SqlConnection(customers_data);
                 string sq11 = $"select account from Customers";
                 SqlCommand command1 = new SqlCommand(sq11, connection1);
@@ -176,6 +177,18 @@ namespace Shopping
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("shoppingcar");
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            if (Session["loginstatus"] == null)
+            {
+                Response.Redirect("login");
+            }
+            else
+            {
+                Response.Redirect(@"Customer/CustomerDetail");
+            }
         }
     }
 }
