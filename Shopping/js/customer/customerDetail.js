@@ -6,7 +6,7 @@
         $('#nameInput').css('display', 'none');
         $('#nameEdit').css('display', '');
         $('#nameText').css('display', '');
-
+     
     }
 
     //name註冊編輯事件
@@ -20,7 +20,9 @@
         $('#phoneNumberEdit').attr('disabled', true);
         $('#passwordEdit').attr('disabled', true);
         $('#mailEdit').attr('disabled', true);
+        $('#addressEdit').attr('disabled', true);
         $('#accountDelet').attr('disabled', true);
+
     });
 
 
@@ -34,6 +36,7 @@
         $('#phoneNumberEdit').removeAttr('disabled');
         $('#passwordEdit').removeAttr('disabled');
         $('#mailEdit').removeAttr('disabled');
+        $('#addressEdit').removeAttr('disabled');
         $('#accountDelet').removeAttr('disabled');
     });
 
@@ -64,7 +67,21 @@
         $('#nameEdit').attr('disabled', true);
         $('#phoneNumberEdit').attr('disabled', true);
         $('#mailEdit').attr('disabled', true);
+        $('#addressEdit').attr('disabled', true);
         $('#accountDelet').attr('disabled', true);
+        $('#newPasswordInput').attr('disabled', true);
+        $('#newDoublePasswordInput').attr('disabled', true);
+    });
+
+
+    $("#oldPasswordInput").keyup(function () {
+        if ($("#oldPasswordInput").val() == undefined || $("#oldPasswordInput").val() == '') {
+            $('#newPasswordInput').attr('disabled', true);
+            $('#newDoublePasswordInput').attr('disabled', true);
+        } else {
+            $('#newPasswordInput').attr('disabled', false);
+            $('#newDoublePasswordInput').attr('disabled', false);
+        }
 
     });
 
@@ -80,6 +97,7 @@
         $('#nameEdit').removeAttr('disabled');
         $('#mailEdit').removeAttr('disabled');
         $('#accountDelet').removeAttr('disabled');
+        $('#addressEdit').removeAttr('disabled');
         $('.pwd-box').css('display', 'none');
     });
 
@@ -103,6 +121,7 @@
         $('#nameEdit').attr('disabled', true);
         $('#passwordEdit').attr('disabled', true);
         $('#mailEdit').attr('disabled', true);
+        $('#addressEdit').attr('disabled', true);
         $('#accountDelet').attr('disabled', true);
     });
     //註冊手機取消事件
@@ -115,6 +134,7 @@
         $('#nameEdit').removeAttr('disabled');
         $('#passwordEdit').removeAttr('disabled');
         $('#mailEdit').removeAttr('disabled');
+        $('#addressEdit').removeAttr('disabled');
         $('#accountDelet').removeAttr('disabled');
     });
 
@@ -170,6 +190,7 @@
         $('#nameEdit').attr('disabled', true);
         $('#phoneNumberEdit').attr('disabled', true);
         $('#passwordEdit').attr('disabled', true);
+        $('#addressEdit').attr('disabled', true);
         $('#accountDelet').attr('disabled', true);
 
     });
@@ -187,13 +208,54 @@
         $('#phoneNumberEdit').removeAttr('disabled');
         $('#passwordEdit').removeAttr('disabled');
         $('#accountDelet').removeAttr('disabled');
+        $('#addressEdit').removeAttr('disabled');
 
     });
+
+        //地址進頁面預設事件
+        var initaddressBut = () => {
+            $('#addressClose').css('display', 'none');
+            $('#addressEntrt').css('display', 'none');
+            $('#addressInput').css('display', 'none');
+            $('#addressEdit').css('display', '');
+            $('#addressText').css('display', '');
+        }
+        //註冊地址編輯事件
+        $('#addressEdit').click(function () {
+            $('#addressClose').css('display', '');
+            $('#addressEntrt').css('display', '');
+            $('#addressEdit').css('display', 'none');
+            $('#addressText').css('display', 'none');
+            $('#addressInput').val($('#addressText').text())
+            $('#addressInput').css('display', '');
+            $('#nameEdit').attr('disabled', true);
+            $('#passwordEdit').attr('disabled', true);
+            $('#phoneNumberEdit').attr('disabled', true);
+            $('#mailEdit').attr('disabled', true);
+            $('#accountDelet').attr('disabled', true);
+
+        });
+        //註冊地址取消事件
+        $('#addressClose').click(function () {
+            $('#addressClose').css('display', 'none');
+            $('#addressEntrt').css('display', 'none');
+            $('#addressEdit').css('display', '');
+            $('#addressText').css('display', '');
+            $('#addressInput').css('display', 'none');
+            $('#nameEdit').removeAttr('disabled');
+            $('#passwordEdit').removeAttr('disabled');
+            $('#phoneNumberEdit').removeAttr('disabled');
+            $('#mailEdit').removeAttr('disabled');
+            $('#accountDelet').removeAttr('disabled');
+
+        });
+
         initBut();
         initnameBut();
         initphoneNumberBut();
         initpasswordBut();
         initnewMailBut();
+        initaddressBut();
 
 
 

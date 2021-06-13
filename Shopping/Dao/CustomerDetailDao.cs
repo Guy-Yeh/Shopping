@@ -36,5 +36,114 @@ namespace Shopping.Dao
 
             return customers;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public bool EditName(int id, string name)
+        {
+            try {
+                SqlConnection connection = new SqlConnection(s_data);
+                SqlCommand command = new SqlCommand(@"UPDATE Customers
+                       SET
+                          name = @name
+                        WHERE ID = @id ", connection);
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = name;
+
+                connection.Open();
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+
+        public bool EditPhoneNumber(int id, string phone)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(s_data);
+                SqlCommand command = new SqlCommand(@"UPDATE Customers
+                       SET
+                          phone = @phone
+                        WHERE ID = @id ", connection);
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.Parameters.Add("@phone", SqlDbType.NVarChar).Value = phone;
+
+                connection.Open();
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+
+        public bool EditAddress(int id, string address)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(s_data);
+                SqlCommand command = new SqlCommand(@"UPDATE Customers
+                       SET
+                          address = @address
+                        WHERE ID = @id ", connection);
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.Parameters.Add("@address", SqlDbType.NVarChar).Value = address;
+
+                connection.Open();
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        //public bool EditPicture(int id, string picture)
+        //{
+        //    try
+        //    {
+        //        SqlConnection connection = new SqlConnection(s_data);
+        //        SqlCommand command = new SqlCommand(@"UPDATE Customers
+        //               SET
+        //                  picture = @picture
+        //                WHERE ID = @id ", connection);
+        //        command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+        //        command.Parameters.Add("@phone", SqlDbType.NVarChar).Value = picture;
+
+        //        connection.Open();
+        //        command.ExecuteNonQuery();
+        //        command.Dispose();
+        //        connection.Close();
+
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw;
+        //    }
+        //}
+
+
     }
 }

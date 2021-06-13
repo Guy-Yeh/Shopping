@@ -45,7 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </script>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" method="post">
         <div class="header">
             <!-- 第一排 -->
             <div class="header-top">
@@ -99,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <a runat="server" href="~/Customer/ShoppingList">交易紀錄</a>
                             </li>
                             <li class="grid">
-                                <a runat="server" href="#">空白1</a>
+                                <a runat="server" href="~/Customer/Chat">我要留言</a>
                             </li>
                             <li>
                                 <a runat="server" href="#">空白2</a>
