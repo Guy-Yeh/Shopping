@@ -9,6 +9,7 @@ using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Drawing;
+using System.IO;
 
 namespace Shopping
 {
@@ -171,7 +172,7 @@ namespace Shopping
                 cleanbt1();
                 cleanbt2();
                 cleanbt3();
-                cleanbt1r();
+                
             }
         }
 
@@ -189,7 +190,7 @@ namespace Shopping
             bool phoneCheck = Regex.IsMatch(TextBox4.Text, @"^09[\d]{8}");
             bool emailCheck = Regex.IsMatch(TextBox5.Text, @"^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$");
             bool discountCheck = Regex.IsMatch(TextBox10.Text, @"\d");
-            if (TextBox6.Text != "")
+            if (TextBox6.Text=="")
             {
                 SqlConnection connection2a = Connect(s_data);
                 string sql2a = $"select * from Customers where account='{TextBox1.Text}'";  //為了找尋account是否重複
@@ -336,7 +337,7 @@ namespace Shopping
             else
             {
                 hintPicture.ForeColor = Color.Red;
-                hintPicture.Text = "picture不得為空 請重新輸入";
+                hintPicture.Text = "picture路徑不存在 請重新輸入";
             }   
         }
 

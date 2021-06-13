@@ -299,11 +299,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>												
 							</div>
 						  </div>
+
 						</div>
-		<div class="clearfix"> 
-			<br>
-           
-            <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" >
+				<asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" >
                 <Columns>
                     <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="ID">
                         <EditItemTemplate>
@@ -410,8 +408,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" />
+					<asp:BoundField DataField="upInitdate" HeaderText="upInitdate" SortExpression="upInitdate" />
                 </Columns>
             </asp:GridView>
+		<div class="clearfix"> 
+			<br>
+           
+            
             
                 <asp:SqlDataSource ID="SqlDataSourceAllorders" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="SELECT a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice, a.qty, a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial"></asp:SqlDataSource>
             
