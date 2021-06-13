@@ -26,7 +26,7 @@ namespace Shopping
         }*/
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["loginstatus"] = "agay123";
+            Session["loginstatus"] = "1";
             //驗證是否登錄
             if (Session["loginstatus"] != null)
             {
