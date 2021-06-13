@@ -14,22 +14,13 @@ namespace Shopping
         string customers_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
         string product_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
         string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
-        /*protected void Page_Load(object sender, EventArgs e)
-        {
-            if (Request.Cookies["quantity"]== null)
-                Response.Cookies["quantity"].Value = "0";
-
-            if (Request.Cookies["cart"]!=null)
-                Label1.Text = " 總金額：" + Request.Cookies["cart"].Value;
-            else
-                Label1.Text = " 總金額：" + "0";         
-        }*/
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["loginstatus"] = "1";
             //驗證是否登錄
             if (Session["loginstatus"] != null)
             {
+                Button12.Text = "會員資料";
                 SqlConnection connection1 = new SqlConnection(customers_data);
                 string sq11 = $"select account from Customers";
                 SqlCommand command1 = new SqlCommand(sq11, connection1);
@@ -75,7 +66,7 @@ namespace Shopping
             {
                 //從資料庫Products中取出商品資料並寫入字串
                 SqlConnection connection1 = new SqlConnection(product_data);
-                string sql = $"select * from Products where productName =N'領造型線T' and category=N'{DropDownList1.SelectedValue}'";
+                string sql = $"select * from Products where productName =N'領造型線T' and category=N'{DropDownList1.SelectedValue}' ";
                 SqlCommand command1 = new SqlCommand(sql, connection1);
                 connection1.Open();
                 SqlDataReader read1 = command1.ExecuteReader();
@@ -626,14 +617,6 @@ namespace Shopping
                 command.ExecuteNonQuery();
                 connection.Close();
                 Response.Redirect("index");
-                /*HttpCookie cookie = Request.Cookies["buy"];
-                if (cookie != null)
-                {
-                    cookie.Expires = DateTime.Now.AddDays(-2);
-                    Response.Cookies.Set(cookie);
-                }
-                Response.Cookies["cart"].Value = "0";
-                Response.Redirect("index");*/
             }
         }
 
@@ -684,43 +667,21 @@ namespace Shopping
             Session["product"] = "滾邊寬袖衫";
             Response.Redirect("product");
         }
-
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("shoppingcar");
         }
 
-        protected void Button10_Click(object sender, EventArgs e)
+        protected void Button12_Click(object sender, EventArgs e)
         {
-            //產生一個字串的陣列承接商品資料
-            string[] array = new string[4];
-            //驗證是否登錄
             if (Session["loginstatus"] == null)
             {
                 Response.Redirect("login");
             }
             else
             {
-                //從資料庫Products中取出商品資料並寫入字串
-                SqlConnection connection1 = new SqlConnection(product_data);
-                string sql = $"select * from Products where productName =N'胸抓摺衫' and ID='17'";
-                SqlCommand command1 = new SqlCommand(sql, connection1);
-                connection1.Open();
-                SqlDataReader read1 = command1.ExecuteReader();
-                if (read1.HasRows)
-                {
-                    if (read1.Read())
-                    {
-                        //陣列分別存入商品資料的 1.商品名稱 2.商品圖片 3.商品顏色 5.商品價格
-                        array[0] = read1[1].ToString();
-                        array[1] = read1[2].ToString();
-                        array[2] = read1[3].ToString();
-                        array[3] = read1[5].ToString();
-                    }
-                }
-                connection1.Close();
+                Response.Redirect(@"Customer/CustomerDetail");
             }
-            Label18.Text = array[1];
         }
     }
 }
