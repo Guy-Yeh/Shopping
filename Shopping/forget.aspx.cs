@@ -68,7 +68,7 @@ namespace Shopping
                         string sqlAcc = Reader_email["account"].ToString();
                         string sqlName = Reader_email["name"].ToString();
                         body = @"<html><body><p>親愛的 "+ sqlName 
-                            + " 您好,</p><p>感謝你使用丹丹服飾的自動回信系統如非本人請無視本系統信件謝謝。</p><p>您的帳號為「"+ sqlAcc
+                            + " 您好,</p><p>感謝你使用丹丹服飾的自動回信系統，如非本人請無視本系統信件謝謝。</p><p>您的帳號為「"+ sqlAcc
                             + "」</p><p>祝您有愉快的購物體驗,<br>-丹丹服飾</br></p></body></html>";
                         try
                         {
@@ -104,7 +104,7 @@ namespace Shopping
                         string sqlpasswd = Reader_acc["password"].ToString();
 
                         body = @"<html><body><p>親愛的 " + sqlName
-                            + " 您好,</p><p>感謝你使用丹丹服飾的自動回信系統如非本人請無視本系統信件謝謝。</p><p>您的帳號的密碼為「" + sqlpasswd
+                            + " 您好,</p><p>感謝你使用丹丹服飾的自動回信系統，如非本人請無視本系統信件謝謝。</p><p>您的帳號的密碼為「" + sqlpasswd
                             + "」</p><p>祝您有愉快的購物體驗,<br>-丹丹服飾</br></p></body></html>";
                         try
                         {
@@ -149,7 +149,7 @@ namespace Shopping
             //收信方email
             //string emailTo = "feel6942@gmail.com";
             //主旨
-            string subject = "Hello";
+            string subject = "丹丹服飾系統訊息";
             //內容副超連結
             /*
             string body = @"<html>

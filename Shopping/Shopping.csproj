@@ -109,6 +109,8 @@
     <Content Include="Customer\Chat.aspx" />
     <Content Include="images\dowm.png" />
     <Content Include="images\up.png" />
+    <Content Include="images\CAT1.png" />
+    <Content Include="images\CAT4.png" />
     <Content Include="js\common\common.js" />
     <Content Include="js\customer\customerDetail.js" />
     <Content Include="js\customer\customerDetailEditEnter.js" />
