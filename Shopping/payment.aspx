@@ -52,6 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </style>
 </head>
 <body>
+    <form id="form1" runat="server">
 <!--header-->
 <div class="header">
 	<div class="header-top">
@@ -64,14 +65,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		
 			<div class="col-sm-4 header-left">		
-					<p class="log"><a href="account.html">登錄</a> <a href="account.html">註冊</a></p>
-					<div class="cart box_1">
-						<a href="shoppingcar">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+					<asp:Button ID="Button3" runat="server" Text="註冊" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="45px" style="float:right" />
+                <asp:Button ID="Button4" runat="server" Text="登錄" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="80px" style="float:right" OnClick="Button4_Click" /><br><br>
+				<asp:Label ID="Label6" runat="server" Text="消費金額：" style="float:right"></asp:Label><br>
+				<asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/cart.png" style="float:right" OnClick="ImageButton1_Click" Height="20" Width="20" />
+                <asp:Button ID="Button2" runat="server" Text="清空購物車" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="100" style="float:right" OnClick="Button2_Click" Font-Size="Larger" />
 
 					</div>
 					<div class="clearfix"> </div>
@@ -302,68 +300,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 </div>
-	<div id="cart-totals-detail" class="cart-totals">
-				<div class="col-sm-2 number">
+        <div class="container">
+	        <asp:GridView ID="GridView1" runat="server">
+            </asp:GridView> 
+            <asp:Label ID="Label4" runat="server" Text="" style="float:right"></asp:Label>
+            <asp:Label ID="Label5" runat="server" Text="總金額：" style="float:right"></asp:Label><br><br>
+            <asp:TextBox ID="TextBox1" runat="server" style="float:right"></asp:TextBox>
+            <asp:Label ID="Label1" runat="server" Text="收件人姓名" ForeColor="#52D0C4" style="float:right"></asp:Label><br><br>
 
-				</div>
-        <asp:Table id="Table1" runat="server"
-            GridLines="Both"
-            HorizontalAlign="Center" Font-Size="X-Large">
-            <asp:TableRow HorizontalAlign="Center">
-                <asp:TableCell ForeColor="#52D0C4">
-                </asp:TableCell>
-                <asp:TableCell ForeColor="#52D0C4">
-                    產品名稱
-                </asp:TableCell >
-                <asp:TableCell ForeColor="#52D0C4">
-                    顏色
-                </asp:TableCell>
-                <asp:TableCell ForeColor="#52D0C4">
-                    數量
-                </asp:TableCell>
-                <asp:TableCell ForeColor="#52D0C4">
-                    金額
-                </asp:TableCell>
-                <asp:TableCell ForeColor="#52D0C4">
-                    刪除
-                </asp:TableCell>
-            </asp:TableRow>
-        </asp:Table>
-
+            <asp:TextBox ID="TextBox2" runat="server" style="float:right"></asp:TextBox>
+            <asp:Label ID="Label2" runat="server" Text="收件人地址" ForeColor="#52D0C4" style="float:right"></asp:Label><br><br>
+            
+            <asp:TextBox ID="TextBox3" runat="server" style="float:right"></asp:TextBox>
+            <asp:Label ID="Label3" runat="server" Text="收件人電話" ForeColor="#52D0C4" style="float:right"></asp:Label><br><br>
+            <asp:Button ID="Button1" runat="server" Text="確認" BackColor="#52D0C4" BorderStyle="None" ForeColor="White" style="float:right" OnClick="Button1_Click"/>
+        </div>
                 <div class="col-sm-2 number">
 
 				</div>
-            <table id="shopping-cart-totals-table" class="auto-style3">
-						<tr>
-							<td style="" class="a-right">
-							共 <span>1</span> 件商品小計							</td>
-							<td style="">
-								<span class="price">NT$99</span>
-							</td>
-						</tr>
-						<tr>
-							<td style="" class="a-right">
-								折扣							</td>
-							<td style="">
-								<span class="price">NT$0</span>
-							</td>
-						</tr>
-						<tr id="shipping-amount-tr" style="display:none">
-							<td class="auto-style1">
-								運費							</td>
-							<td class="auto-style1">
-								<span class="price" id="shipping-amount-price">NT$0</span>
-							</td>
-						</tr>
+           
 
-						<tr>
-							<td style="" class="totals-cell">
-								總計：
-							</td>
-							<td style="">
-								<span class="price" id="total-price" data-price="99">NT$99</span>
-							</td>
-						</tr>
-                </table>
 
-	</div>
+    </form>

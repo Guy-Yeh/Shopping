@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -43,7 +44,7 @@ namespace Shopping
                  DataRow row = dt.NewRow();
                  row["ID"] = read[0];
                  row["productName"] = read[1];
-                 row["picture"] = ResolveUrl($"{read[2]}");
+                 row["picture"] = read[2];
                  row["category"] = read[3];
                  row["inventory"] = read[4];
                  row["price"] = read[5];
@@ -55,20 +56,56 @@ namespace Shopping
             product.DataBind();
             connection.Close();
         }
-        public void DDLreconnect()
+        
+
+        public void cleanbt1()
         {
+            TextBox1.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
+            TextBox5.Text = "";
+        }
+
+        public void cleanbt2()
+        {
+            DataView dv = (DataView)this.SqlDataSourceProductsID.Select(new DataSourceSelectArguments());
             DDLDeleterProductID.Items.Clear();
             DDLDeleterProductID.Items.Add("請選擇");
-            DDLUpdateProductID.Items.Clear();
-            DDLUpdateProductID.Items.Add("請選擇");
-            DataView dv = (DataView)this.SqlDataSourceProductsID.Select(new DataSourceSelectArguments());
             DDLDeleterProductID.DataSource = dv;
             DDLDeleterProductID.DataTextField = "ID";
             DDLDeleterProductID.DataBind();
+        }
+        public void cleanbt3()
+        {
+            DataView dv = (DataView)this.SqlDataSourceProductsID.Select(new DataSourceSelectArguments());
+            DDLUpdateProductID.Items.Clear();
+            DDLUpdateProductID.Items.Add("請選擇");
             DDLUpdateProductID.DataSource = dv;
             DDLUpdateProductID.DataTextField = "ID";
             DDLUpdateProductID.DataBind();
+            DataView dv2 = (DataView)this.SqlDataSourceProductsCols.Select(new DataSourceSelectArguments());
+            DDLUpdateCols.Items.Clear();
+            DDLUpdateCols.Items.Add("請選擇");
+            DDLUpdateCols.DataSource = dv2;
+            DDLUpdateCols.DataTextField = "Cols";
+            DDLUpdateCols.DataBind();
+            TextBox9.Text = "";
         }
+
+        public void changecocolor()
+        {
+            hintColumn.ForeColor = Color.Black;
+            hintID2.ForeColor = Color.Black;
+            hintID.ForeColor = Color.Black;
+            hintPrice.ForeColor = Color.Black;
+            hintInventory.ForeColor = Color.Black;
+            hintCategory.ForeColor = Color.Black;
+            hintPicture.ForeColor = Color.Black;
+            hintPN.ForeColor = Color.Black;
+            hintValue.ForeColor = Color.Black;
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -77,13 +114,18 @@ namespace Shopping
             hintCategory.Text = "";
             hintInventory.Text = "";
             hintPrice.Text = "";
+            hintValue.Text = "";
+            hintID.Text = "選擇即將刪除的productID";
             hintID2.Text = "選擇即將更新的productID";
             hintColumn.Text = "選擇即將更新的欄位";
-            hintValue.Text = "輸入更新的值";
+
+            changecocolor();
             if (!IsPostBack)
             {
                 reviewProduct();
-                DDLreconnect();
+                cleanbt1();
+                cleanbt2();
+                cleanbt3();
             }
         }
 
@@ -91,51 +133,76 @@ namespace Shopping
         {
 
             SqlConnection connection2 = Connect(s_data);
-            string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(N'{TextBox1.Text}',N'{TextBox2.Text}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}')";
+            
             //string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(@pn,@pc,@c,@i,@pr)";
             bool inventoryCheck = Regex.IsMatch(TextBox4.Text, @"\d");
             bool priceCheck = Regex.IsMatch(TextBox5.Text, @"\d");
 
             if (TextBox1.Text != "")
             {
-                if (TextBox2.Text != "")
+                if (TextBox3.Text != "")
                 {
-                    if (TextBox3.Text != "")
+                    if (inventoryCheck)
                     {
-                        if (inventoryCheck == true)
+                        if (priceCheck)
                         {
-                            if (priceCheck == true)
+
+                            if (FileUpload1.PostedFile != null)
                             {
-                                SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                connection2.Open();
-                                command2.ExecuteNonQuery();
-                                MessageBox.Show("輸入成功");
-                                connection2.Close();
-                                reviewProduct();
-                                DDLreconnect();
+                                HttpPostedFile myFile = FileUpload1.PostedFile;
+                                int nFileLen = myFile.ContentLength;
+                                if (FileUpload1.HasFile && nFileLen > 0)
+                                {
+                                    string picturePath0 = $@"images\衣服\{TextBox1.Text}_{TextBox3.Text}.jpg";
+                                    string picturePath1 = $@"images\衣服\{TextBox1.Text}_{TextBox3.Text}.jpg";
+                                    string imgPath = Server.MapPath(picturePath1);
+                                    FileUpload1.SaveAs(imgPath);
+
+                                    string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(N'{TextBox1.Text}',N'{picturePath0}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}')";
+                                    SqlCommand command2 = new SqlCommand(sql2, connection2);
+                                    connection2.Open();
+                                    command2.ExecuteNonQuery();
+                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt1", "setTimeout( function(){alert('輸入成功');},0);", true);
+                                    connection2.Close();
+                                    reviewProduct();
+                                    cleanbt1();
+                                    cleanbt2();
+                                    cleanbt3();
+                                }
+                                else
+                                {
+                                    hintPicture.ForeColor = Color.Red;
+                                    hintPicture.Text = "picture尚未選擇 請選擇上傳圖片";
+                                }
                             }
                             else
                             {
-                                hintPrice.Text = "price需為數字 請重新輸入";
+                                hintPicture.ForeColor = Color.Red;
+                                hintPicture.Text = "picture尚未選擇 請選擇上傳圖片";
                             }
                         }
                         else
                         {
-                            hintInventory.Text = "inventory需為數字 請重新輸入";
+                            hintPrice.ForeColor = Color.Red;
+                            hintPrice.Text = "price需為數字 請重新輸入";
                         }
                     }
                     else
                     {
-                        hintCategory.Text = "category不得為空";
+                        hintInventory.ForeColor = Color.Red;
+                        hintInventory.Text = "inventory需為數字 請重新輸入";
                     }
                 }
                 else
                 {
-                    hintPicture.Text = "picture不得為空";
+                    hintCategory.ForeColor = Color.Red;
+                    hintCategory.Text = "category不得為空";
                 }
+                
             }
             else
             {
+                hintPN.ForeColor = Color.Red;
                 hintPN.Text = "productName不得為空";
             }
             /*try
@@ -166,19 +233,22 @@ namespace Shopping
            
             if (DDLDeleterProductID.SelectedItem.Text!="請選擇")
             {
+                
                 SqlConnection connection3 = Connect(s_data);
                 string sql3 = $"delete from Products where ID='{DDLDeleterProductID.Text}'";
                 SqlCommand command3 = new SqlCommand(sql3, connection3);
                 connection3.Open();
                 command3.ExecuteNonQuery();
-                MessageBox.Show("刪除成功");
                 connection3.Close();
                 reviewProduct();
-                DDLreconnect();
+                cleanbt2();
+                cleanbt3();
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(),"bt2", "setTimeout( function(){alert('刪除成功');},0);", true);
 
             }
             else
             {
+                hintID.ForeColor = Color.Red;
                 hintID.Text = "請選擇項目";
             }
             
@@ -198,17 +268,19 @@ namespace Shopping
                 {
                     if (DDLUpdateCols.Text == "inventory" || DDLUpdateCols.Text == "price")
                     {
-                        if (numberCheck == true)
+                        if (numberCheck)
                         {
                             SqlCommand command6 = new SqlCommand(sql6, connection6);
                             connection6.Open();
                             command6.ExecuteNonQuery();
-                            MessageBox.Show("更新成功");
+                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
                             connection6.Close();
                             reviewProduct();
+                            cleanbt3();
                         }
                         else
                         {
+                            hintValue.ForeColor = Color.Red;
                             hintValue.Text = "inventory/price需為數字 請重新輸入";
                         }
                     }
@@ -218,18 +290,20 @@ namespace Shopping
                         SqlCommand command6 = new SqlCommand(sql6, connection6);
                         connection6.Open();
                         command6.ExecuteNonQuery();
-                        MessageBox.Show("更新成功");
-                        connection6.Close();
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
                         reviewProduct();
+                        cleanbt3();
                     }
                 }
                 else
                 {
+                    hintColumn.ForeColor = Color.Red;
                     hintColumn.Text = "請選擇項目";
                 }
             }
             else
             {
+                hintID2.ForeColor = Color.Red;
                 hintID2.Text = "請選擇項目";
             }
 

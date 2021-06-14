@@ -47,21 +47,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="col-sm-4 number">
 				<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
-				   <asp:Label ID="Label18" runat="server" Text="Label"></asp:Label>
 			</div>
 			<div class="col-sm-4 logo">
 				<a href="index"><img src="images/logo.png" alt=""></a>	
 			</div>
 		
 			<div class="col-sm-4 header-left">		
-				<p class="log">
-					<a href="account.html">登錄</a><br>
-					<a href="account.html">註冊</a>
 
-				</p>
-				<asp:Label ID="Label1" runat="server" Text="消費金額：" ></asp:Label>
-				<asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/cart.png" style="float:right" OnClick="ImageButton1_Click" /><br>
-                <asp:Button ID="Button9" runat="server" Text="清空購物車" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="87px" style="float:right" OnClick="Button9_Click"/>
+                <asp:Button ID="Button11" runat="server" Text="註冊" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="45px" style="float:right" />
+                <asp:Button ID="Button12" runat="server" Text="登錄" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="80px" style="float:right" OnClick="Button12_Click" /><br><br>
+				<asp:Label ID="Label1" runat="server" Text="消費金額：" style="float:right"></asp:Label><br>
+				<asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/cart.png" style="float:right" OnClick="ImageButton1_Click" Height="20" Width="20" />
+                <asp:Button ID="Button9" runat="server" Text="清空購物車" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="100" style="float:right" OnClick="Button9_Click" Font-Size="Larger" />
 			</div>
 				<div class="clearfix"> </div>
 		</div>

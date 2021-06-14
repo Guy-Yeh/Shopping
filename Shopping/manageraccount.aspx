@@ -29,18 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="col-md-4 world">
 					<ul >
-						<li>
-						<select class="in-drop">
-							  <option>English</option>
-							  <option>Japanese</option>
-							  <option>French</option>
-							</select></li>
-						<li><select class="in-drop1">
-							  <option>Dollar</option>
-							  <option>Euro</option>
-							  <option>Yen</option>
-							</select>
-						</li>
+						
 					</ul>
 				</div>
 				<div class="col-md-4 logo">
@@ -51,12 +40,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<p class="log"><a href="account.html"  >Login</a>
 						<span>or</span><a  href="account.html"  >Signup</a></p>
 					<div class="cart box_1">
-						<a href="checkout.html">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+						
 
 					</div>
 					<div class="clearfix"> </div>
@@ -206,10 +190,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="h_nav">	
 									<h4>Add User Account</h4>
 									<ul>
-										<li><asp:Label ID="picture" runat="server" Text="picture"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox6" runat="server"></asp:TextBox></li> 
-									    <li><asp:Label ID="hintPicture" runat="server" ForeColor="Black"></asp:Label></li>
-										<br>
 										<li><asp:Label ID="account" runat="server" Text="account"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
 									    <li><asp:Label ID="hintAccount" runat="server" ForeColor="Black"></asp:Label></li> 
@@ -220,6 +200,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<br>
 										<li><asp:Label ID="name" runat="server" Text="name"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintName" runat="server" ForeColor="Black"></asp:Label></li>
 										<br>
 										<li><asp:Label ID="phone" runat="server" Text="phone"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
@@ -230,12 +211,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:Label ID="hintEmail" runat="server" ForeColor="Black"></asp:Label></li>
 										<br>
 										<li><asp:Label ID="address" runat="server" Text="address"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLCity" runat="server" AutoPostBack="True"  AppendDataBoundItems="True" Width="195px" Height="30px" DataSourceID="SqlDataSourceCity" DataTextField="city" DataValueField="city" OnSelectedIndexChanged="DDLCity_SelectedIndexChanged"><asp:ListItem Value="0">請選擇縣市</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLCity" runat="server" AutoPostBack="True"  AppendDataBoundItems="True" Width="195px" Height="30px" OnSelectedIndexChanged="DDLCity_SelectedIndexChanged"><asp:ListItem Value="0">請選擇縣市</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceCity" runat="server" ConnectionString="<%$ ConnectionStrings:CityConnectionString %>" SelectCommand="SELECT [city] FROM [City]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintCity" runat="server" ForeColor="Black"></asp:Label></li>
 				
-										<li><asp:DropDownList ID="DDLRegion" runat="server" AppendDataBoundItems="True" Width="195px" Height="30px" DataSourceID="SqlDataSourceRegion" DataTextField="region" DataValueField="region"><asp:ListItem Value="0" Selected="True">請選擇區域</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLRegion" runat="server"  AppendDataBoundItems="True" Width="195px" Height="30px"  ><asp:ListItem Value="0" Selected="True">請選擇區域</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceRegion" runat="server" ConnectionString="<%$ ConnectionStrings:RegionConnectionString %>" SelectCommand="SELECT [region] FROM [Region] WHERE ([city] = @city)">
                                                 <SelectParameters>
                                                     <asp:ControlParameter ControlID="DDLCity" DefaultValue="DDLCity.Selected.Item" Name="city" PropertyName="SelectedValue" Type="String" />
@@ -245,18 +226,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:Label ID="hintRegion" runat="server" ForeColor="Black"></asp:Label></li>
 
 										<li><asp:TextBox ID="TextBox11" runat="server" placeholder="請輸入縣市區域除外地址"></asp:TextBox></li>
+										<li><li><asp:Label ID="hintRoad" runat="server" ForeColor="Black"></asp:Label></li></li>
 										<br>
 										<li><asp:Label ID="discount" runat="server" Text="discount"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox></li>
+										<li><asp:TextBox ID="TextBox10" runat="server" placeholder="非必填"></asp:TextBox></li>
 										<li><asp:Label ID="hintDiscount" runat="server" ForeColor="Black"></asp:Label></li>
 										<br>
 										<li><asp:Label ID="access" runat="server" Text="access"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLAccess" runat="server"  AppendDataBoundItems="True" Width="195px" Height="30px" DataSourceID="SqlDataSourceAccess" DataTextField="Cols" DataValueField="Cols"><asp:ListItem Value="0" Selected="True">請選擇權限</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLAccess" runat="server"  AppendDataBoundItems="True" Width="195px" Height="30px"  ><asp:ListItem Value="0" Selected="True">請選擇</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceAccess" runat="server" ConnectionString="<%$ ConnectionStrings:AccessConnectionString %>" SelectCommand="SELECT [Cols] FROM [AccessCols]"></asp:SqlDataSource>
                                         </li>
-										<li><asp:Label ID="hintAccess" runat="server" ForeColor="Black"></asp:Label></li>
+										<li><asp:Label ID="hintAccess" runat="server" ForeColor="Black" Text="請選擇權限"></asp:Label></li>
 										<br>
-										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
+										<li><asp:Label ID="picture" runat="server" Text="picture"></asp:Label></li>
+										<li><asp:FileUpload ID="FileUpload1" runat="server" /></li>
+									    <li><asp:Label ID="hintPicture" runat="server" ForeColor="Black"></asp:Label></li>
+										<br>
+										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;"/></li>
 									</ul>	
 								</div>							
 							</div>
@@ -279,20 +265,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Update User Account</h4>
 									<ul>
 										<li><asp:Label ID="accountID2" runat="server" Text="accountID"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px" ><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList></asp:DropDownList></li>
-										<li><asp:Label ID="hintID2" runat="server" Text="選擇即將更新的accountID"></asp:Label><li>
+										<li><asp:DropDownList ID="DDLUpdateAccount" AppendDataBoundItems="True"  runat="server" Height="30px" Width="195px" ><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList></asp:DropDownList></li>
+										<li><asp:Label ID="hintID2" runat="server" Text="選擇即將更新的accountID" ></asp:Label><li>
 										<br>
 										<li></li>
 										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateCol" runat="server" AppendDataBoundItems="True" Width="195px" Height="30px" DataSourceID="SqlDataSourceUpdateCol" DataTextField="Cols" DataValueField="Cols"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLUpdateCol" runat="server" AppendDataBoundItems="True" Width="195px" Height="30px" ><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceUpdateCol" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT [Cols] FROM [CustomersCols]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintColumn" runat="server" Text="選擇即將更新的欄位"></asp:Label></li>
 										<br>
 										<li></li>
 										<li><asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintAll" runat="server" Text="輸入更新的值"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox9" runat="server" placeholder="請輸入更新的值"></asp:TextBox></li>
+										<li><asp:Label ID="hintAll" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要修改嗎?')) window.event.returnValue=false;"/>
                                         </li>
@@ -308,10 +294,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <asp:TemplateField headertext="image">
                     <ItemTemplate >
                        <asp:Image ID="img1" ImageUrl='<%#Eval("picture") %>' 
-                                  runat="server"  Width="200" Height="200"/>
+                                  runat="server"  Width="100" Height="120"/>
                     </ItemTemplate>
                 </asp:TemplateField>
-            </Columns>
+				</Columns>
             </asp:GridView>
 			
                 </div>
@@ -338,7 +324,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="footer-top">
 			<div class="col-md-8 top-footer">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.91163207516!2d2.3470599!3d48.85885894999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C+France!5e0!3m2!1sen!2sin!4v1436340519910" allowfullscreen=""></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 			</div>
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>

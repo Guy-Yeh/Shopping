@@ -29,18 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="col-md-4 world">
 					<ul >
-						<li>
-						<select class="in-drop">
-							  <option>English</option>
-							  <option>Japanese</option>
-							  <option>French</option>
-							</select></li>
-						<li><select class="in-drop1">
-							  <option>Dollar</option>
-							  <option>Euro</option>
-							  <option>Yen</option>
-							</select>
-						</li>
+						
 					</ul>
 				</div>
 				<div class="col-md-4 logo">
@@ -51,12 +40,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<p class="log"><a href="account.html"  >Login</a>
 						<span>or</span><a  href="account.html"  >Signup</a></p>
 					<div class="cart box_1">
-						<a href="checkout.html">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+						
 
 					</div>
 					<div class="clearfix"> </div>
@@ -232,7 +216,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Reply Message</h4>
 									<ul>
 										<li>
-                                            <asp:DropDownList ID="DDLContactID" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceChat" DataTextField="ID" DataValueField="ID"><asp:ListItem Value="0">ID</asp:ListItem></asp:DropDownList>
+                                            <asp:DropDownList ID="DDLContactID" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" ><asp:ListItem Value="0">ID</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceChat" runat="server" ConnectionString="<%$ ConnectionStrings:ChatConnectionString %>" SelectCommand="SELECT [ID] FROM [Chat]"></asp:SqlDataSource>
                                         </li>
 										<li><asp:Label ID="hintID" runat="server" Text=""></asp:Label></li>
@@ -265,24 +249,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="h_nav">
 									<h4>Show Message by Date Range </h4>
 									<ul>
-										<li><asp:DropDownList ID="DDLYearS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceYears" DataTextField="years" DataValueField="years"><asp:ListItem Value="0">StartYear</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLYearS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" ><asp:ListItem Value="0">StartYear</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceYears" runat="server" ConnectionString="<%$ ConnectionStrings:YearsConnectionString %>" SelectCommand="SELECT [years] FROM [Years]"></asp:SqlDataSource>
                                         </li>
 										<br>
-										<li><asp:DropDownList ID="DDLMonthS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceMonth" DataTextField="months" DataValueField="months"><asp:ListItem Value="0">StartMonth</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLMonthS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" ><asp:ListItem Value="0">StartMonth</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceMonth" runat="server" ConnectionString="<%$ ConnectionStrings:MonthsConnectionString %>" SelectCommand="SELECT [months] FROM [Months]"></asp:SqlDataSource>
                                         </li>
 										<br>
-										<li><asp:DropDownList ID="DDLDayS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceDay" DataTextField="days" DataValueField="days"><asp:ListItem Value="0">StartDay</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLDayS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" ><asp:ListItem Value="0">StartDay</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceDay" runat="server" ConnectionString="<%$ ConnectionStrings:DaysConnectionString %>" SelectCommand="SELECT [days] FROM [Days]"></asp:SqlDataSource>
                                         </li>
 										<br>
 										<br>
-										<li><asp:DropDownList ID="DDLYearE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceYears" DataTextField="years" DataValueField="years"><asp:ListItem Value="0">EndYear</asp:ListItem></asp:DropDownList></li>
+										<li><asp:DropDownList ID="DDLYearE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px"><asp:ListItem Value="0">EndYear</asp:ListItem></asp:DropDownList></li>
 										<br>
-										<li><asp:DropDownList ID="DDLMonthE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceMonth" DataTextField="months" DataValueField="months"><asp:ListItem Value="0">EndMonth</asp:ListItem></asp:DropDownList></li>
+										<li><asp:DropDownList ID="DDLMonthE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" ><asp:ListItem Value="0">EndMonth</asp:ListItem></asp:DropDownList></li>
 										<br>
-										<li><asp:DropDownList ID="DDLDayE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" DataSourceID="SqlDataSourceDay" DataTextField="days" DataValueField="days"><asp:ListItem Value="0">EndDay</asp:ListItem></asp:DropDownList></li>
+										<li><asp:DropDownList ID="DDLDayE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px" ><asp:ListItem Value="0">EndDay</asp:ListItem></asp:DropDownList></li>
 										<li><asp:Label ID="hintDate" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li>
@@ -296,8 +280,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 
-    <asp:GridView ID="usercontact" runat="server" >
+    <asp:GridView ID="usercontact" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" >
+        <Columns>
+            <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+            <asp:BoundField DataField="account" HeaderText="account" SortExpression="account" />
+            <asp:BoundField DataField="message" HeaderText="message" SortExpression="message" />
+            <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" />
+			<asp:BoundField DataField="response" HeaderText="response" SortExpression="response" />
+            <asp:BoundField DataField="updateInitdate" HeaderText="updateInitdate" SortExpression="updateInitdate" />
+        </Columns>
     </asp:GridView>
+    <asp:SqlDataSource ID="SqlDataSourceChatting" runat="server" ConnectionString="<%$ ConnectionStrings:ChatConnectionString %>" SelectCommand="SELECT * FROM [Chat]"></asp:SqlDataSource>
 <!----->
 
 		<div class="clearfix"> </div>
@@ -309,7 +302,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="footer-top">
 			<div class="col-md-8 top-footer">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.91163207516!2d2.3470599!3d48.85885894999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C+France!5e0!3m2!1sen!2sin!4v1436340519910" allowfullscreen=""></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 			</div>
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>
