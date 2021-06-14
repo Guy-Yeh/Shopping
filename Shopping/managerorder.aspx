@@ -254,56 +254,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </li>
 										<li><asp:Label ID="hintStatus" runat="server" Text="" ></asp:Label></li>
 										<li><asp:Button ID="statussearch" runat="server" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="statussearch_Click"/></li>
-									</ul>	
-								</div>							
-							</div>
-							<div class="col1">
-								<div class="h_nav">
-									<h4>Delete Order Information</h4>
-									<ul>
-										<li><asp:Label ID="orderID" runat="server" Text="orderSerial"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLDeleteOrderID" runat="server"  AppendDataBoundItems="True"  Width="195px" Height="30px" ><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceOrderSerial" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersConnectionString %>" SelectCommand="SELECT [serial] FROM [Orders]"></asp:SqlDataSource>
-                                        </li>
-										<li><asp:Label ID="hintID" runat="server" Text="選擇即將刪除的orderSerial"></asp:Label></li>
-										<br>
-										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要刪除嗎?')) window.event.returnValue=false;"/></li>
-										
-									</ul>
-								</div>							
-							</div>
-							<div class="col1">
-								<div class="h_nav">
-									<h4>Update Order Information</h4>
-									<ul>
-										<li><asp:Label ID="orderID2" runat="server" Text="orderDetailID"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateOrderDetailID" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px" ><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceOrderDetailSearch" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT ID FROM Orderdetail WHERE (cart = N'否')"></asp:SqlDataSource>
-                                        </li>
-										<li><asp:Label ID="hintID2" runat="server" Text="選擇即將更新的orderDetailID"></asp:Label><li>
-										<br>
-										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLUpdateOrderCols" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceOrderCols" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersColsConnectionString %>" SelectCommand="SELECT [Cols] FROM [OrdersCols]"></asp:SqlDataSource>
-                                        </li>
-										<li><asp:Label ID="hintColumn" runat="server" Text="選擇即將更新的欄位"></asp:Label></li>
-										<br>
-										<li><asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintAll" runat="server" Text="輸入更新的值"></asp:Label></li>
-										<br>
-										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick= "javascript:if(!window.confirm('確定要修改嗎?')) window.event.returnValue=false"/>
-                                            
-                                        </li>
-									</ul>	
-								</div>												
-							</div>
-						  </div>
-						</div>
-		<div class="clearfix"> 
-			<br>
-           
-            <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" >
+									<br>
+									<br>
+
+				<asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" >
                 <Columns>
                     <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="ID">
                         <EditItemTemplate>
@@ -410,9 +364,61 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" />
+					<asp:BoundField DataField="upInitdate" HeaderText="upInitdate" SortExpression="upInitdate" />
                 </Columns>
             </asp:GridView>
-            
+									</ul>	
+								</div>							
+							</div>
+							<div class="col1">
+								<div class="h_nav">
+									<h4>Delete Order Information</h4>
+									<ul>
+										<li><asp:Label ID="orderID" runat="server" Text="orderSerial"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLDeleteOrderID" runat="server"  AppendDataBoundItems="True"  Width="195px" Height="30px" ><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceOrderSerial" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersConnectionString %>" SelectCommand="SELECT [serial] FROM [Orders]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintID" runat="server" Text="選擇即將刪除的orderSerial"></asp:Label></li>
+										<br>
+										<li><asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要刪除嗎?')) window.event.returnValue=false;"/></li>
+										
+									</ul>
+								</div>							
+							</div>
+							<div class="col1">
+								<div class="h_nav">
+									<h4>Update Order Information</h4>
+									<ul>
+										<li><asp:Label ID="orderID2" runat="server" Text="orderDetailID"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLUpdateOrderDetailID" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px" ><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceOrderDetailSearch" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT ID FROM Orderdetail WHERE (cart = N'否')"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintID2" runat="server" Text="選擇即將更新的orderDetailID"></asp:Label><li>
+										<br>
+										<li><asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
+										<li><asp:DropDownList ID="DDLUpdateOrderCols" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px"><asp:ListItem Value="delete">請選擇</asp:ListItem></asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceOrderCols" runat="server" ConnectionString="<%$ ConnectionStrings:OrdersColsConnectionString %>" SelectCommand="SELECT [Cols] FROM [OrdersCols]"></asp:SqlDataSource>
+                                        </li>
+										<li><asp:Label ID="hintColumn" runat="server" Text="選擇即將更新的欄位"></asp:Label></li>
+										<br>
+										<li><asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintAll" runat="server" Text="輸入更新的值"></asp:Label></li>
+										<br>
+										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick= "javascript:if(!window.confirm('確定要修改嗎?')) window.event.returnValue=false"/>
+                                            
+                                        </li>
+									</ul>	
+								</div>												
+							</div>
+						  </div>
+
+						</div>
+				
+				
+			
+		<div class="clearfix"> 
+
                 <asp:SqlDataSource ID="SqlDataSourceAllorders" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="SELECT a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice, a.qty, a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial"></asp:SqlDataSource>
             
                 <asp:SqlDataSource ID="SqlDataSourceAllOrders2" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="SELECT a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice, a.qty, b.name, b.phone, b.address, b.status, b.initdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial"></asp:SqlDataSource>
@@ -446,7 +452,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="footer-top">
 			<div class="col-md-8 top-footer">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.91163207516!2d2.3470599!3d48.85885894999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C+France!5e0!3m2!1sen!2sin!4v1436340519910" allowfullscreen=""></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.5073661503407!2d121.56299517288556!3d25.033574098779358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623589999447!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 			</div>
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>

@@ -296,8 +296,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 
-    <asp:GridView ID="usercontact" runat="server" >
+    <asp:GridView ID="usercontact" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" >
+        <Columns>
+            <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+            <asp:BoundField DataField="account" HeaderText="account" SortExpression="account" />
+            <asp:BoundField DataField="message" HeaderText="message" SortExpression="message" />
+            <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" />
+			<asp:BoundField DataField="response" HeaderText="response" SortExpression="response" />
+            <asp:BoundField DataField="updateInitdate" HeaderText="updateInitdate" SortExpression="updateInitdate" />
+        </Columns>
     </asp:GridView>
+    <asp:SqlDataSource ID="SqlDataSourceChatting" runat="server" ConnectionString="<%$ ConnectionStrings:ChatConnectionString %>" SelectCommand="SELECT * FROM [Chat]"></asp:SqlDataSource>
 <!----->
 
 		<div class="clearfix"> </div>
@@ -309,7 +318,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="footer-top">
 			<div class="col-md-8 top-footer">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.91163207516!2d2.3470599!3d48.85885894999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C+France!5e0!3m2!1sen!2sin!4v1436340519910" allowfullscreen=""></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.5073661503407!2d121.56299517288556!3d25.033574098779358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623589999447!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 			</div>
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>

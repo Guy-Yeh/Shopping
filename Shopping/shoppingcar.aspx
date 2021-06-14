@@ -55,12 +55,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		
 			<div class="col-sm-4 header-left">		
-					<p class="log"><a href="account.html">登錄</a> <a href="account.html">註冊</a></p>
-					<asp:Label ID="Label1" runat="server" Text="消費金額：" ></asp:Label>
-				    <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/cart.png" style="float:right" OnClick="ImageButton1_Click" /><br>
-                    <asp:Button ID="Button1" runat="server" Text="清空購物車" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="87px" style="float:right" OnClick="Button1_Click" />
-
-					</div>
+					<asp:Button ID="Button3" runat="server" Text="註冊" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="45px" style="float:right" />
+                    <asp:Button ID="Button4" runat="server" Text="登錄" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="80px" style="float:right" OnClick="Button4_Click" /><br><br>
+	    			<asp:Label ID="Label1" runat="server" Text="消費金額：" style="float:right"></asp:Label><br>
+		    		<asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/cart.png" style="float:right" OnClick="ImageButton1_Click" Height="20" Width="20" />
+                    <asp:Button ID="Button1" runat="server" Text="清空購物車" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="100" style="float:right" OnClick="Button1_Click" Font-Size="Larger" />
+			</div>
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
@@ -294,7 +294,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---->
 <div class="container">
 	<div class="check-out">   	
-        <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" OnRowDeleting="userorder_RowDeleting" DataKeyNames="ID">
+        <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="ID" OnRowCommand="userorder_RowCommand" >
             <Columns>
                 <asp:TemplateField>
                     <EditItemTemplate>
@@ -309,10 +309,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <asp:BoundField DataField="productName" HeaderText="productName" SortExpression="productName" />
                 <asp:BoundField DataField="productColor" HeaderText="productColor" SortExpression="productColor" />
                 <asp:BoundField DataField="productPrice" HeaderText="productPrice" SortExpression="productPrice" />
+                <asp:TemplateField ShowHeader="False">
+                    <ItemTemplate>
+                        <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" CommandName="Subtract" Height="20px" ImageAlign="AbsMiddle" ImageUrl="~/images/dowm.png" Text="" Width="30px" CommandArgument='<%# Container.DataItemIndex%>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="qty" HeaderText="qty" SortExpression="qty" />
+                <asp:TemplateField ShowHeader="False">
+                    <ItemTemplate>
+                        <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="false" CommandName="Add" Height="20px" CommandArgument='<%# Container.DataItemIndex%>' ImageAlign="AbsMiddle" ImageUrl="~/images/up.png" Text="" Width="30px" />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="刪除" ShowHeader="False">
                     <ItemTemplate>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除"></asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" CommandArgument='<%# Container.DataItemIndex%>'></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

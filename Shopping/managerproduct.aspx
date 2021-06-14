@@ -209,10 +209,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
 										<li><asp:Label ID="hintPN" runat="server" Text=""></asp:Label></li>
 										<br>
-										<li><asp:Label ID="picture" runat="server" Text="picture"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintPicture" runat="server" Text=""></asp:Label></li>
-										<br>
 										<li><asp:Label ID="category" runat="server" Text="category"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintCategory" runat="server" Text=""></asp:Label></li>
@@ -225,7 +221,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></li>
 										<li><asp:Label ID="hintPrice" runat="server" Text=""></asp:Label></li>
 										<br>
-										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
+										<li><asp:Label ID="picture" runat="server" Text="picture"></asp:Label></li>
+										<li><asp:FileUpload ID="FileUpload1" runat="server" /></li>
+										<li><asp:Label ID="hintPicture" runat="server" Text=""></asp:Label></li>
+										<br>
+										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;"/></li>
+										<br>
+										<br>
+										
 									</ul>	
 								</div>							
 							</div>
@@ -260,8 +263,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<br>
 										<li></li>
 										<li><asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintValue" runat="server" Text="輸入更新的值"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox9" runat="server" placeholder ="輸入更新的值"></asp:TextBox></li>
+										<li><asp:Label ID="hintValue" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要修改嗎?')) window.event.returnValue=false;"/></li>
 									</ul>	
@@ -271,16 +274,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 		<div class="clearfix"> 
 			<br>
-			<asp:GridView ID="product" runat="server" >
-                   <Columns>
-                <asp:TemplateField headertext="image">
-                    <ItemTemplate >
-                       <asp:Image ID="img1" ImageUrl='<%#Eval("picture") %>' 
-                                  runat="server"  Width="100" Height="120"/>
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-            </asp:GridView>
+				<asp:GridView ID="product" runat="server" >
+					<Columns>
+						<asp:TemplateField headertext="image">
+							<ItemTemplate >
+							 <asp:Image ID="img1" ImageUrl='<%#Eval("picture") %>' 
+									runat="server"  Width="100" Height="120"/>
+							</ItemTemplate>
+						</asp:TemplateField>
+					</Columns>
+				</asp:GridView>
 			
                 </div>
 				<div id="small-dialog" class="mfp-hide">
@@ -305,7 +308,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="footer-top">
 			<div class="col-md-8 top-footer">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.91163207516!2d2.3470599!3d48.85885894999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C+France!5e0!3m2!1sen!2sin!4v1436340519910" allowfullscreen=""></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.5073661503407!2d121.56299517288556!3d25.033574098779358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623589999447!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 			</div>
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>

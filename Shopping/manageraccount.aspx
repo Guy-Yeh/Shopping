@@ -206,10 +206,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="h_nav">	
 									<h4>Add User Account</h4>
 									<ul>
-										<li><asp:Label ID="picture" runat="server" Text="picture"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox6" runat="server"></asp:TextBox></li> 
-									    <li><asp:Label ID="hintPicture" runat="server" ForeColor="Black"></asp:Label></li>
-										<br>
 										<li><asp:Label ID="account" runat="server" Text="account"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
 									    <li><asp:Label ID="hintAccount" runat="server" ForeColor="Black"></asp:Label></li> 
@@ -220,6 +216,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<br>
 										<li><asp:Label ID="name" runat="server" Text="name"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
+										<li><asp:Label ID="hintName" runat="server" ForeColor="Black"></asp:Label></li>
 										<br>
 										<li><asp:Label ID="phone" runat="server" Text="phone"></asp:Label></li>
 										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
@@ -235,7 +232,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </li>
 										<li><asp:Label ID="hintCity" runat="server" ForeColor="Black"></asp:Label></li>
 				
-										<li><asp:DropDownList ID="DDLRegion" runat="server" AppendDataBoundItems="True" Width="195px" Height="30px" DataSourceID="SqlDataSourceRegion" DataTextField="region" DataValueField="region"  ><asp:ListItem Value="0" Selected="True">請選擇區域</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLRegion" runat="server"  AppendDataBoundItems="True" Width="195px" Height="30px"  ><asp:ListItem Value="0" Selected="True">請選擇區域</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceRegion" runat="server" ConnectionString="<%$ ConnectionStrings:RegionConnectionString %>" SelectCommand="SELECT [region] FROM [Region] WHERE ([city] = @city)">
                                                 <SelectParameters>
                                                     <asp:ControlParameter ControlID="DDLCity" DefaultValue="DDLCity.Selected.Item" Name="city" PropertyName="SelectedValue" Type="String" />
@@ -245,18 +242,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><asp:Label ID="hintRegion" runat="server" ForeColor="Black"></asp:Label></li>
 
 										<li><asp:TextBox ID="TextBox11" runat="server" placeholder="請輸入縣市區域除外地址"></asp:TextBox></li>
+										<li><li><asp:Label ID="hintRoad" runat="server" ForeColor="Black"></asp:Label></li></li>
 										<br>
 										<li><asp:Label ID="discount" runat="server" Text="discount"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox></li>
+										<li><asp:TextBox ID="TextBox10" runat="server" placeholder="非必填"></asp:TextBox></li>
 										<li><asp:Label ID="hintDiscount" runat="server" ForeColor="Black"></asp:Label></li>
 										<br>
 										<li><asp:Label ID="access" runat="server" Text="access"></asp:Label></li>
-										<li><asp:DropDownList ID="DDLAccess" runat="server"  AppendDataBoundItems="True" Width="195px" Height="30px" ><asp:ListItem Value="0" Selected="True">請選擇權限</asp:ListItem></asp:DropDownList>
+										<li><asp:DropDownList ID="DDLAccess" runat="server"  AppendDataBoundItems="True" Width="195px" Height="30px"  ><asp:ListItem Value="0" Selected="True">請選擇</asp:ListItem></asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSourceAccess" runat="server" ConnectionString="<%$ ConnectionStrings:AccessConnectionString %>" SelectCommand="SELECT [Cols] FROM [AccessCols]"></asp:SqlDataSource>
                                         </li>
-										<li><asp:Label ID="hintAccess" runat="server" ForeColor="Black"></asp:Label></li>
+										<li><asp:Label ID="hintAccess" runat="server" ForeColor="Black" Text="請選擇權限"></asp:Label></li>
 										<br>
-										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
+										<li><asp:Label ID="picture" runat="server" Text="picture"></asp:Label></li>
+										<li><asp:FileUpload ID="FileUpload1" runat="server" /></li>
+									    <li><asp:Label ID="hintPicture" runat="server" ForeColor="Black"></asp:Label></li>
+										<br>
+										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;"/></li>
 									</ul>	
 								</div>							
 							</div>
@@ -291,8 +293,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<br>
 										<li></li>
 										<li><asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></li>
-										<li><asp:Label ID="hintAll" runat="server" Text="輸入更新的值"></asp:Label></li>
+										<li><asp:TextBox ID="TextBox9" runat="server" placeholder="請輸入更新的值"></asp:TextBox></li>
+										<li><asp:Label ID="hintAll" runat="server" Text=""></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要修改嗎?')) window.event.returnValue=false;"/>
                                         </li>
@@ -338,7 +340,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="footer-top">
 			<div class="col-md-8 top-footer">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.91163207516!2d2.3470599!3d48.85885894999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C+France!5e0!3m2!1sen!2sin!4v1436340519910" allowfullscreen=""></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.5073661503407!2d121.56299517288556!3d25.033574098779358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623589999447!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 			</div>
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>

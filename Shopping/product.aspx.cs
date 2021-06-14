@@ -16,7 +16,6 @@ namespace Shopping
         string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
             if (!IsPostBack)
             {
                 SqlConnection connection1 = new SqlConnection(product_data);
@@ -35,9 +34,7 @@ namespace Shopping
                 }
                 connection1.Close();
             }
-            else*/
-            //如果Session["product"]有值頁面帶入Session["product"]內容的商品資料
-            if (Session["product"]!=null)
+            else
             {
                 SqlConnection connection2 = new SqlConnection(product_data);
                 string sq2 = $"select * from Products where productName =N'{Session["product"]}' and category=N'{DropDownList1.SelectedItem.Text}'";
@@ -58,6 +55,7 @@ namespace Shopping
             //登錄判定
             if (Session["loginstatus"] != null)
             {
+                Button4.Text = "會員資料";
                 SqlConnection connection1 = new SqlConnection(customers_data);
                 string sq11 = $"select account from Customers";
                 SqlCommand command1 = new SqlCommand(sq11, connection1);
@@ -179,6 +177,18 @@ namespace Shopping
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("shoppingcar");
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            if (Session["loginstatus"] == null)
+            {
+                Response.Redirect("login");
+            }
+            else
+            {
+                Response.Redirect(@"Customer/CustomerDetail");
+            }
         }
     }
 }

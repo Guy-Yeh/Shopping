@@ -65,14 +65,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		
 			<div class="col-sm-4 header-left">		
-					<p class="log"><a href="account.html">登錄</a> <a href="account.html">註冊</a></p>
-					<div class="cart box_1">
-						<a href="shoppingcar">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+					<asp:Button ID="Button3" runat="server" Text="註冊" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="45px" style="float:right" />
+                <asp:Button ID="Button4" runat="server" Text="登錄" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="80px" style="float:right" OnClick="Button4_Click" /><br><br>
+				<asp:Label ID="Label6" runat="server" Text="消費金額：" style="float:right"></asp:Label><br>
+				<asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/cart.png" style="float:right" OnClick="ImageButton1_Click" Height="20" Width="20" />
+                <asp:Button ID="Button2" runat="server" Text="清空購物車" BackColor="White" BorderColor="White" BorderStyle="None" ForeColor="#52D0C4" Width="100" style="float:right" OnClick="Button2_Click" Font-Size="Larger" />
 
 					</div>
 					<div class="clearfix"> </div>
@@ -306,8 +303,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
 	        <asp:GridView ID="GridView1" runat="server">
             </asp:GridView> 
-            <asp:Label ID="Label5" runat="server" Text="總金額：" style="float:right"></asp:Label>
-            <asp:Label ID="Label4" runat="server" Text="" style="float:right"></asp:Label><br><br>
+            <asp:Label ID="Label4" runat="server" Text="" style="float:right"></asp:Label>
+            <asp:Label ID="Label5" runat="server" Text="總金額：" style="float:right"></asp:Label><br><br>
             <asp:TextBox ID="TextBox1" runat="server" style="float:right"></asp:TextBox>
             <asp:Label ID="Label1" runat="server" Text="收件人姓名" ForeColor="#52D0C4" style="float:right"></asp:Label><br><br>
 

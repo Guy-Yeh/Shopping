@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections;
 using System.IO;
+using System.Windows;
 
 namespace Shopping
 {
@@ -38,40 +39,42 @@ namespace Shopping
         }*/
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            SqlConnection connection = new SqlConnection(s_data);
-            string sql = $"select * from Products where category= N'白'";
-            SqlCommand command = new SqlCommand(sql, connection);
-            connection.Open();
-            SqlDataReader read = command.ExecuteReader();
 
-            DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
-            dt.Columns.Add("productName");
-            //DataColumn picture = new DataColumn();
-            //picture = new DataColumn("picture");
-            dt.Columns.Add("picture");
-            dt.Columns.Add("category");
-            dt.Columns.Add("inventory");
-            dt.Columns.Add("price");
-            dt.Columns.Add("initdate");
 
-            while (read.Read())
-            {
-                DataRow row = dt.NewRow();
-                row["ID"] = read[0];
-                row["productName"] = read[1];
-                //row["picture"] = ResolveUrl($"{read[2]}");
-                row["picture"] = read[2];
-                row["category"] = read[3];
-                row["inventory"] = read[4];
-                row["price"] = read[5];
-                row["initdate"] = read[6];
-                dt.Rows.Add(row); 
-            }
-            GridView2.DataSource = dt;
-            GridView2.DataBind();
-            connection.Close();
+
+            //SqlConnection connection = new SqlConnection(s_data);
+            //string sql = $"select * from Products where category= N'白'";
+            //SqlCommand command = new SqlCommand(sql, connection);
+            //connection.Open();
+            //SqlDataReader read = command.ExecuteReader();
+
+            //DataTable dt = new DataTable();
+            //dt.Columns.Add("ID");
+            //dt.Columns.Add("productName");
+            ////DataColumn picture = new DataColumn();
+            ////picture = new DataColumn("picture");
+            //dt.Columns.Add("picture");
+            //dt.Columns.Add("category");
+            //dt.Columns.Add("inventory");
+            //dt.Columns.Add("price");
+            //dt.Columns.Add("initdate");
+
+            //while (read.Read())
+            //{
+            //    DataRow row = dt.NewRow();
+            //    row["ID"] = read[0];
+            //    row["productName"] = read[1];
+            //    //row["picture"] = ResolveUrl($"{read[2]}");
+            //    row["picture"] = read[2];
+            //    row["category"] = read[3];
+            //    row["inventory"] = read[4];
+            //    row["price"] = read[5];
+            //    row["initdate"] = read[6];
+            //    dt.Rows.Add(row);
+            //}
+            //GridView2.DataSource = dt;
+            //GridView2.DataBind();
+            //connection.Close();
 
 
             /*DataTable dt = new DataTable();
@@ -172,6 +175,38 @@ namespace Shopping
 
         }
 
-    
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Customer/CustomerDetail");
+            //123
+            //if (FileUpload1.PostedFile != null)
+            //{
+            //    //檢查副檔名 to do
+
+            //    // File was sent
+            //    HttpPostedFile myFile = FileUpload1.PostedFile;
+
+            //    // Get size of uploaded file
+            //    int nFileLen = myFile.ContentLength;
+
+            //    if (FileUpload1.HasFile && nFileLen > 0)
+            //    {
+            //        string imgPath = Server.MapPath("/images/FileUpload/" + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg");
+            //        FileUpload1.SaveAs(imgPath);
+            //        Label8.Text = imgPath;
+            //        MessageBox.Show("上傳成功");
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("請選擇圖片檔案");
+            //    }
+
+            //}
+            //else
+            //{
+            //    // No file
+            //    MessageBox.Show("請選擇圖片檔案");
+            //}
+        }
     }
 }

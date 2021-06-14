@@ -61,7 +61,6 @@ namespace Shopping
         public void cleanbt1()
         {
             TextBox1.Text = "";
-            TextBox2.Text = "";
             TextBox3.Text = "";
             TextBox4.Text = "";
             TextBox5.Text = "";
@@ -115,11 +114,11 @@ namespace Shopping
             hintCategory.Text = "";
             hintInventory.Text = "";
             hintPrice.Text = "";
+            hintValue.Text = "";
             hintID.Text = "選擇即將刪除的productID";
             hintID2.Text = "選擇即將更新的productID";
             hintColumn.Text = "選擇即將更新的欄位";
 
-            hintValue.Text = "輸入更新的值";
             changecocolor();
             if (!IsPostBack)
             {
@@ -134,54 +133,72 @@ namespace Shopping
         {
 
             SqlConnection connection2 = Connect(s_data);
-            string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(N'{TextBox1.Text}',N'{TextBox2.Text}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}')";
+            
             //string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(@pn,@pc,@c,@i,@pr)";
             bool inventoryCheck = Regex.IsMatch(TextBox4.Text, @"\d");
             bool priceCheck = Regex.IsMatch(TextBox5.Text, @"\d");
 
             if (TextBox1.Text != "")
             {
-                if (TextBox2.Text != "")
+                if (TextBox3.Text != "")
                 {
-                    if (TextBox3.Text != "")
+                    if (inventoryCheck)
                     {
-                        if (inventoryCheck == true)
+                        if (priceCheck)
                         {
-                            if (priceCheck == true)
+
+                            if (FileUpload1.PostedFile != null)
                             {
-                                SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                connection2.Open();
-                                command2.ExecuteNonQuery();
-                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt1", "setTimeout( function(){alert('輸入成功');},0);", true);
-                                connection2.Close();
-                                reviewProduct();
-                                cleanbt1();
-                                cleanbt2();
-                                cleanbt3();
+                                HttpPostedFile myFile = FileUpload1.PostedFile;
+                                int nFileLen = myFile.ContentLength;
+                                if (FileUpload1.HasFile && nFileLen > 0)
+                                {
+                                    string picturePath0 = $@"images\衣服\{TextBox1.Text}_{TextBox3.Text}.jpg";
+                                    string picturePath1 = $@"images\衣服\{TextBox1.Text}_{TextBox3.Text}.jpg";
+                                    string imgPath = Server.MapPath(picturePath1);
+                                    FileUpload1.SaveAs(imgPath);
+
+                                    string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(N'{TextBox1.Text}',N'{picturePath0}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}')";
+                                    SqlCommand command2 = new SqlCommand(sql2, connection2);
+                                    connection2.Open();
+                                    command2.ExecuteNonQuery();
+                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt1", "setTimeout( function(){alert('輸入成功');},0);", true);
+                                    connection2.Close();
+                                    reviewProduct();
+                                    cleanbt1();
+                                    cleanbt2();
+                                    cleanbt3();
+                                }
+                                else
+                                {
+                                    hintPicture.ForeColor = Color.Red;
+                                    hintPicture.Text = "picture尚未選擇 請選擇上傳圖片";
+                                }
                             }
                             else
                             {
-                                hintPrice.ForeColor = Color.Red;
-                                hintPrice.Text = "price需為數字 請重新輸入";
+                                hintPicture.ForeColor = Color.Red;
+                                hintPicture.Text = "picture尚未選擇 請選擇上傳圖片";
                             }
                         }
                         else
                         {
-                            hintInventory.ForeColor = Color.Red;
-                            hintInventory.Text = "inventory需為數字 請重新輸入";
+                            hintPrice.ForeColor = Color.Red;
+                            hintPrice.Text = "price需為數字 請重新輸入";
                         }
                     }
                     else
                     {
-                        hintCategory.ForeColor = Color.Red;
-                        hintCategory.Text = "category不得為空";
+                        hintInventory.ForeColor = Color.Red;
+                        hintInventory.Text = "inventory需為數字 請重新輸入";
                     }
                 }
                 else
                 {
-                    hintPicture.ForeColor = Color.Red;
-                    hintPicture.Text = "picture不得為空";
+                    hintCategory.ForeColor = Color.Red;
+                    hintCategory.Text = "category不得為空";
                 }
+                
             }
             else
             {
@@ -251,7 +268,7 @@ namespace Shopping
                 {
                     if (DDLUpdateCols.Text == "inventory" || DDLUpdateCols.Text == "price")
                     {
-                        if (numberCheck == true)
+                        if (numberCheck)
                         {
                             SqlCommand command6 = new SqlCommand(sql6, connection6);
                             connection6.Open();

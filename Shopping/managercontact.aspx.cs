@@ -201,7 +201,7 @@ namespace Shopping
                 if (Request.Form["contactresponse"] != "")
                 {
                     SqlConnection connection2 = Connect(s_data);
-                    string sql2 = $"update Chat SET response= N'{Request.Form["contactresponse"].ToString()}' where ID='{int.Parse(DDLContactID.Text)}'";
+                    string sql2 = $"update Chat SET response= N'{Request.Form["contactresponse"].ToString()}',updateInitdate = getdate() where ID='{int.Parse(DDLContactID.Text)}'";
                     SqlCommand command2 = new SqlCommand(sql2, connection2);
                     connection2.Open();
                     command2.ExecuteNonQuery();
