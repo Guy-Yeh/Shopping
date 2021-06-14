@@ -57,6 +57,7 @@ namespace Shopping
             //bool identityRule = Regex.IsMatch(identityText.Text, @"^[A-Z]{1}[1-2]{1}[0-9]{8}$"); //身分證基礎驗證
             bool phoneRule = Regex.IsMatch(phoneText.Text, @"^09[0-9]{8}$"); //手機號碼驗證
             bool emailRule = Regex.IsMatch(emailchange, @"^[a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6}$"); //email驗證
+            bool nameRule = Regex.IsMatch(nameText.Text, @"^[\u4e00 - \u9fa5_a - zA - Z0 - 9] +$");
 
             //檢查有無違反規則
             if (accRule == false)
