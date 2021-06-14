@@ -182,14 +182,12 @@ namespace Shopping
 
             string sql2p = $"select * from Customers where phone='{TextBox4.Text}' And Access='Yes' ";   //為了找尋phone是否重複
             string sql2e = $"select * from Customers where email='{TextBox5.Text}'And Access='Yes'";   //為了找尋email是否重複
-            bool accountCheck1 = Regex.IsMatch(TextBox1.Text, @"\d+");
-            bool accountCheck2 = Regex.IsMatch(TextBox1.Text, @"[a-zA-Z]+");
-            bool passwordCheck1 = Regex.IsMatch(TextBox2.Text, @"\d+");
-            bool passwordCheck2 = Regex.IsMatch(TextBox2.Text, @"[a-zA-Z]+");
+            bool accountCheck = Regex.IsMatch(TextBox1.Text, @"[\w-]{6,15}");
+            bool passwordCheck = Regex.IsMatch(TextBox2.Text, @"[\w-]{7,20}");
             bool phoneCheck = Regex.IsMatch(TextBox4.Text, @"^09[\d]{8}");
             bool emailCheck = Regex.IsMatch(TextBox5.Text, @"^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$");
             bool discountCheck = Regex.IsMatch(TextBox10.Text, @"\d");
-
+            bool nameCheck = Regex.IsMatch(TextBox3.Text, @"[\u4e00-\u9fa5]{1,5}$|^[\dA-Za-z_]{1,10}");
 
             SqlConnection connection2a = Connect(s_data);
             string sql2a = $"select * from Customers where account='{TextBox1.Text}'";  //為了找尋account是否重複
@@ -200,11 +198,11 @@ namespace Shopping
             if (Reader2a.HasRows == false && TextBox1.Text != "")
             {
                 connection2a.Close();
-                if (accountCheck1 && accountCheck2)
+                if (accountCheck)
                 {
-                    if (passwordCheck1 && passwordCheck2)
+                    if (passwordCheck)
                     {
-                        if (TextBox3.Text != "")
+                        if (TextBox3.Text!="")
                         {
                             SqlConnection connection2p = Connect(s_data);
                             SqlCommand command2p = new SqlCommand(sql2p, connection2p);
@@ -248,7 +246,7 @@ namespace Shopping
                                                                         string imgPath = Server.MapPath(picturePath1);
                                                                         FileUpload1.SaveAs(imgPath);
       
-                                                                        string sql2 = $"insert into [Customers](picture,account,password,name,phone,email,address,discount,access) values( N'{picturePath0}','{TextBox1.Text}','{TextBox2.Text}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}',N'{DDLCity.Text + DDLRegion.Text + TextBox11.Text}','{TextBox10.Text}','{DDLAccess.Text}')";
+                                                                        string sql2 = $"insert into [Customers](picture,account,password,name,phone,email,address,discount,access) values( N'{picturePath0}','{TextBox1.Text.ToLower()}','{TextBox2.Text}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text.ToLower()}',N'{DDLCity.Text + DDLRegion.Text + TextBox11.Text}','{TextBox10.Text}','{DDLAccess.Text}')";
                                                                         SqlConnection connection2 = Connect(s_data);
                                                                         SqlCommand command2 = new SqlCommand(sql2, connection2);
                                                                         connection2.Open();
@@ -334,19 +332,19 @@ namespace Shopping
                         else
                         {
                             hintName.ForeColor = Color.Red;
-                            hintName.Text = "name不得為空 請重新輸入";
+                            hintName.Text = "name不得為空";
                         }
                     }
                     else
                     {
                         hintPassword.ForeColor = Color.Red;
-                        hintPassword.Text = "password需包含英文字母和數字 請重新輸入";
+                        hintPassword.Text = "password需包含7-20個英文字母加數字 請重新輸入";
                     }
                 }
                 else
                 {
-                    hintAccount.ForeColor = Color.Red;
-                    hintAccount.Text = "account需包含英文字母和數字 請重新輸入";
+                    hintAccount.ForeColor = Color.Red; 
+                    hintAccount.Text = "account需包含6-15個英文字母加數字 請重新輸入";
                 }
             }
             else
@@ -390,12 +388,13 @@ namespace Shopping
             bool phoneCheck = Regex.IsMatch(TextBox9.Text, @"^09[\d]{8}");
             bool emailCheck = Regex.IsMatch(TextBox9.Text, @"^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$");
             string sql6 = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text}' where ID='{DDLUpdateAccount.Text}'";
+            string sql6CS = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text.ToLower()}' where ID='{DDLUpdateAccount.Text}'";
             SqlConnection connection6 = Connect(s_data);
+            SqlConnection connection6CS = Connect(s_data);
             string sql7 = $"select * from Customers where {DDLUpdateCol.Text}='{TextBox9.Text}'";
             string sql8 = $"select * from Customers where {DDLUpdateCol.Text}='{TextBox9.Text}' And Access='Yes'";
-            bool accountpasswordCheck1 = Regex.IsMatch(TextBox9.Text, @"\d+");
-            bool accountpasswordCheck2 = Regex.IsMatch(TextBox9.Text, @"[a-zA-Z]+");
-           
+            bool accountCheck = Regex.IsMatch(TextBox9.Text, @"[\w-]{6,15}");
+            bool passwordCheck = Regex.IsMatch(TextBox9.Text, @"[\w-]{7,20}");
 
             if (DDLUpdateAccount.SelectedItem.Text != "請選擇") 
             {
@@ -414,13 +413,13 @@ namespace Shopping
                         }
                         else
                         {
-                            if (accountpasswordCheck1 && accountpasswordCheck2)
+                            if (accountCheck)
                             {
-                                SqlCommand command6 = new SqlCommand(sql6, connection6);
-                                connection6.Open();
-                                command6.ExecuteNonQuery();
+                                SqlCommand command6CS = new SqlCommand(sql6CS, connection6CS);
+                                connection6CS.Open();
+                                command6CS.ExecuteNonQuery();
                                 this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
-                                connection6.Close();
+                                connection6CS.Close();
                                 reviewAccount();
                                 cleanbt3();
 
@@ -428,7 +427,7 @@ namespace Shopping
                             else
                             {
                                 hintAll.ForeColor = Color.Red;
-                                hintAll.Text = "account需包含英文字母和數字 請重新輸入";
+                                hintAll.Text = "account需包含6-15個英文字母加數字 請重新輸入";
                             }
                         }
                         connection7.Close();
@@ -468,11 +467,11 @@ namespace Shopping
                             {
                                 if (emailCheck)
                                 {
-                                    SqlCommand command6 = new SqlCommand(sql6, connection6);
-                                    connection6.Open();
-                                    command6.ExecuteNonQuery();
+                                    SqlCommand command6CS = new SqlCommand(sql6CS, connection6CS);
+                                    connection6CS.Open();
+                                    command6CS.ExecuteNonQuery();
                                     this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
-                                    connection6.Close();
+                                    connection6CS.Close();
                                     reviewAccount();
                                     cleanbt3();
                                 }
@@ -488,7 +487,7 @@ namespace Shopping
                     }
                     else if (DDLUpdateCol.Text == "password")
                     {
-                        if (accountpasswordCheck1 && accountpasswordCheck2 )
+                        if (passwordCheck)
                         {
                             SqlCommand command6 = new SqlCommand(sql6, connection6);
                             connection6.Open();
@@ -501,7 +500,7 @@ namespace Shopping
                         else
                         {
                             hintAll.ForeColor = Color.Red;
-                            hintAll.Text = "password需包含英文字母和數字 請重新輸入";
+                            hintAll.Text = "password需包含7-20個英文字母加數字 請重新輸入";
                         }
                     }
                     else if (DDLUpdateCol.Text == "discount")
@@ -521,6 +520,17 @@ namespace Shopping
                             hintAll.ForeColor = Color.Red;
                             hintAll.Text = "請輸入數字";
                         }
+                    }
+
+                    else if(DDLUpdateCol.Text == "name")
+                    {
+                        SqlCommand command6 = new SqlCommand(sql6, connection6);
+                        connection6.Open();
+                        command6.ExecuteNonQuery();
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                        connection6.Close();
+                        reviewAccount();
+                        cleanbt3();
                     }
 
                     else

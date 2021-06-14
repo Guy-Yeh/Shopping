@@ -27,13 +27,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="header">
 	<div class="header-top">
 		<div class="container">
-		<div class="col-md-4 world">
-					<ul >
-						
-					</ul>
+		<div class="col-md-4 number">
+					
+						<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
+					
 				</div>
 				<div class="col-md-4 logo">
-					<a href="index.html"><img src="images/logo.png" alt=""></a>	
+					<a href="index.html"><img src="images/CAT4.png" alt=""></a>	
 				</div>
 		
 			<div class="col-md-4 header-left">		
@@ -51,7 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="col-md-2 number">
-					<span><i class="glyphicon glyphicon-phone"></i>085 596 234</span>
+					
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
@@ -191,19 +191,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Add User Account</h4>
 									<ul>
 										<li><asp:Label ID="account" runat="server" Text="account"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li> 
+										<li><asp:TextBox ID="TextBox1" runat="server" placeholder="需包含6-15個英文加數字"></asp:TextBox></li> 
 									    <li><asp:Label ID="hintAccount" runat="server" ForeColor="Black"></asp:Label></li> 
 										<br>
 										<li><asp:Label ID="password" runat="server" Text="password"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></li>
+										<li><asp:TextBox ID="TextBox2" runat="server" placeholder="需包含7-20個英文加數字"></asp:TextBox></li>
 										<li><asp:Label ID="hintPassword" runat="server" ForeColor="Black"></asp:Label></li>
 										<br>
 										<li><asp:Label ID="name" runat="server" Text="name"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
+										<li><asp:TextBox ID="TextBox3" runat="server" placeholder="必填"></asp:TextBox></li>
 										<li><asp:Label ID="hintName" runat="server" ForeColor="Black"></asp:Label></li>
 										<br>
 										<li><asp:Label ID="phone" runat="server" Text="phone"></asp:Label></li>
-										<li><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
+										<li><asp:TextBox ID="TextBox4" runat="server" placeholder="請輸入09+8個數字"></asp:TextBox></li>
 										<li><asp:Label ID="hintPhone" runat="server" ForeColor="Black"></asp:Label></li>
 										<br>
 										<li><asp:Label ID="email" runat="server" Text="email"></asp:Label></li>
@@ -243,6 +243,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									    <li><asp:Label ID="hintPicture" runat="server" ForeColor="Black"></asp:Label></li>
 										<br>
 										<li><asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" onClientclick = "javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;"/></li>
+									<br>
+									<br>
+										<asp:GridView ID="useraccount" runat="server">
+											<Columns>
+												 <asp:TemplateField headertext="image">
+												<ItemTemplate >
+												<asp:Image ID="img1" ImageUrl='<%#Eval("picture") %>' runat="server"  Width="100" Height="120"/>													
+												 </ItemTemplate>
+												</asp:TemplateField>
+											</Columns>
+										</asp:GridView>
 									</ul>	
 								</div>							
 							</div>
@@ -289,16 +300,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 		<div class="clearfix"> 
 			<br>
-            <asp:GridView ID="useraccount" runat="server">
-				<Columns>
-                <asp:TemplateField headertext="image">
-                    <ItemTemplate >
-                       <asp:Image ID="img1" ImageUrl='<%#Eval("picture") %>' 
-                                  runat="server"  Width="100" Height="120"/>
-                    </ItemTemplate>
-                </asp:TemplateField>
-				</Columns>
-            </asp:GridView>
+            
 			
                 </div>
 				<div id="small-dialog" class="mfp-hide">
