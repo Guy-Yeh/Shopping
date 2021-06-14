@@ -350,6 +350,11 @@ namespace Shopping
             hintAll.ForeColor = Color.Black;
         }
 
+        public void transferInventorybyPN()
+        { 
+        
+        
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -379,9 +384,35 @@ namespace Shopping
         
 
         protected void Button2_Click(object sender, EventArgs e)
-        {
+        {       
             if (DDLDeleteOrderID.SelectedItem.Text != "請選擇")
             {
+                string sqlIC = $"select productName, productColor, qty from OrderDetail where serial='{DDLDeleteOrderID.Text}'";
+                SqlConnection connectionIC = Connect(s_data4);
+                SqlCommand commandIC = new SqlCommand(sqlIC, connectionIC);
+                connectionIC.Open();
+                SqlDataReader readerIC = commandIC.ExecuteReader();
+                while (readerIC.Read())
+                {
+                    
+                    string sqlSP = $"select inventory from Products where productName = N'{readerIC[0]}' And category = N'{readerIC[1]}' ";
+                    SqlConnection connectionSP = Connect(s_data3);
+                    SqlCommand commandSP = new SqlCommand(sqlSP, connectionSP);
+                    connectionSP.Open();
+                    SqlDataReader readerSP = commandSP.ExecuteReader();
+                    if (readerSP.Read())
+                    {
+                        string sqlUP = $"update Products set inventory = '{(Convert.ToInt32(readerSP[0]) + Convert.ToInt32(readerIC[2])).ToString()}' where productName = N'{readerIC[0]}' And category = N'{readerIC[1]}' ";
+                        SqlConnection connectionUP = Connect(s_data3);
+                        SqlCommand commandUP = new SqlCommand(sqlUP, connectionUP);
+                        connectionUP.Open();
+                        commandUP.ExecuteNonQuery();
+                        connectionUP.Close();
+                    }
+                    connectionSP.Close();
+                }
+                connectionIC.Close();
+
                 string sql3D = $"delete from OrderDetail where serial='{DDLDeleteOrderID.Text}'";
                 SqlConnection connection3D = Connect(s_data4);
                 SqlCommand command3D = new SqlCommand(sql3D, connection3D);
@@ -413,16 +444,17 @@ namespace Shopping
             bool numberCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             bool serialCheck = Regex.IsMatch(TextBox9.Text, @"\d{10}");
             bool phoneCheck = Regex.IsMatch(TextBox9.Text, @"^09[\d]{8}");
-            
-           
-
+            string serialName;
+            string serialColor;
+            string serialQty;
+            string serialPrice;
             if (DDLUpdateOrderDetailID.SelectedItem.Text != "請選擇")
             {
-                
+
 
                 if (DDLUpdateOrderCols.SelectedItem.Text != "請選擇")
                 {
-                    
+
                     if (DDLUpdateOrderCols.Text == "status")
                     {
                         if (TextBox9.Text == "賣方處理中" || TextBox9.Text == "配送中" || TextBox9.Text == "已完成")
@@ -438,8 +470,8 @@ namespace Shopping
                             hintAll.Text = "status僅有賣方處理中 配送中 已完成 請擇一填入";
                         }
                     }
-                    
-                    else 
+
+                    else
                     {
                         string serialStatus = ordersfind("status", "serial");
                         if (serialStatus == "賣方處理中")
@@ -489,14 +521,12 @@ namespace Shopping
 
                             else if (DDLUpdateOrderCols.Text == "productName")
                             {
-                                string serialColor = sourcefind("productColor");
-                                string serialPrice = sourcefind("productPrice");
-                                SqlConnection connection3s = new SqlConnection(s_data4);
-                                string sql3s = $"update OrderDetail SET {DDLUpdateOrderCols.Text}='{TextBox9.Text}' where serial='{serial}'";
-                                SqlCommand command3s = new SqlCommand(sql3s, connection3s);
-                                connection3s.Open();
-                                command3s.ExecuteNonQuery();
-                                connection3s.Close();
+
+
+                                serialName = sourcefind("productName");
+                                serialColor = sourcefind("productColor");
+                                serialQty = sourcefind("qty");
+                                serialPrice = sourcefind("productPrice");
 
                                 SqlConnection connection3 = new SqlConnection(s_data3);
                                 string sql3 = $"select * from Products where {DDLUpdateOrderCols.Text}= N'{TextBox9.Text}' And category = N'{serialColor}' ";
@@ -507,35 +537,88 @@ namespace Shopping
                                 if (Reader3.Read())
                                 {
 
-                                    if (Convert.ToInt32(Reader3[5]) <= Convert.ToInt32(serialPrice))
+                                    if (Convert.ToInt32(Reader3[4]) >= Convert.ToInt32(serialQty))
                                     {
-                                        SqlConnection connection5 = new SqlConnection(s_data);
+                                        string sqlSP = $"select inventory from Products where productName = N'{serialName}' And category = N'{serialColor}' ";
+                                        SqlConnection connectionSP = Connect(s_data3);
+                                        SqlCommand commandSP = new SqlCommand(sqlSP, connectionSP);
+                                        connectionSP.Open();
+                                        SqlDataReader readerSP = commandSP.ExecuteReader();
+                                        if (readerSP.Read())
+                                        {
+                                            string sqlUP = $"update Products set inventory = '{(Convert.ToInt32(readerSP[0]) + Convert.ToInt32(serialQty)).ToString()}' where productName = N'{serialName}' And category = N'{serialColor}' ";
+                                            SqlConnection connectionUP = Connect(s_data3);
+                                            SqlCommand commandUP = new SqlCommand(sqlUP, connectionUP);
+                                            connectionUP.Open();
+                                            commandUP.ExecuteNonQuery();
+                                            connectionUP.Close();
+                                        }
+                                        connectionSP.Close();
+
+                                        //更新庫存數
+                                        string sqlUP2 = $"update Products set inventory = '{(Convert.ToInt32(Reader3[4]) - Convert.ToInt32(serialQty)).ToString()}' where productName = N'{TextBox9.Text}' And category = N'{serialColor}' ";
+                                        SqlConnection connectionUP2 = Connect(s_data3);
+                                        SqlCommand commandUP2 = new SqlCommand(sqlUP2, connectionUP2);
+                                        connectionUP2.Open();
+                                        commandUP2.ExecuteNonQuery();
+                                        connectionUP2.Close();
+
+                                        SqlConnection connection3s = new SqlConnection(s_data4);    //更新產品名稱
+                                        string sql3s = $"update OrderDetail SET {DDLUpdateOrderCols.Text}= N'{TextBox9.Text}',productPrice = '{Reader3[5]}',productPicture= N'{Reader3[2]}' where ID='{DDLUpdateOrderDetailID.Text}'";
+                                        SqlCommand command3s = new SqlCommand(sql3s, connection3s);
+                                        connection3s.Open();
+                                        command3s.ExecuteNonQuery();
+                                        connection3s.Close();
+
+                                        SqlConnection connection5 = new SqlConnection(s_data);  //更新管理者更新時間
                                         string sql5 = $"update Orders SET updateInitdate= getdate() where serial='{sourcefind("serial")}'";
                                         SqlCommand command5 = new SqlCommand(sql5, connection5);
                                         connection5.Open();
                                         command5.ExecuteNonQuery();
-
+                                        connection5.Close();
+                                        string sql6 = $"select sum(productPrice*qty) from OrderDetail where serial='{sourcefind("serial")}'"; //獲得totalprice的數字
+                                        SqlConnection connection6 = new SqlConnection(s_data4);
+                                        SqlCommand command6 = new SqlCommand(sql6, connection6);
+                                        connection6.Open();
+                                        SqlDataReader Reader4 = command6.ExecuteReader();
+                                        if (Reader4.Read())
+                                        {
+                                            SqlConnection connection7 = new SqlConnection(s_data);
+                                            string sql7 = $"update Orders SET totalprice= '{Reader4[0]}',updateInitdate= getdate() where serial='{sourcefind("serial")}'";
+                                            SqlCommand command7 = new SqlCommand(sql7, connection7);
+                                            connection7.Open();
+                                            command7.ExecuteNonQuery();
+                                            connection7.Close();
+                                        }
+                                        connection6.Close();
                                         reviewOrder();
                                         cleanbt3();
                                         this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+
                                     }
                                     else
                                     {
                                         hintAll.ForeColor = Color.Red;
-                                        hintAll.Text = "商品價格需小於原本商品 請重新輸入";
+                                        hintAll.Text = "商品名稱庫存不足 請重新輸入";
                                     }
+
                                 }
+
+
+
                                 else
                                 {
                                     hintAll.ForeColor = Color.Red;
-                                    hintAll.Text = "商品不存在 請重新輸入";
+                                    hintAll.Text = "商品名稱不存在 請重新輸入";
                                 }
 
                             }
                             else if (DDLUpdateOrderCols.Text == "productColor")
                             {
-                                string serialName = sourcefind("productName");
-                                string serialPrice2 = sourcefind("productPrice");
+                                serialName = sourcefind("productName");
+                                serialColor = sourcefind("productColor");
+                                serialPrice = sourcefind("productPrice");
+                                serialQty = sourcefind("qty");
                                 SqlConnection connection3 = new SqlConnection(s_data3);
                                 string sql3 = $"select * from Products where category= N'{TextBox9.Text}' And productName = N'{serialName}' ";
                                 SqlCommand command3 = new SqlCommand(sql3, connection3);
@@ -544,10 +627,33 @@ namespace Shopping
 
                                 if (Reader3.Read())
                                 {
-
-                                    if (Convert.ToInt32(Reader3[5]) <= Convert.ToInt32(serialPrice2))
+                                    if (Convert.ToInt32(Reader3[4]) >= Convert.ToInt32(serialQty))
                                     {
-                                        SqlConnection connection5 = new SqlConnection(s_data);
+                                        string sqlSC = $"select inventory from Products where productName = N'{serialName}' And category = N'{serialColor}' ";
+                                        SqlConnection connectionSC = Connect(s_data3);
+                                        SqlCommand commandSC = new SqlCommand(sqlSC, connectionSC);
+                                        connectionSC.Open();
+                                        SqlDataReader readerSC = commandSC.ExecuteReader();
+                                        if (readerSC.Read())
+                                        {
+                                            //更新取消的顏色產品庫存數量
+                                            string sqlUC = $"update Products set inventory = '{(Convert.ToInt32(readerSC[0]) + Convert.ToInt32(serialQty)).ToString()}' where productName = N'{serialName}' And category = N'{serialColor}' ";
+                                            SqlConnection connectionUC = Connect(s_data3);
+                                            SqlCommand commandUC = new SqlCommand(sqlUC, connectionUC);
+                                            connectionUC.Open();
+                                            commandUC.ExecuteNonQuery();
+                                            connectionUC.Close();
+                                        }
+                                        connectionSC.Close();
+
+                                        string sqlUC2 = $"update Products set inventory = '{(Convert.ToInt32(Reader3[4]) - Convert.ToInt32(serialQty)).ToString()}' where productName = N'{serialName}' And category = N'{TextBox9.Text}' ";
+                                        SqlConnection connectionUC2 = Connect(s_data3);
+                                        SqlCommand commandUC2 = new SqlCommand(sqlUC2, connectionUC2);
+                                        connectionUC2.Open();
+                                        commandUC2.ExecuteNonQuery();
+                                        connectionUC2.Close();
+
+                                        SqlConnection connection5 = new SqlConnection(s_data);  //更新使用者更新時間
                                         string sql5 = $"update Orders SET updateInitdate= getdate() where serial='{sourcefind("serial")}'";
                                         SqlCommand command5 = new SqlCommand(sql5, connection5);
                                         connection5.Open();
@@ -566,13 +672,13 @@ namespace Shopping
                                     else
                                     {
                                         hintAll.ForeColor = Color.Red;
-                                        hintAll.Text = "商品價格需小於原本商品 請重新輸入";
+                                        hintAll.Text = "商品顏色庫存不足 請重新輸入";
                                     }
                                 }
                                 else
                                 {
                                     hintAll.ForeColor = Color.Red;
-                                    hintAll.Text = "商品不存在 請重新輸入";
+                                    hintAll.Text = "商品顏色不存在 請重新輸入";
                                 }
 
                             }
@@ -598,34 +704,60 @@ namespace Shopping
                             {
                                 if (numberCheck && int.Parse(TextBox9.Text) >= 0)
                                 {
-                                    SqlConnection connection5 = new SqlConnection(s_data4);
-                                    string sql5 = $"update OrderDetail SET {DDLUpdateOrderCols.Text}= '{TextBox9.Text}' where ID='{DDLUpdateOrderDetailID.Text}'";
-                                    SqlCommand command5 = new SqlCommand(sql5, connection5);
-                                    connection5.Open();
-                                    command5.ExecuteNonQuery();
-
-
-                                    int totalprice = int.Parse(sourcefind("productprice")) * int.Parse((TextBox9.Text));
-                                    string sql6 = $"select sum(productPrice*qty) from OrderDetail where serial='{sourcefind("serial")}'";
-                                    SqlConnection connection6 = new SqlConnection(s_data4);
-                                    SqlCommand command6 = new SqlCommand(sql6, connection6);
-                                    connection6.Open();
-                                    SqlDataReader Reader4 = command6.ExecuteReader();
-                                    if (Reader4.Read())
+                                    serialQty = sourcefind("qty");
+                                    serialName = sourcefind("productName");
+                                    serialColor = sourcefind("productColor");
+                                    string sqlSQ = $"select inventory from Products where productName = N'{serialName}' And category = N'{serialColor}' ";
+                                    SqlConnection connectionSQ = Connect(s_data3);
+                                    SqlCommand commandSQ = new SqlCommand(sqlSQ, connectionSQ);
+                                    connectionSQ.Open();
+                                    SqlDataReader readerSQ = commandSQ.ExecuteReader();
+                                    if (readerSQ.Read())
                                     {
-                                        SqlConnection connection7 = new SqlConnection(s_data);
-                                        string sql7 = $"update Orders SET totalprice= '{Reader4[0]}',updateInitdate= getdate() where serial='{sourcefind("serial")}'";
-                                        SqlCommand command7 = new SqlCommand(sql7, connection7);
-                                        connection7.Open();
-                                        command7.ExecuteNonQuery();
-                                        connection7.Close();
+                                        if (Convert.ToInt32(readerSQ[0]) >= (int.Parse(TextBox9.Text) - int.Parse(serialQty)))
+                                        {
+                                            //更新庫存數量
+                                            string sqlUQ = $"update Products set inventory = '{(Convert.ToInt32(readerSQ[0]) - (int.Parse(TextBox9.Text) - int.Parse(serialQty))).ToString()}' where productName = N'{serialName}' And category = N'{serialColor}' ";
+                                            SqlConnection connectionUQ = Connect(s_data3);
+                                            SqlCommand commandUQ = new SqlCommand(sqlUQ, connectionUQ);
+                                            connectionUQ.Open();
+                                            commandUQ.ExecuteNonQuery();
+                                            connectionUQ.Close();
+
+                                            SqlConnection connection5 = new SqlConnection(s_data4); //更OrderDetail數量
+                                            string sql5 = $"update OrderDetail SET {DDLUpdateOrderCols.Text}= '{TextBox9.Text}' where ID='{DDLUpdateOrderDetailID.Text}'";
+                                            SqlCommand command5 = new SqlCommand(sql5, connection5);
+                                            connection5.Open();
+                                            command5.ExecuteNonQuery();
+                                            connection5.Close();
+
+                                            string sql6 = $"select sum(productPrice*qty) from OrderDetail where serial='{sourcefind("serial")}'";
+                                            SqlConnection connection6 = new SqlConnection(s_data4);
+                                            SqlCommand command6 = new SqlCommand(sql6, connection6);
+                                            connection6.Open();
+                                            SqlDataReader Reader4 = command6.ExecuteReader();
+                                            if (Reader4.Read())
+                                            {
+                                                SqlConnection connection7 = new SqlConnection(s_data);
+                                                string sql7 = $"update Orders SET totalprice= '{Reader4[0]}',updateInitdate= getdate() where serial='{sourcefind("serial")}'";
+                                                SqlCommand command7 = new SqlCommand(sql7, connection7);
+                                                connection7.Open();
+                                                command7.ExecuteNonQuery();
+                                                connection7.Close();
+                                            }
+                                            connection6.Close();
+                                            connectionSQ.Close();
+                                            reviewOrder();
+                                            cleanbt3();
+                                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                                        }
+                                        else
+                                        {
+                                            hintAll.ForeColor = Color.Red;
+                                            hintAll.Text = "商品數量庫存不足 請重新輸入";
+
+                                        }
                                     }
-                                    connection6.Close();
-
-                                    reviewOrder();
-                                    cleanbt3();
-                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
-
                                 }
                                 else
                                 {
@@ -633,7 +765,6 @@ namespace Shopping
                                     hintAll.Text = "qty需為數字且須大於0 請重新輸入";
                                 }
                             }
-
                             else
                             {
                                 if (TextBox9.Text != "")
@@ -648,8 +779,7 @@ namespace Shopping
                                     hintAll.ForeColor = Color.Red;
                                     hintAll.Text = "name/address不得為空 請重新輸入";
                                 }
-                            }
-
+                            }                          
                         }
                         else
                         {
@@ -657,12 +787,11 @@ namespace Shopping
                             hintAll.Text = "訂單已出貨無法修改 請重新輸入";
                         }
                     }
-
                 }
                 else
                 {
-                    hintColumn.ForeColor = Color.Red;
-                    hintColumn.Text = "請選擇項目";
+                    hintID2.ForeColor = Color.Red;
+                    hintID2.Text = "請選擇項目";
                 }
             }
             else
@@ -670,9 +799,8 @@ namespace Shopping
                 hintID2.ForeColor = Color.Red;
                 hintID2.Text = "請選擇項目";
             }
-            
-        }
 
+        }
         protected void serialSearch_Click(object sender, EventArgs e)
         {
             if(DDLSS.SelectedItem.Text!="請選擇")

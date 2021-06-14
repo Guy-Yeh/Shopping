@@ -29,18 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="col-md-4 world">
 					<ul >
-						<li>
-						<select class="in-drop">
-							  <option>English</option>
-							  <option>Japanese</option>
-							  <option>French</option>
-							</select></li>
-						<li><select class="in-drop1">
-							  <option>Dollar</option>
-							  <option>Euro</option>
-							  <option>Yen</option>
-							</select>
-						</li>
+						
 					</ul>
 				</div>
 				<div class="col-md-4 logo">
@@ -51,12 +40,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<p class="log"><a href="account.html"  >Login</a>
 						<span>or</span><a  href="account.html"  >Signup</a></p>
 					<div class="cart box_1">
-						<a href="checkout.html">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+						
 
 					</div>
 					<div class="clearfix"> </div>
@@ -340,7 +324,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="footer-top">
 			<div class="col-md-8 top-footer">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.5073661503407!2d121.56299517288556!3d25.033574098779358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623589999447!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 			</div>
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>
