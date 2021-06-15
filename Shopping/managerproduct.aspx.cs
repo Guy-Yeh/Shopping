@@ -153,12 +153,12 @@ namespace Shopping
                                 int nFileLen = myFile.ContentLength;
                                 if (FileUpload1.HasFile && nFileLen > 0)
                                 {
-                                    string picturePath0 = $@"images\衣服\{TextBox1.Text}_{TextBox3.Text}.jpg";
+                                    
                                     string picturePath1 = $@"images\衣服\{TextBox1.Text}_{TextBox3.Text}.jpg";
                                     string imgPath = Server.MapPath(picturePath1);
                                     FileUpload1.SaveAs(imgPath);
 
-                                    string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(N'{TextBox1.Text}',N'{picturePath0}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}')";
+                                    string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(N'{TextBox1.Text}',N'{picturePath1}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}')";
                                     SqlCommand command2 = new SqlCommand(sql2, connection2);
                                     connection2.Open();
                                     command2.ExecuteNonQuery();
@@ -308,6 +308,11 @@ namespace Shopping
             }
 
         }
-    
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session["access"] = "Not ok";
+            Response.Redirect(Request.Url.ToString());
+        }
     }
 }

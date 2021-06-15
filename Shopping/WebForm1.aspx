@@ -11,7 +11,11 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <br>
         <asp:FileUpload ID="FileUpload1" runat="server" /><asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+        <br>
+         <asp:Image ID="Image2"  runat="server" Width="100" Height="120" />
         <asp:Label ID="Label8" runat="server" Text="Label"></asp:Label>
         <asp:GridView ID="GridView1" runat="server">
             <Columns>
