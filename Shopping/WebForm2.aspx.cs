@@ -30,6 +30,9 @@ namespace Shopping
             //Response.Redirect(Request.Url.ToString());
         }
 
-        
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Label1.Text = TextBox2.Text;
+        }
     }
 }

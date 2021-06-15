@@ -39,7 +39,9 @@
             <asp:SqlDataSource ID="SqlDataSourc" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT * FROM [OrderDetail]"></asp:SqlDataSource>
            
         </div>
+        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
     </form>
 </body>
 </html>

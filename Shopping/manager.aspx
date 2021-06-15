@@ -34,36 +34,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="header">
 	<div class="header-top">
 		<div class="container">
-		<div class="col-md-4 world">
-					<ul >
-						<li>
-						<select class="in-drop">
-							  <option>English</option>
-							  <option>Japanese</option>
-							  <option>French</option>
-							</select></li>
-						<li><select class="in-drop1">
-							  <option>Dollar</option>
-							  <option>Euro</option>
-							  <option>Yen</option>
-							</select>
-						</li>
-					</ul>
+		<div class="col-md-4 number">
+					
+						<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
+					
 				</div>
 				<div class="col-md-4 logo">
-					<a href="index.html"><img src="images/logo.png" alt=""></a>	
+					<a href="index.html"><img src="images/CAT4.png" alt=""></a>	
 				</div>
 		
 			<div class="col-md-4 header-left">		
-					<p class="log"><a href="account.html"  >Login</a>
-						<span>or</span><a  href="account.html"  >Signup</a></p>
+					
 					<div class="cart box_1">
-						<a href="checkout.html">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+						
 
 					</div>
 					<div class="clearfix"> </div>
@@ -74,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="col-md-2 number">
-					<span><i class="glyphicon glyphicon-phone"></i>085 596 234</span>
+					
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
@@ -246,9 +229,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form>
 
 					<span>Account</span>
-				    <asp:TextBox ID="account" runat="server" Height="30px" Width="220px"></asp:TextBox><asp:Label ID="elabel" runat="server" Text=""></asp:Label>
+				    <asp:TextBox ID="account" runat="server" Height="30px" Width="220px" required="required" aria-required="true" oninvalid="setCustomValidity('這是必填項目，請輸入')" oninput="this.setCustomValidity('')"></asp:TextBox>
+					<br>
+					<br>
 					<span>Password</span>
-					<asp:TextBox ID="password" runat="server" required="required" aria-required="true" oninvalid="setCustomValidity('這是必填項目，請輸入')" TextMode="Password" oninput="this.setCustomValidity('')" Width="220" Height="30px"></asp:TextBox><asp:Label ID="plabel" runat="server" Text=""></asp:Label>
+					<asp:TextBox ID="password" runat="server" required="required" aria-required="true" oninvalid="setCustomValidity('這是必填項目，請輸入')" TextMode="Password" oninput="this.setCustomValidity('')" Width="220" Height="30px"></asp:TextBox>
+					<asp:Label ID="plabel" runat="server" Text=""></asp:Label>
+					<br>
 					<div class="word-in">
 				  		
 						<asp:Button ID="submit" runat="server" Text="Login" OnClick="submit_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
@@ -257,8 +244,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			   </div>	
 			    <div class="col-md-6 login-left">
 			  	 <h4>Managers</h4>
-				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-				 <a class="acount-btn" href="register.html">Create an Account</a>
+				 <p>By using the website to manage your store, you will be able to update information of user accounts, customer orders, order status, commodity management and message board with a more efficient way to make sure your store can operate with stable growth.</p>
+				 
+				 <h4>IT contact</h4>
+				 <p>If you have issues when logging in or operating the website, please get in touch with the contact window as below.
+					 <li>Email: ITHelp@dandancloth.com</li>
+					 <li>Phone: 02-2424-0000 ext.9595</li>
+				 </p>
 			   </div>
 			   <div class="clearfix"> </div>
 			 </div>
@@ -270,7 +262,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="footer-top">
 			<div class="col-md-8 top-footer">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.5073661503407!2d121.56299517288556!3d25.033574098779358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623589999447!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 			</div>
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>

@@ -307,5 +307,11 @@ namespace Shopping
                 hintDate.Text = "所有項目皆須選擇";
             }
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session["access"] = "Not ok";
+            Response.Redirect(Request.Url.ToString());
+        }
     }
 }

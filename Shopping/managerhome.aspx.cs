@@ -21,6 +21,10 @@ namespace Shopping
             }
         }
 
-        
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session["access"] = "Not ok";
+            Response.Redirect(Request.Url.ToString());
+        }
     }
 }
