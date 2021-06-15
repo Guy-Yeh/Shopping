@@ -592,7 +592,7 @@ namespace Shopping
                                 else
                                 {
                                     hintAll.ForeColor = Color.Red;
-                                    hintAll.Text = "picture檔案不存在<br>請確認使用者照片是否存在該檔案 ";                                    
+                                    hintAll.Text = "picture檔案不存在<br>請確認「使用者照片」資料夾<br>是否存在該檔案 ";                                    
                                 }
                             }
                             else
