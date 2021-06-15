@@ -15,6 +15,7 @@ namespace Shopping
         string customers_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
         string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
         string orders_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrdersConnectionString"].ConnectionString;
+        string product_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
         //全域變數訂單號碼
         string ser;
         //訂單號碼生成方法
@@ -41,6 +42,7 @@ namespace Shopping
             if (Session["loginstatus"] != null)
             {
                 Button4.Text = "會員資料";
+                Button3.Text = "登出";
                 SqlConnection connection1 = new SqlConnection(customers_data);
                 string sq11 = $"select account from Customers";
                 SqlCommand command1 = new SqlCommand(sq11, connection1);
@@ -123,13 +125,15 @@ namespace Shopping
                 Response.Redirect("index");
             }
         }
-
+        //確認送出訂單
         protected void Button1_Click(object sender, EventArgs e)
         {
+            //產生一個訂單編號
             while (reviewSerial())
             {
                 reviewSerial();
             }
+            //將serial,customerAccount,name,phone,address,totalPrice,status等資料輸入進Orders
             SqlConnection connection1 = new SqlConnection(orders_data);
             string sql1 = $"insert into [Orders](serial,customerAccount,name,phone,address,totalPrice,status) values(@serial,@customerAccount,@name,@phone,@address,@totalPrice,@status)";
             SqlCommand Command1 = new SqlCommand(sql1, connection1);
@@ -150,13 +154,40 @@ namespace Shopping
             Command1.Parameters["@status"].Value = "賣方處理中";
             Command1.ExecuteNonQuery();
             connection1.Close();
-           
+
+            //將orderdetail內serial和cart更正
             SqlConnection connection2 = new SqlConnection(orderdetail_data);
             string sql2 = $"update OrderDetail set serial = '{ser}', cart=N'否' where customerAccount=N'{Session["loginstatus"]}' and cart=N'是'";
             SqlCommand Command2 = new SqlCommand(sql2, connection2);
             connection2.Open();
             Command2.ExecuteNonQuery();
             connection2.Close();
+
+            //連線至orderdetail找出訂單內容
+            SqlConnection connection3 = new SqlConnection(orderdetail_data);
+            string sql3 = $"select productName,productColor,qty from OrderDetail where serial = '{ser}'";
+            SqlCommand command3 = new SqlCommand(sql3, connection3);
+            connection3.Open();
+            SqlDataReader read3 = command3.ExecuteReader();
+            //找到product內庫存數量並更正
+            while(read3.Read())
+            {
+                SqlConnection connection5 = new SqlConnection(product_data);
+                string sql5 = $"select inventory from Products where productName=N'{read3[0]}' and category=N'{read3[1]}'";
+                SqlCommand command5 = new SqlCommand(sql5, connection5);
+                connection5.Open();
+                SqlDataReader read5 = command5.ExecuteReader();
+                if (read5.Read())
+                {
+                    SqlConnection connection4 = new SqlConnection(product_data);
+                    string sql4 = $"update Products set inventory = '{Convert.ToInt32(read5[0])- Convert.ToInt32(read3[2])}' where productName=N'{read3[0]}' and category=N'{read3[1]}'";
+                    SqlCommand Command4 = new SqlCommand(sql4, connection4);
+                    connection4.Open();
+                    Command4.ExecuteNonQuery();
+                    connection4.Close();
+                }
+            }
+            connection3.Close();            
             Response.Redirect("payment");
         }
 
@@ -190,6 +221,19 @@ namespace Shopping
             else
             {
                 Response.Redirect(@"Customer/CustomerDetail");
+            }
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            if (Session["loginstatus"] == null)
+            {
+                Response.Redirect("register");
+            }
+            else
+            {
+                Session.Remove("loginstatus");
+                Response.Redirect("index");
             }
         }
     }
