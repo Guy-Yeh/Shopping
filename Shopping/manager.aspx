@@ -244,8 +244,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			   </div>	
 			    <div class="col-md-6 login-left">
 			  	 <h4>Managers</h4>
-				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+				 <p>By using the website to manage your store, you will be able to update information of user accounts, customer orders, order status, commodity management and message board with a more efficient way to make sure your store can operate with stable growth.</p>
 				 
+				 <h4>IT contact</h4>
+				 <p>If you have issues when logging in or operating the website, please get in touch with the contact window as below.
+					 <li>Email: ITHelp@dandancloth.com</li>
+					 <li>Phone: 02-2424-0000 ext.9595</li>
+				 </p>
 			   </div>
 			   <div class="clearfix"> </div>
 			 </div>
