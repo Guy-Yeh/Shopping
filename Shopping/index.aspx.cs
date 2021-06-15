@@ -16,7 +16,7 @@ namespace Shopping
         string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["loginstatus"] = "1";
+            //Session["loginstatus"] = "1";
             //驗證是否登錄
             if (Session["loginstatus"] != null)
             {
