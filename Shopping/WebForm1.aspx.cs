@@ -16,7 +16,7 @@ namespace Shopping
     {
         
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
-
+        string x;
         public object DataGridViewAutoSizeColumnsMode { get; private set; }
         public object DataGridViewAutoSizeRowsMode { get; private set; }
         public object DataGridViewAutoSizeColumnMode { get; private set; }
@@ -37,10 +37,17 @@ namespace Shopping
 
             return bytes;
         }*/
+
+        public void picture(string x)
+        {
+        
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
+            string x= @"C:\Users\yekno\Desktop\Shopping\Shopping\images\使用者照片\111111.jpg";
+            
+            Image2.ImageUrl = @"C:\Users\yekno\Desktop\Shopping\Shopping\images\使用者照片\111111.jpg";
 
             //SqlConnection connection = new SqlConnection(s_data);
             //string sql = $"select * from Products where category= N'白'";
@@ -177,7 +184,32 @@ namespace Shopping
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Customer/CustomerDetail");
+            
+            HttpPostedFile myFile = FileUpload1.PostedFile;
+            int nFileLen = myFile.ContentLength;
+            if (FileUpload1.HasFile && nFileLen > 0)
+            {
+                
+                string picturePath1 = $"/images/使用者照片/{TextBox1.Text}.jpg";
+                //string picturePath1 = $@"images\使用者照片\{TextBox1.Text}.jpg";
+                string imgPath = Server.MapPath(picturePath1);
+                FileUpload1.SaveAs(imgPath);
+                Image2.ImageUrl = picturePath1;
+                Label8.Text = imgPath;
+                //picture(picturePath0);
+                // Image2.ImageUrl = x;
+
+                //string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(N'{TextBox1.Text}',N'{picturePath0}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}')";
+                //SqlCommand command2 = new SqlCommand(sql2, connection2);
+                //connection2.Open();
+                //command2.ExecuteNonQuery();
+                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt1", "setTimeout( function(){alert('輸入成功');},0);", true);
+                //connection2.Close();
+                //reviewProduct();
+                //cleanbt1();
+                //cleanbt2();
+                //cleanbt3();
+            }
             //123
             //if (FileUpload1.PostedFile != null)
             //{

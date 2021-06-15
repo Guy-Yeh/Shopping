@@ -153,12 +153,12 @@ namespace Shopping
                                 int nFileLen = myFile.ContentLength;
                                 if (FileUpload1.HasFile && nFileLen > 0)
                                 {
-                                    string picturePath0 = $@"images\衣服\{TextBox1.Text}_{TextBox3.Text}.jpg";
+                                    
                                     string picturePath1 = $@"images\衣服\{TextBox1.Text}_{TextBox3.Text}.jpg";
                                     string imgPath = Server.MapPath(picturePath1);
                                     FileUpload1.SaveAs(imgPath);
 
-                                    string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(N'{TextBox1.Text}',N'{picturePath0}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}')";
+                                    string sql2 = $"insert into [Products](productName,picture,category,inventory,price) values(N'{TextBox1.Text}',N'{picturePath1}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text}')";
                                     SqlCommand command2 = new SqlCommand(sql2, connection2);
                                     connection2.Open();
                                     command2.ExecuteNonQuery();
@@ -256,7 +256,7 @@ namespace Shopping
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            
+            bool categoryCheck = Regex.IsMatch(TextBox9.Text, @"^[\u4e00-\u9fa5]+$");
             bool numberCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             SqlConnection connection6 = Connect(s_data);
             string sql6 = $"update Products SET {DDLUpdateCols.Text} = N'{TextBox9.Text}' where ID='{DDLUpdateProductID.Text}'";
@@ -266,7 +266,7 @@ namespace Shopping
             {
                 if (DDLUpdateCols.SelectedItem.Text != "請選擇")
                 {
-                    if (DDLUpdateCols.Text == "inventory" || DDLUpdateCols.Text == "price")
+                    if (DDLUpdateCols.Text == "inventory")
                     {
                         if (numberCheck)
                         {
@@ -281,10 +281,174 @@ namespace Shopping
                         else
                         {
                             hintValue.ForeColor = Color.Red;
-                            hintValue.Text = "inventory/price需為數字 請重新輸入";
+                            hintValue.Text = "inventory需為數字 請重新輸入";
                         }
                     }
-                    
+
+                    else if (DDLUpdateCols.Text == "price")
+                    {
+                        if (TextBox9.Text != "")
+                        {
+                            if (numberCheck)
+                            {
+                                string sqlCP = $"select productName from Products where ID='{DDLUpdateProductID.Text}'";
+                                SqlConnection connectionCP = Connect(s_data);
+                                SqlCommand commandCP = new SqlCommand(sqlCP, connectionCP);
+                                connectionCP.Open();
+                                SqlDataReader readerCP = commandCP.ExecuteReader();
+                                if (readerCP.Read())
+                                {
+                                    string sql6CP = $"update Products SET {DDLUpdateCols.Text} = N'{TextBox9.Text}' where productName= N'{readerCP[0]}'";
+                                    SqlCommand command6 = new SqlCommand(sql6CP, connection6);
+                                    connection6.Open();
+                                    command6.ExecuteNonQuery();
+                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                                    connection6.Close();
+                                    reviewProduct();
+                                    cleanbt3();
+                                }
+                                connectionCP.Close();
+                            }
+                            else
+                            {
+                                hintValue.ForeColor = Color.Red;
+                                hintValue.Text = "price需為數字 請重新輸入";
+                            }
+                        }
+                        else
+                        {
+                            hintValue.ForeColor = Color.Red;
+                            hintValue.Text = "price不得為空";
+                        }
+                    }
+
+                    else if (DDLUpdateCols.Text == "category")
+                    {
+                        if (categoryCheck)
+                        {
+                            string sqlCC = $"select productName from Products where ID='{DDLUpdateProductID.Text}'";
+                            SqlConnection connectionCC = Connect(s_data);
+                            SqlCommand commandCC = new SqlCommand(sqlCC, connectionCC);
+                            connectionCC.Open();
+                            SqlDataReader readerCC = commandCC.ExecuteReader();
+                            if (readerCC.Read())
+                            {
+                                string sqlCC2 = $"select * from Products where productName = N'{readerCC[0]}' and category= N'{TextBox9.Text}'";
+                                SqlConnection connectionCC2 = Connect(s_data);
+                                SqlCommand commandCC2 = new SqlCommand(sqlCC2, connectionCC2);
+                                connectionCC2.Open();
+                                SqlDataReader readerCC2 = commandCC2.ExecuteReader();
+                                if (readerCC2.Read() == false)
+                                {
+                                    SqlCommand command6 = new SqlCommand(sql6, connection6);
+                                    connection6.Open();
+                                    command6.ExecuteNonQuery();
+                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                                    connection6.Close();
+                                    reviewProduct();
+                                    cleanbt3();
+                                }
+                                else
+                                {
+                                    hintValue.ForeColor = Color.Red;
+                                    hintValue.Text = "該種類產品已存在 請重新輸入";
+                                }
+                                connectionCC.Close();
+                                connectionCC2.Close();
+                            }
+                        }
+                        else
+                        {
+                            hintValue.ForeColor = Color.Red;
+                            hintValue.Text = "category需為中文 請重新輸入";
+                        }
+                    }
+
+                    else if (DDLUpdateCols.Text == "productName")
+                    {
+                        if (TextBox9.Text != "")
+                        {
+
+                            string sqlCC = $"select category from Products where ID='{DDLUpdateProductID.Text}'";
+                            SqlConnection connectionCC = Connect(s_data);
+                            SqlCommand commandCC = new SqlCommand(sqlCC, connectionCC);
+                            connectionCC.Open();
+                            SqlDataReader readerCC = commandCC.ExecuteReader();
+                            if (readerCC.Read())
+                            {
+                                string sqlCC2 = $"select * from Products where productName = N'{TextBox9.Text}' and category= N'{readerCC[0]}'";
+                                SqlConnection connectionCC2 = Connect(s_data);
+                                SqlCommand commandCC2 = new SqlCommand(sqlCC2, connectionCC2);
+                                connectionCC2.Open();
+                                SqlDataReader readerCC2 = commandCC2.ExecuteReader();
+                                if (readerCC2.Read() == false)
+                                {
+                                    SqlCommand command6 = new SqlCommand(sql6, connection6);
+                                    connection6.Open();
+                                    command6.ExecuteNonQuery();
+                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                                    connection6.Close();
+                                    reviewProduct();
+                                    cleanbt3();
+                                }
+                                else
+                                {
+                                    hintValue.ForeColor = Color.Red;
+                                    hintValue.Text = "該種類產品已存在 請重新輸入";
+                                }
+                                connectionCC.Close();
+                                connectionCC2.Close();
+                            }
+                        }
+                        else
+                        {
+                            hintValue.ForeColor = Color.Red;
+                            hintValue.Text = "productName不得為空 請重新輸入";
+                        }
+
+                    }
+
+
+                    else if (DDLUpdateCols.Text == "picture")
+                    {
+                        if (TextBox9.Text != "")
+                        {
+                            string pc = @"images\衣服\";
+                            string str = System.AppDomain.CurrentDomain.BaseDirectory;
+                            bool checkroot = TextBox9.Text.Contains(pc);
+
+                            if (checkroot)
+                            {
+                                if (File.Exists($@"{str + TextBox9.Text}"))
+                                {
+                                    SqlCommand command6 = new SqlCommand(sql6, connection6);
+                                    connection6.Open();
+                                    command6.ExecuteNonQuery();
+                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                                    connection6.Close();
+                                    reviewProduct();
+                                    cleanbt3();
+                                }
+                                else
+                                {
+                                    hintValue.ForeColor = Color.Red;
+                                    hintValue.Text = "picture檔案不存在<br>請確認「衣服」資料夾是否存在該檔案 ";
+                                }
+                            }
+                            else
+                            {
+                                hintValue.ForeColor = Color.Red;
+                                hintValue.Text = @"picture路徑格式錯誤<br>格式:images\衣服\你的檔名.jpg ";
+
+                            }
+                        }
+                        else
+                        {
+                            hintValue.ForeColor = Color.Red;
+                            hintValue.Text = "picture路徑不為空";
+                        }
+                    }
+
                     else
                     {
                         SqlCommand command6 = new SqlCommand(sql6, connection6);
@@ -308,6 +472,11 @@ namespace Shopping
             }
 
         }
-    
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session["access"] = "Not ok";
+            Response.Redirect(Request.Url.ToString());
+        }
     }
 }

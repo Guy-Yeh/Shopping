@@ -49,7 +49,7 @@ namespace Shopping
             dt.Columns.Add("address");
             dt.Columns.Add("status");
             dt.Columns.Add("initdate");
-            dt.Columns.Add("upInitdate");
+            dt.Columns.Add("updateInitdate");
             while (readorigin.Read())
             {
                 DataRow row = dt.NewRow();
@@ -66,7 +66,7 @@ namespace Shopping
                 row["address"] = readorigin[10];
                 row["status"] = readorigin[11];
                 row["initdate"] = readorigin[12];
-                row["upInitdate"] = readorigin[13];
+                row["updateInitdate"] = readorigin[13];
                 dt.Rows.Add(row);
             }
             userorder.DataSource = dt;
@@ -80,7 +80,7 @@ namespace Shopping
         {
             SqlConnection connectionorigin = Connect(s_data5);
             string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice," +
-                $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInidate " +
+                $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate " +
                 $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where a.{name}=N'{check}'";
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
@@ -99,7 +99,7 @@ namespace Shopping
             dt.Columns.Add("address");
             dt.Columns.Add("status");
             dt.Columns.Add("initdate");
-            dt.Columns.Add("upInitdate");
+            dt.Columns.Add("updateInitdate");
             while (readorigin.Read())
             {
                 DataRow row = dt.NewRow();
@@ -116,7 +116,7 @@ namespace Shopping
                 row["address"] = readorigin[10];
                 row["status"] = readorigin[11];
                 row["initdate"] = readorigin[12];
-                row["upInitdate"] = readorigin[13];
+                row["updateInitdate"] = readorigin[13];
                 dt.Rows.Add(row);
             }
             userorder.DataSource = dt;
@@ -128,7 +128,7 @@ namespace Shopping
         {
             SqlConnection connectionorigin = Connect(s_data5);
             string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice," +
-                $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate " +
+                $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate " +
                 $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where b.{name}=N'{check}'";
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
@@ -147,6 +147,8 @@ namespace Shopping
             dt.Columns.Add("address");
             dt.Columns.Add("status");
             dt.Columns.Add("initdate");
+            dt.Columns.Add("updateInitdate");
+
             while (readorigin.Read())
             {
                 DataRow row = dt.NewRow();
@@ -163,6 +165,7 @@ namespace Shopping
                 row["address"] = readorigin[10];
                 row["status"] = readorigin[11];
                 row["initdate"] = readorigin[12];
+                row["updateInitdate"] = readorigin[13];
                 dt.Rows.Add(row);
             }
             userorder.DataSource = dt;
@@ -361,7 +364,7 @@ namespace Shopping
             hintID.Text = "選擇即將刪除的orderSerial";
             hintID2.Text = "選擇即將更新的orderDetailID";
             hintColumn.Text = "選擇即將更新的欄位";
-            hintAll.Text = "輸入更新的值";
+            hintAll.Text = "";
             hintSerial.Text = "";
             hintCustomerAccount.Text = "";
             hintProductName.Text = "";
@@ -875,6 +878,12 @@ namespace Shopping
                 hintStatus.ForeColor = Color.Red;
                 hintStatus.Text = "請選擇項目";
             }
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session["access"] = "Not ok";
+            Response.Redirect(Request.Url.ToString());
         }
     }
 }

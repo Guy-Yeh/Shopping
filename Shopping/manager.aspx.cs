@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,7 +14,7 @@ namespace Shopping
         protected void Page_Load(object sender, EventArgs e)
         {
             plabel.Text = "";
-            elabel.Text = "";
+            plabel.ForeColor = Color.Black;
         }
 
         protected void submit_Click(object sender, EventArgs e)
@@ -35,14 +36,16 @@ namespace Shopping
                     }
                     else
                     {
-                        plabel.Text = "密碼錯誤";
+                        plabel.ForeColor = Color.Red;
+                        plabel.Text = "帳號或密碼錯誤";
                     }
 
                 }
             }
             else
             {
-                elabel.Text = "查無帳號";
+                plabel.ForeColor = Color.Red;
+                plabel.Text = "帳號或密碼錯誤";
             }
             connection.Close();
         }

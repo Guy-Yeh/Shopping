@@ -28,19 +28,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 		<div class="col-md-4 world">
-					<ul >
-						
-					</ul>
+					<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
 				</div>
 				<div class="col-md-4 logo">
-					<a href="index.html"><img src="images/logo.png" alt=""></a>	
+					<a href="index.html"><img src="images/CAT4.png" alt=""></a>	
 				</div>
 		
 			<div class="col-md-4 header-left">		
-					<p class="log"><a href="account.html"  >Login</a>
-						<span>or</span><a  href="account.html"  >Signup</a></p>
+					<p class="log"><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Logout</asp:LinkButton></p>
 					<div class="cart box_1">
-						
+                        
 
 					</div>
 					<div class="clearfix"> </div>
@@ -51,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="col-md-2 number">
-					<span><i class="glyphicon glyphicon-phone"></i>085 596 234</span>
+					
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
@@ -193,10 +190,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 </div>
 <!---->
-<div class="single">
 
-
-	</div>
 <!--footer-->
 <div class="footer">
 	<div class="container">
