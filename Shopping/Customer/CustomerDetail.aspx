@@ -11,22 +11,23 @@
     <div class="account">
         <div class="container">
             <h1>會員資料</h1>
-            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource123" DataTextField="city" DataValueField="city"></asp:DropDownList>
+   <%--         <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource123" DataTextField="city" DataValueField="city"></asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource123" runat="server" ConnectionString="<%$ ConnectionStrings:CityConnectionString %>" SelectCommand="SELECT [city] FROM [City$]"></asp:SqlDataSource>
-            <div class="account_grid">
+  --%>          <div class="account_grid">
 
                 <div class="col-md-4 login-left">
                     <div style="display: flex; justify-content: flex-end;">
                         <%--        <img style="width: 200px; height: 200px;">
                          <a class="acount-btn" href="#">上傳檔案</a>--%>
 
-
-                        <img id="accountImg" style="width: 200px; height: 200px;">
+                        <asp:Image ID="accountImg" style="width: 200px; height: 200px;" runat="server" />
+                        <%--ImageUrl=<%# Eval(  customersModel.picture, "images/thumbs/{0} ") %>--%>
+                        <%--<img id="accountImg" style="width: 200px; height: 200px;">--%>
                     </div>
                     <div style="display: flex; justify-content: flex-end; padding-top: 5px;">
 
                         <asp:FileUpload ID="FileUpload1" runat="server" accept=".jepg,.jpg,.png"/>
-                        <asp:Button ID="Button1" runat="server" Text="顯示圖片" OnClick="Button1_FileUpload" />
+                        <asp:Button ID="Button1" runat="server" Text="上傳圖片" OnClick="Button1_FileUpload" />
 
 
 
@@ -158,7 +159,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 login-left">
+                        <div class="col-md-3 login-left pwd-box">
                             <button id="passwordEntrt" type="button" class="btn btn-lg btn-info"
                                 style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
                                 確認</button>

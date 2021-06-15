@@ -69,9 +69,9 @@
         </div>
     </div>
     <div>
-    <button id="btnSHClick" type="button" class="btn btn-lg btn-info"
+<%--    <button id="btnSHClick" type="button" class="btn btn-lg btn-info"
                         style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
-                        驗證使用者</button>
+                        驗證使用者</button>--%>
     </div>
     <%--            <div class="shopping_grid">
 

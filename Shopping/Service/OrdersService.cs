@@ -9,10 +9,10 @@ namespace Shopping.Service
 {
     public class OrdersService : BaseService
     {
-        public List<ShoppingListModel> GetOrders()
+        public List<ShoppingListModel> GetOrders(string account)
         {
             OrdersDao ordersDao = new OrdersDao();
-            List<ShoppingListModel> orders = ordersDao.GetOrders();
+            List<ShoppingListModel> orders = ordersDao.GetOrders(account);
             return orders;
         }
 

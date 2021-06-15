@@ -13,17 +13,30 @@ namespace Shopping.Dao
     {
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrdersConnectionString"].ConnectionString;
 
-        public List<ShoppingListModel> GetOrders()
+        public List<ShoppingListModel> GetOrders(string account)
         {
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(s_data);
             //SqlCommand command = new SqlCommand($"select * from Customers", connection);
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(@"SELECT 
+            //SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(@"SELECT 
+            //  a.serial, a.customerAccount, a.name, a.phone, a.address, a.totalPrice, a.status, a.initdate,
+            //  b.productPicture, b.productName, b.productColor, productPrice, b.qty
+            //  FROM [Orders] as a
+            //  JOIN [OrderDetail] as b
+            //  on a.serial = b.serial 
+            //  order by a.initdate desc;", connection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            SqlCommand command = new SqlCommand(@"SELECT 
               a.serial, a.customerAccount, a.name, a.phone, a.address, a.totalPrice, a.status, a.initdate,
               b.productPicture, b.productName, b.productColor, productPrice, b.qty
               FROM [Orders] as a
               JOIN [OrderDetail] as b
-              on a.serial = b.serial order by a.initdate desc;", connection);
+              on a.serial = b.serial 
+              where a.customerAccount = @account
+              order by a.initdate desc;", connection);
+            command.Parameters.Add("@account", SqlDbType.NVarChar).Value = account;
+            sqlDataAdapter.SelectCommand = command;
+
 
 
             //與資料庫連接的通道開啟

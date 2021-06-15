@@ -49,7 +49,7 @@ $(document).ready(function () {
                     if (e.d.Status == 0) {
                         let data = e.d.Data[0];
                         getCustomers(true);
-                    /*    alert("OK");*/
+                        /*    alert("OK");*/
 
                         $('#nameInput').css('display', 'none');
                         $('#nameText').css('display', '');
@@ -73,6 +73,7 @@ $(document).ready(function () {
             $('#passwordEdit').removeAttr('disabled');
             $('#mailEdit').removeAttr('disabled');
             $('#accountDelet').removeAttr('disabled');
+            $('#addressEdit').removeAttr('disabled');
 
         } else {
             //NOT OK
@@ -100,8 +101,8 @@ $(document).ready(function () {
                     if (e.d.Status == 0) {
                         let data = e.d.Data[0];
                         getCustomers(true);
-                        
-                        $('#phoneNumberText').text(data.phone);
+                    $('#phoneNumberInput').css('display', 'none');
+                    $('#phoneNumberText').css('display', '');
                     } else {
                         alert(e.d.Message);
                     }
@@ -115,13 +116,14 @@ $(document).ready(function () {
             });
             $('#phoneNumberClose').css('display', 'none');
             $('#phoneNumberEntrt').css('display', 'none');
-            $('#phoneNumberInput').css('display', 'none');
+            /*$('#phoneNumberInput').css('display', 'none');*/
             $('#phoneNumberEdit').css('display', '');
-            $('#phoneNumberText').css('display', '');
+            /*$('#phoneNumberText').css('display', '');*/
             $('#nameEdit').removeAttr('disabled');
             $('#passwordEdit').removeAttr('disabled');
             $('#mailEdit').removeAttr('disabled');
             $('#accountDelet').removeAttr('disabled');
+            $('#addressEdit').removeAttr('disabled');
         } else {
             //NOT OK
             var phoneNumberDel = alert('您的手機格式錯誤，\n請輸正確的手機號碼');
@@ -145,7 +147,8 @@ $(document).ready(function () {
                     $('#phoneNumberText').text(data.phone);
                     $('#mailText').text(data.email);
                     $('#addressText').text(data.address);
-                    $('#accountImg').attr('src', data.picture);
+                    //$('#accountImg').attr('src', data.picture);
+                    $('#ContentPlaceHolder1_accountImg').attr('src', ".." + data.picture);
 
                     //to do
                     customer = data;
@@ -153,7 +156,7 @@ $(document).ready(function () {
                         setTimeout(() => {
                             alert("OK")
                         }, 200)
-                    
+
                     }
 
                 } else {
@@ -186,7 +189,7 @@ $(document).ready(function () {
             $('#phoneNumberEdit').removeAttr('disabled');
             $('#passwordEdit').removeAttr('disabled');
             $('#accountDelet').removeAttr('disabled');
-
+            $('#addressEdit').removeAttr('disabled');
             $.ajax({
                 type: "post",
                 url: "CustomerDetail.aspx/GetCustomers",
@@ -236,7 +239,8 @@ $(document).ready(function () {
 
                         $('#addressInput').css('display', 'none');
                         $('#addressText').css('display', '');
-                    } else {我
+                    } else {
+                        
                         alert(e.d.Message);
                     }
                 },
@@ -251,13 +255,13 @@ $(document).ready(function () {
             $('#addressEntrt').css('display', 'none');
             /*$('#nameInput').css('display', 'none');*/
             $('#addressEdit').css('display', '');
-        /*$('#nameText').css('display', '');*/
+            /*$('#nameText').css('display', '');*/
             $('#nameEdit').removeAttr('disabled');
             $('#phoneNumberEdit').removeAttr('disabled');
             $('#passwordEdit').removeAttr('disabled');
             $('#mailEdit').removeAttr('disabled');
             $('#accountDelet').removeAttr('disabled');
-
+            $('#addressEdit').removeAttr('disabled');
         } else {
             //NOT OK
             //console.log("NOT OK");
@@ -268,8 +272,68 @@ $(document).ready(function () {
 
     });
 
+    //修改密碼.只傳值
+    $('#passwordEntrt').click(function () {
+        
+        if (IsPassword($('#newPasswordInput').val())) {
+            if ($('#newPasswordInput').val() == $('#newDoublePasswordInput').val()) {
+                //OK
+
+                passwordUpdate();
+                $('.pwd-box').css('display', 'none');
+                $('#passwordAll').css('border-width', '0px');
+                console.log("OK");
+            } else {
+                //NOT OK
+                var newpasswordDel2 = alert('您的新密碼輸入不同，\n請再輸入一次');
+            }
+        } else {
+            //NOT OK
+            var newpasswordDel1 = alert('您的新密碼格式錯誤，\n請輸入英文+數字的組合');
+        }
+
+
+    });
+
+
+
 
     // inti
     getCustomers();//讀取
 
+
+
 });
+
+// 更新密碼
+var passwordUpdate = () => {
+    $.ajax({
+        type: "post",
+        url: "CustomerDetail.aspx/EditPassword",
+        data: JSON.stringify({ account: customer.account, oldPwd: $('#oldPasswordInput').val(), newPwd: $('#newPasswordInput').val(), reNewPwd: $('#newDoublePasswordInput').val()}),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: (e) => {
+            if (e.d.Status == 0) {
+                let data = e.d.Data[0];
+
+                $('#nameEdit').removeAttr('disabled');
+                $('#phoneNumberEdit').removeAttr('disabled');
+                $('#passwordEdit').removeAttr('disabled');
+                $('#mailEdit').removeAttr('disabled');
+                $('#accountDelet').removeAttr('disabled');
+                $('#addressEdit').removeAttr('disabled');
+            } else {
+                alert(e.d.Message);
+            }
+        },
+        error: (e) => {
+            console.log("ERROR");
+
+            alert(e.d.Message);
+        }
+
+    });
+    return false;
+    console.log("passwordUpdate");
+}

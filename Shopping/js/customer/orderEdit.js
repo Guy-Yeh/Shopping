@@ -104,131 +104,93 @@ $(document).ready(function () {
 
 
 
+    var getOrders = (isOk) => {
 
-    $("#btnSHClick").click(function () {
-    $.ajax({
-        type: "post",
-        url: "ShoppingList.aspx/GetOrders",
-        data: JSON.stringify({ str: "123456" }),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: (e) => {
-            console.log(e);
-            if (e.d.Status == 0) {
-                //let data = e.d.Data[0];
-                //getOrders(true);
-                //$('#statusTest').text(data.status);
-                let str = "";
-                for (var i = 0; i < e.d.Data.length; i++) {
-                    let data = e.d.Data[i];
-                    if (i == 0) {
-                        //新訂單
-                        let initdate = parseInt(data.initdate.replace("/Date(", "").replace(")/", ""));
-                        let d = new Date(initdate).getFullYear() + "/" + (new Date(initdate).getMonth() + 1) + "/" + new Date(initdate).getDate() + " - " + new Date(initdate).getHours() + ":" + new Date(initdate).getMinutes() + ":" + new Date(initdate).getSeconds();
-                        str = str + strTitleHtml.replace("##serial##", data.serial).replace("##status##", data.status).replace("##initdate##", d);
-                        str = str + strListHtml.replace("##productName##", data.productName).replace("##productPrice##", data.productPrice * data.qty).replace("##qty##", data.qty).replace("##productPicture##", data.productPicture);
-                    } else {
-                        if (data.serial == e.d.Data[i - 1].serial) {
-                            str = str + strListHtml.replace("##productName##", data.productName).replace("##productPrice##", data.productPrice * data.qty).replace("##qty##", data.qty).replace("##productPicture##", data.productPicture);
-                        } else {
-                            str = str + strEndHtml.replace("##totalPrice##", e.d.Data[i - 1].totalPrice).replaceAll("##serial##", e.d.Data[i - 1].serial).replace("##name##", e.d.Data[i - 1].name).replace("##phone##", e.d.Data[i - 1].phone).replace("##address##", e.d.Data[i - 1].address);
-
+        $.ajax({
+            type: "post",
+            url: "ShoppingList.aspx/GetOrders",
+            data: JSON.stringify({ str: "123456" }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: (e) => {
+                console.log(e);
+                if (e.d.Status == 0) {
+                    //let data = e.d.Data[0];
+                    //getOrders(true);
+                    //$('#statusTest').text(data.status);
+                    let str = "";
+                    for (var i = 0; i < e.d.Data.length; i++) {
+                        let data = e.d.Data[i];
+                        if (i == 0) {
                             //新訂單
                             let initdate = parseInt(data.initdate.replace("/Date(", "").replace(")/", ""));
                             let d = new Date(initdate).getFullYear() + "/" + (new Date(initdate).getMonth() + 1) + "/" + new Date(initdate).getDate() + " - " + new Date(initdate).getHours() + ":" + new Date(initdate).getMinutes() + ":" + new Date(initdate).getSeconds();
                             str = str + strTitleHtml.replace("##serial##", data.serial).replace("##status##", data.status).replace("##initdate##", d);
                             str = str + strListHtml.replace("##productName##", data.productName).replace("##productPrice##", data.productPrice * data.qty).replace("##qty##", data.qty).replace("##productPicture##", data.productPicture);
+                        } else {
+                            if (data.serial == e.d.Data[i - 1].serial) {
+                                str = str + strListHtml.replace("##productName##", data.productName).replace("##productPrice##", data.productPrice * data.qty).replace("##qty##", data.qty).replace("##productPicture##", data.productPicture);
+                            } else {
+                                str = str + strEndHtml.replace("##totalPrice##", e.d.Data[i - 1].totalPrice).replaceAll("##serial##", e.d.Data[i - 1].serial).replace("##name##", e.d.Data[i - 1].name).replace("##phone##", e.d.Data[i - 1].phone).replace("##address##", e.d.Data[i - 1].address);
+
+                                //新訂單
+                                let initdate = parseInt(data.initdate.replace("/Date(", "").replace(")/", ""));
+                                let d = new Date(initdate).getFullYear() + "/" + (new Date(initdate).getMonth() + 1) + "/" + new Date(initdate).getDate() + " - " + new Date(initdate).getHours() + ":" + new Date(initdate).getMinutes() + ":" + new Date(initdate).getSeconds();
+                                str = str + strTitleHtml.replace("##serial##", data.serial).replace("##status##", data.status).replace("##initdate##", d);
+                                str = str + strListHtml.replace("##productName##", data.productName).replace("##productPrice##", data.productPrice * data.qty).replace("##qty##", data.qty).replace("##productPicture##", data.productPicture);
+                            }
+                        }
+
+                        if (i == e.d.Data.length - 1) {
+
+                            str = str + strEndHtml.replace("##totalPrice##", data.totalPrice).replaceAll("##serial##", data.serial).replace("##name##", data.name).replace("##phone##", data.phone).replace("##address##", data.address);
                         }
                     }
 
-                    if (i == e.d.Data.length - 1) {
+                    $('#box-list').html(str);
 
-                        str = str + strEndHtml.replace("##totalPrice##", data.totalPrice).replaceAll("##serial##", data.serial).replace("##name##", data.name).replace("##phone##", data.phone).replace("##address##", data.address);
+                    for (var i = 0; i < e.d.Data.length; i++) {
+                        let data = e.d.Data[i];
+                        if (data.status != "賣方處理中") {
+                            $('#delete-but-' + data.serial).css("display", "none");
+                        }
                     }
-                }
-          
-                $('#box-list').html(str);
 
-                for (var i = 0; i < e.d.Data.length; i++) {
-                    let data = e.d.Data[i];
-                    if (data.status != "賣方處理中") {
-                        $('#delete-but-' + data.serial).css("display", "none");
-                    }
-                }
+                    // 取消
+                    $("#delete-but").click(function () {
+                        console.log("delete-but", $(this).attr("data-serial"));
+                        $.ajax({
+                            type: "post",
+                            url: "ShoppingList.aspx/DelOrders",
+                            data: JSON.stringify({ serial: $(this).attr("data-serial") }),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: (e) => {
+                                if (e.d.Status == 0) {
+                                    let data = e.d.Data[0];
+                                    $(this).attr("data-serial");
 
-                // 取消
-                $("#delete-but").click(function () {
-                    console.log("delete-but", $(this).attr("data-serial"));
-                    $.ajax({
-                        type: "post",
-                        url: "ShoppingList.aspx/DelOrders",
-                        data: JSON.stringify({ serial: $(this).attr("data-serial") }),
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: (e) => {
-                            if (e.d.Status == 0) {
-                                let data = e.d.Data[0];
-                                $(this).attr("data-serial");
+                                    //to do
+                                    //customer = data;
+                                    //if (isOk == true) {
+                                    //    setTimeout(() => {
+                                    //        alert("OK")
+                                    //    }, 200)
 
-                                //to do
-                                //customer = data;
-                                //if (isOk == true) {
-                                //    setTimeout(() => {
-                                //        alert("OK")
-                                //    }, 200)
+                                    //}
 
-                                //}
+                                } else {
+                                    alert(e.d.Message);
+                                }
+                            },
+                            error: (e) => {
+                                console.log("ERROR");
 
-                            } else {
                                 alert(e.d.Message);
                             }
-                        },
-                        error: (e) => {
-                            console.log("ERROR");
 
-                            alert(e.d.Message);
-                        }
-
+                        });
                     });
-                });
-
-            } else {
-                alert(e.d.Message);
-            }
-        },
-        error: (e) => {
-            console.log("ERROR");
-
-            alert(e.d.Message);
-        }
-
-    });
-    return false;
-
-
-});
-
-    var getOrders = (isOk) => {
-        $.ajax({
-            type: "post",
-            url: "ShoppingList.aspx/GetOrders",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: (e) => {
-                if (e.d.Status == 0) {
-                    let data = e.d.Data[0];
-                    $('#statusTest').text(data.status);
-
-
-
-                    //to do
-                    order = data;
-                    if (isOk == true) {
-                        setTimeout(() => {
-                            alert("OK")
-                        }, 200)
-
-                    }
 
                 } else {
                     alert(e.d.Message);
@@ -241,8 +203,152 @@ $(document).ready(function () {
             }
 
         });
-    };
-    // inti
-    //getOrders();//讀取
+
+        return false;
+
+    }
+
+
+    getOrders();
+
+    //$("#btnSHClick").click(function () {
+    //    $.ajax({
+    //        type: "post",
+    //        url: "ShoppingList.aspx/GetOrders",
+    //        data: JSON.stringify({ str: "123456" }),
+    //        contentType: "application/json; charset=utf-8",
+    //        dataType: "json",
+    //        success: (e) => {
+    //            console.log(e);
+    //            if (e.d.Status == 0) {
+    //                //let data = e.d.Data[0];
+    //                //getOrders(true);
+    //                //$('#statusTest').text(data.status);
+    //                let str = "";
+    //                for (var i = 0; i < e.d.Data.length; i++) {
+    //                    let data = e.d.Data[i];
+    //                    if (i == 0) {
+    //                        //新訂單
+    //                        let initdate = parseInt(data.initdate.replace("/Date(", "").replace(")/", ""));
+    //                        let d = new Date(initdate).getFullYear() + "/" + (new Date(initdate).getMonth() + 1) + "/" + new Date(initdate).getDate() + " - " + new Date(initdate).getHours() + ":" + new Date(initdate).getMinutes() + ":" + new Date(initdate).getSeconds();
+    //                        str = str + strTitleHtml.replace("##serial##", data.serial).replace("##status##", data.status).replace("##initdate##", d);
+    //                        str = str + strListHtml.replace("##productName##", data.productName).replace("##productPrice##", data.productPrice * data.qty).replace("##qty##", data.qty).replace("##productPicture##", data.productPicture);
+    //                    } else {
+    //                        if (data.serial == e.d.Data[i - 1].serial) {
+    //                            str = str + strListHtml.replace("##productName##", data.productName).replace("##productPrice##", data.productPrice * data.qty).replace("##qty##", data.qty).replace("##productPicture##", data.productPicture);
+    //                        } else {
+    //                            str = str + strEndHtml.replace("##totalPrice##", e.d.Data[i - 1].totalPrice).replaceAll("##serial##", e.d.Data[i - 1].serial).replace("##name##", e.d.Data[i - 1].name).replace("##phone##", e.d.Data[i - 1].phone).replace("##address##", e.d.Data[i - 1].address);
+
+    //                            //新訂單
+    //                            let initdate = parseInt(data.initdate.replace("/Date(", "").replace(")/", ""));
+    //                            let d = new Date(initdate).getFullYear() + "/" + (new Date(initdate).getMonth() + 1) + "/" + new Date(initdate).getDate() + " - " + new Date(initdate).getHours() + ":" + new Date(initdate).getMinutes() + ":" + new Date(initdate).getSeconds();
+    //                            str = str + strTitleHtml.replace("##serial##", data.serial).replace("##status##", data.status).replace("##initdate##", d);
+    //                            str = str + strListHtml.replace("##productName##", data.productName).replace("##productPrice##", data.productPrice * data.qty).replace("##qty##", data.qty).replace("##productPicture##", data.productPicture);
+    //                        }
+    //                    }
+
+    //                    if (i == e.d.Data.length - 1) {
+
+    //                        str = str + strEndHtml.replace("##totalPrice##", data.totalPrice).replaceAll("##serial##", data.serial).replace("##name##", data.name).replace("##phone##", data.phone).replace("##address##", data.address);
+    //                    }
+    //                }
+
+    //                $('#box-list').html(str);
+
+    //                for (var i = 0; i < e.d.Data.length; i++) {
+    //                    let data = e.d.Data[i];
+    //                    if (data.status != "賣方處理中") {
+    //                        $('#delete-but-' + data.serial).css("display", "none");
+    //                    }
+    //                }
+
+    //                // 取消
+    //                $("#delete-but").click(function () {
+    //                    console.log("delete-but", $(this).attr("data-serial"));
+    //                    $.ajax({
+    //                        type: "post",
+    //                        url: "ShoppingList.aspx/DelOrders",
+    //                        data: JSON.stringify({ serial: $(this).attr("data-serial") }),
+    //                        contentType: "application/json; charset=utf-8",
+    //                        dataType: "json",
+    //                        success: (e) => {
+    //                            if (e.d.Status == 0) {
+    //                                let data = e.d.Data[0];
+    //                                $(this).attr("data-serial");
+
+    //                                //to do
+    //                                //customer = data;
+    //                                //if (isOk == true) {
+    //                                //    setTimeout(() => {
+    //                                //        alert("OK")
+    //                                //    }, 200)
+
+    //                                //}
+
+    //                            } else {
+    //                                alert(e.d.Message);
+    //                            }
+    //                        },
+    //                        error: (e) => {
+    //                            console.log("ERROR");
+
+    //                            alert(e.d.Message);
+    //                        }
+
+    //                    });
+    //                });
+
+    //            } else {
+    //                alert(e.d.Message);
+    //            }
+    //        },
+    //        error: (e) => {
+    //            console.log("ERROR");
+
+    //            alert(e.d.Message);
+    //        }
+
+    //    });
+    //    return false;
+
+
+    //});
+
+    //var getOrders = (isOk) => {
+    //    $.ajax({
+    //        type: "post",
+    //        url: "ShoppingList.aspx/GetOrders",
+    //        contentType: "application/json; charset=utf-8",
+    //        dataType: "json",
+    //        success: (e) => {
+    //            if (e.d.Status == 0) {
+    //                let data = e.d.Data[0];
+    //                $('#statusTest').text(data.status);
+
+
+
+    //                //to do
+    //                order = data;
+    //                if (isOk == true) {
+    //                    setTimeout(() => {
+    //                        alert("OK")
+    //                    }, 200)
+
+    //                }
+
+    //            } else {
+    //                alert(e.d.Message);
+    //            }
+    //        },
+    //        error: (e) => {
+    //            console.log("ERROR");
+
+    //            alert(e.d.Message);
+    //        }
+
+    //    });
+    //};
+    //// inti
+    /*getOrders();*///讀取
 
 });

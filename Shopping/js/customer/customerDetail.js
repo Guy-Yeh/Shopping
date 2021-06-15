@@ -281,30 +281,32 @@
         //});
 
         //密碼確定紐-等等再做
-        $('#passwordEntrt').click(function () {
-            if (IsPassword($('#oldPasswordInput').val())) {
-                //OK
-                console.log("OK");
-            } else {
-                //NOT OK
-                var passwordDel = alert('您的舊密碼輸入錯誤');
-            }
+        //$('#passwordEntrt').click(function () {
+        //    //if (IsPassword($('#oldPasswordInput').val())) {
+        //    //    //OK
+        //    //    console.log("OK");
+        //    //    passwordUpdate();
+        //    //} else {
+        //    //    //NOT OK
+        //    //    var passwordDel = alert('您的舊密碼輸入錯誤');
+        //    //}
 
-            if (IsPassword($('#newPasswordInput').val())) {
-                if ($('#newPasswordInput').val() == $('#newDoublePasswordInput').val()) {
-                    //OK
-                    console.log("OK");
-                } else {
-                    //NOT OK
-                    var newpasswordDel2 = alert('您的新密碼輸入不同，\n請再輸入一次');
-                }
-            } else {
-                //NOT OK
-                var newpasswordDel1 = alert('您的新密碼格式錯誤，\n請輸入英文+數字的組合');
-            }
+        //    if (IsPassword($('#newPasswordInput').val())) {
+        //        if ($('#newPasswordInput').val() == $('#newDoublePasswordInput').val()) {
+        //            //OK
+        //            console.log("OK");
+        //            passwordUpdate();
+        //        } else {
+        //            //NOT OK
+        //            var newpasswordDel2 = alert('您的新密碼輸入不同，\n請再輸入一次');
+        //        }
+        //    } else {
+        //        //NOT OK
+        //        var newpasswordDel1 = alert('您的新密碼格式錯誤，\n請輸入英文+數字的組合');
+        //    }
 
 
-        });
+        //});
 
         ////手機確定紐
         //$('#phoneNumberEntrt').click(function () {

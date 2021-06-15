@@ -12,9 +12,24 @@ namespace Shopping.Customer
 {
     public partial class ShoppingList : System.Web.UI.Page
     {
+        public static string loginstatus = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["loginstatus"] = "Amber";
 
+            try
+            {
+                loginstatus = Session["loginstatus"].ToString();
+            }
+            catch (Exception ex)
+            {
+                loginstatus = "";
+                throw;
+            }
+            finally
+            {
+
+            }
         }
 
         [WebMethod]
@@ -24,7 +39,7 @@ namespace Shopping.Customer
             try
             {
                 OrdersService ordersService = new OrdersService();
-                List<ShoppingListModel> orders = ordersService.GetOrders();
+                List<ShoppingListModel> orders = ordersService.GetOrders(loginstatus);
 
                 return common.ThrowResult<List<ShoppingListModel>>(Enum.ApiStatusEnum.OK, string.Empty, orders);
             }
