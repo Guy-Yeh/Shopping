@@ -18,21 +18,21 @@ namespace Shopping
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            string[] Datakeys = new string[3] { "ID", "serial", "customerAccount" };
-            GridView1.DataKeyNames = Datakeys;
-            //string ID = GridView1.DataKeys[e.RowIndex].Value.ToString();
-            string name = GridView1.DataKeys[e.RowIndex][1].ToString();
-            SqlConnection connection = new SqlConnection(s_data);
-            SqlCommand command = new SqlCommand($"delete from OrderDetail where customerAccount = '{name}'", connection);
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
+            //string[] Datakeys = new string[3] { "ID", "serial", "customerAccount" };
+            //GridView1.DataKeyNames = Datakeys;
+            ////string ID = GridView1.DataKeys[e.RowIndex].Value.ToString();
+            //string name = GridView1.DataKeys[e.RowIndex][1].ToString();
+            //SqlConnection connection = new SqlConnection(s_data);
+            //SqlCommand command = new SqlCommand($"delete from OrderDetail where customerAccount = '{name}'", connection);
+            //connection.Open();
+            //command.ExecuteNonQuery();
+            //connection.Close();
             //Response.Redirect(Request.Url.ToString());
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Label1.Text = TextBox2.Text;
+            //Label1.Text = TextBox2.Text;
         }
     }
 }
