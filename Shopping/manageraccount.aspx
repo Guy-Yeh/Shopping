@@ -173,6 +173,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </li>
                             <li><a href="managerorder">訂單</a></li>
+                            <li><a  href="managershoppingcar">購物車</a></li>
                             <li><a class="color6" href="managercontact">回覆訊息</a></li>
                         </ul>
                     </div>

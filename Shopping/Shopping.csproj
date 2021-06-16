@@ -118,12 +118,12 @@
     <Content Include="js\customer\orders.js" />
     <Content Include="managercontact.aspx" />
     <Content Include="forget.aspx" />
+    <Content Include="managershoppingcar.aspx" />
     <Content Include="product.aspx" />
     <Content Include="shoppingcar.aspx" />
     <Content Include="images\img_153839.png" />
     <Content Include="login.aspx" />
     <Content Include="register.aspx" />
-    <Content Include="account.html" />
     <Content Include="payment.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -223,9 +223,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="single.html" />
     <Content Include="Site.Master" />
-    <Content Include="typo.html" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -259,6 +257,13 @@
     </Compile>
     <Compile Include="managercontact.aspx.designer.cs">
       <DependentUpon>managercontact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="managershoppingcar.aspx.cs">
+      <DependentUpon>managershoppingcar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="managershoppingcar.aspx.designer.cs">
+      <DependentUpon>managershoppingcar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\ApiResultModel.cs" />
     <Compile Include="Models\CustomersModel.cs" />

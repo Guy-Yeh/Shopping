@@ -178,7 +178,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 			    </li>
-				<li><a  href="">訂單</a></li>				
+				<li><a  href="">訂單</a></li>	
+			    <li><a  href="">購物車</a></li>
 				<li><a class="color6" href="">回覆訊息</a></li>
 			  </ul> 
 			</div>
