@@ -12,25 +12,57 @@ namespace Shopping.Customer
 {
     public partial class ShoppingList : System.Web.UI.Page
     {
+        public static string loginstatus = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["loginstatus"] = "Amber";
 
+            try
+            {
+                loginstatus = Session["loginstatus"].ToString();
+            }
+            catch (Exception ex)
+            {
+                loginstatus = "";
+                throw;
+            }
+            finally
+            {
+
+            }
         }
 
         [WebMethod]
-        public static Models.ApiResultModel<List<OrdersModel>> GetOrders()
+        public static Models.ApiResultModel<List<ShoppingListModel>> GetOrders()
         {
             Common.Common common = new Common.Common();
             try
             {
                 OrdersService ordersService = new OrdersService();
-                List<OrdersModel> orders = ordersService.GetOrders();
+                List<ShoppingListModel> orders = ordersService.GetOrders(loginstatus);
 
-                return common.ThrowResult<List<OrdersModel>>(Enum.ApiStatusEnum.OK, string.Empty, orders);
+                return common.ThrowResult<List<ShoppingListModel>>(Enum.ApiStatusEnum.OK, string.Empty, orders);
             }
             catch (Exception ex)
             {
-                return common.ThrowResult<List<OrdersModel>>(Enum.ApiStatusEnum.InternalServerError, ex.Message, null);
+                return common.ThrowResult<List<ShoppingListModel>>(Enum.ApiStatusEnum.InternalServerError, ex.Message, null);
+            }
+        }
+
+        [WebMethod]
+        public static Models.ApiResultModel<bool> DelOrders(string serial)
+        {
+            Common.Common common = new Common.Common();
+            try
+            {
+                OrdersService ordersService = new OrdersService();
+                bool orders = ordersService.DelOrders(serial);
+
+                return common.ThrowResult<bool>(Enum.ApiStatusEnum.OK, string.Empty, orders);
+            }
+            catch (Exception ex)
+            {
+                return common.ThrowResult<bool>(Enum.ApiStatusEnum.InternalServerError, ex.Message, false);
             }
         }
     }

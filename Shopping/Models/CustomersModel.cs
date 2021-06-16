@@ -16,6 +16,7 @@ namespace Shopping.Models
         public string address { get; set; }
         public string discount { get; set; }
         public DateTime initdate { get; set; }
+        public string picture { get; set; }
 
     }
 

@@ -13,14 +13,18 @@ namespace Shopping.Dao
     {
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
 
-        public List<CustomersModel> GetCustomers()
+        public List<CustomersModel> GetCustomers(string account)
         {
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(s_data);
-            //SqlCommand command = new SqlCommand($"select * from Customers", connection);
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter($"select * from Customers", connection);
 
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            SqlCommand command = new SqlCommand($"SELECT * FROM [dbo].[Customers] WHERE account = @account;", connection);
+            command.Parameters.Add("@account", SqlDbType.NVarChar).Value = account;
+            sqlDataAdapter.SelectCommand = command;
+      
 
+          
             //與資料庫連接的通道開啟
             connection.Open();
 
@@ -144,6 +148,65 @@ namespace Shopping.Dao
         //    }
         //}
 
+        public bool CheckPassword(string account,string oldPwd)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                SqlConnection connection = new SqlConnection(s_data);
 
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+                SqlCommand command = new SqlCommand($"SELECT password FROM [dbo].[Customers] WHERE account = @account and password = @oldPwd;", connection);
+                command.Parameters.Add("@account", SqlDbType.NVarChar).Value = account;
+                command.Parameters.Add("@oldPwd", SqlDbType.NVarChar).Value = oldPwd;
+                sqlDataAdapter.SelectCommand = command;
+
+                //與資料庫連接的通道開啟
+                connection.Open();
+
+                DataSet ds = new DataSet();
+                sqlDataAdapter.Fill(ds);
+                dt = ds.Tables[0];
+
+                //關閉與資料庫連接的通道
+                connection.Close();
+
+                if (dt.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+        
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public bool EditPassword1(string account, string reNewPwd)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(s_data);
+                SqlCommand command = new SqlCommand(@"UPDATE Customers SET password = @password WHERE account = @account ", connection);
+                command.Parameters.Add("@account", SqlDbType.NVarChar).Value = account;
+                command.Parameters.Add("@password", SqlDbType.NVarChar).Value = reNewPwd;
+
+                connection.Open();
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

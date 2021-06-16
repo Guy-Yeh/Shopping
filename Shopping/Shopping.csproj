@@ -268,6 +268,7 @@
     <Compile Include="Models\ApiResultModel.cs" />
     <Compile Include="Models\CustomersModel.cs" />
     <Compile Include="Models\OrdersModel.cs" />
+    <Compile Include="Models\ShoppingListModel.cs" />
     <Compile Include="product.aspx.cs">
       <DependentUpon>product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

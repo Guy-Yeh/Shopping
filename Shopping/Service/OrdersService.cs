@@ -9,13 +9,20 @@ namespace Shopping.Service
 {
     public class OrdersService : BaseService
     {
-        public List<OrdersModel> GetOrders()
+        public List<ShoppingListModel> GetOrders(string account)
         {
             OrdersDao ordersDao = new OrdersDao();
-            List<OrdersModel> orders = ordersDao.GetOrders();
+            List<ShoppingListModel> orders = ordersDao.GetOrders(account);
             return orders;
         }
 
-        
+        public bool DelOrders(string serial)
+        {
+            OrdersDao ordersDao = new OrdersDao();
+            bool orders = ordersDao.DelOrders(serial);
+            return true;
+        }
+
+
     }
 }

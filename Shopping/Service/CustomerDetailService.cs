@@ -10,10 +10,10 @@ namespace Shopping.Service
     public class CustomerDetailService : BaseService
     {
 
-        public List<CustomersModel> GetCustomers()
+        public List<CustomersModel> GetCustomers(string account)
         {
             CustomerDetailDao customerDetailDao = new CustomerDetailDao();
-            List<CustomersModel> customers = customerDetailDao.GetCustomers();
+            List<CustomersModel> customers = customerDetailDao.GetCustomers(account);
             return customers;
         }
 
@@ -69,6 +69,33 @@ namespace Shopping.Service
         //        throw;
         //    }
         //}
+
+        public bool CheckPassword(string account, string oldPwd)
+        {
+            try
+            {
+                CustomerDetailDao customerDetailDao = new CustomerDetailDao();
+                return customerDetailDao.CheckPassword(account, oldPwd);
+                
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public bool EditPassword1(string account, string reNewPwd)
+        {
+            try
+            {
+                CustomerDetailDao customerDetailDao = new CustomerDetailDao();
+                return customerDetailDao.EditPassword1(account, reNewPwd);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
     }
 }

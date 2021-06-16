@@ -22,9 +22,10 @@
 
                             <%--<asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" />--%>
                             <%--<asp:BoundField DataField="account" HeaderText="account" SortExpression="account" />--%>
-                            <asp:BoundField DataField="message" HeaderText="message" SortExpression="message" />
-                            <asp:BoundField DataField="response" HeaderText="response" SortExpression="response" />
-                            <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" />
+                            <asp:BoundField DataField="message" HeaderText="訊息" SortExpression="message" />       
+                            <asp:BoundField DataField="initdate" HeaderText="留言時間" SortExpression="initdate" />
+                            <asp:BoundField DataField="response" HeaderText="回覆" SortExpression="response" />
+                            <asp:BoundField DataField="updateInitdate" HeaderText="回覆時間" SortExpression="updateInitdate" />
                         </Columns>
                     </asp:GridView>
 
