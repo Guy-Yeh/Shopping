@@ -194,6 +194,16 @@ namespace Shopping
                 }
             }
         }
+
+        protected void loginLinkButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("login");
+        }
+
+        protected void registerLinkButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("register");
+        }
     }
     
 

@@ -39,13 +39,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					
 				</div>
 				<div class="col-md-4 logo">
-					<a href="index.html"><img src="images/CAT4.png" alt=""></a>	
+					<a href="index.aspx"><img src="images/CAT4.png" alt=""></a>	
 				</div>
 		
 			<div class="col-md-4 header-left">		
 					<p class="log">
-						<asp:LinkButton ID="loginLinkButton" runat="server" >登入</asp:LinkButton>或
-						<asp:LinkButton ID="registerLinkButton" runat="server" >註冊</asp:LinkButton>
+						<asp:LinkButton ID="loginLinkButton" runat="server" OnClick="loginLinkButton_Click" >登入</asp:LinkButton>或
+						<asp:LinkButton ID="registerLinkButton" runat="server" OnClick="registerLinkButton_Click" >註冊</asp:LinkButton>
 					</p>
 					<div class="cart box_1">
 						<a href="checkout.html">
