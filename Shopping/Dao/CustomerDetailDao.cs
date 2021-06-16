@@ -74,6 +74,9 @@ namespace Shopping.Dao
 
         public bool EditPhoneNumber(int id, string phone)
         {
+
+            //throw new ArgumentException("驗證錯誤");
+
             try
             {
                 SqlConnection connection = new SqlConnection(s_data);
