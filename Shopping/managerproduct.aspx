@@ -54,127 +54,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-2 number">
                 </div>
                 <div class="col-md-8 h_menu4">
-                    <ul class="memenu skyblue">
-                        <li class=" grid"><a href="managerhome">首頁</a></li>
-                        <li><a href="manageraccount">帳戶</a>
-                            <div class="mepanel">
-                                <div class="row">
-                                    <div class="col1">
-                                        <div class="h_nav">
-                                            <h4>All Clothing</h4>
-                                            <ul>
-                                                <li><a href="products.html">Shirts</a></li>
-                                                <li><a href="products.html">Sports Wear</a></li>
-                                                <li><a href="products.html">Shorts</a></li>
-                                                <li><a href="products.html">Suits & Blazers</a></li>
-                                                <li><a href="products.html">Formal Shirts</a></li>
-                                                <li><a href="products.html">Sweatpants</a></li>
-                                                <li><a href="products.html">Swimwear</a></li>
-                                                <li><a href="products.html">Trousers & Chinos</a></li>
-                                                <li><a href="products.html">T-Shirts</a></li>
-                                                <li><a href="products.html">Underwear & Socks</a></li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col1">
-                                        <div class="h_nav">
-                                            <h4>Footwear</h4>
-                                            <ul>
-                                                <li><a href="products.html">Formal Shoes</a></li>
-                                                <li><a href="products.html">Boots</a></li>
-                                                <li><a href="products.html">Sports Shoes</a></li>
-                                                <li><a href="products.html">Casual Shoes</a></li>
-                                                <li><a href="products.html">Running Shoes</a></li>
-                                                <li><a href="products.html">Sneakers</a></li>
-                                                <li><a href="products.html">Loafers</a></li>
-                                                <li><a href="products.html">Slippers</a></li>
-                                                <li><a href="products.html">Sandals</a></li>
-                                                <li><a href="products.html">Flip-flops</a></li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col1">
-                                        <div class="h_nav">
-                                            <h4>Popular Brands</h4>
-                                            <ul>
-                                                <li><a href="products.html">Levis</a></li>
-                                                <li><a href="products.html">Persol</a></li>
-                                                <li><a href="products.html">Nike</a></li>
-                                                <li><a href="products.html">Edwin</a></li>
-                                                <li><a href="products.html">New Balance</a></li>
-                                                <li><a href="products.html">Jack & Jones</a></li>
-                                                <li><a href="products.html">Paul Smith</a></li>
-                                                <li><a href="products.html">Ray-Ban</a></li>
-                                                <li><a href="products.html">Wood Wood</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="grid"><a href="managerproduct">產品</a>
-                            <div class="mepanel">
-                                <div class="row">
-                                    <div class="col1">
-                                        <div class="h_nav">
-                                            <h4>All Clothing</h4>
-                                            <ul>
-                                                <li><a href="products.html">Shirts & Tops</a></li>
-                                                <li><a href="products.html">Sports Wear</a></li>
-                                                <li><a href="products.html">Kurtas & Kurties</a></li>
-                                                <li><a href="products.html">Suits & Blazers</a></li>
-                                                <li><a href="products.html">Sarees</a></li>
-                                                <li><a href="products.html">Sweatpants</a></li>
-                                                <li><a href="products.html">Swimwear</a></li>
-                                                <li><a href="products.html">Night-Suits</a></li>
-                                                <li><a href="products.html">T-Shirts</a></li>
-                                                <li><a href="products.html">Jeans</a></li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col1">
-                                        <div class="h_nav">
-                                            <h4>Footwear</h4>
-                                            <ul>
-                                                <li><a href="products.html">Heels</a></li>
-                                                <li><a href="products.html">Flats</a></li>
-                                                <li><a href="products.html">Sports Shoes</a></li>
-                                                <li><a href="products.html">Casual Shoes</a></li>
-                                                <li><a href="products.html">Running Shoes</a></li>
-                                                <li><a href="products.html">Wedges</a></li>
-                                                <li><a href="products.html">Boots</a></li>
-                                                <li><a href="products.html">Pumps</a></li>
-                                                <li><a href="products.html">Slippers</a></li>
-                                                <li><a href="products.html">Flip-flops</a></li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col1">
-                                        <div class="h_nav">
-                                            <h4>Popular Brands</h4>
-                                            <ul>
-                                                <li><a href="products.html">Levis</a></li>
-                                                <li><a href="products.html">Persol</a></li>
-                                                <li><a href="products.html">Nike</a></li>
-                                                <li><a href="products.html">Edwin</a></li>
-                                                <li><a href="products.html">New Balance</a></li>
-                                                <li><a href="products.html">Jack & Jones</a></li>
-                                                <li><a href="products.html">Paul Smith</a></li>
-                                                <li><a href="products.html">Ray-Ban</a></li>
-                                                <li><a href="products.html">Wood Wood</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li><a href="managerorder">訂單</a></li>
-                         <li><a  href="managershoppingcar">購物車</a></li>
-                        <li><a class="color6" href="managercontact">回覆訊息</a></li>
+                    <ul class="memenu skyblue">                        
+                            <li><a href="manageraccount">帳戶</a></li>
+                            <li><a href="managerproduct">產品</a></li>
+                            <li><a href="managerorder">訂單</a></li>
+                            <li><a href="managershoppingcar">購物車</a></li>
+                            <li><a class="color6" href="managercontact">回覆訊息</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 search">
@@ -231,8 +116,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <li>
                                             <asp:FileUpload ID="FileUpload1" runat="server" /></li>
                                         <li>
-                                            <asp:Label ID="hintPicture" runat="server" Text=""></asp:Label></li>
-                                        <br>
+                                            <asp:Label ID="hintPicture" runat="server" Text=""></asp:Label></li>                                        
                                         <li>
                                             <asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;" /></li>
                                         <br>
@@ -242,7 +126,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                             <div class="col1">
                                 <div class="h_nav">
-                                    <h4>Delete Product</h4>
+                                    <h4>Delete or Search Product</h4>
                                     <ul>
                                         <li>
                                             <asp:Label ID="productID" runat="server" Text="productID"></asp:Label></li>
@@ -253,10 +137,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <asp:SqlDataSource ID="SqlDataSourceProductsID" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT [ID] FROM [Products]"></asp:SqlDataSource>
                                         </li>
                                         <li>
-                                            <asp:Label ID="hintID" runat="server" Text="選擇即將刪除的productID"></asp:Label></li>
-                                        <br>
+                                            <asp:Label ID="hintID" runat="server" Text="選擇即將刪除的productID"></asp:Label></li>                                        
                                         <li>
                                             <asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要刪除嗎?')) window.event.returnValue=false;" /></li>
+                                        <br>
+                                        <br>
+                                        <li>
+                                            <asp:Label ID="productNS" runat="server" Text="productName"></asp:Label></li>
+                                        <li>
+                                            <asp:DropDownList ID="DDLSearchProductName" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px">
+                                                <asp:ListItem Value="0">請選擇</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSourceProductName" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT DISTINCT productName FROM Products"></asp:SqlDataSource>
+                                        </li>
+                                        <li>
+                                            <asp:Label ID="hintPS" runat="server" Text="選擇即將搜尋的productName"></asp:Label></li>                                        
+                                        <li>
+                                            <asp:Button ID="Search" runat="server" OnClick="Button4_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
                                     </ul>
                                 </div>
                             </div>
@@ -291,8 +188,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <li>
                                             <asp:TextBox ID="TextBox9" runat="server" placeholder="輸入更新的值"></asp:TextBox></li>
                                         <li>
-                                            <asp:Label ID="hintValue" runat="server" Text=""></asp:Label></li>
-                                        <br>
+                                            <asp:Label ID="hintValue" runat="server" Text=""></asp:Label></li>                                        
                                         <li>
                                             <asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要修改嗎?')) window.event.returnValue=false;" /></li>
                                     </ul>
@@ -332,72 +228,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!---->
 
         <!--footer-->
-        <div class="footer">
+       <div class="footer">
             <div class="container">
                 <div class="footer-top">
-                    <div class="col-md-8 top-footer">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border: 0;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="col-sm-7 number col-md8">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border: 0;"></iframe>
                     </div>
-                    <div class="col-md-4 top-footer1">
-                        <h2>Newsletter</h2>
-                        <form>
-                            <input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-                            <input type="submit" value="SUBSCRIBE">
-                        </form>
+                    <div class="col-sm-4 number col-md4">
+                        <asp:Label ID="Label18" runat="server" Text="丹丹服飾股份有限公司" Font-Size="XX-Large" Font-Bold="True"></asp:Label><br>
+                        <br>
+                        <asp:Label ID="Label19" runat="server" Text="地址：(110)台北市信義區信義路五段7號"></asp:Label><br>
+                        <asp:Label ID="Label20" runat="server" Text="No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei City 110615 , Taiwan (R.O.C.)"></asp:Label><br>
+                        <br>
                     </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="container">
-                    <div class="col-md-3 footer-bottom-cate">
-                        <h6>Categories</h6>
-                        <ul>
-                            <li><a href="#">Curabitur sapien</a></li>
-                            <li><a href="#">Dignissim purus</a></li>
-                            <li><a href="#">Tempus pretium</a></li>
-                            <li><a href="#">Dignissim neque</a></li>
-                            <li><a href="#">Ornared id aliquet</a></li>
-
-                        </ul>
-                    </div>
-                    <div class="col-md-3 footer-bottom-cate">
-                        <h6>Feature Projects</h6>
-                        <ul>
-                            <li><a href="#">Curabitur sapien</a></li>
-                            <li><a href="#">Dignissim purus</a></li>
-                            <li><a href="#">Tempus pretium</a></li>
-                            <li><a href="#">Dignissim neque</a></li>
-                            <li><a href="#">Ornared id aliquet</a></li>
-
-                        </ul>
-                    </div>
-                    <div class="col-md-3 footer-bottom-cate">
-                        <h6>Top Brands</h6>
-                        <ul>
-                            <li><a href="#">Curabitur sapien</a></li>
-                            <li><a href="#">Dignissim purus</a></li>
-                            <li><a href="#">Tempus pretium</a></li>
-                            <li><a href="#">Dignissim neque</a></li>
-                            <li><a href="#">Ornared id aliquet</a></li>
-                            <li><a href="#">Ultrices id du</a></li>
-                            <li><a href="#">Commodo sit</a></li>
-
-                        </ul>
-                    </div>
-                    <div class="col-md-3 footer-bottom-cate cate-bottom">
-                        <h6>Our Address</h6>
-                        <ul>
-                            <li>Aliquam metus  dui. </li>
-                            <li>orci, ornareidquet</li>
-                            <li>ut,DUI.</li>
-                            <li>nisi, dignissim</li>
-                            <li>gravida at.</li>
-                            <li class="phone">PH : 6985792466</li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                    <p class="footer-class">© 2015 Fashion Mania. All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                    
                 </div>
             </div>
         </div>

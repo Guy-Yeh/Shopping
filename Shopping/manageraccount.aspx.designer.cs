@@ -348,13 +348,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.GridView useraccount;
 
         /// <summary>
-        /// accountID 控制項。
+        /// accountD 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label accountID;
+        protected global::System.Web.UI.WebControls.Label accountD;
 
         /// <summary>
         /// DDLDeleteAccount 控制項。
@@ -366,13 +366,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.DropDownList DDLDeleteAccount;
 
         /// <summary>
-        /// SqlDataSourceAccountID 控制項。
+        /// SqlDataSourceAccount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAccountID;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAccount;
 
         /// <summary>
         /// hintID 控制項。
@@ -393,13 +393,49 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Button Delete;
 
         /// <summary>
-        /// accountID2 控制項。
+        /// accountS 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label accountID2;
+        protected global::System.Web.UI.WebControls.Label accountS;
+
+        /// <summary>
+        /// DDLSearchAccount 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLSearchAccount;
+
+        /// <summary>
+        /// hintIDS 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hintIDS;
+
+        /// <summary>
+        /// Search 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Search;
+
+        /// <summary>
+        /// accountU 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label accountU;
 
         /// <summary>
         /// DDLUpdateAccount 控制項。
@@ -490,5 +526,32 @@ namespace Shopping
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Update;
+
+        /// <summary>
+        /// Label18 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label18;
+
+        /// <summary>
+        /// Label19 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label19;
+
+        /// <summary>
+        /// Label20 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label20;
     }
 }

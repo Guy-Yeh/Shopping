@@ -45,7 +45,63 @@ namespace Shopping
             {
                 DataRow row = dt.NewRow();
                 row["ID"] = read[0];
-                row["picture"] = read[1];
+
+                if (read[1].ToString() == "" || read[1] is null)
+                {
+                    row["picture"] = @"/images/使用者照片/def.jpg";
+                }
+                else 
+                {
+                    row["picture"] = read[1];
+                }
+                row["account"] = read[2];
+                row["password"] = read[3];
+                row["name"] = read[4];
+                row["phone"] = read[5];
+                row["email"] = read[6];
+                row["address"] = read[7];
+                row["discount"] = read[8];
+                row["access"] = read[9];
+                row["initdate"] = read[10];
+                dt.Rows.Add(row);
+            }
+            useraccount.DataSource = dt;
+            useraccount.DataBind();
+            connection.Close();
+
+        }
+
+        public void searchaccount(string a)
+        {
+            SqlConnection connection = Connect(s_data);
+            SqlCommand command = new SqlCommand(a, connection);
+            connection.Open();
+            SqlDataReader read = command.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("picture");
+            dt.Columns.Add("account");
+            dt.Columns.Add("password");
+            dt.Columns.Add("name");
+            dt.Columns.Add("phone");
+            dt.Columns.Add("email");
+            dt.Columns.Add("address");
+            dt.Columns.Add("discount");
+            dt.Columns.Add("access");
+            dt.Columns.Add("initdate");
+            while (read.Read())
+            {
+                DataRow row = dt.NewRow();
+                row["ID"] = read[0];
+
+                if (read[1].ToString() == "" || read[1] is null)
+                {
+                    row["picture"] = @"/images/使用者照片/def.jpg";
+                }
+                else
+                {
+                    row["picture"] = read[1];
+                }
                 row["account"] = read[2];
                 row["password"] = read[3];
                 row["name"] = read[4];
@@ -80,7 +136,8 @@ namespace Shopping
             hintPhone.ForeColor = Color.Black;
             hintAll.ForeColor = Color.Black;
             hintName.ForeColor = Color.Black;
-            
+            hintIDS.ForeColor = Color.Black;
+
         }
 
        
@@ -122,20 +179,20 @@ namespace Shopping
 
         public void cleanbt2()
         {
-            DataView dv = (DataView)this.SqlDataSourceAccountID.Select(new DataSourceSelectArguments());
+            DataView dv = (DataView)this.SqlDataSourceAccount.Select(new DataSourceSelectArguments());
             DDLDeleteAccount.Items.Clear();
             DDLDeleteAccount.Items.Add("請選擇");
             DDLDeleteAccount.DataSource = dv;
-            DDLDeleteAccount.DataTextField = "ID";
+            DDLDeleteAccount.DataTextField = "account";
             DDLDeleteAccount.DataBind();
         }
         public void cleanbt3()
         {
-            DataView dv = (DataView)this.SqlDataSourceAccountID.Select(new DataSourceSelectArguments());
+            DataView dv = (DataView)this.SqlDataSourceAccount.Select(new DataSourceSelectArguments());
             DDLUpdateAccount.Items.Clear();
             DDLUpdateAccount.Items.Add("請選擇");
             DDLUpdateAccount.DataSource = dv;
-            DDLUpdateAccount.DataTextField = "ID";
+            DDLUpdateAccount.DataTextField = "account";
             DDLUpdateAccount.DataBind();
             DataView dv2 = (DataView)this.SqlDataSourceUpdateCol.Select(new DataSourceSelectArguments());
             DDLUpdateCol.Items.Clear();
@@ -144,6 +201,16 @@ namespace Shopping
             DDLUpdateCol.DataTextField = "Cols";
             DDLUpdateCol.DataBind();
             TextBox9.Text = "";
+        }
+
+        public void cleanbt4()
+        {
+            DataView dv = (DataView)this.SqlDataSourceAccount.Select(new DataSourceSelectArguments());
+            DDLSearchAccount.Items.Clear();
+            DDLSearchAccount.Items.Add("請選擇");
+            DDLSearchAccount.DataSource = dv;
+            DDLSearchAccount.DataTextField = "account";
+            DDLSearchAccount.DataBind();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -158,13 +225,14 @@ namespace Shopping
             hintDiscount.Text = "";
             hintCity.Text = "";
             hintRegion.Text = "";
-            hintPicture.Text = "";
+            hintPicture.Text = "非必傳";
             hintAll.Text = "";
             hintAll.Text = "";
             hintAccess.Text = "請選擇權限";
-            hintID.Text = "選擇即將刪除的accountID";
-            hintID2.Text = "選擇即將更新的accountID";
+            hintID.Text = "選擇即將刪除的account";
+            hintID2.Text = "選擇即將更新的account";
             hintColumn.Text = "選擇即將更新的欄位";
+            hintIDS.Text = "選擇將要搜尋的account";
             changecolor();
             
             if (!IsPostBack)
@@ -173,7 +241,7 @@ namespace Shopping
                 cleanbt1();
                 cleanbt2();
                 cleanbt3();
-                
+                cleanbt4();
             }
         }
 
@@ -209,7 +277,7 @@ namespace Shopping
                         {
                             if (nameCheck)
                             {
-                                if (Encoding.Default.GetByteCount(TextBox3.Text) <= 10)
+                                if (Encoding.Default.GetByteCount(TextBox3.Text)>=4 && Encoding.Default.GetByteCount(TextBox3.Text)<=10)
                                 {
                                     SqlConnection connection2p = Connect(s_data);
                                     SqlCommand command2p = new SqlCommand(sql2p, connection2p);
@@ -242,42 +310,46 @@ namespace Shopping
                                                                 {
                                                                     if (DDLAccess.SelectedItem.Text != "請選擇")
                                                                     {
-                                                                        if (FileUpload1.PostedFile != null)
-                                                                        {
-                                                                            HttpPostedFile myFile = FileUpload1.PostedFile;
-                                                                            int nFileLen = myFile.ContentLength;
-                                                                            if (FileUpload1.HasFile && nFileLen > 0)
-                                                                            {
-                                                                                string picturePath0 = $"/images/使用者照片/{TextBox1.Text}.jpg";
-                                                                                string picturePath1 = $"/images/使用者照片/{TextBox1.Text}.jpg";
-                                                                                string imgPath = Server.MapPath(picturePath1);
-                                                                                FileUpload1.SaveAs(imgPath);
 
-                                                                                string sql2 = $"insert into [Customers](picture,account,password,name,phone,email,address,discount,access) values( N'{picturePath0}','{TextBox1.Text.ToLower()}','{TextBox2.Text}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text.ToLower()}',N'{DDLCity.Text + DDLRegion.Text + TextBox11.Text}','{TextBox10.Text}','{DDLAccess.Text}')";
-                                                                                SqlConnection connection2 = Connect(s_data);
-                                                                                SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                                                                connection2.Open();
-                                                                                command2.ExecuteNonQuery();
-                                                                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt1", "setTimeout( function(){alert('輸入成功');},0);", true);
-                                                                                connection2.Close();
-                                                                                reviewAccount();
-                                                                                cleanbt1();
-                                                                                cleanbt2();
-                                                                                cleanbt3();
-                                                                                cleanbt1r();
-                                                                            }
-                                                                            else
-                                                                            {
-                                                                                hintPicture.ForeColor = Color.Red;
-                                                                                hintPicture.Text = "picture尚未選擇 請選擇上傳圖片";
-                                                                            }
+                                                                        HttpPostedFile myFile = FileUpload1.PostedFile;
+                                                                        int nFileLen = myFile.ContentLength;
+                                                                        if (FileUpload1.HasFile && nFileLen > 0)
+                                                                        {
+                                                                            string picturePath0 = $"/images/使用者照片/{TextBox1.Text}.jpg";
+                                                                            string picturePath1 = $"/images/使用者照片/{TextBox1.Text}.jpg";
+                                                                            string imgPath = Server.MapPath(picturePath1);
+                                                                            FileUpload1.SaveAs(imgPath);
+
+                                                                            string sql2 = $"insert into [Customers](picture,account,password,name,phone,email,address,discount,access) values( N'{picturePath0}','{TextBox1.Text.ToLower()}','{TextBox2.Text}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text.ToLower()}',N'{DDLCity.Text + DDLRegion.Text + TextBox11.Text}','{TextBox10.Text}','{DDLAccess.Text}')";
+                                                                            SqlConnection connection2 = Connect(s_data);
+                                                                            SqlCommand command2 = new SqlCommand(sql2, connection2);
+                                                                            connection2.Open();
+                                                                            command2.ExecuteNonQuery();
+                                                                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt1", "setTimeout( function(){alert('輸入成功');},0);", true);
+                                                                            connection2.Close();
+                                                                            reviewAccount();
+                                                                            cleanbt1();
+                                                                            cleanbt2();
+                                                                            cleanbt3();
+                                                                            cleanbt1r();
                                                                         }
                                                                         else
                                                                         {
-                                                                            hintPicture.ForeColor = Color.Red;
-                                                                            hintPicture.Text = "picture尚未選擇 請選擇上傳圖片";
-                                                                        }
+                                                                            string sql2 = $"insert into [Customers](account,password,name,phone,email,address,discount,access) values('{TextBox1.Text.ToLower()}','{TextBox2.Text}',N'{TextBox3.Text}','{TextBox4.Text}','{TextBox5.Text.ToLower()}',N'{DDLCity.Text + DDLRegion.Text + TextBox11.Text}','{TextBox10.Text}','{DDLAccess.Text}')";
+                                                                            SqlConnection connection2 = Connect(s_data);
+                                                                            SqlCommand command2 = new SqlCommand(sql2, connection2);
+                                                                            connection2.Open();
+                                                                            command2.ExecuteNonQuery();
+                                                                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt1", "setTimeout( function(){alert('輸入成功');},0);", true);
+                                                                            connection2.Close();
+                                                                            reviewAccount();
+                                                                            cleanbt1();
+                                                                            cleanbt2();
+                                                                            cleanbt3();
+                                                                            cleanbt4();
+                                                                            cleanbt1r();
 
+                                                                        }
                                                                     }
                                                                     else
                                                                     {
@@ -339,7 +411,7 @@ namespace Shopping
                                 else
                                 {
                                     hintName.ForeColor = Color.Red;
-                                    hintName.Text = "name不得超過10個位元";
+                                    hintName.Text = "name需介於4-10個位元";
                                 }
                             }
                             else
@@ -379,7 +451,7 @@ namespace Shopping
         protected void Button2_Click(object sender, EventArgs e)
         {
             
-            string sql3 = $"delete from Customers where ID='{DDLDeleteAccount.Text}'";
+            string sql3 = $"delete from Customers where account='{DDLDeleteAccount.Text}'";
 
             if (DDLDeleteAccount.SelectedItem.Text!="請選擇")
             {
@@ -392,6 +464,7 @@ namespace Shopping
                 reviewAccount();
                 cleanbt2();
                 cleanbt3();
+                cleanbt4();
             }
             else
             {
@@ -403,12 +476,12 @@ namespace Shopping
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            bool nameCheck = Regex.IsMatch(TextBox3.Text, @"^[A-Za-z\u4e00-\u9fa5]+$");
+            bool nameCheck = Regex.IsMatch(TextBox9.Text, @"^[A-Za-z\u4e00-\u9fa5]+$");
             bool discountCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             bool phoneCheck = Regex.IsMatch(TextBox9.Text, @"^09[\d]{8}");
             bool emailCheck = Regex.IsMatch(TextBox9.Text, @"^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$");
-            string sql6 = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text}' where ID='{DDLUpdateAccount.Text}'";
-            string sql6CS = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text.ToLower()}' where ID='{DDLUpdateAccount.Text}'";
+            string sql6 = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text}' where account='{DDLUpdateAccount.Text}'";
+            string sql6CS = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text.ToLower()}' where account='{DDLUpdateAccount.Text}'";
             SqlConnection connection6 = Connect(s_data);
             SqlConnection connection6CS = Connect(s_data);
             string sql7 = $"select * from Customers where {DDLUpdateCol.Text}='{TextBox9.Text}'";
@@ -441,8 +514,9 @@ namespace Shopping
                                 this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
                                 connection6CS.Close();
                                 reviewAccount();
+                                cleanbt2();
                                 cleanbt3();
-
+                                cleanbt4();
                             }
                             else
                             {
@@ -546,7 +620,7 @@ namespace Shopping
                     {
                         if (nameCheck)
                         {
-                            if (Encoding.Default.GetByteCount(TextBox9.Text) <= 10)
+                            if (Encoding.Default.GetByteCount(TextBox9.Text) >=4 && Encoding.Default.GetByteCount(TextBox9.Text) <= 10)
                             {
                                 SqlCommand command6 = new SqlCommand(sql6, connection6);
                                 connection6.Open();
@@ -559,7 +633,7 @@ namespace Shopping
                             else 
                             {
                                 hintAll.ForeColor = Color.Red;
-                                hintAll.Text = "name不得超過10個位元";
+                                hintAll.Text = "name需介於4-10個位元";
                             }
                         }
                         else
@@ -604,8 +678,14 @@ namespace Shopping
                         }
                         else
                         {
-                            hintAll.ForeColor = Color.Red;
-                            hintAll.Text = "picture路徑不為空";
+                            SqlCommand command6 = new SqlCommand(sql6, connection6);
+                            connection6.Open();
+                            command6.ExecuteNonQuery();
+                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                            connection6.Close();
+                            reviewAccount();
+                            cleanbt3();
+                            
                         }
                     }
 
@@ -618,6 +698,7 @@ namespace Shopping
                         connection6.Close();
                         reviewAccount();
                         cleanbt3();
+                        
                     }
                 }
                 else
@@ -646,6 +727,23 @@ namespace Shopping
         {
             Session["access"] = "Not ok";
             Response.Redirect("manager");
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            string sql3 = $"select * from Customers where account='{DDLSearchAccount.Text}'";
+
+            if (DDLSearchAccount.SelectedItem.Text != "請選擇")
+            {
+                searchaccount(sql3);
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt4", "setTimeout( function(){alert('篩選成功');},0);", true);                                
+                cleanbt4();
+            }
+            else
+            {
+                hintIDS.ForeColor = Color.Red;
+                hintIDS.Text = "請選擇項目";
+            }
         }
     }
 }

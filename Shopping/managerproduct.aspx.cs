@@ -56,7 +56,39 @@ namespace Shopping
             product.DataBind();
             connection.Close();
         }
-        
+
+        public void searchProduct(string a)
+        {
+            SqlConnection connection = Connect(s_data);           
+            SqlCommand command = new SqlCommand(a, connection);
+            connection.Open();
+            SqlDataReader read = command.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("productName");
+            dt.Columns.Add("picture");
+            dt.Columns.Add("category");
+            dt.Columns.Add("inventory");
+            dt.Columns.Add("price");
+            dt.Columns.Add("initdate");
+
+            while (read.Read())
+            {
+                DataRow row = dt.NewRow();
+                row["ID"] = read[0];
+                row["productName"] = read[1];
+                row["picture"] = read[2];
+                row["category"] = read[3];
+                row["inventory"] = read[4];
+                row["price"] = read[5];
+                row["initdate"] = read[6];
+                dt.Rows.Add(row);
+            }
+            product.DataSource = dt;
+
+            product.DataBind();
+            connection.Close();
+        }
 
         public void cleanbt1()
         {
@@ -92,6 +124,16 @@ namespace Shopping
             TextBox9.Text = "";
         }
 
+        public void cleanbt4()
+        {
+            DataView dv = (DataView)this.SqlDataSourceProductName.Select(new DataSourceSelectArguments());
+            DDLSearchProductName.Items.Clear();
+            DDLSearchProductName.Items.Add("請選擇");
+            DDLSearchProductName.DataSource = dv;
+            DDLSearchProductName.DataTextField = "productName";
+            DDLSearchProductName.DataBind();
+        }
+
         public void changecocolor()
         {
             hintColumn.ForeColor = Color.Black;
@@ -103,6 +145,7 @@ namespace Shopping
             hintPicture.ForeColor = Color.Black;
             hintPN.ForeColor = Color.Black;
             hintValue.ForeColor = Color.Black;
+            hintPS.ForeColor = Color.Black;
         }
 
 
@@ -118,7 +161,7 @@ namespace Shopping
             hintID.Text = "選擇即將刪除的productID";
             hintID2.Text = "選擇即將更新的productID";
             hintColumn.Text = "選擇即將更新的欄位";
-
+            hintPS.Text = "選擇即將搜尋的productName";
             changecocolor();
             if (!IsPostBack)
             {
@@ -126,6 +169,7 @@ namespace Shopping
                 cleanbt1();
                 cleanbt2();
                 cleanbt3();
+                cleanbt4();
             }
         }
 
@@ -168,6 +212,7 @@ namespace Shopping
                                     cleanbt1();
                                     cleanbt2();
                                     cleanbt3();
+                                    cleanbt4();
                                 }
                                 else
                                 {
@@ -243,6 +288,7 @@ namespace Shopping
                 reviewProduct();
                 cleanbt2();
                 cleanbt3();
+                cleanbt4();
                 this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(),"bt2", "setTimeout( function(){alert('刪除成功');},0);", true);
 
             }
@@ -390,6 +436,7 @@ namespace Shopping
                                     connection6.Close();
                                     reviewProduct();
                                     cleanbt3();
+                                    cleanbt4();
                                 }
                                 else
                                 {
@@ -478,5 +525,25 @@ namespace Shopping
             Session["access"] = "Not ok";
             Response.Redirect(Request.Url.ToString());
         }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            if (DDLSearchProductName.SelectedItem.Text != "請選擇")
+            {
+
+                string SqlS = $"select * from Products where productName = N'{DDLSearchProductName.Text}'";
+                searchProduct(SqlS);
+                cleanbt4();
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt4", "setTimeout( function(){alert('篩選成功');},0);", true);
+
+            }
+            else
+            {
+                hintPS.ForeColor = Color.Red;
+                hintPS.Text = "請選擇項目";
+            }
+
+        }
+
     }
-}
+ }

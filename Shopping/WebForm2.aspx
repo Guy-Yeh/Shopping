@@ -6,10 +6,19 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    
+    <link href="/DorpDownList2ComboBox.css" rel="stylesheet" />
+    
+    <script src="/DropDownList2ComboBox.js"></script>
 </head>
+
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:DropDownList ID="DorpDownList2ComboBox" runat="server" data-Combo="Y" DataSourceID="SqlDataSourceQAQ" DataTextField="account" DataValueField="account" ></asp:DropDownList>
+            <asp:SqlDataSource ID="SqlDataSourceQAQ" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT account FROM Customers ORDER BY account"></asp:SqlDataSource>
+            <br>
+            <br>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSourc" OnRowDeleting="GridView1_RowDeleting" >
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" Visible="False" />
