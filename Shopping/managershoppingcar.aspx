@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="managercontact.aspx.cs" Inherits="Shopping.managercontact" %>
+﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="managershoppingcar.aspx.cs" Inherits="Shopping.managershoppingcar" %>
 
 <!--A Design by W3layouts 
 Author: W3layout
@@ -21,6 +21,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!---->
+    <script type="text/javascript"> 
+        function ConfirmMe() {
+            if (Page_ClientValidate()) {
+                return confirm('確定送出嗎?');
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
     <form runat="server" method="post">
@@ -176,174 +186,118 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ul>
                     </div>
                     <div class="col-md-2 search">
-                        <a class="play-icon popup-with-zoom-anim" href="#small-dialog">
-                            <i class="glyphicon glyphicon-search"></i></a>
+                        <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"></i></a>
                     </div>
-                    <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"></i></a>
-                </div>
-                <div class="clearfix"></div>
-                <div id="small-dialog" class="mfp-hide">
-                    <div class="search-top">
-                        <div class="login">
-                            <input type="submit" value="">
-                            <input type="text" value="Type something..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
-                        </div>
-                        <p>Shopping</p>
-                    </div>
-                </div>
-                <!---->
 
-
-            </div>
-            <!---->
-            <div class="single">
-
-                <div class="container">
-                    
+                    <br>
+                    <br>
+                    <br>
+                    <div class="container">
                         <div style="text-align: center">
 
-                            <h1>Revise Response Table&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h1>
+                            <h1>Search Shoppingcar Table&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h1>
 
                         </div>
-                        <br>
                         <br>
                         <div class="mepanel">
                             <div class="row">
                                 <div class="col1">
                                     <div class="h_nav">
-                                        <h4>Reply Message</h4>
+                                        <h4>Search by CustomerAccount</h4>
                                         <ul>
                                             <li>
-                                                <asp:DropDownList ID="DDLContactID" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">ID</asp:ListItem>
+                                                <asp:Label ID="customerAccount" runat="server" Text="customerAccount"></asp:Label></li>
+                                            <li>
+                                                <asp:DropDownList ID="DDLSearchCustomerAccount" runat="server" AppendDataBoundItems="True" Width="195px" Height="30px">
+                                                    <asp:ListItem Value="0">請選擇</asp:ListItem>
                                                 </asp:DropDownList>
-                                                <asp:SqlDataSource ID="SqlDataSourceChat" runat="server" ConnectionString="<%$ ConnectionStrings:ChatConnectionString %>" SelectCommand="SELECT [ID] FROM [Chat]"></asp:SqlDataSource>
+                                                <asp:SqlDataSource ID="SqlDataSourceCustomerAccount" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT [account] FROM [Customers]"></asp:SqlDataSource>
                                             </li>
                                             <li>
-                                                <asp:Label ID="hintID" runat="server" Text=""></asp:Label></li>
-                                            <br>
+                                                <asp:Label ID="hintCustomerAccount" runat="server" Text=""></asp:Label></li>
                                             <li>
-                                                <textarea rows="5" id="contactresponse" name="contactresponse" class="form-control" placeholder="response"></textarea></li>
-                                            <li>
-                                                <asp:Label ID="hintResponse" runat="server" Text=""></asp:Label></li>
-                                            <br>
-                                            <li>
-                                                <asp:Button ID="response" runat="server" Text="submit" OnClick="Button1_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要送出嗎?')) window.event.returnValue=false;" />
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <br>
-                                    <br>
-                                </div>
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <h4>Search by Account</h4>
-                                        <ul>
-                                            <li>
-                                                <input type="text" id="searchaccount" name="searchaccount" class="form-control" placeholder="account"></li>
-                                            <li>
-                                                <asp:Label ID="hintSearch" runat="server" Text=""></asp:Label></li>
-                                            <br>
-                                            <li>
-                                                <asp:Button ID="search" runat="server" Text="submit" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" />
-                                            </li>
-                                        </ul>
+                                                <asp:Button ID="customerAccountsearch" runat="server" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="customerAccountsearch_Click" /></li>
+                                            <br>                                            
+                                            <br>                                            
+                                        </ul>                                                                                
                                     </div>
                                 </div>
                                 <div class="col1">
                                     <div class="h_nav">
-                                        <h4>Show Message by Date Range </h4>
+                                        <h4>Search by ProductName</h4>
                                         <ul>
                                             <li>
-                                                <asp:DropDownList ID="DDLYearS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">StartYear</asp:ListItem>
+                                                <asp:Label ID="productName" runat="server" Text="productName"></asp:Label></li>
+                                            <li>
+                                                <asp:DropDownList ID="DDLSearchProductName" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px">
+                                                    <asp:ListItem Value="0">請選擇</asp:ListItem>
                                                 </asp:DropDownList>
-                                                <asp:SqlDataSource ID="SqlDataSourceYears" runat="server" ConnectionString="<%$ ConnectionStrings:YearsConnectionString %>" SelectCommand="SELECT [years] FROM [Years]"></asp:SqlDataSource>
+                                                <asp:SqlDataSource ID="SqlDataSourceProductName" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT DISTINCT productName FROM Products"></asp:SqlDataSource>
                                             </li>
-                                            <br>
                                             <li>
-                                                <asp:DropDownList ID="DDLMonthS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">StartMonth</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <asp:SqlDataSource ID="SqlDataSourceMonth" runat="server" ConnectionString="<%$ ConnectionStrings:MonthsConnectionString %>" SelectCommand="SELECT [months] FROM [Months]"></asp:SqlDataSource>
-                                            </li>
-                                            <br>
+                                                <asp:Label ID="hintProductName" runat="server" Text=""></asp:Label></li>
                                             <li>
-                                                <asp:DropDownList ID="DDLDayS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">StartDay</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <asp:SqlDataSource ID="SqlDataSourceDay" runat="server" ConnectionString="<%$ ConnectionStrings:DaysConnectionString %>" SelectCommand="SELECT [days] FROM [Days]"></asp:SqlDataSource>
-                                            </li>
-                                            <br>
-                                            <br>
-                                            <li>
-                                                <asp:DropDownList ID="DDLYearE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">EndYear</asp:ListItem>
-                                                </asp:DropDownList></li>
-                                            <br>
-                                            <li>
-                                                <asp:DropDownList ID="DDLMonthE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">EndMonth</asp:ListItem>
-                                                </asp:DropDownList></li>
-                                            <br>
-                                            <li>
-                                                <asp:DropDownList ID="DDLDayE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">EndDay</asp:ListItem>
-                                                </asp:DropDownList></li>
-                                            <li>
-                                                <asp:Label ID="hintDate" runat="server" Text=""></asp:Label></li>
-                                            <br>
-                                            <li>
-                                                <asp:Button ID="show" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" />
-                                            </li>
+                                                <asp:Button ID="productNamesearch" runat="server" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="productNamesearch_Click" /></li>
                                         </ul>
                                     </div>
-                                    <br>
-                                    <br>
+                                </div>
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <h4>Search by ProductColor</h4>
+                 
+                                        <ul>
+                                            <li>
+                                                <asp:Label ID="productColor" runat="server" Text="productColor"></asp:Label></li>
+                                            <li>
+                                                <asp:DropDownList ID="DDLSearchproductColor" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px" >
+                                                    <asp:ListItem Value="0">請選擇</asp:ListItem>
+                                                </asp:DropDownList>
+   
+                                                <asp:SqlDataSource ID="SqlDataSourceProductColor" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT DISTINCT category FROM Products"></asp:SqlDataSource>
+                                            </li>
+                                            <li>
+                                                <asp:Label ID="hintproductColor" runat="server" Text=""></asp:Label></li>
+                                            <li>
+                                                <asp:Button ID="colorsearch" runat="server" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="colorsearch_Click" /></li>
+                                            <br>
+                                            
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
+                           </div>
                         </div>
-
-                        <asp:GridView ID="usercontact" runat="server" AutoGenerateColumns="False" DataKeyNames="ID">
-                            <Columns>
-                                <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                                <asp:BoundField DataField="account" HeaderText="account" SortExpression="account" />
-                                <asp:BoundField DataField="message" HeaderText="message" SortExpression="message" />
-                                <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" />
-                                <asp:BoundField DataField="response" HeaderText="response" SortExpression="response" />
-                                <asp:BoundField DataField="updateInitdate" HeaderText="updateInitdate" SortExpression="updateInitdate" />
-                            </Columns>
-                        </asp:GridView>
-                        <asp:SqlDataSource ID="SqlDataSourceChatting" runat="server" ConnectionString="<%$ ConnectionStrings:ChatConnectionString %>" SelectCommand="SELECT * FROM [Chat]"></asp:SqlDataSource>
-                        <!----->
-
-                        <div class="clearfix"></div>
-
-                    </div>
-                </div>
-            <!--footer-->
-            <div class="footer">
-                <div class="container">
-                    <div class="footer-top">
-                        <div class="col-md-8 top-footer">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border: 0;" allowfullscreen="" loading="lazy"></iframe>
+                        
+                        <div class="clearfix" style="text-align: left" >
+                            <asp:GridView ID="usershoppingcar" runat="server" AutoGenerateColumns="False" DataKeyNames="ID">
+                                                <Columns>
+                                                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" />
+                                                    <asp:BoundField DataField="customerAccount" HeaderText="customerAccount" SortExpression="customerAccount" />
+                                                    <asp:BoundField DataField="productPicture" HeaderText="productPicture" SortExpression="productPicture" Visible="False" />
+                                                    <asp:BoundField DataField="productName" HeaderText="productName" SortExpression="productName" />
+                                                    <asp:BoundField DataField="productColor" HeaderText="productColor" SortExpression="productColor" />
+                                                    <asp:TemplateField HeaderText="image">
+                                                        <EditItemTemplate>
+                                                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("productPicture") %>'></asp:TextBox>
+                                                        </EditItemTemplate>
+                                                        <ItemTemplate>
+                                                            <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("productPicture") %>' Width="100px" />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="productPrice" HeaderText="productPrice" SortExpression="productPrice" />
+                                                    <asp:BoundField DataField="qty" HeaderText="qty" SortExpression="qty" />
+                                                    <asp:BoundField DataField="cart" HeaderText="cart" SortExpression="cart" Visible="False" />
+                                                </Columns>
+                                            </asp:GridView>
+                            <asp:SqlDataSource ID="SqlDataSourceShoppingcar" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT * FROM [OrderDetail]"></asp:SqlDataSource>                                                     
                         </div>
-                        <div class="col-md-4 top-footer1">
-                            <h2>Newsletter</h2>
-                            <form>
-                                <input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-                                <input type="submit" value="SUBSCRIBE">
-                            </form>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <div class="container">
-                        <div class="col-md-3 footer-bottom-cate">
-                            <h6>Categories</h6>
-                            <ul>
-                                <li><a href="#">Curabitur sapien</a></li>
+                        <div id="small-dialog" class="mfp-hide">
+                            <div class="search-top">
+                                <div class="login">
+                                    <input type="submit" value="">
+                                    <input type="text" value="Type something..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+                                </div>
+                                <p>Shoppingurabitur sapien</a></li>
                                 <li><a href="#">Dignissim purus</a></li>
                                 <li><a href="#">Tempus pretium</a></li>
                                 <li><a href="#">Dignissim neque</a></li>
@@ -390,7 +344,76 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <p class="footer-class">© 2015 Fashion Mania. All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
                     </div>
                 </div>
+            <!--footer-->
+        <div class="footer">
+            <div class="container">
+                <div class="footer-top">
+                    <div class="col-md-8 top-footer">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border: 0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div class="col-md-4 top-footer1">
+                        <h2>Newsletter</h2>
+                        <form>
+                            <input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
+                            <input type="submit" value="SUBSCRIBE">
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
             </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="col-md-3 footer-bottom-cate">
+                        <h6>Categories</h6>
+                        <ul>
+                            <li><a href="#">Curabitur sapien</a></li>
+                            <li><a href="#">Dignissim purus</a></li>
+                            <li><a href="#">Tempus pretium</a></li>
+                            <li><a href="#">Dignissim neque</a></li>
+                            <li><a href="#">Ornared id aliquet</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-bottom-cate">
+                        <h6>Feature Projects</h6>
+                        <ul>
+                            <li><a href="#">Curabitur sapien</a></li>
+                            <li><a href="#">Dignissim purus</a></li>
+                            <li><a href="#">Tempus pretium</a></li>
+                            <li><a href="#">Dignissim neque</a></li>
+                            <li><a href="#">Ornared id aliquet</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-bottom-cate">
+                        <h6>Top Brands</h6>
+                        <ul>
+                            <li><a href="#">Curabitur sapien</a></li>
+                            <li><a href="#">Dignissim purus</a></li>
+                            <li><a href="#">Tempus pretium</a></li>
+                            <li><a href="#">Dignissim neque</a></li>
+                            <li><a href="#">Ornared id aliquet</a></li>
+                            <li><a href="#">Ultrices id du</a></li>
+                            <li><a href="#">Commodo sit</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-bottom-cate cate-bottom">
+                        <h6>Our Address</h6>
+                        <ul>
+                            <li>Aliquam metus  dui. </li>
+                            <li>orci, ornareidquet</li>
+                            <li>ut,DUI.</li>
+                            <li>nisi, dignissim</li>
+                            <li>gravida at.</li>
+                            <li class="phone">PH : 6985792466</li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                    <p class="footer-class">© 2015 Fashion Mania. All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                </div>
+            </div>
+        </div>
             <!-- slide -->
             <script src="js/jquery.min.js"></script>
             <script src="js/imagezoom.js"></script>
