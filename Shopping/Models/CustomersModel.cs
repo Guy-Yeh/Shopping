@@ -17,6 +17,7 @@ namespace Shopping.Models
         public string discount { get; set; }
         public DateTime initdate { get; set; }
         public string picture { get; set; }
+        public string access { get; set; }
 
     }
 

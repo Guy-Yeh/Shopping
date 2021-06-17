@@ -41,12 +41,40 @@ namespace Shopping.Dao
             return customers;
         }
 
+
+        public bool DelAccount(string account,string access)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(s_data);
+                SqlCommand command = new SqlCommand(@"UPDATE Customers
+                       SET
+                          access = @access
+                        WHERE account = @account ", connection);
+                command.Parameters.Add("@account", SqlDbType.NVarChar).Value = account;
+                command.Parameters.Add("@access", SqlDbType.NVarChar).Value = access;
+
+                connection.Open();
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="name"></param>
         /// <returns></returns>
+        /// 
+
         public bool EditName(int id, string name)
         {
             try {
@@ -74,29 +102,57 @@ namespace Shopping.Dao
 
         public bool EditPhoneNumber(int id, string phone)
         {
-
-            //throw new ArgumentException("驗證錯誤");
-
+            DataTable dt = new DataTable();
             try
             {
                 SqlConnection connection = new SqlConnection(s_data);
-                SqlCommand command = new SqlCommand(@"UPDATE Customers
-                       SET
-                          phone = @phone
-                        WHERE ID = @id ", connection);
-                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                SqlCommand command = new SqlCommand(@"select * FROM Customers
+                        WHERE phone = @phone and access = 'Yes';", connection);
                 command.Parameters.Add("@phone", SqlDbType.NVarChar).Value = phone;
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+                sqlDataAdapter.SelectCommand = command;
 
                 connection.Open();
-                command.ExecuteNonQuery();
+
+                DataSet ds = new DataSet();
+                sqlDataAdapter.Fill(ds);
+                dt = ds.Tables[0];
                 command.Dispose();
                 connection.Close();
-
-                return true;
             }
             catch (Exception ex)
             {
                 throw;
+            }
+
+
+            if (dt.Rows.Count >= 1)
+            {
+                throw new ArgumentException("該手機已註冊");
+            }
+            else
+            {
+                try
+                {
+                    SqlConnection connection = new SqlConnection(s_data);
+                    SqlCommand command = new SqlCommand(@"UPDATE Customers
+                       SET
+                          phone = @phone
+                        WHERE ID = @id ", connection);
+                    command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                    command.Parameters.Add("@phone", SqlDbType.NVarChar).Value = phone;
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                    connection.Close();
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
             }
         }
 

@@ -146,16 +146,23 @@
     }
 
     //註冊編輯事件
-        $('#accountDelet').click(function () {
+        //$('#accountDelet').click(function () {
 
-            var accountDel = confirm('你確定要刪除帳號嗎？');
+        //    var accountDel = confirm('你確定要刪除帳號嗎？');
 
-            if (accountDel) {
-                alert('你已成功刪除此帳號');
-                // 直接跳轉
-                window.location.href = '../index.aspx';
-            } 
-    });
+        //    if (accountDel == true) {
+        //        alert('你已成功刪除此帳號');
+        //        // 直接跳轉
+        //        window.location.href = '../index.aspx';
+        //    } else
+        //    {
+        //        initBut();
+        //    }
+        //});
+
+
+
+
 
     //註冊取消事件
     //$('#accountClose').click(function () {

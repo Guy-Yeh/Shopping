@@ -17,6 +17,21 @@ namespace Shopping.Service
             return customers;
         }
 
+
+        public bool DelAccount(string account, string access)
+        {
+            try
+            {
+                //throw new ArgumentException("驗證錯誤");
+                CustomerDetailDao customerDetailDao = new CustomerDetailDao();
+                return customerDetailDao.DelAccount(account, access);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool EditName(int id, string name)
         {
             try
@@ -43,6 +58,8 @@ namespace Shopping.Service
                 throw;
             }
         }
+
+
         public bool EditAddress(int id, string address)
         {
             try

@@ -61,7 +61,8 @@ namespace Shopping.Customer
             string costomerTalk = Request.Form["costomerTextBox"].ToString();
             if (string.IsNullOrEmpty(costomerTalk.Trim()))
             {
-                MessageBox.Show("請輸入文字");
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "test", "setTimeout( function(){alert('請輸入文字');},0);", true);
+                //MessageBox.Show("請輸入文字");
             }
             else {
                 SqlConnection connection = Connect(s_data);
@@ -79,8 +80,8 @@ namespace Shopping.Customer
                 chatGridView.DataBind();
 
                 connection.Close();
-
-                MessageBox.Show("回覆成功");
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "test", "setTimeout( function(){alert('回覆成功');},0);", true);
+                //MessageBox.Show("回覆成功");
                 reviewChat();
             }
         }

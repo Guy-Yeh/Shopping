@@ -32,6 +32,49 @@ $(document).ready(function () {
     
         });
         */
+    //刪除帳號
+    $("#accountDelet").click(function () {
+        console.log("OK");
+        var accountDel = confirm('你確定要刪除帳號嗎？');
+
+        if (accountDel == true) {
+            $.ajax({
+                type: "post",
+                url: "CustomerDetail.aspx/DelAccount",
+                data: JSON.stringify({ account: customer.account, access: 'no' }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: (e) => {
+                    if (e.d.Status == 0) {
+                        let data = e.d.Data[0];
+                        alert('你已成功刪除此帳號');
+                        //偷偷去按登出
+                        document.getElementById('LinkButton1').click();
+
+                    } else {
+                        alert(e.d.Message);
+                    }
+                },
+                error: (e) => {
+                    console.log("ERROR");
+
+                    alert(e.d.Message);
+                }
+
+            });
+                
+                // 直接跳轉
+                //window.location.href = '../index.aspx';
+            } else
+            {
+                initBut();
+            }
+        
+        return false;
+
+
+    });
+
 
 
     //修改姓名
@@ -105,6 +148,8 @@ $(document).ready(function () {
                     $('#phoneNumberText').css('display', '');
                     } else {
                         alert(e.d.Message);
+                        $('#phoneNumberInput').css('display', 'none');
+                        $('#phoneNumberText').css('display', '');
                     }
                 },
                 error: (e) => {
@@ -148,13 +193,20 @@ $(document).ready(function () {
                     $('#mailText').text(data.email);
                     $('#addressText').text(data.address);
                     //$('#accountImg').attr('src', data.picture);
-                    $('#ContentPlaceHolder1_accountImg').attr('src', ".." + data.picture);
+                    let pic = (data.picture == undefined || data.picture == '') ? "/images/si2.jpg" : data.picture;
+                    //let pic='';
+                    //if (data.picture == undefined || data.picture == '') {
+                    //    pic = "/images/si2.jpg";
+                    //} else {
+                    //    pic = data.picture;
+                    //}
+                    $('#ContentPlaceHolder1_accountImg').attr('src', ".." + pic);
 
                     //to do
                     customer = data;
                     if (isOk == true) {
                         setTimeout(() => {
-                            alert("OK")
+                            alert("已修改")
                         }, 200)
 
                     }
