@@ -173,7 +173,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <li>
                                                 <asp:FileUpload ID="FileUpload1" runat="server" /></li>
                                             <li>
-                                                <asp:Label ID="hintPicture" runat="server" ForeColor="Black" Text="非必傳"></asp:Label></li>
+                                                <asp:Label ID="hintPicture" runat="server" ForeColor="Black" Text="非必選"></asp:Label></li>
                                             <li>
                                                 <asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;" /></li>
                                             <br>
@@ -197,13 +197,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <li>
                                                 <asp:Label ID="accountD" runat="server" Text="account"></asp:Label></li>
                                             <li>
-                                                <asp:DropDownList ID="DDLDeleteAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px" >
+                                                <asp:TextBox ID="TextBox6" runat="server" placeholder="輸入即將刪除的account"></asp:TextBox></li>
+                                            <li>
+                                                <%--<asp:DropDownList ID="DDLDeleteAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px" >
                                                     <asp:ListItem Value="0">請選擇</asp:ListItem>
-                                                </asp:DropDownList>
+                                                </asp:DropDownList>--%>
                                                 <asp:SqlDataSource ID="SqlDataSourceAccount" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT account FROM Customers ORDER BY account"></asp:SqlDataSource>
                                             </li>
                                             <li>
-                                                <asp:Label ID="hintID" runat="server" Text="選擇即將刪除的account"></asp:Label></li>                                            
+                                                <asp:Label ID="hintID" runat="server" Text=""></asp:Label></li>                                            
                                             <li>
                                                 <asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要刪除嗎?')) window.event.returnValue=false;" /></li>
                                             <br>
@@ -211,13 +213,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             
                                              <li>
                                                 <asp:Label ID="accountS" runat="server" Text="account"></asp:Label></li>
+                                             <li>
+                                                <asp:TextBox ID="TextBox7" runat="server" placeholder="輸入即將搜尋的account"></asp:TextBox></li>
                                             <li>
-                                                <asp:DropDownList ID="DDLSearchAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px" >
+                                                <%--<asp:DropDownList ID="DDLSearchAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px" >
                                                     <asp:ListItem Value="0">請選擇</asp:ListItem>
-                                                </asp:DropDownList>
+                                                </asp:DropDownList>--%>
                                             </li>
                                             <li>
-                                                <asp:Label ID="hintIDS" runat="server" Text="選擇將要搜尋的account"></asp:Label></li>                                            
+                                                <asp:Label ID="hintIDS" runat="server" Text=""></asp:Label></li>                                            
                                             <li>
                                                 <asp:Button ID="Search" runat="server" OnClick="Button4_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
                                         </ul>
@@ -229,12 +233,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <ul>
                                             <li>
                                                 <asp:Label ID="accountU" runat="server" Text="account"></asp:Label></li>
+                                            <li><asp:TextBox ID="TextBox8" runat="server" placeholder="輸入即將更新的account"></asp:TextBox></li>
                                             <li>
-                                                <asp:DropDownList ID="DDLUpdateAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px" >
+                                                <%--<asp:DropDownList ID="DDLUpdateAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px" >
                                                     <asp:ListItem Value="0">請選擇</asp:ListItem>
-                                                </asp:DropDownList></asp:DropDownList></li>
+                                                </asp:DropDownList></asp:DropDownList></li>--%>
                                             <li>
-                                                <asp:Label ID="hintID2" runat="server" Text="選擇即將更新的account"></asp:Label><li>
+                                                <asp:Label ID="hintID2" runat="server" Text=""></asp:Label><li>
                                                     <br>
                                                     <li></li>
                                             <li>
