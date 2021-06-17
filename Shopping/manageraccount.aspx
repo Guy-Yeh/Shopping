@@ -173,7 +173,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <li>
                                                 <asp:FileUpload ID="FileUpload1" runat="server" /></li>
                                             <li>
-                                                <asp:Label ID="hintPicture" runat="server" ForeColor="Black" Text="非必傳"></asp:Label></li>
+                                                <asp:Label ID="hintPicture" runat="server" ForeColor="Black" Text="非必選"></asp:Label></li>
                                             <li>
                                                 <asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;" /></li>
                                             <br>

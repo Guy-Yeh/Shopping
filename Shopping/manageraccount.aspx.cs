@@ -243,7 +243,7 @@ namespace Shopping
             hintDiscount.Text = "";
             hintCity.Text = "";
             hintRegion.Text = "";
-            hintPicture.Text = "非必傳";
+            hintPicture.Text = "非必選";
             hintAll.Text = "";
             hintAll.Text = "";
             hintAccess.Text = "請選擇權限";
@@ -533,7 +533,7 @@ namespace Shopping
             SqlConnection connection6 = Connect(s_data);
             SqlConnection connection6CS = Connect(s_data);
             string sql7 = $"select * from Customers where {DDLUpdateCol.Text}='{TextBox9.Text}'";
-            string sql8 = $"select * from Customers where {DDLUpdateCol.Text}='{TextBox9.Text}' And Access='Yes'";
+            string sql8 = $"select * from Customers where {DDLUpdateCol.Text}='{TextBox9.Text.ToLower()}' And Access='Yes'";
             bool accountCheck = Regex.IsMatch(TextBox9.Text, @"[\w-]{6,15}");
             bool passwordCheck = Regex.IsMatch(TextBox9.Text, @"[\w-]{7,20}");
 
@@ -607,7 +607,7 @@ namespace Shopping
                                         hintAll.Text = "phone格式錯誤 請重新輸入";
                                     }
                                 }
-                                else if (DDLUpdateCol.Text == "email")
+                                else 
                                 {
                                     if (emailCheck)
                                     {
@@ -737,6 +737,26 @@ namespace Shopping
                                 cleanbt3();
 
                             }
+                        }
+
+                        else if (DDLUpdateCol.Text == "access")
+                        {
+                            if (TextBox9.Text == "Yes" || TextBox9.Text == "No")
+                            {
+                                SqlCommand command6 = new SqlCommand(sql6, connection6);
+                                connection6.Open();
+                                command6.ExecuteNonQuery();
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                                connection6.Close();
+                                reviewAccount();
+                                cleanbt3();
+                            }
+                            else
+                            {
+                                hintAll.ForeColor = Color.Red;
+                                hintAll.Text = "access只能修改為Yes或No 請重新輸入";
+                            }
+
                         }
 
                         else
