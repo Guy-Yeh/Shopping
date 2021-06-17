@@ -357,13 +357,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label accountD;
 
         /// <summary>
-        /// DDLDeleteAccount 控制項。
+        /// TextBox6 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLDeleteAccount;
+        protected global::System.Web.UI.WebControls.TextBox TextBox6;
 
         /// <summary>
         /// SqlDataSourceAccount 控制項。
@@ -402,13 +402,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label accountS;
 
         /// <summary>
-        /// DDLSearchAccount 控制項。
+        /// TextBox7 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLSearchAccount;
+        protected global::System.Web.UI.WebControls.TextBox TextBox7;
 
         /// <summary>
         /// hintIDS 控制項。
@@ -438,13 +438,13 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Label accountU;
 
         /// <summary>
-        /// DDLUpdateAccount 控制項。
+        /// TextBox8 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLUpdateAccount;
+        protected global::System.Web.UI.WebControls.TextBox TextBox8;
 
         /// <summary>
         /// hintID2 控制項。

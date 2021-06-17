@@ -140,6 +140,17 @@ namespace Shopping
 
         }
 
+        public bool checkaccount(string a)
+        {
+            SqlConnection connection = Connect(s_data);
+            string sql = $"select account from Customers where account='{a}'";
+            SqlCommand command = new SqlCommand(sql, connection);
+            connection.Open();
+            SqlDataReader read = command.ExecuteReader();
+            bool check = read.Read();
+            connection.Close();
+            return check;
+        }
        
 
         public void cleanbt1()
@@ -179,21 +190,26 @@ namespace Shopping
 
         public void cleanbt2()
         {
-            DataView dv = (DataView)this.SqlDataSourceAccount.Select(new DataSourceSelectArguments());
-            DDLDeleteAccount.Items.Clear();
-            DDLDeleteAccount.Items.Add("請選擇");
-            DDLDeleteAccount.DataSource = dv;
-            DDLDeleteAccount.DataTextField = "account";
-            DDLDeleteAccount.DataBind();
+            //DataView dv = (DataView)this.SqlDataSourceAccount.Select(new DataSourceSelectArguments());
+            //DDLDeleteAccount.Items.Clear();
+            //DDLDeleteAccount.Items.Add("請選擇");
+            //DDLDeleteAccount.DataSource = dv;
+            //DDLDeleteAccount.DataTextField = "account";
+            //DDLDeleteAccount.DataBind();
+            TextBox6.Text = "";
         }
+
+        
+
         public void cleanbt3()
         {
-            DataView dv = (DataView)this.SqlDataSourceAccount.Select(new DataSourceSelectArguments());
-            DDLUpdateAccount.Items.Clear();
-            DDLUpdateAccount.Items.Add("請選擇");
-            DDLUpdateAccount.DataSource = dv;
-            DDLUpdateAccount.DataTextField = "account";
-            DDLUpdateAccount.DataBind();
+            //DataView dv = (DataView)this.SqlDataSourceAccount.Select(new DataSourceSelectArguments());
+            //DDLUpdateAccount.Items.Clear();
+            //DDLUpdateAccount.Items.Add("請選擇");
+            //DDLUpdateAccount.DataSource = dv;
+            //DDLUpdateAccount.DataTextField = "account";
+            //DDLUpdateAccount.DataBind();
+            TextBox8.Text = "";
             DataView dv2 = (DataView)this.SqlDataSourceUpdateCol.Select(new DataSourceSelectArguments());
             DDLUpdateCol.Items.Clear();
             DDLUpdateCol.Items.Add("請選擇");
@@ -203,14 +219,16 @@ namespace Shopping
             TextBox9.Text = "";
         }
 
+        
         public void cleanbt4()
         {
-            DataView dv = (DataView)this.SqlDataSourceAccount.Select(new DataSourceSelectArguments());
-            DDLSearchAccount.Items.Clear();
-            DDLSearchAccount.Items.Add("請選擇");
-            DDLSearchAccount.DataSource = dv;
-            DDLSearchAccount.DataTextField = "account";
-            DDLSearchAccount.DataBind();
+            //DataView dv = (DataView)this.SqlDataSourceAccount.Select(new DataSourceSelectArguments());
+            //DDLSearchAccount.Items.Clear();
+            //DDLSearchAccount.Items.Add("請選擇");
+            //DDLSearchAccount.DataSource = dv;
+            //DDLSearchAccount.DataTextField = "account";
+            //DDLSearchAccount.DataBind();
+            TextBox7.Text = "";
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -229,10 +247,10 @@ namespace Shopping
             hintAll.Text = "";
             hintAll.Text = "";
             hintAccess.Text = "請選擇權限";
-            hintID.Text = "選擇即將刪除的account";
-            hintID2.Text = "選擇即將更新的account";
+            hintID.Text = "";
+            hintID2.Text = "";
             hintColumn.Text = "選擇即將更新的欄位";
-            hintIDS.Text = "選擇將要搜尋的account";
+            hintIDS.Text = "";
             changecolor();
             
             if (!IsPostBack)
@@ -445,34 +463,64 @@ namespace Shopping
                 connection2a.Close();
             }
         }
-               
-        
 
+        
         protected void Button2_Click(object sender, EventArgs e)
         {
-            
-            string sql3 = $"delete from Customers where account='{DDLDeleteAccount.Text}'";
-
-            if (DDLDeleteAccount.SelectedItem.Text!="請選擇")
+            string sql3 = $"delete from Customers where account='{TextBox6.Text}'";
+            if (TextBox6.Text != "")
             {
-                SqlConnection connection3 = Connect(s_data);
-                SqlCommand command3 = new SqlCommand(sql3, connection3);
-                connection3.Open();
-                command3.ExecuteNonQuery();
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt2", "setTimeout( function(){alert('刪除成功');},0);", true);
-                connection3.Close();
-                reviewAccount();
-                cleanbt2();
-                cleanbt3();
-                cleanbt4();
+                if (checkaccount(TextBox6.Text))
+                {
+                    SqlConnection connection3 = Connect(s_data);
+                    SqlCommand command3 = new SqlCommand(sql3, connection3);
+                    connection3.Open();
+                    command3.ExecuteNonQuery();
+                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt2", "setTimeout( function(){alert('刪除成功');},0);", true);
+                    connection3.Close();
+                    reviewAccount();
+                    cleanbt2();
+                    cleanbt3();
+                    cleanbt4();
+                }
+                else
+                {
+                    hintID.ForeColor = Color.Red;
+                    hintID.Text = "account不存在 請重新輸入";
+                }
             }
             else
             {
                 hintID.ForeColor = Color.Red;
-                hintID.Text = "請選擇項目";
+                hintID.Text = "account不得為空 請重新輸入";
             }
 
         }
+
+        //protected void Button2_Click(object sender, EventArgs e)
+        //{
+        //    string sql3 = $"delete from Customers where account='{DDLDeleteAccount.Text}'";
+
+        //    if (DDLDeleteAccount.SelectedItem.Text!="請選擇")
+        //    {
+        //        SqlConnection connection3 = Connect(s_data);
+        //        SqlCommand command3 = new SqlCommand(sql3, connection3);
+        //        connection3.Open();
+        //        command3.ExecuteNonQuery();
+        //        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt2", "setTimeout( function(){alert('刪除成功');},0);", true);
+        //        connection3.Close();
+        //        reviewAccount();
+        //        cleanbt2();
+        //        cleanbt3();
+        //        cleanbt4();
+        //    }
+        //    else
+        //    {
+        //        hintID.ForeColor = Color.Red;
+        //        hintID.Text = "請選擇項目";
+        //    }
+
+        //}
 
         protected void Button3_Click(object sender, EventArgs e)
         {
@@ -480,8 +528,8 @@ namespace Shopping
             bool discountCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             bool phoneCheck = Regex.IsMatch(TextBox9.Text, @"^09[\d]{8}");
             bool emailCheck = Regex.IsMatch(TextBox9.Text, @"^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$");
-            string sql6 = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text}' where account='{DDLUpdateAccount.Text}'";
-            string sql6CS = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text.ToLower()}' where account='{DDLUpdateAccount.Text}'";
+            string sql6 = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text}' where account='{TextBox8.Text}'";
+            string sql6CS = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text.ToLower()}' where account='{TextBox8.Text}'";
             SqlConnection connection6 = Connect(s_data);
             SqlConnection connection6CS = Connect(s_data);
             string sql7 = $"select * from Customers where {DDLUpdateCol.Text}='{TextBox9.Text}'";
@@ -489,77 +537,26 @@ namespace Shopping
             bool accountCheck = Regex.IsMatch(TextBox9.Text, @"[\w-]{6,15}");
             bool passwordCheck = Regex.IsMatch(TextBox9.Text, @"[\w-]{7,20}");
 
-            if (DDLUpdateAccount.SelectedItem.Text != "請選擇") 
+            if (TextBox8.Text != "")
             {
-                if (DDLUpdateCol.SelectedItem.Text != "請選擇") 
+                if (checkaccount(TextBox8.Text))
                 {
-                    if (DDLUpdateCol.Text == "account")
+                    if (DDLUpdateCol.SelectedItem.Text != "請選擇")
                     {
-                        SqlConnection connection7 = Connect(s_data);
-                        SqlCommand command7 = new SqlCommand(sql7, connection7);
-                        connection7.Open();
-                        SqlDataReader Reader2 = command7.ExecuteReader();
-                        if (Reader2.HasRows)
+                        if (DDLUpdateCol.Text == "account")
                         {
-                            hintAll.ForeColor = Color.Red;
-                            hintAll.Text = "account重複 請重新輸入";
-                        }
-                        else
-                        {
-                            if (accountCheck)
+                            SqlConnection connection7 = Connect(s_data);
+                            SqlCommand command7 = new SqlCommand(sql7, connection7);
+                            connection7.Open();
+                            SqlDataReader Reader2 = command7.ExecuteReader();
+                            if (Reader2.HasRows)
                             {
-                                SqlCommand command6CS = new SqlCommand(sql6CS, connection6CS);
-                                connection6CS.Open();
-                                command6CS.ExecuteNonQuery();
-                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
-                                connection6CS.Close();
-                                reviewAccount();
-                                cleanbt2();
-                                cleanbt3();
-                                cleanbt4();
+                                hintAll.ForeColor = Color.Red;
+                                hintAll.Text = "account重複 請重新輸入";
                             }
                             else
                             {
-                                hintAll.ForeColor = Color.Red;
-                                hintAll.Text = "account需包含6-15個英文字母加數字 請重新輸入";
-                            }
-                        }
-                        connection7.Close();
-                    }
-                    else if (DDLUpdateCol.Text == "phone" || DDLUpdateCol.Text == "email")
-                    {
-                        SqlConnection connection8 = Connect(s_data);
-                        SqlCommand command8 = new SqlCommand(sql8, connection8);
-                        connection8.Open();
-                        SqlDataReader Reader3 = command8.ExecuteReader();
-                        if (Reader3.HasRows)
-                        {
-                            hintAll.ForeColor = Color.Red;
-                            hintAll.Text = "phone/email重複 請重新輸入";
-                        }
-                        else
-                        {
-                            if (DDLUpdateCol.Text == "phone")
-                            {
-                                if (phoneCheck)
-                                {
-                                    SqlCommand command6 = new SqlCommand(sql6, connection6);
-                                    connection6.Open();
-                                    command6.ExecuteNonQuery();
-                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
-                                    connection6.Close();
-                                    reviewAccount();
-                                    cleanbt3();
-                                }
-                                else
-                                {
-                                    hintAll.ForeColor = Color.Red;
-                                    hintAll.Text = "phone格式錯誤 請重新輸入";
-                                }
-                            }
-                            else if (DDLUpdateCol.Text == "email")
-                            {
-                                if (emailCheck)
+                                if (accountCheck)
                                 {
                                     SqlCommand command6CS = new SqlCommand(sql6CS, connection6CS);
                                     connection6CS.Open();
@@ -567,60 +564,74 @@ namespace Shopping
                                     this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
                                     connection6CS.Close();
                                     reviewAccount();
+                                    cleanbt2();
                                     cleanbt3();
+                                    cleanbt4();
                                 }
                                 else
                                 {
                                     hintAll.ForeColor = Color.Red;
-                                    hintAll.Text = "email格式錯誤 請重新輸入";
+                                    hintAll.Text = "account需包含6-15個英文字母加數字 請重新輸入";
                                 }
                             }
+                            connection7.Close();
                         }
-                        connection8.Close();
+                        else if (DDLUpdateCol.Text == "phone" || DDLUpdateCol.Text == "email")
+                        {
+                            SqlConnection connection8 = Connect(s_data);
+                            SqlCommand command8 = new SqlCommand(sql8, connection8);
+                            connection8.Open();
+                            SqlDataReader Reader3 = command8.ExecuteReader();
+                            if (Reader3.HasRows)
+                            {
+                                hintAll.ForeColor = Color.Red;
+                                hintAll.Text = "phone/email重複 請重新輸入";
+                            }
+                            else
+                            {
+                                if (DDLUpdateCol.Text == "phone")
+                                {
+                                    if (phoneCheck)
+                                    {
+                                        SqlCommand command6 = new SqlCommand(sql6, connection6);
+                                        connection6.Open();
+                                        command6.ExecuteNonQuery();
+                                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                                        connection6.Close();
+                                        reviewAccount();
+                                        cleanbt3();
+                                    }
+                                    else
+                                    {
+                                        hintAll.ForeColor = Color.Red;
+                                        hintAll.Text = "phone格式錯誤 請重新輸入";
+                                    }
+                                }
+                                else if (DDLUpdateCol.Text == "email")
+                                {
+                                    if (emailCheck)
+                                    {
+                                        SqlCommand command6CS = new SqlCommand(sql6CS, connection6CS);
+                                        connection6CS.Open();
+                                        command6CS.ExecuteNonQuery();
+                                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                                        connection6CS.Close();
+                                        reviewAccount();
+                                        cleanbt3();
+                                    }
+                                    else
+                                    {
+                                        hintAll.ForeColor = Color.Red;
+                                        hintAll.Text = "email格式錯誤 請重新輸入";
+                                    }
+                                }
+                            }
+                            connection8.Close();
 
-                    }
-                    else if (DDLUpdateCol.Text == "password")
-                    {
-                        if (passwordCheck)
-                        {
-                            SqlCommand command6 = new SqlCommand(sql6, connection6);
-                            connection6.Open();
-                            command6.ExecuteNonQuery();
-                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
-                            connection6.Close();
-                            reviewAccount();
-                            cleanbt3();
                         }
-                        else
+                        else if (DDLUpdateCol.Text == "password")
                         {
-                            hintAll.ForeColor = Color.Red;
-                            hintAll.Text = "password需包含7-20個英文字母加數字 請重新輸入";
-                        }
-                    }
-                    else if (DDLUpdateCol.Text == "discount")
-                    {
-                        if (discountCheck || TextBox9.Text == "")
-                        {
-                            SqlCommand command6 = new SqlCommand(sql6, connection6);
-                            connection6.Open();
-                            command6.ExecuteNonQuery();
-                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
-                            connection6.Close();
-                            reviewAccount();
-                            cleanbt3();
-                        }
-                        else
-                        {
-                            hintAll.ForeColor = Color.Red;
-                            hintAll.Text = "請輸入數字";
-                        }
-                    }
-
-                    else if(DDLUpdateCol.Text == "name")
-                    {
-                        if (nameCheck)
-                        {
-                            if (Encoding.Default.GetByteCount(TextBox9.Text) >=4 && Encoding.Default.GetByteCount(TextBox9.Text) <= 10)
+                            if (passwordCheck)
                             {
                                 SqlCommand command6 = new SqlCommand(sql6, connection6);
                                 connection6.Open();
@@ -630,30 +641,36 @@ namespace Shopping
                                 reviewAccount();
                                 cleanbt3();
                             }
-                            else 
+                            else
                             {
                                 hintAll.ForeColor = Color.Red;
-                                hintAll.Text = "name需介於4-10個位元";
+                                hintAll.Text = "password需包含7-20個英文字母加數字 請重新輸入";
                             }
                         }
-                        else
+                        else if (DDLUpdateCol.Text == "discount")
                         {
-                            hintAll.ForeColor = Color.Red;
-                            hintAll.Text = "name只能包含中文和英文";
-                        }
-                    }
-
-                    else if (DDLUpdateCol.Text == "picture")
-                    {
-                        if (TextBox9.Text != "")
-                        {
-                            string pc = @"images/使用者照片/";
-                            string str = System.AppDomain.CurrentDomain.BaseDirectory;
-                            bool checkroot = TextBox9.Text.Contains(pc);
-                            string TT9 = (TextBox9.Text).Replace(@"/", @"\").Remove(0,1);
-                            if (checkroot)
+                            if (discountCheck || TextBox9.Text == "")
                             {
-                                if (File.Exists($@"{str + TT9}"))
+                                SqlCommand command6 = new SqlCommand(sql6, connection6);
+                                connection6.Open();
+                                command6.ExecuteNonQuery();
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                                connection6.Close();
+                                reviewAccount();
+                                cleanbt3();
+                            }
+                            else
+                            {
+                                hintAll.ForeColor = Color.Red;
+                                hintAll.Text = "請輸入數字";
+                            }
+                        }
+
+                        else if (DDLUpdateCol.Text == "name")
+                        {
+                            if (nameCheck)
+                            {
+                                if (Encoding.Default.GetByteCount(TextBox9.Text) >= 4 && Encoding.Default.GetByteCount(TextBox9.Text) <= 10)
                                 {
                                     SqlCommand command6 = new SqlCommand(sql6, connection6);
                                     connection6.Open();
@@ -666,16 +683,62 @@ namespace Shopping
                                 else
                                 {
                                     hintAll.ForeColor = Color.Red;
-                                    hintAll.Text = "picture檔案不存在<br>請確認「使用者照片」資料夾<br>是否存在該檔案 ";                                    
+                                    hintAll.Text = "name需介於4-10個位元";
                                 }
                             }
                             else
                             {
                                 hintAll.ForeColor = Color.Red;
-                                hintAll.Text = "picture路徑格式錯誤<br>格式:/images/使用者照片/你的檔名.jpg ";
+                                hintAll.Text = "name只能包含中文和英文";
+                            }
+                        }
+
+                        else if (DDLUpdateCol.Text == "picture")
+                        {
+                            if (TextBox9.Text != "")
+                            {
+                                string pc = @"images/使用者照片/";
+                                string str = System.AppDomain.CurrentDomain.BaseDirectory;
+                                bool checkroot = TextBox9.Text.Contains(pc);
+                                string TT9 = (TextBox9.Text).Replace(@"/", @"\").Remove(0, 1);
+                                if (checkroot)
+                                {
+                                    if (File.Exists($@"{str + TT9}"))
+                                    {
+                                        SqlCommand command6 = new SqlCommand(sql6, connection6);
+                                        connection6.Open();
+                                        command6.ExecuteNonQuery();
+                                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                                        connection6.Close();
+                                        reviewAccount();
+                                        cleanbt3();
+                                    }
+                                    else
+                                    {
+                                        hintAll.ForeColor = Color.Red;
+                                        hintAll.Text = "picture檔案不存在<br>請確認「使用者照片」資料夾<br>是否存在該檔案 ";
+                                    }
+                                }
+                                else
+                                {
+                                    hintAll.ForeColor = Color.Red;
+                                    hintAll.Text = "picture路徑格式錯誤<br>格式:/images/使用者照片/你的檔名.jpg ";
+
+                                }
+                            }
+                            else
+                            {
+                                SqlCommand command6 = new SqlCommand(sql6, connection6);
+                                connection6.Open();
+                                command6.ExecuteNonQuery();
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                                connection6.Close();
+                                reviewAccount();
+                                cleanbt3();
 
                             }
                         }
+
                         else
                         {
                             SqlCommand command6 = new SqlCommand(sql6, connection6);
@@ -685,35 +748,27 @@ namespace Shopping
                             connection6.Close();
                             reviewAccount();
                             cleanbt3();
-                            
+
                         }
                     }
-
                     else
                     {
-                        SqlCommand command6 = new SqlCommand(sql6, connection6);
-                        connection6.Open();
-                        command6.ExecuteNonQuery();
-                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
-                        connection6.Close();
-                        reviewAccount();
-                        cleanbt3();
-                        
+                        hintColumn.ForeColor = Color.Red;
+                        hintColumn.Text = "請選擇項目";
+
                     }
                 }
                 else
                 {
-                    hintColumn.ForeColor = Color.Red;
-                    hintColumn.Text = "請選擇項目";
-                    
+                    hintID2.ForeColor = Color.Red;
+                    hintID2.Text = "account不存在 請重新輸入";
                 }
             }
-            
             else
             {
                 hintID2.ForeColor = Color.Red;
-                hintID2.Text = "請選擇項目";
-                
+                hintID2.Text = "account不得為空 請重新輸入";
+
             }
    
         }
@@ -731,19 +786,42 @@ namespace Shopping
 
         protected void Button4_Click(object sender, EventArgs e)
         {
-            string sql3 = $"select * from Customers where account='{DDLSearchAccount.Text}'";
-
-            if (DDLSearchAccount.SelectedItem.Text != "請選擇")
+            string sql3 = $"select * from Customers where account='{TextBox7.Text}'";
+            if (TextBox7.Text != "")
             {
-                searchaccount(sql3);
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt4", "setTimeout( function(){alert('篩選成功');},0);", true);                                
-                cleanbt4();
+                if (checkaccount(TextBox7.Text))
+                {
+                    searchaccount(sql3);
+                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt4", "setTimeout( function(){alert('篩選成功');},0);", true);
+                    cleanbt4();
+                }
+                else
+                {
+                    hintIDS.ForeColor = Color.Red;
+                    hintIDS.Text = "account不存在 請重新輸入";
+                }
             }
             else
             {
                 hintIDS.ForeColor = Color.Red;
-                hintIDS.Text = "請選擇項目";
+                hintIDS.Text = "account不得為空 請重新輸入";
             }
         }
+        //protected void Button4_Click(object sender, EventArgs e)
+        //{
+        //    string sql3 = $"select * from Customers where account='{DDLSearchAccount.Text}'";
+
+        //    if (DDLSearchAccount.SelectedItem.Text != "請選擇")
+        //    {
+        //        searchaccount(sql3);
+        //        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt4", "setTimeout( function(){alert('篩選成功');},0);", true);                                
+        //        cleanbt4();
+        //    }
+        //    else
+        //    {
+        //        hintIDS.ForeColor = Color.Red;
+        //        hintIDS.Text = "請選擇項目";
+        //    }
+        //}
     }
 }
