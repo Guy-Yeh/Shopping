@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -62,6 +63,16 @@ namespace Shopping.Customer
             {
                 CustomerDetailService customerDetailService = new CustomerDetailService();
                 List<CustomersModel> customers = customerDetailService.GetCustomers(loginstatus);
+
+                //for (int i = 0; i < customers.Count; i++)
+                //{
+                //    if (string.IsNullOrEmpty(customers[i].picture))
+                //    {
+                //        //預設圖片
+                //        customers[i].picture = "/images/si2.jpg";
+                //    }
+                //}
+
                 return common.ThrowResult<List<CustomersModel>>(Enum.ApiStatusEnum.OK, string.Empty, customers);
             }
             catch (Exception ex)
@@ -69,6 +80,24 @@ namespace Shopping.Customer
                 return common.ThrowResult<List<CustomersModel>>(Enum.ApiStatusEnum.InternalServerError, ex.Message, null);
             }
         }
+
+        [WebMethod]
+        public static Models.ApiResultModel<bool> DelAccount(string account, string access)
+        {
+            Common.Common common = new Common.Common();
+            try
+            {
+                CustomerDetailService customerDetailService = new CustomerDetailService();
+                bool r = customerDetailService.DelAccount(account, access);
+
+                return common.ThrowResult<bool>(Enum.ApiStatusEnum.OK, string.Empty, r);
+            }
+            catch (Exception ex)
+            {
+                return common.ThrowResult<bool>(Enum.ApiStatusEnum.InternalServerError, ex.Message, false);
+            }
+        }
+
 
         [WebMethod]
         public static Models.ApiResultModel<bool> EditName(int id, string name)
@@ -206,69 +235,95 @@ namespace Shopping.Customer
 
             if (FileUpload1.PostedFile != null)
             {
+                string fileExtension = Path.GetExtension(FileUpload1.FileName).ToLower();
                 //檢查副檔名 to do
-
-                // File was sent
-                HttpPostedFile myFile = FileUpload1.PostedFile;
-
-                // Get size of uploaded file
-                int nFileLen = myFile.ContentLength;
-
-                if (FileUpload1.HasFile && nFileLen > 0)
+                bool r = CheckPhotoFormat(fileExtension);
+                if (r == true)
                 {
-                    string picturePath1 = $"/images/FileUpload/" + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
-                    string imgPath = Server.MapPath("~" + picturePath1);
-                    FileUpload1.SaveAs(imgPath);
-                    //accountImg.ImageUrl = picturePath1;
+                    // File was sent
+                    HttpPostedFile myFile = FileUpload1.PostedFile;
 
+                    // Get size of uploaded file
+                    int nFileLen = myFile.ContentLength;
 
-//                    string imgPath = Server.MapPath("~/images/FileUpload/" + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg");
-//                    FileUpload1.SaveAs(imgPath);
-//                    accountImg.ImageUrl = imgPath;
-                  
-
-                    try
+                    if (FileUpload1.HasFile && nFileLen > 0)
                     {
-                        string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
-                        SqlConnection connection = new SqlConnection(s_data);
-                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-                        SqlCommand command = new SqlCommand(@"UPDATE Customers
+                        string picturePath1 = $"/images/FileUpload/" + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
+                        string imgPath = Server.MapPath("~" + picturePath1);
+                        FileUpload1.SaveAs(imgPath);
+                        //accountImg.ImageUrl = picturePath1;
+
+
+                        //                    string imgPath = Server.MapPath("~/images/FileUpload/" + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg");
+                        //                    FileUpload1.SaveAs(imgPath);
+                        //                    accountImg.ImageUrl = imgPath;
+
+
+                        try
+                        {
+                            string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
+                            SqlConnection connection = new SqlConnection(s_data);
+                            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+                            SqlCommand command = new SqlCommand(@"UPDATE Customers
                        SET
                           picture = @picture
                         WHERE account = @account ", connection);
-                        command.Parameters.Add("@account", SqlDbType.NVarChar).Value = loginstatus;
-                        command.Parameters.Add("@picture", SqlDbType.NVarChar).Value = picturePath1;
+                            command.Parameters.Add("@account", SqlDbType.NVarChar).Value = loginstatus;
+                            command.Parameters.Add("@picture", SqlDbType.NVarChar).Value = picturePath1;
 
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                        accountImg.ImageUrl = picturePath1;
-                        MessageBox.Show("上傳成功");
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                            accountImg.ImageUrl = picturePath1;
+                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "TEST1", "setTimeout( function(){alert('上傳成功');},200);", true);
+                            //MessageBox.Show("上傳成功");
+
+                        }
+                        catch (Exception ex)
+                        {
+                            throw;
+                        }
+
 
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        throw;
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "TEST1", "setTimeout( function(){alert('請選擇圖片檔案');},200);", true);
+                        //MessageBox.Show("請選擇圖片檔案");
                     }
-
 
                 }
                 else
                 {
-                    MessageBox.Show("請選擇圖片檔案");
+                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "TEST1", "setTimeout( function(){alert('請選擇圖片檔案');},200);", true);
+                    // No file
+                    //MessageBox.Show("請選擇圖片檔案");
                 }
-
-            }
-            else
-            {
-                // No file
-                MessageBox.Show("請選擇圖片檔案");
             }
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private Boolean CheckPhotoFormat(String fileName)
+        {
+            //Boolean flag = false;
+            String fileExtension = Path.GetExtension(fileName).ToLower();
+            String[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+
+            for (int i = 0; i < allowedExtensions.Length; i++)
+            {
+                if (allowedExtensions[i] == fileExtension)
+                {
+                    return true;
+
+                    
+                }
+            }
+
+            return false;
         }
     }
 }
