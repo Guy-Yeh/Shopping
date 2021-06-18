@@ -31,6 +31,10 @@ namespace Shopping
             {
 
             }
+            if (Session["loginstatus"] != null)
+            {
+                Response.Redirect("index");
+            }
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)

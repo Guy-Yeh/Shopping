@@ -18,7 +18,10 @@ namespace Shopping
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["loginstatus"] != null)
+            {
+                Response.Redirect("index");
+            }
         }
 
         protected void logingButton1_Click(object sender, EventArgs e)
@@ -29,8 +32,13 @@ namespace Shopping
                 errorText.Text = "*輸入資訊不得為空";
                 return;
             }
+
+
+
+            string accchange = logingaccTextBox.Text.ToLower();
             SqlConnection connection = new SqlConnection(s_data);
-            string accCheck = $"select * from Customers where account ='" + logingaccTextBox.Text + "'";
+
+            string accCheck = $"select * from Customers where account ='" + accchange + "'";
             //string emailCheck = $"select * from Customers where email ='" + logingaccTextBox.Text + "'";
             SqlCommand Command_acc = new SqlCommand(accCheck, connection);
             //SqlCommand Command_email = new SqlCommand(emailCheck, connection);
