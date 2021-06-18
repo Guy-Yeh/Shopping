@@ -55,17 +55,18 @@ namespace Shopping
             
             if (Reader_acc.HasRows)
             {
-                /*
-                string sqlAccess = Reader_acc["access"].ToString();
-                if (sqlAccess == "No")
-                {
-                    errorText.Text = "*此帳號已註銷";
-                    connection.Close();
-                    return;
-                }
-                */
+                
+                
+                
                 while (Reader_acc.Read())
                 {
+                    string sqlAccess = Reader_acc["access"].ToString();
+                    if (sqlAccess == "No")
+                    {
+                        errorText.Text = "*此帳號已註銷";
+                        connection.Close();
+                        return;
+                    }
                     string sqlPass = Reader_acc["password"].ToString();
                     if (sqlPass == logingpasswdTextBox.Text)
                     {
