@@ -264,6 +264,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<asp:Label ID="email" runat="server" Text="信箱"></asp:Label>
 								<asp:TextBox ID="emailText" runat="server" placeholder="請輸入有效電子信箱"></asp:TextBox>
 
+								<asp:Label ID="address" runat="server" Text="地址"></asp:Label>
+								<asp:TextBox ID="addressText" runat="server" placeholder="請輸入有效地址"></asp:TextBox>
+
 							</div>
 					 </div>
 					 <div class="clearfix"> </div>
@@ -337,7 +340,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li class="phone">PH : 6985792466</li>
 					</ul>
 				</div>
-				<div class="clearfix"> </div>
+				<div class="clearfix"> 
+					<asp:ScriptManager ID="ScriptManager1" runat="server" ></asp:ScriptManager>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <asp:Button ID="Button1" runat="server" Text="Button" />
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
 				<p class="footer-class"> © 2015 Fashion Mania. All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 			</div>
 	</div>

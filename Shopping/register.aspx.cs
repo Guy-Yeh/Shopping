@@ -46,7 +46,8 @@ namespace Shopping
                 (nameText.Text == null || nameText.Text == "") ||
                 //(identityText.Text == null || identityText.Text == "") ||
                 (phoneText.Text == null || phoneText.Text == "") ||
-                (emailText.Text == null || emailText.Text == ""))
+                (emailText.Text == null || emailText.Text == "" )||
+                (addressText.Text == null || addressText.Text == ""))
             {
                 errorText.Text = "*輸入資訊不得為空";
                 return;
@@ -170,11 +171,11 @@ namespace Shopping
             
 
             //寫入會員資料
-            string acc_sql = $"insert into [dbo].[Customers](account,password,name,phone,email) values (@account,@passwd,@name,@phone,@email)";
+            string acc_sql = $"insert into [dbo].[Customers](account,password,name,phone,email,access,discount) values (@account,@passwd,@name,@phone,@email,@access,discount)";
             connection.Open();
             SqlCommand Command2 = new SqlCommand(acc_sql, connection);
             Command2.Parameters.Add("@account", SqlDbType.NVarChar);
-            Command2.Parameters["@account"].Value = accountText.Text;
+            Command2.Parameters["@account"].Value = accchange;
 
             Command2.Parameters.Add("@passwd", SqlDbType.NVarChar);
             Command2.Parameters["@passwd"].Value = passwordText.Text;
@@ -189,7 +190,13 @@ namespace Shopping
             Command2.Parameters["@phone"].Value = phoneText.Text;
 
             Command2.Parameters.Add("@email", SqlDbType.NVarChar);
-            Command2.Parameters["@email"].Value = emailText.Text;
+            Command2.Parameters["@email"].Value = emailchange;
+
+            Command2.Parameters.Add("@access", SqlDbType.NVarChar);
+            Command2.Parameters["@access"].Value = "Yes";
+
+            Command2.Parameters.Add("@discount", SqlDbType.NVarChar);
+            Command2.Parameters["@discount"].Value = 0;
 
             Command2.ExecuteNonQuery();
             connection.Close();
