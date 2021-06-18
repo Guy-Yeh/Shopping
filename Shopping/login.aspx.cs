@@ -43,18 +43,10 @@ namespace Shopping
 
             //string emailCheck = $"select * from Customers where email ='" + logingaccTextBox.Text + "'";
             SqlCommand Command_acc = new SqlCommand(accCheck, connection);
-            SqlCommand Command_access = new SqlCommand(accessCheck, connection);
+            
             //SqlCommand Command_email = new SqlCommand(emailCheck, connection);
 
-            connection.Open();
-            SqlDataReader Reader_access = Command_acc.ExecuteReader();
-            if (Reader_access.HasRows)
-            {
-                errorText.Text = "*帳號已註銷";
-                connection.Close();
-                return;
-            }
-            connection.Close();
+            
 
 
 
@@ -63,11 +55,13 @@ namespace Shopping
             
             if (Reader_acc.HasRows)
             {
+
                 while (Reader_acc.Read())
                 {
                     string sqlPass = Reader_acc["password"].ToString();
                     if (sqlPass == logingpasswdTextBox.Text)
                     {
+
                         Session["loginstatus"] = logingaccTextBox.Text;                        
                         Response.Redirect("index");
                     }
