@@ -197,18 +197,95 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                     <div class="clearfix">
+                        
                         <br>
-                        <asp:GridView ID="product" runat="server">
+                        <asp:GridView ID="product" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="product_RowDeleting" OnRowCancelingEdit="product_RowCancelingEdit" OnRowEditing="product_RowEditing" OnRowUpdating="product_RowUpdating" >
                             <Columns>
                                 <asp:TemplateField HeaderText="image">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("picture") %>' ReadOnly="True" Visible="False"></asp:TextBox>
+                                    </EditItemTemplate>
                                     <ItemTemplate>
-                                        <asp:Image ID="img1" ImageUrl='<%#Eval("picture") %>'
-                                            runat="server" Width="100" Height="120" />
+                                        <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("picture") %>' Width="100px" ValidateRequestMode="Inherit" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="ID">
+                                    <EditItemTemplate>
+                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="productName" SortExpression="productName">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("productName") %>'></asp:TextBox>
+                                        
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("productName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="picture" SortExpression="picture" Visible="False" ValidateRequestMode="Enabled">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("picture") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("picture") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="category" SortExpression="category">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("category") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("category") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="picture" SortExpression="picture">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("showpicture") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label6" runat="server" Text='<%# Bind("showpicture") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="inventory" SortExpression="inventory">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("inventory") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("inventory") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="price" SortExpression="price">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("price") %>'></asp:TextBox>  
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("price") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" ReadOnly="True" />
+                                <asp:TemplateField HeaderText="revise" ShowHeader="False">
+                                    <EditItemTemplate>
+                                        <asp:LinkButton ID="Update" runat="server" CausesValidation="False" CommandName="Update" Text="更新" OnClientClick='return confirm("確定更新?")'></asp:LinkButton>
+                                        <asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="Edit" runat="server" CausesValidation="False" CommandName="Edit" Text="編輯" ></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="delete" ShowHeader="False">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" OnClientClick='return confirm("確定刪除?")'></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                
                             </Columns>
                         </asp:GridView>
-
+                        <asp:SqlDataSource ID="SqlDataSourceProduct" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
+                        
                     </div>
                     <div id="small-dialog" class="mfp-hide">
                         <div class="search-top">

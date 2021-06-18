@@ -262,7 +262,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         <asp:Label ID="Label12" runat="server" Text='<%# Bind("status") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" />
+                                                <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" Visible="False" />
                                                 <asp:BoundField DataField="updateInitdate" HeaderText="updateInitdate" SortExpression="updateInitdate" />
                                             </Columns>
                                         </asp:GridView>
