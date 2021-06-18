@@ -48,7 +48,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="container">
                     <div class="col-sm-4 number">
                         <span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000<br>
-                        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
                     </div>
                     <div class="col-sm-4 logo">
                         <a href="index">
@@ -75,7 +74,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-8 h_menu4">
                     <ul class="memenu skyblue">
                         <li class=" grid"><a href="index">首頁</a></li>
+                        <li><a class="color6" href="shoppingcar">購物車</a></li>
                         <li><a class="color6" href="Customer\Chat.aspx">聯絡我們</a></li>
+                        <li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Font-Size="Large">購物須知</asp:LinkButton></li>
                     </ul>
                 </div>
                 <div class="col-sm-2 search">

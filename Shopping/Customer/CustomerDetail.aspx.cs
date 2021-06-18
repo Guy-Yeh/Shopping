@@ -22,11 +22,14 @@ namespace Shopping.Customer
         protected void Page_Load(object sender, EventArgs e)
         {
             //測試 假裝有登入
-            Session["loginstatus"] = "Amber";
+            //Session["loginstatus"] = "Amber";
 
             try
             {
-                loginstatus = Session["loginstatus"].ToString();
+                if (Session["loginstatus"] != null)
+                {
+                    loginstatus = Session["loginstatus"].ToString();
+                }
             }
             catch (Exception ex)
             {

@@ -11,7 +11,22 @@ namespace Shopping.Customer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["loginstatus"] == null || Session["loginstatus"].ToString() == "")
+            {
+                Session.Abandon();
+                Response.Redirect("../index");
+            }
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("../index");
 
         }
+
+
+
+
     }
 }

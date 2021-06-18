@@ -361,6 +361,14 @@ namespace Shopping
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["access"] != null && Session["access"] == "ok")
+            {
+
+            }
+            else
+            {
+                Response.Redirect("manager");
+            }
             hintID.Text = "選擇即將刪除的orderSerial";
             hintID2.Text = "選擇即將更新的orderDetailID";
             hintColumn.Text = "選擇即將更新的欄位";

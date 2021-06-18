@@ -34,7 +34,7 @@
                         </div>
                     <div class="col-md-10 login-left">
                         <%--<asp:TextBox ID="costomerTextBox" placeholder="Response" name="costomerTextBox" style="resize: none;" runat="server" Width="100%" Height="100px" TextMode="MultiLine"></asp:TextBox>--%>
-                         <textarea rows="5" id="costomerTextBox" style="width:100%;height:100px;" name="costomerTextBox" class="form-control" placeholder="留言..." ></textarea>
+                         <textarea rows="5" id="costomerTextBox" style="width:100%;height:100px;" name="costomerTextBox" class="form-control;" placeholder="留言..." ></textarea>
                     </div>
                     <div class="col-md-2 login-left">
 

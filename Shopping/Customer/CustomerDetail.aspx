@@ -14,9 +14,9 @@
    <%--         <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource123" DataTextField="city" DataValueField="city"></asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource123" runat="server" ConnectionString="<%$ ConnectionStrings:CityConnectionString %>" SelectCommand="SELECT [city] FROM [City$]"></asp:SqlDataSource>
   --%>          <div class="account_grid">
-
-                <div class="col-md-4 login-left">
-                    <div style="display: flex; justify-content: flex-end;">
+      <div class="col-md-1 login-left"></div>
+                <div class="col-md-3 login-left">
+                    <div style="display: flex; justify-content: flex-start;">
                         <%--        <img style="width: 200px; height: 200px;">
                          <a class="acount-btn" href="#">上傳檔案</a>--%>
 
@@ -27,8 +27,9 @@
                     <div style="display: flex; justify-content: flex-end; padding-top: 5px;">
 
                         <asp:FileUpload ID="FileUpload1" runat="server" accept=".jepg,.jpg,.png"/>
-                        <asp:Button ID="Button1" runat="server" Text="上傳圖片" OnClick="Button1_FileUpload" />
-
+                        </div><div>
+                        <asp:Button ID="Button1" style="background: #52d0c4;" runat="server" Text="上傳圖片" OnClick="Button1_FileUpload" ForeColor="White" />
+                    </div>
 
 
                         <%--<label class="upload_cover">
@@ -137,7 +138,7 @@
                         </div>
                         <div class="col-md-9 login-left pwd-box">
                             <div style="padding: 5px 0px;">
-                                <input id="oldPasswordInput" />
+                                <input type="password" id="oldPasswordInput" />
                             </div>
                         </div>
 
@@ -146,7 +147,7 @@
                         </div>
                         <div class="col-md-9 login-left pwd-box">
                             <div style="padding: 5px 0px;">
-                                <input id="newPasswordInput" />
+                                <input type="password" id="newPasswordInput" />
                             </div>
                         </div>
 
@@ -155,7 +156,7 @@
                         </div>
                         <div class="col-md-6 login-left pwd-box">
                             <div style="padding: 5px 0px;">
-                                <input id="newDoublePasswordInput" />
+                                <input type="password" id="newDoublePasswordInput" />
                             </div>
                         </div>
 
