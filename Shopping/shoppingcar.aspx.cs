@@ -113,7 +113,7 @@ namespace Shopping
                     {
                         if (qty > Convert.ToInt32(read3[0]))
                         {
-                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt2", "setTimeout( function(){alert('很抱歉，所選商品數量已達庫存上限');},0);", true);
+                            MessageBox.Show("很抱歉，所選商品數量已達庫存上限'");                           
                         }
                         else
                         {
@@ -191,6 +191,32 @@ namespace Shopping
                 Session.Remove("loginstatus");
                 Response.Redirect("index");
             }
+        }
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(@"購物須知
+–  退換貨政策  –
+丹丹服飾提供七日鑑賞期體驗。請注意鑑賞期並非試用期，請保持商品狀態維持全新，並保留完整包裝，
+
+1.退換貨：如果您收到的商品，商品有瑕疵或與原先訂購商品不符，或有其他退貨 / 換貨需求，請在 7 天內聯絡客服確認。
+（若無法於期限內提出退換貨要求，恕無法提供退換貨服務請見諒）
+
+2.退換貨注意事項：退換貨的商品必須回復原狀，即需保留完整外包裝袋、包裝盒。 
+
+3.下列情形可能影響您的退換貨權限：
+ *在您收到商品當下，務必仔細確認商品完整及符合訂購內容。
+ *其他逾越檢查之必要或可歸責於您之事由，致商品有毀損、滅失或變更者。
+
+4.若您已取得紙本發票，請於退換貨時一併附上。
+
+5.請您以送貨廠商使用之包裝紙箱將退換貨商品包裝妥當，若原紙箱已遺失，請另使用其他紙箱包覆於商品原廠包裝之外。
+（切勿直接於原廠包裝上黏貼紙張或書寫文字，若原廠包裝損毀將無法退貨。）
+
+6.當您申請退換貨後，請主動向貨運人員索取單據，並保留至退換貨完成，以利日後查詢。
+
+感謝您的合作，如有任何疑問歡迎直接與客服人員聯繫。
+
+客服信箱：vs.for.test2021@gmail.com");
         }
     }
 }
