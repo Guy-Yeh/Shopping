@@ -171,7 +171,7 @@ namespace Shopping
             
 
             //寫入會員資料
-            string acc_sql = $"insert into [dbo].[Customers](account,password,name,phone,email,access,discount) values (@account,@passwd,@name,@phone,@email,@access,discount)";
+            string acc_sql = $"insert into [dbo].[Customers](account,password,name,phone,email,access,discount) values (@account,@passwd,@name,@phone,@email,@access,@discount)";
             connection.Open();
             SqlCommand Command2 = new SqlCommand(acc_sql, connection);
             Command2.Parameters.Add("@account", SqlDbType.NVarChar);
@@ -195,7 +195,7 @@ namespace Shopping
             Command2.Parameters.Add("@access", SqlDbType.NVarChar);
             Command2.Parameters["@access"].Value = "Yes";
 
-            Command2.Parameters.Add("@discount", SqlDbType.NVarChar);
+            Command2.Parameters.Add("@discount", SqlDbType.Int);
             Command2.Parameters["@discount"].Value = 0;
 
             Command2.ExecuteNonQuery();
