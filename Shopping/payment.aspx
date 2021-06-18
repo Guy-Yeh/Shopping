@@ -88,7 +88,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-8 h_menu4">
                     <ul class="memenu skyblue">
                         <li class=" grid"><a href="index">首頁</a></li>
+                        <li><a class="color6" href="shoppingcar">購物車</a></li>
                         <li><a class="color6" href="Customer\Chat.aspx">聯絡我們</a></li>
+                        <li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Font-Size="Large">購物須知</asp:LinkButton></li>
                     </ul>
                 </div>
                 <div class="col-sm-2 search">
@@ -134,18 +136,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <asp:Label ID="Label4" runat="server" Text="" Style="float: right"></asp:Label>
             <asp:Label ID="Label5" runat="server" Text="總金額：" Style="float: right"></asp:Label><br>
             <br>
-            <asp:TextBox ID="TextBox1" runat="server" Style="float: right"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" Style="float: right" ></asp:TextBox>
             <asp:Label ID="Label1" runat="server" Text="收件人姓名" ForeColor="#52D0C4" Style="float: right"></asp:Label><br>
             <br>
 
-            <asp:TextBox ID="TextBox2" runat="server" Style="float: right"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" runat="server" Style="float: right" ></asp:TextBox>
             <asp:Label ID="Label2" runat="server" Text="收件人地址" ForeColor="#52D0C4" Style="float: right"></asp:Label><br>
             <br>
 
-            <asp:TextBox ID="TextBox3" runat="server" Style="float: right"></asp:TextBox>
-            <asp:Label ID="Label3" runat="server" Text="收件人電話" ForeColor="#52D0C4" Style="float: right"></asp:Label><br>
+            <asp:TextBox ID="TextBox3" runat="server" Style="float: right" ></asp:TextBox>
+            <asp:Label ID="Label3" runat="server" Text="收件人電話" ForeColor="#52D0C4" Style="float: right" ></asp:Label><br>
             <br>
+            
             <asp:Button ID="Button1" runat="server" Text="確認" BackColor="#52D0C4" BorderStyle="None" ForeColor="White" Style="float: right" OnClick="Button1_Click" />
+            <asp:Label ID="Label7" runat="server" Text="" Style="float: right"></asp:Label>
         </div>
         <div class="footer">
             <div class="container">

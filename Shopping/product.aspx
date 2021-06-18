@@ -73,7 +73,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-8 h_menu4">
                         <ul class="memenu skyblue">
                             <li class=" grid"><a href="index">首頁</a></li>
+                            <li><a class="color6" href="shoppingcar">購物車</a></li>
                             <li><a class="color6" href="Customer\Chat.aspx">聯絡我們</a></li>
+                            <li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Font-Size="Large">購物須知</asp:LinkButton></li>
                         </ul>
                     </div>
                     <div class="col-sm-2 search">
@@ -115,34 +117,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
         <!---->
-        <div class="single">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <asp:Image ID="Image1" runat="server" data-imagezoom="true" Height="100%" Width="100%" />
+                </div>
+                <div class="col-sm-4">
+                    <asp:Label ID="Label4" runat="server" Text="" Font-Size="X-Large"></asp:Label><br>
+                    <asp:Label ID="Label3" runat="server" Text="產品金額：" Font-Size="X-Large"></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text="" Font-Size="X-Large"></asp:Label>
+                    <div class="available">
+                        <ul>
+                            <li>尺寸：Free Size</li>
+                            <li>顏色：<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="category" DataValueField="category"></asp:DropDownList>
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT [category] FROM [Products] WHERE ([productName] = @productName)">
+                                    <SelectParameters>
+                                        <asp:SessionParameter Name="productName" SessionField="product" Type="String" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>
+                            </li>
+                            <br>
+                            <li>
+                                <asp:Label ID="Label5" runat="server" Text="尚餘庫存：" Font-Size="Larger"></asp:Label></li>
+                        </ul>
+                    </div>
+                    <asp:Button ID="Button2" runat="server" Text="放入購物車" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" Font-Size="X-Large" />
+                </div>
+                <div class="col-sm-4">
 
-            <div class="container">
-                <div class="col-md-9">
-                    <div class="col-md-5 grid">
-                        <asp:Image ID="Image1" runat="server" data-imagezoom="true" Height="100%" Width="100%" />
-                    </div>
-                    <div class="col-md-7 single-top-in">
-                        <div class="single-para simpleCart_shelfItem">
-                            <asp:Label ID="Label4" runat="server" Text="" Font-Size="X-Large"></asp:Label>
-                        </div>
-                        <asp:Label ID="Label3" runat="server" Text="產品金額：" Font-Size="X-Large"></asp:Label>
-                        <asp:Label ID="Label2" runat="server" Text="" Font-Size="X-Large"></asp:Label>                 
-                        <div class="available">
-                            <ul>
-                                <li>尺寸：Free Size</li>
-                                <li>顏色：<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="category" DataValueField="category"></asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT [category] FROM [Products] WHERE ([productName] = @productName)">
-                                        <SelectParameters>
-                                            <asp:SessionParameter Name="productName" SessionField="product" Type="String" />
-                                        </SelectParameters>
-                                    </asp:SqlDataSource>                                    
-                                </li><br>
-                                <li><asp:Label ID="Label5" runat="server" Text="尚餘庫存：" Font-Size="Larger"></asp:Label></li>
-                            </ul>
-                        </div>
-                        <asp:Button ID="Button2" runat="server" Text="放入購物車" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" Font-Size="X-Large" />
-                    </div>
                 </div>
             </div>
         </div>
