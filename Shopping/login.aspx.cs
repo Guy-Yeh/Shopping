@@ -39,9 +39,25 @@ namespace Shopping
             SqlConnection connection = new SqlConnection(s_data);
 
             string accCheck = $"select * from Customers where account ='" + accchange + "'";
+            string accessCheck = $"select * from Customers where account ='No'";
+
             //string emailCheck = $"select * from Customers where email ='" + logingaccTextBox.Text + "'";
             SqlCommand Command_acc = new SqlCommand(accCheck, connection);
+            SqlCommand Command_access = new SqlCommand(accessCheck, connection);
             //SqlCommand Command_email = new SqlCommand(emailCheck, connection);
+
+            connection.Open();
+            SqlDataReader Reader_access = Command_acc.ExecuteReader();
+            if (Reader_access.HasRows)
+            {
+                errorText.Text = "*帳號已註銷";
+                connection.Close();
+                return;
+            }
+            connection.Close();
+
+
+
             connection.Open();
             SqlDataReader Reader_acc = Command_acc.ExecuteReader();
             
