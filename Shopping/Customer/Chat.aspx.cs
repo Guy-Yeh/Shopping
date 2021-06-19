@@ -23,7 +23,7 @@ namespace Shopping.Customer
         protected void Page_Load(object sender, EventArgs e)
         {
             
-        //Session["loginstatus"] = "Amber";
+        Session["loginstatus"] = "Amber";
 
             try
             {
@@ -54,6 +54,7 @@ namespace Shopping.Customer
             chatGridView.DataSource = read;
             chatGridView.DataBind();
             connection.Close();
+            chatGridView.AllowPaging = true;
         }
 
         protected void keyin_Click(object sender, EventArgs e)
