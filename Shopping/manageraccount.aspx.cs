@@ -32,6 +32,7 @@ namespace Shopping
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
             dt.Columns.Add("picture");
+            dt.Columns.Add("showpicture");
             dt.Columns.Add("account");
             dt.Columns.Add("password");
             dt.Columns.Add("name");
@@ -54,6 +55,7 @@ namespace Shopping
                 {
                     row["picture"] = read[1];
                 }
+                row["showpicture"] = read[1].ToString().Replace("/images/使用者照片/", "");
                 row["account"] = read[2];
                 row["password"] = read[3];
                 row["name"] = read[4];
@@ -80,6 +82,7 @@ namespace Shopping
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
             dt.Columns.Add("picture");
+            dt.Columns.Add("showpicture");
             dt.Columns.Add("account");
             dt.Columns.Add("password");
             dt.Columns.Add("name");
@@ -102,6 +105,7 @@ namespace Shopping
                 {
                     row["picture"] = read[1];
                 }
+                row["showpicture"] = read[1].ToString().Replace("/images/使用者照片/","");
                 row["account"] = read[2];
                 row["password"] = read[3];
                 row["name"] = read[4];
@@ -233,14 +237,14 @@ namespace Shopping
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["access"] != null && Session["access"] == "ok")
-            {
+            //if (Session["access"] != null && Session["access"] == "ok")
+            //{
 
-            }
-            else
-            {
-                Response.Redirect("manager");
-            }
+            //}
+            //else
+            //{
+            //    Response.Redirect("manager");
+            //}
 
             hintAccount.Text = "";
             hintPassword.Text = "";
@@ -806,6 +810,7 @@ namespace Shopping
             cleanbt1r();
         }
 
+
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             Session["access"] = "Not ok";
@@ -819,14 +824,13 @@ namespace Shopping
             {
                 if (checkaccount(TextBox7.Text))
                 {
-                    searchaccount(sql3);
-                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt4", "setTimeout( function(){alert('篩選成功');},0);", true);
+                    searchaccount(sql3);                    
                     cleanbt4();
                 }
                 else
                 {
                     hintIDS.ForeColor = Color.Red;
-                    hintIDS.Text = "account不存在 請重新輸入";
+                    hintIDS.Text = "帳號不存在 請重新輸入";
                 }
             }
             else
@@ -835,6 +839,70 @@ namespace Shopping
                 hintIDS.Text = "account不得為空 請重新輸入";
             }
         }
+
+        //gridview刪除客戶資料
+        protected void useraccount_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string ID = useraccount.DataKeys[e.RowIndex].Value.ToString();           
+            SqlConnection connection = new SqlConnection(s_data);
+            SqlCommand command = new SqlCommand($"delete from Customers where ID = '{ID}'", connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+            reviewAccount();
+        }
+
+       
+
+        protected void useraccount_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            useraccount.EditIndex = -1;
+            reviewAccount();
+        }
+
+        protected void useraccount_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            useraccount.EditIndex = e.NewEditIndex;
+            reviewAccount();
+        }
+
+        protected void useraccount_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            bool nameCheck = Regex.IsMatch(TextBox9.Text, @"^[A-Za-z\u4e00-\u9fa5]+$");
+            bool discountCheck = Regex.IsMatch(TextBox9.Text, @"\d");
+            bool phoneCheck = Regex.IsMatch(TextBox9.Text, @"^09[\d]{8}");
+            bool emailCheck = Regex.IsMatch(TextBox9.Text, @"^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$");
+            string sql6 = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text}' where account='{TextBox8.Text}'";
+            string sql6CS = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text.ToLower()}' where account='{TextBox8.Text}'";
+            SqlConnection connection6 = Connect(s_data);
+            SqlConnection connection6CS = Connect(s_data);
+            string sql7 = $"select * from Customers where {DDLUpdateCol.Text}='{TextBox9.Text}'";
+            string sql8 = $"select * from Customers where {DDLUpdateCol.Text}='{TextBox9.Text.ToLower()}' And Access='Yes'";
+            bool accountCheck = Regex.IsMatch(TextBox9.Text, @"[\w-]{6,15}");
+            bool passwordCheck = Regex.IsMatch(TextBox9.Text, @"[\w-]{7,20}");
+
+            string ID = useraccount.DataKeys[e.RowIndex].Values[0].ToString();
+            string access = ((TextBox)useraccount.Rows[e.RowIndex].FindControl("TextBox2")).Text;
+           
+
+
+
+            //string update = $"update Customers SET account= N'{TextBox9.Text}' where account='{TextBox8.Text}'";
+      
+            //string sqlSP = $"select picture from Customers where ID='{ID}'";
+            //SqlConnection connectionSP = new SqlConnection(s_data);
+            //SqlCommand commandSP = new SqlCommand(sqlSP, connectionSP);
+            //connectionSP.Open();
+            //SqlDataReader reader = commandSP.ExecuteReader();
+
+        }
+
+        
+
+       
+
+
+
         //protected void Button4_Click(object sender, EventArgs e)
         //{
         //    string sql3 = $"select * from Customers where account='{DDLSearchAccount.Text}'";

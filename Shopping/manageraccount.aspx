@@ -178,15 +178,59 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;" /></li>
                                             <br>
                                             <br>
-                                            <asp:GridView ID="useraccount" runat="server">
+                                            <asp:GridView ID="useraccount" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="useraccount_RowDeleting" OnRowCancelingEdit="useraccount_RowCancelingEdit" OnRowEditing="useraccount_RowEditing" OnRowUpdating="useraccount_RowUpdating" >
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="image">
+                                                        <EditItemTemplate>
+                                                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("picture") %>' Enabled="False" EnableViewState="True" Visible="False"></asp:TextBox>
+                                                        </EditItemTemplate>
                                                         <ItemTemplate>
-                                                            <asp:Image ID="img1" ImageUrl='<%#Eval("picture") %>' runat="server" Width="100" Height="120" />
+                                                            <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("picture") %>' Width="100px" />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                                                    <asp:BoundField DataField="picture" HeaderText="picture" SortExpression="picture" Visible="False" />
+                                                    <asp:TemplateField HeaderText="picture" SortExpression="showpicture">
+                                                        <EditItemTemplate>
+                                                            <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("showpicture") %>'></asp:TextBox>
+                                                        </EditItemTemplate>
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="Label9" runat="server" Text='<%# Bind("showpicture") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="account" HeaderText="account" SortExpression="account" Visible="True" ReadOnly="True" />
+                                                    <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" Visible="True" ReadOnly="True" />
+                                                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" Visible="True" ReadOnly="True" />
+                                                    <asp:BoundField DataField="phone" HeaderText="phone" SortExpression="phone" Visible="True" ReadOnly="True" />
+                                                    <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" Visible="True" ReadOnly="True" />
+                                                    <asp:BoundField DataField="address" HeaderText="address" SortExpression="address" Visible="True" ReadOnly="True" />                                                     
+                                                    <asp:BoundField DataField="discount" HeaderText="discount" SortExpression="discount" Visible="True" ReadOnly="True" />
+                                                    <asp:TemplateField HeaderText="access" SortExpression="access">
+                                                        <EditItemTemplate>
+                                                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("access") %>'></asp:TextBox>
+                                                        </EditItemTemplate>
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("access") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" Visible="True" ReadOnly="True" />
+                                                    <asp:TemplateField HeaderText="revise" ShowHeader="False">
+                                                        <EditItemTemplate>
+                                                            <asp:LinkButton ID="Update" runat="server" CausesValidation="True" CommandName="Update" Text="更新" OnClientClick='return confirm("確定更新?")'></asp:LinkButton>
+                                                            &nbsp;<asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
+                                                        </EditItemTemplate>
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="Edit" runat="server" CausesValidation="False" CommandName="Edit" Text="編輯"></asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="delete" ShowHeader="False">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" OnClientClick='return confirm("確定刪除?")'></asp:LinkButton>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>
                                             </asp:GridView>
+                                                <asp:SqlDataSource ID="SqlDataSourceCustomer" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT * FROM [Customers]"></asp:SqlDataSource>
                                         </ul>
                                     </div>
                                 </div>
@@ -207,7 +251,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <li>
                                                 <asp:Label ID="hintID" runat="server" Text=""></asp:Label></li>                                            
                                             <li>
-                                                <asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要刪除嗎?')) window.event.returnValue=false;" /></li>
+                                                <asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要刪除?')) window.event.returnValue=false;" /></li>
                                             <br>
                                             <br>
                                             

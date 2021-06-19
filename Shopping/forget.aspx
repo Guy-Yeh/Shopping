@@ -35,21 +35,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="header">
 	<div class="header-top">
 		<div class="container">
-		<div class="col-md-4 world">
-					<ul >
-						<li>
-						<select class="in-drop">
-							  <option>English</option>
-							  <option>Japanese</option>
-							  <option>French</option>
-							</select></li>
-						<li><select class="in-drop1">
-							  <option>Dollar</option>
-							  <option>Euro</option>
-							  <option>Yen</option>
-							</select>
-						</li>
-					</ul>
+			
+		<div class="col-sm-4 world">
+					<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000			
 				</div>
 				<div class="col-md-4 logo">
 					<a href="index.aspx"><img src="images/CAT4.png" alt=""></a>	
@@ -61,15 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<asp:LinkButton ID="registerLinkButton" runat="server" OnClick="registerLinkButton_Click" >註冊</asp:LinkButton>
 
 					</p>
-					<div class="cart box_1">
-						<a href="checkout.html">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-
-					</div>
+					
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
@@ -78,12 +58,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="col-md-2 number">
-					<span><i class="glyphicon glyphicon-phone"></i>085 596 234</span>
+					
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li class=" grid"><a  href="index.html">Home</a></li>	
-				      <li><a  href="#">Men</a>
+					  <li class=" grid"><a  href="index.aspx">首頁</a></li>	
+				      <li><a  href="#">男裝</a>
 				      	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -141,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a  href="#">	Women</a>
+				    <li class="grid"><a  href="#">	女裝</a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -199,8 +179,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 			    </li>
-				<li><a  href="typo.html">Blog</a></li>				
-				<li><a class="color6" href="contact.html">Conact</a></li>
+						
+				<li><a class="color6" href="contact.html">關於我們</a></li>
 			  </ul> 
 			</div>
 				<div class="col-md-2 search">		
@@ -264,7 +244,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="register-but">
 				       <br>
 					   <asp:Button ID="registerButton" runat="server" Text="確認"  Style="font: 12pt Verdana;font-weight:700;color:white;" BorderStyle="None" BackColor="#52D0C4" Height="35px" Width="59px" OnClick="registerButton_Click"  />
-				       &emsp;<asp:Label ID="errorText" runat="server" Font-Size="Small" ForeColor="Red"></asp:Label>
+				       &emsp;<asp:Label ID="errorText" runat="server" Font-Size="Small" ForeColor="Red">-忘記密碼或帳號請擇一輸入-</asp:Label>
 				   
 				</div>
 		</div>   

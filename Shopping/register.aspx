@@ -37,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 		<div class="col-md-4 world">
-					
+					<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000	
 				</div>
 				<div class="col-md-4 logo">
 					<a href="index.aspx"><img src="images/CAT4.png" alt=""></a>	
@@ -47,30 +47,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<p class="log">
 						<asp:LinkButton ID="loginLinkButton" runat="server" OnClick="loginLinkButton_Click">登入</asp:LinkButton>或
 						<asp:LinkButton ID="registerLinkButton" runat="server" OnClick="registerLinkButton_Click">註冊</asp:LinkButton>
-					</p>
-					<div class="cart box_1">
-						<a href="checkout.html">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+					
 
 					</div>
 					<div class="clearfix"> </div>
-			</div>
+			
 				<div class="clearfix"> </div>
 		</div>
 		</div>
 		<div class="container">
 			<div class="head-top">
 				<div class="col-md-2 number">
-                    <asp:Image ID="Image1" runat="server" Height="20px" ImageUrl="~/images/img_153839.png" Width="20px" /><asp:Label ID="Label1" runat="server" Text=" (02)8888 8888"></asp:Label>
+                    
 					
 				</div>
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li class=" grid"><a  href="index.html">首頁</a></li>	
+					  <li class=" grid"><a  href="index.aspx">首頁</a></li>	
 				      <li><a  href="#">男裝</a>
 				      	<div class="mepanel">
 						<div class="row">
@@ -188,7 +181,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 			    </li>
 						
-				<li><a class="color6" href="contact.html">連結</a></li>
+				<li><a class="color6" href="contact.html">關於我們</a></li>
 			  </ul> 
 			</div>
 				<div class="col-md-2 search">		
