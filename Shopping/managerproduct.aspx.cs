@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -32,6 +33,7 @@ namespace Shopping
             SqlDataReader read = command.ExecuteReader();
              DataTable dt = new DataTable();
              dt.Columns.Add("ID");
+             dt.Columns.Add("showpicture");
              dt.Columns.Add("productName");
              dt.Columns.Add("picture");
              dt.Columns.Add("category");
@@ -44,8 +46,11 @@ namespace Shopping
                  DataRow row = dt.NewRow();
                  row["ID"] = read[0];
                  row["productName"] = read[1];
+                 
                  row["picture"] = read[2];
+                 string[] s = read[2].ToString().Split('\\');
                  row["category"] = read[3];
+                 row["showpicture"] = s[s.GetUpperBound(0)];
                  row["inventory"] = read[4];
                  row["price"] = read[5];
                  row["initdate"] = read[6];
@@ -65,6 +70,7 @@ namespace Shopping
             SqlDataReader read = command.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
+            dt.Columns.Add("showpicture");
             dt.Columns.Add("productName");
             dt.Columns.Add("picture");
             dt.Columns.Add("category");
@@ -76,8 +82,10 @@ namespace Shopping
             {
                 DataRow row = dt.NewRow();
                 row["ID"] = read[0];
-                row["productName"] = read[1];
-                row["picture"] = read[2];
+                row["productName"] = read[1];                               
+                row["picture"] = read[2];                
+                string[] s = read[2].ToString().Split('\\');
+                row["showpicture"] = s[s.GetUpperBound(0)];
                 row["category"] = read[3];
                 row["inventory"] = read[4];
                 row["price"] = read[5];
@@ -151,14 +159,15 @@ namespace Shopping
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["access"] != null && Session["access"] == "ok")
-            {
+            
+            //if (Session["access"] != null && Session["access"] == "ok")
+            //{
 
-            }
-            else
-            {
-                Response.Redirect("manager");
-            }
+            //}
+            //else
+            //{
+            //    Response.Redirect("manager");
+            //}
             hintPN.Text = "";
             hintPicture.Text = "";
             hintCategory.Text = "";
@@ -309,12 +318,11 @@ namespace Shopping
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            bool categoryCheck = Regex.IsMatch(TextBox9.Text, @"^[\u4e00-\u9fa5]+$");
+            
             bool numberCheck = Regex.IsMatch(TextBox9.Text, @"\d");
             SqlConnection connection6 = Connect(s_data);
-            string sql6 = $"update Products SET {DDLUpdateCols.Text} = N'{TextBox9.Text}' where ID='{DDLUpdateProductID.Text}'";
-            
 
+            string sql6 = $"update Products SET {DDLUpdateCols.Text} = N'{TextBox9.Text}' where ID='{DDLUpdateProductID.Text}'";
             if (DDLUpdateProductID.SelectedItem.Text != "請選擇") 
             {
                 if (DDLUpdateCols.SelectedItem.Text != "請選擇")
@@ -377,44 +385,38 @@ namespace Shopping
 
                     else if (DDLUpdateCols.Text == "category")
                     {
-                        if (categoryCheck)
+
+                        string sqlCC = $"select productName from Products where ID='{DDLUpdateProductID.Text}'";
+                        SqlConnection connectionCC = Connect(s_data);
+                        SqlCommand commandCC = new SqlCommand(sqlCC, connectionCC);
+                        connectionCC.Open();
+                        SqlDataReader readerCC = commandCC.ExecuteReader();
+                        if (readerCC.Read())
                         {
-                            string sqlCC = $"select productName from Products where ID='{DDLUpdateProductID.Text}'";
-                            SqlConnection connectionCC = Connect(s_data);
-                            SqlCommand commandCC = new SqlCommand(sqlCC, connectionCC);
-                            connectionCC.Open();
-                            SqlDataReader readerCC = commandCC.ExecuteReader();
-                            if (readerCC.Read())
+                            string sqlCC2 = $"select * from Products where productName = N'{readerCC[0]}' and category= N'{TextBox9.Text}'";
+                            SqlConnection connectionCC2 = Connect(s_data);
+                            SqlCommand commandCC2 = new SqlCommand(sqlCC2, connectionCC2);
+                            connectionCC2.Open();
+                            SqlDataReader readerCC2 = commandCC2.ExecuteReader();
+                            if (readerCC2.Read() == false)
                             {
-                                string sqlCC2 = $"select * from Products where productName = N'{readerCC[0]}' and category= N'{TextBox9.Text}'";
-                                SqlConnection connectionCC2 = Connect(s_data);
-                                SqlCommand commandCC2 = new SqlCommand(sqlCC2, connectionCC2);
-                                connectionCC2.Open();
-                                SqlDataReader readerCC2 = commandCC2.ExecuteReader();
-                                if (readerCC2.Read() == false)
-                                {
-                                    SqlCommand command6 = new SqlCommand(sql6, connection6);
-                                    connection6.Open();
-                                    command6.ExecuteNonQuery();
-                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
-                                    connection6.Close();
-                                    reviewProduct();
-                                    cleanbt3();
-                                }
-                                else
-                                {
-                                    hintValue.ForeColor = Color.Red;
-                                    hintValue.Text = "該種類產品已存在 請重新輸入";
-                                }
-                                connectionCC.Close();
-                                connectionCC2.Close();
+                                SqlCommand command6 = new SqlCommand(sql6, connection6);
+                                connection6.Open();
+                                command6.ExecuteNonQuery();
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('更新成功');},0);", true);
+                                connection6.Close();
+                                reviewProduct();
+                                cleanbt3();
                             }
+                            else
+                            {
+                                hintValue.ForeColor = Color.Red;
+                                hintValue.Text = "該種類產品已存在 請重新輸入";
+                            }
+                            connectionCC.Close();
+                            connectionCC2.Close();
                         }
-                        else
-                        {
-                            hintValue.ForeColor = Color.Red;
-                            hintValue.Text = "category需為中文 請重新輸入";
-                        }
+
                     }
 
                     else if (DDLUpdateCols.Text == "productName")
@@ -540,17 +542,120 @@ namespace Shopping
 
                 string SqlS = $"select * from Products where productName = N'{DDLSearchProductName.Text}'";
                 searchProduct(SqlS);
-                cleanbt4();
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt4", "setTimeout( function(){alert('篩選成功');},0);", true);
-
+                cleanbt4();                
             }
             else
             {
                 hintPS.ForeColor = Color.Red;
                 hintPS.Text = "請選擇項目";
             }
+        }
+
+        protected void product_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string ID = product.DataKeys[e.RowIndex].Value.ToString();
+            SqlConnection connection = new SqlConnection(s_data);
+            SqlCommand command = new SqlCommand($"delete from Products where ID = '{ID}'", connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+            reviewProduct();
+        }
+
+        protected void product_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            product.EditIndex = -1;
+            reviewProduct();
+        }
+
+        protected void product_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            product.EditIndex = e.NewEditIndex;
+            reviewProduct();
+        }
+
+        protected void product_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            
+            string ID = product.DataKeys[e.RowIndex].Values[0].ToString();
+            string productName = ((TextBox)product.Rows[e.RowIndex].FindControl("TextBox2")).Text;
+            string category = ((TextBox)product.Rows[e.RowIndex].FindControl("TextBox5")).Text;
+            string inventory = ((TextBox)product.Rows[e.RowIndex].FindControl("TextBox7")).Text;
+            string price = ((TextBox)product.Rows[e.RowIndex].FindControl("TextBox3")).Text;            
+            string showpicture = ((TextBox)product.Rows[e.RowIndex].FindControl("TextBox6")).Text;
+            bool priceCheck = Regex.IsMatch(price, @"\d");
+            bool inventoryCheck = Regex.IsMatch(inventory, @"\d");
+            string strroot = System.AppDomain.CurrentDomain.BaseDirectory;
+
+            //確認庫存為數字且大於等於0
+            if (inventoryCheck && int.Parse(inventory) >= 0)
+            {
+                //確認價格為數字且不為0
+                if (priceCheck && int.Parse(price) > 0)
+                {
+                    SqlConnection connectionCP = new SqlConnection(s_data);
+                    string sqlCP = $"update Products SET price = N'{price}' where productName= N'{productName}'";
+                    SqlCommand commandCP = new SqlCommand(sqlCP, connectionCP);
+                    connectionCP.Open();
+                    commandCP.ExecuteNonQuery();                    
+                    connectionCP.Close();
+                    if (showpicture != "")
+                    {
+                        string sqlSP = $"select picture from Products where ID='{ID}'";
+                        SqlConnection connectionSP = new SqlConnection(s_data);
+                        SqlCommand commandSP = new SqlCommand(sqlSP, connectionSP);
+                        connectionSP.Open();
+                        SqlDataReader reader = commandSP.ExecuteReader();
+                        //先讀出圖片路徑用來編譯成新路徑
+                        if (reader.Read()) 
+                        {
+                            List<string> getpicture = new List<string>();
+                            string[] prepare = reader[0].ToString().Split('\\');
+                            foreach (string x in prepare)
+                            {
+                                getpicture.Add(x);
+                            }
+                            getpicture.RemoveAt(getpicture.Count - 1);
+                            string picturecombine = string.Join("\\", getpicture.ToArray());
+                            string picture = picturecombine + "\\" + showpicture;
+
+                            //查看檔案是否存在
+                            if (File.Exists(strroot + picture)) 
+                            {
+                                string strUpdate = $"update Products set productName = N'{productName}',picture = N'{picture}', category = N'{category}', inventory = '{inventory}', price = '{price}' where ID='{ID}'";
+                                SqlConnection connection = new SqlConnection(s_data);
+                                connection.Open();
+                                SqlCommand command = new SqlCommand(strUpdate, connection);
+                                command.ExecuteNonQuery();
+                                connection.Close();
+                                product.EditIndex = -1;
+                                reviewProduct();
+                            }
+                            else
+                            {
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},0);", true);
+                            }
+                        }
+                        connectionSP.Close();
+                    }
+                    else
+                    {
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得為空');},0);", true);
+                    }
+                }
+                else
+                {
+                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('價格需為大於0的數字');},0);", true);
+                }
+            }
+            else
+            {
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('庫存需為不小於0的數字');},0);", true);
+            }
+
 
         }
 
+        
     }
  }
