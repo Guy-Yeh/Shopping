@@ -17,6 +17,7 @@ namespace Shopping
     public partial class manageraccount : Page
     {
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
+        string searchID;
         public SqlConnection Connect(string x)
         {
             SqlConnection connect = new SqlConnection(x);
@@ -24,7 +25,8 @@ namespace Shopping
         }
         public void reviewAccount()
         {
-            SqlConnection connection = Connect(s_data);
+            helpSQL.Text = "";
+            SqlConnection connection = new SqlConnection(s_data);
             string sql = $"select * from Customers";
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
@@ -67,15 +69,32 @@ namespace Shopping
                 row["initdate"] = read[10];
                 dt.Rows.Add(row);
             }
+            //useraccount.VirtualItemCount = dt.Rows.Count;
+            //useraccount.DataSource = useraccounttable(0,2);
             useraccount.DataSource = dt;
             useraccount.DataBind();
             connection.Close();
 
         }
 
+        //protected DataTable useraccounttable(int currentpage, int mypagesize)
+        //{
+        //    SqlConnection connectiondt= new SqlConnection(s_data);
+        //    SqlDataReader dr = null;
+        //    string sqldt = $"select * from Customers";
+        //    sqldt += "OFFSET" + (currentpage * useraccount.PageSize) + "ROWS FETCH NEXT" + (mypagesize) + "ROWS ONLY";
+        //    SqlCommand commanddt = new SqlCommand(sqldt, connectiondt);
+        //    DataTable DT = new DataTable();
+        //    connectiondt.Open();
+        //    dr = commanddt.ExecuteReader();
+        //    DT.Load(dr);
+        //    return DT;
+        //}
+
         public void searchaccount(string a)
         {
-            SqlConnection connection = Connect(s_data);
+            helpSQL.Text = a;
+            SqlConnection connection = new SqlConnection(s_data);
             SqlCommand command = new SqlCommand(a, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
@@ -146,12 +165,16 @@ namespace Shopping
 
         public bool checkaccount(string a)
         {
-            SqlConnection connection = Connect(s_data);
-            string sql = $"select account from Customers where account='{a}'";
+            SqlConnection connection = new SqlConnection(s_data);
+            string sql = $"select ID from Customers where account='{a}'";
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
             bool check = read.Read();
+            if (read.Read())
+            {
+                searchID = read[0].ToString();
+            }            
             connection.Close();
             return check;
         }
@@ -836,7 +859,7 @@ namespace Shopping
             else
             {
                 hintIDS.ForeColor = Color.Red;
-                hintIDS.Text = "account不得為空 請重新輸入";
+                hintIDS.Text = "帳號不得為空 請重新輸入";
             }
         }
 
@@ -857,49 +880,72 @@ namespace Shopping
         protected void useraccount_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             useraccount.EditIndex = -1;
-            reviewAccount();
+            if (helpSQL.Text != "")
+            {
+                searchaccount(helpSQL.Text);
+            }
+            else
+            {
+                reviewAccount();
+            }
         }
 
         protected void useraccount_RowEditing(object sender, GridViewEditEventArgs e)
         {
             useraccount.EditIndex = e.NewEditIndex;
-            reviewAccount();
+             
+            if (helpSQL.Text != "")
+            {
+                searchaccount(helpSQL.Text);
+            }
+            else
+            {
+                reviewAccount();
+            }
+
         }
 
         protected void useraccount_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            bool nameCheck = Regex.IsMatch(TextBox9.Text, @"^[A-Za-z\u4e00-\u9fa5]+$");
-            bool discountCheck = Regex.IsMatch(TextBox9.Text, @"\d");
-            bool phoneCheck = Regex.IsMatch(TextBox9.Text, @"^09[\d]{8}");
-            bool emailCheck = Regex.IsMatch(TextBox9.Text, @"^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$");
-            string sql6 = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text}' where account='{TextBox8.Text}'";
-            string sql6CS = $"update Customers SET {DDLUpdateCol.Text}= N'{TextBox9.Text.ToLower()}' where account='{TextBox8.Text}'";
-            SqlConnection connection6 = Connect(s_data);
-            SqlConnection connection6CS = Connect(s_data);
-            string sql7 = $"select * from Customers where {DDLUpdateCol.Text}='{TextBox9.Text}'";
-            string sql8 = $"select * from Customers where {DDLUpdateCol.Text}='{TextBox9.Text.ToLower()}' And Access='Yes'";
-            bool accountCheck = Regex.IsMatch(TextBox9.Text, @"[\w-]{6,15}");
-            bool passwordCheck = Regex.IsMatch(TextBox9.Text, @"[\w-]{7,20}");
 
             string ID = useraccount.DataKeys[e.RowIndex].Values[0].ToString();
             string access = ((TextBox)useraccount.Rows[e.RowIndex].FindControl("TextBox2")).Text;
-           
+            string sql = $"update customers set access = '{access}'";
 
-
+            if (access == "Yes" || access == "No")
+            {
+                SqlConnection connection = new SqlConnection(s_data);
+                SqlCommand command = new SqlCommand(sql, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+                useraccount.EditIndex = -1;
+                reviewAccount();
+            }
+            else
+            {
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('權限僅能輸入Yes或No 請重新輸入');},600);", true);
+            }
 
             //string update = $"update Customers SET account= N'{TextBox9.Text}' where account='{TextBox8.Text}'";
       
             //string sqlSP = $"select picture from Customers where ID='{ID}'";
             //SqlConnection connectionSP = new SqlConnection(s_data);
-            //SqlCommand commandSP = new SqlCommand(sqlSP, connectionSP);
+            //SqlCommand commandSP = new SqlCommand(sqlSP, connectionSP 
             //connectionSP.Open();
             //SqlDataReader reader = commandSP.ExecuteReader();
 
         }
 
-        
+        protected void useraccount_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            useraccount.PageIndex = e.NewPageIndex;
+            reviewAccount();
+        }
 
-       
+
+
+
 
 
 

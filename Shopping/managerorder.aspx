@@ -40,6 +40,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="container">
                     <div class="col-md-4 world">
                         <span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
+                        <asp:Label ID="helpSQLO11" runat="server" Text="helpSQLO11" Visible="False"></asp:Label>
+                        <asp:Label ID="helpSQLO12" runat="server" Text="helpSQLO12" Visible="False"></asp:Label>
+                        <asp:Label ID="helpSQLO21" runat="server" Text="helpSQLO21" Visible="False"></asp:Label>
+                        <asp:Label ID="helpSQLO22" runat="server" Text="helpSQLO22" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-4 logo">
                         <a href="index.html">
@@ -156,116 +160,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <br>
                                             <br>
                                         </ul>
-                                        <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataKeyNames="ID">
-                                            <Columns>
-                                                <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="ID">
-                                                    <EditItemTemplate>
-                                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="serial" SortExpression="serial">
-                                                    <EditItemTemplate>
-                                                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("serial") %>'></asp:TextBox>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("serial") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="productName" SortExpression="productName">
-                                                    <EditItemTemplate>
-                                                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("productName") %>'></asp:TextBox>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("productName") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="productColor" SortExpression="productColor">
-                                                    <EditItemTemplate>
-                                                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("productColor") %>'></asp:TextBox>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("productColor") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="productPicture" SortExpression="productPicture" Visible="False">
-                                                    <EditItemTemplate>
-                                                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("productPicture") %>'></asp:TextBox>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("productPicture") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="image" SortExpression="productPicture">
-                                                    <EditItemTemplate>
-                                                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Image ID="Image1" runat="server" Height="120px" Width="100px" ImageUrl='<%#Eval("productPicture") %>' />
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="productPrice" SortExpression="productPrice">
-                                                    <EditItemTemplate>
-                                                        <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("productPrice") %>'></asp:TextBox>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label6" runat="server" Text='<%# Bind("productPrice") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="qty" SortExpression="qty">
-                                                    <EditItemTemplate>
-                                                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("qty") %>'></asp:TextBox>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("qty") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="customerAccount" SortExpression="customerAccount">
-                                                    <EditItemTemplate>
-                                                        <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("customerAccount") %>'></asp:TextBox>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label8" runat="server" Text='<%# Bind("customerAccount") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="name" SortExpression="name">
-                                                    <EditItemTemplate>
-                                                        <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("name") %>'></asp:TextBox>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label9" runat="server" Text='<%# Bind("name") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="phone" SortExpression="phone">
-                                                    <EditItemTemplate>
-                                                        <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("phone") %>'></asp:TextBox>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label10" runat="server" Text='<%# Bind("phone") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="address" SortExpression="address">
-                                                    <EditItemTemplate>
-                                                        <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("address") %>'></asp:TextBox>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label11" runat="server" Text='<%# Bind("address") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="status" SortExpression="status">
-                                                    <EditItemTemplate>
-                                                        <asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("status") %>'></asp:TextBox>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label12" runat="server" Text='<%# Bind("status") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" Visible="False" />
-                                                <asp:BoundField DataField="updateInitdate" HeaderText="updateInitdate" SortExpression="updateInitdate" />
-                                            </Columns>
-                                        </asp:GridView>
                                     </div>
                                 </div>
                                 <div class="col1">
@@ -328,6 +222,112 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </ul>
                                     </div>
                                 </div>
+                                        <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowCancelingEdit="userorder_RowCancelingEdit" OnRowEditing="userorder_RowEditing" OnRowUpdating="userorder_RowUpdating"  OnPageIndexChanging="userorder_PageIndexChanging" Width="200px" AllowPaging="True">
+                                            <PagerStyle  ForeColor="Black" HorizontalAlign="Center" />  
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="ID">
+                                                    <EditItemTemplate>
+                                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="serial" SortExpression="serial">
+                                                    <EditItemTemplate>
+                                                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("serial") %>'></asp:Label>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label6" runat="server" Text='<%# Bind("serial") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="productName" SortExpression="productName">
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("productName") %>'></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("productName") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="productColor" SortExpression="productColor">
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("productColor") %>'></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("productColor") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="productPicture" SortExpression="productPicture" Visible="False">
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("productPicture") %>'></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("productPicture") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="image" SortExpression="productPicture">
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="TextBox1" runat="server" ReadOnly="True" Visible="False"></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Image ID="Image1" runat="server" Height="120px" Width="100px" ImageUrl='<%#Eval("productPicture") %>' />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>                                                
+                                                <asp:BoundField DataField="productPrice" HeaderText="productPrice" SortExpression="productPrice"  ReadOnly="True" />
+                                                <asp:TemplateField HeaderText="qty" SortExpression="qty">
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("qty") %>'></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("qty") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>                                                
+                                                <asp:BoundField DataField="customerAccount" HeaderText="customerAccount"  SortExpression="customerAccount" ReadOnly="True" />
+                                                <asp:TemplateField HeaderText="name" SortExpression="name">
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("name") %>'></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label9" runat="server" Text='<%# Bind("name") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="phone" SortExpression="phone">
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("phone") %>'></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label10" runat="server" Text='<%# Bind("phone") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="address" SortExpression="address">
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("address") %>'></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label11" runat="server" Text='<%# Bind("address") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="status" SortExpression="status">
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("status") %>'></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label12" runat="server" Text='<%# Bind("status") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" Visible="False" />
+                                                <asp:BoundField DataField="updateInitdate" HeaderText="updateInitdate" SortExpression="updateInitdate" ReadOnly="True" />
+                                                <asp:TemplateField ShowHeader="False" HeaderText="Revise">
+                                                    <EditItemTemplate>
+                                                        <asp:LinkButton ID="Update" runat="server" CausesValidation="True" CommandName="Update" Text="更新" OnClientClick='return confirm("確定更新?")'></asp:LinkButton>
+                                                        <asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="Edit" runat="server" CausesValidation="False" CommandName="Edit" Text="編輯" Width="50"></asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
                             </div>
 
                         </div>

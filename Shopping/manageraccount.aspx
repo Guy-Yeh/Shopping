@@ -33,6 +33,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         <span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
 					
+                        <asp:Label ID="helpSQL" runat="server" Text="helpSQL" Visible="False"></asp:Label>
+					
                     </div>
                     <div class="col-md-4 logo">
                         <a href="index.html">
@@ -178,9 +180,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;" /></li>
                                             <br>
                                             <br>
-                                            <asp:GridView ID="useraccount" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="useraccount_RowDeleting" OnRowCancelingEdit="useraccount_RowCancelingEdit" OnRowEditing="useraccount_RowEditing" OnRowUpdating="useraccount_RowUpdating" >
+                                            <asp:GridView ID="useraccount" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="useraccount_RowDeleting" OnRowCancelingEdit="useraccount_RowCancelingEdit" OnRowEditing="useraccount_RowEditing" OnRowUpdating="useraccount_RowUpdating" AllowPaging="True"  HorizontalAlign ="center" OnPageIndexChanging="useraccount_PageIndexChanging" PagerStyle-HorizontalAlign="NotSet" >
+                                               <PagerStyle  ForeColor="Black" HorizontalAlign="Center" />  
                                                 <Columns>
-                                                    <asp:TemplateField HeaderText="image">
+                                                    <asp:TemplateField HeaderText="image" ItemStyle-HorizontalAlign="Center">
                                                         <EditItemTemplate>
                                                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("picture") %>' Enabled="False" EnableViewState="True" Visible="False"></asp:TextBox>
                                                         </EditItemTemplate>
@@ -189,15 +192,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                                                    <asp:BoundField DataField="picture" HeaderText="picture" SortExpression="picture" Visible="False" />
-                                                    <asp:TemplateField HeaderText="picture" SortExpression="showpicture">
-                                                        <EditItemTemplate>
-                                                            <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("showpicture") %>'></asp:TextBox>
-                                                        </EditItemTemplate>
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Label9" runat="server" Text='<%# Bind("showpicture") %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="showpicture" HeaderText="picture" SortExpression="showpicture" Visible="False" ReadOnly="True" />
                                                     <asp:BoundField DataField="account" HeaderText="account" SortExpression="account" Visible="True" ReadOnly="True" />
                                                     <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" Visible="True" ReadOnly="True" />
                                                     <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" Visible="True" ReadOnly="True" />
@@ -217,7 +212,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     <asp:TemplateField HeaderText="revise" ShowHeader="False">
                                                         <EditItemTemplate>
                                                             <asp:LinkButton ID="Update" runat="server" CausesValidation="True" CommandName="Update" Text="更新" OnClientClick='return confirm("確定更新?")'></asp:LinkButton>
-                                                            &nbsp;<asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
+                                                            <asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
                                                         </EditItemTemplate>
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="Edit" runat="server" CausesValidation="False" CommandName="Edit" Text="編輯"></asp:LinkButton>

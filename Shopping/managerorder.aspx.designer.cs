@@ -15,6 +15,42 @@ namespace Shopping
     {
 
         /// <summary>
+        /// helpSQLO11 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label helpSQLO11;
+
+        /// <summary>
+        /// helpSQLO12 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label helpSQLO12;
+
+        /// <summary>
+        /// helpSQLO21 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label helpSQLO21;
+
+        /// <summary>
+        /// helpSQLO22 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label helpSQLO22;
+
+        /// <summary>
         /// LinkButton1 控制項。
         /// </summary>
         /// <remarks>
@@ -240,15 +276,6 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.Button statussearch;
 
         /// <summary>
-        /// userorder 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView userorder;
-
-        /// <summary>
         /// orderID 控制項。
         /// </summary>
         /// <remarks>
@@ -400,6 +427,15 @@ namespace Shopping
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Update;
+
+        /// <summary>
+        /// userorder 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView userorder;
 
         /// <summary>
         /// SqlDataSourceAllorders 控制項。

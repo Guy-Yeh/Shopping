@@ -30,6 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="container">
                     <div class="col-md-4 number">
                         <span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
+                            <asp:Label ID="helpSQL" runat="server" Text="" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-4 logo">
                         <a href="index.html">
@@ -40,9 +41,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <p class="log">
                             <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Logout</asp:LinkButton>
                         </p>
-
-
-
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -54,12 +52,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-2 number">
                 </div>
                 <div class="col-md-8 h_menu4">
-                    <ul class="memenu skyblue">                        
-                            <li><a href="manageraccount">帳戶</a></li>
-                            <li><a href="managerproduct">產品</a></li>
-                            <li><a href="managerorder">訂單</a></li>
-                            <li><a href="managershoppingcar">購物車</a></li>
-                            <li><a class="color6" href="managercontact">回覆訊息</a></li>
+                    <ul class="memenu skyblue">
+                        <li><a href="manageraccount">帳戶</a></li>
+                        <li><a href="managerproduct">產品</a></li>
+                        <li><a href="managerorder">訂單</a></li>
+                        <li><a href="managershoppingcar">購物車</a></li>
+                        <li><a class="color6" href="managercontact">回覆訊息</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 search">
@@ -116,7 +114,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <li>
                                             <asp:FileUpload ID="FileUpload1" runat="server" /></li>
                                         <li>
-                                            <asp:Label ID="hintPicture" runat="server" Text=""></asp:Label></li>                                        
+                                            <asp:Label ID="hintPicture" runat="server" Text=""></asp:Label></li>
                                         <li>
                                             <asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;" /></li>
                                         <br>
@@ -137,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <asp:SqlDataSource ID="SqlDataSourceProductsID" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT [ID] FROM [Products]"></asp:SqlDataSource>
                                         </li>
                                         <li>
-                                            <asp:Label ID="hintID" runat="server" Text="選擇即將刪除的productID"></asp:Label></li>                                        
+                                            <asp:Label ID="hintID" runat="server" Text="選擇即將刪除的productID"></asp:Label></li>
                                         <li>
                                             <asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要刪除嗎?')) window.event.returnValue=false;" /></li>
                                         <br>
@@ -151,9 +149,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <asp:SqlDataSource ID="SqlDataSourceProductName" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT DISTINCT productName FROM Products"></asp:SqlDataSource>
                                         </li>
                                         <li>
-                                            <asp:Label ID="hintPS" runat="server" Text="選擇即將搜尋的productName"></asp:Label></li>                                        
+                                            <asp:Label ID="hintPS" runat="server" Text="選擇即將搜尋的productName"></asp:Label></li>
                                         <li>
-                                            <asp:Button ID="Search" runat="server" OnClick="Button4_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
+                                            <asp:Button ID="Search" runat="server" OnClick="Button4_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" /></li>
                                     </ul>
                                 </div>
                             </div>
@@ -188,7 +186,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <li>
                                             <asp:TextBox ID="TextBox9" runat="server" placeholder="輸入更新的值"></asp:TextBox></li>
                                         <li>
-                                            <asp:Label ID="hintValue" runat="server" Text=""></asp:Label></li>                                        
+                                            <asp:Label ID="hintValue" runat="server" Text=""></asp:Label></li>
                                         <li>
                                             <asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要修改嗎?')) window.event.returnValue=false;" /></li>
                                     </ul>
@@ -196,10 +194,79 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </div>
                     </div>
+                    <div class="container">
+                        <div class = "row">
+                            <div class = "col-sm-5">
+                            </div>
+                            <div class = "col-sm-4">
+                                <h3><asp:Label ID="Label9" runat="server" Text="商品上架" ForeColor ="#52d0c4" Font-Bold="true"></asp:Label></h3>  
+                                <br>
+                            </div>
+                       </div>
+                    </div>
+                    <div class="container">
+                        <div class = "row">
+                            <div class = "col-sm-1">
+                            </div>
+                            <div class ="col-sm-10">
+                    <asp:Table ID="Tableadd" runat="server" GridLines="Both" CellPadding="10" align="center">
+                        <asp:TableRow>
+                            <asp:TableCell ForeColor="#52d0c4">
+                                productName
+                            </asp:TableCell>
+                            <asp:TableCell ForeColor="#52d0c4">
+                                category
+                            </asp:TableCell>
+                            <asp:TableCell ForeColor="#52d0c4">
+                                picture
+                            </asp:TableCell>
+                            <asp:TableCell ForeColor="#52d0c4">
+                                inventory
+                            </asp:TableCell>
+                            <asp:TableCell ForeColor="#52d0c4">
+                                price
+                            </asp:TableCell>
+                            <asp:TableCell ForeColor="#52d0c4">
+                                introduction
+                            </asp:TableCell>
+                            <asp:TableCell ForeColor="#52d0c4">
+                                送出
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:TextBox ID="TextBox10" runat="server" Width="100"></asp:TextBox>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox ID="TextBox11" runat="server" Width="100"></asp:TextBox>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:FileUpload ID="FileUpload2" runat="server" Width="80" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox ID="TextBox12" runat="server" Width="100"></asp:TextBox>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox ID="TextBox13" runat="server" Width="100"></asp:TextBox>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <textarea rows="5" id="TextBox14" name="contactresponse" class="form-control" placeholder="請輸入介紹"></textarea>
+                            </asp:TableCell>
+                            <asp:TableCell ForeColor="#52d0c4">
+                                <asp:LinkButton ID="adding" runat="server" OnClientClick='return confirm("確定新增?")' Width="50">送出</asp:LinkButton>                               
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        </asp:Table>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                     <div class="clearfix">
-                        
+
                         <br>
-                        <asp:GridView ID="product" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="product_RowDeleting" OnRowCancelingEdit="product_RowCancelingEdit" OnRowEditing="product_RowEditing" OnRowUpdating="product_RowUpdating" >
+                        
+                        <asp:GridView ID="product" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="product_RowDeleting" OnRowCancelingEdit="product_RowCancelingEdit" OnRowEditing="product_RowEditing" OnRowUpdating="product_RowUpdating" AllowPaging="True" OnPageIndexChanging="product_PageIndexChanging">
+                            <PagerStyle ForeColor="Black" HorizontalAlign="Center" />
                             <Columns>
                                 <asp:TemplateField HeaderText="image">
                                     <EditItemTemplate>
@@ -220,7 +287,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <asp:TemplateField HeaderText="productName" SortExpression="productName">
                                     <EditItemTemplate>
                                         <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("productName") %>'></asp:TextBox>
-                                        
+
                                     </EditItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("productName") %>'></asp:Label>
@@ -260,10 +327,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="price" SortExpression="price">
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("price") %>'></asp:TextBox>  
+                                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("price") %>'></asp:TextBox>
                                     </EditItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="Label3" runat="server" Text='<%# Bind("price") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="introduction" SortExpression="introduction">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("introduction") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label8" runat="server" Text='<%# Bind("introduction") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" ReadOnly="True" />
@@ -273,7 +348,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
                                     </EditItemTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="Edit" runat="server" CausesValidation="False" CommandName="Edit" Text="編輯" ></asp:LinkButton>
+                                        <asp:LinkButton ID="Edit" runat="server" CausesValidation="False" CommandName="Edit" Text="編輯"></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="delete" ShowHeader="False">
@@ -281,11 +356,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" OnClientClick='return confirm("確定刪除?")'></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                
+
                             </Columns>
+                            <PagerStyle CssClass="fvPagerStyle" HorizontalAlign="Center" />
                         </asp:GridView>
                         <asp:SqlDataSource ID="SqlDataSourceProduct" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
-                        
+
                     </div>
                     <div id="small-dialog" class="mfp-hide">
                         <div class="search-top">
@@ -299,13 +375,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!---->
 
 
-                </div>
+            </div>
             </div>
         </div>
         <!---->
 
         <!--footer-->
-       <div class="footer">
+        <div class="footer">
             <div class="container">
                 <div class="footer-top">
                     <div class="col-sm-7 number col-md8">
@@ -318,7 +394,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <asp:Label ID="Label20" runat="server" Text="No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei City 110615 , Taiwan (R.O.C.)"></asp:Label><br>
                         <br>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
