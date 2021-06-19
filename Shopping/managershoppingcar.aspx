@@ -155,7 +155,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         
                         <div class="clearfix" style="text-align: left" >
                             <asp:GridView ID="usershoppingcar" runat="server" AutoGenerateColumns="False" DataKeyNames="ID">
-                                                <Columns>
+                                <%--<PagerStyle  ForeColor="Black" HorizontalAlign="Center" />--%>               
+                                <Columns>
                                                     <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" />
                                                     <asp:BoundField DataField="customerAccount" HeaderText="customerAccount" SortExpression="customerAccount" />
                                                     <asp:BoundField DataField="productPicture" HeaderText="productPicture" SortExpression="productPicture" Visible="False" />

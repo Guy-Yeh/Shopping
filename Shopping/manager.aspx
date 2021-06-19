@@ -62,125 +62,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
 					  	
-				      <li><a  href="#">帳戶</a>
-				      	<div class="mepanel">
-						<div class="row">
-							<div class="col1">
-								<div class="h_nav">
-									<h4>All Clothing</h4>
-									<ul>
-										<li><a href="products.html">Shirts</a></li>
-										<li><a href="products.html">Sports Wear</a></li>
-										<li><a href="products.html">Shorts</a></li>
-										<li><a href="products.html">Suits & Blazers</a></li>
-										<li><a href="products.html">Formal Shirts</a></li>
-										<li><a href="products.html">Sweatpants</a></li>
-										<li><a href="products.html">Swimwear</a></li>
-										<li><a href="products.html">Trousers & Chinos</a></li>
-										<li><a href="products.html">T-Shirts</a></li>
-										<li><a href="products.html">Underwear & Socks</a></li>
-										
-									</ul>	
-								</div>							
-							</div>
-							<div class="col1">
-								<div class="h_nav">
-									<h4>Footwear</h4>
-									<ul>
-										<li><a href="products.html">Formal Shoes</a></li>
-										<li><a href="products.html">Boots</a></li>
-										<li><a href="products.html">Sports Shoes</a></li>
-										<li><a href="products.html">Casual Shoes</a></li>
-										<li><a href="products.html">Running Shoes</a></li>
-										<li><a href="products.html">Sneakers</a></li>
-										<li><a href="products.html">Loafers</a></li>
-										<li><a href="products.html">Slippers</a></li>
-										<li><a href="products.html">Sandals</a></li>
-										<li><a href="products.html">Flip-flops</a></li>
-									
-									</ul>	
-								</div>							
-							</div>
-							<div class="col1">
-								<div class="h_nav">
-									<h4>Popular Brands</h4>
-									<ul>
-										<li><a href="products.html">Levis</a></li>
-										<li><a href="products.html">Persol</a></li>
-										<li><a href="products.html">Nike</a></li>
-										<li><a href="products.html">Edwin</a></li>
-										<li><a href="products.html">New Balance</a></li>
-										<li><a href="products.html">Jack & Jones</a></li>
-										<li><a href="products.html">Paul Smith</a></li>
-										<li><a href="products.html">Ray-Ban</a></li>
-										<li><a href="products.html">Wood Wood</a></li>
-									</ul>	
-								</div>												
-							</div>
-						  </div>
-						</div>
-					</li>
-				    <li class="grid"><a  href="#">產品</a>
-					  	<div class="mepanel">
-						<div class="row">
-							<div class="col1">
-								<div class="h_nav">
-									<h4>All Clothing</h4>
-									<ul>
-										<li><a href="products.html">Shirts & Tops</a></li>
-										<li><a href="products.html">Sports Wear</a></li>
-										<li><a href="products.html">Kurtas & Kurties</a></li>
-										<li><a href="products.html">Suits & Blazers</a></li>
-										<li><a href="products.html">Sarees</a></li>
-										<li><a href="products.html">Sweatpants</a></li>
-										<li><a href="products.html">Swimwear</a></li>
-										<li><a href="products.html">Night-Suits</a></li>
-										<li><a href="products.html">T-Shirts</a></li>
-										<li><a href="products.html">Jeans</a></li>
-										
-									</ul>	
-								</div>							
-							</div>
-							<div class="col1">
-								<div class="h_nav">
-									<h4>Footwear</h4>
-									<ul>
-										<li><a href="products.html">Heels</a></li>
-										<li><a href="products.html">Flats</a></li>
-										<li><a href="products.html">Sports Shoes</a></li>
-										<li><a href="products.html">Casual Shoes</a></li>
-										<li><a href="products.html">Running Shoes</a></li>
-										<li><a href="products.html">Wedges</a></li>
-										<li><a href="products.html">Boots</a></li>
-										<li><a href="products.html">Pumps</a></li>
-										<li><a href="products.html">Slippers</a></li>
-										<li><a href="products.html">Flip-flops</a></li>
-									
-									</ul>
-								</div>							
-							</div>
-							<div class="col1">
-								<div class="h_nav">
-									<h4>Popular Brands</h4>
-									<ul>
-										<li><a href="products.html">Levis</a></li>
-										<li><a href="products.html">Persol</a></li>
-										<li><a href="products.html">Nike</a></li>
-										<li><a href="products.html">Edwin</a></li>
-										<li><a href="products.html">New Balance</a></li>
-										<li><a href="products.html">Jack & Jones</a></li>
-										<li><a href="products.html">Paul Smith</a></li>
-										<li><a href="products.html">Ray-Ban</a></li>
-										<li><a href="products.html">Wood Wood</a></li>
-									</ul>	
-								</div>												
-							</div>
-						  </div>
-						</div>
-			    </li>
-				<li><a  href="">訂單</a></li>	
-			    <li><a  href="">購物車</a></li>
-				<li><a class="color6" href="">回覆訊息</a></li>
+				      <li><a href="manageraccount">帳戶</a></li>
+                      <li><a href="managerproduct">產品</a></li>
+                      <li><a href="managerorder">訂單</a></li>
+                      <li><a href="managershoppingcar">購物車</a></li>
+                      <li><a class="color6" href="managercontact">回覆訊息</a></li>
 			  </ul> 
 			</div>
 		<div class="col-md-2 search">		
@@ -224,30 +110,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--//header-->
 <div class="account">
 	<div class="container">
-		<h1>Account</h1>
+		<h1>管理者登入頁</h1>
 		<div class="account_grid">
 			   <div class="col-md-6 login-right">
 				<form>
 
-					<span>Account</span>
+					<span>帳號</span>
 				    <asp:TextBox ID="account" runat="server" Height="30px" Width="220px" required="required" aria-required="true" oninvalid="setCustomValidity('這是必填項目，請輸入')" oninput="this.setCustomValidity('')"></asp:TextBox>
 					<br>
 					<br>
-					<span>Password</span>
+					<span>密碼</span>
 					<asp:TextBox ID="password" runat="server" required="required" aria-required="true" oninvalid="setCustomValidity('這是必填項目，請輸入')" TextMode="Password" oninput="this.setCustomValidity('')" Width="220" Height="30px"></asp:TextBox>
 					<asp:Label ID="plabel" runat="server" Text=""></asp:Label>
 					<br>
 					<div class="word-in">
 				  		
-						<asp:Button ID="submit" runat="server" Text="Login" OnClick="submit_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
+						<asp:Button ID="submit" runat="server" Text="送出" OnClick="submit_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/>
 				  	</div>
 			    </form>
 			   </div>	
 			    <div class="col-md-6 login-left">
-			  	 <h4>Managers</h4>
+			  	 <h4>提醒:</h4>
 				 <p>透過使用本網站來管理您的線上購物商店，您將能夠更新並管理以下項目: <br>1.顧客帳戶&nbsp&nbsp2.商品項目&nbsp&nbsp3.訂單進度追蹤&nbsp&nbsp4.購物車資料蒐集&nbsp&nbsp5.顧客問題回覆</p>
 				 
-				 <h4>IT contact</h4>
+				 <h4>IT聯繫方式:</h4>
 				 <p>如果有無法登入或操作上的問題麻煩聯繫以下窗口，感謝您的配合！
 					 <li>Email: ITHelp@dandancloth.com</li>
 					 <li>Phone: 02-2424-0000 ext.9595</li>

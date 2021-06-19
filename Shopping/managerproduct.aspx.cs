@@ -18,20 +18,37 @@ namespace Shopping
     public partial class managerproduct : Page
     {
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
+       
         public SqlConnection Connect(string x)
         {
             SqlConnection connect = new SqlConnection(x);
             return connect;
         }
 
+        public void addtable()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("picture");
+            dt.Columns.Add("productName");
+            dt.Columns.Add("picture");
+            dt.Columns.Add("category");
+            dt.Columns.Add("inventory");
+            dt.Columns.Add("price");
+            dt.Columns.Add("introduction");
+            dt.Columns.Add("initdate");
+
+        }
+
         public void reviewProduct()
         {
+            helpSQL.Text = "";
             SqlConnection connection = Connect(s_data);
             string sql = $"select * from Products" ;
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
-             DataTable dt = new DataTable();
+            DataTable dt = new DataTable();
              dt.Columns.Add("ID");
              dt.Columns.Add("showpicture");
              dt.Columns.Add("productName");
@@ -39,6 +56,7 @@ namespace Shopping
              dt.Columns.Add("category");
              dt.Columns.Add("inventory");
              dt.Columns.Add("price");
+             dt.Columns.Add("introduction");
              dt.Columns.Add("initdate");
 
              while (read.Read())
@@ -53,6 +71,7 @@ namespace Shopping
                  row["showpicture"] = s[s.GetUpperBound(0)];
                  row["inventory"] = read[4];
                  row["price"] = read[5];
+                 row["introduction"] = read[7];
                  row["initdate"] = read[6];
                  dt.Rows.Add(row);
              }
@@ -64,7 +83,8 @@ namespace Shopping
 
         public void searchProduct(string a)
         {
-            SqlConnection connection = Connect(s_data);           
+            helpSQL.Text = a;
+            SqlConnection connection = new SqlConnection(s_data);           
             SqlCommand command = new SqlCommand(a, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
@@ -76,6 +96,7 @@ namespace Shopping
             dt.Columns.Add("category");
             dt.Columns.Add("inventory");
             dt.Columns.Add("price");
+            dt.Columns.Add("introduction");
             dt.Columns.Add("initdate");
 
             while (read.Read())
@@ -89,6 +110,7 @@ namespace Shopping
                 row["category"] = read[3];
                 row["inventory"] = read[4];
                 row["price"] = read[5];
+                row["introduction"] = read[7];
                 row["initdate"] = read[6];
                 dt.Rows.Add(row);
             }
@@ -565,13 +587,28 @@ namespace Shopping
         protected void product_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             product.EditIndex = -1;
-            reviewProduct();
+            if (helpSQL.Text != "")
+            {
+                searchProduct(helpSQL.Text);
+            }
+            else
+            {
+                reviewProduct();
+            }
         }
 
         protected void product_RowEditing(object sender, GridViewEditEventArgs e)
         {
             product.EditIndex = e.NewEditIndex;
-            reviewProduct();
+            if (helpSQL.Text != "")
+            {
+                searchProduct(helpSQL.Text);
+            }
+            else
+            {
+                reviewProduct();
+            }
+            
         }
 
         protected void product_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -583,13 +620,14 @@ namespace Shopping
             string inventory = ((TextBox)product.Rows[e.RowIndex].FindControl("TextBox7")).Text;
             string price = ((TextBox)product.Rows[e.RowIndex].FindControl("TextBox3")).Text;            
             string showpicture = ((TextBox)product.Rows[e.RowIndex].FindControl("TextBox6")).Text;
+            string introduction = ((TextBox)product.Rows[e.RowIndex].FindControl("TextBox8")).Text;
             bool priceCheck = Regex.IsMatch(price, @"\d");
             bool inventoryCheck = Regex.IsMatch(inventory, @"\d");
             string strroot = System.AppDomain.CurrentDomain.BaseDirectory;
 
             //確認庫存為數字且大於等於0
             if (inventoryCheck && int.Parse(inventory) >= 0)
-            {
+            {                
                 //確認價格為數字且不為0
                 if (priceCheck && int.Parse(price) > 0)
                 {
@@ -622,7 +660,7 @@ namespace Shopping
                             //查看檔案是否存在
                             if (File.Exists(strroot + picture)) 
                             {
-                                string strUpdate = $"update Products set productName = N'{productName}',picture = N'{picture}', category = N'{category}', inventory = '{inventory}', price = '{price}' where ID='{ID}'";
+                                string strUpdate = $"update Products set productName = N'{productName}',picture = N'{picture}', category = N'{category}', inventory = '{inventory}', price = '{price}', introduction = N'{introduction}' where ID='{ID}'";
                                 SqlConnection connection = new SqlConnection(s_data);
                                 connection.Open();
                                 SqlCommand command = new SqlCommand(strUpdate, connection);
@@ -653,9 +691,20 @@ namespace Shopping
                 this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('庫存需為不小於0的數字');},0);", true);
             }
 
+        }
+        protected void product_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            product.PageIndex = e.NewPageIndex;
+            reviewProduct();
 
         }
 
-        
+        //protected void product_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    //if(e.Row.RowState> 0 && DataControlRowState.Edit>0)
+        //    //{
+        //    //    e.Row.FindControl("Label1").Focus();
+        //    //} 
+        //}
     }
  }

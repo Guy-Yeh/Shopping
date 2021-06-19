@@ -16,10 +16,10 @@ namespace Shopping.Service
             return orders;
         }
 
-        public bool DelOrders(string serial)
+        public bool DelOrders(string status,string serial)
         {
             OrdersDao ordersDao = new OrdersDao();
-            bool orders = ordersDao.DelOrders(serial);
+            bool orders = ordersDao.DelOrders(status,serial);
             return true;
         }
 

@@ -921,9 +921,8 @@ a.cart:hover{
 	padding:4em 0em;
 }
 table{
-	width:100%;
-	  margin-left: 0;
-    margin-right: 0;
+	margin-left: 0;
+    margin-right: 15px;
     margin-bottom: 2em;
 }
 th{

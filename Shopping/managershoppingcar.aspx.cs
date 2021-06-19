@@ -20,7 +20,7 @@ namespace Shopping
         public void reviewOrder()
         {
             SqlConnection connectionorigin = new SqlConnection(s_data);
-            string sqlorigin = $"select * from OrderDetail where cart=N'是'";
+            string sqlorigin = $"select * from OrderDetail where cart= N'是'";
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
             SqlDataReader readorigin = command.ExecuteReader();
