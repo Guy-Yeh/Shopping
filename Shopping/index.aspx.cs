@@ -15,6 +15,7 @@ namespace Shopping
         string customers_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
         string product_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
         string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
+        string show_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ShowPictureConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             //Session["loginstatus"] = "1";
@@ -47,6 +48,31 @@ namespace Shopping
                     }
                 connection2.Close();
             }
+            //帶入幻燈片圖片
+            SqlConnection connection3 = new SqlConnection(show_data);
+            string sq13 = $"select picture from ShowPicture where show='1'";
+            SqlCommand command3 = new SqlCommand(sq13, connection3);
+            connection3.Open();
+            SqlDataReader read3 = command3.ExecuteReader();
+            if(read3.Read())
+                ImageButton10.ImageUrl = read3[0].ToString();
+            connection3.Close();
+            SqlConnection connection4 = new SqlConnection(show_data);
+            string sq14 = $"select picture from ShowPicture where show='2'";
+            SqlCommand command4 = new SqlCommand(sq14, connection4);
+            connection4.Open();
+            SqlDataReader read4 = command4.ExecuteReader();
+            if (read4.Read())
+                ImageButton11.ImageUrl = read4[0].ToString();
+            connection4.Close();
+            SqlConnection connection5 = new SqlConnection(show_data);
+            string sq15 = $"select picture from ShowPicture where show='3'";
+            SqlCommand command5 = new SqlCommand(sq15, connection5);
+            connection5.Open();
+            SqlDataReader read5 = command5.ExecuteReader();
+            if (read5.Read())
+                ImageButton12.ImageUrl = read5[0].ToString();
+            connection5.Close();
         }
 
 
