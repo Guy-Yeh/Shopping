@@ -91,29 +91,42 @@ namespace Shopping.Dao
 
         //}
 
-        public bool DelOrders(string serial)
+        public bool DelOrders(string status, string serial)
         {
-            SqlConnection connection = new SqlConnection(s_data);
-            connection.Open();
+            //SqlConnection connection = new SqlConnection(s_data);
+            //connection.Open();
 
-            SqlTransaction transaction;
-            transaction = connection.BeginTransaction("");
-            SqlCommand command = connection.CreateCommand();
-            command.Transaction = transaction;
+            //SqlTransaction transaction;
+            //transaction = connection.BeginTransaction("");
+            //SqlCommand command = connection.CreateCommand();
+            //command.Transaction = transaction;
             try
             {
-                command.CommandText = "delete from [OrderDetail] where serial = @serial";
-                command.Parameters.Add("@serial", SqlDbType.NVarChar).Value = serial;
-                command.ExecuteNonQuery();
+                //command.CommandText = "delete from [OrderDetail] where serial = @serial";
+                //command.Parameters.Add("@serial", SqlDbType.NVarChar).Value = serial;
+                //command.ExecuteNonQuery();
 
-                command.CommandText = "delete from [Orders] where serial = @serial1";
-                command.Parameters.Add("@serial1", SqlDbType.NVarChar).Value = serial;
+                //command.CommandText = "delete from [Orders] where serial = @serial1";
+                //command.Parameters.Add("@serial1", SqlDbType.NVarChar).Value = serial;
+                //command.ExecuteNonQuery();
+                //transaction.Commit();
+
+                SqlConnection connection = new SqlConnection(s_data);
+                SqlCommand command = new SqlCommand(@"UPDATE Orders
+                       SET
+                          status = @status
+                        WHERE serial = @serial ", connection);
+                command.Parameters.Add("@status", SqlDbType.NVarChar).Value = status;
+                command.Parameters.Add("@serial", SqlDbType.NVarChar).Value = serial;
+
+                connection.Open();
                 command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+
+
 
                 
-
-
-                transaction.Commit();
 
                 //關閉與資料庫連接的通道
                 connection.Close();
@@ -121,7 +134,7 @@ namespace Shopping.Dao
             }
             catch (Exception)
             {
-                transaction.Rollback();
+               // transaction.Rollback();
                 throw;
             }
 

@@ -33,13 +33,13 @@ function IsTestNumbermail(email) {
 }
 
 //確認mail的驗證碼
-function IsEmail(testNumbe) {
-    if (testNumbe == '' || testNumbe == undefined) {
-        return false;
-    }
-    var regex = /^[0-9]*$/;
-    return regex.test(testNumbe);
-}
+//function IsEmail(testNumbe) {
+//    if (testNumbe == '' || testNumbe == undefined) {
+//        return false;
+//    }
+//    var regex = /^[0-9]*$/;
+//    return regex.test(testNumbe);
+/*}*/
 
 //確認地址的正規表達式
 
