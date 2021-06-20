@@ -22,18 +22,74 @@ namespace Shopping
 
         public void reviewChat()
         {
+            helpSQL.Text = "";
+            helpSQL2.Text = "";
             SqlConnection connection = Connect(s_data);
             string sql = $"select * from Chat where response IS NULL OR response = ''";
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
-            usercontact.DataSource = read;
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("account");
+            dt.Columns.Add("message");
+            dt.Columns.Add("response");
+            dt.Columns.Add("initdate");
+            dt.Columns.Add("updateInitdate");
+            while(read.Read())
+            {
+                DataRow row = dt.NewRow();
+                row["ID"] = read[0];
+                row["account"] = read[1];
+                row["message"] = read[2];
+                row["response"] = read[3];
+                row["initdate"] = read[4];
+                row["updateInitdate"] = read[5];
+                dt.Rows.Add(row);
+
+            }
+            usercontact.DataSource = dt;
             usercontact.DataBind();
             connection.Close();
         }
 
+        public void searchChat(string a)
+        {
+            helpSQL.Text = a;
+            helpSQL2.Text = "";
+            SqlConnection connection3 = Connect(s_data);
+            SqlCommand command3 = new SqlCommand(a, connection3);
+            connection3.Open();
+            SqlDataReader read = command3.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("account");
+            dt.Columns.Add("message");
+            dt.Columns.Add("response");
+            dt.Columns.Add("initdate");
+            dt.Columns.Add("updateInitdate");
+            while (read.Read())
+            {
+                DataRow row = dt.NewRow();
+                row["ID"] = read[0];
+                row["account"] = read[1];
+                row["message"] = read[2];
+                row["response"] = read[3];
+                row["initdate"] = read[4];
+                row["updateInitdate"] = read[5];
+                dt.Rows.Add(row);
+
+            }
+            usercontact.DataSource = dt;
+            usercontact.DataBind();
+            connection3.Close();
+
+        }
+
         public void reviewChatDate()
         {
+            helpSQL.Text = "";
+            helpSQL2.Text = "date";
             SqlConnection connection4 = Connect(s_data);
             if (Convert.ToInt32(DDLDayE.Text) < 9)
             {
@@ -188,14 +244,7 @@ namespace Shopping
             changecocolor();
             if (!IsPostBack)
             {
-                SqlConnection connection = Connect(s_data);
-                string sql = $"select * from Chat where response IS NULL OR response = ''";
-                SqlCommand command = new SqlCommand(sql, connection);
-                connection.Open();
-                SqlDataReader read = command.ExecuteReader();
-                usercontact.DataSource = read;
-                usercontact.DataBind();
-                connection.Close();
+                reviewChat();
                 cleanbt1();
                 cleanbt3();
             }
@@ -234,16 +283,8 @@ namespace Shopping
         {
             if (Request.Form["searchaccount"] != "")
             {
-                SqlConnection connection3 = Connect(s_data);
-                string sql3 = $"select * from Chat where account = '{Request.Form["searchaccount"].ToString()}'";
-                SqlCommand command3 = new SqlCommand(sql3, connection3);
-                connection3.Open();
-                SqlDataReader read = command3.ExecuteReader();
-                usercontact.DataSource = read;
-                usercontact.DataBind();
-                connection3.Close();
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt2", "setTimeout( function(){alert('搜尋成功');},0);", true);
-                
+                string sql3 = $"select * from Chat where account = '{Request.Form["searchaccount"]}'";
+                searchChat(sql3);
             }
             else
             {
@@ -320,6 +361,66 @@ namespace Shopping
         {
             Session["access"] = "Not ok";
             Response.Redirect(Request.Url.ToString());
+        }
+
+        protected void all_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("managercontact");
+        }
+
+        protected void usercontact_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            string ID = usercontact.DataKeys[e.RowIndex].Values[0].ToString();
+            string response = ((TextBox)usercontact.Rows[e.RowIndex].FindControl("TextBox1")).Text;
+            string strUpdate = $"update Chat set response = N'{response}', updateInitdate= getdate()  where ID='{ID}'";
+            SqlConnection connection = new SqlConnection(s_data);
+            connection.Open();
+            SqlCommand command = new SqlCommand(strUpdate, connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+            usercontact.EditIndex = -1;
+            reviewChat();
+        }
+
+        protected void usercontact_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            usercontact.EditIndex = -1;
+            if (helpSQL.Text != "")
+            {
+                searchChat(helpSQL.Text);
+            }
+            else if (helpSQL2.Text != "")
+            {
+                reviewChatDate();
+            }
+            else
+            {
+                reviewChat();
+            }
+        }
+
+        protected void usercontact_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            usercontact.PageIndex = e.NewPageIndex;
+            reviewChat();
+        }
+
+        protected void usercontact_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            usercontact.EditIndex = e.NewEditIndex;
+
+            if (helpSQL.Text != "")
+            {
+                searchChat(helpSQL.Text);
+            }
+            else if (helpSQL2.Text != "")
+            {
+                reviewChatDate();
+            }
+            else
+            {
+                reviewChat();
+            }
         }
     }
 }

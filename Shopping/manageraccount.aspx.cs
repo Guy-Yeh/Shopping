@@ -943,6 +943,11 @@ namespace Shopping
             reviewAccount();
         }
 
+        protected void all_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("manageraccount");
+        }
+
 
 
 

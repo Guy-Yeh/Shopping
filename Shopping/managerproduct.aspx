@@ -195,188 +195,208 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                     <div class="container">
-                        <div class = "row">
-                            <div class = "col-sm-5">
+                        <div class="row">
+                            <div class="col-sm-5">
                             </div>
-                            <div class = "col-sm-4">
-                                <h3><asp:Label ID="Label9" runat="server" Text="商品上架" ForeColor ="#52d0c4" Font-Bold="true"></asp:Label></h3>  
+                            <div class="col-sm-4">
+                                <h3>
+                                    <asp:Label ID="Label9" runat="server" Text="商品上架" ForeColor="#52d0c4" Font-Bold="true"></asp:Label></h3>
                                 <br>
                             </div>
-                       </div>
+                        </div>
                     </div>
                     <div class="container">
-                        <div class = "row">
-                            <div class = "col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-1">
                             </div>
-                            <div class ="col-sm-10">
-                    <asp:Table ID="Tableadd" runat="server" GridLines="Both" CellPadding="10" align="center">
-                        <asp:TableRow>
-                            <asp:TableCell ForeColor="#52d0c4">
+                            <div class="col-sm-10">
+                                <asp:Table ID="Tableadd" runat="server" GridLines="Both" CellPadding="10" align="center">
+                                    <asp:TableRow>
+                                        <asp:TableCell ForeColor="#52d0c4">
                                 productName
-                            </asp:TableCell>
-                            <asp:TableCell ForeColor="#52d0c4">
+                                        </asp:TableCell>
+                                        <asp:TableCell ForeColor="#52d0c4">
                                 category
-                            </asp:TableCell>
-                            <asp:TableCell ForeColor="#52d0c4">
+                                        </asp:TableCell>
+                                        <asp:TableCell ForeColor="#52d0c4">
                                 picture
-                            </asp:TableCell>
-                            <asp:TableCell ForeColor="#52d0c4">
+                                        </asp:TableCell>
+                                        <asp:TableCell ForeColor="#52d0c4">
                                 inventory
-                            </asp:TableCell>
-                            <asp:TableCell ForeColor="#52d0c4">
+                                        </asp:TableCell>
+                                        <asp:TableCell ForeColor="#52d0c4">
                                 price
-                            </asp:TableCell>
-                            <asp:TableCell ForeColor="#52d0c4">
+                                        </asp:TableCell>
+                                        <asp:TableCell ForeColor="#52d0c4">
                                 introduction
-                            </asp:TableCell>
-                            <asp:TableCell ForeColor="#52d0c4">
-                                送出
-                            </asp:TableCell>
-                        </asp:TableRow>
-                        <asp:TableRow>
-                            <asp:TableCell>
-                                <asp:TextBox ID="TextBox10" runat="server" Width="100"></asp:TextBox>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:TextBox ID="TextBox11" runat="server" Width="100"></asp:TextBox>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:FileUpload ID="FileUpload2" runat="server" Width="80" />
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:TextBox ID="TextBox12" runat="server" Width="100"></asp:TextBox>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:TextBox ID="TextBox13" runat="server" Width="100"></asp:TextBox>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <textarea rows="5" id="TextBox14" name="contactresponse" class="form-control" placeholder="請輸入介紹"></textarea>
-                            </asp:TableCell>
-                            <asp:TableCell ForeColor="#52d0c4">
-                                <asp:LinkButton ID="adding" runat="server" OnClientClick='return confirm("確定新增?")' Width="50">送出</asp:LinkButton>                               
-                            </asp:TableCell>
-                        </asp:TableRow>
-                        </asp:Table>
-                                </div>
-                                </div>
+                                        </asp:TableCell>
+                                    </asp:TableRow>
+                                    <asp:TableRow>
+                                        <asp:TableCell>
+                                            <asp:TextBox ID="TextBox10" runat="server" Width="100"></asp:TextBox>
+                                            <br>
+                                            <asp:Label ID="hintp1" runat="server" Text=""></asp:Label>
+                                        </asp:TableCell>
+                                        <asp:TableCell>
+                                            <asp:TextBox ID="TextBox11" runat="server" Width="100"></asp:TextBox>
+                                            <br>
+                                            <asp:Label ID="hintp2" runat="server" Text=""></asp:Label>
+                                        </asp:TableCell>
+                                        <asp:TableCell HorizontalAlign="Center">
+                                            <asp:FileUpload ID="FileUpload2" runat="server" Width="160" />
+                                            <%--<asp:Label ID="Label10" runat="server" Text="非必要上傳" ForeColor="#52d0c4"></asp:Label>--%>
+                                        </asp:TableCell>
+                                        <asp:TableCell>
+                                            <asp:TextBox ID="TextBox12" runat="server" Width="110"></asp:TextBox>
+                                            <br>
+                                            <asp:Label ID="hintp3" runat="server" Text=""></asp:Label>
+                                        </asp:TableCell>
+                                        <asp:TableCell>
+                                            <asp:TextBox ID="TextBox13" runat="server" Width="110"></asp:TextBox>
+                                            <br>
+                                            <asp:Label ID="hintp4" runat="server" Text=""></asp:Label>
+                                        </asp:TableCell>
+                                        <asp:TableCell>
+                                            <textarea rows="5" ID="TextBox14" name="contactresponse" class="form-control" placeholder="請輸入不超過50字產品介紹(非必填)" ></textarea>
+                                        </asp:TableCell>
+                                    </asp:TableRow>
+                                </asp:Table>
+                            </div>
+                            <div class="col-sm-1">
+                                <br>
+                                <br>
+                                <br>
+                                <asp:Button ID="sub" runat="server" Text="上架" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Width="80px" Height="80" OnClick="sub_Click" OnClientClick='return confirm("確定上架?")' />
                             </div>
                         </div>
-                    <div class="clearfix">
-
-                        <br>
-                        
-                        <asp:GridView ID="product" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="product_RowDeleting" OnRowCancelingEdit="product_RowCancelingEdit" OnRowEditing="product_RowEditing" OnRowUpdating="product_RowUpdating" AllowPaging="True" OnPageIndexChanging="product_PageIndexChanging">
-                            <PagerStyle ForeColor="Black" HorizontalAlign="Center" />
-                            <Columns>
-                                <asp:TemplateField HeaderText="image">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("picture") %>' ReadOnly="True" Visible="False"></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("picture") %>' Width="100px" ValidateRequestMode="Inherit" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="ID">
-                                    <EditItemTemplate>
-                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="productName" SortExpression="productName">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("productName") %>'></asp:TextBox>
-
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("productName") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="picture" SortExpression="picture" Visible="False" ValidateRequestMode="Enabled">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("picture") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("picture") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="category" SortExpression="category">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("category") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("category") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="picture" SortExpression="picture">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("showpicture") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label6" runat="server" Text='<%# Bind("showpicture") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="inventory" SortExpression="inventory">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("inventory") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("inventory") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="price" SortExpression="price">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("price") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("price") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="introduction" SortExpression="introduction">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("introduction") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label8" runat="server" Text='<%# Bind("introduction") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" ReadOnly="True" />
-                                <asp:TemplateField HeaderText="revise" ShowHeader="False">
-                                    <EditItemTemplate>
-                                        <asp:LinkButton ID="Update" runat="server" CausesValidation="False" CommandName="Update" Text="更新" OnClientClick='return confirm("確定更新?")'></asp:LinkButton>
-                                        <asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="Edit" runat="server" CausesValidation="False" CommandName="Edit" Text="編輯"></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="delete" ShowHeader="False">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" OnClientClick='return confirm("確定刪除?")'></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-
-                            </Columns>
-                            <PagerStyle CssClass="fvPagerStyle" HorizontalAlign="Center" />
-                        </asp:GridView>
-                        <asp:SqlDataSource ID="SqlDataSourceProduct" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
-
                     </div>
-                    <div id="small-dialog" class="mfp-hide">
-                        <div class="search-top">
-                            <div class="login">
-                                <input type="submit" value="">
-                                <input type="text" value="Type something..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
-                            </div>
-                            <p>Shopping</p>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-10">
+                        </div>
+                        <div class="col-sm-2">
+                            
+                            <br>
+                            <asp:Button ID="all" runat="server" Text="查看所有" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="95px" Height="40" />
+                            <br>
                         </div>
                     </div>
-                    <!---->
+                </div>
+                <div class="clear-fix">                    
+                    <asp:GridView ID="product" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="product_RowDeleting" OnRowCancelingEdit="product_RowCancelingEdit" OnRowEditing="product_RowEditing" OnRowUpdating="product_RowUpdating" AllowPaging="True" OnPageIndexChanging="product_PageIndexChanging">
+                        <PagerStyle ForeColor="Black" HorizontalAlign="Center" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="image">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("picture") %>' ReadOnly="True" Visible="False"></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("picture") %>' Width="100px" ValidateRequestMode="Inherit" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="ID">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="productName" SortExpression="productName">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("productName") %>'></asp:TextBox>
+
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("productName") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="picture" SortExpression="picture" Visible="False" ValidateRequestMode="Enabled">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("picture") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("picture") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="category" SortExpression="category">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("category") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("category") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="picture" SortExpression="picture">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("showpicture") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label6" runat="server" Text='<%# Bind("showpicture") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="inventory" SortExpression="inventory">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("inventory") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label7" runat="server" Text='<%# Bind("inventory") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="price" SortExpression="price">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("price") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("price") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="introduction" SortExpression="introduction">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("introduction") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("introduction") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" ReadOnly="True" />
+                            <asp:TemplateField HeaderText="revise" ShowHeader="False">
+                                <EditItemTemplate>
+                                    <asp:LinkButton ID="Update" runat="server" CausesValidation="False" CommandName="Update" Text="更新" OnClientClick='return confirm("確定更新?")'></asp:LinkButton>
+                                    <asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="Edit" runat="server" CausesValidation="False" CommandName="Edit" Text="編輯"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="delete" ShowHeader="False">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" OnClientClick='return confirm("確定刪除?")'></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                        <PagerStyle CssClass="fvPagerStyle" HorizontalAlign="Center" />
+                    </asp:GridView>
+                    <asp:SqlDataSource ID="SqlDataSourceProduct" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
+
+                </div>
+            </div>
+        </div>
+        <div id="small-dialog" class="mfp-hide">
+            <div class="search-top">
+                <div class="login">
+                    <input type="submit" value="">
+                    <input type="text" value="Type something..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+                </div>
+                <p>Shopping</p>
+            </div>
+        </div>
+        <!---->
 
 
-            </div>
-            </div>
+        </div>
+        </div>
         </div>
         <!---->
 

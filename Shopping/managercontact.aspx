@@ -30,6 +30,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="container">
                     <div class="col-md-4 world">
                         <span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
+                        <asp:Label ID="helpSQL" runat="server" Text="" Visible="False"></asp:Label>
+                        <asp:Label ID="helpSQL2" runat="server" Text="" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-4 logo">
                         <a href="index.html">
@@ -53,36 +55,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="col-md-8 h_menu4">
                         <ul class="memenu skyblue">
-                             <li><a href="manageraccount">帳戶</a></li>
+                            <li><a href="manageraccount">帳戶</a></li>
                             <li><a href="managerproduct">產品</a></li>
                             <li><a href="managerorder">訂單</a></li>
                             <li><a href="managershoppingcar">購物車</a></li>
                             <li><a class="color6" href="managercontact">回覆訊息</a></li>
                         </ul>
                     </div>
-                    
-                
-                <div id="small-dialog" class="mfp-hide">
-                    <div class="search-top">
-                        <div class="login">
-                            <input type="submit" value="">
-                            <input type="text" value="Type something..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+
+
+                    <div id="small-dialog" class="mfp-hide">
+                        <div class="search-top">
+                            <div class="login">
+                                <input type="submit" value="">
+                                <input type="text" value="Type something..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+                            </div>
+                            <p>Shopping</p>
                         </div>
-                        <p>Shopping</p>
                     </div>
+                    <!---->
+
+
                 </div>
                 <!---->
+                <div class="single">
 
+                    <div class="container">
 
-            </div>
-            <!---->
-            <div class="single">
-
-                <div class="container">
-                    
                         <div style="text-align: center">
 
-                            <h1>Revise Response Table&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h1>
+                            <h1>回覆顧客留言&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h1>
 
                         </div>
                         <br>
@@ -105,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <li>
                                                 <textarea rows="5" id="contactresponse" name="contactresponse" class="form-control" placeholder="response"></textarea></li>
                                             <li>
-                                                <asp:Label ID="hintResponse" runat="server" Text=""></asp:Label></li>                                            
+                                                <asp:Label ID="hintResponse" runat="server" Text=""></asp:Label></li>
                                             <li>
                                                 <asp:Button ID="response" runat="server" Text="submit" OnClick="Button1_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要送出嗎?')) window.event.returnValue=false;" />
                                             </li>
@@ -116,12 +118,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 <div class="col1">
                                     <div class="h_nav">
-                                        <h4>Search by Account</h4>
+                                        <h4>搜尋表單:帳號</h4>
                                         <ul>
                                             <li>
                                                 <input type="text" id="searchaccount" name="searchaccount" class="form-control" placeholder="account"></li>
                                             <li>
-                                                <asp:Label ID="hintSearch" runat="server" Text=""></asp:Label></li>                                           
+                                                <asp:Label ID="hintSearch" runat="server" Text=""></asp:Label></li>
                                             <li>
                                                 <asp:Button ID="search" runat="server" Text="submit" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" />
                                             </li>
@@ -130,27 +132,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 <div class="col1">
                                     <div class="h_nav">
-                                        <h4>Show Message by Date Range </h4>
+                                        <h4>搜尋表單:起始日期</h4>
                                         <ul>
                                             <li>
                                                 <asp:DropDownList ID="DDLYearS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
                                                     <asp:ListItem Value="0">StartYear</asp:ListItem>
                                                 </asp:DropDownList>
-                                                <asp:SqlDataSource ID="SqlDataSourceYears" runat="server" ConnectionString="<%$ ConnectionStrings:YearsConnectionString %>" SelectCommand="SELECT [years] FROM [Years]"></asp:SqlDataSource>
+                                                <asp:SqlDataSource ID="SqlDataSourceYears" runat="server" ConnectionString="<%$ ConnectionStrings:YearsConnectionString %>" SelectCommand="SELECT [years] FROM [YearsMonthsDays]"></asp:SqlDataSource>
                                             </li>
                                             <br>
                                             <li>
                                                 <asp:DropDownList ID="DDLMonthS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
                                                     <asp:ListItem Value="0">StartMonth</asp:ListItem>
                                                 </asp:DropDownList>
-                                                <asp:SqlDataSource ID="SqlDataSourceMonth" runat="server" ConnectionString="<%$ ConnectionStrings:MonthsConnectionString %>" SelectCommand="SELECT [months] FROM [Months]"></asp:SqlDataSource>
+                                                <asp:SqlDataSource ID="SqlDataSourceMonth" runat="server" ConnectionString="<%$ ConnectionStrings:MonthsConnectionString %>" SelectCommand="SELECT months FROM YearsMonthsDays WHERE (months IS NOT NULL)"></asp:SqlDataSource>
                                             </li>
                                             <br>
                                             <li>
                                                 <asp:DropDownList ID="DDLDayS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
                                                     <asp:ListItem Value="0">StartDay</asp:ListItem>
                                                 </asp:DropDownList>
-                                                <asp:SqlDataSource ID="SqlDataSourceDay" runat="server" ConnectionString="<%$ ConnectionStrings:DaysConnectionString %>" SelectCommand="SELECT [days] FROM [Days]"></asp:SqlDataSource>
+                                                <asp:SqlDataSource ID="SqlDataSourceDay" runat="server" ConnectionString="<%$ ConnectionStrings:DaysConnectionString %>" SelectCommand="SELECT days FROM YearsMonthsDays WHERE (days IS NOT NULL)"></asp:SqlDataSource>
                                             </li>
                                             <br>
                                             <br>
@@ -169,7 +171,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     <asp:ListItem Value="0">EndDay</asp:ListItem>
                                                 </asp:DropDownList></li>
                                             <li>
-                                                <asp:Label ID="hintDate" runat="server" Text=""></asp:Label></li>                                            
+                                                <asp:Label ID="hintDate" runat="server" Text=""></asp:Label></li>
                                             <li>
                                                 <asp:Button ID="show" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" />
                                             </li>
@@ -181,25 +183,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </div>
 
-                        <asp:GridView ID="usercontact" runat="server" AutoGenerateColumns="False" DataKeyNames="ID">
-                            <Columns>
-                                <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                                <asp:BoundField DataField="account" HeaderText="account" SortExpression="account" />
-                                <asp:BoundField DataField="message" HeaderText="message" SortExpression="message" />
-                                <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" />
-                                <asp:BoundField DataField="response" HeaderText="response" SortExpression="response" />
-                                <asp:BoundField DataField="updateInitdate" HeaderText="updateInitdate" SortExpression="updateInitdate" />
-                            </Columns>
-                        </asp:GridView>
+
                         <asp:SqlDataSource ID="SqlDataSourceChatting" runat="server" ConnectionString="<%$ ConnectionStrings:ChatConnectionString %>" SelectCommand="SELECT * FROM [Chat]"></asp:SqlDataSource>
                         <!----->
 
-                        <div class="clearfix"></div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-7">
+                                </div>
+                                <div class="col-sm-2">
+                                    <br>
+                                    <asp:Button ID="all" runat="server" Text="查看尚未回覆" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="135px" Height="40" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-8">
 
-                    </div>
+                                    <asp:GridView ID="usercontact" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" AllowPaging="True" OnPageIndexChanging="usercontact_PageIndexChanging" OnRowCancelingEdit="usercontact_RowCancelingEdit" OnRowEditing="usercontact_RowEditing" OnRowUpdating="usercontact_RowUpdating" Width="150px">
+                                        <PagerStyle ForeColor="Black" HorizontalAlign="Center" />
+                                        <Columns>
+                                            <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                                            <asp:BoundField DataField="account" HeaderText="account" SortExpression="account" ReadOnly="True" />
+                                            <asp:BoundField DataField="message" HeaderText="message" SortExpression="message" ReadOnly="True" />
+                                            <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" ReadOnly="True" />
+                                            <asp:TemplateField HeaderText="response" SortExpression="response">
+                                                <EditItemTemplate>
+                                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("response") %>'></asp:TextBox>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("response") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="updateInitdate" HeaderText="updateInitdate" SortExpression="updateInitdate" ReadOnly="True" />
+                                            <asp:TemplateField HeaderText="回覆" ShowHeader="False">
+                                                <EditItemTemplate>
+                                                    <asp:LinkButton ID="Update" runat="server" CausesValidation="True" CommandName="Update" Text="更新"></asp:LinkButton>
+                                                    <asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="回覆" runat="server" CausesValidation="False" CommandName="Edit" Text="回覆"></asp:LinkButton>
+                                                </ItemTemplate>
+                                                <ControlStyle Width="60px" />
+                                            </asp:TemplateField>
+                                        </Columns>
+                                    </asp:GridView>
+                                </div>
+                            </div>
+                        </div>
                 </div>
-            <!--footer-->
-            <div class="footer">
+                <!--footer-->
+                <div class="footer">
                     <div class="container">
                         <div class="footer-top">
                             <div class="col-sm-7 number col-md8">
@@ -216,67 +253,67 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                 </div>
-            <!-- slide -->
-            <script src="js/jquery.min.js"></script>
-            <script src="js/imagezoom.js"></script>
-            <!-- start menu -->
-            <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-            <script type="text/javascript" src="js/memenu.js"></script>
-            <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
-            <script src="js/simpleCart.min.js"> </script>
-            <!--initiate accordion-->
-            <script type="text/javascript">
-                $(function () {
-                    var menu_ul = $('.menu-drop > li > ul'),
-                        menu_a = $('.menu-drop > li > a');
-                    menu_ul.hide();
-                    menu_a.click(function (e) {
-                        e.preventDefault();
-                        if (!$(this).hasClass('active')) {
-                            menu_a.removeClass('active');
-                            menu_ul.filter(':visible').slideUp('normal');
-                            $(this).addClass('active').next().stop(true, true).slideDown('normal');
-                        } else {
-                            $(this).removeClass('active');
-                            $(this).next().stop(true, true).slideUp('normal');
-                        }
-                    });
+                <!-- slide -->
+                <script src="js/jquery.min.js"></script>
+                <script src="js/imagezoom.js"></script>
+                <!-- start menu -->
+                <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+                <script type="text/javascript" src="js/memenu.js"></script>
+                <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
+                <script src="js/simpleCart.min.js"> </script>
+                <!--initiate accordion-->
+                <script type="text/javascript">
+                    $(function () {
+                        var menu_ul = $('.menu-drop > li > ul'),
+                            menu_a = $('.menu-drop > li > a');
+                        menu_ul.hide();
+                        menu_a.click(function (e) {
+                            e.preventDefault();
+                            if (!$(this).hasClass('active')) {
+                                menu_a.removeClass('active');
+                                menu_ul.filter(':visible').slideUp('normal');
+                                $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                            } else {
+                                $(this).removeClass('active');
+                                $(this).next().stop(true, true).slideUp('normal');
+                            }
+                        });
 
-                });
-            </script>
-            <!-- FlexSlider -->
-            <script defer src="js/jquery.flexslider.js"></script>
-            <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-
-            <script>
-                // Can also be used with $(document).ready()
-                $(window).load(function () {
-                    $('.flexslider').flexslider({
-                        animation: "slide",
-                        controlNav: "thumbnails"
                     });
-                });
-            </script>
-            <!---pop-up-box---->
-            <link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-            <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
-            <!---//pop-up-box---->
-            <script>
-                $(document).ready(function () {
-                    $('.popup-with-zoom-anim').magnificPopup({
-                        type: 'inline',
-                        fixedContentPos: false,
-                        fixedBgPos: true,
-                        overflowY: 'auto',
-                        closeBtnInside: true,
-                        preloader: false,
-                        midClick: true,
-                        removalDelay: 300,
-                        mainClass: 'my-mfp-zoom-in'
-                    });
+                </script>
+                <!-- FlexSlider -->
+                <script defer src="js/jquery.flexslider.js"></script>
+                <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 
-                });
-            </script>
+                <script>
+                    // Can also be used with $(document).ready()
+                    $(window).load(function () {
+                        $('.flexslider').flexslider({
+                            animation: "slide",
+                            controlNav: "thumbnails"
+                        });
+                    });
+                </script>
+                <!---pop-up-box---->
+                <link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+                <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+                <!---//pop-up-box---->
+                <script>
+                    $(document).ready(function () {
+                        $('.popup-with-zoom-anim').magnificPopup({
+                            type: 'inline',
+                            fixedContentPos: false,
+                            fixedBgPos: true,
+                            overflowY: 'auto',
+                            closeBtnInside: true,
+                            preloader: false,
+                            midClick: true,
+                            removalDelay: 300,
+                            mainClass: 'my-mfp-zoom-in'
+                        });
+
+                    });
+                </script>
     </form>
 </body>
 </html>

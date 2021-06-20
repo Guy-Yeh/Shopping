@@ -275,7 +275,7 @@ namespace Shopping
         //}
         public string allcheck(string kind, string productName, string productColor)
         {
-            string I="";
+            string I = "";
             string sqlSQ = $"select {kind} from Products where productName = N'{productName}' And category = N'{productColor}' ";
             SqlConnection connectionSQ = Connect(s_data3);
             SqlCommand commandSQ = new SqlCommand(sqlSQ, connectionSQ);
@@ -284,14 +284,14 @@ namespace Shopping
             if (readerSQ.Read())
             {
                 I = readerSQ[0].ToString();
-                
+
             }
             connectionSQ.Close();
             return I;
         }
 
         public bool productexistcheck(string productName, string productColor)
-        {           
+        {
             string sqlSQ = $"select * from Products where productName = N'{productName}' And category = N'{productColor}' ";
             SqlConnection connectionSQ = Connect(s_data3);
             SqlCommand commandSQ = new SqlCommand(sqlSQ, connectionSQ);
@@ -871,7 +871,7 @@ namespace Shopping
         protected void customerAccountsearch_Click(object sender, EventArgs e)
         {
             if (DDLSearchCustomerAccount.SelectedItem.Text != "請選擇")
-            {                
+            {
                 searchOrder("customerAccount", DDLSearchCustomerAccount.Text);
                 cleanbtsca();
                 this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btca", "setTimeout( function(){alert('篩選成功');},0);", true);
@@ -986,7 +986,7 @@ namespace Shopping
             bool serialCheck = Regex.IsMatch(TextBox9.Text, @"\d{10}");
             bool phoneCheck = Regex.IsMatch(phone, @"^09[\d]{8}$");
 
-            
+
 
 
 
@@ -1029,10 +1029,10 @@ namespace Shopping
                                         if (productName == productNamec && productColorc == productColor)
                                         {
                                             //查詢庫存量
-                                            if (Convert.ToInt32(allcheck("inventory",productName, productColor)) >= (int.Parse(qty) - int.Parse(qtyc)))
+                                            if (Convert.ToInt32(allcheck("inventory", productName, productColor)) >= (int.Parse(qty) - int.Parse(qtyc)))
                                             {
                                                 //更新庫存數量
-                                                string sqlUQ = $"update Products set inventory = '{(Convert.ToInt32(allcheck("inventory",productName, productColor)) - (int.Parse(qty) - int.Parse(qtyc))).ToString()}' where productName = N'{productName}' And category = N'{productColor}' ";
+                                                string sqlUQ = $"update Products set inventory = '{(Convert.ToInt32(allcheck("inventory", productName, productColor)) - (int.Parse(qty) - int.Parse(qtyc))).ToString()}' where productName = N'{productName}' And category = N'{productColor}' ";
                                                 SqlConnection connectionUQ = new SqlConnection(s_data3);
                                                 SqlCommand commandUQ = new SqlCommand(sqlUQ, connectionUQ);
                                                 connectionUQ.Open();
@@ -1165,7 +1165,7 @@ namespace Shopping
                         }
                         else
                         {
-                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('該訂單狀態為配送中、已完成或已取消  無法修改訂單內容 僅能修改訂單狀態');},700);", true);
+                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert(@'該訂單狀態為配送中、已完成或已取消   無法修改訂單內容、僅能修改訂單狀態');},700);", true);
                         }
                     }
                 }
@@ -1177,6 +1177,11 @@ namespace Shopping
         {
             userorder.PageIndex = e.NewPageIndex;
             reviewOrder();
+        }
+
+        protected void all_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("managerorder");
         }
     }
 }

@@ -89,9 +89,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         </div>
                         <br>
-                        <div class="mepanel">
+                        <div class="container">
                             <div class="row">
-                                <div class="col1">
+                                <div class="col-sm-4">
                                     <div class="h_nav">
                                         <h4>Search Order Information</h4>
                                         <ul>
@@ -162,7 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col1">
+                                <div class="col-sm-4">
                                     <div class="h_nav">
                                         <h4>Delete Order Information</h4>
                                         <ul>
@@ -182,7 +182,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col1">
+                                <div class="col-sm-4">
                                     <div class="h_nav">
                                         <h4>Update Order Information</h4>
 
@@ -222,7 +222,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </ul>
                                     </div>
                                 </div>
-                                        <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowCancelingEdit="userorder_RowCancelingEdit" OnRowEditing="userorder_RowEditing" OnRowUpdating="userorder_RowUpdating"  OnPageIndexChanging="userorder_PageIndexChanging" Width="200px" AllowPaging="True">
+
+                                        
+                            </div>
+
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-11">
+                                </div>
+                                <div class="col-sm-1">
+                                    <br>
+                                    <asp:Button ID="all" runat="server" Text="查看所有" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="120px" Height="40" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix" style="text-align: left">
+                            <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowCancelingEdit="userorder_RowCancelingEdit" OnRowEditing="userorder_RowEditing" OnRowUpdating="userorder_RowUpdating"  OnPageIndexChanging="userorder_PageIndexChanging" Width="200px" AllowPaging="True">
                                             <PagerStyle  ForeColor="Black" HorizontalAlign="Center" />  
                                             <Columns>
                                                 <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="ID">
@@ -328,72 +344,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 </asp:TemplateField>
                                             </Columns>
                                         </asp:GridView>
-                            </div>
-
-                        </div>
-
-                        <div class="clearfix" style="text-align: left">
-
                             <asp:SqlDataSource ID="SqlDataSourceAllorders" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="SELECT a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice, a.qty, a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial"></asp:SqlDataSource>
 
                             <asp:SqlDataSource ID="SqlDataSourceAllOrders2" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="SELECT a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice, a.qty, b.name, b.phone, b.address, b.status, b.initdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial"></asp:SqlDataSource>
 
                         </div>
-                        <div id="small-dialog" class="mfp-hide">
-                            <div class="search-top">
-                                <div class="login">
-                                    <input type="submit" value="">
-                                    <input type="text" value="Type something..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
-                                </div>
-                                <p>
-                                    Shoppingurabitur sapien</a></li>
-                                <li><a href="#">Dignissim purus</a></li>
-                                    <li><a href="#">Tempus pretium</a></li>
-                                    <li><a href="#">Dignissim neque</a></li>
-                                    <li><a href="#">Ornared id aliquet</a></li>
-
-                                    </ul>
-                            </div>
-                            <div class="col-md-3 footer-bottom-cate">
-                                <h6>Feature Projects</h6>
-                                <ul>
-                                    <li><a href="#">Curabitur sapien</a></li>
-                                    <li><a href="#">Dignissim purus</a></li>
-                                    <li><a href="#">Tempus pretium</a></li>
-                                    <li><a href="#">Dignissim neque</a></li>
-                                    <li><a href="#">Ornared id aliquet</a></li>
-
-                                </ul>
-                            </div>
-                            <div class="col-md-3 footer-bottom-cate">
-                                <h6>Top Brands</h6>
-                                <ul>
-                                    <li><a href="#">Curabitur sapien</a></li>
-                                    <li><a href="#">Dignissim purus</a></li>
-                                    <li><a href="#">Tempus pretium</a></li>
-                                    <li><a href="#">Dignissim neque</a></li>
-                                    <li><a href="#">Ornared id aliquet</a></li>
-                                    <li><a href="#">Ultrices id du</a></li>
-                                    <li><a href="#">Commodo sit</a></li>
-
-                                </ul>
-                            </div>
-                            <div class="col-md-3 footer-bottom-cate cate-bottom">
-                                <h6>Our Address</h6>
-                                <ul>
-                                    <li>Aliquam metus  dui. </li>
-                                    <li>orci, ornareidquet</li>
-                                    <li>ut,DUI.</li>
-                                    <li>nisi, dignissim</li>
-                                    <li>gravida at.</li>
-                                    <li class="phone">PH : 6985792466</li>
-                                </ul>
-                            </div>
-                            <div class="clearfix"></div>
-                            <p class="footer-class">© 2015 Fashion Mania. All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
-                        </div>
-                    </div>
-                </div>
+                        
                 <!--footer-->
                 <div class="footer">
                     <div class="container">

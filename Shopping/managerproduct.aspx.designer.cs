@@ -393,6 +393,15 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox10;
 
         /// <summary>
+        /// hintp1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hintp1;
+
+        /// <summary>
         /// TextBox11 控制項。
         /// </summary>
         /// <remarks>
@@ -400,6 +409,15 @@ namespace Shopping
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox11;
+
+        /// <summary>
+        /// hintp2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hintp2;
 
         /// <summary>
         /// FileUpload2 控制項。
@@ -420,6 +438,15 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox12;
 
         /// <summary>
+        /// hintp3 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hintp3;
+
+        /// <summary>
         /// TextBox13 控制項。
         /// </summary>
         /// <remarks>
@@ -429,13 +456,31 @@ namespace Shopping
         protected global::System.Web.UI.WebControls.TextBox TextBox13;
 
         /// <summary>
-        /// adding 控制項。
+        /// hintp4 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton adding;
+        protected global::System.Web.UI.WebControls.Label hintp4;
+
+        /// <summary>
+        /// sub 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button sub;
+
+        /// <summary>
+        /// all 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button all;
 
         /// <summary>
         /// product 控制項。

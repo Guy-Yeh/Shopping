@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <html>
-<head >
+<head>
     <title>Fashion Mania A Ecommerce Category Flat Bootstarp Resposive Website Template | Single :: w3layouts</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Custom Theme files -->
@@ -21,7 +21,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!---->
-    
+
 </head>
 <body>
     <form runat="server" method="post">
@@ -34,7 +34,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
 					
                         <asp:Label ID="helpSQL" runat="server" Text="helpSQL" Visible="False"></asp:Label>
-					
+
                     </div>
                     <div class="col-md-4 logo">
                         <a href="index.html">
@@ -52,6 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="clearfix"></div>
                 </div>
             </div>
+           </div>
             <div class="container">
                 <div class="head-top">
                     <div class="col-md-2 number">
@@ -80,9 +81,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <br>
 
-                        <div class="mepanel">
+                        <div class="container">
                             <div class="row">
-                                <div class="col1">
+                                <div class="col-sm-4">
                                     <div class="h_nav">
                                         <h4>Add User Account</h4>
                                         <ul>
@@ -180,56 +181,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;" /></li>
                                             <br>
                                             <br>
-                                            <asp:GridView ID="useraccount" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="useraccount_RowDeleting" OnRowCancelingEdit="useraccount_RowCancelingEdit" OnRowEditing="useraccount_RowEditing" OnRowUpdating="useraccount_RowUpdating" AllowPaging="True"  HorizontalAlign ="center" OnPageIndexChanging="useraccount_PageIndexChanging" PagerStyle-HorizontalAlign="NotSet" >
-                                               <PagerStyle  ForeColor="Black" HorizontalAlign="Center" />  
-                                                <Columns>
-                                                    <asp:TemplateField HeaderText="image" ItemStyle-HorizontalAlign="Center">
-                                                        <EditItemTemplate>
-                                                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("picture") %>' Enabled="False" EnableViewState="True" Visible="False"></asp:TextBox>
-                                                        </EditItemTemplate>
-                                                        <ItemTemplate>
-                                                            <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("picture") %>' Width="100px" />
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                                                    <asp:BoundField DataField="showpicture" HeaderText="picture" SortExpression="showpicture" Visible="False" ReadOnly="True" />
-                                                    <asp:BoundField DataField="account" HeaderText="account" SortExpression="account" Visible="True" ReadOnly="True" />
-                                                    <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" Visible="True" ReadOnly="True" />
-                                                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" Visible="True" ReadOnly="True" />
-                                                    <asp:BoundField DataField="phone" HeaderText="phone" SortExpression="phone" Visible="True" ReadOnly="True" />
-                                                    <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" Visible="True" ReadOnly="True" />
-                                                    <asp:BoundField DataField="address" HeaderText="address" SortExpression="address" Visible="True" ReadOnly="True" />                                                     
-                                                    <asp:BoundField DataField="discount" HeaderText="discount" SortExpression="discount" Visible="True" ReadOnly="True" />
-                                                    <asp:TemplateField HeaderText="access" SortExpression="access">
-                                                        <EditItemTemplate>
-                                                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("access") %>'></asp:TextBox>
-                                                        </EditItemTemplate>
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("access") %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" Visible="True" ReadOnly="True" />
-                                                    <asp:TemplateField HeaderText="revise" ShowHeader="False">
-                                                        <EditItemTemplate>
-                                                            <asp:LinkButton ID="Update" runat="server" CausesValidation="True" CommandName="Update" Text="更新" OnClientClick='return confirm("確定更新?")'></asp:LinkButton>
-                                                            <asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
-                                                        </EditItemTemplate>
-                                                        <ItemTemplate>
-                                                            <asp:LinkButton ID="Edit" runat="server" CausesValidation="False" CommandName="Edit" Text="編輯"></asp:LinkButton>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="delete" ShowHeader="False">
-                                                        <ItemTemplate>
-                                                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" OnClientClick='return confirm("確定刪除?")'></asp:LinkButton>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                </Columns>
-                                            </asp:GridView>
-                                                <asp:SqlDataSource ID="SqlDataSourceCustomer" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT * FROM [Customers]"></asp:SqlDataSource>
+
+                                            <asp:SqlDataSource ID="SqlDataSourceCustomer" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT * FROM [Customers]"></asp:SqlDataSource>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col1">
+                                <div class="col-sm-4">
                                     <div class="h_nav">
                                         <h4>Delete or Search User Account</h4>
                                         <ul>
@@ -244,15 +201,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <asp:SqlDataSource ID="SqlDataSourceAccount" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT account FROM Customers ORDER BY account"></asp:SqlDataSource>
                                             </li>
                                             <li>
-                                                <asp:Label ID="hintID" runat="server" Text=""></asp:Label></li>                                            
+                                                <asp:Label ID="hintID" runat="server" Text=""></asp:Label></li>
                                             <li>
                                                 <asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要刪除?')) window.event.returnValue=false;" /></li>
                                             <br>
                                             <br>
-                                            
-                                             <li>
+
+                                            <li>
                                                 <asp:Label ID="accountS" runat="server" Text="account"></asp:Label></li>
-                                             <li>
+                                            <li>
                                                 <asp:TextBox ID="TextBox7" runat="server" placeholder="輸入即將搜尋的account"></asp:TextBox></li>
                                             <li>
                                                 <%--<asp:DropDownList ID="DDLSearchAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px" >
@@ -260,19 +217,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 </asp:DropDownList>--%>
                                             </li>
                                             <li>
-                                                <asp:Label ID="hintIDS" runat="server" Text=""></asp:Label></li>                                            
+                                                <asp:Label ID="hintIDS" runat="server" Text=""></asp:Label></li>
                                             <li>
-                                                <asp:Button ID="Search" runat="server" OnClick="Button4_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
+                                                <asp:Button ID="Search" runat="server" OnClick="Button4_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" /></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col1">
+                                <div class="col-sm-4">
                                     <div class="h_nav">
                                         <h4>Update User Account</h4>
                                         <ul>
                                             <li>
                                                 <asp:Label ID="accountU" runat="server" Text="account"></asp:Label></li>
-                                            <li><asp:TextBox ID="TextBox8" runat="server" placeholder="輸入即將更新的account"></asp:TextBox></li>
+                                            <li>
+                                                <asp:TextBox ID="TextBox8" runat="server" placeholder="輸入即將更新的account"></asp:TextBox></li>
                                             <li>
                                                 <%--<asp:DropDownList ID="DDLUpdateAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px" >
                                                     <asp:ListItem Value="0">請選擇</asp:ListItem>
@@ -298,7 +256,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <li>
                                                 <asp:TextBox ID="TextBox9" runat="server" placeholder="請輸入更新的值"></asp:TextBox></li>
                                             <li>
-                                                <asp:Label ID="hintAll" runat="server" Text=""></asp:Label></li>                                            
+                                                <asp:Label ID="hintAll" runat="server" Text=""></asp:Label></li>
                                             <li>
                                                 <asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要修改嗎?')) window.event.returnValue=false;" />
                                             </li>
@@ -307,18 +265,70 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </div>
                         </div>
-                        <div class="clearfix">
-                            <br>
-                        </div>
-                        <div id="small-dialog" class="mfp-hide">
-                            <div class="search-top">
-                                <div class="login">
-                                    <input type="submit" value="">
-                                    <input type="text" value="Type something..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+ 
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-11">
                                 </div>
-                                <p>Shopping</p>
+                                <div class="col-sm-1">
+                                    <br>
+                                    <asp:Button ID="all" runat="server" Text="查看所有" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="120px" Height="40" />
+                                </div>
                             </div>
                         </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-11">
+                                    <asp:GridView ID="useraccount" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="useraccount_RowDeleting" OnRowCancelingEdit="useraccount_RowCancelingEdit" OnRowEditing="useraccount_RowEditing" OnRowUpdating="useraccount_RowUpdating" AllowPaging="True"  OnPageIndexChanging="useraccount_PageIndexChanging" PagerStyle-HorizontalAlign="NotSet">
+                                        <PagerStyle ForeColor="Black" HorizontalAlign="Center" />
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="image" ItemStyle-HorizontalAlign="Center">
+                                                <EditItemTemplate>
+                                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("picture") %>' Enabled="False" EnableViewState="True" Visible="False"></asp:TextBox>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("picture") %>' Width="100px" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                                            <asp:BoundField DataField="showpicture" HeaderText="picture" SortExpression="showpicture" Visible="False" ReadOnly="True" />
+                                            <asp:BoundField DataField="account" HeaderText="account" SortExpression="account" Visible="True" ReadOnly="True" />
+                                            <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" Visible="True" ReadOnly="True" />
+                                            <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" Visible="True" ReadOnly="True" />
+                                            <asp:BoundField DataField="phone" HeaderText="phone" SortExpression="phone" Visible="True" ReadOnly="True" />
+                                            <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" Visible="True" ReadOnly="True" />
+                                            <asp:BoundField DataField="address" HeaderText="address" SortExpression="address" Visible="True" ReadOnly="True" />
+                                            <asp:BoundField DataField="discount" HeaderText="discount" SortExpression="discount" Visible="True" ReadOnly="True" />
+                                            <asp:TemplateField HeaderText="access" SortExpression="access">
+                                                <EditItemTemplate>
+                                                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("access") %>'></asp:TextBox>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("access") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" Visible="True" ReadOnly="True" />
+                                            <asp:TemplateField HeaderText="revise" ShowHeader="False">
+                                                <EditItemTemplate>
+                                                    <asp:LinkButton ID="Update" runat="server" CausesValidation="True" CommandName="Update" Text="更新" OnClientClick='return confirm("確定更新?")'></asp:LinkButton>
+                                                    <asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="Edit" runat="server" CausesValidation="False" CommandName="Edit" Text="編輯"></asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="delete" ShowHeader="False">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" OnClientClick='return confirm("確定刪除?")'></asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                    </asp:GridView>
+                                </div>
+                            </div>
+                        </div>
+                       
                         <!---->
                     </div>
                 </div>
@@ -328,22 +338,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <!--footer-->
             <div class="footer">
-            <div class="container">
-                <div class="footer-top">
-                    <div class="col-sm-7 number col-md8">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border: 0;"></iframe>
+                <div class="container">
+                    <div class="footer-top">
+                        <div class="col-sm-7 number col-md8">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border: 0;"></iframe>
+                        </div>
+                        <div class="col-sm-4 number col-md4">
+                            <asp:Label ID="Label18" runat="server" Text="丹丹服飾股份有限公司" Font-Size="XX-Large" Font-Bold="True"></asp:Label><br>
+                            <br>
+                            <asp:Label ID="Label19" runat="server" Text="地址：(110)台北市信義區信義路五段7號"></asp:Label><br>
+                            <asp:Label ID="Label20" runat="server" Text="No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei City 110615 , Taiwan (R.O.C.)"></asp:Label><br>
+                            <br>
+                        </div>
+
                     </div>
-                    <div class="col-sm-4 number col-md4">
-                        <asp:Label ID="Label18" runat="server" Text="丹丹服飾股份有限公司" Font-Size="XX-Large" Font-Bold="True"></asp:Label><br>
-                        <br>
-                        <asp:Label ID="Label19" runat="server" Text="地址：(110)台北市信義區信義路五段7號"></asp:Label><br>
-                        <asp:Label ID="Label20" runat="server" Text="No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei City 110615 , Taiwan (R.O.C.)"></asp:Label><br>
-                        <br>
-                    </div>
-                    
                 </div>
             </div>
-        </div>
             <!-- slide -->
             <script src="js/jquery.min.js"></script>
             <script src="js/imagezoom.js"></script>
