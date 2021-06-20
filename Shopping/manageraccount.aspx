@@ -43,7 +43,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="col-md-4 header-left">
                         <p class="log">
-                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Logout</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">登出</asp:LinkButton>
                         </p>
                         <div class="cart box_1">
                         </div>
@@ -77,7 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="container">
                         <div style="text-align: center">
-                            <h1>Revise Account Table&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h1>
+                            <h1>帳號管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
                         </div>
                         <br>
 
@@ -85,132 +85,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="h_nav">
-                                        <h4>Add User Account</h4>
+                                        <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
                                         <ul>
-                                            <li>
-                                                <asp:Label ID="account" runat="server" Text="account"></asp:Label></li>
-                                            <li>
-                                                <asp:TextBox ID="TextBox1" runat="server" placeholder="需包含6-15個英文加數字"></asp:TextBox></li>
-                                            <li>
-                                                <asp:Label ID="hintAccount" runat="server" ForeColor="Black"></asp:Label></li>
-                                            <br>
-                                            <li>
-                                                <asp:Label ID="password" runat="server" Text="password"></asp:Label></li>
-                                            <li>
-                                                <asp:TextBox ID="TextBox2" runat="server" placeholder="需包含7-20個英文加數字"></asp:TextBox></li>
-                                            <li>
-                                                <asp:Label ID="hintPassword" runat="server" ForeColor="Black"></asp:Label></li>
-                                            <br>
-                                            <li>
-                                                <asp:Label ID="name" runat="server" Text="name"></asp:Label></li>
-                                            <li>
-                                                <asp:TextBox ID="TextBox3" runat="server" placeholder="輸入4-10個位元內中英文"></asp:TextBox></li>
-                                            <li>
-                                                <asp:Label ID="hintName" runat="server" ForeColor="Black"></asp:Label></li>
-                                            <br>
-                                            <li>
-                                                <asp:Label ID="phone" runat="server" Text="phone"></asp:Label></li>
-                                            <li>
-                                                <asp:TextBox ID="TextBox4" runat="server" placeholder="請輸入09+8個數字"></asp:TextBox></li>
-                                            <li>
-                                                <asp:Label ID="hintPhone" runat="server" ForeColor="Black"></asp:Label></li>
-                                            <br>
-                                            <li>
-                                                <asp:Label ID="email" runat="server" Text="email"></asp:Label></li>
-                                            <li>
-                                                <asp:TextBox ID="TextBox5" runat="server" placeholder="請輸入正確email"></asp:TextBox></li>
-                                            <li>
-                                                <asp:Label ID="hintEmail" runat="server" ForeColor="Black"></asp:Label></li>
-                                            <br>
-                                            <li>
-                                                <asp:Label ID="address" runat="server" Text="address"></asp:Label></li>
-                                            <li>
-                                                <asp:DropDownList ID="DDLCity" runat="server" AutoPostBack="True" AppendDataBoundItems="True" Width="195px" Height="30px" OnSelectedIndexChanged="DDLCity_SelectedIndexChanged">
-                                                    <asp:ListItem Value="0">請選擇縣市</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <asp:SqlDataSource ID="SqlDataSourceCity" runat="server" ConnectionString="<%$ ConnectionStrings:CityConnectionString %>" SelectCommand="SELECT [city] FROM [City]"></asp:SqlDataSource>
-                                            </li>
-                                            <li>
-                                                <asp:Label ID="hintCity" runat="server" ForeColor="Black"></asp:Label></li>
-
-                                            <li>
-                                                <asp:DropDownList ID="DDLRegion" runat="server" AppendDataBoundItems="True" Width="195px" Height="30px">
-                                                    <asp:ListItem Value="0" Selected="True">請選擇區域</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <asp:SqlDataSource ID="SqlDataSourceRegion" runat="server" ConnectionString="<%$ ConnectionStrings:RegionConnectionString %>" SelectCommand="SELECT [region] FROM [Region] WHERE ([city] = @city)">
-                                                    <SelectParameters>
-                                                        <asp:ControlParameter ControlID="DDLCity" DefaultValue="DDLCity.Selected.Item" Name="city" PropertyName="SelectedValue" Type="String" />
-                                                    </SelectParameters>
-                                                </asp:SqlDataSource>
-                                            </li>
-                                            <li>
-                                                <asp:Label ID="hintRegion" runat="server" ForeColor="Black"></asp:Label></li>
-
-                                            <li>
-                                                <asp:TextBox ID="TextBox11" runat="server" placeholder="請輸入縣市區域除外地址"></asp:TextBox></li>
-                                            <li>
-                                                <li>
-                                                    <asp:Label ID="hintRoad" runat="server" ForeColor="Black"></asp:Label></li>
-                                            </li>
-                                            <br>
-                                            <li>
-                                                <asp:Label ID="discount" runat="server" Text="discount"></asp:Label></li>
-                                            <li>
-                                                <asp:TextBox ID="TextBox10" runat="server" placeholder="請輸入數字(非必填)"></asp:TextBox></li>
-                                            <li>
-                                                <asp:Label ID="hintDiscount" runat="server" ForeColor="Black"></asp:Label></li>
-                                            <br>
-                                            <li>
-                                                <asp:Label ID="access" runat="server" Text="access"></asp:Label></li>
-                                            <li>
-                                                <asp:DropDownList ID="DDLAccess" runat="server" AppendDataBoundItems="True" Width="195px" Height="30px">
-                                                    <asp:ListItem Value="0" Selected="True">請選擇</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <asp:SqlDataSource ID="SqlDataSourceAccess" runat="server" ConnectionString="<%$ ConnectionStrings:AccessConnectionString %>" SelectCommand="SELECT [Cols] FROM [AccessCols]"></asp:SqlDataSource>
-                                            </li>
-                                            <li>
-                                                <asp:Label ID="hintAccess" runat="server" ForeColor="Black" Text="請選擇權限"></asp:Label></li>
-                                            <br>
-                                            <li>
-                                                <asp:Label ID="picture" runat="server" Text="picture"></asp:Label></li>
-                                            <li>
-                                                <asp:FileUpload ID="FileUpload1" runat="server" /></li>
-                                            <li>
-                                                <asp:Label ID="hintPicture" runat="server" ForeColor="Black" Text="非必選"></asp:Label></li>
-                                            <li>
-                                                <asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;" /></li>
-                                            <br>
-                                            <br>
-
-                                            <asp:SqlDataSource ID="SqlDataSourceCustomer" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT * FROM [Customers]"></asp:SqlDataSource>
+                                            
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="h_nav">
-                                        <h4>Delete or Search User Account</h4>
-                                        <ul>
+                                        <h4>查詢方式:使用者帳戶</h4>
+                                        <ul>                                            
                                             <li>
-                                                <asp:Label ID="accountD" runat="server" Text="account"></asp:Label></li>
+                                                <asp:Label ID="accountS" runat="server" Text="帳號"></asp:Label></li>
                                             <li>
-                                                <asp:TextBox ID="TextBox6" runat="server" placeholder="輸入即將刪除的account"></asp:TextBox></li>
-                                            <li>
-                                                <%--<asp:DropDownList ID="DDLDeleteAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px" >
-                                                    <asp:ListItem Value="0">請選擇</asp:ListItem>
-                                                </asp:DropDownList>--%>
-                                                <asp:SqlDataSource ID="SqlDataSourceAccount" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT account FROM Customers ORDER BY account"></asp:SqlDataSource>
-                                            </li>
-                                            <li>
-                                                <asp:Label ID="hintID" runat="server" Text=""></asp:Label></li>
-                                            <li>
-                                                <asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要刪除?')) window.event.returnValue=false;" /></li>
-                                            <br>
-                                            <br>
-
-                                            <li>
-                                                <asp:Label ID="accountS" runat="server" Text="account"></asp:Label></li>
-                                            <li>
-                                                <asp:TextBox ID="TextBox7" runat="server" placeholder="輸入即將搜尋的account"></asp:TextBox></li>
+                                                <asp:TextBox ID="TextBox7" runat="server" placeholder="輸入即將搜尋的帳號"></asp:TextBox></li>
                                             <li>
                                                 <%--<asp:DropDownList ID="DDLSearchAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px" >
                                                     <asp:ListItem Value="0">請選擇</asp:ListItem>
@@ -219,71 +107,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <li>
                                                 <asp:Label ID="hintIDS" runat="server" Text=""></asp:Label></li>
                                             <li>
-                                                <asp:Button ID="Search" runat="server" OnClick="Button4_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" /></li>
+                                                <asp:Button ID="Search" runat="server" OnClick="Button4_Click" Text="送出" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" /></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="h_nav">
-                                        <h4>Update User Account</h4>
+                                        <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
                                         <ul>
-                                            <li>
-                                                <asp:Label ID="accountU" runat="server" Text="account"></asp:Label></li>
-                                            <li>
-                                                <asp:TextBox ID="TextBox8" runat="server" placeholder="輸入即將更新的account"></asp:TextBox></li>
-                                            <li>
-                                                <%--<asp:DropDownList ID="DDLUpdateAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px" >
-                                                    <asp:ListItem Value="0">請選擇</asp:ListItem>
-                                                </asp:DropDownList></asp:DropDownList></li>--%>
-                                            <li>
-                                                <asp:Label ID="hintID2" runat="server" Text=""></asp:Label><li>
-                                                    <br>
-                                                    <li></li>
-                                            <li>
-                                                <asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
-                                            <li>
-                                                <asp:DropDownList ID="DDLUpdateCol" runat="server" AppendDataBoundItems="True" Width="195px" Height="30px">
-                                                    <asp:ListItem Value="0">請選擇</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <asp:SqlDataSource ID="SqlDataSourceUpdateCol" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT [Cols] FROM [CustomersCols]"></asp:SqlDataSource>
-                                            </li>
-                                            <li>
-                                                <asp:Label ID="hintColumn" runat="server" Text="選擇即將更新的欄位"></asp:Label></li>
-                                            <br>
-                                            <li></li>
-                                            <li>
-                                                <asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
-                                            <li>
-                                                <asp:TextBox ID="TextBox9" runat="server" placeholder="請輸入更新的值"></asp:TextBox></li>
-                                            <li>
-                                                <asp:Label ID="hintAll" runat="server" Text=""></asp:Label></li>
-                                            <li>
-                                                <asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要修改嗎?')) window.event.returnValue=false;" />
-                                            </li>
+                                            
                                         </ul>
                                     </div>
-                                </div>
+                                </div>                                
                             </div>
                         </div>
  
                         <div class="container">
                             <div class="row">
-                                <div class="col-sm-11">
+                                <div class="col-sm-9">
                                 </div>
-                                <div class="col-sm-1">
+                                <div class="col-sm-2">
                                     <br>
-                                    <asp:Button ID="all" runat="server" Text="查看所有" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="120px" Height="40" />
+                                    <asp:Button ID="all" runat="server" Text="查看所有" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="125px" Height="40" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="container">
                             <div class="row">
-                                <div class="col-sm-11">
+                                <div class="col-sm-12">
                                     <asp:GridView ID="useraccount" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="useraccount_RowDeleting" OnRowCancelingEdit="useraccount_RowCancelingEdit" OnRowEditing="useraccount_RowEditing" OnRowUpdating="useraccount_RowUpdating" AllowPaging="True"  OnPageIndexChanging="useraccount_PageIndexChanging" PagerStyle-HorizontalAlign="NotSet">
                                         <PagerStyle ForeColor="Black" HorizontalAlign="Center" />
                                         <Columns>
-                                            <asp:TemplateField HeaderText="image" ItemStyle-HorizontalAlign="Center">
+                                            <asp:TemplateField HeaderText="帳號照片" ItemStyle-HorizontalAlign="Center">
                                                 <EditItemTemplate>
                                                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("picture") %>' Enabled="False" EnableViewState="True" Visible="False"></asp:TextBox>
                                                 </EditItemTemplate>
@@ -292,33 +148,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                                            <asp:BoundField DataField="showpicture" HeaderText="picture" SortExpression="showpicture" Visible="False" ReadOnly="True" />
-                                            <asp:BoundField DataField="account" HeaderText="account" SortExpression="account" Visible="True" ReadOnly="True" />
-                                            <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" Visible="True" ReadOnly="True" />
-                                            <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" Visible="True" ReadOnly="True" />
-                                            <asp:BoundField DataField="phone" HeaderText="phone" SortExpression="phone" Visible="True" ReadOnly="True" />
-                                            <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" Visible="True" ReadOnly="True" />
-                                            <asp:BoundField DataField="address" HeaderText="address" SortExpression="address" Visible="True" ReadOnly="True" />
-                                            <asp:BoundField DataField="discount" HeaderText="discount" SortExpression="discount" Visible="True" ReadOnly="True" />
-                                            <asp:TemplateField HeaderText="access" SortExpression="access">
+                                            <asp:BoundField DataField="showpicture" HeaderText="照片檔名" SortExpression="showpicture" Visible="False" ReadOnly="True" />
+                                            <asp:BoundField DataField="account" HeaderText="帳號" SortExpression="account" Visible="True" ReadOnly="True" />
+                                            <asp:BoundField DataField="password" HeaderText="密碼" SortExpression="password" Visible="False" ReadOnly="True" />
+                                            <asp:BoundField DataField="name" HeaderText="暱稱" SortExpression="name" Visible="True" ReadOnly="True" />
+                                            <asp:BoundField DataField="phone" HeaderText="電話" SortExpression="phone" Visible="True" ReadOnly="True" />
+                                            <asp:BoundField DataField="email" HeaderText="郵件" SortExpression="email" Visible="True" ReadOnly="True" />
+                                            <asp:BoundField DataField="address" HeaderText="地址" SortExpression="address" Visible="True" ReadOnly="True" >
+                                            <HeaderStyle Width="100px" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="discount" HeaderText="購物金" SortExpression="discount" Visible="True" ReadOnly="True" />
+                                            <asp:TemplateField HeaderText="權限" SortExpression="access">
                                                 <EditItemTemplate>
-                                                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("access") %>'></asp:TextBox>
+                                                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("access") %>' Width="60"></asp:TextBox>
                                                 </EditItemTemplate>
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("access") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" Visible="True" ReadOnly="True" />
-                                            <asp:TemplateField HeaderText="revise" ShowHeader="False">
+                                            <asp:BoundField DataField="initdate" HeaderText="創建日期" SortExpression="initdate" Visible="False" ReadOnly="True" />
+                                            <asp:TemplateField HeaderText="編輯" ShowHeader="False">
                                                 <EditItemTemplate>
-                                                    <asp:LinkButton ID="Update" runat="server" CausesValidation="True" CommandName="Update" Text="更新" OnClientClick='return confirm("確定更新?")'></asp:LinkButton>
-                                                    <asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
+                                                    <asp:LinkButton ID="Update" runat="server" CausesValidation="True" CommandName="Update" Text="更新" OnClientClick='return confirm("確定更新?")' Width="50"></asp:LinkButton>
+                                                    <asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消" Width="50"></asp:LinkButton>
                                                 </EditItemTemplate>
                                                 <ItemTemplate>
                                                     <asp:LinkButton ID="Edit" runat="server" CausesValidation="False" CommandName="Edit" Text="編輯"></asp:LinkButton>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="delete" ShowHeader="False">
+                                            <asp:TemplateField HeaderText="刪除" ShowHeader="False">
                                                 <ItemTemplate>
                                                     <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" OnClientClick='return confirm("確定刪除?")'></asp:LinkButton>
                                                 </ItemTemplate>

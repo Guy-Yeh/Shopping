@@ -40,7 +40,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="col-md-4 header-left">
                         <p class="log">
-                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Logout</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">登出</asp:LinkButton>
                         </p>
                         <div class="cart box_1">
                         </div>
@@ -93,107 +93,97 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="row">
                                 <div class="col1">
                                     <div class="h_nav">
-                                        <h4>Reply Message</h4>
-                                        <ul>
-                                            <li>
-                                                <asp:DropDownList ID="DDLContactID" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">ID</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <asp:SqlDataSource ID="SqlDataSourceChat" runat="server" ConnectionString="<%$ ConnectionStrings:ChatConnectionString %>" SelectCommand="SELECT [ID] FROM [Chat]"></asp:SqlDataSource>
-                                            </li>
-                                            <li>
-                                                <asp:Label ID="hintID" runat="server" Text=""></asp:Label></li>
-                                            <br>
-                                            <li>
-                                                <textarea rows="5" id="contactresponse" name="contactresponse" class="form-control" placeholder="response"></textarea></li>
-                                            <li>
-                                                <asp:Label ID="hintResponse" runat="server" Text=""></asp:Label></li>
-                                            <li>
-                                                <asp:Button ID="response" runat="server" Text="submit" OnClick="Button1_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要送出嗎?')) window.event.returnValue=false;" />
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <br>
-                                    <br>
-                                </div>
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <h4>搜尋表單:帳號</h4>
+                                        <h4>查詢方式:帳號</h4>
                                         <ul>
                                             <li>
                                                 <input type="text" id="searchaccount" name="searchaccount" class="form-control" placeholder="account"></li>
                                             <li>
                                                 <asp:Label ID="hintSearch" runat="server" Text=""></asp:Label></li>
                                             <li>
-                                                <asp:Button ID="search" runat="server" Text="submit" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" />
+                                                <asp:Button ID="search" runat="server" Text="送出" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" />
                                             </li>
                                         </ul>
                                     </div>
+                                    <br>
+                                    <br>
                                 </div>
                                 <div class="col1">
                                     <div class="h_nav">
-                                        <h4>搜尋表單:起始日期</h4>
+                                        <h4>查詢:起始日期</h4>
                                         <ul>
                                             <li>
                                                 <asp:DropDownList ID="DDLYearS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">StartYear</asp:ListItem>
+                                                    <asp:ListItem Value="0">年</asp:ListItem>
                                                 </asp:DropDownList>
                                                 <asp:SqlDataSource ID="SqlDataSourceYears" runat="server" ConnectionString="<%$ ConnectionStrings:YearsConnectionString %>" SelectCommand="SELECT [years] FROM [YearsMonthsDays]"></asp:SqlDataSource>
                                             </li>
                                             <br>
                                             <li>
                                                 <asp:DropDownList ID="DDLMonthS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">StartMonth</asp:ListItem>
+                                                    <asp:ListItem Value="0">月</asp:ListItem>
                                                 </asp:DropDownList>
                                                 <asp:SqlDataSource ID="SqlDataSourceMonth" runat="server" ConnectionString="<%$ ConnectionStrings:MonthsConnectionString %>" SelectCommand="SELECT months FROM YearsMonthsDays WHERE (months IS NOT NULL)"></asp:SqlDataSource>
                                             </li>
                                             <br>
                                             <li>
                                                 <asp:DropDownList ID="DDLDayS" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">StartDay</asp:ListItem>
+                                                    <asp:ListItem Value="0">日</asp:ListItem>
                                                 </asp:DropDownList>
                                                 <asp:SqlDataSource ID="SqlDataSourceDay" runat="server" ConnectionString="<%$ ConnectionStrings:DaysConnectionString %>" SelectCommand="SELECT days FROM YearsMonthsDays WHERE (days IS NOT NULL)"></asp:SqlDataSource>
                                             </li>
-                                            <br>
-                                            <br>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <h4>查詢:終止日期(預設為當天)</h4>
+                                        <ul>                                            
                                             <li>
                                                 <asp:DropDownList ID="DDLYearE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">EndYear</asp:ListItem>
+                                                    <asp:ListItem Value="0">年</asp:ListItem>
                                                 </asp:DropDownList></li>
                                             <br>
                                             <li>
                                                 <asp:DropDownList ID="DDLMonthE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">EndMonth</asp:ListItem>
+                                                    <asp:ListItem Value="0">月</asp:ListItem>
                                                 </asp:DropDownList></li>
                                             <br>
                                             <li>
                                                 <asp:DropDownList ID="DDLDayE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
-                                                    <asp:ListItem Value="0">EndDay</asp:ListItem>
+                                                    <asp:ListItem Value="0">日</asp:ListItem>
                                                 </asp:DropDownList></li>
                                             <li>
                                                 <asp:Label ID="hintDate" runat="server" Text=""></asp:Label></li>
                                             <li>
-                                                <asp:Button ID="show" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" />
+                                                
                                             </li>
                                         </ul>
                                     </div>
-                                    <br>
-                                    <br>
                                 </div>
                             </div>
                         </div>
-
-
                         <asp:SqlDataSource ID="SqlDataSourceChatting" runat="server" ConnectionString="<%$ ConnectionStrings:ChatConnectionString %>" SelectCommand="SELECT * FROM [Chat]"></asp:SqlDataSource>
                         <!----->
-
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-7">
+                               </div>
+                                <div class="col-sm-5">
+                                    <asp:Button ID="show" runat="server" Text="送出" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Width ="100" height ="30"/>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </div>
+                           </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-8">
                                 </div>
                                 <div class="col-sm-2">
                                     <br>
-                                    <asp:Button ID="all" runat="server" Text="查看尚未回覆" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="135px" Height="40" />
+                                    <asp:Button ID="all" runat="server" Text="查看尚未回覆" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="150px" Height="40" />
                                 </div>
                             </div>
                         </div>
@@ -203,7 +193,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 <div class="col-sm-8">
 
-                                    <asp:GridView ID="usercontact" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" AllowPaging="True" OnPageIndexChanging="usercontact_PageIndexChanging" OnRowCancelingEdit="usercontact_RowCancelingEdit" OnRowEditing="usercontact_RowEditing" OnRowUpdating="usercontact_RowUpdating" Width="150px">
+                                    <asp:GridView ID="usercontact" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" AllowPaging="True" OnPageIndexChanging="usercontact_PageIndexChanging" OnRowCancelingEdit="usercontact_RowCancelingEdit" OnRowEditing="usercontact_RowEditing" OnRowUpdating="usercontact_RowUpdating" >
                                         <PagerStyle ForeColor="Black" HorizontalAlign="Center" />
                                         <Columns>
                                             <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
@@ -221,11 +211,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <asp:BoundField DataField="updateInitdate" HeaderText="updateInitdate" SortExpression="updateInitdate" ReadOnly="True" />
                                             <asp:TemplateField HeaderText="回覆" ShowHeader="False">
                                                 <EditItemTemplate>
-                                                    <asp:LinkButton ID="Update" runat="server" CausesValidation="True" CommandName="Update" Text="更新"></asp:LinkButton>
+                                                    <asp:LinkButton ID="Update" runat="server" CausesValidation="True" CommandName="Update" Text="更新" OnClientClick='return confirm("確定更新?")'></asp:LinkButton>
                                                     <asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
                                                 </EditItemTemplate>
                                                 <ItemTemplate>
-                                                    <asp:LinkButton ID="回覆" runat="server" CausesValidation="False" CommandName="Edit" Text="回覆"></asp:LinkButton>
+                                                    <asp:LinkButton ID="回覆" runat="server" CausesValidation="False" CommandName="Edit" Text="回覆" ></asp:LinkButton>
                                                 </ItemTemplate>
                                                 <ControlStyle Width="60px" />
                                             </asp:TemplateField>

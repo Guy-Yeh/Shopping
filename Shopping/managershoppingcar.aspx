@@ -83,7 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="container">
                         <div style="text-align: center">
 
-                            <h1>購物車查詢頁&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h1>
+                            <h1>購物車查詢&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
 
                         </div>
                         <br>
@@ -131,11 +131,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="h_nav">
-                                        <h4>查詢方式:商品顏色</h4>
+                                        <h4>查詢方式:顏色</h4>
 
                                         <ul>
                                             <li>
-                                                <asp:Label ID="productColor" runat="server" Text="商品顏色"></asp:Label></li>
+                                                <asp:Label ID="productColor" runat="server" Text="顏色"></asp:Label></li>
                                             <li>
                                                 <asp:DropDownList ID="DDLSearchproductColor" runat="server" AppendDataBoundItems="True" Height="30px" Width="195px">
                                                     <asp:ListItem Value="0">請選擇</asp:ListItem>
@@ -156,7 +156,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-7">
                             </div>
                             <div class="col-sm-2">
                                 <br>
@@ -168,9 +168,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="container">
                          <div class="row">
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                             </div>
-                             <div class="col-sm-9">
+                             <div class="col-sm-7">
                         <asp:GridView ID="usershoppingcar" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" HorizontalAlign="Center" AllowCustomPaging="True">
                             <PagerStyle  ForeColor="Black" HorizontalAlign="Center" />
                             <Columns>
