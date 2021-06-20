@@ -17,6 +17,10 @@ namespace Shopping
         string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["product"] == null)
+            {
+                Response.Redirect("index");
+            }
             if (!IsPostBack)
             {
                 SqlConnection connection1 = new SqlConnection(product_data);
@@ -32,6 +36,8 @@ namespace Shopping
                         Image1.ImageUrl = read1[2].ToString();
                         Label2.Text = read1[5].ToString();
                         Label5.Text ="尚餘庫存：" + read1[4].ToString();
+                        for (int i = 1; i <= Convert.ToInt32(read1[4]) && i <= 6; i++)
+                            DropDownList2.Items.Add($"{i}");
                     }
                 }
                 connection1.Close();
@@ -51,6 +57,9 @@ namespace Shopping
                         Image1.ImageUrl = read2[2].ToString();
                         Label2.Text = read2[5].ToString();
                         Label5.Text = "尚餘庫存：" + read2[4].ToString();
+                        for (int i = 1; i<= Convert.ToInt32(read2[4]) && i<=6 ; i++)
+                            DropDownList2.Items.Add($"{i}");
+                       
                     }
                 }
                 connection2.Close();
@@ -145,9 +154,9 @@ namespace Shopping
                         if (read2.Read())
                         {
                             //如果購物車內的商品數量還未超過庫存
-                            if (Convert.ToInt32(read2[0]) + 1< Convert.ToInt32(read1[4]))
+                            if (Convert.ToInt32(read2[0]) + Convert.ToInt32(DropDownList2.SelectedValue)< Convert.ToInt32(read1[4]))
                             {
-                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                                string sql3 = $"update OrderDetail set qty={(Convert.ToInt32(read2[0]) + Convert.ToInt32(DropDownList2.SelectedValue))} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
                                 connection2.Close();
                                 connection2.Open();
                                 SqlCommand command3 = new SqlCommand(sql3, connection2);
@@ -177,7 +186,7 @@ namespace Shopping
                             Command4.Parameters.Add("@productPrice", SqlDbType.NVarChar);
                             Command4.Parameters["@productPrice"].Value = array[3];
                             Command4.Parameters.Add("@qty", SqlDbType.Int);
-                            Command4.Parameters["@qty"].Value = 1;
+                            Command4.Parameters["@qty"].Value = Convert.ToInt32(DropDownList2.SelectedValue);
                             Command4.Parameters.Add("@cart", SqlDbType.NVarChar);
                             Command4.Parameters["@cart"].Value = "是";
                             Command4.ExecuteNonQuery();

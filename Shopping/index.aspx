@@ -38,7 +38,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
         });
     </script>
-</head>
+    <style type="text/css">
+        .auto-style1 {
+            height: 42px;
+        }
+
+        .auto-style2 {
+            width: 204px;
+        }
+
+        .auto-style3 {
+            width: 60%;
+        }
+    </style>
+    </head>
 <body>
     <form runat="server" method="post">
         <!--header-->
@@ -71,7 +84,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="col-md-8 h_menu4">
                         <ul class="memenu skyblue">
-                            <li class=" grid"><a href="index">首頁</a></li>
                             <li><a class="color6" href="shoppingcar">購物車</a></li>
                             <li><a class="color6" href="Customer\Chat.aspx">聯絡我們</a></li>
                             <li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Font-Size="Large">購物須知</asp:LinkButton></li>
@@ -118,27 +130,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--banner-->
         <div class="banner">
             <div class="col-sm-3 banner-mat">
-                <img class="img-responsive" src="images\衣服\281901701-領造型線T\S__77931623.jpg" alt="">
+                <asp:ImageButton ID="ImageButton13" runat="server" ImageUrl="images\衣服\281901701-領造型線T\S__77931623.jpg" Height="100%" Width="100%"/>
             </div>
             <div class="col-sm-6 matter-banner">
                 <div class="slider">
                     <div class="callbacks_container">
                         <ul class="rslides" id="slider">
                             <li>
-                                <img src="images\衣服\281901715-剪裁T\S__49840159.jpg" alt="">
+                                <asp:ImageButton ID="ImageButton10" runat="server" ImageUrl="images\衣服\281901801-細肩露肩t\S__49840130.jpg" Height="100%" Width="100%" />
                             </li>
                             <li>
-                                <img src="images\衣服\281901801-細肩露肩t\S__49840130.jpg" alt="">
+                                <asp:ImageButton ID="ImageButton11" runat="server" ImageUrl="images\衣服\281906305-中抓摺雪紡衫\S__50069542.jpg" Height="100%" Width="100%" />
                             </li>
                             <li>
-                                <img src="images\衣服\281902805-胸抓摺衫\S__49954893.jpg" alt="">
+                                <asp:ImageButton ID="ImageButton12" runat="server" ImageUrl="images\衣服\281901701-領造型線T\S__49610819.jpg" Height="100%" Width="100%" />
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-sm-3 banner-mat">
-                <img class="img-responsive" src="images\衣服\281901708-袖滾配色t\S__77931217.jpg" alt="">
+                <asp:ImageButton ID="ImageButton14" runat="server" ImageUrl="images\衣服\281901708-袖滾配色t\S__77931217.jpg" Height="100%" Width="100%"/>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -285,33 +297,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <asp:Button ID="Button8" runat="server" Text="放入購物車" OnClick="Button8_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
-
                             </div>
                         </div>
-                        <div class="clearfix"></div>
+                        <div class="clearfix">
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </form>
     <!--//content-->
+
     <!--footer-->
     <div class="footer">
         <div class="container">
             <div class="footer-top">
-                <div class="col-sm-7 number col-md8">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border: 0;"></iframe>
-                </div>
-                <div class="col-sm-4 number col-md4">
-                    <asp:Label ID="Label18" runat="server" Text="丹丹服飾股份有限公司" Font-Size="XX-Large" Font-Bold="True"></asp:Label><br><br>
-                    <asp:Label ID="Label19" runat="server" Text="地址：(110)台北市信義區信義路五段7號"></asp:Label><br>
-                    <asp:Label ID="Label20" runat="server" Text="No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei City 110615 , Taiwan (R.O.C.)"></asp:Label><br><br>
-                </div>
-                <div class="col-sm-4 number col-md4">
-                    <asp:Label ID="Label21" runat="server" Text="聯絡我們" Font-Size="X-Large"></asp:Label><br><br>
-                    <asp:Label ID="Label22" runat="server" Text="客服信箱 / vs.for.test2021@gmail.com"></asp:Label><br>
-                    <asp:Label ID="Label23" runat="server" Text="服務時間 / 09:00 - 18:00 國定假日及例假日休息"></asp:Label><br>
-                    <asp:Label ID="Label24" runat="server" Text="聯絡電話 / 02-2424-0000"></asp:Label><br>
+                <div class="row">
+                    <div class="col-sm-7">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border: 0;"></iframe>
+                    </div>
+                    <div class="col-sm-5">
+                        <asp:Label ID="Label18" runat="server" Text="丹丹服飾股份有限公司" Font-Size="XX-Large" Font-Bold="True"></asp:Label><br>
+                        <br>
+                        <asp:Label ID="Label19" runat="server" Text="地址：(110)台北市信義區信義路五段7號"></asp:Label><br>
+                        <asp:Label ID="Label20" runat="server" Text="No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei City 110615 , Taiwan (R.O.C.)"></asp:Label><br>
+                        <br>
+                    </div>
+                    <div class="col-sm-5">
+                        <asp:Label ID="Label21" runat="server" Text="聯絡我們" Font-Size="X-Large"></asp:Label><br>
+                        <br>
+                        <asp:Label ID="Label22" runat="server" Text="客服信箱 / vs.for.test2021@gmail.com"></asp:Label><br>
+                        <asp:Label ID="Label23" runat="server" Text="服務時間 / 09:00 - 18:00 國定假日及例假日休息"></asp:Label><br>
+                        <asp:Label ID="Label24" runat="server" Text="聯絡電話 / 02-2424-0000"></asp:Label><br>
+                    </div>
+
                 </div>
             </div>
         </div>
