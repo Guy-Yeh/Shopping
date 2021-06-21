@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="col-md-4 number">
 					
-						<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
+						
 					
 				</div>
 				<div class="col-md-4 logo">
@@ -66,7 +66,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                       <li><a href="managerproduct">產品</a></li>
                       <li><a href="managerorder">訂單</a></li>
                       <li><a href="managershoppingcar">購物車</a></li>
-                      <li><a class="color6" href="managercontact">回覆訊息</a></li>
+                      <li><a href="managercontact">回覆訊息</a></li>
+					  <li><a href="managershowpicture">主頁顯示</a></li>
 			  </ul> 
 			</div>
 		<div class="col-md-2 search">		

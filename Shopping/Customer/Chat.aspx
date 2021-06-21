@@ -17,7 +17,7 @@
                 <div>
 
 
-                    <asp:GridView ID="chatGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" AllowPaging="False">
+                    <asp:GridView ID="chatGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="ID">
                         <Columns>
 
                             <%--<asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" />--%>
