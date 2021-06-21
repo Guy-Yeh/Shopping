@@ -376,13 +376,20 @@ namespace Shopping
             string ID = usercontact.DataKeys[e.RowIndex].Values[0].ToString();
             string response = ((TextBox)usercontact.Rows[e.RowIndex].FindControl("TextBox1")).Text;
             string strUpdate = $"update Chat set response = N'{response}', updateInitdate= getdate()  where ID='{ID}'";
-            SqlConnection connection = new SqlConnection(s_data);
-            connection.Open();
-            SqlCommand command = new SqlCommand(strUpdate, connection);
-            command.ExecuteNonQuery();
-            connection.Close();
-            usercontact.EditIndex = -1;
-            reviewChat();
+            if (response != "")
+            {
+                SqlConnection connection = new SqlConnection(s_data);
+                connection.Open();
+                SqlCommand command = new SqlCommand(strUpdate, connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+                usercontact.EditIndex = -1;
+                reviewChat();
+            }
+            else
+            {
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('回覆內容尚未填入 請重新確認');},0);", true);
+            }
         }
 
         protected void usercontact_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)

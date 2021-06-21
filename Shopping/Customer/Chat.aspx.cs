@@ -54,7 +54,7 @@ namespace Shopping.Customer
             chatGridView.DataSource = read;
             chatGridView.DataBind();
             connection.Close();
-            chatGridView.AllowPaging = true;
+            //chatGridView.AllowPaging = true;
         }
 
         protected void keyin_Click(object sender, EventArgs e)

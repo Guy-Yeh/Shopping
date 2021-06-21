@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <html>
-<%--<head>--%>
+<head>
     <title>Fashion Mania A Ecommerce Category Flat Bootstarp Resposive Website Template | Single :: w3layouts</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Custom Theme files -->
@@ -29,7 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="header-top">
                 <div class="container">
                     <div class="col-md-4 number">
-                        <span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
+                        
                             <asp:Label ID="helpSQL" runat="server" Text="" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-4 logo">
@@ -56,7 +56,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="managerproduct">產品</a></li>
                         <li><a href="managerorder">訂單</a></li>
                         <li><a href="managershoppingcar">購物車</a></li>
-                        <li><a class="color6" href="managercontact">回覆訊息</a></li>
+                        <li><a href="managercontact">回覆訊息</a></li>
+                        <li><a href="managershowpicture">主頁顯示</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 search">
@@ -69,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div style="text-align: center">
 
-                        <h1>商品管理 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+                        <h1>商品管理 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
 
                     </div>
                     <br>
@@ -199,7 +200,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="col-sm-2">
                             
                             <br>
-                            <asp:Button ID="all" runat="server" Text="查看所有" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="110px" Height="40" />
+                            <asp:Button ID="all" runat="server" Text="查看所有" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="125px" Height="40" />
                             <br>
                         </div>
                     </div>
@@ -209,7 +210,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="col-sm-2">
                         </div>
                         
-                   <div class="col-sm-10">
+                   <div class="col-sm-9">
                     <asp:GridView ID="product" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="product_RowDeleting" OnRowCancelingEdit="product_RowCancelingEdit" OnRowEditing="product_RowEditing" OnRowUpdating="product_RowUpdating" AllowPaging="True" OnPageIndexChanging="product_PageIndexChanging">
                         <PagerStyle ForeColor="Black" HorizontalAlign="Center" />
                         <Columns>
@@ -231,16 +232,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="商品名稱" SortExpression="productName">
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("productName") %>' Width ="70"></asp:TextBox>
+                                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("productName") %>' Width ="100"></asp:TextBox>
 
                                 </EditItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("productName") %>'></asp:Label>
                                 </ItemTemplate>
+                                <HeaderStyle Width="100px" />
+                                <ItemStyle Width="120px" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="圖片檔名" SortExpression="picture" Visible="False" ValidateRequestMode="Enabled">
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("picture") %>' Width ="90"></asp:TextBox>
+                                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("picture") %>' Width ="60"></asp:TextBox>
                                 </EditItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="Label4" runat="server" Text='<%# Bind("picture") %>'></asp:Label>
@@ -300,6 +303,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <ItemTemplate>
                                     <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" OnClientClick='return confirm("確定刪除?")' Width ="50"></asp:LinkButton>
                                 </ItemTemplate>
+                                <FooterStyle Width="50px" />
+                                <HeaderStyle Width="50px" />
+                                <ItemStyle Width="50px" />
                             </asp:TemplateField>
                         </Columns>
                         <PagerStyle CssClass="fvPagerStyle" HorizontalAlign="Center" />

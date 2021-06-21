@@ -135,6 +135,12 @@ namespace Shopping
             
         }
 
+        
+        
+
+
+
+
         public void changecocolor()
         {
            
@@ -157,6 +163,10 @@ namespace Shopping
             //    Response.Redirect("manager");
             //}
             hintPS.Text = "選擇即將搜尋的產品名稱";
+            hintp1.Text = "";
+            hintp2.Text = "";
+            hintp3.Text = "";
+            hintp4.Text = "";
             changecocolor();
             if (!IsPostBack)
             {
@@ -266,69 +276,104 @@ namespace Shopping
             bool inventoryCheck = Regex.IsMatch(inventory, @"\d");
             string strroot = System.AppDomain.CurrentDomain.BaseDirectory;
             //確認庫存為數字且大於等於0
-            if (inventoryCheck && int.Parse(inventory) >= 0)
+            if (productName != "")
             {
-                //確認價格為數字且不為0
-                if (priceCheck && int.Parse(price) > 0)
+                if (category != "")
                 {
-                    SqlConnection connectionCP = new SqlConnection(s_data);
-                    string sqlCP = $"update Products SET price = N'{price}' where productName= N'{productName}'";
-                    SqlCommand commandCP = new SqlCommand(sqlCP, connectionCP);
-                    connectionCP.Open();
-                    commandCP.ExecuteNonQuery();
-                    connectionCP.Close();
-                    if (showpicture != "")
+                    string sqlrepeat = $"select * from Products where (productName= N'{productName}' and category= N'{category}') and ID != '{ID}'";
+                    SqlConnection connectionrepeat = new SqlConnection(s_data);
+                    SqlCommand commandrepeat = new SqlCommand(sqlrepeat, connectionrepeat);
+                    connectionrepeat.Open();
+                    SqlDataReader readerrepeat = commandrepeat.ExecuteReader();
+                    if (readerrepeat.Read() != true)
                     {
-                        string sqlSP = $"select picture from Products where ID='{ID}'";
-                        SqlConnection connectionSP = new SqlConnection(s_data);
-                        SqlCommand commandSP = new SqlCommand(sqlSP, connectionSP);
-                        connectionSP.Open();
-                        SqlDataReader reader = commandSP.ExecuteReader();
-                        //先讀出圖片路徑用來編譯成新路徑
-                        if (reader.Read())
+                        connectionrepeat.Close();
+                        if (inventoryCheck && int.Parse(inventory) >= 0)
                         {
-                            List<string> getpicture = new List<string>();
-                            string[] prepare = reader[0].ToString().Split('\\');
-                            foreach (string x in prepare)
+                            //確認價格為數字且不為0
+                            if (priceCheck && int.Parse(price) > 0)
                             {
-                                getpicture.Add(x);
-                            }
-                            getpicture.RemoveAt(getpicture.Count - 1);
-                            string picturecombine = string.Join("\\", getpicture.ToArray());
-                            string picture = picturecombine + "\\" + showpicture;
+                                SqlConnection connectionCP = new SqlConnection(s_data);
+                                string sqlCP = $"update Products SET price = N'{price}' where productName= N'{productName}'";
+                                SqlCommand commandCP = new SqlCommand(sqlCP, connectionCP);
+                                connectionCP.Open();
+                                commandCP.ExecuteNonQuery();
+                                connectionCP.Close();
+                                if (showpicture != "")
+                                {
+                                    string sqlSP = $"select picture from Products where ID='{ID}'";
+                                    SqlConnection connectionSP = new SqlConnection(s_data);
+                                    SqlCommand commandSP = new SqlCommand(sqlSP, connectionSP);
+                                    connectionSP.Open();
+                                    SqlDataReader reader = commandSP.ExecuteReader();
+                                    //先讀出圖片路徑用來編譯成新路徑
+                                    if (reader.Read())
+                                    {
+                                        List<string> getpicture = new List<string>();
+                                        string[] prepare = reader[0].ToString().Split('\\');
+                                        foreach (string x in prepare)
+                                        {
+                                            getpicture.Add(x);
+                                        }
+                                        getpicture.RemoveAt(getpicture.Count - 1);
+                                        string picturecombine = string.Join("\\", getpicture.ToArray());
+                                        string picture = picturecombine + "\\" + showpicture;
 
-                            //查看檔案是否存在
-                            if (File.Exists(strroot + picture))
-                            {
-                                string strUpdate = $"update Products set productName = N'{productName}',picture = N'{picture}', category = N'{category}', inventory = '{inventory}', price = '{price}', introduction = N'{introduction}' where ID='{ID}'";
-                                SqlConnection connection = new SqlConnection(s_data);
-                                connection.Open();
-                                SqlCommand command = new SqlCommand(strUpdate, connection);
-                                command.ExecuteNonQuery();
-                                connection.Close();
-                                product.EditIndex = -1;
-                                reviewProduct();
+                                        //查看檔案是否存在
+                                        if (File.Exists(strroot + picture))
+                                        {
+                                            string strUpdate = $"update Products set productName = N'{productName}',picture = N'{picture}', category = N'{category}', inventory = '{inventory}', price = '{price}', introduction = N'{introduction}' where ID='{ID}'";
+                                            SqlConnection connection = new SqlConnection(s_data);
+                                            connection.Open();
+                                            SqlCommand command = new SqlCommand(strUpdate, connection);
+                                            command.ExecuteNonQuery();
+                                            connection.Close();
+                                            product.EditIndex = -1;
+                                            reviewProduct();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("圖片路徑不存在 請重新確認");
+                                            //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},600);", true);
+                                        }
+                                    }
+                                    connectionSP.Close();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("圖片檔名不得為空");
+                                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得為空');},600);", true);
+                                }
                             }
                             else
                             {
-                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},0);", true);
+                                MessageBox.Show("價格需為大於0的數字");
+                                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('價格需為大於0的數字');},600);", true);
                             }
                         }
-                        connectionSP.Close();
+                        else
+                        {
+                            connectionrepeat.Close();
+                            MessageBox.Show("庫存需為不小於0的數字");
+                            //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('庫存需為不小於0的數字');},600);", true);
+                        }
                     }
                     else
                     {
-                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得為空');},0);", true);
+                        MessageBox.Show("商品名稱、顏色種類已存在 請重新輸入");
+                        //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品名稱、顏色種類已存在 請重新輸入');},600);", true);
                     }
                 }
-                else
+                else 
                 {
-                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('價格需為大於0的數字');},0);", true);
+                    MessageBox.Show("商品顏色不得為空");
+                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品顏色不得為空');},600);", true);
                 }
             }
             else
             {
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('庫存需為不小於0的數字');},0);", true);
+                MessageBox.Show("商品名稱不得為空");
+                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品名稱不得為空');},1000);", true);                
             }
 
         }

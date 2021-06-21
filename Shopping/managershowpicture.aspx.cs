@@ -367,13 +367,14 @@ namespace Shopping
                                     //先讀出圖片路徑用來編譯成新路徑
                                     if (reader.Read())
                                     {
-                                        connectionSP.Close();
+                                        
                                         List<string> getpicture = new List<string>();
                                         string[] prepare = reader[0].ToString().Split('\\');
                                         foreach (string x in prepare)
                                         {
                                             getpicture.Add(x);
                                         }
+                                        connectionSP.Close();
                                         getpicture.RemoveAt(getpicture.Count - 1);
                                         string picturecombine = string.Join("\\", getpicture.ToArray());
                                         string picture = picturecombine + "\\" + showpicture;
@@ -401,19 +402,23 @@ namespace Shopping
                                         }
                                         else
                                         {
-                                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},0);", true);
+                                            MessageBox.Show("圖片路徑不存在 請重新確認");
+                                            //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},600);", true);
                                         }
                                     }
                                     
                                 }
                                 else
                                 {
-                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得為空');},0);", true);
+
+                                    MessageBox.Show("圖片檔名不得為空");
+                                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得為空');},600);", true);
                                 }
                             }
                             else
                             {
-                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('顯示設定只能為1,2,3,No 請更改');},0);", true);
+                                MessageBox.Show("顯示設定只能設為1,2,3,No 請更改");
+                                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('顯示設定只能為1,2,3,No 請更改');},600);", true);
                             }
                             //else
                             //{
@@ -457,31 +462,36 @@ namespace Shopping
                                     }
                                     else
                                     {
-                                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},0);", true);
+                                        MessageBox.Show("圖片路徑不存在 請重新確認");
+                                        //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},600);", true);
                                     }
                                 }
                                 connectionSP.Close();
                             }
                             else
                             {
-                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得為空');},0);", true);
+                                MessageBox.Show("圖片檔名不得為空");
+                                // this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得為空');},600);", true);
                             }
                         }
                     }
                     else
                     {
-                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('顯示設定不得為空');},0);", true);
+                        MessageBox.Show("顯示設定不得為空");
+                        //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('顯示設定不得為空');},600);", true);
                     }
                 }
                 else
                 {
-                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品名稱重複 請重新輸入');},0);", true);
+                    MessageBox.Show("商品名稱重複 請重新輸入");
+                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品名稱重複 請重新輸入');},600);", true);
                 }
 
             }
             else
             {
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('產品名稱不得為空');},0);", true);
+                MessageBox.Show("產品名稱不得為空");
+                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('產品名稱不得為空');},600);", true);
             }
         }
         protected void product_PageIndexChanging(object sender, GridViewPageEventArgs e)

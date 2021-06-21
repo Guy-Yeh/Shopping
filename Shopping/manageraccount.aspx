@@ -31,7 +31,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="container">
                     <div class="col-md-4 number">
 
-                        <span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
+                        
 					
                         <asp:Label ID="helpSQL" runat="server" Text="helpSQL" Visible="False"></asp:Label>
 
@@ -63,7 +63,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <li><a href="managerproduct">產品</a></li>
                             <li><a href="managerorder">訂單</a></li>
                             <li><a href="managershoppingcar">購物車</a></li>
-                            <li><a class="color6" href="managercontact">回覆訊息</a></li>
+                            <li><a href="managercontact">回覆訊息</a></li>
+                            <li><a href="managershowpicture">主頁顯示</a></li>
                         </ul>
                     </div>
                     <div class="col-md-2 search">
@@ -77,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="container">
                         <div style="text-align: center">
-                            <h1>帳號管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+                            <h1>帳號管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
                         </div>
                         <br>
 
@@ -98,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <li>
                                                 <asp:Label ID="accountS" runat="server" Text="帳號"></asp:Label></li>
                                             <li>
-                                                <asp:TextBox ID="TextBox7" runat="server" placeholder="輸入即將搜尋的帳號"></asp:TextBox></li>
+                                                <asp:TextBox ID="TextBox7" runat="server" placeholder="輸入搜尋的帳號"></asp:TextBox></li>
                                             <li>
                                                 <%--<asp:DropDownList ID="DDLSearchAccount" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px" >
                                                     <asp:ListItem Value="0">請選擇</asp:ListItem>
