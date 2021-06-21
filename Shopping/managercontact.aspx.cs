@@ -22,18 +22,74 @@ namespace Shopping
 
         public void reviewChat()
         {
+            helpSQL.Text = "";
+            helpSQL2.Text = "";
             SqlConnection connection = Connect(s_data);
             string sql = $"select * from Chat where response IS NULL OR response = ''";
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
-            usercontact.DataSource = read;
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("account");
+            dt.Columns.Add("message");
+            dt.Columns.Add("response");
+            dt.Columns.Add("initdate");
+            dt.Columns.Add("updateInitdate");
+            while(read.Read())
+            {
+                DataRow row = dt.NewRow();
+                row["ID"] = read[0];
+                row["account"] = read[1];
+                row["message"] = read[2];
+                row["response"] = read[3];
+                row["initdate"] = read[4];
+                row["updateInitdate"] = read[5];
+                dt.Rows.Add(row);
+
+            }
+            usercontact.DataSource = dt;
             usercontact.DataBind();
             connection.Close();
         }
 
+        public void searchChat(string a)
+        {
+            helpSQL.Text = a;
+            helpSQL2.Text = "";
+            SqlConnection connection3 = Connect(s_data);
+            SqlCommand command3 = new SqlCommand(a, connection3);
+            connection3.Open();
+            SqlDataReader read = command3.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("account");
+            dt.Columns.Add("message");
+            dt.Columns.Add("response");
+            dt.Columns.Add("initdate");
+            dt.Columns.Add("updateInitdate");
+            while (read.Read())
+            {
+                DataRow row = dt.NewRow();
+                row["ID"] = read[0];
+                row["account"] = read[1];
+                row["message"] = read[2];
+                row["response"] = read[3];
+                row["initdate"] = read[4];
+                row["updateInitdate"] = read[5];
+                dt.Rows.Add(row);
+
+            }
+            usercontact.DataSource = dt;
+            usercontact.DataBind();
+            connection3.Close();
+
+        }
+
         public void reviewChatDate()
         {
+            helpSQL.Text = "";
+            helpSQL2.Text = "date";
             SqlConnection connection4 = Connect(s_data);
             if (Convert.ToInt32(DDLDayE.Text) < 9)
             {
@@ -41,7 +97,25 @@ namespace Shopping
                 SqlCommand command4 = new SqlCommand(sql4, connection4);
                 connection4.Open();
                 SqlDataReader read = command4.ExecuteReader();
-                usercontact.DataSource = read;
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("account");
+                dt.Columns.Add("message");
+                dt.Columns.Add("response");
+                dt.Columns.Add("initdate");
+                dt.Columns.Add("updateinitdate");
+                while (read.Read())
+                {
+                    DataRow row = dt.NewRow();
+                    row["ID"] = read[0];
+                    row["account"] = read[1];
+                    row["message"] = read[2];
+                    row["response"] = read[3];
+                    row["initdate"] = read[4];
+                    row["updateinitdate"] = read[5];
+                    dt.Rows.Add(row);
+                }
+                usercontact.DataSource = dt;
                 usercontact.DataBind();
                 connection4.Close();
             }
@@ -53,7 +127,25 @@ namespace Shopping
                     SqlCommand command4 = new SqlCommand(sql4, connection4);
                     connection4.Open();
                     SqlDataReader read = command4.ExecuteReader();
-                    usercontact.DataSource = read;
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("ID");
+                    dt.Columns.Add("account");
+                    dt.Columns.Add("message");
+                    dt.Columns.Add("response");
+                    dt.Columns.Add("initdate");
+                    dt.Columns.Add("updateinitdate");
+                    while (read.Read())
+                    {
+                        DataRow row = dt.NewRow();
+                        row["ID"] = read[0];
+                        row["account"] = read[1];
+                        row["message"] = read[2];                       
+                        row["response"] = read[3];
+                        row["initdate"] = read[4];
+                        row["updateinitdate"] = read[5];                        
+                        dt.Rows.Add(row);
+                    }                    
+                    usercontact.DataSource = dt;
                     usercontact.DataBind();
                     connection4.Close();
                 }
@@ -85,8 +177,7 @@ namespace Shopping
 
         public void changecocolor()
         {
-            hintResponse.ForeColor = Color.Black;
-            hintID.ForeColor = Color.Black;
+           
             hintSearch.ForeColor = Color.Black;
             hintDate.ForeColor = Color.Black;
         }
@@ -117,54 +208,52 @@ namespace Shopping
             }
         }
 
-        public void cleanbt1()
-        {
-            DDLContactID.Items.Clear();
-            DDLContactID.Items.Add("ID");
-            DataView dv = (DataView)this.SqlDataSourceChat.Select(new DataSourceSelectArguments());
-            DDLContactID.DataSource = dv;
-            DDLContactID.DataTextField = "ID";
-            DDLContactID.DataBind();
-        }
+        
 
         public void cleanbt3()
         {
             DataView dvy = (DataView)this.SqlDataSourceYears.Select(new DataSourceSelectArguments());
             DataView dvm = (DataView)this.SqlDataSourceMonth.Select(new DataSourceSelectArguments());
             DataView dvd = (DataView)this.SqlDataSourceDay.Select(new DataSourceSelectArguments());
+            string today = DateTime.Now.ToString("yyyy/MM/dd");
+            string[] list = today.Split('/');
+            
+            string todayY = list[0];
+            string todayM = list[1];
+            string todayD = list[2];
 
             DDLYearS.Items.Clear();
-            DDLYearS.Items.Add("StartYear");
+            DDLYearS.Items.Add("年");
             DDLYearS.DataSource = dvy;
             DDLYearS.DataTextField = "years";
             DDLYearS.DataBind();
 
             DDLMonthS.Items.Clear();
-            DDLMonthS.Items.Add("StartMonth");
+            DDLMonthS.Items.Add("月");
             DDLMonthS.DataSource = dvm;
             DDLMonthS.DataTextField = "months";
             DDLMonthS.DataBind();
 
             DDLDayS.Items.Clear();
-            DDLDayS.Items.Add("StartDay");
+            DDLDayS.Items.Add("日");
             DDLDayS.DataSource = dvd;
             DDLDayS.DataTextField = "days";
             DDLDayS.DataBind();
 
             DDLYearE.Items.Clear();
-            DDLYearE.Items.Add("EndYear");
+            DDLYearE.Items.Add(todayY);
             DDLYearE.DataSource = dvy;
             DDLYearE.DataTextField = "years";
             DDLYearE.DataBind();
 
             DDLMonthE.Items.Clear();
-            DDLMonthE.Items.Add("EndMonth");
+            DDLMonthE.Items.Add(todayM);
             DDLMonthE.DataSource = dvm;
             DDLMonthE.DataTextField = "months";
             DDLMonthE.DataBind();
 
             DDLDayE.Items.Clear();
-            DDLDayE.Items.Add("EndDay");
+            DDLDayE.Items.Add(todayD);
             DDLDayE.DataSource = dvd;
             DDLDayE.DataTextField = "days";
             DDLDayE.DataBind();
@@ -181,69 +270,27 @@ namespace Shopping
             //{
             //    Response.Redirect("manager");
             //}
-            hintResponse.Text = "";
-            hintID.Text = "";
+            
             hintSearch.Text = "";
             hintDate.Text = "";
             changecocolor();
             if (!IsPostBack)
             {
-                SqlConnection connection = Connect(s_data);
-                string sql = $"select * from Chat where response IS NULL OR response = ''";
-                SqlCommand command = new SqlCommand(sql, connection);
-                connection.Open();
-                SqlDataReader read = command.ExecuteReader();
-                usercontact.DataSource = read;
-                usercontact.DataBind();
-                connection.Close();
-                cleanbt1();
+                reviewChat();
+               
                 cleanbt3();
             }
         }
 
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            if (DDLContactID.SelectedItem.Text != "ID")
-            {
-                if (Request.Form["contactresponse"] != "")
-                {
-                    SqlConnection connection2 = Connect(s_data);
-                    string sql2 = $"update Chat SET response= N'{Request.Form["contactresponse"].ToString()}',updateInitdate = getdate() where ID='{int.Parse(DDLContactID.Text)}'";
-                    SqlCommand command2 = new SqlCommand(sql2, connection2);
-                    connection2.Open();
-                    command2.ExecuteNonQuery();
-                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt1", "setTimeout( function(){alert('回覆成功');},0);", true);
-                    cleanbt1();
-                    reviewChat();
-                }
-                else
-                {
-                    hintResponse.ForeColor = Color.Red;
-                    hintResponse.Text = "response不得為空";
-                }
-            }
-            else
-            {
-                hintID.ForeColor = Color.Red;
-                hintID.Text = "請選擇項目";
-            }
-        }
+        
 
         protected void Button2_Click(object sender, EventArgs e)
         {
             if (Request.Form["searchaccount"] != "")
             {
-                SqlConnection connection3 = Connect(s_data);
-                string sql3 = $"select * from Chat where account = '{Request.Form["searchaccount"].ToString()}'";
-                SqlCommand command3 = new SqlCommand(sql3, connection3);
-                connection3.Open();
-                SqlDataReader read = command3.ExecuteReader();
-                usercontact.DataSource = read;
-                usercontact.DataBind();
-                connection3.Close();
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt2", "setTimeout( function(){alert('搜尋成功');},0);", true);
-                
+                string sql3 = $"select * from Chat where account = '{Request.Form["searchaccount"]}'";
+                searchChat(sql3);
             }
             else
             {
@@ -260,24 +307,21 @@ namespace Shopping
                 {
                     if (int.Parse(DDLYearS.Text) < int.Parse(DDLYearE.Text))
                     {
-                        reviewChatDate();
-                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('篩選成功');},0);", true);
+                        reviewChatDate();                        
                         cleanbt3();
                     }
                     else if (int.Parse(DDLYearS.Text) == int.Parse(DDLYearE.Text))
                     {
                         if (int.Parse(DDLMonthS.Text) < int.Parse(DDLMonthE.Text))
                         {
-                            reviewChatDate();
-                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('篩選成功');},0);", true);
+                            reviewChatDate();                            
                             cleanbt3();
                         }
                         else if ((int.Parse(DDLMonthS.Text) == int.Parse(DDLMonthE.Text)))
                         {
                             if (int.Parse(DDLDayS.Text) <= int.Parse(DDLDayE.Text))
                             {
-                                reviewChatDate();
-                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt3", "setTimeout( function(){alert('篩選成功');},0);", true);
+                                reviewChatDate();                               
                                 cleanbt3();
                             }
                             else
@@ -320,6 +364,66 @@ namespace Shopping
         {
             Session["access"] = "Not ok";
             Response.Redirect(Request.Url.ToString());
+        }
+
+        protected void all_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("managercontact");
+        }
+
+        protected void usercontact_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            string ID = usercontact.DataKeys[e.RowIndex].Values[0].ToString();
+            string response = ((TextBox)usercontact.Rows[e.RowIndex].FindControl("TextBox1")).Text;
+            string strUpdate = $"update Chat set response = N'{response}', updateInitdate= getdate()  where ID='{ID}'";
+            SqlConnection connection = new SqlConnection(s_data);
+            connection.Open();
+            SqlCommand command = new SqlCommand(strUpdate, connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+            usercontact.EditIndex = -1;
+            reviewChat();
+        }
+
+        protected void usercontact_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            usercontact.EditIndex = -1;
+            if (helpSQL.Text != "")
+            {
+                searchChat(helpSQL.Text);
+            }
+            else if (helpSQL2.Text != "")
+            {
+                reviewChatDate();
+            }
+            else
+            {
+                reviewChat();
+            }
+        }
+
+        protected void usercontact_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            usercontact.PageIndex = e.NewPageIndex;
+            reviewChat();
+        }
+
+        protected void usercontact_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            usercontact.EditIndex = e.NewEditIndex;
+
+            if (helpSQL.Text != "")
+            {
+                searchChat(helpSQL.Text);
+            }
+            else if (helpSQL2.Text != "")
+            {
+                reviewChatDate();
+            }
+            else
+            {
+                reviewChat();
+            }
         }
     }
 }

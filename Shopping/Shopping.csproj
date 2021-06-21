@@ -121,6 +121,7 @@
     <Content Include="js\index.js" />
     <Content Include="managercontact.aspx" />
     <Content Include="forget.aspx" />
+    <Content Include="managershowpicture.aspx" />
     <Content Include="managershoppingcar.aspx" />
     <Content Include="product.aspx" />
     <Content Include="shoppingcar.aspx" />
@@ -261,6 +262,13 @@
     </Compile>
     <Compile Include="managercontact.aspx.designer.cs">
       <DependentUpon>managercontact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="managershowpicture.aspx.cs">
+      <DependentUpon>managershowpicture.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="managershowpicture.aspx.designer.cs">
+      <DependentUpon>managershowpicture.aspx</DependentUpon>
     </Compile>
     <Compile Include="managershoppingcar.aspx.cs">
       <DependentUpon>managershoppingcar.aspx</DependentUpon>

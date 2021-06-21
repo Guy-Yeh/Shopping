@@ -25,8 +25,28 @@ namespace Shopping
             connectionorigin.Open();
             SqlDataReader readorigin = command.ExecuteReader();
             DataTable dt = new DataTable();
-           
-            usershoppingcar.DataSource = readorigin;
+            dt.Columns.Add("ID");
+            dt.Columns.Add("customerAccount");
+            dt.Columns.Add("productPicture");
+            dt.Columns.Add("productName");
+            dt.Columns.Add("productColor");
+            dt.Columns.Add("productPrice");
+            dt.Columns.Add("qty");
+            
+            while (readorigin.Read())
+            {
+                DataRow row = dt.NewRow();
+                row["ID"] = readorigin[0];
+                row["customerAccount"] = readorigin[2];
+                row["productPicture"] = readorigin[3];
+                row["productName"] = readorigin[4];
+                row["productColor"] = readorigin[5];
+                row["productPrice"] = readorigin[6];
+                row["qty"] = readorigin[7];
+                dt.Rows.Add(row);
+
+            }
+            usershoppingcar.DataSource = dt;
             usershoppingcar.DataBind();
             connectionorigin.Close();
             
@@ -39,8 +59,28 @@ namespace Shopping
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
             SqlDataReader searchorigin = command.ExecuteReader();
-            
-            usershoppingcar.DataSource = searchorigin;
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("customerAccount");
+            dt.Columns.Add("productPicture");
+            dt.Columns.Add("productName");
+            dt.Columns.Add("productColor");
+            dt.Columns.Add("productPrice");
+            dt.Columns.Add("qty");
+            while (searchorigin.Read())
+            {
+                DataRow row = dt.NewRow();
+                row["ID"] = searchorigin[0];
+                row["customerAccount"] = searchorigin[2];
+                row["productPicture"] = searchorigin[3];
+                row["productName"] = searchorigin[4];
+                row["productColor"] = searchorigin[5];
+                row["productPrice"] = searchorigin[6];
+                row["qty"] = searchorigin[7];
+                dt.Rows.Add(row);
+
+            }
+            usershoppingcar.DataSource = dt;
             usershoppingcar.DataBind();
             connectionorigin.Close();
         }
@@ -122,7 +162,6 @@ namespace Shopping
             {
                 searchOrder("customerAccount", DDLSearchCustomerAccount.Text);
                 cleanbtsca();
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btca", "setTimeout( function(){alert('篩選成功');},0);", true);
             }
             else
             {
@@ -138,7 +177,6 @@ namespace Shopping
             {
                 searchOrder("productName", DDLSearchProductName.Text);
                 cleanbtspn();
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btpn", "setTimeout( function(){alert('篩選成功');},0);", true);
             }
             else
             {
@@ -153,7 +191,6 @@ namespace Shopping
             {
                 searchOrder("productColor", DDLSearchproductColor.Text);
                 cleanbtspc();
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('篩選成功');},0);", true);
             }
             else
             {
@@ -168,6 +205,11 @@ namespace Shopping
         {
             Session["access"] = "Not ok";
             Response.Redirect(Request.Url.ToString());
+        }
+
+        protected void all_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("managershoppingcar");
         }
     }
 }
