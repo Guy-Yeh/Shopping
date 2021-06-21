@@ -72,7 +72,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="col-md-8 h_menu4">
                         <ul class="memenu skyblue">
-                            <li class=" grid"><a href="index">首頁</a></li>
                             <li><a class="color6" href="shoppingcar">購物車</a></li>
                             <li><a class="color6" href="Customer\Chat.aspx">聯絡我們</a></li>
                             <li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Font-Size="Large">購物須知</asp:LinkButton></li>
@@ -128,17 +127,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <asp:Label ID="Label2" runat="server" Text="" Font-Size="X-Large"></asp:Label>
                     <div class="available">
                         <ul>
-                            <li>尺寸：Free Size</li>
+                            <li>尺寸：Free Size</li><br>
                             <li>顏色：<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="category" DataValueField="category"></asp:DropDownList>
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT [category] FROM [Products] WHERE ([productName] = @productName)">
                                     <SelectParameters>
                                         <asp:SessionParameter Name="productName" SessionField="product" Type="String" />
                                     </SelectParameters>
                                 </asp:SqlDataSource>
-                            </li>
-                            <br>
+                            </li><br>
+                            <li>數量：
+                                <asp:DropDownList ID="DropDownList2" runat="server">
+                                </asp:DropDownList></li><br>
                             <li>
-                                <asp:Label ID="Label5" runat="server" Text="尚餘庫存：" Font-Size="Larger"></asp:Label></li>
+                                <asp:Label ID="Label5" runat="server" Text="庫存：" Font-Size="Medium"></asp:Label></li>
                         </ul>
                     </div>
                     <asp:Button ID="Button2" runat="server" Text="放入購物車" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" Font-Size="X-Large" />
@@ -149,25 +150,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
         <div class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="col-sm-7 number col-md8">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border: 0;"></iframe>
-                </div>
-                <div class="col-sm-4 number col-md4">
-                    <asp:Label ID="Label18" runat="server" Text="丹丹服飾股份有限公司" Font-Size="XX-Large" Font-Bold="True"></asp:Label><br><br>
-                    <asp:Label ID="Label19" runat="server" Text="地址：(110)台北市信義區信義路五段7號"></asp:Label><br>
-                    <asp:Label ID="Label20" runat="server" Text="No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei City 110615 , Taiwan (R.O.C.)"></asp:Label><br><br>
-                </div>
-                <div class="col-sm-4 number col-md4">
-                    <asp:Label ID="Label21" runat="server" Text="聯絡我們" Font-Size="X-Large"></asp:Label><br><br>
-                    <asp:Label ID="Label22" runat="server" Text="客服信箱 / vs.for.test2021@gmail.com"></asp:Label><br>
-                    <asp:Label ID="Label23" runat="server" Text="服務時間 / 09:00 - 18:00 國定假日及例假日休息"></asp:Label><br>
-                    <asp:Label ID="Label24" runat="server" Text="聯絡電話 / 02-2424-0000"></asp:Label><br>
+            <div class="container">
+                <div class="footer-top">
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border: 0;"></iframe>
+                        </div>
+                        <div class="col-sm-4">
+                            <asp:Label ID="Label18" runat="server" Text="丹丹服飾股份有限公司" Font-Size="XX-Large" Font-Bold="True"></asp:Label><br>
+                            <br>
+                            <asp:Label ID="Label19" runat="server" Text="地址：(110)台北市信義區信義路五段7號"></asp:Label><br>
+                            <asp:Label ID="Label20" runat="server" Text="No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei City 110615 , Taiwan (R.O.C.)"></asp:Label><br>
+                            <br>
+                            </div>
+                            <div class="col-sm-4">
+                            <asp:Label ID="Label21" runat="server" Text="聯絡我們" Font-Size="X-Large" Font-Bold="True"></asp:Label><br>
+                            <br>
+                            <asp:Label ID="Label22" runat="server" Text="客服信箱 / vs.for.test2021@gmail.com"></asp:Label><br>
+                            <asp:Label ID="Label23" runat="server" Text="服務時間 / 09:00 - 18:00 國定假日及例假日休息"></asp:Label><br>
+                            <asp:Label ID="Label24" runat="server" Text="聯絡電話 / 02-2424-0000"></asp:Label><br>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </form>
 </body>
 </html>

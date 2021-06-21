@@ -81,7 +81,8 @@ namespace Shopping
             if (e.CommandName=="Delete") 
             {
                 int index = Convert.ToInt32(e.CommandArgument);
-                string id = userorder.Rows[index].Cells[2].Text;
+                //string id = userorder.Rows[index].Cells[2].Text;
+                string id = ((Label)userorder.Rows[Convert.ToInt32(index)].FindControl("Label1")).Text;
                 SqlConnection connection = new SqlConnection(orderdetail_data);
                 string sql = $"delete from OrderDetail where ID=N'{id}'";
                 SqlCommand command = new SqlCommand(sql, connection);
@@ -94,7 +95,7 @@ namespace Shopping
             {
                 int qty = 0;
                 int index = Convert.ToInt32(e.CommandArgument);
-                string id = userorder.Rows[index].Cells[2].Text;
+                string id = ((Label)userorder.Rows[Convert.ToInt32(index)].FindControl("Label1")).Text;
                 SqlConnection connection1 = new SqlConnection(orderdetail_data);
                 string sql1 = $"select * from OrderDetail where ID=N'{id}'";
                 SqlCommand command1 = new SqlCommand(sql1, connection1);
@@ -133,7 +134,7 @@ namespace Shopping
             {
                 int qty = 0;
                 int index = Convert.ToInt32(e.CommandArgument);
-                string id = userorder.Rows[index].Cells[2].Text;
+                string id = ((Label)userorder.Rows[Convert.ToInt32(index)].FindControl("Label1")).Text;
                 SqlConnection connection1 = new SqlConnection(orderdetail_data);
                 string sql1 = $"select qty from OrderDetail where ID=N'{id}'";
                 SqlCommand command1 = new SqlCommand(sql1, connection1);
