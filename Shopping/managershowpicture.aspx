@@ -123,39 +123,56 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="h_nav">
                                     <h4>快速設定:設定當前顯示主頁圖片</h4>
                                     <ul>
-                                        <asp:Table ID="Tablefast" runat="server" GridLines="Both" CellPadding="10" align="center" Width="350px">
+                                        <asp:Table ID="Tablefast" runat="server" GridLines="Both" CellPadding="10" align="center" Width="700px" >
                                             <asp:TableRow>
-                                                <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger" >
+                                                <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger" Width="130">
                                                 設定編號
-                                                </asp:TableCell>
-                                                <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger" >
+                                                </asp:TableCell >
+                                                <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger" Width="150">
                                                    1
-                                                </asp:TableCell>
-                                                <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger" >
+                                                </asp:TableCell >
+                                                <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger" Width="150" >
                                                    2
                                                 </asp:TableCell>
-                                                <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger" >
+                                                <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger" Width="150" >
                                                    3
                                                 </asp:TableCell>
                                             </asp:TableRow>
                                             <asp:TableRow>
+                                                <asp:TableCell Width="130">
+                                                 當前主頁圖片
+                                                </asp:TableCell>
+                                                <asp:TableCell Width="150">                                                    
+                                                    <asp:Label ID="show1" runat="server" Text=""></asp:Label>
+                                                </asp:TableCell >
+                                                <asp:TableCell  Width="150">                                                    
+                                                    <asp:Label ID="show2" runat="server" Text=""></asp:Label>
+                                                </asp:TableCell >
+                                                <asp:TableCell Width="150">                                                    
+                                                    <asp:Label ID="show3" runat="server" Text=""></asp:Label>
+                                                </asp:TableCell>
+                                            </asp:TableRow>
+                                            <asp:TableRow>
+                                                <asp:TableCell Width="130">
+                                                 更改主頁圖片
+                                                </asp:TableCell>
                                                 <asp:TableCell Width="150">
-                                                 商品名稱
-                                                </asp:TableCell>
-                                                <asp:TableCell >
-                                                    <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                                                    <asp:DropDownList ID="DDLtt1" runat="server" AppendDataBoundItems="True" Height="30px" Width="150px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+                                                    <%--<asp:TextBox ID="TextBox5" runat="server" placeholder="請輸入產品名稱" Width="150"></asp:TextBox>--%>
                                                     <br>
-                                                    <asp:Label ID="Label5" runat="server" Text=""></asp:Label>
+                                                    <asp:Label ID="hintt1" runat="server" Text="" ></asp:Label>
                                                 </asp:TableCell>
-                                                <asp:TableCell >
-                                                    <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                                                <asp:TableCell Width="150">
+                                                    <asp:DropDownList ID="DDLtt2" runat="server" AppendDataBoundItems="True" Height="30px" Width="150px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+                                                    <%--<asp:TextBox ID="TextBox7" runat="server" placeholder="請輸入產品名稱" Width="150"></asp:TextBox>--%>
                                                     <br>
-                                                    <asp:Label ID="Label8" runat="server" Text=""></asp:Label>
+                                                    <asp:Label ID="hintt2" runat="server" Text=""></asp:Label>
                                                 </asp:TableCell>
-                                                <asp:TableCell >
-                                                    <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+                                                <asp:TableCell Width="150">
+                                                    <asp:DropDownList ID="DDLtt3" runat="server" AppendDataBoundItems="True" Height="30px" Width="150px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
+                                                    <%--<asp:TextBox ID="TextBox8" runat="server" placeholder="請輸入產品名稱" Width="150"></asp:TextBox>--%>
                                                     <br>
-                                                    <asp:Label ID="Label7" runat="server" Text=""></asp:Label>
+                                                    <asp:Label ID="hintt3" runat="server" Text=""></asp:Label>
                                                 </asp:TableCell>
                                             </asp:TableRow>
                                         </asp:Table>
@@ -164,6 +181,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                </div>
                             </div>
                         </div>
+                        </div>
+                        <div class="container">
+                        <div class="row">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="h_nav">
+                                    <asp:Button ID="set" runat="server" Text="設定" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="set_Click" OnClientClick='return confirm("確定修改?")'/>
+                                    <asp:Label ID="hintset" runat="server" Text=""></asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
                         <br>
                         <br>
                         <div class="container">
