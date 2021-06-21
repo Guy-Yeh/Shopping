@@ -596,9 +596,6 @@ namespace Shopping
             bool phoneCheck = Regex.IsMatch(phone, @"^09[\d]{8}$");
 
 
-
-
-
             //用來比對是否只有更改訂單狀態
             string sqlCOD = $"select productName, productColor, qty from OrderDetail  where ID = '{ID}'";
             SqlConnection connectionCOD = new SqlConnection(s_data4); //比對OrderDetail
@@ -624,91 +621,39 @@ namespace Shopping
                     string addressc = readerOOD[2].ToString();
                     connectionOOD.Close();
                     connectionCOD.Close();
-
-                    if (status == "賣方處理中")
+                    if (status == "賣方處理中" || status == "配送中" || status == "已完成" || status == "已取消")
                     {
-                        if (address != "")
+                        if (status == "賣方處理中")
                         {
-                            if (phoneCheck)
+                            if (address != "")
                             {
-                                if (name != "")
+                                if (phoneCheck)
                                 {
-                                    if (qtyCheck && int.Parse(qty) >= 0)
+                                    if (name != "")
                                     {
-                                        if (productName == productNamec && productColorc == productColor)
+                                        if (qtyCheck && int.Parse(qty) >= 0)
                                         {
-                                            //查詢庫存量
-                                            if (Convert.ToInt32(allcheck("inventory", productName, productColor)) >= (int.Parse(qty) - int.Parse(qtyc)))
+                                            if (productName == productNamec && productColorc == productColor)
                                             {
-                                                //更新庫存數量
-                                                string sqlUQ = $"update Products set inventory = '{(Convert.ToInt32(allcheck("inventory", productName, productColor)) - (int.Parse(qty) - int.Parse(qtyc))).ToString()}' where productName = N'{productName}' And category = N'{productColor}' ";
-                                                SqlConnection connectionUQ = new SqlConnection(s_data3);
-                                                SqlCommand commandUQ = new SqlCommand(sqlUQ, connectionUQ);
-                                                connectionUQ.Open();
-                                                commandUQ.ExecuteNonQuery();
-                                                connectionUQ.Close();
-
-                                                string sqlUOD = $"update OrderDetail set productName = N'{productName}', productColor = N'{productColor}', qty = N'{qty}' where ID = '{ID}'";
-                                                SqlConnection connectionUOD = new SqlConnection(s_data4); //更新OrderDetail
-                                                SqlCommand commandUOD = new SqlCommand(sqlUOD, connectionUOD);
-                                                connectionUOD.Open();
-                                                commandUOD.ExecuteNonQuery();
-                                                connectionUOD.Close();
-
-                                                //更新總價
-                                                string sqlsum = $"select sum(productPrice*qty) from OrderDetail where serial='{serial}'";
-                                                SqlConnection connectionsum = new SqlConnection(s_data4);
-                                                SqlCommand commandsum = new SqlCommand(sqlsum, connectionsum);
-                                                connectionsum.Open();
-                                                SqlDataReader Reader4 = commandsum.ExecuteReader();
-                                                if (Reader4.Read())
+                                                //查詢庫存量
+                                                if (Convert.ToInt32(allcheck("inventory", productName, productColor)) >= (int.Parse(qty) - int.Parse(qtyc)))
                                                 {
-                                                    string sqlUO = $"update Orders set name = N'{name}',phone = '{phone}', address = N'{address}',totalprice = '{Reader4[0]}', status = N'{status}', updateInitdate= getdate()  where serial ='{serial}'";
-                                                    SqlConnection connectionUO = new SqlConnection(s_data); //更新Order            
-                                                    SqlCommand commandUO = new SqlCommand(sqlUO, connectionUO);
-                                                    connectionUO.Open();
-                                                    commandUO.ExecuteNonQuery();
-                                                    connectionUO.Close();
-                                                    userorder.EditIndex = -1;
-                                                }
-                                                connectionsum.Close();
-                                                reviewOrder();
-                                            }
-                                            else
-                                            {
-                                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品庫存不足 請下修數量');},700);", true);
-                                            }
+                                                    //更新庫存數量
+                                                    string sqlUQ = $"update Products set inventory = '{(Convert.ToInt32(allcheck("inventory", productName, productColor)) - (int.Parse(qty) - int.Parse(qtyc))).ToString()}' where productName = N'{productName}' And category = N'{productColor}' ";
+                                                    SqlConnection connectionUQ = new SqlConnection(s_data3);
+                                                    SqlCommand commandUQ = new SqlCommand(sqlUQ, connectionUQ);
+                                                    connectionUQ.Open();
+                                                    commandUQ.ExecuteNonQuery();
+                                                    connectionUQ.Close();
 
-                                        }
-                                        else
-                                        {
-                                            if (productexistcheck(productName, productColor))
-                                            {
-                                                if (Convert.ToInt32(allcheck("inventory", productName, productColor)) >= (int.Parse(qty)))
-                                                {
-                                                    //減少新訂單庫存
-                                                    string sqlUQ1 = $"update Products set inventory = '{(Convert.ToInt32(allcheck("inventory", productName, productColor)) - (int.Parse(qty))).ToString()}' where productName = N'{productName}' And category = N'{productColor}' ";
-                                                    SqlConnection connectionUQ1 = new SqlConnection(s_data3);
-                                                    SqlCommand commandUQ1 = new SqlCommand(sqlUQ1, connectionUQ1);
-                                                    connectionUQ1.Open();
-                                                    commandUQ1.ExecuteNonQuery();
-                                                    connectionUQ1.Close();
-
-                                                    //加回舊訂單庫存
-                                                    string sqlUQ2 = $"update Products set inventory = '{(Convert.ToInt32(allcheck("inventory", productNamec, productColorc)) + (int.Parse(qtyc))).ToString()}' where productName = N'{productNamec}' And category = N'{productColorc}' ";
-                                                    SqlConnection connectionUQ2 = new SqlConnection(s_data3);
-                                                    SqlCommand commandUQ2 = new SqlCommand(sqlUQ2, connectionUQ2);
-                                                    connectionUQ2.Open();
-                                                    commandUQ2.ExecuteNonQuery();
-                                                    connectionUQ2.Close();
-
-                                                    string sqlUOD = $"update OrderDetail set productName = N'{productName}', productColor = N'{productColor}', productPrice = N'{allcheck("price", productName, productColor)}', productPicture = N'{allcheck("picture", productName, productColor)}', qty = N'{qty}' where ID = '{ID}'";
+                                                    string sqlUOD = $"update OrderDetail set productName = N'{productName}', productColor = N'{productColor}', qty = N'{qty}' where ID = '{ID}'";
                                                     SqlConnection connectionUOD = new SqlConnection(s_data4); //更新OrderDetail
                                                     SqlCommand commandUOD = new SqlCommand(sqlUOD, connectionUOD);
                                                     connectionUOD.Open();
                                                     commandUOD.ExecuteNonQuery();
                                                     connectionUOD.Close();
 
+                                                    //更新總價
                                                     string sqlsum = $"select sum(productPrice*qty) from OrderDetail where serial='{serial}'";
                                                     SqlConnection connectionsum = new SqlConnection(s_data4);
                                                     SqlCommand commandsum = new SqlCommand(sqlsum, connectionsum);
@@ -716,7 +661,7 @@ namespace Shopping
                                                     SqlDataReader Reader4 = commandsum.ExecuteReader();
                                                     if (Reader4.Read())
                                                     {
-                                                        string sqlUO = $"update Orders set name = N'{name}',phone = '{phone}', address = N'{address}',totalprice = '{Reader4[0]}', status = N'{status}', updateInitdate= getdate()  where serial ='{serial}'";
+                                                        string sqlUO = $"update Orders set name = N'{name}',phone = '{phone}', address = N'{address}',totalPrice = '{Reader4[0]}', status = N'{status}', updateInitdate= getdate()  where serial ='{serial}'";
                                                         SqlConnection connectionUO = new SqlConnection(s_data); //更新Order            
                                                         SqlCommand commandUO = new SqlCommand(sqlUO, connectionUO);
                                                         connectionUO.Open();
@@ -725,57 +670,125 @@ namespace Shopping
                                                         userorder.EditIndex = -1;
                                                     }
                                                     connectionsum.Close();
-
                                                     reviewOrder();
                                                 }
                                                 else
                                                 {
-                                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品庫存不足 請下修數量或更改商品組合');},700);", true);
+                                                    MessageBox.Show("商品庫存不足 請下修數量");
+                                                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品庫存不足 請下修數量');},700);", true);
                                                 }
+
                                             }
                                             else
                                             {
-                                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品不存在 請重新輸入商品組合');},700);", true);
+                                                if (productexistcheck(productName, productColor))
+                                                {
+                                                    if (Convert.ToInt32(allcheck("inventory", productName, productColor)) >= (int.Parse(qty)))
+                                                    {
+                                                        //減少新訂單庫存
+                                                        string sqlUQ1 = $"update Products set inventory = '{(Convert.ToInt32(allcheck("inventory", productName, productColor)) - (int.Parse(qty))).ToString()}' where productName = N'{productName}' And category = N'{productColor}' ";
+                                                        SqlConnection connectionUQ1 = new SqlConnection(s_data3);
+                                                        SqlCommand commandUQ1 = new SqlCommand(sqlUQ1, connectionUQ1);
+                                                        connectionUQ1.Open();
+                                                        commandUQ1.ExecuteNonQuery();
+                                                        connectionUQ1.Close();
+
+                                                        //加回舊訂單庫存
+                                                        string sqlUQ2 = $"update Products set inventory = '{(Convert.ToInt32(allcheck("inventory", productNamec, productColorc)) + (int.Parse(qtyc))).ToString()}' where productName = N'{productNamec}' And category = N'{productColorc}' ";
+                                                        SqlConnection connectionUQ2 = new SqlConnection(s_data3);
+                                                        SqlCommand commandUQ2 = new SqlCommand(sqlUQ2, connectionUQ2);
+                                                        connectionUQ2.Open();
+                                                        commandUQ2.ExecuteNonQuery();
+                                                        connectionUQ2.Close();
+
+                                                        string sqlUOD = $"update OrderDetail set productName = N'{productName}', productColor = N'{productColor}', productPrice = N'{allcheck("price", productName, productColor)}', productPicture = N'{allcheck("picture", productName, productColor)}', qty = N'{qty}' where ID = '{ID}'";
+                                                        SqlConnection connectionUOD = new SqlConnection(s_data4); //更新OrderDetail
+                                                        SqlCommand commandUOD = new SqlCommand(sqlUOD, connectionUOD);
+                                                        connectionUOD.Open();
+                                                        commandUOD.ExecuteNonQuery();
+                                                        connectionUOD.Close();
+
+                                                        string sqlsum = $"select sum(productPrice*qty) from OrderDetail where serial='{serial}'";
+                                                        SqlConnection connectionsum = new SqlConnection(s_data4);
+                                                        SqlCommand commandsum = new SqlCommand(sqlsum, connectionsum);
+                                                        connectionsum.Open();
+                                                        SqlDataReader Reader4 = commandsum.ExecuteReader();
+                                                        if (Reader4.Read())
+                                                        {
+                                                            string sqlUO = $"update Orders set name = N'{name}',phone = '{phone}', address = N'{address}',totalPrice = '{Reader4[0]}', status = N'{status}', updateInitdate= getdate()  where serial ='{serial}'";
+                                                            SqlConnection connectionUO = new SqlConnection(s_data); //更新Order            
+                                                            SqlCommand commandUO = new SqlCommand(sqlUO, connectionUO);
+                                                            connectionUO.Open();
+                                                            commandUO.ExecuteNonQuery();
+                                                            connectionUO.Close();
+                                                            userorder.EditIndex = -1;
+                                                        }
+                                                        connectionsum.Close();
+
+                                                        reviewOrder();
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("商品庫存不足 請下修數量或更改商品組合");
+                                                        //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品庫存不足 請下修數量或更改商品組合');},600);", true);
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("商品不存在 請重新輸入商品組合");
+                                                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品不存在 請重新輸入商品組合');},600);", true);
+                                                }
                                             }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("數量需為不小於0的數字");
+                                            //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('數量需為不小於0的數字');},600);", true);
                                         }
                                     }
                                     else
                                     {
-                                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('數量需為不小於0的數字');},700);", true);
+                                        MessageBox.Show("收件人不得為空");
+                                        //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('收件人不得為空');},600);", true);
                                     }
                                 }
                                 else
                                 {
-                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('收件人不得為空');},700);", true);
+                                    MessageBox.Show("電話格式有誤 為09加8個數字");
+                                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('電話格式有誤 為09加8個數字');},600);", true);
                                 }
                             }
                             else
                             {
-                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('電話格式有誤 為09加8個數字');},700);", true);
+                                MessageBox.Show("地址欄位不得為空");
+                                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('地址欄位不得為空');},600);", true);
                             }
                         }
                         else
                         {
-                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('地址欄位不得為空');},700);", true);
+                            if (productName == productNamec && productColor == productColorc && qty == qtyc && name == namec && phone == phonec && address == addressc)
+                            {
+                                string sqlOS = $"update Orders set status = N'{status}', updateInitdate= getdate() where serial ='{serial}'";
+                                SqlConnection connectionOS = new SqlConnection(s_data); //更新Order            
+                                SqlCommand commandOS = new SqlCommand(sqlOS, connectionOS);
+                                connectionOS.Open();
+                                commandOS.ExecuteNonQuery();
+                                connectionOS.Close();
+                                userorder.EditIndex = -1;
+                                reviewOrder();
+                            }
+                            else
+                            {
+                                MessageBox.Show("該訂單狀態為配送中、已完成或已取消，無法修改訂單內容、僅能修改訂單狀態");
+                                // this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('該訂單狀態為配送中、已完成或已取消，無法修改訂單內容、僅能修改訂單狀態');},600);", true);
+                            }
                         }
                     }
                     else
                     {
-                        if (productName == productNamec && productColor == productColorc && qty == qtyc && name == namec && phone == phonec && address == addressc)
-                        {
-                            string sqlOS = $"update Orders set status = N'{status}', updateInitdate= getdate() where serial ='{serial}'";
-                            SqlConnection connectionOS = new SqlConnection(s_data); //更新Order            
-                            SqlCommand commandOS = new SqlCommand(sqlOS, connectionOS);
-                            connectionOS.Open();
-                            commandOS.ExecuteNonQuery();
-                            connectionOS.Close();
-                            userorder.EditIndex = -1;
-                            reviewOrder();
-                        }
-                        else
-                        {
-                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert(@'該訂單狀態為配送中、已完成或已取消   無法修改訂單內容、僅能修改訂單狀態');},700);", true);
-                        }
+                        MessageBox.Show("配送狀態不得為空且僅能為賣方處理中、配送中、已完成、已取消");
+                        //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('配送狀態不得為空且僅能為賣方處理中、配送中、已完成、已取消');},600);", true);
+                        
                     }
                 }
             }

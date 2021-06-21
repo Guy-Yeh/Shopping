@@ -162,6 +162,7 @@ $(document).ready(function () {
                             $("." + $(this).attr("data-serial") + "_p-list").slideToggle("slow");
                         });
                     }
+
          
 
                     // 取消

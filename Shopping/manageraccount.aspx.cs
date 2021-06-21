@@ -306,7 +306,8 @@ namespace Shopping
             }
             else
             {
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('權限僅能輸入Yes或No 請重新輸入');},600);", true);
+                MessageBox.Show("權限僅能輸入Yes或No 請重新輸入");
+                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('權限僅能輸入Yes或No 請重新輸入');},600);", true);
             }
 
             //string update = $"update Customers SET account= N'{TextBox9.Text}' where account='{TextBox8.Text}'";
