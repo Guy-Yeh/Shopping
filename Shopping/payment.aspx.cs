@@ -227,7 +227,7 @@ namespace Shopping
             }
             string mailman = "";
             string account2 = "";
-            string serial = "9296492469";
+            string serial = ser;
             string serialTime;
             int i = 1;
 
