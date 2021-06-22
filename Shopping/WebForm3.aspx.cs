@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
+using System.IO;
 
 namespace Shopping
 {
@@ -43,8 +44,9 @@ namespace Shopping
             var mailHead = "";
             var mailHead2 = "";
             int sum = 0;
+            string check  = this.GetType().Assembly.Location;
 
- 
+
             //從訂單篩出下單日 姓名 電話 地址 帳號
             string sqlTime = $"select initdate,name,phone,address,customerAccount  from Orders where serial='{serial}'";
             SqlConnection connTime = new SqlConnection(s_data3);
@@ -92,11 +94,14 @@ namespace Shopping
             mailContent = mailHead + mailHead2;
             while (readerContent.Read())
             {
+                
                 string[] prepare = readerContent[4].ToString().Split('\\');
                 string filenojpg = prepare[prepare.Length-1].Replace(".jpg", "");
+               
+               
                 mailContent += $@"<table border=0 style='border-bottom:1px #008080 solid;'width='500'><tr><td>" +$"<img alt=\'\' hspace=0 src=\'cid:{filenojpg}\' align=baseline border=0 width='100' height = '120'>"+$"</td></tr><tr><td>{i}.{readerContent[0]}({readerContent[1]})</tr></td><tr><td>&nbsp;</tr></td><tr><td width='220'>數量:</td><td width='220'>{readerContent[3]} </td></tr><tr><td width='150'>價格:</td><td width='220'>NT${readerContent[2]}</td></tr></tbody></table>";
                 AlternateView htmlView = AlternateView.CreateAlternateViewFromString(mailContent, null, "text/html");
-                LinkedResource imageResource = new LinkedResource(@"C:\Users\yekno\Desktop\Shopping\Shopping\"+ $"{readerContent[4]}", "image/jpeg");
+                LinkedResource imageResource = new LinkedResource($@"{Request.PhysicalApplicationPath}" + $@"{readerContent[4]}", "image/jpeg");
                 i++;
                 imageResource.ContentId = filenojpg;
                 imageResource.TransferEncoding = TransferEncoding.Base64;
@@ -109,11 +114,12 @@ namespace Shopping
             //付款資訊的總額和一些寒暄的話
             var mailcontent3 = $@"<table border=0 style='border-bottom:1px #008080 solid;'width='500'><tbody><tr><td style='font-weight:bold'>付款資訊</tr></td><tr><td>&nbsp;</tr></td><tr><td  width='220'>付款狀態:</td><td width='220'>已付款</td></tr><tr><td width='220'>付款金額:<td width='220'>NT${sum}</td></tr></tbody></table>";
             var mailcontent4 = $@"<table border=0 style='border-bottom:1px #008080 solid;'width='500'><tbody><tr><td>&nbsp;</tr></td><tr><td style='font-weight:bold'>接下來</td></tr><tr><td>&nbsp;</td></tr><tr><td>請等待丹丹服飾出貨您的商品，感謝您的支持！</td></tr><tr><td>丹丹服飾團隊敬上</td>";
+
             
             //加入丹丹服飾的logo
             mailContent += mailContent2 + mailcontent3 + mailcontent4 +"<td>"+ $"<img alt=\'\' hspace=0 src=\'cid:CAT4\' align=baseline border=0 width='130' height = '50'>" + $"</td></tr></tbody></table>";
             AlternateView htmlView2 = AlternateView.CreateAlternateViewFromString(mailContent, null, "text/html");
-            LinkedResource imageResource2 = new LinkedResource(@"C:\Users\yekno\Desktop\Shopping\Shopping\" + @"images\CAT4.png", "image/jpeg");
+            LinkedResource imageResource2 = new LinkedResource($@"{Request.PhysicalApplicationPath}" + @"images\CAT4.png", "image/jpeg");
             imageResource2.ContentId = "CAT4";
             imageResource2.TransferEncoding = TransferEncoding.Base64;
             htmlView2.LinkedResources.Add(imageResource2);

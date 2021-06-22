@@ -193,7 +193,7 @@ $(document).ready(function () {
                     $('#mailText').text(data.email);
                     $('#addressText').text(data.address);
                     //$('#accountImg').attr('src', data.picture);
-                    let pic = (data.picture == undefined || data.picture == '') ? "/images/si2.jpg" : data.picture;
+                    let pic = (data.picture == undefined || data.picture == '') ? "/images/def.jpg" : data.picture;
                     //let pic='';
                     //if (data.picture == undefined || data.picture == '') {
                     //    pic = "/images/si2.jpg";

@@ -154,14 +154,14 @@ namespace Shopping
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["access"] != null && Session["access"] == "ok")
-            //{
+            if (Session["access"] != null && Session["access"] == "ok")
+            {
 
-            //}
-            //else
-            //{
-            //    Response.Redirect("manager");
-            //}
+            }
+            else
+            {
+                Response.Redirect("manager");
+            }
             hintPS.Text = "選擇即將搜尋的產品名稱";
             hintp1.Text = "";
             hintp2.Text = "";
