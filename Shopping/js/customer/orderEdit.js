@@ -42,7 +42,7 @@ var strEndHtml = ` </div> <div class="col-md-12" style="display: flex;">
 
                 <div id="delete-but-##serial##" class="col-md-12" style="display: flex;">
                    <div class="col-md-12" style="display: flex; justify-content: flex-end;">
-                        <button id="delete-but" data-serial="##serial##" type="button" class="btn btn-lg btn-info" style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
+                        <button id="delete-but" data-serial="##serial##" type="button" class="btn btn-lg btn-info delete-but" style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
                             取消訂單</button>
                     </div>
                 </div>
@@ -166,7 +166,7 @@ $(document).ready(function () {
          
 
                     // 取消
-                    $("#delete-but").click(function () {
+                    $(".delete-but").click(function () {
                         console.log("delete-but", $(this).attr("data-serial"));
                         $.ajax({
                             type: "post",
