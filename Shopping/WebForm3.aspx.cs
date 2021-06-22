@@ -108,7 +108,7 @@ namespace Shopping
 
             //付款資訊的總額和一些寒暄的話
             var mailcontent3 = $@"<table border=0 style='border-bottom:1px #008080 solid;'width='500'><tbody><tr><td style='font-weight:bold'>付款資訊</tr></td><tr><td>&nbsp;</tr></td><tr><td  width='220'>付款狀態:</td><td width='220'>已付款</td></tr><tr><td width='220'>付款金額:<td width='220'>NT${sum}</td></tr></tbody></table>";
-            var mailcontent4 = $@"<table border=0 style='border-bottom:1px #008080 solid;'width='500'><tbody><tr><td>&nbsp;</tr></td><tr><td style='font-weight:bold'>接下來</td></tr><tr><td>&nbsp;</td></tr><tr><td>請等待丹丹服飾出貨您的商品，感謝您的支持！</td></tr><tr><td>單單服飾團隊敬上</td>";
+            var mailcontent4 = $@"<table border=0 style='border-bottom:1px #008080 solid;'width='500'><tbody><tr><td>&nbsp;</tr></td><tr><td style='font-weight:bold'>接下來</td></tr><tr><td>&nbsp;</td></tr><tr><td>請等待丹丹服飾出貨您的商品，感謝您的支持！</td></tr><tr><td>丹丹服飾團隊敬上</td>";
             
             //加入丹丹服飾的logo
             mailContent += mailContent2 + mailcontent3 + mailcontent4 +"<td>"+ $"<img alt=\'\' hspace=0 src=\'cid:CAT4\' align=baseline border=0 width='130' height = '50'>" + $"</td></tr></tbody></table>";
