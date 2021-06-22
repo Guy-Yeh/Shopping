@@ -223,7 +223,6 @@ namespace Shopping
                     }
                 }
                 connection3.Close();
-                Response.Redirect("payment");
             }
             string mailman = "";
             string account2 = "";
@@ -289,7 +288,7 @@ namespace Shopping
                 string filenojpg = prepare[prepare.Length - 1].Replace(".jpg", "");
                 mailContent += $@"<table border=0 style='border-bottom:1px #008080 solid;'width='500'><tr><td>" + $"<img alt=\'\' hspace=0 src=\'cid:{filenojpg}\' align=baseline border=0 width='100' height = '120'>" + $"</td></tr><tr><td>{i}.{readerContent[0]}({readerContent[1]})</tr></td><tr><td>&nbsp;</tr></td><tr><td width='220'>數量:</td><td width='220'>{readerContent[3]} </td></tr><tr><td width='150'>價格:</td><td width='220'>NT${readerContent[2]}</td></tr></tbody></table>";
                 AlternateView htmlView = AlternateView.CreateAlternateViewFromString(mailContent, null, "text/html");
-                LinkedResource imageResource = new LinkedResource(@"C:\Users\yekno\Desktop\Shopping\Shopping\" + $"{readerContent[4]}", "image/jpeg");
+                LinkedResource imageResource = new LinkedResource($@"{Request.PhysicalApplicationPath}" + $@"{readerContent[4]}", "image/jpeg");
                 i++;
                 imageResource.ContentId = filenojpg;
                 imageResource.TransferEncoding = TransferEncoding.Base64;
@@ -306,13 +305,14 @@ namespace Shopping
             //加入丹丹服飾的logo
             mailContent += mailContent2 + mailcontent3 + mailcontent4 + "<td>" + $"<img alt=\'\' hspace=0 src=\'cid:CAT4\' align=baseline border=0 width='130' height = '50'>" + $"</td></tr></tbody></table>";
             AlternateView htmlView2 = AlternateView.CreateAlternateViewFromString(mailContent, null, "text/html");
-            LinkedResource imageResource2 = new LinkedResource(@"C:\Users\yekno\Desktop\Shopping\Shopping\" + @"images\CAT4.png", "image/jpeg");
+            LinkedResource imageResource2 = new LinkedResource($@"{Request.PhysicalApplicationPath}" + @"images\CAT4.png", "image/jpeg");
             imageResource2.ContentId = "CAT4";
             imageResource2.TransferEncoding = TransferEncoding.Base64;
             htmlView2.LinkedResources.Add(imageResource2);
             mail.AlternateViews.Add(htmlView2);
 
             SendMail(mail);
+            Response.Redirect("payment");
         }
 
         protected void Button2_Click(object sender, EventArgs e)
