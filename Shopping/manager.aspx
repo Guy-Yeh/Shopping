@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="manager.aspx.cs" Inherits="Shopping.manager" %>
+﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="manager.aspx.cs" Inherits="Shopping.manager"   MaintainScrollPositionOnPostback="true"%>
 <!--A Design by W3layouts 
 Author: W3layout
 Author URL: http://w3layouts.com

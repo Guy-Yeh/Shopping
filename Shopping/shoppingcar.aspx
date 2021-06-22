@@ -120,60 +120,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--//header-->
         <!---->
         <div class="container">
-            <div class="check-out">
-                <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="ID" OnRowCommand="userorder_RowCommand">
-                    <Columns>
-                        <asp:TemplateField>
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("productPicture") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("productPicture") %>' Width="100px" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField DataField="productPicture" HeaderText="productPicture" SortExpression="productPicture" Visible="False" />
-                        <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="ID" Visible="False">
-                            <EditItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField DataField="productName" HeaderText="productName" SortExpression="productName" />
-                        <asp:BoundField DataField="productColor" HeaderText="productColor" SortExpression="productColor" />
-                        <asp:BoundField DataField="productPrice" HeaderText="productPrice" SortExpression="productPrice" />
-                        <asp:TemplateField ShowHeader="False">
-                            <ItemTemplate>
-                                <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" CommandName="Subtract" Height="20px" ImageAlign="AbsMiddle" ImageUrl="~/images/dowm.png" Text="" Width="30px" CommandArgument='<%# Container.DataItemIndex%>' />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField DataField="qty" HeaderText="qty" SortExpression="qty" />
-                        <asp:TemplateField ShowHeader="False">
-                            <ItemTemplate>
-                                <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="false" CommandName="Add" Height="20px" CommandArgument='<%# Container.DataItemIndex%>' ImageAlign="AbsMiddle" ImageUrl="~/images/up.png" Text="" Width="30px" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="刪除" ShowHeader="False">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" CommandArgument='<%# Container.DataItemIndex%>'></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT [productName], [productColor], [productPrice], [qty], [productPicture], [ID] FROM [OrderDetail] WHERE (([customerAccount] = @customerAccount) AND ([cart] = @cart))">
-                    <SelectParameters>
-                        <asp:SessionParameter Name="customerAccount" SessionField="loginstatus" Type="String" />
-                        <asp:Parameter DefaultValue="是" Name="cart" Type="String" />
-                    </SelectParameters>
-                </asp:SqlDataSource>
-                <asp:Label ID="Label4" runat="server" Text="Label" Style="float: right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label>
-                <asp:Label ID="Label3" runat="server" Text="總金額：" Style="float: right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label><br>
-                <br>
-                <asp:Button ID="Button2" runat="server" Text="確認購買" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" Font-Size="X-Large" BorderStyle="None" />
-                <div class="clearfix"></div>
+                <div class="check-out">
+                    <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="ID" OnRowCommand="userorder_RowCommand" Width="100%">
+                        <Columns>
+                            <asp:TemplateField HeaderText="商品圖片">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("productPicture") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("productPicture") %>' Width="100px" />
+                                </ItemTemplate>                               
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="productPicture" HeaderText="productPicture" SortExpression="productPicture" Visible="False" />
+                            <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="ID" Visible="False">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="productName" HeaderText="商品名稱" SortExpression="productName" >
+                            </asp:BoundField>
+                            <asp:BoundField DataField="productColor" HeaderText="顏色" SortExpression="productColor" >
+                            </asp:BoundField>
+                            <asp:BoundField DataField="productPrice" HeaderText="金額" SortExpression="productPrice" >
+                            </asp:BoundField>
+                            <asp:TemplateField ShowHeader="False">
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" CommandName="Subtract" Height="20px" ImageAlign="AbsMiddle" ImageUrl="~/images/dowm.png" Text="" Width="30px" CommandArgument='<%# Container.DataItemIndex%>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="qty" HeaderText="數量" SortExpression="qty" >
+                            </asp:BoundField>
+                            <asp:TemplateField ShowHeader="False">
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="false" CommandName="Add" Height="20px" CommandArgument='<%# Container.DataItemIndex%>' ImageAlign="AbsMiddle" ImageUrl="~/images/up.png" Text="" Width="30px" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="刪除" ShowHeader="False">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" CommandArgument='<%# Container.DataItemIndex%>'></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT [productName], [productColor], [productPrice], [qty], [productPicture], [ID] FROM [OrderDetail] WHERE (([customerAccount] = @customerAccount) AND ([cart] = @cart))">
+                        <SelectParameters>
+                            <asp:SessionParameter Name="customerAccount" SessionField="loginstatus" Type="String" />
+                            <asp:Parameter DefaultValue="是" Name="cart" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:Label ID="Label4" runat="server" Text="Label" Style="float: right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text="總金額：" Style="float: right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label><br>
+                    <br>
+                    <asp:Button ID="Button2" runat="server" Text="確認購買" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" Font-Size="X-Large" BorderStyle="None" />
+                    <div class="clearfix"></div>
+                </div>
             </div>
-        </div>
         <!--footer-->
         <div class="footer">
             <div class="container">

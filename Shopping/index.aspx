@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Shopping.index" %>
+﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Shopping.index" %>
+
 <!--A Design by W3layouts 
 Author: W3layout
 Author URL: http://w3layouts.com
@@ -10,6 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <head>
     <title>Fashion Mania A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Custom Theme files -->
@@ -28,6 +30,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="js/simpleCart.min.js"> </script>
     <!-- slide -->
     <script src="js/responsiveslides.min.js"></script>
+    <%--這段到42行只為了摺疊功能--%>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
     <script>
         $(function () {
             $("#slider").responsiveSlides({
@@ -38,22 +51,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
         });
     </script>
-    <style type="text/css">
-        .auto-style1 {
-            height: 42px;
-        }
-
-        .auto-style2 {
-            width: 204px;
-        }
-
-        .auto-style3 {
-            width: 60%;
-        }
-    </style>
     </head>
 <body>
     <form runat="server" method="post">
+
         <!--header-->
         <div class="header">
             <div class="header-top">
@@ -86,7 +87,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <ul class="memenu skyblue">
                             <li><a class="color6" href="shoppingcar">購物車</a></li>
                             <li><a class="color6" href="Customer\Chat.aspx">聯絡我們</a></li>
-                            <li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Font-Size="Large">購物須知</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Font-Size="Large">購物須知</asp:LinkButton></li>
                         </ul>
                     </div>
                     <div class="col-sm-2 search">
@@ -130,7 +132,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--banner-->
         <div class="banner">
             <div class="col-sm-3 banner-mat">
-                <asp:ImageButton ID="ImageButton13" runat="server" ImageUrl="images\衣服\281901701-領造型線T\S__77931623.jpg" Height="100%" Width="100%"/>
+                <asp:ImageButton ID="ImageButton13" runat="server" ImageUrl="images\衣服\281901701-領造型線T\S__77931623.jpg" Height="100%" Width="100%" />
             </div>
             <div class="col-sm-6 matter-banner">
                 <div class="slider">
@@ -150,7 +152,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
             <div class="col-sm-3 banner-mat">
-                <asp:ImageButton ID="ImageButton14" runat="server" ImageUrl="images\衣服\281901708-袖滾配色t\S__77931217.jpg" Height="100%" Width="100%"/>
+                <asp:ImageButton ID="ImageButton14" runat="server" ImageUrl="images\衣服\281901708-袖滾配色t\S__77931217.jpg" Height="100%" Width="100%" />
             </div>
             <div class="clearfix"></div>
         </div>
@@ -280,7 +282,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <asp:Button ID="Button7" runat="server" Text="放入購物車" OnClick="Button7_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
-
                             </div>
                         </div>
                         <div class="col-md-3 col-md2">
@@ -299,17 +300,76 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </div>
                         </div>
-                        <div class="clearfix">
-
-                        </div>
+                        <div class="clearfix"></div>
                     </div>
+            <div class="container">
+            <div align="center">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="border-color: #FFFFFF; font-size: 50px; background-color: #FFFFFF; color: #000000;">更多商品
+                </a>
+            </div>
+                
+                <div class="collapse" id="collapseExample">
+                   <div class="content-top1">
+                        <script src="../js/index.js"> </script>
+                        <div id="box-list1">
+                            <%--<div class="col-md-3 col-md2">
+                                <div class="col-md1 simpleCart_shelfItem">
+                                    <a href="product.aspx">
+                                        <img alt="" src="images\衣服\281906501-珍珠領垂中簍空衫\S__50069539.jpg" height="100%" width="100%" id="test1" /></a>
+                                    <div class="price">
+                                        <label id="test2">滾邊寬袖衫  售價：</label><label></label><br>
+                                        <select name="cars" id="test3">
+                                            <option value="藍">藍</option>
+                                            <option value="白">白</option>
+                                        </select>
+                                        <input id="Button20" type="button" value="放入購物車" style="background: #52d0c4; color: white; float: right; border-style: none" />
+                                    </div>
+                                </div>
+                            </div>--%>
+                        </div>
+                        <div class="clearfix"></div>
                 </div>
             </div>
         </div>
 
-    </form>
-    <!--//content-->
+</div>
+        <!--//content-->
 
+        <%--<div class="container">
+            <div align="center">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="border-color: #FFFFFF; font-size: 50px; background-color: #FFFFFF; color: #000000;">更多商品
+                </a>
+            </div>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+                <Columns>
+                    <asp:TemplateField>
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("picture") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Image ID="Image1" runat="server" Height="100px" ImageUrl='<%# Eval("picture") %>' Width="120px" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="picture" HeaderText="picture" SortExpression="picture" Visible="False" />
+                    <asp:TemplateField HeaderText="商品名稱" SortExpression="productName">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("productName") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("productName") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="price" HeaderText="價格" SortExpression="price" />
+                </Columns>
+            </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="SELECT DISTINCT a.price, b.productName, b.picture FROM Products AS a INNER JOIN ShowPicture AS b ON a.productName = b.productName"></asp:SqlDataSource>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div>
+        </div>--%>
+    </form>
     <!--footer-->
     <div class="footer">
         <div class="container">

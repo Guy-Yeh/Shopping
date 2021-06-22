@@ -22,13 +22,16 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_Click" />
 
             <asp:DropDownList ID="DorpDownList2ComboBox" runat="server" data-Combo="Y"  DataSourceID="SqlDataSourceQAQ" DataTextField="city" DataValueField="city" ></asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSourceQAQ" runat="server" ConnectionString="<%$ ConnectionStrings:CityConnectionString %>" SelectCommand="SELECT DISTINCT city FROM City"></asp:SqlDataSource>
             <br>
             <br>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSourc" OnRowDeleting="GridView1_RowDeleting" >
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSourc" OnRowDeleting="GridView1_RowDeleting" AllowPaging="True">
+                <PagerStyle HorizontalAlign="Center" />
                 <Columns>
+                     
                     <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" Visible="False" />
                     <asp:BoundField DataField="serial" HeaderText="serial" SortExpression="serial" />
                     <asp:BoundField DataField="customerAccount" HeaderText="customerAccount" SortExpression="customerAccount" />
@@ -55,6 +58,7 @@
             </asp:GridView>
             <asp:SqlDataSource ID="SqlDataSourc" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT * FROM [OrderDetail]"></asp:SqlDataSource>
            
+
         </div>
         <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>

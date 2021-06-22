@@ -23,6 +23,7 @@ namespace Shopping.Customer
         protected void Page_Load(object sender, EventArgs e)
         {
             
+
         //Session["loginstatus"] = "Amber";
 
             try
@@ -44,6 +45,7 @@ namespace Shopping.Customer
 
         public void reviewChat() {
             SqlConnection connection = Connect(s_data);
+
             string sql = $"select * from Chat where account = @account ORDER BY  initdate desc" ;
             SqlCommand command = new SqlCommand(sql, connection);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
@@ -51,6 +53,7 @@ namespace Shopping.Customer
             sqlDataAdapter.SelectCommand = command;
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
+            //chatGridView.DataSource = read;
 
             //使用DataTable來儲存資料
             DataTable dt = new DataTable();
@@ -61,6 +64,7 @@ namespace Shopping.Customer
             command.Cancel();
             connection.Dispose();
             connection.Close();
+
 
         }
 
@@ -100,6 +104,7 @@ namespace Shopping.Customer
 
                 //command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
+                //chatGridView.DataSource = read;
                 DataTable dt = new DataTable();
                 dt.Load(read);
                 chatGridView.DataSource = dt.AsDataView();
