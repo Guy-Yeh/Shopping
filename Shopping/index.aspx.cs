@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Shopping.Models;
+using Shopping.Service;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows;
@@ -16,12 +19,16 @@ namespace Shopping
         string product_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
         string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
         string show_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ShowPictureConnectionString"].ConnectionString;
+
+        //public static string loginstatus = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //Session["loginstatus"] = "1";
             //驗證是否登錄
             if (Session["loginstatus"] != null)
             {
+                //loginstatus = Session["loginstatus"].ToString();
                 Button12.Text = "會員資料";
                 Button11.Text = "登出";
                 SqlConnection connection1 = new SqlConnection(customers_data);
@@ -48,6 +55,7 @@ namespace Shopping
                     }
                 connection2.Close();
             }
+
             //帶入幻燈片圖片
             SqlConnection connection3 = new SqlConnection(show_data);
             string sq13 = $"select picture from ShowPicture where show='1'";
@@ -75,8 +83,24 @@ namespace Shopping
             connection5.Close();
         }
 
+        [WebMethod]
+        public static Models.ApiResultModel<List<indexModel>> indexproduct()
+        {
+            Common.Common common = new Common.Common();
+            try
+            {
+                indexpro indexpro = new indexpro();
+                List<indexModel> index = indexpro.indexproduct();
 
+                return common.ThrowResult<List<indexModel>>(Enum.ApiStatusEnum.OK, string.Empty, index);
+            }
+            catch (Exception ex)
+            {
+                return common.ThrowResult<List<indexModel>>(Enum.ApiStatusEnum.InternalServerError, ex.Message, null);
+            }
+        }
 
+ 
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -877,5 +901,79 @@ namespace Shopping
 
 客服信箱：vs.for.test2021@gmail.com");
         }
+
+        //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+
+        //    string sql;
+        //    //DataView dv;
+        //    //宣告DropDownList
+        //    DropDownList DropDownList9;
+        //    //要特別注意一下這邊，如果不用這個if包起來的話，RowDataBound會跑Header，Footer，Pager
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+
+        //        //用FindControl(你的DropDownList的ID)，來找我們的DropDownList，記得要轉型喔!
+        //        DropDownList9 = (DropDownList)e.Row.FindControl("DropDownList9");
+
+
+        //        SqlConnection connection1 = new SqlConnection(product_data);
+        //        sql = $"select category from Products where productName =N'{(Label)e.Row.FindControl("Label1")}'";
+        //        connection1.Open();
+        //        SqlDataAdapter sqlAdp = new SqlDataAdapter(sql, connection1);
+        //        DataTable dt = new DataTable();
+        //        sqlAdp.Fill(dt);
+        //        //sqlAdp.Fill(dt);
+        //        //SqlConnection connection1 = new SqlConnection(product_data);
+        //        //string sql1 = $"select category from Products where productName =N'{(Label)e.Row.FindControl("Label1")}'";
+        //        //SqlCommand command1 = new SqlCommand(sql1, connection1);
+        //        //connection1.Open();
+        //        //SqlDataReader read1 = command1.ExecuteReader();
+        //        //if (read1.Read())
+        //        //{
+        //        //    DropDownList9.Items.Add(read1[0].ToString());
+        //        //}               
+        //        DropDownList9.Items.Clear();
+        //        DropDownList9.DataSource = dt;
+        //        DropDownList9.DataTextField = "category";
+        //        DropDownList9.DataValueField = "category";
+        //        DropDownList9.DataBind();
+        //        //dv = GetDV(sql);
+
+        //        ////DropDownList要顯示的內容
+        //        //DropDownList9.DataTextField = "category";
+
+        //        ////DropDownList顯示內容對應的值
+        //        //DropDownList9.DataValueField = "category";
+        //        ////繫結DropDownList
+        //        //DropDownList9.DataSource = dv;
+        //        //DropDownList9.DataBind();
+        //        //SqlConnection connection1 = new SqlConnection(product_data);
+        //        //string sql1 = $"select category from Products where productName =N'{(TextBox)e.Row.FindControl("TextBox2")}'";
+        //        //SqlCommand command1 = new SqlCommand(sql1, connection1);
+        //        //connection1.Open();
+        //        //SqlDataReader read1 = command1.ExecuteReader();
+        //        //if (read1.Read())
+        //        //{
+        //        //    DropDownList9.SelectedValue = read1[0].ToString();
+        //        //}
+
+        //        //connection1.Close();
+        //    }
+        //}
+        //private DataView GetDV(string sql)
+        //{
+        //    SqlConnection sqlCon = new SqlConnection(product_data);
+        //    DataView dv;
+        //    SqlDataAdapter sqlAdp = new SqlDataAdapter();
+        //    DataSet ds = new DataSet();
+        //    sqlCon.Open();
+        //    SqlCommand cmd = new SqlCommand(sql, sqlCon);
+        //    sqlAdp.SelectCommand = cmd;
+        //    sqlAdp.Fill(ds);
+        //    dv = new DataView(ds.Tables[0]);
+        //    sqlCon.Close();
+        //    return dv;
+        //}
     }
 }

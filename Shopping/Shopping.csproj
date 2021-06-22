@@ -118,6 +118,7 @@
     <Content Include="js\customer\customerDetailEditEnter.js" />
     <Content Include="js\customer\orderEdit.js" />
     <Content Include="js\customer\orders.js" />
+    <Content Include="js\index.js" />
     <Content Include="managercontact.aspx" />
     <Content Include="forget.aspx" />
     <Content Include="managershowpicture.aspx" />
@@ -234,6 +235,7 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\indexDao.cs" />
     <Compile Include="Dao\OrdersDao.cs" />
     <Compile Include="forget.aspx.cs">
       <DependentUpon>forget.aspx</DependentUpon>
@@ -278,6 +280,7 @@
     </Compile>
     <Compile Include="Models\ApiResultModel.cs" />
     <Compile Include="Models\CustomersModel.cs" />
+    <Compile Include="Models\indexModel.cs" />
     <Compile Include="Models\OrdersModel.cs" />
     <Compile Include="Models\ShoppingListModel.cs" />
     <Compile Include="product.aspx.cs">
@@ -290,6 +293,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Service\BaseService.cs" />
     <Compile Include="Service\CustomerDetailService.cs" />
+    <Compile Include="Service\indexpro.cs" />
     <Compile Include="Service\OrdersService.cs" />
     <Compile Include="shoppingcar.aspx.cs">
       <DependentUpon>shoppingcar.aspx</DependentUpon>
