@@ -23,7 +23,8 @@ namespace Shopping.Customer
         protected void Page_Load(object sender, EventArgs e)
         {
             
-        Session["loginstatus"] = "Amber";
+
+        //Session["loginstatus"] = "Amber";
 
             try
             {
@@ -44,17 +45,42 @@ namespace Shopping.Customer
 
         public void reviewChat() {
             SqlConnection connection = Connect(s_data);
-            string sql = $"select * from Chat where account = @account";
+
+            string sql = $"select * from Chat where account = @account ORDER BY  initdate desc" ;
             SqlCommand command = new SqlCommand(sql, connection);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             command.Parameters.Add("@account", SqlDbType.NVarChar).Value = loginstatus;
             sqlDataAdapter.SelectCommand = command;
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
-            chatGridView.DataSource = read;
+            //chatGridView.DataSource = read;
+
+            //使用DataTable來儲存資料
+            DataTable dt = new DataTable();
+            dt.Load(read);
+            chatGridView.DataSource = dt.AsDataView();
             chatGridView.DataBind();
+
+            command.Cancel();
+            connection.Dispose();
             connection.Close();
 
+
+        }
+
+        protected void chatGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            chatGridView.PageIndex = e.NewPageIndex;
+            //chatGridView.DataBind(); ; //取資料   
+            reviewChat();
+        }
+
+        protected void chatGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Cells[0].Text = (e.Row.RowIndex + 1).ToString();
+            }
         }
 
         protected void keyin_Click(object sender, EventArgs e)
@@ -75,10 +101,22 @@ namespace Shopping.Customer
                 command.Parameters.Add("@message", SqlDbType.NVarChar).Value = costomerTalk;
                 sqlDataAdapter.SelectCommand = command;
                 connection.Open();
+
                 //command.ExecuteNonQuery();
                 SqlDataReader read = command.ExecuteReader();
-                chatGridView.DataSource = read;
+                //chatGridView.DataSource = read;
+                DataTable dt = new DataTable();
+                dt.Load(read);
+                chatGridView.DataSource = dt.AsDataView();
                 chatGridView.DataBind();
+
+
+                command.Cancel();
+                connection.Dispose();
+
+
+
+
 
                 connection.Close();
                 this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "test", "setTimeout( function(){alert('回覆成功');},0);", true);

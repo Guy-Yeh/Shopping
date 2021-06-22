@@ -223,7 +223,6 @@ namespace Shopping
                     }
                 }
                 connection3.Close();
-                //Response.Redirect("payment");
             }
             string mailman = "";
             string account2 = "";
@@ -313,6 +312,7 @@ namespace Shopping
             mail.AlternateViews.Add(htmlView2);
 
             SendMail(mail);
+            Response.Redirect("payment");
         }
 
         protected void Button2_Click(object sender, EventArgs e)

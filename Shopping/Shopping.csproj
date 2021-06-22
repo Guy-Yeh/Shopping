@@ -112,6 +112,7 @@
     <Content Include="Customer\Chat.aspx" />
     <Content Include="DorpDownList2ComboBox.js" />
     <Content Include="DropDownList2ComboBox.css" />
+    <Content Include="images\def.jpg" />
     <Content Include="images\dowm.png" />
     <Content Include="images\up.png" />
     <Content Include="images\CAT1.png" />
