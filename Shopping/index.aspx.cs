@@ -20,7 +20,7 @@ namespace Shopping
         string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
         string show_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ShowPictureConnectionString"].ConnectionString;
 
-        //public static string loginstatus = "";
+        public static string loginstatus = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {

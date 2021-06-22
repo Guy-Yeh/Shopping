@@ -307,6 +307,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="border-color: #FFFFFF; font-size: 50px; background-color: #FFFFFF; color: #000000;">更多商品
                 </a>
             </div>
+                
                 <div class="collapse" id="collapseExample">
                    <div class="content-top1">
                         <script src="../js/index.js"> </script>

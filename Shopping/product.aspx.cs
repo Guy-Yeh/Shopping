@@ -15,8 +15,13 @@ namespace Shopping
         string customers_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
         string product_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
         string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
-        protected void Page_Load(object sender, EventArgs e)
+        
+    protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["productName"] != null)
+            {
+                Session["product"] = Request.QueryString["productName"];
+            }
             if (Session["product"] == null)
             {
                 Response.Redirect("index");

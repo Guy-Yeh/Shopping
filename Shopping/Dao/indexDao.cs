@@ -6,13 +6,14 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Windows;
 
 namespace Shopping.Dao
 {
     public class indexDao : BaseDao
     {
         string product_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
-
+        string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
         public List<indexModel> indexproduct()
         {
             DataTable dt = new DataTable();
@@ -32,6 +33,6 @@ namespace Shopping.Dao
             var indexModel = dt.ToList<indexModel>();
             List<indexModel> orders = indexModel.ToList<indexModel>();
             return orders;
-        }        
+        }
     }
 }
