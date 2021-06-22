@@ -17,8 +17,8 @@ namespace Shopping
 {
     public partial class managerproduct : Page
     {
-        string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;        
-
+        string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
+        
         public void addtable()
         {
             DataTable dt = new DataTable();
@@ -170,6 +170,7 @@ namespace Shopping
             changecocolor();
             if (!IsPostBack)
             {
+                
                 reviewProduct();
                 cleanbt4();
                 cleansub();
@@ -255,6 +256,7 @@ namespace Shopping
             if (helpSQL.Text != "")
             {
                 searchProduct(helpSQL.Text);
+                
             }
             else
             {
@@ -480,12 +482,18 @@ namespace Shopping
         }
 
 
+
+
+
+
+        
+
         //protected void product_RowDataBound(object sender, GridViewRowEventArgs e)
         //{
-        //    //if(e.Row.RowState> 0 && DataControlRowState.Edit>0)
-        //    //{
-        //    //    e.Row.FindControl("Label1").Focus();
-        //    //} 
+        //    if (e.Row.RowState > 0 && DataControlRowState.Edit > 0)
+        //    {
+        //        e.Row.FindControl("Label1").Focus();
+        //    }
         //}
     }
     
