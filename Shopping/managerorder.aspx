@@ -46,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <asp:Label ID="helpSQLO22" runat="server" Text="helpSQLO22" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-4 logo">
-                        <a href="index.html">
+                        <a href="">
                             <img src="images/CAT4.png" alt=""></a>
                     </div>
 
@@ -68,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-8 h_menu4">
                         <ul class="memenu skyblue">
                             <li><a href="manageraccount">帳戶</a></li>
-                            <li><a href="managerproduct">產品</a></li>
+                            <li><a href="managerproduct">商品</a></li>
                             <li><a href="managerorder">訂單</a></li>
                             <li><a href="managershoppingcar">購物車</a></li>
                             <li><a href="managercontact">回覆訊息</a></li>
@@ -198,7 +198,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 <div class="col-sm-2">
                                     <br>
-                                    <asp:Button ID="all" runat="server" Text="查看所有" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="140px" Height="40" />
+                                    <asp:Button ID="all" runat="server" Text="查看所有" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="150px" Height="40" />
                                 </div>
                             </div>
                         </div>
@@ -277,7 +277,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <ItemTemplate>
                                             <asp:Label ID="Label9" runat="server" Text='<%# Bind("name") %>'></asp:Label>
                                         </ItemTemplate>
-                                        <HeaderStyle Width="100px" />
+                                        <HeaderStyle Width="110px" />
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="電話" SortExpression="phone">
                                         <EditItemTemplate>
@@ -304,7 +304,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <ItemTemplate>
                                             <asp:Label ID="Label12" runat="server" Text='<%# Bind("status") %>'></asp:Label>
                                         </ItemTemplate>
-                                        <HeaderStyle Width="110px" />
+                                        <HeaderStyle Width="100px" />
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" Visible="False" />
                                     <asp:BoundField DataField="updateInitdate" HeaderText="更新日期" SortExpression="updateInitdate" ReadOnly="True" >

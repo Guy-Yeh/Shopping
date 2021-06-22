@@ -40,7 +40,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					
 				</div>
 				<div class="col-md-4 logo">
-					<a href="index.html"><img src="images/CAT4.png" alt=""></a>	
+					<a href=""><img src="images/CAT4.png" alt=""></a>	
 				</div>
 		
 			<div class="col-md-4 header-left">		
@@ -62,12 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
 					  	
-				      <li><a href="manageraccount">帳戶</a></li>
-                      <li><a href="managerproduct">產品</a></li>
-                      <li><a href="managerorder">訂單</a></li>
-                      <li><a href="managershoppingcar">購物車</a></li>
-                      <li><a href="managercontact">回覆訊息</a></li>
-					  <li><a href="managershowpicture">主頁顯示</a></li>
+				     
 			  </ul> 
 			</div>
 		<div class="col-md-2 search">		
@@ -132,7 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			   </div>	
 			    <div class="col-md-6 login-left">
 			  	 <h4>提醒:</h4>
-				 <p>透過使用本網站來管理您的線上購物商店，您將能夠更新並管理以下項目: <br>1.顧客帳戶&nbsp&nbsp2.商品項目&nbsp&nbsp3.訂單進度追蹤&nbsp&nbsp4.購物車資料蒐集&nbsp&nbsp5.顧客問題回覆</p>
+				 <p>透過使用本網站來管理您的線上購物商店，您將能夠更新並管理以下項目: <br>1.顧客帳戶&nbsp&nbsp2.商品項目&nbsp&nbsp3.訂單進度追蹤&nbsp&nbsp4.購物車資料蒐集&nbsp&nbsp5.顧客問題回覆<br>6.主頁圖片顯示設定</p>
 				 
 				 <h4>IT聯繫方式:</h4>
 				 <p>如果有無法登入或操作上的問題麻煩聯繫以下窗口，感謝您的配合！

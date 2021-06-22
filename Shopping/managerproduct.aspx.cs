@@ -149,6 +149,7 @@ namespace Shopping
             hintp2.ForeColor = Color.Black;
             hintp3.ForeColor = Color.Black;
             hintp4.ForeColor = Color.Black;
+            hintp5.ForeColor = Color.Black;
         }
 
 
@@ -167,6 +168,7 @@ namespace Shopping
             hintp2.Text = "";
             hintp3.Text = "";
             hintp4.Text = "";
+            hintp5.Text = "";
             changecocolor();
             if (!IsPostBack)
             {
@@ -424,15 +426,8 @@ namespace Shopping
                                 }
                                 else
                                 {
-                                    string picturePath2 = "";                                   
-                                    SqlConnection connection2 = new SqlConnection(s_data);
-                                    string sql2 = $"insert into [Products](productName,picture,category,inventory,price,introduction) values(N'{TextBox10.Text}',N'{picturePath2}',N'{TextBox11.Text}','{TextBox12.Text}','{TextBox13.Text}',N'{Request.Form["contactresponse"].ToString()}')";
-                                    SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                    connection2.Open();
-                                    command2.ExecuteNonQuery();
-                                    connection2.Close();
-                                    cleansub();
-                                    reviewProduct();
+                                    hintp5.ForeColor = Color.Red;
+                                    hintp5.Text = "圖片未上傳 請確認";
                                 }
                             }
                             else

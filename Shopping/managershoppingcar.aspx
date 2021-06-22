@@ -42,7 +42,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                        
                     </div>
                     <div class="col-md-4 logo">
-                        <a href="index.html">
+                        <a href="">
                             <img src="images/CAT4.png" alt=""></a>
                     </div>
 
@@ -65,7 +65,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-8 h_menu4">
                         <ul class="memenu skyblue">
                             <li><a href="manageraccount">帳戶</a></li>
-                            <li><a href="managerproduct">產品</a></li>
+                            <li><a href="managerproduct">商品</a></li>
                             <li><a href="managerorder">訂單</a></li>
                             <li><a href="managershoppingcar">購物車</a></li>
                             <li><a href="managercontact">回覆訊息</a></li>
@@ -75,9 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-2 search">
                         <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"></i></a>
                     </div>
-                    </div>
-                </div>
-            </div>
+               
                     <br>
                     <div class="container">
                         <div style="text-align: center">
@@ -95,15 +93,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <li>
                                                 <asp:Label ID="customerAccount" runat="server" Text="帳號"></asp:Label></li>
                                             <li>
-                                                <asp:DropDownList ID="DDLSearchCustomerAccount" runat="server" AppendDataBoundItems="True" Width="195px" Height="30px">
+                                                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                                                <%--<asp:DropDownList ID="DDLSearchCustomerAccount" runat="server" AppendDataBoundItems="True" Width="195px" Height="30px">
                                                     <asp:ListItem Value="0">請選擇</asp:ListItem>
-                                                </asp:DropDownList>
+                                                </asp:DropDownList>--%>
                                                 <asp:SqlDataSource ID="SqlDataSourceCustomerAccount" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT [account] FROM [Customers]"></asp:SqlDataSource>
                                             </li>
                                             <li>
                                                 <asp:Label ID="hintCustomerAccount" runat="server" Text=""></asp:Label></li>
                                             <li>
-                                                <asp:Button ID="customerAccountsearch" runat="server" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="customerAccountsearch_Click" /></li>
+                                                <asp:Button ID="customerAccountsearch" runat="server" Text="送出" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="customerAccountsearch_Click" /></li>
                                             <br>
                                             <br>
                                         </ul>
@@ -124,7 +123,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <li>
                                                 <asp:Label ID="hintProductName" runat="server" Text=""></asp:Label></li>
                                             <li>
-                                                <asp:Button ID="productNamesearch" runat="server" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="productNamesearch_Click" /></li>
+                                                <asp:Button ID="productNamesearch" runat="server" Text="送出" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="productNamesearch_Click" /></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -145,7 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <li>
                                                 <asp:Label ID="hintproductColor" runat="server" Text=""></asp:Label></li>
                                             <li>
-                                                <asp:Button ID="colorsearch" runat="server" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="colorsearch_Click" /></li>
+                                                <asp:Button ID="colorsearch" runat="server" Text="送出" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="colorsearch_Click" /></li>
                                             <br>
                                         </ul>
                                     </div>
@@ -155,9 +154,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-7">
+                            <div class="col-sm-9">
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <br>
                                 <br>
                                 <asp:Button ID="all" runat="server" Text="查看所有購物車" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="150px" height="40"/>
@@ -167,10 +166,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="container">
                          <div class="row">
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
                             </div>
-                             <div class="col-sm-7">
-                        <asp:GridView ID="usershoppingcar" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" HorizontalAlign="Center" AllowCustomPaging="True">
+                             <div class="col-sm-8">
+                        <asp:GridView ID="usershoppingcar" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" HorizontalAlign="Center" AllowCustomPaging="True" Width="830">
                             <PagerStyle  ForeColor="Black" HorizontalAlign="Center" />
                             <Columns>
                                 <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" />
@@ -199,6 +198,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                   </div>
                  </div>
+                </div>
+                </div>
                 <!--footer-->
                 <div class="footer">
                     <div class="container">
