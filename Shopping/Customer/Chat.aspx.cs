@@ -119,7 +119,7 @@ namespace Shopping.Customer
 
 
                 connection.Close();
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "test", "setTimeout( function(){alert('回覆成功');},0);", true);
+                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "test", "setTimeout( function(){alert('回覆成功');},0);", true);
                 //MessageBox.Show("回覆成功");
                 reviewChat();
             }
