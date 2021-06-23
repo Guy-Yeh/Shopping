@@ -341,7 +341,8 @@ namespace Shopping.Customer
             {
                 if (emailRule == false)
                 {
-                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('Mail格式錯誤，\n請輸入正確mail');},200);", true);
+                    MessageBox.Show("Mail格式錯誤，\n請輸入正確mail''");
+                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('Mail格式錯誤，\n請輸入正確mail');},200);", true);
 
                 }
                 else
@@ -358,7 +359,8 @@ namespace Shopping.Customer
                         {
 
                             connection.Close();
-                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('該Mail已註冊，\n請輸入其他Mail');},200);", true);
+                            MessageBox.Show("該Mail已註冊，\n請輸入其他Mail'");
+                            //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('該Mail已註冊，\n請輸入其他Mail');},200);", true);
                             newMailInput = "";
                             return;
                         }
@@ -384,7 +386,8 @@ namespace Shopping.Customer
                 }
             }
             else {
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('Mail欄位不得為空，\n請重新輸入您的Mail');},200);", true);
+                MessageBox.Show("Mail欄位不得為空，\n請重新輸入您的Mail");
+                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('Mail欄位不得為空，\n請重新輸入您的Mail');},200);", true);
             }
 
 
@@ -442,7 +445,8 @@ namespace Shopping.Customer
                     smtp.Send(mail);
                 }
             }
-            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('驗證碼已寄送至您的Mail');},200);", true);
+            MessageBox.Show("驗證碼已寄送至您的Mail");
+            //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('驗證碼已寄送至您的Mail');},200);", true);
         }
 
 
@@ -453,9 +457,10 @@ namespace Shopping.Customer
 
             if (Session[newMailInput] != null && Session[newMailInput].ToString() != "" && Session[newMailInput].ToString() == testNumberMailInput)
             {
-                try { 
-                // 驗證成功
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('Mail已修改');},200);", true);
+                try {
+                    // 驗證成功
+                    MessageBox.Show("Mail已修改");
+                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('Mail已修改');},200);", true);
 
 
 
@@ -488,7 +493,8 @@ namespace Shopping.Customer
             }
             else
             {
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btm", "setTimeout( function(){alert('驗證碼錯誤');},200);", true);
+                MessageBox.Show("驗證碼錯誤");
+                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btm", "setTimeout( function(){alert('驗證碼錯誤');},200);", true);
 
                 // to do 
             }

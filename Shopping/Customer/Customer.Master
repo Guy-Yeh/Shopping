@@ -51,7 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="header-top">
                 <div class="container">
                     <div class="col-sm-4 world">
-                        <span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
+                        <%--<span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000--%>
                         <%--<a style="color: #52d0c4; display: flex; justify-content: flex-end; padding: 0px 20% 0 0;" href="../index.aspx">來去逛逛</a>--%>
 
                     </div>

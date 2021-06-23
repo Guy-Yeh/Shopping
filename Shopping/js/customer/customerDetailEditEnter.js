@@ -41,7 +41,7 @@ $(document).ready(function () {
             $.ajax({
                 type: "post",
                 url: "CustomerDetail.aspx/DelAccount",
-                data: JSON.stringify({ account: customer.account, access: 'no' }),
+                data: JSON.stringify({ account: customer.account, access: 'No' }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: (e) => {
