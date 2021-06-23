@@ -27,6 +27,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
 <!-- slide -->
+<script src="js/responsiveslides.min.js"></script>
 </head>
 <body>
 <form runat="server" method="post">
@@ -110,7 +111,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="account_grid">
 			   <div class="col-md-6 login-right">
 				<form>
-
 					<span>帳號</span>
 				    <asp:TextBox ID="account" runat="server" Height="30px" Width="220px" required="required" aria-required="true" oninvalid="setCustomValidity('這是必填項目，請輸入')" oninput="this.setCustomValidity('')"></asp:TextBox>
 					<br>
@@ -136,6 +136,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				 </p>
 			   </div>
 			   <div class="clearfix"> </div>
+
 			 </div>
 	</div>
 </div>
