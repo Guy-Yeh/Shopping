@@ -136,6 +136,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </li><br>
                             <li>數量：
                                 <asp:DropDownList ID="DropDownList2" runat="server">
+                                    <asp:ListItem>1</asp:ListItem>
+                                    <asp:ListItem>2</asp:ListItem>
+                                    <asp:ListItem>3</asp:ListItem>
                                 </asp:DropDownList></li><br>
                             <li>
                                 <asp:Label ID="Label5" runat="server" Text="庫存：" Font-Size="Medium"></asp:Label></li>

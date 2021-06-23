@@ -131,7 +131,7 @@ namespace Shopping
                         array[3] = read1[5].ToString();
                         //連線到orderdetail確認購物車內是否有該商品
                         SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'and customerAccount='{Session["loginstatus"]}'";
                         SqlCommand command2 = new SqlCommand(sql2, connection2);
                         connection2.Open();
                         SqlDataReader read2 = command2.ExecuteReader();
@@ -141,7 +141,7 @@ namespace Shopping
                             //如果購物車內的商品數量還未超過庫存
                             if (Convert.ToInt32(read2[0]) + 1 < Convert.ToInt32(read1[4]))
                             {
-                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                                 connection2.Close();
                                 connection2.Open();
                                 SqlCommand command3 = new SqlCommand(sql3, connection2);
@@ -216,7 +216,7 @@ namespace Shopping
                         array[3] = read1[5].ToString();
                         //連線到orderdetail確認購物車內是否有該商品
                         SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                         SqlCommand command2 = new SqlCommand(sql2, connection2);
                         connection2.Open();
                         SqlDataReader read2 = command2.ExecuteReader();
@@ -226,7 +226,7 @@ namespace Shopping
                             //如果購物車內的商品數量還未超過庫存
                             if (Convert.ToInt32(read2[0]) + 1 < Convert.ToInt32(read1[4]))
                             {
-                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                                 connection2.Close();
                                 connection2.Open();
                                 SqlCommand command3 = new SqlCommand(sql3, connection2);
@@ -301,7 +301,7 @@ namespace Shopping
                         array[3] = read1[5].ToString();
                         //連線到orderdetail確認購物車內是否有該商品
                         SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                         SqlCommand command2 = new SqlCommand(sql2, connection2);
                         connection2.Open();
                         SqlDataReader read2 = command2.ExecuteReader();
@@ -311,7 +311,7 @@ namespace Shopping
                             //如果購物車內的商品數量還未超過庫存
                             if (Convert.ToInt32(read2[0]) + 1 < Convert.ToInt32(read1[4]))
                             {
-                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                                 connection2.Close();
                                 connection2.Open();
                                 SqlCommand command3 = new SqlCommand(sql3, connection2);
@@ -386,7 +386,7 @@ namespace Shopping
                         array[3] = read1[5].ToString();
                         //連線到orderdetail確認購物車內是否有該商品
                         SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                         SqlCommand command2 = new SqlCommand(sql2, connection2);
                         connection2.Open();
                         SqlDataReader read2 = command2.ExecuteReader();
@@ -396,7 +396,7 @@ namespace Shopping
                             //如果購物車內的商品數量還未超過庫存
                             if (Convert.ToInt32(read2[0]) + 1 < Convert.ToInt32(read1[4]))
                             {
-                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                                 connection2.Close();
                                 connection2.Open();
                                 SqlCommand command3 = new SqlCommand(sql3, connection2);
@@ -471,7 +471,7 @@ namespace Shopping
                         array[3] = read1[5].ToString();
                         //連線到orderdetail確認購物車內是否有該商品
                         SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                         SqlCommand command2 = new SqlCommand(sql2, connection2);
                         connection2.Open();
                         SqlDataReader read2 = command2.ExecuteReader();
@@ -481,7 +481,7 @@ namespace Shopping
                             //如果購物車內的商品數量還未超過庫存
                             if (Convert.ToInt32(read2[0]) + 1 < Convert.ToInt32(read1[4]))
                             {
-                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                                 connection2.Close();
                                 connection2.Open();
                                 SqlCommand command3 = new SqlCommand(sql3, connection2);
@@ -556,7 +556,7 @@ namespace Shopping
                         array[3] = read1[5].ToString();
                         //連線到orderdetail確認購物車內是否有該商品
                         SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                         SqlCommand command2 = new SqlCommand(sql2, connection2);
                         connection2.Open();
                         SqlDataReader read2 = command2.ExecuteReader();
@@ -566,7 +566,7 @@ namespace Shopping
                             //如果購物車內的商品數量還未超過庫存
                             if (Convert.ToInt32(read2[0]) + 1 < Convert.ToInt32(read1[4]))
                             {
-                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                                 connection2.Close();
                                 connection2.Open();
                                 SqlCommand command3 = new SqlCommand(sql3, connection2);
@@ -641,7 +641,7 @@ namespace Shopping
                         array[3] = read1[5].ToString();
                         //連線到orderdetail確認購物車內是否有該商品
                         SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                         SqlCommand command2 = new SqlCommand(sql2, connection2);
                         connection2.Open();
                         SqlDataReader read2 = command2.ExecuteReader();
@@ -651,7 +651,7 @@ namespace Shopping
                             //如果購物車內的商品數量還未超過庫存
                             if (Convert.ToInt32(read2[0]) + 1 < Convert.ToInt32(read1[4]))
                             {
-                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                                 connection2.Close();
                                 connection2.Open();
                                 SqlCommand command3 = new SqlCommand(sql3, connection2);
@@ -726,7 +726,7 @@ namespace Shopping
                         array[3] = read1[5].ToString();
                         //連線到orderdetail確認購物車內是否有該商品
                         SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                         SqlCommand command2 = new SqlCommand(sql2, connection2);
                         connection2.Open();
                         SqlDataReader read2 = command2.ExecuteReader();
@@ -736,7 +736,7 @@ namespace Shopping
                             //如果購物車內的商品數量還未超過庫存
                             if (Convert.ToInt32(read2[0]) + 1 < Convert.ToInt32(read1[4]))
                             {
-                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                                string sql3 = $"update OrderDetail set qty={Convert.ToInt32(read2[0]) + 1} where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                                 connection2.Close();
                                 connection2.Open();
                                 SqlCommand command3 = new SqlCommand(sql3, connection2);
