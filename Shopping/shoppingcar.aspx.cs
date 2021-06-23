@@ -54,15 +54,16 @@ namespace Shopping
             string sql3 = $"select * from OrderDetail where cart=N'是' and customerAccount='{Session["loginstatus"]}'";
             SqlCommand command3 = new SqlCommand(sql3, connection3);
             connection3.Open();
-            SqlDataReader read3 = command1.ExecuteReader();
-            if (read1.Read())
-            {
-                Button2.Visible = false;
-            }
-            else
+            SqlDataReader read3 = command3.ExecuteReader();
+            if (read3.Read())
             {
                 Button2.Visible = true;
             }
+            else
+            {
+                Button2.Visible = false;
+            }
+            connection3.Close();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
