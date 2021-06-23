@@ -247,7 +247,7 @@ namespace Shopping
             {
                 account2 = reader[4].ToString();
                 serialTime = reader[0].ToString();
-                mailHead = $@"<table border=0 style='border-bottom:1px #008080 solid;'width='500'><tbody><tr><td>{account2}您好,</tr></td><tr><td>&nbsp;</tr></td><tr><td>已收到您的訂單{serial}。</tr></td><tr><td>單單服飾已經正在確認您的訂單。</tr></td></tbody></table>";
+                mailHead = $@"<table border=0 style='border-bottom:1px #008080 solid;'width='500'><tbody><tr><td>{account2}您好,</tr></td><tr><td>&nbsp;</tr></td><tr><td>已收到您的訂單{serial}。</tr></td><tr><td>丹丹服飾已經正在確認您的訂單。</tr></td></tbody></table>";
                 mailHead2 = $@"<table border=0 style='border-bottom:1px #008080 solid;'width='500'><tbody><tr><td style='font-weight:bold'>訂單明細</tr></td><tr><td>&nbsp;</tr></td><tr><td  width='220'>訂單編號:</td><td width='220'>{serial}</td></tr><tr><td width='220'>訂單日期:<td width='220'>{serialTime}</td></tr></tbody></table>";
                 mailContent2 = $@"<table border=0 style='border-bottom:1px #008080 solid;'width='500'><tr><td style='font-weight:bold'>出貨資訊</tr></td><tr><td>&nbsp;</tr></td><tr><td width='220'>收件人:</td><td width='220'>{reader[1]} </td></tr><tr><td width='150'>聯絡電話:</td><td width='220'>{reader[2]}</td></tr><tr><td width='150'>寄送地址:</td><td width='220'>{reader[3]}</td></tr></tbody></table>";
             }

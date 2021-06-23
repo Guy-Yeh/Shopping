@@ -34,7 +34,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <asp:Label ID="helpSQL2" runat="server" Text="" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-4 logo">
-                        <a href="index.html">
+                        <a href="">
                             <img src="images/CAT4.png" alt=""></a>
                     </div>
 
@@ -56,7 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-8 h_menu4">
                         <ul class="memenu skyblue">
                             <li><a href="manageraccount">帳戶</a></li>
-                            <li><a href="managerproduct">產品</a></li>
+                            <li><a href="managerproduct">商品</a></li>
                             <li><a href="managerorder">訂單</a></li>
                             <li><a href="managershoppingcar">購物車</a></li>
                             <li><a href="managercontact">回覆訊息</a></li>
@@ -96,7 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <h4>查詢方式:帳號</h4>
                                 <ul>
                                     <li>
-                                        <input type="text" id="searchaccount" name="searchaccount" class="form-control" placeholder="account"></li>
+                                        <input type="text" id="searchaccount" name="searchaccount" class="form-control" placeholder="請輸入帳號"></li>
                                     <li>
                                         <asp:Label ID="hintSearch" runat="server" Text=""></asp:Label></li>
                                     <li>
@@ -178,11 +178,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-8">
+                    <div class="col-sm-9">
                     </div>
                     <div class="col-sm-2">
                         <br>
-                        <asp:Button ID="all" runat="server" Text="查看尚未回覆" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="150px" Height="40" />
+                        <asp:Button ID="all" runat="server" Text="查看尚未回覆" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="135px" Height="40" />
                     </div>
                 </div>
             </div>
@@ -190,16 +190,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="row">
                     <div class="col-sm-2">
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-10">
 
                         <asp:GridView ID="usercontact" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" AllowPaging="True" OnPageIndexChanging="usercontact_PageIndexChanging" OnRowCancelingEdit="usercontact_RowCancelingEdit" OnRowEditing="usercontact_RowEditing" OnRowUpdating="usercontact_RowUpdating">
                             <PagerStyle ForeColor="Black" HorizontalAlign="Center" />
                             <Columns>
                                 <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                                <asp:BoundField DataField="account" HeaderText="account" SortExpression="account" ReadOnly="True" />
-                                <asp:BoundField DataField="message" HeaderText="message" SortExpression="message" ReadOnly="True" />
-                                <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" ReadOnly="True" />
-                                <asp:TemplateField HeaderText="response" SortExpression="response">
+                                <asp:BoundField DataField="account" HeaderText="帳號" SortExpression="account" ReadOnly="True" />
+                                <asp:BoundField DataField="message" HeaderText="顧客訊息" SortExpression="message" ReadOnly="True" />
+                                <asp:BoundField DataField="initdate" HeaderText="發問日期" SortExpression="initdate" ReadOnly="True" />
+                                <asp:TemplateField HeaderText="回覆內容" SortExpression="response">
                                     <EditItemTemplate>
                                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("response") %>'></asp:TextBox>
                                     </EditItemTemplate>
@@ -207,7 +207,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("response") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="updateInitdate" HeaderText="updateInitdate" SortExpression="updateInitdate" ReadOnly="True" />
+                                <asp:BoundField DataField="updateInitdate" HeaderText="回覆日期" SortExpression="updateInitdate" ReadOnly="True" />
                                 <asp:TemplateField HeaderText="回覆" ShowHeader="False">
                                     <EditItemTemplate>
                                         <asp:LinkButton ID="Update" runat="server" CausesValidation="True" CommandName="Update" Text="更新" OnClientClick='return confirm("確定回覆?")'></asp:LinkButton>

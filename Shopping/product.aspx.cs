@@ -41,8 +41,11 @@ namespace Shopping
                         Image1.ImageUrl = read1[2].ToString();
                         Label2.Text = read1[5].ToString();
                         Label5.Text ="尚餘庫存：" + read1[4].ToString();
+                        DropDownList2.Items.Clear();
                         for (int i = 1; i <= Convert.ToInt32(read1[4]) && i <= 6; i++)
+                        {
                             DropDownList2.Items.Add($"{i}");
+                        }
                     }
                 }
                 connection1.Close();
@@ -62,8 +65,11 @@ namespace Shopping
                         Image1.ImageUrl = read2[2].ToString();
                         Label2.Text = read2[5].ToString();
                         Label5.Text = "尚餘庫存：" + read2[4].ToString();
-                        for (int i = 1; i<= Convert.ToInt32(read2[4]) && i<=6 ; i++)
+                        DropDownList2.Items.Clear();
+                        for (int i = 1; i <= Convert.ToInt32(read2[4]) && i <= 6; i++)
+                        {                            
                             DropDownList2.Items.Add($"{i}");
+                        }
                        
                     }
                 }
@@ -151,7 +157,7 @@ namespace Shopping
                         array[3] = read1[5].ToString();
                         //連線到orderdetail確認購物車內是否有該商品
                         SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是'";
+                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                         SqlCommand command2 = new SqlCommand(sql2, connection2);
                         connection2.Open();
                         SqlDataReader read2 = command2.ExecuteReader();

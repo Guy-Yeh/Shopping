@@ -15,7 +15,7 @@ namespace Shopping
     public partial class managershoppingcar : Page
     {
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
-
+        string s_data2 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;
 
         public void reviewOrder()
         {
@@ -87,12 +87,13 @@ namespace Shopping
 
         public void cleanbtsca()
         {
-            DataView dv = (DataView)this.SqlDataSourceCustomerAccount.Select(new DataSourceSelectArguments());
-            DDLSearchCustomerAccount.Items.Clear();
-            DDLSearchCustomerAccount.Items.Add("請選擇");
-            DDLSearchCustomerAccount.DataSource = dv;
-            DDLSearchCustomerAccount.DataTextField = "account";
-            DDLSearchCustomerAccount.DataBind();
+            TextBox2.Text = "";
+            //DataView dv = (DataView)this.SqlDataSourceCustomerAccount.Select(new DataSourceSelectArguments());
+            //DDLSearchCustomerAccount.Items.Clear();
+            //DDLSearchCustomerAccount.Items.Add("請選擇");
+            //DDLSearchCustomerAccount.DataSource = dv;
+            //DDLSearchCustomerAccount.DataTextField = "account";
+            //DDLSearchCustomerAccount.DataBind();
         }
 
         public void cleanbtspn()
@@ -132,14 +133,14 @@ namespace Shopping
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["access"] != null && Session["access"] == "ok")
-            //{
+            if (Session["access"] != null && Session["access"] == "ok")
+            {
 
-            //}
-            //else
-            //{
-            //    Response.Redirect("manager");
-            //}
+            }
+            else
+            {
+                Response.Redirect("manager");
+            }
 
             hintCustomerAccount.Text = "";
             hintProductName.Text = "";
@@ -158,16 +159,39 @@ namespace Shopping
 
         protected void customerAccountsearch_Click(object sender, EventArgs e)
         {
-            if (DDLSearchCustomerAccount.SelectedItem.Text != "請選擇")
+            if (TextBox2.Text != "")
             {
-                searchOrder("customerAccount", DDLSearchCustomerAccount.Text);
-                cleanbtsca();
+                string sql = $"select * from Customers where account = '{TextBox2.Text}'";
+                SqlConnection connection = new SqlConnection(s_data2);
+                SqlCommand command = new SqlCommand(sql,connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    searchOrder("customerAccount", TextBox2.Text);
+                    cleanbtsca();
+                }
+                else
+                {
+                    hintCustomerAccount.ForeColor = Color.Red;
+                    hintCustomerAccount.Text = "帳號不存在";
+                }
             }
             else
             {
                 hintCustomerAccount.ForeColor = Color.Red;
-                hintCustomerAccount.Text = "請選擇項目";
+                hintCustomerAccount.Text = "帳號不得為空"; 
             }
+            //if (DDLSearchCustomerAccount.SelectedItem.Text != "請選擇")
+            //{
+            //    searchOrder("customerAccount", DDLSearchCustomerAccount.Text);
+            //    cleanbtsca();
+            //}
+            //else
+            //{
+            //    hintCustomerAccount.ForeColor = Color.Red;
+            //    hintCustomerAccount.Text = "請選擇項目";
+            //}
 
         }
 

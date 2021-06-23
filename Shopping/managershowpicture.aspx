@@ -33,7 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <asp:Label ID="helpSQL" runat="server" Text="" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-4 logo">
-                        <a href="index.html">
+                        <a href="">
                             <img src="images/CAT4.png" alt=""></a>
                     </div>
                     <div class="col-md-4 header-left">
@@ -53,7 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-8 h_menu4">
                     <ul class="memenu skyblue">
                         <li><a href="manageraccount">帳戶</a></li>
-                        <li><a href="managerproduct">產品</a></li>
+                        <li><a href="managerproduct">商品</a></li>
                         <li><a href="managerorder">訂單</a></li>
                         <li><a href="managershoppingcar">購物車</a></li>
                         <li><a href="managercontact">回覆訊息</a></li>
@@ -350,12 +350,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                 </div>
+           </div>
         </div>
        
         <!---->
 
 
-        </div>
+
         
        
         <!---->

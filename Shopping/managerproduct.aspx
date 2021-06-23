@@ -33,7 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <asp:Label ID="helpSQL" runat="server" Text="" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-4 logo">
-                        <a href="index.html">
+                        <a href="">
                             <img src="images/CAT4.png" alt=""></a>
                     </div>
                     <div class="col-md-4 header-left">
@@ -53,7 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-8 h_menu4">
                     <ul class="memenu skyblue">
                         <li><a href="manageraccount">帳戶</a></li>
-                        <li><a href="managerproduct">產品</a></li>
+                        <li><a href="managerproduct">商品</a></li>
                         <li><a href="managerorder">訂單</a></li>
                         <li><a href="managershoppingcar">購物車</a></li>
                         <li><a href="managercontact">回覆訊息</a></li>
@@ -166,7 +166,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </asp:TableCell>
                                         <asp:TableCell HorizontalAlign="Center">
                                             <asp:FileUpload ID="FileUpload2" runat="server" Width="160" />
-                                            <%--<asp:Label ID="Label10" runat="server" Text="非必要上傳" ForeColor="#52d0c4"></asp:Label>--%>
+                                            <asp:Label ID="hintp5" runat="server" Text="" ForeColor="#52d0c4"></asp:Label>
                                         </asp:TableCell>
                                         <asp:TableCell>
                                             <asp:TextBox ID="TextBox12" runat="server" Width="110"></asp:TextBox>
@@ -200,7 +200,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="col-sm-2">
                             
                             <br>
-                            <asp:Button ID="all" runat="server" Text="查看所有" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="125px" Height="40" />
+                            <asp:Button ID="all" runat="server" Text="查看所有" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="145px" Height="40" />
                             <br>
                         </div>
                     </div>
@@ -209,7 +209,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="row">
                         <div class="col-sm-2">
                         </div>
-                        
+ 
                    <div class="col-sm-9">
                     <asp:GridView ID="product" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="product_RowDeleting" OnRowCancelingEdit="product_RowCancelingEdit" OnRowEditing="product_RowEditing" OnRowUpdating="product_RowUpdating" AllowPaging="True" OnPageIndexChanging="product_PageIndexChanging">
                         <PagerStyle ForeColor="Black" HorizontalAlign="Center" />
@@ -316,21 +316,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
         </div>
-        <div id="small-dialog" class="mfp-hide">
-            <div class="search-top">
-                <div class="login">
-                    <input type="submit" value="">
-                    <input type="text" value="Type something..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
-                </div>
-                <p>Shopping</p>
-            </div>
-        </div>
+       
         <!---->
 
 
-        </div>
-        </div>
-        </div>
+        
         <!---->
 
         <!--footer-->

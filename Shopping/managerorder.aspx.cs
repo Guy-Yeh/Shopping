@@ -381,14 +381,14 @@ namespace Shopping
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["access"] != null && Session["access"] == "ok")
-            //{
+            if (Session["access"] != null && Session["access"] == "ok")
+            {
 
-            //}
-            //else
-            //{
-            //    Response.Redirect("manager");
-            //}
+            }
+            else
+            {
+                Response.Redirect("manager");
+            }
             hintSerial.Text = "";
             hintCustomerAccount.Text = "";
             hintProductName.Text = "";
