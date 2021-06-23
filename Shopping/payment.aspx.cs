@@ -65,24 +65,42 @@ namespace Shopping
             return f;
         }
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {           
+            SqlConnection connection6 = new SqlConnection(orderdetail_data);
+            string sql6 = $"select productName,productColor,qty from OrderDetail where customerAccount=N'{Session["loginstatus"]}' and cart=N'是'";
+            SqlCommand command6 = new SqlCommand(sql6, connection6);
+            connection6.Open();
+            SqlDataReader read6 = command6.ExecuteReader();
+            while (read6.Read())
+            {
+                SqlConnection connection7 = new SqlConnection(product_data);
+                string sql7 = $"select inventory from Products where productName =N'{read6[0]}' and category=N'{read6[1]}'";
+                SqlCommand command7 = new SqlCommand(sql7, connection7);
+                connection7.Open();
+                SqlDataReader read7 = command7.ExecuteReader();
+                if (read7.Read())
+                {
+                    if (Convert.ToInt32(read7[0]) < Convert.ToInt32(read6[2]))
+                    {
+                        Label8.Text=Label8.Text + $"購物車內的{read6[0]}數量超過庫存上限，先幫您移出購物車<br>";
+
+                        //連線至orderdetail
+                        SqlConnection connection = new SqlConnection(orderdetail_data);
+                        //如果購物車內有商品則刪除該帳號的購物車商品
+                        string sql = $"delete from OrderDetail where productName =N'{read6[0]}' and productColor=N'{read6[1]}' and customerAccount=N'{Session["loginstatus"]}' and cart=N'是'";
+                        SqlCommand command = new SqlCommand(sql, connection);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+                connection7.Close();
+            }
+            connection6.Close();
             if (Session["loginstatus"] != null)
             {
                 Button4.Text = "會員資料";
                 Button3.Text = "登出";
-                SqlConnection connection1 = new SqlConnection(customers_data);
-                string sq11 = $"select account from Customers";
-                SqlCommand command1 = new SqlCommand(sq11, connection1);
-                connection1.Open();
-                SqlDataReader read1 = command1.ExecuteReader();
-                if (read1.HasRows)
-                {
-                    if (read1.Read())
-                    {
-
-                    }
-                }
-                connection1.Close();
                 //連線至orderdetail
                 SqlConnection connection2 = new SqlConnection(orderdetail_data);
                 string sq12 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
@@ -146,10 +164,6 @@ namespace Shopping
                     }
                     connection4.Close();
                 }
-            }
-            else
-            {
-                Response.Redirect("index");
             }
         }
         //確認送出訂單

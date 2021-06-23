@@ -41,11 +41,6 @@ namespace Shopping
                         Image1.ImageUrl = read1[2].ToString();
                         Label2.Text = read1[5].ToString();
                         Label5.Text ="尚餘庫存：" + read1[4].ToString();
-                        DropDownList2.Items.Clear();
-                        for (int i = 1; i <= Convert.ToInt32(read1[4]) && i <= 6; i++)
-                        {
-                            DropDownList2.Items.Add($"{i}");
-                        }
                     }
                 }
                 connection1.Close();
@@ -65,12 +60,6 @@ namespace Shopping
                         Image1.ImageUrl = read2[2].ToString();
                         Label2.Text = read2[5].ToString();
                         Label5.Text = "尚餘庫存：" + read2[4].ToString();
-                        DropDownList2.Items.Clear();
-                        for (int i = 1; i <= Convert.ToInt32(read2[4]) && i <= 6; i++)
-                        {
-                            DropDownList2.Items.Add($"{i}");
-                        }
-
                     }
                 }
                 connection2.Close();

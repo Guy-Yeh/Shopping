@@ -144,6 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <asp:TextBox ID="TextBox3" runat="server" Style="float: right" ></asp:TextBox>
             <asp:Label ID="Label3" runat="server" Text="收件人電話" ForeColor="#52D0C4" Style="float: right" ></asp:Label><br>
+            <asp:Label ID="Label8" runat="server" Text="" Font-Size="X-Large" ForeColor="Red"></asp:Label>
             <br>
             
             <asp:Button ID="Button1" runat="server" Text="確認" BackColor="#52D0C4" BorderStyle="None" ForeColor="White" Style="float: right" OnClick="Button1_Click" />
