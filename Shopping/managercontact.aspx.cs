@@ -89,7 +89,7 @@ namespace Shopping
         public void reviewChatDate()
         {
             helpSQL.Text = "";
-            helpSQL2.Text = "date";
+            
             SqlConnection connection4 = Connect(s_data);
             if (Convert.ToInt32(DDLDayE.Text) < 9)
             {
@@ -118,10 +118,12 @@ namespace Shopping
                 usercontact.DataSource = dt;
                 usercontact.DataBind();
                 connection4.Close();
+                helpSQL2.Text = sql4;
             }
             else
             {
-                if (ValidateDateTime((DDLYearS.Text + DDLMonthS.Text + (Convert.ToInt32(DDLDayE.Text) + 1)), "yyyyMMdd") == true)
+                //判斷存在結束日+1如果日期存在
+                if (ValidateDateTime((DDLYearE.Text + DDLMonthE.Text + (Convert.ToInt32(DDLDayE.Text) + 1)), "yyyyMMdd") == true)
                 {
                     string sql4 = $"select * from Chat where initdate between '{DDLYearS.Text + DDLMonthS.Text + DDLDayS.Text}' and '{DDLYearE.Text + DDLMonthE.Text + (Convert.ToInt32(DDLDayE.Text) + 1)}'";
                     SqlCommand command4 = new SqlCommand(sql4, connection4);
@@ -148,18 +150,39 @@ namespace Shopping
                     usercontact.DataSource = dt;
                     usercontact.DataBind();
                     connection4.Close();
+                    helpSQL2.Text = sql4;
                 }
                 else
                 {
+                    //判斷結束月+1如果如再
                     if(ValidateDateTime(DDLYearE.Text + (Convert.ToInt32(DDLMonthE.Text) + 1) + "01","yyyyMMdd") == true)
                     {
                         string sql4 = $"select * from Chat where initdate between '{DDLYearS.Text + DDLMonthS.Text + DDLDayS.Text}' and '{DDLYearE.Text + (Convert.ToInt32(DDLMonthE.Text) + 1) + "01"}'";
                         SqlCommand command4 = new SqlCommand(sql4, connection4);
                         connection4.Open();
                         SqlDataReader read = command4.ExecuteReader();
+                        DataTable dt = new DataTable();
+                        dt.Columns.Add("ID");
+                        dt.Columns.Add("account");
+                        dt.Columns.Add("message");
+                        dt.Columns.Add("response");
+                        dt.Columns.Add("initdate");
+                        dt.Columns.Add("updateinitdate");
+                        while (read.Read())
+                        {
+                            DataRow row = dt.NewRow();
+                            row["ID"] = read[0];
+                            row["account"] = read[1];
+                            row["message"] = read[2];
+                            row["response"] = read[3];
+                            row["initdate"] = read[4];
+                            row["updateinitdate"] = read[5];
+                            dt.Rows.Add(row);
+                        }
                         usercontact.DataSource = read;
                         usercontact.DataBind();
                         connection4.Close();
+                        helpSQL2.Text = sql4;
                     }
                     else
                     {
@@ -167,13 +190,64 @@ namespace Shopping
                         SqlCommand command4 = new SqlCommand(sql4, connection4);
                         connection4.Open();
                         SqlDataReader read = command4.ExecuteReader();
+                        DataTable dt = new DataTable();
+                        dt.Columns.Add("ID");
+                        dt.Columns.Add("account");
+                        dt.Columns.Add("message");
+                        dt.Columns.Add("response");
+                        dt.Columns.Add("initdate");
+                        dt.Columns.Add("updateinitdate");
+                        while (read.Read())
+                        {
+                            DataRow row = dt.NewRow();
+                            row["ID"] = read[0];
+                            row["account"] = read[1];
+                            row["message"] = read[2];
+                            row["response"] = read[3];
+                            row["initdate"] = read[4];
+                            row["updateinitdate"] = read[5];
+                            dt.Rows.Add(row);
+                        }                        
                         usercontact.DataSource = read;
                         usercontact.DataBind();
                         connection4.Close();
+                        helpSQL2.Text = sql4;
                     }
                 }
             } 
         }
+
+
+        public void reviewChatDatee(string SQL2)
+        {            
+            SqlConnection connection4 = Connect(s_data);           
+            SqlCommand command4 = new SqlCommand(SQL2, connection4);
+            connection4.Open();
+            SqlDataReader read = command4.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("account");
+            dt.Columns.Add("message");
+            dt.Columns.Add("response");
+            dt.Columns.Add("initdate");
+            dt.Columns.Add("updateinitdate");
+            while (read.Read())
+            {
+                DataRow row = dt.NewRow();
+                row["ID"] = read[0];
+                row["account"] = read[1];
+                row["message"] = read[2];
+                row["response"] = read[3];
+                row["initdate"] = read[4];
+                row["updateinitdate"] = read[5];
+                dt.Rows.Add(row);
+            }
+            usercontact.DataSource = dt;
+            usercontact.DataBind();
+            connection4.Close();
+               
+        }
+
 
         public void changecocolor()
         {
@@ -277,7 +351,6 @@ namespace Shopping
             if (!IsPostBack)
             {
                 reviewChat();
-               
                 cleanbt3();
             }
         }
@@ -401,7 +474,7 @@ namespace Shopping
             }
             else if (helpSQL2.Text != "")
             {
-                reviewChatDate();
+                reviewChatDatee(helpSQL2.Text);
             }
             else
             {
@@ -425,7 +498,7 @@ namespace Shopping
             }
             else if (helpSQL2.Text != "")
             {
-                reviewChatDate();
+                reviewChatDatee(helpSQL2.Text);
             }
             else
             {

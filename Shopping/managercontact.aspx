@@ -152,8 +152,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <asp:DropDownList ID="DDLDayE" runat="server" AppendDataBoundItems="True" Width="365px" Height="30px">
                                             <asp:ListItem Value="0">日</asp:ListItem>
                                         </asp:DropDownList></li>
-                                    <li>
-                                        <asp:Label ID="hintDate" runat="server" Text=""></asp:Label></li>
+                                   
                                     <li></li>
                                 </ul>
                             </div>
@@ -169,6 +168,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="col-sm-5">
                         <asp:Button ID="show" runat="server" Text="送出" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Width="100" Height="30" />
+                         <asp:Label ID="hintDate" runat="server" Text=""></asp:Label>
                         <br>
                         <br>
                         <br>

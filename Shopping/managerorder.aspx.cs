@@ -31,7 +31,7 @@ namespace Shopping
             helpSQLO21.Text = "";
             helpSQLO22.Text = "";
             SqlConnection connectionorigin = new SqlConnection(s_data5);
-            string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice, a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial";
+            string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice, a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial order by b.initdate DESC";
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
             SqlDataReader readorigin = command.ExecuteReader();
@@ -85,7 +85,7 @@ namespace Shopping
             SqlConnection connectionorigin = new SqlConnection(s_data5);
             string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice," +
                 $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate " +
-                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where a.{name}=N'{check}'";
+                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where a.{name}=N'{check}' order by b.initdate DESC";
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
             SqlDataReader readorigin = command.ExecuteReader();            
@@ -137,7 +137,7 @@ namespace Shopping
             SqlConnection connectionorigin = new SqlConnection(s_data5);
             string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice," +
                 $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate " +
-                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where a.{name}=N'{check}'";
+                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where a.{name}=N'{check}' order by b.initdate DESC";
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
             SqlDataReader readorigin = command.ExecuteReader();
@@ -156,7 +156,7 @@ namespace Shopping
             SqlConnection connectionorigin = new SqlConnection(s_data5);
             string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice," +
                 $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate " +
-                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where b.{name}=N'{check}'";
+                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where b.{name}=N'{check}' order by b.initdate DESC";
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
             SqlDataReader readorigin = command.ExecuteReader();
@@ -210,7 +210,7 @@ namespace Shopping
             SqlConnection connectionorigin = new SqlConnection(s_data5);
             string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice," +
                 $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate " +
-                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where b.{name}=N'{check}'";
+                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where b.{name}=N'{check}'order by b.initdate DESC";
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
             SqlDataReader readorigin = command.ExecuteReader();
