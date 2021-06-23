@@ -116,7 +116,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						   
 							<div class="mation">
 								<asp:Label ID="Label2" runat="server" Text="忘記密碼?"></asp:Label>
-								<asp:TextBox ID="forgetP_TextBox" runat="server" placeholder="請輸入您的電子信箱" AutoPostBack="True"></asp:TextBox>
+								<asp:TextBox ID="forgetP_TextBox" runat="server" placeholder="請輸入您的電子信箱"></asp:TextBox>
 								
 
 							</div>
