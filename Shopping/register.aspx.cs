@@ -30,6 +30,7 @@ namespace Shopping
             if (IsPostBack)
             {
                 passwordText.Attributes.Add("value", passwordText.Text);
+                passwordCheckText.Attributes.Add("value",passwordCheckText.Text);
             }
             if (Session["loginstatus"] != null)
             {
@@ -57,12 +58,12 @@ namespace Shopping
             string accchange = accountText.Text.ToLower();
 
             //輸入項目規則 (正規表示)
-            bool accRule = Regex.IsMatch(accountText.Text, @"[\w-]{6,15}"); //6-15字元英數混和字串 (不分大小寫)
+            bool accRule = Regex.IsMatch(accountText.Text, @"^[\w-]{6,15}"); //6-15字元英數混和字串 (不分大小寫)
             bool passwordRule = Regex.IsMatch(passwordText.Text, @"[\w-]{7,20}"); //7-20字元英數混和字串
             //bool identityRule = Regex.IsMatch(identityText.Text, @"^[A-Z]{1}[1-2]{1}[0-9]{8}$"); //身分證基礎驗證
             bool phoneRule = Regex.IsMatch(phoneText.Text, @"^09[0-9]{8}$"); //手機號碼驗證
             bool emailRule = Regex.IsMatch(emailchange, @"^[a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6}$"); //email驗證
-            bool nameRule = Regex.IsMatch(nameText.Text, @"^[\u4e00 - \u9fa5_a - zA - Z0 - 9]{2,10} +$"); //
+            bool nameRule = Regex.IsMatch(nameText.Text, @"^[\u4e00-\u9fa5]{2,7}$|^[\dA-Za-z_]{4,10}$"); //
 
             //檢查有無違反規則
             if (accRule == false)
@@ -76,6 +77,8 @@ namespace Shopping
                 errorText.Text = "*密碼輸入格式不正確";
                 passwordText.Text = "";
                 passwordText.Attributes.Add("value", passwordText.Text);
+                passwordCheckText.Text = "";
+                passwordCheckText.Attributes.Add("value", passwordCheckText.Text);
                 return;
             }
             /*
@@ -109,8 +112,8 @@ namespace Shopping
             if (passwordText.Text != passwordCheckText.Text)
             {
                 errorText.Text = "*密碼不一致";
-                passwordText.Text = "";
-                passwordText.Attributes.Add("value", passwordText.Text);
+                passwordCheckText.Text = "";
+                passwordCheckText.Attributes.Add("value", passwordCheckText.Text);
                 passwordCheckText.Text = "";
                 return;
             }

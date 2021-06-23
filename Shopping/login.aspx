@@ -111,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="account_grid">
 			   <div class="col-md-6 login-right">
 				
-					<asp:Label ID="Label1" runat="server" Text="帳號"></asp:Label>
+					<asp:Label ID="Label1" runat="server" Text="帳號/電子信箱"></asp:Label>
 					<asp:TextBox ID="logingaccTextBox" runat="server"></asp:TextBox>
 					<asp:Label ID="Label2" runat="server" Text="密碼"></asp:Label>
 				    <asp:TextBox ID="logingpasswdTextBox" runat="server" BorderColor="Silver" BorderStyle="Solid" BorderWidth="1px" Height="39px" TextMode="Password" Width="96%"></asp:TextBox>

@@ -26,10 +26,11 @@ namespace Shopping
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            errorText.Text = "";
             //forgetA_TextBox.Text = "Enter Email Account";
             if (!IsPostBack)
             {
-
+                
             }
             if (Session["loginstatus"] != null)
             {
@@ -37,103 +38,58 @@ namespace Shopping
             }
         }
 
-        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+        
 
-        protected void forgetA_TextBox_TextChanged(object sender, EventArgs e)
-        {
-            forgetP_TextBox.Text = "";
-        }
-
-        protected void forgetP_TextBox_TextChanged(object sender, EventArgs e)
-        {
-            forgetA_TextBox.Text = "";
-        }
+       
 
         protected void registerButton_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(s_data);
-            string emailCheck = $"select * from Customers where email ='" + forgetA_TextBox.Text + "'";
-            string accCheck = $"select * from Customers where account ='" + forgetP_TextBox.Text + "'";
-            SqlCommand Command_email = new SqlCommand(emailCheck, connection);
-            SqlCommand Command_acc = new SqlCommand(accCheck, connection);
-
-            //忘記帳號
-            if (forgetA_TextBox.Text != "" && forgetP_TextBox.Text == "")
+            if ((forgetP_TextBox.Text == null || forgetP_TextBox.Text == ""))
             {
-                connection.Open();
-                SqlDataReader Reader_email = Command_email.ExecuteReader();
-                if (Reader_email.HasRows)
-                {
-                    while (Reader_email.Read())
-                    {
-                        string sqlAcc = Reader_email["account"].ToString();
-                        string sqlName = Reader_email["name"].ToString();
-                        body = @"<html><body><p>親愛的 "+ sqlName 
-                            + " 您好,</p><p>感謝你使用丹丹服飾的自動回信系統，如非本人請無視本系統信件謝謝。</p><p>您的帳號為「"+ sqlAcc
-                            + "」</p><p>祝您有愉快的購物體驗,<br>-丹丹服飾</br></p></body></html>";
-                        try
-                        {
-                            SendEmail(body, forgetA_TextBox.Text);
-                            errorText.Text = "*寄送成功";
-                        }
-                        catch
-                        {
-                            errorText.Text = "*寄送失敗";
-                        }
-                        
-                    }
-                }
-                else
-                {
-                    errorText.Text = "*查無此email";
-                }
-
-                connection.Close();
-                
+                errorText.Text = "*輸入資訊不得為空";
+                return;
             }
-            //忘記密碼
-            else if (forgetA_TextBox.Text == "" && forgetP_TextBox.Text != "")
-            {
-                connection.Open();
-                SqlDataReader Reader_acc = Command_acc.ExecuteReader();
-                if (Reader_acc.HasRows)
-                {
-                    while (Reader_acc.Read())
-                    {                        
-                        string sqlName = Reader_acc["name"].ToString();
-                        string sqlemail = Reader_acc["email"].ToString();
-                        string sqlpasswd = Reader_acc["password"].ToString();
+            SqlConnection connection = new SqlConnection(s_data);
+            string emailCheck = $"select * from Customers where email ='" + forgetP_TextBox.Text + "'";
+           
+            SqlCommand Command_email = new SqlCommand(emailCheck, connection);
 
-                        body = @"<html><body><p>親愛的 " + sqlName
+
+            connection.Open();
+            SqlDataReader Reader_email = Command_email.ExecuteReader();
+            if (Reader_email.HasRows)
+            {
+                while (Reader_email.Read())
+                {
+                    string sqlpasswd = Reader_email["password"].ToString();
+                    string sqlName = Reader_email["name"].ToString();
+                    body = @"<html><body><p>親愛的 " + sqlName
                             + " 您好,</p><p>感謝你使用丹丹服飾的自動回信系統，如非本人請無視本系統信件謝謝。</p><p>您的帳號的密碼為「" + sqlpasswd
                             + "」</p><p>祝您有愉快的購物體驗,<br>-丹丹服飾</br></p></body></html>";
-                        try
-                        {
-                            SendEmail(body, sqlemail);
-                            errorText.Text = "*寄送成功";
-                        }
-                        catch
-                        {
-                            errorText.Text = "*寄送失敗";
-                        }
-
+                    try
+                    {
+                        errorText.Text = "*請稍等...";
+                        SendEmail(body, forgetP_TextBox.Text);
+                        errorText.Text = "*寄送成功";
                     }
-                }
-                else
-                {
-                    errorText.Text = "*查無此帳號";
-                }
+                    catch
+                    {
+                        errorText.Text = "*寄送失敗";
+                    }
 
-                connection.Close();
+                }
             }
-            //內容未填寫
             else
-            {                
-                errorText.Text = "*未輸入內容";
+            {
+                errorText.Text = "*查無此email";
             }
+
+            connection.Close();
+
+
+            
+             
+            
         }
         //寄送email信件
         public void SendEmail(string body, string emailTo)
