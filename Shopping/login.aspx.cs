@@ -39,12 +39,12 @@ namespace Shopping
             SqlConnection connection = new SqlConnection(s_data);
 
             string accCheck = $"select * from Customers where account ='" + accchange + "'";
-            string accessCheck = $"select * from Customers where account ='No'";
+            //string accessCheck = $"select * from Customers where account ='No'";
 
-            //string emailCheck = $"select * from Customers where email ='" + logingaccTextBox.Text + "'";
+            string emailCheck = $"select * from Customers where email ='" + accchange + "'";
             SqlCommand Command_acc = new SqlCommand(accCheck, connection);
             
-            //SqlCommand Command_email = new SqlCommand(emailCheck, connection);
+            SqlCommand Command_email = new SqlCommand(emailCheck, connection);
 
             
 
@@ -54,10 +54,7 @@ namespace Shopping
             SqlDataReader Reader_acc = Command_acc.ExecuteReader();
             
             if (Reader_acc.HasRows)
-            {
-                
-                
-                
+            {               
                 while (Reader_acc.Read())
                 {
                     string sqlAccess = Reader_acc["access"].ToString();
@@ -73,10 +70,41 @@ namespace Shopping
 
                         Session["loginstatus"] = logingaccTextBox.Text;                        
                         Response.Redirect("index");
+                        connection.Close();
+                        return;
                     }
                     else
                     {
                         errorText.Text = "*帳號或密碼錯誤";                        
+                    }
+                }
+            }
+            connection.Close();
+            connection.Open();
+            SqlDataReader Reader_email = Command_email.ExecuteReader();
+            if (Reader_email.HasRows)
+            {
+                while (Reader_email.Read())
+                {
+                    string sqlAccess = Reader_email["access"].ToString();
+                    if (sqlAccess == "No")
+                    {
+                        errorText.Text = "*此帳號已註銷";
+                        connection.Close();
+                        return;
+                    }
+                    string sqlPass = Reader_email["password"].ToString();
+                    if (sqlPass == logingpasswdTextBox.Text)
+                    {
+
+                        Session["loginstatus"] = Reader_email["account"];
+                        Response.Redirect("index");
+                        connection.Close();
+                        return;
+                    }
+                    else
+                    {
+                        errorText.Text = "*帳號或密碼錯誤";
                     }
                 }
             }

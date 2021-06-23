@@ -205,9 +205,9 @@ $(document).ready(function () {
                     //to do
                     customer = data;
                     if (isOk == true) {
-                        setTimeout(() => {
-                            alert("已修改")
-                        }, 200)
+                        //setTimeout(() => {
+                        //    alert("已修改")
+                        //}, 200)
 
                     }
 

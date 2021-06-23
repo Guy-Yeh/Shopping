@@ -250,7 +250,8 @@ namespace Shopping.Customer
 
                     if (FileUpload1.HasFile && nFileLen > 0)
                     {
-                        string picturePath1 = $"/images/FileUpload/" + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
+                        //string picturePath1 = $"/images/FileUpload/" + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
+                        string picturePath1 = $"/images/使用者照片/" + loginstatus + ".jpg";
                         string imgPath = Server.MapPath("~" + picturePath1);
                         FileUpload1.SaveAs(imgPath);
                         //accountImg.ImageUrl = picturePath1;

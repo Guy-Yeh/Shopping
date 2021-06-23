@@ -109,16 +109,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--//header-->
 <div class="container">
 	<div class="register">
-		<h1>忘記帳號或密碼</h1>
+		<h1>忘記密碼?</h1>
 		  	  
 				 
 				     <div class=" col-md-6 register-bottom-grid">
 						   
 							<div class="mation">
-								<asp:Label ID="Label1" runat="server" Text="忘記帳號?"></asp:Label>
-								<asp:TextBox ID="forgetA_TextBox" runat="server" placeholder="請輸入電子信箱" AutoPostBack="True" OnTextChanged="forgetA_TextBox_TextChanged"></asp:TextBox>
 								<asp:Label ID="Label2" runat="server" Text="忘記密碼?"></asp:Label>
-								<asp:TextBox ID="forgetP_TextBox" runat="server" placeholder="請輸入帳號" AutoPostBack="True" OnTextChanged="forgetP_TextBox_TextChanged"></asp:TextBox>
+								<asp:TextBox ID="forgetP_TextBox" runat="server" placeholder="請輸入您的電子信箱" AutoPostBack="True"></asp:TextBox>
 								
 
 							</div>
@@ -129,7 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="register-but">
 				       <br>
 					   <asp:Button ID="registerButton" runat="server" Text="確認"  Style="font: 12pt Verdana;font-weight:700;color:white;" BorderStyle="None" BackColor="#52D0C4" Height="35px" Width="59px" OnClick="registerButton_Click"  />
-				       &emsp;<asp:Label ID="errorText" runat="server" Font-Size="Small" ForeColor="Red">-忘記密碼或帳號請擇一輸入-</asp:Label>
+				       &emsp;<asp:Label ID="errorText" runat="server" Font-Size="Small" ForeColor="Red"></asp:Label>
 				   
 				</div>
 		</div>   
