@@ -98,6 +98,12 @@ namespace Shopping
                 emailText.Text = "";
                 return;
             }
+            if (nameRule == false)
+            {
+                errorText.Text = "*姓名輸入格式不正確";
+                nameText.Text = "";
+                return;
+            }
 
             //密碼確認檢查
             if (passwordText.Text != passwordCheckText.Text)

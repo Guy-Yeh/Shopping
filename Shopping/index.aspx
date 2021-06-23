@@ -93,7 +93,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-sm-2 search">
                         <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"></i></a>
                     </div>
-                    <div class="clearfix"></div>
+                    <div class="clearfix">
+                    </div>
                     <!---pop-up-box---->
                     <script type="text/javascript" src="js/modernizr.custom.min.js"></script>
                     <link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
