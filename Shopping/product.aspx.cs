@@ -139,22 +139,22 @@ namespace Shopping
                 SqlDataReader read1 = command1.ExecuteReader();
                 if (read1.Read())
                 {
-                        //陣列分別存入商品資料的 1.商品名稱 2.商品圖片 3.商品顏色 5.商品價格
-                        array[0] = read1[1].ToString();
-                        array[1] = read1[2].ToString();
-                        array[2] = read1[3].ToString();
-                        array[3] = read1[5].ToString();
-                        //連線到orderdetail確認購物車內是否有該商品
-                        SqlConnection connection2 = new SqlConnection(orderdetail_data);
-                        string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
-                        SqlCommand command2 = new SqlCommand(sql2, connection2);
-                        connection2.Open();
-                        SqlDataReader read2 = command2.ExecuteReader();
+                    //陣列分別存入商品資料的 1.商品名稱 2.商品圖片 3.商品顏色 5.商品價格
+                    array[0] = read1[1].ToString();
+                    array[1] = read1[2].ToString();
+                    array[2] = read1[3].ToString();
+                    array[3] = read1[5].ToString();
+                    //連線到orderdetail確認購物車內是否有該商品
+                    SqlConnection connection2 = new SqlConnection(orderdetail_data);
+                    string sql2 = $"select qty from OrderDetail where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
+                    SqlCommand command2 = new SqlCommand(sql2, connection2);
+                    connection2.Open();
+                    SqlDataReader read2 = command2.ExecuteReader();
                     //如果商品已經在購物車內
                     if (read2.Read())
                     {
                         //如果購物車內的商品數量加上欲購買的商品數量還未超過庫存
-                        if (Convert.ToInt32(read2[0]) + buy < Convert.ToInt32(read1[4]))
+                        if (Convert.ToInt32(read2[0]) + buy <= Convert.ToInt32(read1[4]))
                         {
                             string sql3 = $"update OrderDetail set qty='{(Convert.ToInt32(read2[0]) + buy)}' where productName =N'{array[0]}' and productColor=N'{array[2]}' and cart=N'是' and customerAccount='{Session["loginstatus"]}'";
                             connection2.Close();
@@ -172,7 +172,7 @@ namespace Shopping
                     else
                     {
                         //如果購買數量小於庫存
-                        if (buy < Convert.ToInt32(read1[4]))
+                        if (buy <= Convert.ToInt32(read1[4]))
                         {
                             connection2.Close();
                             connection2.Open();
@@ -198,7 +198,7 @@ namespace Shopping
                         else
                         {
                             MessageBox.Show("很抱歉，這個顏色目前已經庫存不足");
-                        }                   
+                        }
                     }
                 }
                 connection1.Close();
