@@ -28,7 +28,7 @@
 
                         <asp:FileUpload ID="FileUpload1" runat="server" accept=".jepg,.jpg,.png"/>
                         </div><div>
-                        <asp:Button ID="Button1" style="background: #52d0c4;" runat="server" Text="上傳圖片" OnClick="Button1_FileUpload" ForeColor="White" />
+                        <asp:Button ID="Button1" class="btn btn-lg btn-info" style="border-radius: 0px; background: #52d0c4;padding: 2px 2px;" runat="server" Text="上傳圖片" OnClick="Button1_FileUpload" ForeColor="White" />
                     </div>
 
 
@@ -214,14 +214,16 @@
                         </div>
                         <div class="col-md-4 login-left ma-box"style="height: 47px;">
                             <div style="padding: 3px 0px;">
-                                <input id="newMailInput" />
+                                <input id="newMailInput" name="newMailInput"/>
+                                <asp:TextBox runat="server" ID="newMailInput2" name="newMailInput2" style="display:none" Text=""></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-5 login-left ma-box" style="height: 47px;">
                             <div style="height: 38px; display: flex; align-items: flex-end">
-                                <button id="passTestNumberEntrt" type="button" class="btn btn-lg btn-info"
+                        <%--        <button id="passTestNumberEntrt" type="button" class="btn btn-lg btn-info"
                                     style="border-radius: 0px; background: #52d0c4; padding: 0px 0px; font-size: 15px;">
-                                    寄驗證碼</button>
+                                    寄驗證碼</button>--%>
+                                   <asp:Button ID="passTestNumberEntrt" class="btn btn-lg btn-info" style="border-radius: 0px; background: #52d0c4; padding: 0px 0px; font-size: 15px;" runat="server" Text="寄驗證碼"  OnClick="Button_passTestNumberEntrt" />
                             </div>
 
                         </div>
@@ -230,13 +232,14 @@
                         </div>
                         <div class="col-md-6 login-left ma-box" style="height: 47px;">
                             <div style="padding: 5px 0px;">
-                                <input id="testNumberMailInput" />
+                                <input id="testNumberMailInput" name="testNumberMailInput"/>
                             </div>
                         </div>
-                        <div class="col-md-3 login-left ">
-                            <button id="mailEntrt" type="button" class="btn btn-lg btn-info"
+                        <div class="col-md-3 login-left ma-box" style="height: 47px;">
+                        <%--    <button id="mailEntrt" type="button" class="btn btn-lg btn-info"
                                 style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
-                                確認</button>
+                                確認</button>--%>
+                             <asp:Button ID="mailEntrt" class="btn btn-lg btn-info" style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;" runat="server" Text="確認"  OnClick="Button_mailEntrt" />
                         </div>
                     </div>
 

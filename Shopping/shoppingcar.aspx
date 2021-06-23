@@ -73,7 +73,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="col-md-8 h_menu4">
                     <ul class="memenu skyblue">
-                        <li class=" grid"><a href="index">首頁</a></li>
                         <li><a class="color6" href="shoppingcar">購物車</a></li>
                         <li><a class="color6" href="Customer\Chat.aspx">聯絡我們</a></li>
                         <li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Font-Size="Large">購物須知</asp:LinkButton></li>
@@ -121,74 +120,90 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--//header-->
         <!---->
         <div class="container">
-            <div class="check-out">
-                <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="ID" OnRowCommand="userorder_RowCommand">
-                    <Columns>
-                        <asp:TemplateField>
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("productPicture") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("productPicture") %>' Width="100px" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField DataField="productPicture" HeaderText="productPicture" SortExpression="productPicture" Visible="False" />
-                        <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                        <asp:BoundField DataField="productName" HeaderText="productName" SortExpression="productName" />
-                        <asp:BoundField DataField="productColor" HeaderText="productColor" SortExpression="productColor" />
-                        <asp:BoundField DataField="productPrice" HeaderText="productPrice" SortExpression="productPrice" />
-                        <asp:TemplateField ShowHeader="False">
-                            <ItemTemplate>
-                                <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" CommandName="Subtract" Height="20px" ImageAlign="AbsMiddle" ImageUrl="~/images/dowm.png" Text="" Width="30px" CommandArgument='<%# Container.DataItemIndex%>' />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField DataField="qty" HeaderText="qty" SortExpression="qty" />
-                        <asp:TemplateField ShowHeader="False">
-                            <ItemTemplate>
-                                <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="false" CommandName="Add" Height="20px" CommandArgument='<%# Container.DataItemIndex%>' ImageAlign="AbsMiddle" ImageUrl="~/images/up.png" Text="" Width="30px" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="刪除" ShowHeader="False">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" CommandArgument='<%# Container.DataItemIndex%>'></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT [productName], [productColor], [productPrice], [qty], [productPicture], [ID] FROM [OrderDetail] WHERE (([customerAccount] = @customerAccount) AND ([cart] = @cart))">
-                    <SelectParameters>
-                        <asp:SessionParameter Name="customerAccount" SessionField="loginstatus" Type="String" />
-                        <asp:Parameter DefaultValue="是" Name="cart" Type="String" />
-                    </SelectParameters>
-                </asp:SqlDataSource>
-                <asp:Label ID="Label4" runat="server" Text="Label" Style="float: right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label>
-                <asp:Label ID="Label3" runat="server" Text="總金額：" Style="float: right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label><br>
-                <br>
-                <asp:Button ID="Button2" runat="server" Text="確認購買" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" Font-Size="X-Large" BorderStyle="None" />
-                <div class="clearfix"></div>
+                <div class="check-out">
+                    <asp:GridView ID="userorder" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="ID" OnRowCommand="userorder_RowCommand" Width="100%">
+                        <Columns>
+                            <asp:TemplateField HeaderText="商品圖片">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("productPicture") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("productPicture") %>' Width="100px" />
+                                </ItemTemplate>                               
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="productPicture" HeaderText="productPicture" SortExpression="productPicture" Visible="False" />
+                            <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="ID" Visible="False">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="productName" HeaderText="商品名稱" SortExpression="productName" >
+                            </asp:BoundField>
+                            <asp:BoundField DataField="productColor" HeaderText="顏色" SortExpression="productColor" >
+                            </asp:BoundField>
+                            <asp:BoundField DataField="productPrice" HeaderText="金額" SortExpression="productPrice" >
+                            </asp:BoundField>
+                            <asp:TemplateField ShowHeader="False">
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" CommandName="Subtract" Height="20px" ImageAlign="AbsMiddle" ImageUrl="~/images/dowm.png" Text="" Width="30px" CommandArgument='<%# Container.DataItemIndex%>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="qty" HeaderText="數量" SortExpression="qty" >
+                            </asp:BoundField>
+                            <asp:TemplateField ShowHeader="False">
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="false" CommandName="Add" Height="20px" CommandArgument='<%# Container.DataItemIndex%>' ImageAlign="AbsMiddle" ImageUrl="~/images/up.png" Text="" Width="30px" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="刪除" ShowHeader="False">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" CommandArgument='<%# Container.DataItemIndex%>'></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OrderDetailConnectionString %>" SelectCommand="SELECT [productName], [productColor], [productPrice], [qty], [productPicture], [ID] FROM [OrderDetail] WHERE (([customerAccount] = @customerAccount) AND ([cart] = @cart))">
+                        <SelectParameters>
+                            <asp:SessionParameter Name="customerAccount" SessionField="loginstatus" Type="String" />
+                            <asp:Parameter DefaultValue="是" Name="cart" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:Label ID="Label4" runat="server" Text="Label" Style="float: right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text="總金額：" Style="float: right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label><br>
+                    <br>
+                    <asp:Button ID="Button2" runat="server" Text="確認購買" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" Font-Size="X-Large" BorderStyle="None" />
+                    <div class="clearfix"></div>
+                </div>
             </div>
-        </div>
         <!--footer-->
         <div class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="col-sm-7 number col-md8">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border: 0;"></iframe>
-                </div>
-                <div class="col-sm-4 number col-md4">
-                    <asp:Label ID="Label18" runat="server" Text="丹丹服飾股份有限公司" Font-Size="XX-Large" Font-Bold="True"></asp:Label><br><br>
-                    <asp:Label ID="Label19" runat="server" Text="地址：(110)台北市信義區信義路五段7號"></asp:Label><br>
-                    <asp:Label ID="Label20" runat="server" Text="No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei City 110615 , Taiwan (R.O.C.)"></asp:Label><br><br>
-                </div>
-                <div class="col-sm-4 number col-md4">
-                    <asp:Label ID="Label21" runat="server" Text="聯絡我們" Font-Size="X-Large"></asp:Label><br><br>
-                    <asp:Label ID="Label22" runat="server" Text="客服信箱 / vs.for.test2021@gmail.com"></asp:Label><br>
-                    <asp:Label ID="Label23" runat="server" Text="服務時間 / 09:00 - 18:00 國定假日及例假日休息"></asp:Label><br>
-                    <asp:Label ID="Label24" runat="server" Text="聯絡電話 / 02-2424-0000"></asp:Label><br>
+            <div class="container">
+                <div class="footer-top">
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7659.912326510472!2d121.56070378360901!3d25.03417107027919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1623592494222!5m2!1szh-TW!2stw" width="600" height="450" style="border: 0;"></iframe>
+                        </div>
+                        <div class="col-sm-4">
+                            <asp:Label ID="Label18" runat="server" Text="丹丹服飾股份有限公司" Font-Size="XX-Large" Font-Bold="True"></asp:Label><br>
+                            <br>
+                            <asp:Label ID="Label19" runat="server" Text="地址：(110)台北市信義區信義路五段7號"></asp:Label><br>
+                            <asp:Label ID="Label20" runat="server" Text="No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei City 110615 , Taiwan (R.O.C.)"></asp:Label><br>
+                            <br>
+                            </div>
+                            <div class="col-sm-4">
+                            <asp:Label ID="Label21" runat="server" Text="聯絡我們" Font-Size="X-Large" Font-Bold="True"></asp:Label><br>
+                            <br>
+                            <asp:Label ID="Label22" runat="server" Text="客服信箱 / vs.for.test2021@gmail.com"></asp:Label><br>
+                            <asp:Label ID="Label23" runat="server" Text="服務時間 / 09:00 - 18:00 國定假日及例假日休息"></asp:Label><br>
+                            <asp:Label ID="Label24" runat="server" Text="聯絡電話 / 02-2424-0000"></asp:Label><br>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
         <!--//footer-->
     </form>

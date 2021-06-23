@@ -41,7 +41,7 @@ $(document).ready(function () {
             $.ajax({
                 type: "post",
                 url: "CustomerDetail.aspx/DelAccount",
-                data: JSON.stringify({ account: customer.account, access: 'no' }),
+                data: JSON.stringify({ account: customer.account, access: 'No' }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: (e) => {
@@ -193,7 +193,7 @@ $(document).ready(function () {
                     $('#mailText').text(data.email);
                     $('#addressText').text(data.address);
                     //$('#accountImg').attr('src', data.picture);
-                    let pic = (data.picture == undefined || data.picture == '') ? "/images/si2.jpg" : data.picture;
+                    let pic = (data.picture == undefined || data.picture == '') ? "/images/def.jpg" : data.picture;
                     //let pic='';
                     //if (data.picture == undefined || data.picture == '') {
                     //    pic = "/images/si2.jpg";

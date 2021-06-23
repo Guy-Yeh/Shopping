@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="managerproduct.aspx.cs" Inherits="Shopping.managerproduct" %>
+﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="managerproduct.aspx.cs" Inherits="Shopping.managerproduct" MaintainScrollPositionOnPostback="true" %>
 
 <!--A Design by W3layouts 
 Author: W3layout
@@ -29,20 +29,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="header-top">
                 <div class="container">
                     <div class="col-md-4 number">
-                        <span><i class="glyphicon glyphicon-phone"></i>0</span>2-2424-0000
+                        
+                            <asp:Label ID="helpSQL" runat="server" Text="" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-4 logo">
-                        <a href="index.html">
+                        <a href="">
                             <img src="images/CAT4.png" alt=""></a>
                     </div>
-
                     <div class="col-md-4 header-left">
                         <p class="log">
-                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Logout</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">登出</asp:LinkButton>
                         </p>
-
-
-
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -54,12 +51,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-2 number">
                 </div>
                 <div class="col-md-8 h_menu4">
-                    <ul class="memenu skyblue">                        
-                            <li><a href="manageraccount">帳戶</a></li>
-                            <li><a href="managerproduct">產品</a></li>
-                            <li><a href="managerorder">訂單</a></li>
-                            <li><a href="managershoppingcar">購物車</a></li>
-                            <li><a class="color6" href="managercontact">回覆訊息</a></li>
+                    <ul class="memenu skyblue">
+                        <li><a href="manageraccount">帳戶</a></li>
+                        <li><a href="managerproduct">商品</a></li>
+                        <li><a href="managerorder">訂單</a></li>
+                        <li><a href="managershoppingcar">購物車</a></li>
+                        <li><a href="managercontact">回覆訊息</a></li>
+                        <li><a href="managershowpicture">主頁顯示</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 search">
@@ -72,78 +70,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div style="text-align: center">
 
-                        <h1>Revise Product Table&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h1>
+                        <h1>商品管理 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
 
                     </div>
                     <br>
 
-                    <div class="mepanel">
+                    <div class="container">
                         <div class="row">
-                            <div class="col1">
+                            <div class="col-sm-4">
                                 <div class="h_nav">
-                                    <h4>Add Product</h4>
+                                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;</h4>
                                     <ul>
-                                        <li>
-                                            <asp:Label ID="productName" runat="server" Text="productName"></asp:Label></li>
-                                        <li>
-                                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></li>
-                                        <li>
-                                            <asp:Label ID="hintPN" runat="server" Text=""></asp:Label></li>
-                                        <br>
-                                        <li>
-                                            <asp:Label ID="category" runat="server" Text="category"></asp:Label></li>
-                                        <li>
-                                            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></li>
-                                        <li>
-                                            <asp:Label ID="hintCategory" runat="server" Text=""></asp:Label></li>
-                                        <br>
-                                        <li>
-                                            <asp:Label ID="inventory" runat="server" Text="inventory"></asp:Label></li>
-                                        <li>
-                                            <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></li>
-                                        <li>
-                                            <asp:Label ID="hintInventory" runat="server" Text=""></asp:Label></li>
-                                        <br>
-                                        <li>
-                                            <asp:Label ID="price" runat="server" Text="price"></asp:Label></li>
-                                        <li>
-                                            <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></li>
-                                        <li>
-                                            <asp:Label ID="hintPrice" runat="server" Text=""></asp:Label></li>
-                                        <br>
-                                        <li>
-                                            <asp:Label ID="picture" runat="server" Text="picture"></asp:Label></li>
-                                        <li>
-                                            <asp:FileUpload ID="FileUpload1" runat="server" /></li>
-                                        <li>
-                                            <asp:Label ID="hintPicture" runat="server" Text=""></asp:Label></li>                                        
-                                        <li>
-                                            <asp:Button ID="Add" runat="server" OnClick="Button1_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要新增嗎?')) window.event.returnValue=false;" /></li>
-                                        <br>
-                                        <br>
+                                        
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col1">
+                            <div class="col-sm-4">
                                 <div class="h_nav">
-                                    <h4>Delete or Search Product</h4>
+                                    <h4>查詢方式:商品名稱</h4>
                                     <ul>
                                         <li>
-                                            <asp:Label ID="productID" runat="server" Text="productID"></asp:Label></li>
-                                        <li>
-                                            <asp:DropDownList ID="DDLDeleterProductID" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px">
-                                                <asp:ListItem Value="0">請選擇</asp:ListItem>
-                                            </asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceProductsID" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT [ID] FROM [Products]"></asp:SqlDataSource>
-                                        </li>
-                                        <li>
-                                            <asp:Label ID="hintID" runat="server" Text="選擇即將刪除的productID"></asp:Label></li>                                        
-                                        <li>
-                                            <asp:Button ID="Delete" runat="server" OnClick="Button2_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要刪除嗎?')) window.event.returnValue=false;" /></li>
-                                        <br>
-                                        <br>
-                                        <li>
-                                            <asp:Label ID="productNS" runat="server" Text="productName"></asp:Label></li>
+                                            <asp:Label ID="productNS" runat="server" Text="商品名稱"></asp:Label></li>
                                         <li>
                                             <asp:DropDownList ID="DDLSearchProductName" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px">
                                                 <asp:ListItem Value="0">請選擇</asp:ListItem>
@@ -151,84 +98,233 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <asp:SqlDataSource ID="SqlDataSourceProductName" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT DISTINCT productName FROM Products"></asp:SqlDataSource>
                                         </li>
                                         <li>
-                                            <asp:Label ID="hintPS" runat="server" Text="選擇即將搜尋的productName"></asp:Label></li>                                        
+                                            <asp:Label ID="hintPS" runat="server" Text="選擇即將搜尋的產品名稱"></asp:Label></li>
                                         <li>
-                                            <asp:Button ID="Search" runat="server" OnClick="Button4_Click" Text="submit" BackColor="#52d0c4" ForeColor="White" CssClass="item_add"/></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col1">
-                                <div class="h_nav">
-                                    <h4>Update Product</h4>
-                                    <ul>
-                                        <li>
-                                            <asp:Label ID="productID2" runat="server" Text="productID"></asp:Label></li>
-                                        <li>
-                                            <asp:DropDownList ID="DDLUpdateProductID" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px">
-                                                <asp:ListItem Value="0">請選擇</asp:ListItem>
-                                            </asp:DropDownList></li>
-                                        <li>
-                                            <asp:Label ID="hintID2" runat="server" Text="選擇即將更新的productID"></asp:Label><li>
-                                                <br>
-                                                <li></li>
-                                        <li>
-                                            <asp:Label ID="column" runat="server" Text="column"></asp:Label></li>
-                                        <li>
-                                            <asp:DropDownList ID="DDLUpdateCols" AppendDataBoundItems="True" runat="server" Height="30px" Width="195px">
-                                                <asp:ListItem Value="0">請選擇</asp:ListItem>
-                                            </asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSourceProductsCols" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsColsConnectionString %>" SelectCommand="SELECT [Cols] FROM [ProductsCols]"></asp:SqlDataSource>
-                                        </li>
-                                        <li>
-                                            <asp:Label ID="hintColumn" runat="server" Text="選擇即將更新的欄位"></asp:Label></li>
+                                            <asp:Button ID="Search" runat="server" OnClick="Button4_Click" Text="送出" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" /></li>
                                         <br>
-                                        <li></li>
-                                        <li>
-                                            <asp:Label ID="value" runat="server" Text="update value"></asp:Label></li>
-                                        <li>
-                                            <asp:TextBox ID="TextBox9" runat="server" placeholder="輸入更新的值"></asp:TextBox></li>
-                                        <li>
-                                            <asp:Label ID="hintValue" runat="server" Text=""></asp:Label></li>                                        
-                                        <li>
-                                            <asp:Button ID="Update" runat="server" Text="submit" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClientClick="javascript:if(!window.confirm('確定要修改嗎?')) window.event.returnValue=false;" /></li>
+                                        <br>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="h_nav">
+                                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;</h4>
+                                    <ul>
+                                        
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="clearfix">
-                        <br>
-                        <asp:GridView ID="product" runat="server">
-                            <Columns>
-                                <asp:TemplateField HeaderText="image">
-                                    <ItemTemplate>
-                                        <asp:Image ID="img1" ImageUrl='<%#Eval("picture") %>'
-                                            runat="server" Width="100" Height="120" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                        </asp:GridView>
-
-                    </div>
-                    <div id="small-dialog" class="mfp-hide">
-                        <div class="search-top">
-                            <div class="login">
-                                <input type="submit" value="">
-                                <input type="text" value="Type something..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-5">
                             </div>
-                            <p>Shopping</p>
+                            <div class="col-sm-4">
+                                <h3>
+                                    <asp:Label ID="Label9" runat="server" Text="商品上架" ForeColor="#52d0c4" Font-Bold="true"></asp:Label>&nbsp;&nbsp;&nbsp; </h3>
+                                <br>
+                            </div>
                         </div>
                     </div>
-                    <!---->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-10">
+                                <asp:Table ID="Tableadd" runat="server" GridLines="Both" CellPadding="10" align="center" Width="920px">
+                                    <asp:TableRow>
+                                        <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger">
+                                商品名稱
+                                        </asp:TableCell>
+                                        <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger">
+                                顏色
+                                        </asp:TableCell>
+                                        <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger">
+                                商品圖片
+                                        </asp:TableCell>
+                                        <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger">
+                                庫存
+                                        </asp:TableCell>
+                                        <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger">
+                                價格
+                                        </asp:TableCell>
+                                        <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger">
+                                商品介紹
+                                        </asp:TableCell>
+                                    </asp:TableRow>
+                                    <asp:TableRow>
+                                        <asp:TableCell>
+                                            <asp:TextBox ID="TextBox10" runat="server" Width="100"></asp:TextBox>
+                                            <br>
+                                            <asp:Label ID="hintp1" runat="server" Text=""></asp:Label>
+                                        </asp:TableCell>
+                                        <asp:TableCell>
+                                            <asp:TextBox ID="TextBox11" runat="server" Width="100"></asp:TextBox>
+                                            <br>
+                                            <asp:Label ID="hintp2" runat="server" Text=""></asp:Label>
+                                        </asp:TableCell>
+                                        <asp:TableCell HorizontalAlign="Center">
+                                            <asp:FileUpload ID="FileUpload2" runat="server" Width="160" />
+                                            <asp:Label ID="hintp5" runat="server" Text="" ForeColor="#52d0c4"></asp:Label>
+                                        </asp:TableCell>
+                                        <asp:TableCell>
+                                            <asp:TextBox ID="TextBox12" runat="server" Width="110"></asp:TextBox>
+                                            <br>
+                                            <asp:Label ID="hintp3" runat="server" Text=""></asp:Label>
+                                        </asp:TableCell>
+                                        <asp:TableCell>
+                                            <asp:TextBox ID="TextBox13" runat="server" Width="110"></asp:TextBox>
+                                            <br>
+                                            <asp:Label ID="hintp4" runat="server" Text=""></asp:Label>
+                                        </asp:TableCell>
+                                        <asp:TableCell>
+                                            <textarea rows="5" ID="TextBox14" name="contactresponse" class="form-control" placeholder="請輸入不超過50字產品介紹(非必填)" ></textarea>
+                                        </asp:TableCell>
+                                    </asp:TableRow>
+                                </asp:Table>
+                            </div>
+                            <div class="col-sm-1">
+                                <br>
+                                <br>
+                                <br>
+                                <asp:Button ID="sub" runat="server" Text="上架" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Width="80px" Height="80" OnClick="sub_Click" OnClientClick='return confirm("確定上架?")' />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-9">
+                        </div>
+                        <div class="col-sm-2">
+                            
+                            <br>
+                            <asp:Button ID="all" runat="server" Text="查看所有" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" OnClick="all_Click" Width="145px" Height="40" />
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">  
+                    <div class="row">
+                        <div class="col-sm-2">
+                        </div>
+ 
+                   <div class="col-sm-9">
+                    <asp:GridView ID="product" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="product_RowDeleting" OnRowCancelingEdit="product_RowCancelingEdit" OnRowEditing="product_RowEditing" OnRowUpdating="product_RowUpdating" AllowPaging="True" OnPageIndexChanging="product_PageIndexChanging">
+                        <PagerStyle ForeColor="Black" HorizontalAlign="Center" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="商品圖片">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("picture") %>' ReadOnly="True" Visible="False"></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("picture") %>' Width="100px" ValidateRequestMode="Inherit" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="ID">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="商品名稱" SortExpression="productName">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("productName") %>' Width ="100"></asp:TextBox>
 
-
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("productName") %>'></asp:Label>
+                                </ItemTemplate>
+                                <HeaderStyle Width="100px" />
+                                <ItemStyle Width="120px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="圖片檔名" SortExpression="picture" Visible="False" ValidateRequestMode="Enabled">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("picture") %>' Width ="60"></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("picture") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="顏色" SortExpression="category">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("category") %>' Width ="50"></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("category") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="圖片檔名" SortExpression="picture">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("showpicture") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label6" runat="server" Text='<%# Bind("showpicture") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="庫存" SortExpression="inventory">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("inventory") %>' Width ="50"></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label7" runat="server" Text='<%# Bind("inventory") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="價格" SortExpression="price">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("price") %>' Width ="50"></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("price") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="商品介紹" SortExpression="introduction">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("introduction") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("introduction") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="initdate" HeaderText="initdate" SortExpression="initdate" ReadOnly="True" Visible="False" />
+                            <asp:TemplateField HeaderText="編輯" ShowHeader="False">
+                                <EditItemTemplate>
+                                    <asp:LinkButton ID="Update" runat="server" CausesValidation="False" CommandName="Update" Text="更新" OnClientClick='return confirm("確定更新?")' Width ="50"></asp:LinkButton>
+                                    <asp:LinkButton ID="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="Edit" runat="server" CausesValidation="False" CommandName="Edit" Text="編輯"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="刪除" ShowHeader="False">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" OnClientClick='return confirm("確定刪除?")' Width ="50"></asp:LinkButton>
+                                </ItemTemplate>
+                                <FooterStyle Width="50px" />
+                                <HeaderStyle Width="50px" />
+                                <ItemStyle Width="50px" />
+                            </asp:TemplateField>
+                        </Columns>
+                        <PagerStyle CssClass="fvPagerStyle" HorizontalAlign="Center" />
+                    </asp:GridView>
+                    <asp:SqlDataSource ID="SqlDataSourceProduct" runat="server" ConnectionString="<%$ ConnectionStrings:ProductsConnectionString %>" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
+                   </div>
+                  </div>
                 </div>
             </div>
         </div>
+       
+        <!---->
+
+
+        
         <!---->
 
         <!--footer-->
-       <div class="footer">
+        <div class="footer">
             <div class="container">
                 <div class="footer-top">
                     <div class="col-sm-7 number col-md8">
@@ -241,7 +337,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <asp:Label ID="Label20" runat="server" Text="No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei City 110615 , Taiwan (R.O.C.)"></asp:Label><br>
                         <br>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

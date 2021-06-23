@@ -183,6 +183,11 @@
         $('.ma-box').css('display', 'none');
         $('#mailEdit').css('display', '');
         $('#mailText').css('display', '');
+
+        if ($('#ContentPlaceHolder1_newMailInput2').val() != undefined && $('#ContentPlaceHolder1_newMailInput2').val() != "") {
+            $('#newMailInput').val($('#ContentPlaceHolder1_newMailInput2').val());
+            $('#mailEdit').click();
+        }
     }
 
     //mail編輯事件
@@ -192,7 +197,7 @@
         $('#mailEntrt').css('display', '');
         $('#mailEdit').css('display', 'none');
         $('#mailText').css('display', '');
-        $('#newMailInput').val($('#newMailText').text())
+        /*$('#newMailInput').val($('#newMailText').text())*/
         $('.ma-box').css('display', '');
         $('#nameEdit').attr('disabled', true);
         $('#phoneNumberEdit').attr('disabled', true);

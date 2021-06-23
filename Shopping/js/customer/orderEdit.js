@@ -1,5 +1,5 @@
 ﻿var order = {};
-var strTitleHtml = `<div class="col-md-12" style="border-style: solid; border-color: #ddd; border-width: 1px; padding: 10px;">
+var strTitleHtml = `<div id="##serial##_X" data-serial="##serial##" class="col-md-12 list-title" style="border-style: solid; border-color: #ddd; border-width: 1px; padding: 10px;">
                 <div class="col-md-12" style="padding: 10px;">
                     <div class="col-md-12" style="border-bottom-style: solid; border-color: #ddd; border-width: 1px;">
                         <div id="serialNO" class="col-md-4" style="font-size: 20px;">
@@ -12,7 +12,7 @@ var strTitleHtml = `<div class="col-md-12" style="border-style: solid; border-co
                             ##status##
                         </div>
                     </div>
-                </div>`;
+                </div> <div class="col-md-12 ##serial##_p-list" style="padding:0px">`;
 var strListHtml = `<div class="col-md-12" style="display: flex; padding: 10px;">
                     <div class="col-md-12" style="border-bottom-style: solid; border-color: #ddd; border-width: 1px; padding: 0px 10px 10px 10px;">
                         <div class="col-md-1" style="padding: 0px">
@@ -20,7 +20,7 @@ var strListHtml = `<div class="col-md-12" style="display: flex; padding: 10px;">
                         </div>
                         <div class="col-md-9">
                             <div class="col-md-12" style="word-wrap: break-word">##productName##</div>
-                            <div class="col-md-12">##qty##</div>
+                            <div class="col-md-12">x##qty##</div>
 
                         </div>
                         <div class="col-md-2" style="height: 100%; display: flex; align-items: center; justify-content: flex-end;">
@@ -28,7 +28,7 @@ var strListHtml = `<div class="col-md-12" style="display: flex; padding: 10px;">
                         </div>
                     </div>
                 </div>`;
-var strEndHtml = ` <div class="col-md-12" style="display: flex;">
+var strEndHtml = ` </div> <div class="col-md-12" style="display: flex;">
                     <div class="col-md-9">
                         <div id="contName">姓名：##name##</div>
                         <div id="contPhone">電話：##phone##</div>
@@ -42,7 +42,7 @@ var strEndHtml = ` <div class="col-md-12" style="display: flex;">
 
                 <div id="delete-but-##serial##" class="col-md-12" style="display: flex;">
                    <div class="col-md-12" style="display: flex; justify-content: flex-end;">
-                        <button id="delete-but" data-serial="##serial##" type="button" class="btn btn-lg btn-info" style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
+                        <button id="delete-but" data-serial="##serial##" type="button" class="btn btn-lg btn-info delete-but" style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
                             取消訂單</button>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ $(document).ready(function () {
                             //新訂單
                             let initdate = parseInt(data.initdate.replace("/Date(", "").replace(")/", ""));
                             let d = new Date(initdate).getFullYear() + "/" + (new Date(initdate).getMonth() + 1) + "/" + new Date(initdate).getDate() + " - " + new Date(initdate).getHours() + ":" + new Date(initdate).getMinutes() + ":" + new Date(initdate).getSeconds();
-                            str = str + strTitleHtml.replace("##serial##", data.serial).replace("##status##", data.status).replace("##initdate##", d);
+                            str = str + strTitleHtml.replaceAll("##serial##", data.serial).replace("##status##", data.status).replace("##initdate##", d);
                             str = str + strListHtml.replace("##productName##", data.productName).replace("##productPrice##", data.productPrice * data.qty).replace("##qty##", data.qty).replace("##productPicture##", data.productPicture);
                         } else {
                             if (data.serial == e.d.Data[i - 1].serial) {
@@ -136,7 +136,7 @@ $(document).ready(function () {
                                 //新訂單
                                 let initdate = parseInt(data.initdate.replace("/Date(", "").replace(")/", ""));
                                 let d = new Date(initdate).getFullYear() + "/" + (new Date(initdate).getMonth() + 1) + "/" + new Date(initdate).getDate() + " - " + new Date(initdate).getHours() + ":" + new Date(initdate).getMinutes() + ":" + new Date(initdate).getSeconds();
-                                str = str + strTitleHtml.replace("##serial##", data.serial).replace("##status##", data.status).replace("##initdate##", d);
+                                str = str + strTitleHtml.replaceAll("##serial##", data.serial).replace("##status##", data.status).replace("##initdate##", d);
                                 str = str + strListHtml.replace("##productName##", data.productName).replace("##productPrice##", data.productPrice * data.qty).replace("##qty##", data.qty).replace("##productPicture##", data.productPicture);
                             }
                         }
@@ -156,20 +156,29 @@ $(document).ready(function () {
                         }
                     }
 
+                    //收合
+                    for (var i = 0; i < $('.list-title').length; i++) {
+                        $("#" + $('.list-title')[i].id).click(function () {     
+                            $("." + $(this).attr("data-serial") + "_p-list").slideToggle("slow");
+                        });
+                    }
+
+         
+
                     // 取消
-                    $("#delete-but").click(function () {
+                    $(".delete-but").click(function () {
                         console.log("delete-but", $(this).attr("data-serial"));
                         $.ajax({
                             type: "post",
                             url: "ShoppingList.aspx/DelOrders",
-                            data: JSON.stringify({ serial: $(this).attr("data-serial") }),
+                            data: JSON.stringify({ status:'取消訂單', serial: $(this).attr("data-serial") }),
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: (e) => {
                                 if (e.d.Status == 0) {
                                     let data = e.d.Data[0];
                                     $(this).attr("data-serial");
-
+                                    getOrders();
                                     //to do
                                     //customer = data;
                                     //if (isOk == true) {

@@ -53,13 +53,13 @@ namespace Shopping.Customer
         }
 
         [WebMethod]
-        public static Models.ApiResultModel<bool> DelOrders(string serial)
+        public static Models.ApiResultModel<bool> DelOrders(string status,string serial)
         {
             Common.Common common = new Common.Common();
             try
             {
                 OrdersService ordersService = new OrdersService();
-                bool orders = ordersService.DelOrders(serial);
+                bool orders = ordersService.DelOrders(status,serial);
 
                 return common.ThrowResult<bool>(Enum.ApiStatusEnum.OK, string.Empty, orders);
             }
