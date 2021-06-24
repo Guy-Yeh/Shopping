@@ -29,19 +29,16 @@ namespace Shopping
             SqlCommand command1 = new SqlCommand(sq1, connection);
             connection.Open();
             SqlDataReader read1 = command1.ExecuteReader();
-            if (read1.HasRows)
+            if (read1.Read())
             {
-                if (read1.Read())
-                {
-                    Label4.Text = read1[0].ToString();
-                    Label1.Text = "消費金額：" + read1[0].ToString();
-                    Button2.Visible = true;
-                }
-                else
-                {
-                    Button2.Visible = false;
-                }
+                Label4.Text = read1[0].ToString();
+                Label1.Text = "消費金額：" + read1[0].ToString();
+                Button2.Visible = true;
             }
+            else
+            {
+                Button2.Visible = false;
+            }          
             connection.Close();       
         }
 
