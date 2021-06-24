@@ -6,7 +6,7 @@
 <html>
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>丹丹服飾 | Home : : (會員資料)</title>
+    <title>丹丹服飾 | Home : : 會員資料</title>
     <meta http-equiv="pragma" content="no-cache">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
