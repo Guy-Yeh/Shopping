@@ -14,6 +14,7 @@ namespace Shopping
             //settings.AutoRedirectMode = RedirectMode.Permanent;
             settings.AutoRedirectMode = RedirectMode.Off;
             routes.EnableFriendlyUrls(settings);
+            routes.MapPageRoute("default", "", "~/index.aspx");
         }
     }
 }

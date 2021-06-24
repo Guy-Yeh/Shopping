@@ -18,6 +18,7 @@ namespace Shopping
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            errorText.Text = "";
             if (Session["loginstatus"] != null)
             {
                 Response.Redirect("index");
@@ -33,6 +34,10 @@ namespace Shopping
                 return;
             }
 
+            if (logingaccTextBox.Text.Length >= 50 || logingpasswdTextBox.Text.Length >=50) 
+            {
+                errorText.Text = "*";
+            }
 
 
             string accchange = logingaccTextBox.Text.ToLower();

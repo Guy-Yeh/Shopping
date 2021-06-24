@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="Shopping.register" %>
+﻿<%@ Page  Language="C#"  AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="Shopping.register" %>
 
 <!--A Design by W3layouts 
 Author: W3layout
@@ -10,7 +10,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html >
 <html>
 <head>
-<title>Fashion Mania A Ecommerce Category Flat Bootstarp Resposive Website Template | Register :: w3layouts</title>
+<title>丹丹服飾 : : 註冊</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
