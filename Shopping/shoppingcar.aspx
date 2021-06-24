@@ -150,8 +150,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" CommandName="Subtract" Height="20px" ImageAlign="AbsMiddle" ImageUrl="~/images/dowm.png" Text="" Width="30px" CommandArgument='<%# Container.DataItemIndex%>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="qty" HeaderText="數量" SortExpression="qty" >
-                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="數量" SortExpression="qty">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("qty") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("qty") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField ShowHeader="False">
                                 <ItemTemplate>
                                     <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="false" CommandName="Add" Height="20px" CommandArgument='<%# Container.DataItemIndex%>' ImageAlign="AbsMiddle" ImageUrl="~/images/up.png" Text="" Width="30px" />

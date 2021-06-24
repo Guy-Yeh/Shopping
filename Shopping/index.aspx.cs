@@ -198,7 +198,16 @@ namespace Shopping
                     }
                 }
                 connection1.Close();
-                Response.Redirect("index");
+                SqlConnection connection5 = new SqlConnection(orderdetail_data);
+                string sq15 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                SqlCommand command5 = new SqlCommand(sq15, connection5);
+                connection5.Open();
+                SqlDataReader read5 = command5.ExecuteReader();
+                if (read5.Read())
+                {
+                    Label1.Text = "消費金額：" + read5[0].ToString();
+                }
+                connection5.Close();
             }
         }
         protected void Button2_Click(object sender, EventArgs e)
@@ -285,7 +294,16 @@ namespace Shopping
                     }
                 }
                 connection1.Close();
-                Response.Redirect("index");
+                SqlConnection connection5 = new SqlConnection(orderdetail_data);
+                string sq15 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                SqlCommand command5 = new SqlCommand(sq15, connection5);
+                connection5.Open();
+                SqlDataReader read5 = command5.ExecuteReader();
+                if (read5.Read())
+                {
+                    Label1.Text = "消費金額：" + read5[0].ToString();
+                }
+                connection5.Close();
             }
         }
         protected void Button3_Click(object sender, EventArgs e)
@@ -372,7 +390,16 @@ namespace Shopping
                     }
                 }
                 connection1.Close();
-                Response.Redirect("index");
+                SqlConnection connection5 = new SqlConnection(orderdetail_data);
+                string sq15 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                SqlCommand command5 = new SqlCommand(sq15, connection5);
+                connection5.Open();
+                SqlDataReader read5 = command5.ExecuteReader();
+                if (read5.Read())
+                {
+                    Label1.Text = "消費金額：" + read5[0].ToString();
+                }
+                connection5.Close();
             }
         }      
         protected void Button4_Click(object sender, EventArgs e)
@@ -459,7 +486,16 @@ namespace Shopping
                     }
                 }
                 connection1.Close();
-                Response.Redirect("index");
+                SqlConnection connection5 = new SqlConnection(orderdetail_data);
+                string sq15 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                SqlCommand command5 = new SqlCommand(sq15, connection5);
+                connection5.Open();
+                SqlDataReader read5 = command5.ExecuteReader();
+                if (read5.Read())
+                {
+                    Label1.Text = "消費金額：" + read5[0].ToString();
+                }
+                connection5.Close();
             }
         }
         protected void Button5_Click(object sender, EventArgs e)
@@ -546,7 +582,16 @@ namespace Shopping
                     }
                 }
                 connection1.Close();
-                Response.Redirect("index");
+                SqlConnection connection5 = new SqlConnection(orderdetail_data);
+                string sq15 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                SqlCommand command5 = new SqlCommand(sq15, connection5);
+                connection5.Open();
+                SqlDataReader read5 = command5.ExecuteReader();
+                if (read5.Read())
+                {
+                    Label1.Text = "消費金額：" + read5[0].ToString();
+                }
+                connection5.Close();
             }
         }
         protected void Button6_Click(object sender, EventArgs e)
@@ -633,7 +678,16 @@ namespace Shopping
                     }
                 }
                 connection1.Close();
-                Response.Redirect("index");
+                SqlConnection connection5 = new SqlConnection(orderdetail_data);
+                string sq15 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                SqlCommand command5 = new SqlCommand(sq15, connection5);
+                connection5.Open();
+                SqlDataReader read5 = command5.ExecuteReader();
+                if (read5.Read())
+                {
+                    Label1.Text = "消費金額：" + read5[0].ToString();
+                }
+                connection5.Close();
             }
         }
         protected void Button7_Click(object sender, EventArgs e)
@@ -720,7 +774,16 @@ namespace Shopping
                     }
                 }
                 connection1.Close();
-                Response.Redirect("index");
+                SqlConnection connection5 = new SqlConnection(orderdetail_data);
+                string sq15 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                SqlCommand command5 = new SqlCommand(sq15, connection5);
+                connection5.Open();
+                SqlDataReader read5 = command5.ExecuteReader();
+                if (read5.Read())
+                {
+                    Label1.Text = "消費金額：" + read5[0].ToString();
+                }
+                connection5.Close();
             }
         }
         protected void Button8_Click(object sender, EventArgs e)
@@ -807,7 +870,16 @@ namespace Shopping
                     }
                 }
                 connection1.Close();
-                Response.Redirect("index");
+                SqlConnection connection5 = new SqlConnection(orderdetail_data);
+                string sq15 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                SqlCommand command5 = new SqlCommand(sq15, connection5);
+                connection5.Open();
+                SqlDataReader read5 = command5.ExecuteReader();
+                if (read5.Read())
+                {
+                    Label1.Text = "消費金額：" + read5[0].ToString();
+                }
+                connection5.Close();
             }
         }
 

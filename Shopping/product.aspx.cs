@@ -168,6 +168,7 @@ namespace Shopping
                         {
                             //MessageBox.Show("購物車內的數量已達庫存上限");
                             this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('購物車內的數量已達庫存上限');},1000);", true);
+
                         }
                     }
                     else
@@ -200,11 +201,26 @@ namespace Shopping
                         {
                             //MessageBox.Show("很抱歉，這個顏色目前已經庫存不足");
                             this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，這個顏色目前已經庫存不足');},1000);", true);
+
                         }
                     }
                 }
                 connection1.Close();
-                Response.Redirect("product");
+                //連線至orderdetail
+                SqlConnection connection5 = new SqlConnection(orderdetail_data);
+                string sq15 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+                //如果購物車內有商品將商品總金額顯示於Label1
+                SqlCommand command5 = new SqlCommand(sq15, connection5);
+                connection5.Open();
+                SqlDataReader read5 = command5.ExecuteReader();
+                if (read5.HasRows)
+                {
+                    if (read5.Read())
+                    {
+                        Label1.Text = "消費金額：" + read5[0].ToString();
+                    }
+                }
+                connection5.Close();
             }
         }
 
