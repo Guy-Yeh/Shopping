@@ -13,7 +13,11 @@ namespace Shopping
 {
     public partial class managercontact : Page
     {
+        //string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ChatConnectionString"].ConnectionString;
         string s_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ChatConnectionString"].ConnectionString;
+        
+      //  <add name = "ChatConnectionString2" connectionString="Data Source=shoppingdbserver.database.windows.net;Initial Catalog=Shopping_db;User ID=agayyeh;Password=Zz2019722"
+      //providerName="System.Data.SqlClient" />
         public SqlConnection Connect(string x)
         {
             SqlConnection connect = new SqlConnection(x);
@@ -485,7 +489,18 @@ namespace Shopping
         protected void usercontact_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             usercontact.PageIndex = e.NewPageIndex;
-            reviewChat();
+            if (helpSQL.Text != "")
+            {
+                searchChat(helpSQL.Text);
+            }
+            else if (helpSQL2.Text != "")
+            {
+                reviewChatDatee(helpSQL2.Text);
+            }
+            else
+            {
+                reviewChat();
+            }
         }
 
         protected void usercontact_RowEditing(object sender, GridViewEditEventArgs e)

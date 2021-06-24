@@ -9,7 +9,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Fashion Mania A Ecommerce Category Flat Bootstarp Resposive Website Template | Single :: w3layouts</title>
+    <title>丹丹服飾 : : 商品管理</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Custom Theme files -->
     <!--theme-style-->
@@ -188,7 +188,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <br>
                                 <br>
                                 <br>
-                                <asp:Button ID="sub" runat="server" Text="上架" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Width="80px" Height="80" OnClick="sub_Click" OnClientClick='return confirm("確定上架?")' />
+                                <asp:Button ID="sub" runat="server" Text="上架" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Width="80px" Height="80" OnClick="sub_Click" OnClientClick='return confirm("確定上架?")' />                                
                             </div>
                         </div>
                     </div>

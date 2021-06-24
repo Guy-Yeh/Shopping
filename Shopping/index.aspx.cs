@@ -20,8 +20,11 @@ namespace Shopping
         string orderdetail_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["OrderDetailConnectionString"].ConnectionString;
         string show_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ShowPictureConnectionString"].ConnectionString;
 
-        public static string loginstatus = "";
 
+        //幻燈片字串承接商品名用於圖片跳轉
+        string slideshow1 = "";
+        string slideshow2 = "";
+        string slideshow3 = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             //Session["loginstatus"] = "1";
@@ -56,30 +59,39 @@ namespace Shopping
                 connection2.Close();
             }
 
-            //帶入幻燈片圖片
+            //帶入幻燈片商品名稱,圖片
             SqlConnection connection3 = new SqlConnection(show_data);
-            string sq13 = $"select picture from ShowPicture where show='1'";
+            string sq13 = $"select picture,productName from ShowPicture where show='1'";
             SqlCommand command3 = new SqlCommand(sq13, connection3);
             connection3.Open();
             SqlDataReader read3 = command3.ExecuteReader();
-            if(read3.Read())
+            if (read3.Read())
+            {
                 ImageButton10.ImageUrl = read3[0].ToString();
+                slideshow1 = read3[1].ToString();
+            }
             connection3.Close();
             SqlConnection connection4 = new SqlConnection(show_data);
-            string sq14 = $"select picture from ShowPicture where show='2'";
+            string sq14 = $"select picture,productName from ShowPicture where show='2'";
             SqlCommand command4 = new SqlCommand(sq14, connection4);
             connection4.Open();
             SqlDataReader read4 = command4.ExecuteReader();
             if (read4.Read())
+            {
                 ImageButton11.ImageUrl = read4[0].ToString();
+                slideshow2 = read4[1].ToString();
+            }
             connection4.Close();
             SqlConnection connection5 = new SqlConnection(show_data);
-            string sq15 = $"select picture from ShowPicture where show='3'";
+            string sq15 = $"select picture,productName from ShowPicture where show='3'";
             SqlCommand command5 = new SqlCommand(sq15, connection5);
             connection5.Open();
             SqlDataReader read5 = command5.ExecuteReader();
             if (read5.Read())
+            {
                 ImageButton12.ImageUrl = read5[0].ToString();
+                slideshow3 = read5[1].ToString();
+            }
             connection5.Close();
         }
 
@@ -151,7 +163,8 @@ namespace Shopping
                             //購物車內的商品數量超出庫存
                             else
                             {
-                                MessageBox.Show("購物車內的數量已達庫存上限");                              
+                                //MessageBox.Show("購物車內的數量已達庫存上限");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('購物車內的數量已達庫存上限');},600);", true);
                             }
                         }
                         else
@@ -180,7 +193,8 @@ namespace Shopping
                     }
                     else
                     {
-                        MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        //MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，這個顏色目前已經沒有庫存了');},600);", true);
                     }
                 }
                 connection1.Close();
@@ -236,7 +250,8 @@ namespace Shopping
                             //購物車內的商品數量超出庫存
                             else
                             {
-                                MessageBox.Show("購物車內的數量已達庫存上限");
+                                //MessageBox.Show("購物車內的數量已達庫存上限");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('購物車內的數量已達庫存上限');},600);", true);
                             }
                         }
                         else
@@ -265,7 +280,8 @@ namespace Shopping
                     }
                     else
                     {
-                        MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        //MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，這個顏色目前已經沒有庫存了');},600);", true);
                     }
                 }
                 connection1.Close();
@@ -321,7 +337,8 @@ namespace Shopping
                             //購物車內的商品數量超出庫存
                             else
                             {
-                                MessageBox.Show("購物車內的數量已達庫存上限");
+                                //MessageBox.Show("購物車內的數量已達庫存上限");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('購物車內的數量已達庫存上限');},600);", true);
                             }
                         }
                         else
@@ -350,7 +367,8 @@ namespace Shopping
                     }
                     else
                     {
-                        MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        //MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，這個顏色目前已經沒有庫存了');},600);", true);
                     }
                 }
                 connection1.Close();
@@ -406,7 +424,8 @@ namespace Shopping
                             //購物車內的商品數量超出庫存
                             else
                             {
-                                MessageBox.Show("購物車內的數量已達庫存上限");
+                                //MessageBox.Show("購物車內的數量已達庫存上限");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('購物車內的數量已達庫存上限');},600);", true);
                             }
                         }
                         else
@@ -435,7 +454,8 @@ namespace Shopping
                     }
                     else
                     {
-                        MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        //MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，這個顏色目前已經沒有庫存了');},600);", true);
                     }
                 }
                 connection1.Close();
@@ -491,7 +511,8 @@ namespace Shopping
                             //購物車內的商品數量超出庫存
                             else
                             {
-                                MessageBox.Show("購物車內的數量已達庫存上限");
+                                //MessageBox.Show("購物車內的數量已達庫存上限");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('購物車內的數量已達庫存上限');},600);", true);
                             }
                         }
                         else
@@ -520,7 +541,8 @@ namespace Shopping
                     }
                     else
                     {
-                        MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        //MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，這個顏色目前已經沒有庫存了');},600);", true);
                     }
                 }
                 connection1.Close();
@@ -576,7 +598,8 @@ namespace Shopping
                             //購物車內的商品數量超出庫存
                             else
                             {
-                                MessageBox.Show("購物車內的數量已達庫存上限");
+                                //MessageBox.Show("購物車內的數量已達庫存上限");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('購物車內的數量已達庫存上限');},600);", true);
                             }
                         }
                         else
@@ -605,7 +628,8 @@ namespace Shopping
                     }
                     else
                     {
-                        MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        //MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，這個顏色目前已經沒有庫存了');},600);", true);
                     }
                 }
                 connection1.Close();
@@ -661,7 +685,8 @@ namespace Shopping
                             //購物車內的商品數量超出庫存
                             else
                             {
-                                MessageBox.Show("購物車內的數量已達庫存上限");
+                                //MessageBox.Show("購物車內的數量已達庫存上限");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('購物車內的數量已達庫存上限');},600);", true);
                             }
                         }
                         else
@@ -690,7 +715,8 @@ namespace Shopping
                     }
                     else
                     {
-                        MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        //MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，這個顏色目前已經沒有庫存了');},600);", true);
                     }
                 }
                 connection1.Close();
@@ -746,7 +772,8 @@ namespace Shopping
                             //購物車內的商品數量超出庫存
                             else
                             {
-                                MessageBox.Show("購物車內的數量已達庫存上限");
+                                //MessageBox.Show("購物車內的數量已達庫存上限");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('購物車內的數量已達庫存上限');},600);", true);
                             }
                         }
                         else
@@ -775,7 +802,8 @@ namespace Shopping
                     }
                     else
                     {
-                        MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        //MessageBox.Show("很抱歉，這個顏色目前已經沒有庫存了");
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，這個顏色目前已經沒有庫存了');},600);", true);
                     }
                 }
                 connection1.Close();
@@ -873,107 +901,62 @@ namespace Shopping
                 Response.Redirect("index");
             }
         }
-
-
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(@"購物須知
-–  退換貨政策  –
-丹丹服飾提供七日鑑賞期體驗。請注意鑑賞期並非試用期，請保持商品狀態維持全新，並保留完整包裝，
-
-1.退換貨：如果您收到的商品，商品有瑕疵或與原先訂購商品不符，或有其他退貨 / 換貨需求，請在 7 天內聯絡客服確認。
-（若無法於期限內提出退換貨要求，恕無法提供退換貨服務請見諒）
-
-2.退換貨注意事項：退換貨的商品必須回復原狀，即需保留完整外包裝袋、包裝盒。 
-
-3.下列情形可能影響您的退換貨權限：
- *在您收到商品當下，務必仔細確認商品完整及符合訂購內容。
- *其他逾越檢查之必要或可歸責於您之事由，致商品有毀損、滅失或變更者。
-
-4.若您已取得紙本發票，請於退換貨時一併附上。
-
-5.請您以送貨廠商使用之包裝紙箱將退換貨商品包裝妥當，若原紙箱已遺失，請另使用其他紙箱包覆於商品原廠包裝之外。
-（切勿直接於原廠包裝上黏貼紙張或書寫文字，若原廠包裝損毀將無法退貨。）
-
-6.當您申請退換貨後，請主動向貨運人員索取單據，並保留至退換貨完成，以利日後查詢。
-
-感謝您的合作，如有任何疑問歡迎直接與客服人員聯繫。
-
-客服信箱：vs.for.test2021@gmail.com");
+            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", @"setTimeout( function(){alert('–  退換貨政策  –" +
+                @"\n丹丹服飾提供七日鑑賞期體驗。請注意鑑賞期並非試用期，請保持商品狀態維持全新，並保留完整包裝，" +
+                @"\n1.退換貨：如果您收到的商品，商品有瑕疵或與原先訂購商品不符，或有其他退貨 / 換貨需求，請在 7 天內聯絡客服確認。" +
+                @"\n（若無法於期限內提出退換貨要求，恕無法提供退換貨服務請見諒）" +
+                @"\n2.退換貨注意事項：退換貨的商品必須回復原狀，即需保留完整外包裝袋、包裝盒。" +
+                @"\n3.下列情形可能影響您的退換貨權限：。" +
+                @"\n在您收到商品當下，務必仔細確認商品完整及符合訂購內容。" +
+                @"\n其他逾越檢查之必要或可歸責於您之事由，致商品有毀損、滅失或變更者。" +
+                @"\n4.若您已取得紙本發票，請於退換貨時一併附上。" +
+                @"\n5.當您申請退換貨後，請主動向貨運人員索取單據，並保留至退換貨完成，以利日後查詢。" +
+                @"\n感謝您的合作，如有任何疑問歡迎直接與客服人員聯繫。" +
+                @"\n客服信箱：vs.for.test2021@gmail.com');},1000);", true);
         }
 
-        //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-        //{
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            if (Session["loginstatus"] == null)
+            {
+                Response.Redirect("login");
+            }
+            else
+            {               
+                Response.Redirect(@"Customer/Chat");
+            }
+        }
 
-        //    string sql;
-        //    //DataView dv;
-        //    //宣告DropDownList
-        //    DropDownList DropDownList9;
-        //    //要特別注意一下這邊，如果不用這個if包起來的話，RowDataBound會跑Header，Footer，Pager
-        //    if (e.Row.RowType == DataControlRowType.DataRow)
-        //    {
+        protected void ImageButton10_Click(object sender, ImageClickEventArgs e)
+        {
+            Session["product"] = slideshow1;
+            Response.Redirect("product");
+        }
 
-        //        //用FindControl(你的DropDownList的ID)，來找我們的DropDownList，記得要轉型喔!
-        //        DropDownList9 = (DropDownList)e.Row.FindControl("DropDownList9");
+        protected void ImageButton11_Click1(object sender, ImageClickEventArgs e)
+        {
+            Session["product"] = slideshow2;
+            Response.Redirect("product");
+        }
 
+        protected void ImageButton12_Click1(object sender, ImageClickEventArgs e)
+        {
+            Session["product"] = slideshow3;
+            Response.Redirect("product");
+        }
 
-        //        SqlConnection connection1 = new SqlConnection(product_data);
-        //        sql = $"select category from Products where productName =N'{(Label)e.Row.FindControl("Label1")}'";
-        //        connection1.Open();
-        //        SqlDataAdapter sqlAdp = new SqlDataAdapter(sql, connection1);
-        //        DataTable dt = new DataTable();
-        //        sqlAdp.Fill(dt);
-        //        //sqlAdp.Fill(dt);
-        //        //SqlConnection connection1 = new SqlConnection(product_data);
-        //        //string sql1 = $"select category from Products where productName =N'{(Label)e.Row.FindControl("Label1")}'";
-        //        //SqlCommand command1 = new SqlCommand(sql1, connection1);
-        //        //connection1.Open();
-        //        //SqlDataReader read1 = command1.ExecuteReader();
-        //        //if (read1.Read())
-        //        //{
-        //        //    DropDownList9.Items.Add(read1[0].ToString());
-        //        //}               
-        //        DropDownList9.Items.Clear();
-        //        DropDownList9.DataSource = dt;
-        //        DropDownList9.DataTextField = "category";
-        //        DropDownList9.DataValueField = "category";
-        //        DropDownList9.DataBind();
-        //        //dv = GetDV(sql);
+        protected void ImageButton13_Click(object sender, ImageClickEventArgs e)
+        {
+            Session["product"] = "領造型線T";
+            Response.Redirect("product");
+        }
 
-        //        ////DropDownList要顯示的內容
-        //        //DropDownList9.DataTextField = "category";
-
-        //        ////DropDownList顯示內容對應的值
-        //        //DropDownList9.DataValueField = "category";
-        //        ////繫結DropDownList
-        //        //DropDownList9.DataSource = dv;
-        //        //DropDownList9.DataBind();
-        //        //SqlConnection connection1 = new SqlConnection(product_data);
-        //        //string sql1 = $"select category from Products where productName =N'{(TextBox)e.Row.FindControl("TextBox2")}'";
-        //        //SqlCommand command1 = new SqlCommand(sql1, connection1);
-        //        //connection1.Open();
-        //        //SqlDataReader read1 = command1.ExecuteReader();
-        //        //if (read1.Read())
-        //        //{
-        //        //    DropDownList9.SelectedValue = read1[0].ToString();
-        //        //}
-
-        //        //connection1.Close();
-        //    }
-        //}
-        //private DataView GetDV(string sql)
-        //{
-        //    SqlConnection sqlCon = new SqlConnection(product_data);
-        //    DataView dv;
-        //    SqlDataAdapter sqlAdp = new SqlDataAdapter();
-        //    DataSet ds = new DataSet();
-        //    sqlCon.Open();
-        //    SqlCommand cmd = new SqlCommand(sql, sqlCon);
-        //    sqlAdp.SelectCommand = cmd;
-        //    sqlAdp.Fill(ds);
-        //    dv = new DataView(ds.Tables[0]);
-        //    sqlCon.Close();
-        //    return dv;
-        //}
+        protected void ImageButton14_Click(object sender, ImageClickEventArgs e)
+        {
+            Session["product"] = "袖滾配色t";
+            Response.Redirect("product");
+        }
     }
 }

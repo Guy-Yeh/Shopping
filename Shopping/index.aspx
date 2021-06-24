@@ -9,7 +9,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Fashion Mania A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
+    <title>丹丹服飾</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -85,7 +85,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-8 h_menu4">
                         <ul class="memenu skyblue">
                             <li><a class="color6" href="shoppingcar">購物車</a></li>
-                            <li><a class="color6" href="Customer\Chat.aspx">聯絡我們</a></li>
+                            <li>
+                                <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" Font-Size="Large">我要留言</asp:LinkButton></li>
                             <li>
                                 <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Font-Size="Large">購物須知</asp:LinkButton></li>
                         </ul>
@@ -132,27 +133,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--banner-->
         <div class="banner">
             <div class="col-sm-3 banner-mat">
-                <asp:ImageButton ID="ImageButton13" runat="server" ImageUrl="images\衣服\281901701-領造型線T\S__77931623.jpg" Height="100%" Width="100%" />
+                <asp:ImageButton ID="ImageButton13" runat="server" ImageUrl="images\衣服\281901701-領造型線T\S__77931623.jpg" Height="100%" Width="100%" OnClick="ImageButton13_Click" />
             </div>
             <div class="col-sm-6 matter-banner">
                 <div class="slider">
                     <div class="callbacks_container">
                         <ul class="rslides" id="slider">
                             <li>
-                                <asp:ImageButton ID="ImageButton10" runat="server" ImageUrl="images\衣服\281901801-細肩露肩t\S__49840130.jpg" Height="100%" Width="100%" />
+                                <asp:ImageButton ID="ImageButton10" runat="server" ImageUrl="images\衣服\281901801-細肩露肩t\S__49840130.jpg" Height="100%" Width="100%" OnClick="ImageButton10_Click" />
                             </li>
                             <li>
-                                <asp:ImageButton ID="ImageButton11" runat="server" ImageUrl="images\衣服\281906305-中抓摺雪紡衫\S__50069542.jpg" Height="100%" Width="100%" />
+                                <asp:ImageButton ID="ImageButton11" runat="server" ImageUrl="images\衣服\281906305-中抓摺雪紡衫\S__50069542.jpg" Height="100%" Width="100%" OnClick="ImageButton11_Click1" />
                             </li>
                             <li>
-                                <asp:ImageButton ID="ImageButton12" runat="server" ImageUrl="images\衣服\281901701-領造型線T\S__49610819.jpg" Height="100%" Width="100%" />
+                                <asp:ImageButton ID="ImageButton12" runat="server" ImageUrl="images\衣服\281901701-領造型線T\S__49610819.jpg" Height="100%" Width="100%" OnClick="ImageButton12_Click1" />
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-sm-3 banner-mat">
-                <asp:ImageButton ID="ImageButton14" runat="server" ImageUrl="images\衣服\281901708-袖滾配色t\S__77931217.jpg" Height="100%" Width="100%" />
+                <asp:ImageButton ID="ImageButton14" runat="server" ImageUrl="images\衣服\281901708-袖滾配色t\S__77931217.jpg" Height="100%" Width="100%" OnClick="ImageButton14_Click" />
             </div>
             <div class="clearfix"></div>
         </div>
@@ -304,7 +305,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
             <div class="container">
             <div align="center">
-                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="border-color: #FFFFFF; font-size: 50px; background-color: #FFFFFF; color: #000000;">更多商品
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="border-color: #FFFFFF; font-size: 50px; background-color: #FFFFFF; color: #000000;">點我查看更多
                 </a>
             </div>
                 
