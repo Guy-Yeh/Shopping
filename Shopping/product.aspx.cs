@@ -167,7 +167,7 @@ namespace Shopping
                         else
                         {
                             //MessageBox.Show("購物車內的數量已達庫存上限");
-                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('購物車內的數量已達庫存上限');},600);", true);
+                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('購物車內的數量已達庫存上限');},1000);", true);
                         }
                     }
                     else
@@ -199,7 +199,7 @@ namespace Shopping
                         else
                         {
                             //MessageBox.Show("很抱歉，這個顏色目前已經庫存不足");
-                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，這個顏色目前已經庫存不足');},600);", true);
+                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，這個顏色目前已經庫存不足');},1000);", true);
                         }
                     }
                 }

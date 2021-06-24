@@ -129,7 +129,7 @@ namespace Shopping
                         if (qty > Convert.ToInt32(read3[0]))
                         {
                             //MessageBox.Show("很抱歉，所選商品數量已達庫存上限'");
-                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，所選商品數量已達庫存上限');},600);", true);
+                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，所選商品數量已達庫存上限');},1000);", true);
                         }
                         else
                         {
