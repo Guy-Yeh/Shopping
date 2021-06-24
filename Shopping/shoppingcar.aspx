@@ -176,7 +176,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <asp:Parameter DefaultValue="是" Name="cart" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
-                    <asp:Label ID="Label4" runat="server" Text="Label" Style="float: right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label>
+                    <asp:Label ID="Label4" runat="server" Text="" Style="float: right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label>
                     <asp:Label ID="Label3" runat="server" Text="總金額：" Style="float: right" ForeColor="#52D0C4" Font-Size="X-Large"></asp:Label><br>
                     <br>
                     <asp:Button ID="Button2" runat="server" Text="確認購買" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" Font-Size="X-Large" BorderStyle="None" />
