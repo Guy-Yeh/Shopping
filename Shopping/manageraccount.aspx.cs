@@ -57,7 +57,7 @@ namespace Shopping
                 {
                     row["picture"] = read[1];
                 }
-                row["showpicture"] = read[1].ToString().Replace("/images/使用者照片/", "");
+                row["showpicture"] = read[1].ToString().Replace("/images/UserPicture/", "");
                 row["account"] = read[2];
                 row["password"] = read[3];
                 row["name"] = read[4];
