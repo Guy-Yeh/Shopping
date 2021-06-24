@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Shopping.BundleConfig" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.RouteConfig" Collapsed="true">
+    <Position X="20.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Enum" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enum.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.forget" Collapsed="true">
+    <Position X="15" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAACAAgEACAAAAAAAQgAICBAzDxAAAgAAAAAAIAAAA=</HashCode>
+      <FileName>forget.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Global" Collapsed="true">
+    <Position X="16.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.index" Collapsed="true">
+    <Position X="18.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAkOEfgAAEEL0AzDsQADD/cB9AAAAAEALAAgA=</HashCode>
+      <FileName>index.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.login" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECAACIABkACAAAAACAAgAICBADD1AABgAAAAAAIAAAA=</HashCode>
+      <FileName>login.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.manager" Collapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAADAQIAAAAAAAQgIAAAE=</HashCode>
+      <FileName>manager.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.manageraccount" Collapsed="true">
+    <Position X="13.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgABgEAAAAJACgAAIAAAAIBQADAYAAggAARBAAKgAgA=</HashCode>
+      <FileName>manageraccount.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.managercontact" Collapsed="true">
+    <Position X="15" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABBgAxAQAAAQAggAAQAAIESwDEQtAAgBCCCAhKEEgA=</HashCode>
+      <FileName>managercontact.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.managerhome" Collapsed="true">
+    <Position X="16.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQADAQAAAAAAAAAAIAAgA=</HashCode>
+      <FileName>managerhome.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.managerorder" Collapsed="true">
+    <Position X="18.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BwQCggA4CIiAAgEAAgIA8GJQCDAWT5IyCggogAKEIgA=</HashCode>
+      <FileName>managerorder.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.managerproduct" Collapsed="true">
+    <Position X="20.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBhCgAEggAACAABAAAAABQCDEQACmwAAAgAgbwAgE=</HashCode>
+      <FileName>managerproduct.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.managershoppingcar" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEAgAAwAACAAlBAAgIAcCASCDAQTQAwCAggAAKAAgA=</HashCode>
+      <FileName>managershoppingcar.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.managershowpicture" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQgBhCogUggAACQQBAQAAABQCDAQCCmwIAAgg4bwggE=</HashCode>
+      <FileName>managershowpicture.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.payment" Collapsed="true">
+    <Position X="15" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAEgEAAAAIAUEMQAQDgQIDDxcAgAAAAAEAJAAgA=</HashCode>
+      <FileName>payment.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.product" Collapsed="true">
+    <Position X="16.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAYAAAEEIAAQDgQADDxcBgAAAAAEAJAAgA=</HashCode>
+      <FileName>product.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.register" Collapsed="true">
+    <Position X="18.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACNACAAgACCAQAIkBAAgAICBAjL1AAAgAAAgQgIAAgA=</HashCode>
+      <FileName>register.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.shoppingcar" Collapsed="true">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAEAAAAAAUEIAAQDhQIDDxcAgAAAAAAAJAAgA=</HashCode>
+      <FileName>shoppingcar.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.SiteMaster" Collapsed="true">
+    <Position X="16.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Site.Master.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Site_Mobile" Collapsed="true">
+    <Position X="15" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAACAAAAAIAAAIAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Site.Mobile.Master.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.verification" Collapsed="true">
+    <Position X="18.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAIAAAIAAAA=</HashCode>
+      <FileName>verification.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.ViewSwitcher" Collapsed="true">
+    <Position X="20.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEIAAIA=</HashCode>
+      <FileName>ViewSwitcher.ascx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.WebForm1" Collapsed="true">
+    <Position X="9.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACABAAEIBAAAAAAAABAAiAIAAQQBAgAABAAAIAAAA=</HashCode>
+      <FileName>WebForm1.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.WebForm2" Collapsed="true">
+    <Position X="11.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAIAEgEAAgBAAAAAgAABiAIAAAbAAgABAAAAIAAAA=</HashCode>
+      <FileName>WebForm2.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.WebForm3" Collapsed="true">
+    <Position X="13.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAABAAIAAALAAgAAAAAAIAAAA=</HashCode>
+      <FileName>WebForm3.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.WebUserControl1" Collapsed="true">
+    <Position X="15" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>WebUserControl1.ascx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Common.Common" Collapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Common\Common.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Common.DataTableExtensions" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Common\DataTableExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Customer.Chat" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAQAAAAAAAABAIAIAAAAAAAIAgAIAAAAKAAAA=</HashCode>
+      <FileName>Customer\Chat.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Customer.Customer" Collapsed="true">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAARIDDxAAAAAAAAAAIAAgA=</HashCode>
+      <FileName>Customer\Customer.Master.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Customer.CustomerDetail" Collapsed="true">
+    <Position X="18.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIICBIAABAAQAAAAAAAAAIwAAgAAcAABAAwCQAKBAAU=</HashCode>
+      <FileName>Customer\CustomerDetail.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Customer.ShoppingList" Collapsed="true">
+    <Position X="11.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAA=</HashCode>
+      <FileName>Customer\ShoppingList.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Dao.BaseDao" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dao\BaseDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Dao.CustomerDetailDao" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAAAAAAAAAAAAAAAAAAAQAAAAAAAAhAAgAAIABAAA=</HashCode>
+      <FileName>Dao\CustomerDetailDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Dao.indexDao" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAIAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Dao\indexDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Dao.OrdersDao" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAQAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Dao\OrdersDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Filter.ExceptionAttribute" Collapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filter\ExceptionAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Models.ApiResultModel&lt;DataT&gt;" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAABAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\ApiResultModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Models.CustomersModel" Collapsed="true">
+    <Position X="20.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQIAAgAAgAAAAAAQAAAIEAAAgAAAAQgIAAAA=</HashCode>
+      <FileName>Models\CustomersModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Models.indexModel" Collapsed="true">
+    <Position X="20.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAgIAAAAAAA=</HashCode>
+      <FileName>Models\indexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Models.OrdersModel" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAgAAAAgAAEARAAAIEAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Models\OrdersModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Models.ShoppingListModel" Collapsed="true">
+    <Position X="13.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAAAAACAAgAAEARAAAIEAIAgAAgAIAAAAAA=</HashCode>
+      <FileName>Models\ShoppingListModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Service.BaseService" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\BaseService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Service.CustomerDetailService" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAAAAAAAAAAAAAAAAAAAQAAAAAAAABAAgAAIABAAA=</HashCode>
+      <FileName>Service\CustomerDetailService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Service.indexpro" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\indexpro.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopping.Service.OrdersService" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\OrdersService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft JhengHei UI" Size="9" />
+</ClassDiagram>
