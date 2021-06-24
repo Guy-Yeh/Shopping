@@ -38,7 +38,7 @@ namespace Shopping
         {
             helpSQL.Text = "";
             SqlConnection connection = new SqlConnection(s_data);
-            string sql = $"select * from Products";
+            string sql = $"select * from Products order by initdate DESC,ID DESC";
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
@@ -217,7 +217,7 @@ namespace Shopping
         {
             if (DDLSearchProductName.SelectedItem.Text != "請選擇")
             {
-                string SqlS = $"select * from Products where productName = N'{DDLSearchProductName.Text}'";
+                string SqlS = $"select * from Products where productName = N'{DDLSearchProductName.Text}'order by initdate DESC,ID DESC";
                 searchProduct(SqlS);
                 cleanbt4();
             }
@@ -236,6 +236,7 @@ namespace Shopping
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
+            cleanbt4();
             reviewProduct();
         }
 
@@ -332,52 +333,53 @@ namespace Shopping
                                             SqlCommand command = new SqlCommand(strUpdate, connection);
                                             command.ExecuteNonQuery();
                                             connection.Close();
+                                            cleanbt4();
                                             product.EditIndex = -1;
                                             reviewProduct();
                                         }
                                         else
                                         {
-                                            MessageBox.Show("圖片路徑不存在 請重新確認");
-                                            //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},600);", true);
+                                            //MessageBox.Show("圖片路徑不存在 請重新確認");
+                                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},1000);", true);
                                         }
                                     }
                                     connectionSP.Close();
                                 }
                                 else
                                 {
-                                    MessageBox.Show("圖片檔名不得為空");
-                                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得為空');},600);", true);
+                                    //MessageBox.Show("圖片檔名不得為空");
+                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得為空');},1000);", true);
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("價格需為大於0的數字");
-                                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('價格需為大於0的數字');},600);", true);
+                                //MessageBox.Show("價格需為大於0的數字");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('價格需為大於0的數字');},1000);", true);
                             }
                         }
                         else
                         {
                             connectionrepeat.Close();
-                            MessageBox.Show("庫存需為不小於0的數字");
-                            //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('庫存需為不小於0的數字');},600);", true);
+                            //MessageBox.Show("庫存需為不小於0的數字");
+                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('庫存需為不小於0的數字');},1000);", true);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("商品名稱、顏色種類已存在 請重新輸入");
-                        //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品名稱、顏色種類已存在 請重新輸入');},600);", true);
+                        //MessageBox.Show("商品名稱、顏色種類已存在 請重新輸入");
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品名稱、顏色種類已存在 請重新輸入');},1000);", true);
                     }
                 }
                 else 
                 {
-                    MessageBox.Show("商品顏色不得為空");
-                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品顏色不得為空');},600);", true);
+                    //MessageBox.Show("商品顏色不得為空");
+                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品顏色不得為空');},1000);", true);
                 }
             }
             else
             {
-                MessageBox.Show("商品名稱不得為空");
-                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品名稱不得為空');},1000);", true);                
+                //MessageBox.Show("商品名稱不得為空");
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品名稱不得為空');},1000);", true);
             }
 
         }
@@ -391,13 +393,17 @@ namespace Shopping
         {
             bool inventoryCheck = Regex.IsMatch(TextBox12.Text, @"\d");
             bool priceCheck = Regex.IsMatch(TextBox13.Text, @"\d");
+            DateTime dt = DateTime.Now;
+
+           
+            
 
             if (TextBox10.Text != "")
             {
                 if (TextBox11.Text != "")
                 {
                     SqlConnection connection = new SqlConnection(s_data);
-                    string sql = $"select * from Products where productName = N'{TextBox10.Text}'and category = N'{TextBox11.Text}'";
+                    string sql = $"select * from Products where productName = N'{TextBox10.Text}'and category = N'{TextBox11.Text}' ";
                     SqlCommand command = new SqlCommand(sql, connection);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -412,7 +418,8 @@ namespace Shopping
                                 int nFileLen = myFile.ContentLength;
                                 if (FileUpload2.HasFile && nFileLen > 0)
                                 {
-                                    string picturePath2 = $@"images\衣服\{TextBox10.Text}_{TextBox11.Text}.jpg";
+                                    string date = DateTime.Now.ToString("yyyyMMddhhmmss");
+                                    string picturePath2 = $@"images\衣服\S_{date}.jpg";
                                     string imgPath = Server.MapPath(picturePath2);
                                     FileUpload2.SaveAs(imgPath);
                                     SqlConnection connection2 = new SqlConnection(s_data);
@@ -422,6 +429,7 @@ namespace Shopping
                                     command2.ExecuteNonQuery();
                                     connection2.Close();
                                     cleansub();
+                                    cleanbt4();
                                     reviewProduct();
                                 }
                                 else
