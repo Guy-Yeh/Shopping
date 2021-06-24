@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="forget.aspx.cs" Inherits="Shopping.forget" %>
+﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="forget.aspx.cs" Inherits="Shopping.forget" %>
 
 <!--A Design by W3layouts 
 Author: W3layout

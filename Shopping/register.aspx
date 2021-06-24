@@ -1,4 +1,4 @@
-﻿<%@ Page  Language="C#"  AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="Shopping.register" %>
+﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="Shopping.register" %>
 
 <!--A Design by W3layouts 
 Author: W3layout
