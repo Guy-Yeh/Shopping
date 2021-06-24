@@ -39,7 +39,7 @@ namespace Shopping
         {
             helpSQL.Text = "";
             SqlConnection connection = new SqlConnection(s_data);
-            string sql = $"select * from ShowPicture";
+            string sql = $"select * from ShowPicture order by ID DESC";
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();
             SqlDataReader read = command.ExecuteReader();
@@ -305,6 +305,8 @@ namespace Shopping
             command.ExecuteNonQuery();
             connection.Close();
             set123();
+            cleanbt4();
+            cleanset();
             reviewShowPicture();
         }
 
@@ -325,11 +327,11 @@ namespace Shopping
         {
             product.EditIndex = e.NewEditIndex;
             if (helpSQL.Text != "")
-            {
+            {                
                 searchShowPicture(helpSQL.Text);
             }
             else
-            {
+            {                
                 reviewShowPicture();
             }
         }
@@ -398,12 +400,14 @@ namespace Shopping
                                             connection.Close();
                                             product.EditIndex = -1;
                                             set123();
+                                            cleanbt4();
+                                            cleanset();
                                             reviewShowPicture();
                                         }
                                         else
                                         {
-                                            MessageBox.Show("圖片路徑不存在 請重新確認");
-                                            //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},600);", true);
+                                            //MessageBox.Show("圖片路徑不存在 請重新確認");
+                                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},1000);", true);
                                         }
                                     }
                                     
@@ -411,19 +415,16 @@ namespace Shopping
                                 else
                                 {
 
-                                    MessageBox.Show("圖片檔名不得為空");
-                                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得為空');},600);", true);
+                                    //MessageBox.Show("圖片檔名不得為空");
+                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得為空');},1000);", true);
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("顯示設定只能設為1,2,3,No 請更改");
-                                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('顯示設定只能為1,2,3,No 請更改');},600);", true);
+                                //MessageBox.Show("顯示設定只能設為1,2,3,No 請更改");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('顯示設定只能為1,2,3,No 請更改');},1000);", true);
                             }
-                            //else
-                            //{
-                            //    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('該設定目前已存在  請更改設定為No或取代已存在設定');},0);", true);
-                            //}
+                           
                         }
                         else
                         {
@@ -458,40 +459,42 @@ namespace Shopping
                                         connection.Close();
                                         product.EditIndex = -1;
                                         set123();
+                                        cleanbt4();
+                                        cleanset();
                                         reviewShowPicture();
                                     }
                                     else
                                     {
-                                        MessageBox.Show("圖片路徑不存在 請重新確認");
-                                        //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},600);", true);
+                                        //MessageBox.Show("圖片路徑不存在 請重新確認");
+                                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},1000);", true);
                                     }
                                 }
                                 connectionSP.Close();
                             }
                             else
                             {
-                                MessageBox.Show("圖片檔名不得為空");
-                                // this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得為空');},600);", true);
+                                //MessageBox.Show("圖片檔名不得為空");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得為空');},1000);", true);
                             }
                         }
                     }
                     else
                     {
-                        MessageBox.Show("顯示設定不得為空");
-                        //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('顯示設定不得為空');},600);", true);
+                        //MessageBox.Show("顯示設定不得為空");
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('顯示設定不得為空');},1000);", true);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("商品名稱重複 請重新輸入");
-                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品名稱重複 請重新輸入');},600);", true);
+                    //MessageBox.Show("商品名稱重複 請重新輸入");
+                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品名稱重複 請重新輸入');},1000);", true);
                 }
 
             }
             else
             {
-                MessageBox.Show("產品名稱不得為空");
-                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('產品名稱不得為空');},600);", true);
+                //MessageBox.Show("商品名稱不得為空");
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品名稱不得為空');},1000);", true);
             }
         }
         protected void product_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -562,6 +565,7 @@ namespace Shopping
                                 connection3.Close();
                                 cleansub();
                                 set123();
+                                cleanbt4();
                                 reviewShowPicture();
                             }
                             else
@@ -578,7 +582,8 @@ namespace Shopping
                             int nFileLen = myFile.ContentLength;
                             if (FileUpload2.HasFile && nFileLen > 0)
                             {
-                                string picturePath2 = $@"images\衣服\{TextBox10.Text}.jpg";
+                                string date = DateTime.Now.ToString("yyyyMMddhhmmss");
+                                string picturePath2 = $@"images\衣服\S_{date}.jpg";
                                 string imgPath = Server.MapPath(picturePath2);
                                 FileUpload2.SaveAs(imgPath);
                                 SqlConnection connection3 = new SqlConnection(s_data);
@@ -589,6 +594,8 @@ namespace Shopping
                                 connection3.Close();
                                 cleansub();
                                 set123();
+                                cleanbt4();
+                                cleanset();
                                 reviewShowPicture();
                             }
                             else

@@ -51,7 +51,7 @@ namespace Shopping
 
                 if (read[1].ToString() == "" || read[1] is null)
                 {
-                    row["picture"] = @"/images/使用者照片/def.jpg";
+                    row["picture"] = @"/images/UserPicture/def.jpg";
                 }
                 else 
                 {
@@ -118,13 +118,13 @@ namespace Shopping
 
                 if (read[1].ToString() == "" || read[1] is null)
                 {
-                    row["picture"] = @"/images/使用者照片/def.jpg";
+                    row["picture"] = @"/images/UserPicture/def.jpg";
                 }
                 else
                 {
                     row["picture"] = read[1];
                 }
-                row["showpicture"] = read[1].ToString().Replace("/images/使用者照片/","");
+                row["showpicture"] = read[1].ToString().Replace("/images/UserPicture/", "");
                 row["account"] = read[2];
                 row["password"] = read[3];
                 row["name"] = read[4];
@@ -178,14 +178,14 @@ namespace Shopping
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["access"] != null && Session["access"] == "ok")
-            {
+            //if (Session["access"] != null && Session["access"] == "ok")
+            //{
 
-            }
-            else
-            {
-                Response.Redirect("manager");
-            }
+            //}
+            //else
+            //{
+            //    Response.Redirect("manager");
+            //}
             hintIDS.Text = "";
             changecolor();
             
@@ -293,7 +293,7 @@ namespace Shopping
 
             string ID = useraccount.DataKeys[e.RowIndex].Values[0].ToString();
             string access = ((TextBox)useraccount.Rows[e.RowIndex].FindControl("TextBox2")).Text;
-            string sql = $"update customers set access = '{access}'";
+            string sql = $"update customers set access = '{access}' where ID = '{ID}'";
             if (access == "Yes" || access == "No")
             {
                 SqlConnection connection = new SqlConnection(s_data);
@@ -306,10 +306,9 @@ namespace Shopping
             }
             else
             {
-                MessageBox.Show("權限僅能輸入Yes或No 請重新輸入");
-                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('權限僅能輸入Yes或No 請重新輸入');},600);", true);
+                //MessageBox.Show("權限僅能輸入Yes或No 請重新輸入");
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('權限僅能輸入Yes或No 請重新輸入');},1000);", true);                
             }
-
             //string update = $"update Customers SET account= N'{TextBox9.Text}' where account='{TextBox8.Text}'";
             //string sqlSP = $"select picture from Customers where ID='{ID}'";
             //SqlConnection connectionSP = new SqlConnection(s_data);

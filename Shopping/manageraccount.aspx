@@ -9,7 +9,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Fashion Mania A Ecommerce Category Flat Bootstarp Resposive Website Template | Single :: w3layouts</title>
+    <title>丹丹服飾 : : 帳戶管理</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Custom Theme files -->
     <!--theme-style-->

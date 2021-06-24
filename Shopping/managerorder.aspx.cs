@@ -31,7 +31,7 @@ namespace Shopping
             helpSQLO21.Text = "";
             helpSQLO22.Text = "";
             SqlConnection connectionorigin = new SqlConnection(s_data5);
-            string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice, a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial order by b.initdate DESC";
+            string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice, a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial order by b.initdate DESC,a.ID DESC";
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
             SqlDataReader readorigin = command.ExecuteReader();
@@ -85,7 +85,7 @@ namespace Shopping
             SqlConnection connectionorigin = new SqlConnection(s_data5);
             string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice," +
                 $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate " +
-                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where a.{name}=N'{check}' order by b.initdate DESC";
+                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where a.{name}=N'{check}' order by b.initdate DESC,a.ID DESC";
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
             SqlDataReader readorigin = command.ExecuteReader();            
@@ -137,7 +137,7 @@ namespace Shopping
             SqlConnection connectionorigin = new SqlConnection(s_data5);
             string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice," +
                 $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate " +
-                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where a.{name}=N'{check}' order by b.initdate DESC";
+                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where a.{name}=N'{check}' order by b.initdate DESC,a.ID DESC";
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
             SqlDataReader readorigin = command.ExecuteReader();
@@ -156,7 +156,7 @@ namespace Shopping
             SqlConnection connectionorigin = new SqlConnection(s_data5);
             string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice," +
                 $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate " +
-                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where b.{name}=N'{check}' order by b.initdate DESC";
+                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where b.{name}=N'{check}' order by b.initdate DESC,a.ID DESC";
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
             SqlDataReader readorigin = command.ExecuteReader();
@@ -210,7 +210,7 @@ namespace Shopping
             SqlConnection connectionorigin = new SqlConnection(s_data5);
             string sqlorigin = $"select a.ID, a.serial, a.productName, a.productColor, a.productPicture, a.productPrice," +
                 $" a.qty , a.customerAccount, b.name, b.phone, b.address, b.status, b.initdate, b.updateInitdate " +
-                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where b.{name}=N'{check}'order by b.initdate DESC";
+                $"FROM OrderDetail AS a INNER JOIN Orders AS b ON a.serial = b.serial where b.{name}=N'{check}'order by b.initdate DESC,a.ID DESC";
             SqlCommand command = new SqlCommand(sqlorigin, connectionorigin);
             connectionorigin.Open();
             SqlDataReader readorigin = command.ExecuteReader();
@@ -674,8 +674,8 @@ namespace Shopping
                                                 }
                                                 else
                                                 {
-                                                    MessageBox.Show("商品庫存不足 請下修數量");
-                                                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品庫存不足 請下修數量');},700);", true);
+                                                    //MessageBox.Show("商品庫存不足 請下修數量");
+                                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品庫存不足 請下修數量');},1000);", true);
                                                 }
 
                                             }
@@ -729,39 +729,39 @@ namespace Shopping
                                                     }
                                                     else
                                                     {
-                                                        MessageBox.Show("商品庫存不足 請下修數量或更改商品組合");
-                                                        //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品庫存不足 請下修數量或更改商品組合');},600);", true);
+                                                        //MessageBox.Show("商品庫存不足 請下修數量或更改商品組合");
+                                                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品庫存不足 請下修數量或更改商品組合');},1000);", true);
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    MessageBox.Show("商品不存在 請重新輸入商品組合");
-                                                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品不存在 請重新輸入商品組合');},600);", true);
+                                                    //MessageBox.Show("商品不存在 請重新輸入商品組合");
+                                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('商品不存在 請重新輸入商品組合');},1000);", true);
                                                 }
                                             }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("數量需為不小於0的數字");
-                                            //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('數量需為不小於0的數字');},600);", true);
+                                            //MessageBox.Show("數量需為不小於0的數字");
+                                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('數量需為不小於0的數字');},1000);", true);
                                         }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("收件人不得為空");
-                                        //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('收件人不得為空');},600);", true);
+                                        //MessageBox.Show("收件人不得為空");
+                                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('收件人不得為空');},1000);", true);
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("電話格式有誤 為09加8個數字");
-                                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('電話格式有誤 為09加8個數字');},600);", true);
+                                    //MessageBox.Show("電話格式有誤 為09加8個數字");
+                                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('電話格式有誤 為09加8個數字');},1000);", true);
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("地址欄位不得為空");
-                                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('地址欄位不得為空');},600);", true);
+                                //MessageBox.Show("地址欄位不得為空");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('地址欄位不得為空');},1000);", true);
                             }
                         }
                         else
@@ -779,16 +779,16 @@ namespace Shopping
                             }
                             else
                             {
-                                MessageBox.Show("該訂單狀態為配送中、已完成或已取消，無法修改訂單內容、僅能修改訂單狀態");
-                                // this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('該訂單狀態為配送中、已完成或已取消，無法修改訂單內容、僅能修改訂單狀態');},600);", true);
+                                //MessageBox.Show("該訂單狀態為配送中、已完成或已取消，無法修改訂單內容、僅能修改訂單狀態");
+                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", @"setTimeout( function(){alert('該訂單狀態非「賣方處理中」\n已無法修改訂單內容，僅能修改訂單狀態');},1000);", true);
                             }
                         }
                     }
                     else
                     {
-                        MessageBox.Show("配送狀態不得為空且僅能為賣方處理中、配送中、已完成、已取消");
-                        //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('配送狀態不得為空且僅能為賣方處理中、配送中、已完成、已取消');},600);", true);
-                        
+                        //MessageBox.Show("配送狀態不得為空且僅能為賣方處理中、配送中、已完成、已取消");
+                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", @"setTimeout( function(){alert('配送狀態不得為空\n僅能為「賣方處理中」、「配送中」、「已完成」或「已取消」擇一');},1000);", true);
+
                     }
                 }
             }
