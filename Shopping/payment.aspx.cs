@@ -65,7 +65,15 @@ namespace Shopping
             return f;
         }
         protected void Page_Load(object sender, EventArgs e)
-        {           
+        {
+            TextBox1.Visible = true;
+            TextBox2.Visible = true;
+            TextBox3.Visible = true;
+            Label1.Visible = true;
+            Label2.Visible = true;
+            Label3.Visible = true;
+            Label5.Visible = true;
+            Button1.Visible = true;
             SqlConnection connection6 = new SqlConnection(orderdetail_data);
             string sql6 = $"select productName,productColor,qty from OrderDetail where customerAccount=N'{Session["loginstatus"]}' and cart=N'是'";
             SqlCommand command6 = new SqlCommand(sql6, connection6);
@@ -82,7 +90,7 @@ namespace Shopping
                 {
                     if (Convert.ToInt32(read7[0]) < Convert.ToInt32(read6[2]))
                     {
-                        Label8.Text=Label8.Text + $"購物車內的{read6[0]}數量超過庫存上限，先幫您移出購物車<br>";
+                        Label8.Text=Label8.Text + $"購物車內的{read6[0]}({read6[1]})數量超過庫存上限，先幫您移出購物車<br>";
 
                         //連線至orderdetail
                         SqlConnection connection = new SqlConnection(orderdetail_data);
@@ -147,6 +155,7 @@ namespace Shopping
             //購物車有內容
             if (cart == true)
             {
+                
                 if (!IsPostBack)
                 {
                     //連線至customers
@@ -164,6 +173,17 @@ namespace Shopping
                     }
                     connection4.Close();
                 }
+            }
+            else
+            {
+                TextBox1.Visible = false;
+                TextBox2.Visible = false;
+                TextBox3.Visible = false;
+                Label1.Visible = false;
+                Label2.Visible = false;
+                Label3.Visible = false;
+                Label5.Visible = false;
+                Button1.Visible = false;
             }
         }
         //確認送出訂單

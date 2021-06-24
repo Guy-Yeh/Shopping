@@ -168,37 +168,41 @@ $(document).ready(function () {
                     // 取消
                     $(".delete-but").click(function () {
                         console.log("delete-but", $(this).attr("data-serial"));
-                        $.ajax({
-                            type: "post",
-                            url: "ShoppingList.aspx/DelOrders",
-                            data: JSON.stringify({ status:'取消訂單', serial: $(this).attr("data-serial") }),
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: (e) => {
-                                if (e.d.Status == 0) {
-                                    let data = e.d.Data[0];
-                                    $(this).attr("data-serial");
-                                    getOrders();
-                                    //to do
-                                    //customer = data;
-                                    //if (isOk == true) {
-                                    //    setTimeout(() => {
-                                    //        alert("OK")
-                                    //    }, 200)
+                        var r = confirm("您確定要取消嗎？");
+                        if (r == true) {
 
-                                    //}
+                            $.ajax({
+                                type: "post",
+                                url: "ShoppingList.aspx/DelOrders",
+                                data: JSON.stringify({ status: '已取消', serial: $(this).attr("data-serial") }),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: (e) => {
+                                    if (e.d.Status == 0) {
+                                        let data = e.d.Data[0];
+                                        $(this).attr("data-serial");
+                                        getOrders();
+                                        //to do
+                                        //customer = data;
+                                        //if (isOk == true) {
+                                        //    setTimeout(() => {
+                                        //        alert("OK")
+                                        //    }, 200)
 
-                                } else {
+                                        //}
+
+                                    } else {
+                                        alert(e.d.Message);
+                                    }
+                                },
+                                error: (e) => {
+                                    console.log("ERROR");
+
                                     alert(e.d.Message);
                                 }
-                            },
-                            error: (e) => {
-                                console.log("ERROR");
 
-                                alert(e.d.Message);
-                            }
-
-                        });
+                            });
+                        }
                     });
 
                 } else {

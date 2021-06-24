@@ -251,7 +251,7 @@ namespace Shopping.Customer
                     if (FileUpload1.HasFile && nFileLen > 0)
                     {
                         //string picturePath1 = $"/images/FileUpload/" + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
-                        string picturePath1 = $"/images/使用者照片/" + loginstatus + ".jpg";
+                        string picturePath1 = $"/images/使用者照片/" +"_"+ loginstatus + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
                         string imgPath = Server.MapPath("~" + picturePath1);
                         FileUpload1.SaveAs(imgPath);
                         //accountImg.ImageUrl = picturePath1;
@@ -278,7 +278,7 @@ namespace Shopping.Customer
                             command.ExecuteNonQuery();
                             connection.Close();
                             accountImg.ImageUrl = picturePath1;
-                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "TEST1", "setTimeout( function(){alert('上傳成功');},200);", true);
+                            //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "TEST1", "setTimeout( function(){alert('上傳成功');},200);", true);
                             //MessageBox.Show("上傳成功");
 
                         }
@@ -460,7 +460,7 @@ namespace Shopping.Customer
             {
                 try {
                     // 驗證成功
-                    MessageBox.Show("Mail已修改");
+                    //MessageBox.Show("Mail已修改");
                     //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('Mail已修改');},200);", true);
 
 
