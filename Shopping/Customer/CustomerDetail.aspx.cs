@@ -176,24 +176,27 @@ namespace Shopping.Customer
                             CustomerDetailService customerDetailService2 = new CustomerDetailService();
                             bool r1 = customerDetailService2.EditPassword1(loginstatus, reNewPwd);
                             //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt1", "setTimeout( function(){alert('輸入成功');},0);", true);
-                            MessageBox.Show("密碼修改成功");
+                            //MessageBox.Show("密碼修改成功");
                             //正確 執行更新密碼
                         }
                         else
                         {
                             //舊密碼輸入錯誤
 
-                            MessageBox.Show("舊密碼輸入錯誤");
+                            //MessageBox.Show("舊密碼輸入錯誤");
+                            return common.ThrowResult<bool>(Enum.ApiStatusEnum.InternalServerError, "舊密碼輸入錯誤", true);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("新密碼輸入錯誤");
+                        //essageBox.Show("新密碼輸入錯誤");
+                        return common.ThrowResult<bool>(Enum.ApiStatusEnum.InternalServerError, "新密碼輸入錯誤", true);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("密碼格式錯誤");
+                    return common.ThrowResult<bool>(Enum.ApiStatusEnum.InternalServerError , "密碼格式錯誤", true);
+                    //MessageBox.Show("密碼格式錯誤");
                 }
                 return common.ThrowResult<bool>(Enum.ApiStatusEnum.OK, string.Empty, true);
 
@@ -251,7 +254,7 @@ namespace Shopping.Customer
                     if (FileUpload1.HasFile && nFileLen > 0)
                     {
                         //string picturePath1 = $"/images/FileUpload/" + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
-                        string picturePath1 = $"/images/使用者照片/" +"_"+ loginstatus + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
+                        string picturePath1 = $"/images/UserPicture/" +"_"+ loginstatus + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
                         string imgPath = Server.MapPath("~" + picturePath1);
                         FileUpload1.SaveAs(imgPath);
                         //accountImg.ImageUrl = picturePath1;
@@ -342,8 +345,8 @@ namespace Shopping.Customer
             {
                 if (emailRule == false)
                 {
-                    MessageBox.Show("Mail格式錯誤，\n請輸入正確mail''");
-                    //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('Mail格式錯誤，\n請輸入正確mail');},200);", true);
+                    //MessageBox.Show("Mail格式錯誤，\n請輸入正確mail''");
+                    this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", @"setTimeout( function(){alert('Mail格式錯誤，\n請輸入正確mail');},1000);", true);
 
                 }
                 else
@@ -360,8 +363,8 @@ namespace Shopping.Customer
                         {
 
                             connection.Close();
-                            MessageBox.Show("該Mail已註冊，\n請輸入其他Mail'");
-                            //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('該Mail已註冊，\n請輸入其他Mail');},200);", true);
+                            //MessageBox.Show("該Mail已註冊，\n請輸入其他Mail'");
+                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", @"setTimeout( function(){alert('該Mail已註冊，\n請輸入其他Mail');},1000);", true);
                             newMailInput = "";
                             return;
                         }
@@ -387,8 +390,8 @@ namespace Shopping.Customer
                 }
             }
             else {
-                MessageBox.Show("Mail欄位不得為空，\n請重新輸入您的Mail");
-                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('Mail欄位不得為空，\n請重新輸入您的Mail');},200);", true);
+                //MessageBox.Show("Mail欄位不得為空，\n請重新輸入您的Mail");
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", @"setTimeout( function(){alert('Mail欄位不得為空，\n請重新輸入您的Mail');},1000);", true);
             }
 
 
@@ -446,8 +449,8 @@ namespace Shopping.Customer
                     smtp.Send(mail);
                 }
             }
-            MessageBox.Show("驗證碼已寄送至您的Mail");
-            //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('驗證碼已寄送至您的Mail');},200);", true);
+            //MessageBox.Show("驗證碼已寄送至您的Mail");
+            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btn", "setTimeout( function(){alert('驗證碼已寄送至您的Mail');},1000);", true);
         }
 
 
@@ -494,8 +497,8 @@ namespace Shopping.Customer
             }
             else
             {
-                MessageBox.Show("驗證碼錯誤");
-                //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btm", "setTimeout( function(){alert('驗證碼錯誤');},200);", true);
+                //MessageBox.Show("驗證碼錯誤");
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "btm", "setTimeout( function(){alert('驗證碼錯誤');},1000);", true);
 
                 // to do 
             }
