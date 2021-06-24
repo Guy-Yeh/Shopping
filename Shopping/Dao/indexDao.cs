@@ -21,7 +21,7 @@ namespace Shopping.Dao
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             SqlCommand command = new SqlCommand(@"SELECT 
               picture,productName,price,category
-              FROM Products ", connection);
+              FROM Products order by ID DESC", connection);
             sqlDataAdapter.SelectCommand = command;
             //與資料庫連接的通道開啟
             connection.Open();
