@@ -465,7 +465,7 @@ namespace Shopping
             }
             else
             {
-                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('回覆內容尚未填入 請重新確認');},0);", true);
+                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('回覆內容尚未填入 請重新確認');},1000);", true);
             }
         }
 
