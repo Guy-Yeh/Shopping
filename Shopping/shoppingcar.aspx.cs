@@ -25,20 +25,23 @@ namespace Shopping
             Button4.Text = "會員資料";
             Button3.Text = "登出";
             SqlConnection connection = new SqlConnection(orderdetail_data);
-            string sq1 = $"select productPrice,qty from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+            string sq1 = $"select SUM(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
             SqlCommand command1 = new SqlCommand(sq1, connection);
             connection.Open();
             SqlDataReader read1 = command1.ExecuteReader();
             if (read1.Read())
             {
-                Label4.Text = read1[0].ToString();
-                Label1.Text = "消費金額：" + (Convert.ToInt32(read1[0])*Convert.ToInt32(read1[1])).ToString();
-                Button2.Visible = true;
-            }
-            else
-            {
-                Button2.Visible = false;
-            }          
+                if (read1[0] != DBNull.Value)
+                {
+                    Label4.Text = read1[0].ToString();
+                    Label1.Text = "消費金額：" + read1[0].ToString();
+                    Button2.Visible = true;
+                }
+                else
+                {
+                    Button2.Visible = false;
+                }
+            }   
             connection.Close();       
         }
 
