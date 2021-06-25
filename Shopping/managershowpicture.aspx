@@ -204,7 +204,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 <div class="col-sm-4">
                                     <h3>
-                                        <asp:Label ID="Label9" runat="server" Text="商品上架" ForeColor="#52d0c4" Font-Bold="true"></asp:Label>&nbsp;&nbsp;&nbsp; </h3>
+                                        <asp:Label ID="Label9" runat="server" Text="主頁商品圖片" ForeColor="#52d0c4" Font-Bold="true"></asp:Label>&nbsp;&nbsp;&nbsp; </h3>
                                     <br>
                                 </div>
                             </div>
@@ -217,13 +217,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <asp:Table ID="Tableadd" runat="server" GridLines="Both" CellPadding="10" align="center" Width="920px">
                                         <asp:TableRow>
                                             <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger">
-                                商品名稱
+                                主頁商品名稱
                                             </asp:TableCell>
                                             <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger">
-                                商品圖片
+                                主頁商品圖片
                                             </asp:TableCell>
                                             <asp:TableCell ForeColor="#52d0c4" Font-Size="Larger">
-                                顯示設定
+                                主頁顯示設定
                                             </asp:TableCell>
                                         </asp:TableRow>
                                         <asp:TableRow>
@@ -250,7 +250,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 <div class="col-sm-1">
                                     <br>
-                                    <asp:Button ID="sub" runat="server" Text="上架" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Width="80px" Height="80" OnClick="sub_Click" OnClientClick='return confirm("確定上架?")' />
+                                    <asp:Button ID="sub" runat="server" Text="新增" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Width="80px" Height="80" OnClick="sub_Click" OnClientClick='return confirm("確定上架?")' />
                                 </div>
                             </div>
                         </div>
