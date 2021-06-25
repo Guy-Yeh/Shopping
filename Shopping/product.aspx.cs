@@ -41,6 +41,7 @@ namespace Shopping
                         Image1.ImageUrl = read1[2].ToString();
                         Label2.Text = read1[5].ToString();
                         Label5.Text ="尚餘庫存：" + read1[4].ToString();
+                        Label6.Text = read1[7].ToString();
                     }
                 }
                 connection1.Close();
@@ -60,6 +61,7 @@ namespace Shopping
                         Image1.ImageUrl = read2[2].ToString();
                         Label2.Text = read2[5].ToString();
                         Label5.Text = "尚餘庫存：" + read2[4].ToString();
+                        Label6.Text = read2[7].ToString();
                     }
                 }
                 connection2.Close();

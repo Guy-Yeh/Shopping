@@ -175,7 +175,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <asp:ListItem>綠</asp:ListItem>
                                         <asp:ListItem>紅</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='1')"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='1')"></asp:SqlDataSource>
                                     <asp:Button ID="Button1" runat="server" Text="放入購物車" OnClick="Button1_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -193,7 +193,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <asp:ListItem>橘</asp:ListItem>
                                         <asp:ListItem>黑</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='2')"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='2')"></asp:SqlDataSource>
                                     <asp:Button ID="Button2" runat="server" Text="放入購物車" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -213,7 +213,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <asp:ListItem>咖啡</asp:ListItem>
                                         <asp:ListItem>黑</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='3')"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='3')"></asp:SqlDataSource>
                                     <asp:Button ID="Button3" runat="server" Text="放入購物車" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -232,7 +232,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <asp:ListItem>紅</asp:ListItem>
                                         <asp:ListItem>黑</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='4')"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='4')"></asp:SqlDataSource>
                                     <asp:Button ID="Button4" runat="server" Text="放入購物車" OnClick="Button4_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -252,7 +252,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <asp:ListItem>黑</asp:ListItem>
                                         <asp:ListItem>粉</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='5')"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='5')"></asp:SqlDataSource>
                                     <asp:Button ID="Button5" runat="server" Text="放入購物車" OnClick="Button5_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -269,7 +269,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <asp:ListItem>黑</asp:ListItem>
                                         <asp:ListItem>紅</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='6')"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='6')"></asp:SqlDataSource>
                                     <asp:Button ID="Button6" runat="server" Text="放入購物車" OnClick="Button6_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -286,7 +286,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <asp:ListItem>白</asp:ListItem>
                                         <asp:ListItem>紅</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='7')"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='7')"></asp:SqlDataSource>
                                     <asp:Button ID="Button7" runat="server" Text="放入購物車" OnClick="Button7_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -303,7 +303,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <asp:ListItem>粉</asp:ListItem>
                                         <asp:ListItem>黑</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='8')"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='8')"></asp:SqlDataSource>
                                     <asp:Button ID="Button8" runat="server" Text="放入購物車" OnClick="Button8_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
