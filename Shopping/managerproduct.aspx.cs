@@ -279,6 +279,7 @@ namespace Shopping
             string introduction = ((TextBox)product.Rows[e.RowIndex].FindControl("TextBox8")).Text;
             bool priceCheck = Regex.IsMatch(price, @"\d");
             bool inventoryCheck = Regex.IsMatch(inventory, @"\d");
+            bool showpictureChinesecheck = Regex.IsMatch(showpicture, @"[\u4e00-\u9fa5]");
             string strroot = System.AppDomain.CurrentDomain.BaseDirectory;
             //確認庫存為數字且大於等於0
             if (productName != "")
@@ -306,44 +307,51 @@ namespace Shopping
                                 connectionCP.Close();
                                 if (showpicture != "")
                                 {
-                                    string sqlSP = $"select picture from Products where ID='{ID}'";
-                                    SqlConnection connectionSP = new SqlConnection(s_data);
-                                    SqlCommand commandSP = new SqlCommand(sqlSP, connectionSP);
-                                    connectionSP.Open();
-                                    SqlDataReader reader = commandSP.ExecuteReader();
-                                    //先讀出圖片路徑用來編譯成新路徑
-                                    if (reader.Read())
+                                    if (showpictureChinesecheck != true)
                                     {
-                                        List<string> getpicture = new List<string>();
-                                        string[] prepare = reader[0].ToString().Split('\\');
-                                        foreach (string x in prepare)
+                                        string sqlSP = $"select picture from Products where ID='{ID}'";
+                                        SqlConnection connectionSP = new SqlConnection(s_data);
+                                        SqlCommand commandSP = new SqlCommand(sqlSP, connectionSP);
+                                        connectionSP.Open();
+                                        SqlDataReader reader = commandSP.ExecuteReader();
+                                        //先讀出圖片路徑用來編譯成新路徑
+                                        if (reader.Read())
                                         {
-                                            getpicture.Add(x);
-                                        }
-                                        getpicture.RemoveAt(getpicture.Count - 1);
-                                        string picturecombine = string.Join("\\", getpicture.ToArray());
-                                        string picture = picturecombine + "\\" + showpicture;
+                                            List<string> getpicture = new List<string>();
+                                            string[] prepare = reader[0].ToString().Split('\\');
+                                            foreach (string x in prepare)
+                                            {
+                                                getpicture.Add(x);
+                                            }
+                                            getpicture.RemoveAt(getpicture.Count - 1);
+                                            string picturecombine = string.Join("\\", getpicture.ToArray());
+                                            string picture = picturecombine + "\\" + showpicture;
 
-                                        //查看檔案是否存在
-                                        if (File.Exists(strroot + picture))
-                                        {
-                                            string strUpdate = $"update Products set productName = N'{productName}',picture = N'{picture}', category = N'{category}', inventory = '{inventory}', price = '{price}', introduction = N'{introduction}' where ID='{ID}'";
-                                            SqlConnection connection = new SqlConnection(s_data);
-                                            connection.Open();
-                                            SqlCommand command = new SqlCommand(strUpdate, connection);
-                                            command.ExecuteNonQuery();
-                                            connection.Close();
-                                            cleanbt4();
-                                            product.EditIndex = -1;
-                                            reviewProduct();
+                                            //查看檔案是否存在
+                                            if (File.Exists(strroot + picture))
+                                            {
+                                                string strUpdate = $"update Products set productName = N'{productName}',picture = N'{picture}', category = N'{category}', inventory = '{inventory}', price = '{price}', introduction = N'{introduction}' where ID='{ID}'";
+                                                SqlConnection connection = new SqlConnection(s_data);
+                                                connection.Open();
+                                                SqlCommand command = new SqlCommand(strUpdate, connection);
+                                                command.ExecuteNonQuery();
+                                                connection.Close();
+                                                cleanbt4();
+                                                product.EditIndex = -1;
+                                                reviewProduct();
+                                            }
+                                            else
+                                            {
+                                                //MessageBox.Show("圖片路徑不存在 請重新確認");
+                                                this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},1000);", true);
+                                            }
                                         }
-                                        else
-                                        {
-                                            //MessageBox.Show("圖片路徑不存在 請重新確認");
-                                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},1000);", true);
-                                        }
+                                        connectionSP.Close();
                                     }
-                                    connectionSP.Close();
+                                    else
+                                    {
+                                        this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片檔名不得有中文字');},1000);", true);
+                                    }
                                 }
                                 else
                                 {
