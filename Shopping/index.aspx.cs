@@ -21,10 +21,15 @@ namespace Shopping
         string show_data = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ShowPictureConnectionString"].ConnectionString;
 
 
-        //幻燈片字串承接商品名用於圖片跳轉
+        //字串承接商品名用於幻燈片圖片跳轉(1-3)，另外用於中間商品圖片跳轉
         string slideshow1 = "";
         string slideshow2 = "";
         string slideshow3 = "";
+        string slideshow4 = "";
+        string slideshow5 = "";
+        string slideshow6 = "";
+        string slideshow7 = "";
+        string slideshow8 = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             //Session["loginstatus"] = "1";
@@ -98,6 +103,7 @@ namespace Shopping
                 ImageButton5.ImageUrl = read5[0].ToString();
                 Label8.Text = read5[1].ToString();
                 Label9.Text = "售價：" + read5[2].ToString();
+                slideshow4 = read5[1].ToString();
             }
             connection5.Close();
             SqlConnection connection6 = new SqlConnection(show_data);
@@ -110,6 +116,7 @@ namespace Shopping
                 ImageButton6.ImageUrl = read6[0].ToString();
                 Label10.Text = read6[1].ToString();
                 Label11.Text = "售價：" + read6[2].ToString();
+                slideshow5 = read6[1].ToString();
             }
             connection6.Close();
             SqlConnection connection7 = new SqlConnection(show_data);
@@ -122,6 +129,7 @@ namespace Shopping
                 ImageButton7.ImageUrl = read7[0].ToString();
                 Label12.Text = read7[1].ToString();
                 Label13.Text = "售價：" + read7[2].ToString();
+                slideshow6 = read7[1].ToString();
             }
             connection7.Close();
             SqlConnection connection8 = new SqlConnection(show_data);
@@ -134,6 +142,7 @@ namespace Shopping
                 ImageButton8.ImageUrl = read8[0].ToString();
                 Label14.Text = read8[1].ToString();
                 Label15.Text = "售價：" + read8[2].ToString();
+                slideshow7 = read8[1].ToString();
             }
             connection8.Close();
             SqlConnection connection9 = new SqlConnection(show_data);
@@ -146,6 +155,7 @@ namespace Shopping
                 ImageButton9.ImageUrl = read9[0].ToString();
                 Label16.Text = read9[1].ToString();
                 Label17.Text = "售價：" + read9[2].ToString();
+                slideshow8 = read9[1].ToString();
             }
             connection9.Close();
         }
@@ -954,49 +964,49 @@ namespace Shopping
 
         protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
         {
-            Session["product"] = "領造型線T";
+            Session["product"] = slideshow1;
             Response.Redirect("product");
         }
 
         protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
         {
-            Session["product"] = "袖滾配色t";
+            Session["product"] = slideshow2;
             Response.Redirect("product");
         }
 
         protected void ImageButton4_Click(object sender, ImageClickEventArgs e)
         {
-            Session["product"] = "剪裁T";
+            Session["product"] = slideshow3;
             Response.Redirect("product");
         }
 
         protected void ImageButton5_Click(object sender, ImageClickEventArgs e)
         {
-            Session["product"] = "細肩露肩t";
+            Session["product"] = slideshow4;
             Response.Redirect("product");
         }
 
         protected void ImageButton6_Click(object sender, ImageClickEventArgs e)
         {
-            Session["product"] = "胸抓摺衫";
+            Session["product"] = slideshow5;
             Response.Redirect("product");
         }
 
         protected void ImageButton7_Click(object sender, ImageClickEventArgs e)
         {
-            Session["product"] = "格紋澎袖衫";
+            Session["product"] = slideshow6;
             Response.Redirect("product");
         }
 
         protected void ImageButton8_Click(object sender, ImageClickEventArgs e)
         {
-            Session["product"] = "中抓摺雪紡衫";
+            Session["product"] = slideshow7;
             Response.Redirect("product");
         }
 
         protected void ImageButton9_Click(object sender, ImageClickEventArgs e)
         {
-            Session["product"] = "滾邊寬袖衫";
+            Session["product"] = slideshow8;
             Response.Redirect("product");
         }
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
