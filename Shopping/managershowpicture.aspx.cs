@@ -345,6 +345,9 @@ namespace Shopping
             string show = ((TextBox)product.Rows[e.RowIndex].FindControl("TextBox3")).Text;
             bool showpictureChinesecheck = Regex.IsMatch(showpicture, @"[\u4e00-\u9fa5]");
             string strroot = System.AppDomain.CurrentDomain.BaseDirectory;
+            
+
+
             if (productName != "")
             {
                 string sql = $"select * from ShowPicture where productName = N'{productName}' and ID !='{ID}'";
@@ -364,7 +367,7 @@ namespace Shopping
                                 {
                                     if (showpictureChinesecheck != true)
                                     {
-                                        string sqlSP = $"select picture from ShowPicture where ID='{ID}'";
+                                        string sqlSP = $"select picture,show from ShowPicture where ID='{ID}'";
                                         SqlConnection connectionSP = new SqlConnection(s_data);
                                         SqlCommand commandSP = new SqlCommand(sqlSP, connectionSP);
                                         connectionSP.Open();
@@ -379,7 +382,7 @@ namespace Shopping
                                             {
                                                 getpicture.Add(x);
                                             }
-                                            connectionSP.Close();
+                                            
                                             getpicture.RemoveAt(getpicture.Count - 1);
                                             string picturecombine = string.Join("\\", getpicture.ToArray());
                                             string picture = picturecombine + "\\" + showpicture;
@@ -387,14 +390,14 @@ namespace Shopping
                                             //查看檔案是否存在
                                             if (File.Exists(strroot + picture))
                                             {
-                                                //先把原本的顯示設定改回No
-                                                string sqlchange = $"update ShowPicture set show ='No' where show ='{show}'";
+                                                //先把原本的顯示設定替換
+                                                string sqlchange = $"update ShowPicture set show ='{reader[1]}' where show ='{show}'";
                                                 SqlConnection connectionchange = new SqlConnection(s_data);
                                                 SqlCommand commandchange = new SqlCommand(sqlchange, connectionchange);
                                                 connectionchange.Open();
                                                 commandchange.ExecuteNonQuery();
                                                 connectionchange.Close();
-
+                                                connectionSP.Close();
                                                 string strUpdate = $"update ShowPicture set productName = N'{productName}',picture = N'{picture}', show = '{show}' where ID='{ID}'";
                                                 SqlConnection connection = new SqlConnection(s_data);
                                                 connection.Open();
@@ -406,9 +409,11 @@ namespace Shopping
                                                 cleanbt4();
                                                 cleanset();
                                                 reviewShowPicture();
+                                               
                                             }
                                             else
                                             {
+                                                connectionSP.Close();
                                                 //MessageBox.Show("圖片路徑不存在 請重新確認");
                                                 this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('圖片路徑不存在 請重新確認');},1000);", true);
                                             }
