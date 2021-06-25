@@ -34,65 +34,120 @@ namespace Shopping
                 //loginstatus = Session["loginstatus"].ToString();
                 Button12.Text = "會員資料";
                 Button11.Text = "登出";
-                SqlConnection connection1 = new SqlConnection(customers_data);
-                string sq11 = $"select account from Customers";
-                SqlCommand command1 = new SqlCommand(sq11, connection1);
-                connection1.Open();
-                SqlDataReader read1 = command1.ExecuteReader();
-                if (read1.HasRows)
-                {
-                    if (read1.Read())
-                    {
-
-                    }
-                }
-                connection1.Close();
                 SqlConnection connection2 = new SqlConnection(orderdetail_data);
                 string sq12 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
                 SqlCommand command2 = new SqlCommand(sq12, connection2);
                 connection2.Open();
                 SqlDataReader read2 = command2.ExecuteReader();
-                    if (read2.Read())
-                    {
-                        Label1.Text ="消費金額：" + read2[0].ToString();
-                    }
+                if (read2.Read())
+                {
+                    Label1.Text = "消費金額：" + read2[0].ToString();
+                }
                 connection2.Close();
             }
-
+            SqlConnection connection1 = new SqlConnection(show_data);
+            string sq11 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='1')";
+            SqlCommand command1 = new SqlCommand(sq11, connection1);
+            connection1.Open();
+            SqlDataReader read1 = command1.ExecuteReader();
+            if (read1.Read())
+            {
+                ImageButton2.ImageUrl = read1[0].ToString();
+                Label2.Text = read1[1].ToString();
+                Label3.Text = "售價：" + read1[2].ToString();
+                slideshow1 = read1[1].ToString();
+                ImageButton10.ImageUrl = read1[0].ToString();
+            }
+            connection1.Close();                            
             //帶入幻燈片商品名稱,圖片
             SqlConnection connection3 = new SqlConnection(show_data);
-            string sq13 = $"select picture,productName from ShowPicture where show='1'";
+            string sq13 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='2')";
             SqlCommand command3 = new SqlCommand(sq13, connection3);
             connection3.Open();
             SqlDataReader read3 = command3.ExecuteReader();
             if (read3.Read())
             {
-                ImageButton10.ImageUrl = read3[0].ToString();
-                slideshow1 = read3[1].ToString();
+                ImageButton3.ImageUrl = read3[0].ToString();
+                Label4.Text = read3[1].ToString();
+                Label5.Text = "售價：" + read3[2].ToString();
+                slideshow2 = read3[1].ToString();
+                ImageButton11.ImageUrl = read3[0].ToString();
             }
             connection3.Close();
             SqlConnection connection4 = new SqlConnection(show_data);
-            string sq14 = $"select picture,productName from ShowPicture where show='2'";
+            string sq14 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='3')";
             SqlCommand command4 = new SqlCommand(sq14, connection4);
             connection4.Open();
             SqlDataReader read4 = command4.ExecuteReader();
             if (read4.Read())
             {
-                ImageButton11.ImageUrl = read4[0].ToString();
-                slideshow2 = read4[1].ToString();
+                ImageButton4.ImageUrl = read4[0].ToString();
+                Label6.Text = read4[1].ToString();
+                Label7.Text = "售價：" + read4[2].ToString();
+                slideshow3 = read4[1].ToString();
+                ImageButton12.ImageUrl = read4[0].ToString();
             }
             connection4.Close();
             SqlConnection connection5 = new SqlConnection(show_data);
-            string sq15 = $"select picture,productName from ShowPicture where show='3'";
+            string sq15 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='4')";
             SqlCommand command5 = new SqlCommand(sq15, connection5);
             connection5.Open();
             SqlDataReader read5 = command5.ExecuteReader();
             if (read5.Read())
             {
-                ImageButton12.ImageUrl = read5[0].ToString();
-                slideshow3 = read5[1].ToString();
+                ImageButton5.ImageUrl = read5[0].ToString();
+                Label8.Text = read5[1].ToString();
+                Label9.Text = "售價：" + read5[2].ToString();
             }
             connection5.Close();
+            SqlConnection connection6 = new SqlConnection(show_data);
+            string sq16 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='5')";
+            SqlCommand command6 = new SqlCommand(sq16, connection6);
+            connection6.Open();
+            SqlDataReader read6 = command6.ExecuteReader();
+            if (read6.Read())
+            {
+                ImageButton6.ImageUrl = read6[0].ToString();
+                Label10.Text = read6[1].ToString();
+                Label11.Text = "售價：" + read6[2].ToString();
+            }
+            connection6.Close();
+            SqlConnection connection7 = new SqlConnection(show_data);
+            string sq17 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='6')";
+            SqlCommand command7 = new SqlCommand(sq17, connection7);
+            connection7.Open();
+            SqlDataReader read7 = command7.ExecuteReader();
+            if (read7.Read())
+            {
+                ImageButton7.ImageUrl = read7[0].ToString();
+                Label12.Text = read7[1].ToString();
+                Label13.Text = "售價：" + read7[2].ToString();
+            }
+            connection7.Close();
+            SqlConnection connection8 = new SqlConnection(show_data);
+            string sq18 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='7')";
+            SqlCommand command8 = new SqlCommand(sq18, connection8);
+            connection8.Open();
+            SqlDataReader read8 = command8.ExecuteReader();
+            if (read8.Read())
+            {
+                ImageButton8.ImageUrl = read8[0].ToString();
+                Label14.Text = read8[1].ToString();
+                Label15.Text = "售價：" + read8[2].ToString();
+            }
+            connection8.Close();
+            SqlConnection connection9 = new SqlConnection(show_data);
+            string sq19 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='8')";
+            SqlCommand command9 = new SqlCommand(sq19, connection9);
+            connection9.Open();
+            SqlDataReader read9 = command9.ExecuteReader();
+            if (read9.Read())
+            {
+                ImageButton9.ImageUrl = read9[0].ToString();
+                Label16.Text = read9[1].ToString();
+                Label17.Text = "售價：" + read9[2].ToString();
+            }
+            connection9.Close();
         }
 
         [WebMethod]

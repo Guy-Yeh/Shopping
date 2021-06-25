@@ -122,6 +122,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="col-sm-4">
                     <asp:Label ID="Label4" runat="server" Text="" Font-Size="X-Large"></asp:Label><br>
+                    <asp:Label ID="Label6" runat="server" Text=""></asp:Label><br />
                     <asp:Label ID="Label3" runat="server" Text="產品金額：" Font-Size="X-Large"></asp:Label>
                     <asp:Label ID="Label2" runat="server" Text="" Font-Size="X-Large"></asp:Label>
                     <div class="available">
