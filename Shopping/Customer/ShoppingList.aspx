@@ -15,7 +15,7 @@
             <div id="box-list">
 
       
-            <div class="col-md-12" style="border-style: solid; border-color: #ddd; border-width: 1px; padding: 10px;">
+            <%--<div class="col-md-12" style="border-style: solid; border-color: #ddd; border-width: 1px; padding: 10px;">
                 <div class="col-md-12" style="padding: 10px;">
                     <div class="col-md-12" style="border-bottom-style: solid; border-color: #ddd; border-width: 1px;">
                         <div id="serialNO" class="col-md-4" style="font-size: 20px;">
@@ -60,7 +60,12 @@
 
 
                 <div class="col-md-12" style="display: flex;">
-                    <div class="col-md-12" style="display: flex; justify-content: flex-end;">
+                    <div class="col-md-12" style="display: flex; justify-content: flex-end;">--%>
+
+
+
+
+
                         <%--<button id="againBuy" type="button" class="btn btn-lg btn-info" style="border-radius: 0px; background: #52d0c4; padding: 5px 10px;">
                          </button>--%>
                     </div>

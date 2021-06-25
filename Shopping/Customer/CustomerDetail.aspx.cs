@@ -254,9 +254,17 @@ namespace Shopping.Customer
                     if (FileUpload1.HasFile && nFileLen > 0)
                     {
                         //string picturePath1 = $"/images/FileUpload/" + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
-                        string picturePath1 = $"/images/UserPicture/" +"_"+ loginstatus + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
-                        string imgPath = Server.MapPath("~" + picturePath1);
+                        //string picturePath1 = $"/images/UserPicture/" +"_"+ loginstatus + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
+                        string picturePath2 = $@"\images\UserPicture\" + "_" + loginstatus + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
+                        string imgPath = Server.MapPath("~" + picturePath2);
                         FileUpload1.SaveAs(imgPath);
+
+
+
+
+
+
+
                         //accountImg.ImageUrl = picturePath1;
 
 
@@ -275,12 +283,12 @@ namespace Shopping.Customer
                           picture = @picture
                         WHERE account = @account ", connection);
                             command.Parameters.Add("@account", SqlDbType.NVarChar).Value = loginstatus;
-                            command.Parameters.Add("@picture", SqlDbType.NVarChar).Value = picturePath1;
+                            command.Parameters.Add("@picture", SqlDbType.NVarChar).Value = picturePath2;
 
                             connection.Open();
                             command.ExecuteNonQuery();
                             connection.Close();
-                            accountImg.ImageUrl = picturePath1;
+                            accountImg.ImageUrl = picturePath2;
                             //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "TEST1", "setTimeout( function(){alert('上傳成功');},200);", true);
                             //MessageBox.Show("上傳成功");
 

@@ -83,7 +83,7 @@
                             <div class="forgot" style="font-size: 18px;">姓名</div>
                         </div>
                         <div class="col-md-6 login-left">
-                            <span id="nameText" style="font-size: 18px;">車銀優</span>
+                            <span id="nameText" style="font-size: 18px;"></span>
                             <input id="nameInput" />
                         </div>
                         <div class="col-md-3 login-left" style="padding: 0px;">
@@ -104,7 +104,7 @@
                             <div class="forgot" style="font-size: 18px;">帳號</div>
                         </div>
                         <div class="col-md-6 login-left">
-                            <span id="accountText" style="font-size: 18px;">aaa123456789</span>
+                            <span id="accountText" style="font-size: 18px;"></span>
 
                         </div>
                         <div class="col-md-3 login-left" style="padding: 0px;">
@@ -175,7 +175,7 @@
                             <div class="forgot" style="font-size: 18px;">手機</div>
                         </div>
                         <div class="col-md-6 login-left">
-                            <span id="phoneNumberText" style="font-size: 18px;">0988777666</span>
+                            <span id="phoneNumberText" style="font-size: 18px;"></span>
                             <input id="phoneNumberInput" />
                         </div>
                         <div class="col-md-3 login-left" style="padding: 0px;">
@@ -198,7 +198,7 @@
                             <div class="forgot" style="font-size: 18px;">E-mail</div>
                         </div>
                         <div class="col-md-6 login-left ">
-                            <span id="mailText" style="font-size: 18px;">aassdd@gmail.com</span>
+                            <span id="mailText" style="font-size: 18px;"></span>
                         </div>
                         <div class="col-md-3 login-left" style="padding: 0px;">
                             <button id="mailEdit" type="button" class="btn btn-lg btn-info"
@@ -248,7 +248,7 @@
                             <div class="forgot" style="font-size: 18px;">地址</div>
                         </div>
                         <div class="col-md-6 login-left">
-                            <span id="addressText" style="font-size: 18px;">Taiwan</span>
+                            <span id="addressText" style="font-size: 18px;"></span>
                             <input id="addressInput" />
                         </div>
                         <div class="col-md-3 login-left" style="padding: 0px;">

@@ -2,7 +2,7 @@
     if (name == '' || name == undefined) {
         return false;
     }
-    var regex = /^[\u4e00-\u9fa5_A-Za-z]{4,10}$/;//^[\u4e00-\u9fa5_a-zA-Z0-9]+$/;
+    var regex = /^[\u4e00-\u9fa5_A-Za-z]{2,10}$/;//^[\u4e00-\u9fa5_a-zA-Z0-9]+$/;
     return regex.test(name);
 }
 
