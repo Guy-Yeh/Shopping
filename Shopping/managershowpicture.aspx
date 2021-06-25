@@ -116,7 +116,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                     <br>
-                    <div class="container">
+                    <%--<div class="container">
                         <div class="row">
                             <div class="col-sm-2">
                             </div>
@@ -158,26 +158,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                  更改主頁圖片
                                                 </asp:TableCell>
                                                 <asp:TableCell Width="150">
-                                                    <asp:DropDownList ID="DDLtt1" runat="server" AppendDataBoundItems="True" Height="30px" Width="150px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
-                                                    <%--<asp:TextBox ID="TextBox5" runat="server" placeholder="請輸入產品名稱" Width="150"></asp:TextBox>--%>
-                                                    <br>
+                                                    <asp:DropDownList ID="DDLtt1" runat="server" AppendDataBoundItems="True" Height="30px" Width="150px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>--%>
+                                                    <%--<asp:TextBox ID="TextBox5" runat="server" placeholder="請輸入產品名稱" Width="150"></asp:TextBox>
+                                                    <%--<br>
                                                     <asp:Label ID="hintt1" runat="server" Text="" ></asp:Label>
                                                 </asp:TableCell>
                                                 <asp:TableCell Width="150">
                                                     <asp:DropDownList ID="DDLtt2" runat="server" AppendDataBoundItems="True" Height="30px" Width="150px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
-                                                    <%--<asp:TextBox ID="TextBox7" runat="server" placeholder="請輸入產品名稱" Width="150"></asp:TextBox>--%>
+                                                    <asp:TextBox ID="TextBox7" runat="server" placeholder="請輸入產品名稱" Width="150"></asp:TextBox>
                                                     <br>
                                                     <asp:Label ID="hintt2" runat="server" Text=""></asp:Label>
                                                 </asp:TableCell>
                                                 <asp:TableCell Width="150">
                                                     <asp:DropDownList ID="DDLtt3" runat="server" AppendDataBoundItems="True" Height="30px" Width="150px"><asp:ListItem Value="0">請選擇</asp:ListItem></asp:DropDownList>
-                                                    <%--<asp:TextBox ID="TextBox8" runat="server" placeholder="請輸入產品名稱" Width="150"></asp:TextBox>--%>
+                                                    <asp:TextBox ID="TextBox8" runat="server" placeholder="請輸入產品名稱" Width="150"></asp:TextBox>
                                                     <br>
                                                     <asp:Label ID="hintt3" runat="server" Text=""></asp:Label>
                                                 </asp:TableCell>
                                             </asp:TableRow>
-                                        </asp:Table>
-                                </div>
+                                        </asp:Table>--%>
+                                <%--</div>
                                 <div class="col-sm-2">
                                </div>
                             </div>
@@ -195,7 +195,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </div>
                         <br>
-                        <br>
+                        <br>--%>
                         <br>
                         <br>
                         <div class="container">

@@ -68,51 +68,52 @@ namespace Shopping
             connection.Close();
         }
 
-        public void set123()
-        {
-            string sql1 = $"select productName from ShowPicture where show ='1' ";
-            string sql2 = $"select productName from ShowPicture where show ='2' ";
-            string sql3 = $"select productName from ShowPicture where show ='3' ";
-            SqlConnection connection = new SqlConnection(s_data);
-            SqlCommand command = new SqlCommand(sql1, connection);
-            connection.Open();
-            SqlDataReader read = command.ExecuteReader();
-            if (read.Read())
-            {
-                show1.Text = read[0].ToString();
-            }
-            else
-            {
-                show1.Text = "尚未設定";
-            }
-            connection.Close();
+        //顯示123的值
+        //public void set123()
+        //{
+        //    string sql1 = $"select productName from ShowPicture where show ='1' ";
+        //    string sql2 = $"select productName from ShowPicture where show ='2' ";
+        //    string sql3 = $"select productName from ShowPicture where show ='3' ";
+        //    SqlConnection connection = new SqlConnection(s_data);
+        //    SqlCommand command = new SqlCommand(sql1, connection);
+        //    connection.Open();
+        //    SqlDataReader read = command.ExecuteReader();
+        //    if (read.Read())
+        //    {
+        //        show1.Text = read[0].ToString();
+        //    }
+        //    else
+        //    {
+        //        show1.Text = "尚未設定";
+        //    }
+        //    connection.Close();
 
-            command = new SqlCommand(sql2, connection);
-            connection.Open();
-            read = command.ExecuteReader();
-            if (read.Read())
-            {
-                show2.Text = read[0].ToString();
-            }
-            else
-            {
-                show2.Text = "尚未設定";
-            }
-            connection.Close();
-            command = new SqlCommand(sql3, connection);
-            connection.Open();
-            read = command.ExecuteReader();
-            if (read.Read())
-            {
-                show3.Text = read[0].ToString();
-            }
-            else
-            {
-                show3.Text = "尚未設定";
-            }
-            connection.Close();
+        //    command = new SqlCommand(sql2, connection);
+        //    connection.Open();
+        //    read = command.ExecuteReader();
+        //    if (read.Read())
+        //    {
+        //        show2.Text = read[0].ToString();
+        //    }
+        //    else
+        //    {
+        //        show2.Text = "尚未設定";
+        //    }
+        //    connection.Close();
+        //    command = new SqlCommand(sql3, connection);
+        //    connection.Open();
+        //    read = command.ExecuteReader();
+        //    if (read.Read())
+        //    {
+        //        show3.Text = read[0].ToString();
+        //    }
+        //    else
+        //    {
+        //        show3.Text = "尚未設定";
+        //    }
+        //    connection.Close();
 
-        }
+        //}
 
         public void searchShowPicture(string a)
         {
@@ -183,45 +184,44 @@ namespace Shopping
             hintp1.ForeColor = Color.Black;
             hintp2.ForeColor = Color.Black;
             hintp3.ForeColor = Color.Black;
-            hintset.ForeColor = Color.Black;
-            hintt1.ForeColor = Color.Black;
-            hintt2.ForeColor = Color.Black;
-            hintt3.ForeColor = Color.Black;
+            //hintset.ForeColor = Color.Black;
+            //hintt1.ForeColor = Color.Black;
+            //hintt2.ForeColor = Color.Black;
+            //hintt3.ForeColor = Color.Black;
         }
 
-        public void cleanset()
-        {
-            DataView dv = (DataView)this.SqlDataSourceProductName.Select(new DataSourceSelectArguments());
-            DDLtt1.Items.Clear();
-            DDLtt1.Items.Add("請選擇");
-            DDLtt1.DataSource = dv;
-            DDLtt1.DataTextField = "productName";
-            DDLtt1.DataBind();
-            DDLtt2.Items.Clear();
-            DDLtt2.Items.Add("請選擇");
-            DDLtt2.DataSource = dv;
-            DDLtt2.DataTextField = "productName";
-            DDLtt2.DataBind();
-            DDLtt3.Items.Clear();
-            DDLtt3.Items.Add("請選擇");
-            DDLtt3.DataSource = dv;
-            DDLtt3.DataTextField = "productName";
-            DDLtt3.DataBind();
+        //public void cleanset()
+        //{
+        //    DataView dv = (DataView)this.SqlDataSourceProductName.Select(new DataSourceSelectArguments());
+        //    DDLtt1.Items.Clear();
+        //    DDLtt1.Items.Add("請選擇");
+        //    DDLtt1.DataSource = dv;
+        //    DDLtt1.DataTextField = "productName";
+        //    DDLtt1.DataBind();
+        //    DDLtt2.Items.Clear();
+        //    DDLtt2.Items.Add("請選擇");
+        //    DDLtt2.DataSource = dv;
+        //    DDLtt2.DataTextField = "productName";
+        //    DDLtt2.DataBind();
+        //    DDLtt3.Items.Clear();
+        //    DDLtt3.Items.Add("請選擇");
+        //    DDLtt3.DataSource = dv;
+        //    DDLtt3.DataTextField = "productName";
+        //    DDLtt3.DataBind();
 
-
-            //TextBox5.Text = "";
-            //TextBox7.Text = "";
-            //TextBox8.Text = "";
-        }
+        //    TextBox5.Text = "";
+        //    TextBox7.Text = "";
+        //    /TextBox8.Text = "";
+        //}
         public void cleanhint()
         {
             hintp1.Text = "";
             hintp2.Text = "";
             hintp3.Text = "";
-            hintset.Text = "";
-            hintt1.Text = "";
-            hintt2.Text = "";
-            hintt3.Text = "";
+            //hintset.Text = "";
+            //hintt1.Text = "";
+            //hintt2.Text = "";
+            //hintt3.Text = "";
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -242,8 +242,8 @@ namespace Shopping
                 reviewShowPicture();
                 cleanbt4();
                 cleansub();
-                set123();
-                cleanset();
+                //set123();
+                //cleanset();
             }
         }
 
@@ -304,9 +304,9 @@ namespace Shopping
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
-            set123();
+            //set123();
             cleanbt4();
-            cleanset();
+            //cleanset();
             reviewShowPicture();
         }
 
@@ -350,7 +350,7 @@ namespace Shopping
 
             if (productName != "")
             {
-                string sqlPC = $"select distinct * from Products where productName='{productName}'";
+                string sqlPC = $"select distinct * from Products where productName= N'{productName}'";
                 SqlConnection connectionPC = new SqlConnection(s_data2);
                 SqlCommand commandPC = new SqlCommand(sqlPC, connectionPC);
                 connectionPC.Open();
@@ -413,9 +413,9 @@ namespace Shopping
                                                     command.ExecuteNonQuery();
                                                     connection.Close();
                                                     product.EditIndex = -1;
-                                                    set123();
+                                                    //set123();
                                                     cleanbt4();
-                                                    cleanset();
+                                                    //cleanset();
                                                     reviewShowPicture();
 
                                                 }
@@ -605,7 +605,8 @@ namespace Shopping
                                     command3.ExecuteNonQuery();
                                     connection3.Close();
                                     cleansub();
-                                    set123();
+                                    //set123();
+                                    //cleanset();
                                     cleanbt4();
                                     reviewShowPicture();
                                 }
@@ -634,9 +635,9 @@ namespace Shopping
                                     command3.ExecuteNonQuery();
                                     connection3.Close();
                                     cleansub();
-                                    set123();
+                                    //set123();
                                     cleanbt4();
-                                    cleanset();
+                                    //cleanset();
                                     reviewShowPicture();
                                 }
                                 else
@@ -681,10 +682,11 @@ namespace Shopping
 
         protected void Button123_Click(object sender, EventArgs e)
         {
-            string sql = $"select * from ShowPicture where show != 'No' ";
+            string sql = $"select * from ShowPicture where show = '1' or show = '2' or show = '3' ";
             searchShowPicture(sql);
         }
 
+        //設定123名
         //protected void set_Click(object sender, EventArgs e)
         //{
         //    if (TextBox5.Text != "" && TextBox7.Text != "" && TextBox8.Text != "")
@@ -763,61 +765,61 @@ namespace Shopping
 
         //}
 
-        protected void set_Click(object sender, EventArgs e)
-        {
-            if (DDLtt1.SelectedItem.Text != "請選擇" && DDLtt2.SelectedItem.Text != "請選擇" && DDLtt3.SelectedItem.Text != "請選擇")
-            {
-                if (DDLtt1.Text != DDLtt2.Text && DDLtt1.Text != DDLtt3.Text && DDLtt2.Text != DDLtt3.Text)
-                {
-                    exchange(DDLtt1.Text, show1.Text,"1");
-                    exchange(DDLtt2.Text, show2.Text,"2");
-                    exchange(DDLtt3.Text, show3.Text,"3");
+        //protected void set_Click(object sender, EventArgs e)
+        //{
+        //    if (DDLtt1.SelectedItem.Text != "請選擇" && DDLtt2.SelectedItem.Text != "請選擇" && DDLtt3.SelectedItem.Text != "請選擇")
+        //    {
+        //        if (DDLtt1.Text != DDLtt2.Text && DDLtt1.Text != DDLtt3.Text && DDLtt2.Text != DDLtt3.Text)
+        //        {
+        //            exchange(DDLtt1.Text, show1.Text,"1");
+        //            exchange(DDLtt2.Text, show2.Text,"2");
+        //            exchange(DDLtt3.Text, show3.Text,"3");
                     
 
-                    //string sqlNo = $"update ShowPicture set show='No'  where show != 'No'";
-                    //SqlConnection connectionNo = new SqlConnection(s_data);
-                    //SqlCommand commandNo = new SqlCommand(sqlNo, connectionNo);
-                    //connectionNo.Open();
-                    //commandNo.ExecuteNonQuery();
-                    //connectionNo.Close();
+        //            //string sqlNo = $"update ShowPicture set show='No'  where show != 'No'";
+        //            //SqlConnection connectionNo = new SqlConnection(s_data);
+        //            //SqlCommand commandNo = new SqlCommand(sqlNo, connectionNo);
+        //            //connectionNo.Open();
+        //            //commandNo.ExecuteNonQuery();
+        //            //connectionNo.Close();
 
-                    //string sql123 = $"update ShowPicture set show='1'  where productName = N'{DDLtt1.Text}'";
-                    //SqlConnection connection123 = new SqlConnection(s_data);
-                    //SqlCommand command123 = new SqlCommand(sql123, connection123);
-                    //connection123.Open();
-                    //command123.ExecuteNonQuery();
-                    //connection123.Close();
+        //            //string sql123 = $"update ShowPicture set show='1'  where productName = N'{DDLtt1.Text}'";
+        //            //SqlConnection connection123 = new SqlConnection(s_data);
+        //            //SqlCommand command123 = new SqlCommand(sql123, connection123);
+        //            //connection123.Open();
+        //            //command123.ExecuteNonQuery();
+        //            //connection123.Close();
 
-                    //sql123 = $"update ShowPicture set show='2'  where productName = N'{DDLtt2.Text}'";
-                    //command123 = new SqlCommand(sql123, connection123);
-                    //connection123.Open();
-                    //command123.ExecuteNonQuery();
-                    //connection123.Close();
+        //            //sql123 = $"update ShowPicture set show='2'  where productName = N'{DDLtt2.Text}'";
+        //            //command123 = new SqlCommand(sql123, connection123);
+        //            //connection123.Open();
+        //            //command123.ExecuteNonQuery();
+        //            //connection123.Close();
 
-                    //sql123 = $"update ShowPicture set show='3'  where productName = N'{DDLtt3.Text}'";
-                    //command123 = new SqlCommand(sql123, connection123);
-                    //connection123.Open();
-                    //command123.ExecuteNonQuery();
-                    //connection123.Close();
+        //            //sql123 = $"update ShowPicture set show='3'  where productName = N'{DDLtt3.Text}'";
+        //            //command123 = new SqlCommand(sql123, connection123);
+        //            //connection123.Open();
+        //            //command123.ExecuteNonQuery();
+        //            //connection123.Close();
 
-                    set123();
-                    cleanset();
-                    reviewShowPicture();
-                }
-                else
-                {
-                    hintset.ForeColor = Color.Red;
-                    hintset.Text = "更改主頁圖片 商品名稱不得重複";
-                }
+        //            set123();
+        //            cleanset();
+        //            reviewShowPicture();
+        //        }
+        //        else
+        //        {
+        //            hintset.ForeColor = Color.Red;
+        //            hintset.Text = "更改主頁圖片 商品名稱不得重複";
+        //        }
 
-            }
-            else
-            {
-                hintset.ForeColor = Color.Red;
-                hintset.Text = "更改主頁圖片 商品名稱皆須選擇";
-            }
+        //    }
+        //    else
+        //    {
+        //        hintset.ForeColor = Color.Red;
+        //        hintset.Text = "更改主頁圖片 商品名稱皆須選擇";
+        //    }
 
-        }
+        //}
 
         //protected void product_RowDataBound(object sender, GridViewRowEventArgs e)
         //{
@@ -827,31 +829,33 @@ namespace Shopping
         //    //} 
         //}
 
-        public void exchange(string change,string name, string number)
-        {
-            string sql123change = $"select show from ShowPicture where productName = N'{change}'";
-            SqlConnection connection123change = new SqlConnection(s_data);
-            SqlCommand command123change = new SqlCommand(sql123change, connection123change);
-            connection123change.Open();
-            SqlDataReader reader123 = command123change.ExecuteReader();
-            while (reader123.Read())
-            {
-                string sql123o = $"update ShowPicture set show='{reader123[0]}'  where productName = N'{name}'";
-                SqlConnection connection123o = new SqlConnection(s_data);
-                SqlCommand command123o = new SqlCommand(sql123o, connection123o);
-                connection123o.Open();
-                command123o.ExecuteNonQuery();
-                connection123o.Close();
+        //替換123名
 
-                string sql123 = $"update ShowPicture set show='{number}'  where productName = N'{change}'";
-                SqlConnection connection123 = new SqlConnection(s_data);
-                SqlCommand command123 = new SqlCommand(sql123, connection123);
-                connection123.Open();
-                command123.ExecuteNonQuery();
-                connection123.Close();
-            }
-            connection123change.Close();
-        }
+    //    public void exchange(string change,string name, string number)
+    //    {
+    //        string sql123change = $"select show from ShowPicture where productName = N'{change}'";
+    //        SqlConnection connection123change = new SqlConnection(s_data);
+    //        SqlCommand command123change = new SqlCommand(sql123change, connection123change);
+    //        connection123change.Open();
+    //        SqlDataReader reader123 = command123change.ExecuteReader();
+    //        while (reader123.Read())
+    //        {
+    //            string sql123o = $"update ShowPicture set show='{reader123[0]}'  where productName = N'{name}'";
+    //            SqlConnection connection123o = new SqlConnection(s_data);
+    //            SqlCommand command123o = new SqlCommand(sql123o, connection123o);
+    //            connection123o.Open();
+    //            command123o.ExecuteNonQuery();
+    //            connection123o.Close();
+
+    //            string sql123 = $"update ShowPicture set show='{number}'  where productName = N'{change}'";
+    //            SqlConnection connection123 = new SqlConnection(s_data);
+    //            SqlCommand command123 = new SqlCommand(sql123, connection123);
+    //            connection123.Open();
+    //            command123.ExecuteNonQuery();
+    //            connection123.Close();
+    //        }
+    //        connection123change.Close();
+    //    }
 
     }
 
