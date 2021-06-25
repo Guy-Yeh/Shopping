@@ -46,7 +46,7 @@ namespace Shopping
                 connection2.Close();
             }
             SqlConnection connection1 = new SqlConnection(show_data);
-            string sq11 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='1')";
+            string sq11 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='1')";
             SqlCommand command1 = new SqlCommand(sq11, connection1);
             connection1.Open();
             SqlDataReader read1 = command1.ExecuteReader();
@@ -61,7 +61,7 @@ namespace Shopping
             connection1.Close();                            
             //帶入幻燈片商品名稱,圖片
             SqlConnection connection3 = new SqlConnection(show_data);
-            string sq13 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='2')";
+            string sq13 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='2')";
             SqlCommand command3 = new SqlCommand(sq13, connection3);
             connection3.Open();
             SqlDataReader read3 = command3.ExecuteReader();
@@ -75,7 +75,7 @@ namespace Shopping
             }
             connection3.Close();
             SqlConnection connection4 = new SqlConnection(show_data);
-            string sq14 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='3')";
+            string sq14 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='3')";
             SqlCommand command4 = new SqlCommand(sq14, connection4);
             connection4.Open();
             SqlDataReader read4 = command4.ExecuteReader();
@@ -89,7 +89,7 @@ namespace Shopping
             }
             connection4.Close();
             SqlConnection connection5 = new SqlConnection(show_data);
-            string sq15 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='4')";
+            string sq15 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='4')";
             SqlCommand command5 = new SqlCommand(sq15, connection5);
             connection5.Open();
             SqlDataReader read5 = command5.ExecuteReader();
@@ -101,7 +101,7 @@ namespace Shopping
             }
             connection5.Close();
             SqlConnection connection6 = new SqlConnection(show_data);
-            string sq16 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='5')";
+            string sq16 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='5')";
             SqlCommand command6 = new SqlCommand(sq16, connection6);
             connection6.Open();
             SqlDataReader read6 = command6.ExecuteReader();
@@ -113,7 +113,7 @@ namespace Shopping
             }
             connection6.Close();
             SqlConnection connection7 = new SqlConnection(show_data);
-            string sq17 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='6')";
+            string sq17 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='6')";
             SqlCommand command7 = new SqlCommand(sq17, connection7);
             connection7.Open();
             SqlDataReader read7 = command7.ExecuteReader();
@@ -125,7 +125,7 @@ namespace Shopping
             }
             connection7.Close();
             SqlConnection connection8 = new SqlConnection(show_data);
-            string sq18 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='7')";
+            string sq18 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='7')";
             SqlCommand command8 = new SqlCommand(sq18, connection8);
             connection8.Open();
             SqlDataReader read8 = command8.ExecuteReader();
@@ -137,7 +137,7 @@ namespace Shopping
             }
             connection8.Close();
             SqlConnection connection9 = new SqlConnection(show_data);
-            string sq19 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.ID='8')";
+            string sq19 = $"select a.picture,a.productName,b.price from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='8')";
             SqlCommand command9 = new SqlCommand(sq19, connection9);
             connection9.Open();
             SqlDataReader read9 = command9.ExecuteReader();
