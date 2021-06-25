@@ -25,45 +25,24 @@ namespace Shopping
             Button4.Text = "會員資料";
             Button3.Text = "登出";
             SqlConnection connection = new SqlConnection(orderdetail_data);
-            string sq1 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+            string sq1 = $"select SUM(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
             SqlCommand command1 = new SqlCommand(sq1, connection);
             connection.Open();
             SqlDataReader read1 = command1.ExecuteReader();
-            if (read1.HasRows)
+            if (read1.Read())
             {
-                if (read1.Read())
+                if (read1[0] != DBNull.Value)
                 {
                     Label4.Text = read1[0].ToString();
+                    Label1.Text = "消費金額：" + read1[0].ToString();
+                    Button2.Visible = true;
                 }
-            }
-            connection.Close();
-            SqlConnection connection2 = new SqlConnection(orderdetail_data);
-            string sq12 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
-            SqlCommand command2 = new SqlCommand(sq12, connection2);
-            connection2.Open();
-            SqlDataReader read2 = command2.ExecuteReader();
-            if (read2.HasRows)
-            {
-                if (read2.Read())
+                else
                 {
-                    Label1.Text = "消費金額：" + read2[0].ToString();
+                    Button2.Visible = false;
                 }
-            }
-            connection2.Close();
-            SqlConnection connection3 = new SqlConnection(orderdetail_data);
-            string sql3 = $"select * from OrderDetail where cart=N'是' and customerAccount='{Session["loginstatus"]}'";
-            SqlCommand command3 = new SqlCommand(sql3, connection3);
-            connection3.Open();
-            SqlDataReader read3 = command3.ExecuteReader();
-            if (read3.Read())
-            {
-                Button2.Visible = true;
-            }
-            else
-            {
-                Button2.Visible = false;
-            }
-            connection3.Close();
+            }   
+            connection.Close();       
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -110,6 +89,7 @@ namespace Shopping
                 int qty = 0;
                 int index = Convert.ToInt32(e.CommandArgument);
                 string id = ((Label)userorder.Rows[Convert.ToInt32(index)].FindControl("Label1")).Text;
+                Label label2= (Label)userorder.Rows[Convert.ToInt32(index)].FindControl("Label2");
                 SqlConnection connection1 = new SqlConnection(orderdetail_data);
                 string sql1 = $"select * from OrderDetail where ID=N'{id}'";
                 SqlCommand command1 = new SqlCommand(sql1, connection1);
@@ -129,7 +109,7 @@ namespace Shopping
                         if (qty > Convert.ToInt32(read3[0]))
                         {
                             //MessageBox.Show("很抱歉，所選商品數量已達庫存上限'");
-                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，所選商品數量已達庫存上限');},600);", true);
+                            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "update", "setTimeout( function(){alert('很抱歉，所選商品數量已達庫存上限');},1000);", true);
                         }
                         else
                         {
@@ -138,7 +118,8 @@ namespace Shopping
                             SqlCommand command2 = new SqlCommand(sql2, connection2);
                             connection2.Open();
                             command2.ExecuteNonQuery();
-                            connection2.Close();                            
+                            connection2.Close();
+                            label2.Text = qty.ToString();
                         }
                     }
                     connection3.Close();
@@ -150,6 +131,7 @@ namespace Shopping
                 int qty = 0;
                 int index = Convert.ToInt32(e.CommandArgument);
                 string id = ((Label)userorder.Rows[Convert.ToInt32(index)].FindControl("Label1")).Text;
+                Label label2 = (Label)userorder.Rows[Convert.ToInt32(index)].FindControl("Label2");
                 SqlConnection connection1 = new SqlConnection(orderdetail_data);
                 string sql1 = $"select qty from OrderDetail where ID=N'{id}'";
                 SqlCommand command1 = new SqlCommand(sql1, connection1);
@@ -178,10 +160,29 @@ namespace Shopping
                         command2.ExecuteNonQuery();
                         connection2.Close();
                         connection1.Close();
+                        label2.Text = qty.ToString();
                     }
                 }
             }
-            Response.Redirect("shoppingcar");
+            SqlConnection connection4 = new SqlConnection(orderdetail_data);
+            string sq14 = $"select sum(productPrice*qty) from OrderDetail where customerAccount='{Session["loginstatus"]}' and cart=N'是'";
+            SqlCommand command4 = new SqlCommand(sq14, connection4);
+            connection4.Open();
+            SqlDataReader read4 = command4.ExecuteReader();
+            if (read4.HasRows)
+            {
+                if (read4.Read())
+                {
+                    Label4.Text = read4[0].ToString();
+                    Label1.Text = "消費金額：" + read4[0].ToString();
+                    Button2.Visible = true;
+                }
+                else
+                {
+                    Button2.Visible = false;
+                }
+            }
+            connection4.Close();
         }
 
         protected void Button4_Click(object sender, EventArgs e)

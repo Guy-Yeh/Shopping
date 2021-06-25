@@ -122,6 +122,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="col-sm-4">
                     <asp:Label ID="Label4" runat="server" Text="" Font-Size="X-Large"></asp:Label><br>
+                    <asp:Label ID="Label6" runat="server" Text=""></asp:Label><br />
                     <asp:Label ID="Label3" runat="server" Text="產品金額：" Font-Size="X-Large"></asp:Label>
                     <asp:Label ID="Label2" runat="server" Text="" Font-Size="X-Large"></asp:Label>
                     <div class="available">
@@ -143,9 +144,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </asp:DropDownList></li>
                                 <br>
                             <li>
-                                <asp:Label ID="Label5" runat="server" Text="庫存：" Font-Size="Medium"></asp:Label></li>
+                                <asp:Label ID="Label5" runat="server" Text="庫存：" Font-Size="Medium"></asp:Label></li><br>
                         </ul>
-                    </div>
+                    </div>                   
                     <asp:Button ID="Button2" runat="server" Text="放入購物車" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" Font-Size="X-Large" />
                 </div>
                 <div class="col-sm-4">

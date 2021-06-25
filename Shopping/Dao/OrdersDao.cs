@@ -179,7 +179,7 @@ namespace Shopping.Dao
             }
 
             str += @"UPDATE [dbo].[Orders]
-                SET [status] = N'取消訂單'
+                SET [status] = N'已取消'
                 WHERE serial = @serialc_2";
 
             //執行更新

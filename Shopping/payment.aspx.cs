@@ -255,6 +255,7 @@ namespace Shopping
                         Command4.ExecuteNonQuery();
                         connection4.Close();
                     }
+                    connection5.Close();
                 }
                 connection3.Close();
             }

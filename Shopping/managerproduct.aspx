@@ -207,11 +207,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="container">  
                     <div class="row">
-                        <div class="col-sm-2">
+                        <div class="col-sm-1">
                         </div>
  
-                   <div class="col-sm-9">
-                    <asp:GridView ID="product" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="product_RowDeleting" OnRowCancelingEdit="product_RowCancelingEdit" OnRowEditing="product_RowEditing" OnRowUpdating="product_RowUpdating" AllowPaging="True" OnPageIndexChanging="product_PageIndexChanging">
+                   <div class="col-sm-10">
+                    <asp:GridView ID="product" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowDeleting="product_RowDeleting" OnRowCancelingEdit="product_RowCancelingEdit" OnRowEditing="product_RowEditing" OnRowUpdating="product_RowUpdating" AllowPaging="True" OnPageIndexChanging="product_PageIndexChanging" width="1000">
                         <PagerStyle ForeColor="Black" HorizontalAlign="Center" />
                         <Columns>
                             <asp:TemplateField HeaderText="商品圖片">

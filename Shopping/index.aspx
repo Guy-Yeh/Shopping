@@ -166,15 +166,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="content-top1">
                         <div class="col-md-3 col-md2">
                             <div class="col-md1 simpleCart_shelfItem">
-                                <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/images\衣服\281901701-領造型線T\S__49610819.jpg" Height="100%" Width="100%" OnClick="ImageButton2_Click" />
+                                <asp:ImageButton ID="ImageButton2" runat="server"  Height="100%" Width="100%" OnClick="ImageButton2_Click" />
                                 <div class="price">
-                                    <asp:Label ID="Label2" runat="server" Text="領造型線T  售價："></asp:Label>
-                                    <asp:Label ID="Label3" runat="server" Text="900"></asp:Label><br>
-                                    <asp:DropDownList ID="DropDownList1" runat="server">
-                                        <asp:ListItem>白</asp:ListItem>
-                                        <asp:ListItem>綠</asp:ListItem>
-                                        <asp:ListItem>紅</asp:ListItem>
+                                    <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="Label3" runat="server" Text=""></asp:Label><br>
+                                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="category" DataValueField="category">       
                                     </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='1')"></asp:SqlDataSource>
                                     <asp:Button ID="Button1" runat="server" Text="放入購物車" OnClick="Button1_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -182,16 +180,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="col-md-3 col-md2">
                             <div class="col-md1 simpleCart_shelfItem">
-                                <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/images\衣服\281901708-袖滾配色t\S__49840211.jpg" Height="100%" Width="100%" OnClick="ImageButton3_Click" />
+                                <asp:ImageButton ID="ImageButton3" runat="server"  Height="100%" Width="100%" OnClick="ImageButton3_Click" />
                                 <div class="price">
-                                    <asp:Label ID="Label4" runat="server" Text="袖滾配色T  售價："></asp:Label>
-                                    <asp:Label ID="Label5" runat="server" Text="950"></asp:Label><br>
-                                    <asp:DropDownList ID="DropDownList2" runat="server">
-                                        <asp:ListItem>白</asp:ListItem>
-                                        <asp:ListItem>綠</asp:ListItem>
-                                        <asp:ListItem>橘</asp:ListItem>
-                                        <asp:ListItem>黑</asp:ListItem>
+                                    <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="Label5" runat="server" Text=""></asp:Label><br>
+                                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="category" DataValueField="category">
                                     </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='2')"></asp:SqlDataSource>
                                     <asp:Button ID="Button2" runat="server" Text="放入購物車" OnClick="Button2_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -200,17 +195,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="col-md-3 col-md2">
                             <div class="col-md1 simpleCart_shelfItem">
-                                <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="~/images\衣服\281901715-剪裁T\S__49840159.jpg" Height="100%" Width="100%" OnClick="ImageButton4_Click" />
+                                <asp:ImageButton ID="ImageButton4" runat="server"  Height="100%" Width="100%" OnClick="ImageButton4_Click" />
                                 <div class="price">
-                                    <asp:Label ID="Label6" runat="server" Text="剪裁T  售價："></asp:Label>
-                                    <asp:Label ID="Label7" runat="server" Text="850"></asp:Label><br>
-                                    <asp:DropDownList ID="DropDownList3" runat="server">
+                                    <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="Label7" runat="server" Text=""></asp:Label><br>
+                                    <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="category" DataValueField="category">
                                         <asp:ListItem>白</asp:ListItem>
                                         <asp:ListItem>灰</asp:ListItem>
                                         <asp:ListItem>杏</asp:ListItem>
                                         <asp:ListItem>咖啡</asp:ListItem>
                                         <asp:ListItem>黑</asp:ListItem>
                                     </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='3')"></asp:SqlDataSource>
                                     <asp:Button ID="Button3" runat="server" Text="放入購物車" OnClick="Button3_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -219,16 +215,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="col-md-3 col-md2">
                             <div class="col-md1 simpleCart_shelfItem">
-                                <asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="~/images\衣服\281901801-細肩露肩t\S__49840130.jpg" Height="100%" Width="100%" OnClick="ImageButton5_Click" />
+                                <asp:ImageButton ID="ImageButton5" runat="server"  Height="100%" Width="100%" OnClick="ImageButton5_Click" />
                                 <div class="price">
-                                    <asp:Label ID="Label8" runat="server" Text="細肩露肩T  售價："></asp:Label>
-                                    <asp:Label ID="Label9" runat="server" Text="1000"></asp:Label><br>
-                                    <asp:DropDownList ID="DropDownList4" runat="server">
-                                        <asp:ListItem>白</asp:ListItem>
-                                        <asp:ListItem>綠</asp:ListItem>
-                                        <asp:ListItem>紅</asp:ListItem>
-                                        <asp:ListItem>黑</asp:ListItem>
+                                    <asp:Label ID="Label8" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="Label9" runat="server" Text=""></asp:Label><br>
+                                    <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource4" DataTextField="category" DataValueField="category">
                                     </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='4')"></asp:SqlDataSource>
                                     <asp:Button ID="Button4" runat="server" Text="放入購物車" OnClick="Button4_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -239,15 +232,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="content-top1">
                         <div class="col-md-3 col-md2">
                             <div class="col-md1 simpleCart_shelfItem">
-                                <asp:ImageButton ID="ImageButton6" runat="server" ImageUrl="~/images\衣服\281902805-胸抓摺衫\S__49954893.jpg" Height="100%" Width="100%" OnClick="ImageButton6_Click" />
+                                <asp:ImageButton ID="ImageButton6" runat="server"  Height="100%" Width="100%" OnClick="ImageButton6_Click" />
                                 <div class="price">
-                                    <asp:Label ID="Label10" runat="server" Text="胸抓摺衫  售價："></asp:Label>
-                                    <asp:Label ID="Label11" runat="server" Text="980"></asp:Label><br>
-                                    <asp:DropDownList ID="DropDownList5" runat="server">
-                                        <asp:ListItem>灰</asp:ListItem>
-                                        <asp:ListItem>黑</asp:ListItem>
-                                        <asp:ListItem>粉</asp:ListItem>
+                                    <asp:Label ID="Label10" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="Label11" runat="server" Text=""></asp:Label><br>
+                                    <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="SqlDataSource5" DataTextField="category" DataValueField="category">
                                     </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='5')"></asp:SqlDataSource>
                                     <asp:Button ID="Button5" runat="server" Text="放入購物車" OnClick="Button5_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -256,14 +247,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="col-md-3 col-md2">
                             <div class="col-md1 simpleCart_shelfItem">
-                                <asp:ImageButton ID="ImageButton7" runat="server" ImageUrl="~/images\衣服\281904506-格紋澎袖衫\S__49954861.jpg" Height="100%" Width="100%" OnClick="ImageButton7_Click" />
+                                <asp:ImageButton ID="ImageButton7" runat="server"  Height="100%" Width="100%" OnClick="ImageButton7_Click" />
                                 <div class="price">
-                                    <asp:Label ID="Label12" runat="server" Text="格紋澎袖衫  售價："></asp:Label>
-                                    <asp:Label ID="Label13" runat="server" Text="790"></asp:Label><br>
-                                    <asp:DropDownList ID="DropDownList6" runat="server">
-                                        <asp:ListItem>黑</asp:ListItem>
-                                        <asp:ListItem>紅</asp:ListItem>
+                                    <asp:Label ID="Label12" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="Label13" runat="server" Text=""></asp:Label><br>
+                                    <asp:DropDownList ID="DropDownList6" runat="server" DataSourceID="SqlDataSource6" DataTextField="category" DataValueField="category">
                                     </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='6')"></asp:SqlDataSource>
                                     <asp:Button ID="Button6" runat="server" Text="放入購物車" OnClick="Button6_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -271,15 +261,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="col-md-3 col-md2">
                             <div class="col-md1 simpleCart_shelfItem">
-                                <asp:ImageButton ID="ImageButton8" runat="server" ImageUrl="~/images\衣服\281906305-中抓摺雪紡衫\S__50069542.jpg" Height="100%" Width="100%" OnClick="ImageButton8_Click" />
+                                <asp:ImageButton ID="ImageButton8" runat="server"  Height="100%" Width="100%" OnClick="ImageButton8_Click" />
                                 <div class="price">
-                                    <asp:Label ID="Label14" runat="server" Text="中抓摺雪紡衫  售價："></asp:Label>
-                                    <asp:Label ID="Label15" runat="server" Text="980"></asp:Label><br>
-                                    <asp:DropDownList ID="DropDownList7" runat="server">
-                                        <asp:ListItem>杏</asp:ListItem>
-                                        <asp:ListItem>白</asp:ListItem>
-                                        <asp:ListItem>紅</asp:ListItem>
+                                    <asp:Label ID="Label14" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="Label15" runat="server" Text=""></asp:Label><br>
+                                    <asp:DropDownList ID="DropDownList7" runat="server" DataSourceID="SqlDataSource7" DataTextField="category" DataValueField="category">
                                     </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='7')"></asp:SqlDataSource>
                                     <asp:Button ID="Button7" runat="server" Text="放入購物車" OnClick="Button7_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
@@ -287,15 +275,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="col-md-3 col-md2">
                             <div class="col-md1 simpleCart_shelfItem">
-                                <asp:ImageButton ID="ImageButton9" runat="server" ImageUrl="~/images\衣服\281905801-滾邊寬袖衫\S__50200586.jpg" Height="100%" Width="100%" OnClick="ImageButton9_Click" />
+                                <asp:ImageButton ID="ImageButton9" runat="server"  Height="100%" Width="100%" OnClick="ImageButton9_Click" />
                                 <div class="price">
-                                    <asp:Label ID="Label16" runat="server" Text="滾邊寬袖衫  售價："></asp:Label>
-                                    <asp:Label ID="Label17" runat="server" Text="990"></asp:Label><br>
-                                    <asp:DropDownList ID="DropDownList8" runat="server">
-                                        <asp:ListItem>白</asp:ListItem>
-                                        <asp:ListItem>粉</asp:ListItem>
-                                        <asp:ListItem>黑</asp:ListItem>
+                                    <asp:Label ID="Label16" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="Label17" runat="server" Text=""></asp:Label><br>
+                                    <asp:DropDownList ID="DropDownList8" runat="server" DataSourceID="SqlDataSource8" DataTextField="category" DataValueField="category">
                                     </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:ShoppingConnectionString %>" SelectCommand="select b.category from ShowPicture AS a inner join Products AS b on a.productName=b.productName where (a.show='8')"></asp:SqlDataSource>
                                     <asp:Button ID="Button8" runat="server" Text="放入購物車" OnClick="Button8_Click" BackColor="#52d0c4" ForeColor="White" CssClass="item_add" Style="float: right" />
                                     <div class="clearfix"></div>
                                 </div>
