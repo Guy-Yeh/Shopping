@@ -120,8 +120,8 @@ $(document).ready(function () {
 
         } else {
             //NOT OK
-            //console.log("NOT OK");
-            var nameDel = alert('您的名字格式有誤，\n請輸入中文或英文');
+            console.log("NOT OK");
+            var nameDel = alert('您的名字格式有誤，\n請輸入4-10個字元的中文或英文');
         }
 
         return false;

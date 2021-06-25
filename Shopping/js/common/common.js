@@ -2,7 +2,7 @@
     if (name == '' || name == undefined) {
         return false;
     }
-    var regex = /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/;
+    var regex = /^[\u4e00-\u9fa5_A-Za-z]{4,10}$/;//^[\u4e00-\u9fa5_a-zA-Z0-9]+$/;
     return regex.test(name);
 }
 
@@ -10,7 +10,7 @@ function IsPassword(password) {
     if (password == '' || password == undefined) {
         return false;
     }
-    var regex = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
+    var regex = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{7,20}$/;
     return regex.test(password);
 }
 
