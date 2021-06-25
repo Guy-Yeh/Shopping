@@ -51,13 +51,13 @@ namespace Shopping
 
                 if (read[1].ToString() == "" || read[1] is null)
                 {
-                    row["picture"] = @"/images/UserPicture/def.jpg";
+                    row["picture"] = @"images\UserPicture\def.jpg";
                 }
                 else 
                 {
                     row["picture"] = read[1];
                 }
-                row["showpicture"] = read[1].ToString().Replace("/images/UserPicture/", "");
+                row["showpicture"] = read[1].ToString().Replace(@"images\UserPicture\", "");
                 row["account"] = read[2];
                 row["password"] = read[3];
                 row["name"] = read[4];
@@ -118,13 +118,13 @@ namespace Shopping
 
                 if (read[1].ToString() == "" || read[1] is null)
                 {
-                    row["picture"] = @"/images/UserPicture/def.jpg";
+                    row["picture"] = @"images\UserPicture\def.jpg";
                 }
                 else
                 {
                     row["picture"] = read[1];
                 }
-                row["showpicture"] = read[1].ToString().Replace("/images/UserPicture/", "");
+                row["showpicture"] = read[1].ToString().Replace(@"images\UserPicture\", "");
                 row["account"] = read[2];
                 row["password"] = read[3];
                 row["name"] = read[4];
