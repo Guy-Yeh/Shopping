@@ -682,7 +682,7 @@ namespace Shopping
 
         protected void Button123_Click(object sender, EventArgs e)
         {
-            string sql = $"select * from ShowPicture where show = '1' or show = '2' or show = '3' ";
+            string sql = $"select * from ShowPicture where show = '1' or show = '2' or show = '3' order by show ASC";
             searchShowPicture(sql);
         }
 

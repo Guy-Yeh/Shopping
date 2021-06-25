@@ -798,7 +798,18 @@ namespace Shopping
         protected void userorder_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             userorder.PageIndex = e.NewPageIndex;
-            reviewOrder();
+            if (helpSQLO11.Text != "")
+            {
+                searchOrder(helpSQLO11.Text, helpSQLO12.Text);
+            }
+            else if (helpSQLO21.Text != "")
+            {
+                searchOrder2(helpSQLO21.Text, helpSQLO22.Text);
+            }
+            else
+            {
+                reviewOrder();
+            }
         }
 
         protected void all_Click(object sender, EventArgs e)
