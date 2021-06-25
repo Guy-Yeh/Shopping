@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using System.Drawing;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using System.Text;
 
 namespace Shopping
 {
@@ -61,7 +62,16 @@ namespace Shopping
             bool passwordRule = Regex.IsMatch(passwordText.Text, @"[\w-]{7,20}"); //7-20字元英數混和字串            
             bool phoneRule = Regex.IsMatch(phoneText.Text, @"^09[0-9]{8}$"); //手機號碼驗證
             bool emailRule = Regex.IsMatch(emailchange, @"^[a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6}$"); //email驗證
-            bool nameRule = Regex.IsMatch(nameText.Text, @"^[\u4e00-\u9fa5]{2,10}$|^[\dA-Za-z_]{3,10}$"); //
+            bool nameRule;
+            if(Encoding.Default.GetByteCount(nameText.Text) >= 4 && Encoding.Default.GetByteCount(nameText.Text) <= 10)
+            {
+                nameRule = Regex.IsMatch(nameText.Text, @"^[\u4e00-\u9fa5_A-Za-z]+$");
+            }
+            else
+            {
+                nameRule = false;
+            }
+            //bool nameRule = Regex.IsMatch(nameText.Text, @"^[\u4e00-\u9fa5]{2,10}$|^[\dA-Za-z_]{3,10}$"); //
 
             //檢查有無違反規則
             if (accRule == false)
