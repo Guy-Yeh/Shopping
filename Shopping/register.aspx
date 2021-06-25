@@ -135,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="mation">
 								
 								<asp:Label ID="name" runat="server" Text="姓名"></asp:Label>
-								<asp:TextBox ID="nameText" runat="server" placeholder="請輸中英文名字合計2-10字元"></asp:TextBox>
+								<asp:TextBox ID="nameText" runat="server" placeholder="請輸中英文名字合計4-10字元"></asp:TextBox>
 																				
 								<asp:Label ID="phone" runat="server" Text="手機"></asp:Label>
 								<asp:TextBox ID="phoneText" runat="server" placeholder="請輸入含09開頭十位數字號碼"></asp:TextBox>

@@ -169,7 +169,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <br>
                             </div>
                             <div class="col-sm-4">
-                            <asp:Label ID="Label21" runat="server" Text="聯絡我們" Font-Size="X-Large" Font-Bold="True"></asp:Label><br>
+                            <asp:Label ID="Label21" runat="server" Text="我要留言" Font-Size="X-Large" Font-Bold="True"></asp:Label><br>
                             <br>
                             <asp:Label ID="Label22" runat="server" Text="客服信箱 / vs.for.test2021@gmail.com"></asp:Label><br>
                             <asp:Label ID="Label23" runat="server" Text="服務時間 / 09:00 - 18:00 國定假日及例假日休息"></asp:Label><br>
