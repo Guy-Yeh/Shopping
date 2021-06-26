@@ -33,6 +33,10 @@ namespace Shopping.Customer
                 {
                     loginstatus = Session["loginstatus"].ToString();
                 }
+                else 
+                {
+                    loginstatus = "";
+                }
             }
             catch (Exception ex)
             {
@@ -63,7 +67,7 @@ namespace Shopping.Customer
             Common.Common common = new Common.Common();
             try
             {
-                CustomerDetailService customerDetailService = new CustomerDetailService();
+                CustomerDetailService customerDetailService = new CustomerDetailService(loginstatus);
                 List<CustomersModel> customers = customerDetailService.GetCustomers(loginstatus);
 
                 //for (int i = 0; i < customers.Count; i++)
@@ -89,7 +93,7 @@ namespace Shopping.Customer
             Common.Common common = new Common.Common();
             try
             {
-                CustomerDetailService customerDetailService = new CustomerDetailService();
+                CustomerDetailService customerDetailService = new CustomerDetailService(loginstatus);
                 bool r = customerDetailService.DelAccount(account, access);
 
                 return common.ThrowResult<bool>(Enum.ApiStatusEnum.OK, string.Empty, r);
@@ -107,7 +111,7 @@ namespace Shopping.Customer
             Common.Common common = new Common.Common();
             try
             {
-                CustomerDetailService customerDetailService = new CustomerDetailService();
+                CustomerDetailService customerDetailService = new CustomerDetailService(loginstatus);
                 bool r =customerDetailService.EditName(id, name);
 
                 return common.ThrowResult<bool>(Enum.ApiStatusEnum.OK, string.Empty, r);
@@ -124,7 +128,7 @@ namespace Shopping.Customer
             Common.Common common = new Common.Common();
             try
             {
-                CustomerDetailService customerDetailService = new CustomerDetailService();
+                CustomerDetailService customerDetailService = new CustomerDetailService(loginstatus);
                 bool r = customerDetailService.EditPhoneNumber(id, phone);
 
                 return common.ThrowResult<bool>(Enum.ApiStatusEnum.OK, string.Empty, r);
@@ -142,7 +146,7 @@ namespace Shopping.Customer
             Common.Common common = new Common.Common();
             try
             {
-                CustomerDetailService customerDetailService = new CustomerDetailService();
+                CustomerDetailService customerDetailService = new CustomerDetailService(loginstatus);
                 bool r = customerDetailService.EditAddress(id, address);
 
                 return common.ThrowResult<bool>(Enum.ApiStatusEnum.OK, string.Empty, r);
@@ -169,11 +173,11 @@ namespace Shopping.Customer
                     //格式正確
                     if (newPwdRule == reNewPwdRule)
                     {
-                        CustomerDetailService customerDetailService = new CustomerDetailService();
+                        CustomerDetailService customerDetailService = new CustomerDetailService(loginstatus);
                         bool r = customerDetailService.CheckPassword(loginstatus, oldPwd);
                         if (r ==true)
                         {
-                            CustomerDetailService customerDetailService2 = new CustomerDetailService();
+                            CustomerDetailService customerDetailService2 = new CustomerDetailService(loginstatus);
                             bool r1 = customerDetailService2.EditPassword1(loginstatus, reNewPwd);
                             //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "bt1", "setTimeout( function(){alert('輸入成功');},0);", true);
                             //MessageBox.Show("密碼修改成功");
@@ -255,8 +259,8 @@ namespace Shopping.Customer
                     {
                         //string picturePath1 = $"/images/FileUpload/" + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
                         //string picturePath1 = $"/images/UserPicture/" +"_"+ loginstatus + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
-                        string picturePath2 = $@"\images\UserPicture\" + "_" + loginstatus + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
-                        string imgPath = Server.MapPath("~" + picturePath2);
+                        string picturePath2 = $@"images\UserPicture\" + "_" + loginstatus + DateTime.Now.ToString("yyyy_MM_dd_hhmmss_sss") + ".jpg";
+                        string imgPath = Server.MapPath(@"~\" + picturePath2);
                         FileUpload1.SaveAs(imgPath);
 
 
@@ -288,7 +292,7 @@ namespace Shopping.Customer
                             connection.Open();
                             command.ExecuteNonQuery();
                             connection.Close();
-                            accountImg.ImageUrl = picturePath2;
+                            accountImg.ImageUrl = @"\" + picturePath2;
                             //this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "TEST1", "setTimeout( function(){alert('上傳成功');},200);", true);
                             //MessageBox.Show("上傳成功");
 

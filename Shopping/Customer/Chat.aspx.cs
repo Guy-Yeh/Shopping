@@ -32,6 +32,10 @@ namespace Shopping.Customer
                 {
                     loginstatus = Session["loginstatus"].ToString();
                 }
+                else
+                {
+                    loginstatus = "";
+                }
             }
             catch (Exception ex)
             {

@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Shopping.Service
 {
-    public class indexpro : BaseService
+    public class indexpro
     {
         public List<indexModel> indexproduct()
         {

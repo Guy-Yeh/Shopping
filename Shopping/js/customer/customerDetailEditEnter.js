@@ -200,7 +200,7 @@ $(document).ready(function () {
                     //} else {
                     //    pic = data.picture;
                     //}
-                    $('#ContentPlaceHolder1_accountImg').attr('src', ".." + pic);
+                    $('#ContentPlaceHolder1_accountImg').attr('src', "..\\" + pic);
 
                     //to do
                     customer = data;

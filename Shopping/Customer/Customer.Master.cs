@@ -13,6 +13,7 @@ namespace Shopping.Customer
         {
             if (Session["loginstatus"] == null || Session["loginstatus"].ToString() == "")
             {
+                
                 Session.Abandon();
                 Response.Redirect("../index");
             }

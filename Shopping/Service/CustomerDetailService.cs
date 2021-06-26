@@ -9,9 +9,13 @@ namespace Shopping.Service
 {
     public class CustomerDetailService : BaseService
     {
+        public CustomerDetailService(string _loginstatus) {
+            auth = _loginstatus;
+        }
 
         public List<CustomersModel> GetCustomers(string account)
         {
+            Auth();
             CustomerDetailDao customerDetailDao = new CustomerDetailDao();
             List<CustomersModel> customers = customerDetailDao.GetCustomers(account);
             return customers;
