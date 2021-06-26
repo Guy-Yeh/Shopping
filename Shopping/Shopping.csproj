@@ -126,6 +126,22 @@
     <Content Include="images\up.png" />
     <Content Include="images\CAT1.png" />
     <Content Include="images\CAT4.png" />
+    <Content Include="images\UserPicture\aaabbbb.jpg" />
+    <Content Include="images\UserPicture\abcd1234.jpg" />
+    <Content Include="images\UserPicture\agay123.jpg" />
+    <Content Include="images\UserPicture\alvin1234.jpg" />
+    <Content Include="images\UserPicture\appl1234.jpg" />
+    <Content Include="images\UserPicture\apple123.jpg" />
+    <Content Include="images\UserPicture\apple1234.jpg" />
+    <Content Include="images\UserPicture\def.jpg" />
+    <Content Include="images\UserPicture\dick123.jpg" />
+    <Content Include="images\UserPicture\gggg123.jpg" />
+    <Content Include="images\UserPicture\guy0000.jpg" />
+    <Content Include="images\UserPicture\guy1234.jpg" />
+    <Content Include="images\UserPicture\John123.jpg" />
+    <Content Include="images\UserPicture\mary123.jpg" />
+    <Content Include="images\UserPicture\pie1234.jpg" />
+    <Content Include="images\UserPicture\pp123.jpg" />
     <Content Include="images\UserPicture\_abcd12342021_06_25_102703_03.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
