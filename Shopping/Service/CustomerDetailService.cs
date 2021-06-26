@@ -11,11 +11,12 @@ namespace Shopping.Service
     {
         public CustomerDetailService(string _loginstatus) {
             auth = _loginstatus;
+            Auth();
         }
 
         public List<CustomersModel> GetCustomers(string account)
         {
-            Auth();
+            //Auth();
             CustomerDetailDao customerDetailDao = new CustomerDetailDao();
             List<CustomersModel> customers = customerDetailDao.GetCustomers(account);
             return customers;

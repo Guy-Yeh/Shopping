@@ -12,10 +12,11 @@ namespace Shopping.Service
         public OrdersService(string _loginstatus)
         {
             auth = _loginstatus;
+            Auth();
         }
         public List<ShoppingListModel> GetOrders(string account)
         {
-            Auth();
+            //Auth();
             OrdersDao ordersDao = new OrdersDao();
             List<ShoppingListModel> orders = ordersDao.GetOrders(account);
             return orders;

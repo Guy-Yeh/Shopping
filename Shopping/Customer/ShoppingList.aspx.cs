@@ -45,7 +45,7 @@ namespace Shopping.Customer
             Common.Common common = new Common.Common();
             try
             {
-                OrdersService ordersService = new OrdersService();
+                OrdersService ordersService = new OrdersService(loginstatus);
                 List<ShoppingListModel> orders = ordersService.GetOrders(loginstatus);
 
                 return common.ThrowResult<List<ShoppingListModel>>(Enum.ApiStatusEnum.OK, string.Empty, orders);
@@ -62,7 +62,7 @@ namespace Shopping.Customer
             Common.Common common = new Common.Common();
             try
             {
-                OrdersService ordersService = new OrdersService();
+                OrdersService ordersService = new OrdersService(loginstatus);
                 bool orders = ordersService.DelOrders(status,serial);
 
                 return common.ThrowResult<bool>(Enum.ApiStatusEnum.OK, string.Empty, orders);
