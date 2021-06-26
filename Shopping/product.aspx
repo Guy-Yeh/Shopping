@@ -72,7 +72,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-8 h_menu4">
                         <ul class="memenu skyblue">
                             <li><a class="color6" href="shoppingcar">購物車</a></li>
-                            <li><a class="color6" href="Customer\Chat.aspx">聯絡我們</a></li>
+                            <li><a class="color6" href="Customer\Chat.aspx">我要留言</a></li>
                             <li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Font-Size="Large">購物須知</asp:LinkButton></li>
                         </ul>
                     </div>

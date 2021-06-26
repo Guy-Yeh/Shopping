@@ -146,9 +146,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 </EditItemTemplate>
                                                 <ItemTemplate>
                                                     <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl='<%# Eval("picture") %>' Width="100px" />
-                                                </ItemTemplate>
+                                                </ItemTemplate>                                                
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                                            <asp:TemplateField HeaderText="picture" SortExpression="Picture" Visible="false">
+                                                <EditItemTemplate>
+                                                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("picture") %>'></asp:TextBox>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("picture") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                             <asp:BoundField DataField="showpicture" HeaderText="照片檔名" SortExpression="showpicture" Visible="False" ReadOnly="True" />
                                             <asp:BoundField DataField="account" HeaderText="帳號" SortExpression="account" Visible="True" ReadOnly="True" />
                                             <asp:BoundField DataField="password" HeaderText="密碼" SortExpression="password" Visible="False" ReadOnly="True" />

@@ -55,7 +55,7 @@ namespace Shopping
                 }
                 else 
                 {
-                    row["picture"] = read[1];
+                    row["picture"] = read[1].ToString();
                 }
                 row["showpicture"] = read[1].ToString().Replace(@"images\UserPicture\", "");
                 row["account"] = read[2];
