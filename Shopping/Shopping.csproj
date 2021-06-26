@@ -126,6 +126,9 @@
     <Content Include="images\up.png" />
     <Content Include="images\CAT1.png" />
     <Content Include="images\CAT4.png" />
+    <Content Include="images\UserPicture\_abcd12342021_06_25_102703_03.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\衣服\281901701-領造型線T\S__49610819.jpg" />
     <Content Include="images\衣服\281901701-領造型線T\S__77931621.jpg" />
     <Content Include="images\衣服\281901701-領造型線T\S__77931623.jpg" />
